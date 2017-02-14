@@ -1,7 +1,6 @@
 define(function(){
 
     function OnDataChange(bezl) {
-            bezl.data = dataResp;
 
             if (bezl.data.Events && !bezl.data.AddCalendarEvent) {
             bezl.vars['refreshing'] = true;
