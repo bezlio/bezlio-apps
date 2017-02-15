@@ -108,12 +108,12 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
+                    require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(functions) {
                         functions.clockInResponse(bezl, bezl.data.ClockIn)
                     });
                     break;
                 case "Excel":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                    require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                         functions.clockInResponse(bezl, bezl.data.ClockIn)
                     });
                     break;
@@ -137,12 +137,12 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
+                    require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(functions) {
                         functions.startJobResponse(bezl, bezl.data.StartJob)
                     });
                     break;
                 case "Excel":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                    require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                         functions.startJobResponse(bezl, bezl.data.StartJob)
                     });
                     break;

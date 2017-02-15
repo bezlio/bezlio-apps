@@ -122,12 +122,26 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
-                    functions.clockIn(bezl)
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+
+                    var clockInEmployees = [];
+                    for (var i = 0; i < bezl.vars.team.length; i++) {
+                        if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
+                            clockInEmployees.push(bezl.vars.team[i].key);
+                        }
+                    }
+
+                    labor.clockIn(bezl
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , clockInEmployees
+                                , bezl.vars.config.Shift);
+
+                    bezl.vars.clockingIn = true;  
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                     functions.clockIn(bezl)
                 });
                 break;
@@ -142,12 +156,25 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
-                    functions.clockOut(bezl)
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                    
+                    var clockOutEmployees = [];
+                    for (var i = 0; i < bezl.vars.team.length; i++) {
+                        if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                            clockOutEmployees.push(bezl.vars.team[i].key);
+                        }
+                    }
+
+                    labor.clockOut(bezl
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , clockOutEmployees);
+
+                    bezl.vars.clockingOut = true;  
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                     functions.clockOut(bezl)
                 });
                 break;
@@ -162,12 +189,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
-                    functions.endActivities(bezl)
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                    labor.endActivities(bezl)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                     functions.endActivities(bezl)
                 });
                 break;
@@ -182,12 +209,27 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
-                    functions.startJob(bezl, job)
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                    var laborHeds = [];
+                    for (var i = 0; i < bezl.vars.team.length; i++) {
+                        if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
+                            laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
+                        }
+                    }
+
+                    labor.startJob(bezl
+                                , connection
+                                , company
+                                , laborHeds
+                                , job.data.JobNum
+                                , job.data.AssemblySeq
+                                , job.data.OprSeq);
+
+                    bezl.vars.startingJob = true;
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                     functions.startJob(bezl, job)
                 });
                 break;
@@ -204,12 +246,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(functions) {
                     functions.startIndirect(bezl, indirect)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
                     functions.startIndirect(bezl, indirect)
                 });
                 break;
