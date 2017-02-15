@@ -131,6 +131,10 @@ define(["./customer.js",
         }
 
         if (bezl.data.CRMCallHistory) {
+            bezl.data.CRMCallHistory.forEach(ch => {
+                // Fix up the Date by removing the time due to a bug with the angular date pipe
+                ch.CallDate = (ch.CallDate || 'T').split('T')[0]
+            });
             bezl.vars.loading.crmHistory = false;
         }
 

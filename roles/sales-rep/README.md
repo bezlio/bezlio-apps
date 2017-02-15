@@ -6,7 +6,7 @@ The sales rep role is currently comprised of a single Bezl that does the followi
 2. Reorient the map center point to any address and the customer listing will be updated to reflect appropriate distances.
 3. View and record CRM calls.
 4. Maintain tasks assocated with customers.
-5. Load files associated with the given customer, either from a network drive broken down by customer ID or as associated with the custoemr master record in the database.
+5. Load files associated with the given customer, either from a network drive broken down by customer ID or as associated with the customer master record in the database.
 6. Run custom inquiries against a customer.
 
 Currently this Bezl has been explicitly developed for the following platforms:

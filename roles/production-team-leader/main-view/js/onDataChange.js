@@ -108,14 +108,14 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
-                        functions.clockInResponse(bezl, bezl.data.ClockIn)
-                    });
-                    break;
-                case "Excel":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
-                        functions.clockInResponse(bezl, bezl.data.ClockIn)
-                    });
+                    for (var i = 0; i < bezl.data.ClockIn.LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.ClockIn.LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].LaborHed = bezl.data.ClockIn.LaborHed[i];
+                                bezl.vars.team[x].clockedIn = 1;
+                            }
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -123,13 +123,32 @@ define(["./employees.js"], function (employees) {
 
             bezl.dataService.remove('ClockIn');
             bezl.data.ClockIn = null;
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
-        if (bezl.data['ClockOut_' + bezl.vars.clockingOutId]) {
+        if (bezl.data.ClockOut) {
             bezl.vars.clockingOut = false;
-            bezl.dataService.remove('ClockOut_' + bezl.vars.clockingOutId);
-            bezl.data['ClockOut_' + bezl.vars.clockingOutId] = null;
-            employees.runQuery(bezl, 'Team');
+
+            switch (bezl.vars.config.Platform) {
+                case "Epicor905":
+                    for (var i = 0; i < bezl.data.ClockOut.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.ClockOut[i].EmployeeNum && !bezl.data.ClockOut[i].Error) {
+                                bezl.vars.team[x].LaborHed = [];
+                                bezl.vars.team[x].clockedIn = 0;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            bezl.dataService.remove('ClockOut');
+            bezl.data.ClockOut = null;
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
         if (bezl.data.StartJob) {
@@ -137,14 +156,13 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/epicor905.js'], function(functions) {
-                        functions.startJobResponse(bezl, bezl.data.StartJob)
-                    });
-                    break;
-                case "Excel":
-                    require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/production-team-leader/main-view/js/integrations/excel.js'], function(functions) {
-                        functions.startJobResponse(bezl, bezl.data.StartJob)
-                    });
+                    for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
+                            }
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -152,8 +170,31 @@ define(["./employees.js"], function (employees) {
 
             bezl.dataService.remove('StartJob');
             bezl.data.StartJob = null;
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
+        }
 
-            employees.runQuery(bezl, 'Team');
+        if (bezl.data.EndActivities) {
+            bezl.vars.endingActivities = false;
+
+            switch (bezl.vars.config.Platform) {
+                case "Epicor905":
+                    for (var i = 0; i < bezl.data.EndActivities.LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.EndActivities.LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].currentActivity = '';
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            bezl.dataService.remove('EndActivities');
+            bezl.data.EndActivities = null;
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
     }
