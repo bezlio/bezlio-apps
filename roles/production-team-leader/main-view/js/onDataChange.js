@@ -156,14 +156,13 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
-                        functions.startJobResponse(bezl, bezl.data.StartJob)
-                    });
-                    break;
-                case "Excel":
-                    require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                        functions.startJobResponse(bezl, bezl.data.StartJob)
-                    });
+                    for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
+                            }
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -171,8 +170,8 @@ define(["./employees.js"], function (employees) {
 
             bezl.dataService.remove('StartJob');
             bezl.data.StartJob = null;
-
-            employees.runQuery(bezl, 'Team');
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
     }

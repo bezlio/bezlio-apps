@@ -218,8 +218,8 @@ define(function () {
                     }
 
                     labor.startJob(bezl
-                                , connection
-                                , company
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
                                 , laborHeds
                                 , job.data.JobNum
                                 , job.data.AssemblySeq
