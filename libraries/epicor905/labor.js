@@ -143,7 +143,9 @@ define(function () {
  
     return {
         clockIn: ClockIn,
+        clockInResponse: ClockInResponse,
         clockOut: ClockOut,
+        clockOutResponse: ClockOutResponse,
         endActivities: EndActivities,
         startJob: StartJob,
         startIndirect: StartIndirect
