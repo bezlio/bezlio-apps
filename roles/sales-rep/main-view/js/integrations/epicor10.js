@@ -16,7 +16,6 @@ define(function () {
                     ,"CallContactType"	:	"Customer"
                     ,"CallCustNum"		:	bezl.vars.selectedCustomer.CustNum
                     ,"CallTypeCode"	    :	bezl.vars.newNote.type
-                    ,"CallConNum"		:	bezl.vars.selectedCustomer.CustNum
                     ,"SalesRepCode"	    :	bezl.vars.selectedCustomer.SalesRep
                     }
             ]
