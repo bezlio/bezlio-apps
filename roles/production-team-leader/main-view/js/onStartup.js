@@ -45,7 +45,7 @@ define(["./employees.js"], function (employees) {
     
         // Configure the team members jsGrid
         $("#jsGridJobs").jsGrid({
-        width: "100%",
+        width: 275,
         height: "100%",
         heading: true,
         sorting: true,
