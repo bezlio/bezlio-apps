@@ -124,6 +124,7 @@ define(["./employees.js"], function (employees) {
             bezl.dataService.remove('ClockIn');
             bezl.data.ClockIn = null;
             $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
         if (bezl.data.ClockOut) {
@@ -132,7 +133,7 @@ define(["./employees.js"], function (employees) {
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
                     for (var i = 0; i < bezl.data.ClockOut.length; i++) {
-                        for (var x = 0; x < employees.length; x++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
                             if (bezl.vars.team[x].key == bezl.data.ClockOut[i].EmployeeNum && !bezl.data.ClockOut[i].Error) {
                                 bezl.vars.team[x].LaborHed = [];
                                 bezl.vars.team[x].clockedIn = 0;
@@ -147,6 +148,7 @@ define(["./employees.js"], function (employees) {
             bezl.dataService.remove('ClockOut');
             bezl.data.ClockOut = null;
             $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
         if (bezl.data.StartJob) {
