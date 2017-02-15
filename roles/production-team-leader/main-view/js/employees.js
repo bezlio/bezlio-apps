@@ -122,7 +122,7 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
 
                     var clockInEmployees = [];
                     for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -141,7 +141,7 @@ define(function () {
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
                     functions.clockIn(bezl)
                 });
                 break;
@@ -156,7 +156,7 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
                     
                     var clockOutEmployees = [];
                     for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -174,7 +174,7 @@ define(function () {
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
                     functions.clockOut(bezl)
                 });
                 break;
@@ -189,12 +189,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
                     labor.endActivities(bezl)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
                     functions.endActivities(bezl)
                 });
                 break;
@@ -209,7 +209,7 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(labor) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
                     var laborHeds = [];
                     for (var i = 0; i < bezl.vars.team.length; i++) {
                         if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
@@ -229,7 +229,7 @@ define(function () {
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
                     functions.startJob(bezl, job)
                 });
                 break;
@@ -246,12 +246,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.Platform) {
             case "Epicor905":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/epicor905/labor.js'], function(functions) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
                     functions.startIndirect(bezl, indirect)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-apps/Production-Team-Leader---Main-View-%231/libraries/excel/labor.js'], function(functions) {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
                     functions.startIndirect(bezl, indirect)
                 });
                 break;
