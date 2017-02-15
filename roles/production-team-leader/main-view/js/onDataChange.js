@@ -108,14 +108,14 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
-                        functions.clockInResponse(bezl, bezl.data.ClockIn)
-                    });
-                    break;
-                case "Excel":
-                    require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                        functions.clockInResponse(bezl, bezl.data.ClockIn)
-                    });
+                    for (var i = 0; i < bezl.data.ClockIn.LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.ClockIn.LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].LaborHed = bezl.data.ClockIn.LaborHed[i];
+                                bezl.vars.team[x].clockedIn = 1;
+                            }
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -130,14 +130,14 @@ define(["./employees.js"], function (employees) {
 
             switch (bezl.vars.config.Platform) {
                 case "Epicor905":
-                    require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
-                        functions.clockOutResponse(bezl, bezl.data.ClockOut)
-                    }).bind(bezl);
-                    break;
-                case "Excel":
-                    require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                        functions.clockOutResponse(bezl, bezl.data.ClockOut)
-                    });
+                    for (var i = 0; i < bezl.data.ClockOut.length; i++) {
+                        for (var x = 0; x < employees.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.ClockOut[i].EmployeeNum && !bezl.data.ClockOut[i].Error) {
+                                bezl.vars.team[x].LaborHed = [];
+                                bezl.vars.team[x].clockedIn = 0;
+                            }
+                        }
+                    }
                     break;
                 default:
                     break;

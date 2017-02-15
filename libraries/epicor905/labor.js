@@ -28,29 +28,6 @@ define(function () {
     }
 
     /**
-     * This method can be used for the ClockIn response within onDataChange.  It will take
-     * a provided employee array object and append to it the successful LaborHed records.
-     * @param {Object[]} employees - An array of employee IDs
-     * @param {Object[]} responseData - The response object (bezl.data.ClockIn)
-     * @returns {Object[]} employees - The employees object returned with the LaborHed records
-     */
-    function ClockInResponse (bezl
-                            , employees
-                            , responseData) {
-
-        for (var i = 0; i < responseData.LaborHed.length; i++) {
-            for (var x = 0; x < employees.length; x++) {
-                if (employees[x] == responseData.LaborHed[i].EmployeeNum) {
-                    employees[x].LaborHed = responseData.LaborHed[i];
-                    employees[x].clockedIn = 1;
-                }
-            }
-        }
-
-        return employees;
-    }
-
-    /**
      * Clocks out one or many employees from MES.  Function simply creates BRDB call so monitor
      * for return in onDataChange.  The return presented there will be an array of EmployeeNum,
      * an Error column indicating whether there was an error, and ErrorText containing the errors
@@ -75,29 +52,6 @@ define(function () {
                 "Company"       : company,
                 "EmployeeNum"   : employees
             },0); 
-    }
-
-    /**
-     * This method can be used for the ClockIn response within onDataChange.  It will take
-     * a provided employee array object and append to it the successful LaborHed records.
-     * @param {Object[]} employees - An array of employee IDs
-     * @param {Object[]} responseData - The response object (bezl.data.ClockOut)
-     * @returns {Object[]} employees - The employees object returned with the LaborHed records
-     */
-    function ClockOutResponse (bezl
-                            , employees
-                            , responseData) {
-
-        for (var i = 0; i < responseData.length; i++) {
-            for (var x = 0; x < employees.length; x++) {
-                if (employees[x] == responseData[i].EmployeeNum && !responseData[i].Error) {
-                    employees[x].LaborHed = [];
-                    employees[x].clockedIn = 0;
-                }
-            }
-        }
-
-        return employees;
     }
 
     function EndActivities (bezl) {        
@@ -143,9 +97,7 @@ define(function () {
  
     return {
         clockIn: ClockIn,
-        clockInResponse: ClockInResponse,
         clockOut: ClockOut,
-        clockOutResponse: ClockOutResponse,
         endActivities: EndActivities,
         startJob: StartJob,
         startIndirect: StartIndirect
