@@ -6,7 +6,7 @@ define(function () {
             "CRMCall":
             [
                     {
-                    "Company"			: 	bezl.vars.config.CompanyID
+                    "Company"			: 	bezl.vars.selectedCustomer.Company
                     ,"RelatedToFile"	:	"customer"
                     ,"Key1"			    :	bezl.vars.selectedCustomer.CustNum
                     ,"Key2"			    :	""
@@ -38,7 +38,7 @@ define(function () {
         if (bezl.data.OpenTasks[i].RowState == 'Added' || bezl.data.OpenTasks[i].RowState == 'Updated') {
             ds.Task.push(
             {
-                "Company"			: 	bezl.data.OpenTasks[i].CompanyID
+                "Company"			: 	bezl.vars.selectedCustomer.Company
                 ,"RelatedToFile"	:	"Customer"
                 ,"Key1"			    :	bezl.vars.selectedCustomer.CustNum
                 ,"Key2"			    :	""
