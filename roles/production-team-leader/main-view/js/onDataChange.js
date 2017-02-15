@@ -132,7 +132,7 @@ define(["./employees.js"], function (employees) {
                 case "Epicor905":
                     require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
                         functions.clockOutResponse(bezl, bezl.data.ClockOut)
-                    });
+                    }).bind(bezl);
                     break;
                 case "Excel":
                     require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
