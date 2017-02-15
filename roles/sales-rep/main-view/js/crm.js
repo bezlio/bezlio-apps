@@ -7,12 +7,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.CRMPlatform) {
             case "Epicor10":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/sales-rep/main-view/js/integrations/epicor10.js'], function(functions) {
+                require(['https://cdn.rawgit.com/bezlio/bezlio-apps/aceb12b4/roles/sales-rep/main-view/js/integrations/epicor10.js'], function(functions) {
                     functions.addNote(bezl)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/sales-rep/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://cdn.rawgit.com/bezlio/bezlio-apps/aceb12b4/roles/sales-rep/main-view/js/integrations/excel.js'], function(functions) {
                     functions.addNote(bezl)
                 });
                 break;
@@ -29,12 +29,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.CRMPlatform) {
             case "Epicor10":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/sales-rep/main-view/js/integrations/epicor10.js'], function(functions) {
+                require(['https://cdn.rawgit.com/bezlio/bezlio-apps/aceb12b4/roles/sales-rep/main-view/js/integrations/epicor10.js'], function(functions) {
                     functions.updateTasks(bezl)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/sales-rep/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://cdn.rawgit.com/bezlio/bezlio-apps/aceb12b4/roles/sales-rep/main-view/js/integrations/excel.js'], function(functions) {
                     functions.updateTasks(bezl)
                 });
                 break;
@@ -51,12 +51,12 @@ define(function () {
         // and route this request to the appropriate integration
         switch (bezl.vars.config.CRMPlatform) {
             case "Epicor10":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/sales-rep/main-view/js/integrations/epicor10.js'], function(functions) {
+                require(['https://cdn.rawgit.com/bezlio/bezlio-apps/aceb12b4/roles/sales-rep/main-view/js/integrations/epicor10.js'], function(functions) {
                     functions.addTask(bezl)
                 });
                 break;
             case "Excel":
-                require(['https://rawgit.com/bezlio/bezlio-recipes/master/roles/sales-rep/main-view/js/integrations/excel.js'], function(functions) {
+                require(['https://cdn.rawgit.com/bezlio/bezlio-apps/aceb12b4/roles/sales-rep/main-view/js/integrations/excel.js'], function(functions) {
                     functions.addTask(bezl)
                 });
                 break;
