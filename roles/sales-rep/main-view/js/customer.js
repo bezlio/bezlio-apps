@@ -8,6 +8,7 @@ define(["./map.js"], function (map) {
                                                                     bezl.vars.markers[custNum].data.Contacts));
 
         bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
+        bezl.vars.selectedCustomer.LastContact = (bezl.vars.selectedCustomer.LastContact || 'T').split('T')[0];
         bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
 
         $('html, body').animate({
