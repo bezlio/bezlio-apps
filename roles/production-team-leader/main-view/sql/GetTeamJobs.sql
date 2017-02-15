@@ -16,3 +16,4 @@ WHERE
 	AND jh.JobClosed = 0
 	AND jh.JobComplete = 0
 	AND jh.JobReleased = 1
+	AND op.SubContract = 0

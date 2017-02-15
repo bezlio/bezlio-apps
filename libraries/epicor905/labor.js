@@ -54,10 +54,6 @@ define(function () {
             },0); 
     }
 
-    function EndActivities (bezl) {        
-
-    }
-
     /**
      * Start the provided job on the specified list of LaborHed numbers.  Function simply creates BRDB 
      * call so monitor for return in onDataChange.  The return presented there will be a dataset
@@ -93,6 +89,30 @@ define(function () {
 
     function StartIndirect (bezl, indirect) {        
 
+    }
+
+    /**
+     * Ends all activities on the specified list of LaborHed numbers.  Function simply creates BRDB 
+     * call so monitor for return in onDataChange.  The return presented there will be a dataset
+     * of Labor records for the provided LaborHed numbers
+     * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
+     * @param {string} company - The company ID within Epicor
+     * @param {Object[]} laborHeds - An array of laborhed numbers
+     */
+    function EndActivities (bezl
+                    , connection
+                    , company
+                    , laborHeds) {      
+        bezl.dataService.add(
+            'EndActivities'
+            ,'brdb'
+            ,'Epicor905'
+            ,'Labor_EndActivities'
+            , { 
+                'Connection'    : connection
+                ,'Company'      : company
+                ,'LaborHedSeq'  : laborHeds
+        },0);
     }
  
     return {
