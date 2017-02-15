@@ -123,6 +123,7 @@ define(["./employees.js"], function (employees) {
 
             bezl.dataService.remove('ClockIn');
             bezl.data.ClockIn = null;
+            $("#jsGridTeam").jsGrid("loadData");
         }
 
         if (bezl.data.ClockOut) {
@@ -145,8 +146,7 @@ define(["./employees.js"], function (employees) {
 
             bezl.dataService.remove('ClockOut');
             bezl.data.ClockOut = null;
-
-            employees.runQuery(bezl, 'Team');
+            $("#jsGridTeam").jsGrid("loadData");
         }
 
         if (bezl.data.StartJob) {
