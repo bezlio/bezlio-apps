@@ -125,10 +125,27 @@ define(["./employees.js"], function (employees) {
             bezl.data.ClockIn = null;
         }
 
-        if (bezl.data['ClockOut_' + bezl.vars.clockingOutId]) {
+        if (bezl.data.ClockOut) {
             bezl.vars.clockingOut = false;
-            bezl.dataService.remove('ClockOut_' + bezl.vars.clockingOutId);
-            bezl.data['ClockOut_' + bezl.vars.clockingOutId] = null;
+
+            switch (bezl.vars.config.Platform) {
+                case "Epicor905":
+                    require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
+                        functions.clockOutResponse(bezl, bezl.data.ClockOut)
+                    });
+                    break;
+                case "Excel":
+                    require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
+                        functions.clockOutResponse(bezl, bezl.data.ClockOut)
+                    });
+                    break;
+                default:
+                    break;
+            }
+
+            bezl.dataService.remove('ClockOut');
+            bezl.data.ClockOut = null;
+
             employees.runQuery(bezl, 'Team');
         }
 

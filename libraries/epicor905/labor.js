@@ -31,6 +31,7 @@ define(function () {
      * This method can be used for the ClockIn response within onDataChange.  It will take
      * a provided employee array object and append to it the successful LaborHed records.
      * @param {Object[]} employees - An array of employee IDs
+     * @param {Object[]} responseData - The response object (bezl.data.ClockIn)
      * @returns {Object[]} employees - The employees object returned with the LaborHed records
      */
     function ClockInResponse (bezl
@@ -65,7 +66,7 @@ define(function () {
                     , employees) { 
 
         bezl.dataService.add(
-            'ClockIn'
+            'ClockOut'
             ,'brdb'
             ,'Epicor905'
             ,'Labor_ClockOut'
@@ -74,6 +75,29 @@ define(function () {
                 "Company"       : company,
                 "EmployeeNum"   : employees
             },0); 
+    }
+
+    /**
+     * This method can be used for the ClockIn response within onDataChange.  It will take
+     * a provided employee array object and append to it the successful LaborHed records.
+     * @param {Object[]} employees - An array of employee IDs
+     * @param {Object[]} responseData - The response object (bezl.data.ClockOut)
+     * @returns {Object[]} employees - The employees object returned with the LaborHed records
+     */
+    function ClockOutResponse (bezl
+                            , employees
+                            , responseData) {
+
+        for (var i = 0; i < responseData.length; i++) {
+            for (var x = 0; x < employees.length; x++) {
+                if (employees[x] == responseData[i].EmployeeNum && !responseData[i].Error) {
+                    employees[x].LaborHed = [];
+                    employees[x].clockedIn = 0;
+                }
+            }
+        }
+
+        return employees;
     }
 
     function EndActivities (bezl) {        
