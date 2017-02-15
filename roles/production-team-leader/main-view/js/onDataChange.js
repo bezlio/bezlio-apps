@@ -174,6 +174,29 @@ define(["./employees.js"], function (employees) {
             employees.highlightSelected(bezl);
         }
 
+        if (bezl.data.EndActivities) {
+            bezl.vars.endingActivities = false;
+
+            switch (bezl.vars.config.Platform) {
+                case "Epicor905":
+                    for (var i = 0; i < bezl.data.EndActivities.LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data.EndActivities.LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].currentActivity = '';
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            bezl.dataService.remove('EndActivities');
+            bezl.data.EndActivities = null;
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
+        }
+
     }
   
     return {
