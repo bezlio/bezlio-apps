@@ -212,7 +212,7 @@ define(function () {
                 require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
                     var laborHeds = [];
                     for (var i = 0; i < bezl.vars.team.length; i++) {
-                        if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
+                        if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
                             laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
                         }
                     }
