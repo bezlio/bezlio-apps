@@ -4,6 +4,8 @@ define(function () {
 
         switch (queryName) {
             case "CustList":
+                bezl.vars.loading = true; 
+                
                 // Pull in the customer list for the logged in user
                 bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetCustomersWithAddress",
