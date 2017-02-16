@@ -21,7 +21,7 @@ define(function () {
     function Select(bezl, customer) {
         // Mark the selected customer as selected
         for (var i = 0; i < bezl.data.CustList.length; i++) {
-            if (bezl.data.CustList[i].CustID = customer.CustID) {
+            if (bezl.data.CustList[i].CustID == customer.CustID) {
                 bezl.data.CustList[i].Selected = true;
             }
         };
