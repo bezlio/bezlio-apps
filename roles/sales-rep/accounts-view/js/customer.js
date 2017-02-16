@@ -5,7 +5,7 @@ define(function () {
         switch (queryName) {
             case "CustList":
                 bezl.vars.loading = true; 
-                
+
                 // Pull in the customer list for the logged in user
                 bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetCustomersWithAddress",
@@ -17,8 +17,18 @@ define(function () {
                 break;
         }
     }
+
+    function Select(bezl, customer) {
+        // Mark the selected customer as selected
+        for (var i = 0; i < bezl.data.CustList.length; i++) {
+            if (bezl.data.CustList[i].CustID = customer.CustID) {
+                bezl.data.CustList[i].Selected = true;
+            }
+        };
+    }
   
     return {
-        runQuery: RunQuery
+        runQuery: RunQuery,
+        select: Select
     }
 });
