@@ -23,6 +23,8 @@ define(function () {
         for (var i = 0; i < bezl.data.CustList.length; i++) {
             if (bezl.data.CustList[i].CustID == customer.CustID) {
                 bezl.data.CustList[i].Selected = !bezl.data.CustList[i].Selected;
+            } else {
+                bezl.data.CustList[i].Selected = false;
             }
         };
     }
