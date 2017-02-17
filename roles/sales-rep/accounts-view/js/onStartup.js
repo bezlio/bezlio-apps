@@ -1,8 +1,8 @@
-define(["./customer.js"], function (customer) {
+define(["./account.js"], function (account) {
  
     function OnStartup (bezl) {        
         // Initiate the call to refresh the customer list
-        customer.runQuery(bezl, 'CustList');
+        account.runQuery(bezl, 'Accounts');
 
         // Determine the current position of the user
         if (navigator.geolocation) {

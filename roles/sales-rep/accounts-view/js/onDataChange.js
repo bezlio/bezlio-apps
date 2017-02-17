@@ -1,24 +1,24 @@
-define(["./customer.js"], function (customer) {
+define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.CustList) {
+        if (bezl.data.Accounts) {
             bezl.vars.loading = false;
 
             // Perform additional processing on the returned data
-            for (var i = 0; i < bezl.data.CustList.length; i++) {
-                // Add a Selected property to the customer record
-                bezl.data.CustList[i].Selected = false;
+            for (var i = 0; i < bezl.data.Accounts.length; i++) {
+                // Add a Selected property to the account record
+                bezl.data.Accounts[i].Selected = false;
 
                 // Create an AddressURL column with an encoded version of each Address
                 // so that it can be part of a Google Maps AddressURL
-                bezl.data.CustList[i].AddressURL = encodeURI(bezl.data.CustList[i].Address);
+                bezl.data.Accounts[i].AddressURL = encodeURI(bezl.data.Accounts[i].Address);
 
                 // Determine the distance from the current location, if applicable
-                if (bezl.data.CustList[i].Geocode_Location) {
-                    bezl.data.CustList[i].Distance = CalcDistance(bezl.vars.currentLat
+                if (bezl.data.Accounts[i].Geocode_Location) {
+                    bezl.data.Accounts[i].Distance = CalcDistance(bezl.vars.currentLat
                                                                 , bezl.vars.currentLng
-                                                                , parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1])
-                                                                , parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]));
+                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
+                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
                 }
             };
         }
