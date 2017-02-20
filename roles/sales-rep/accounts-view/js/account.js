@@ -38,9 +38,34 @@ define(function () {
             }
         };
     }
+
+    function Sort(bezl, sortColumn) {
+        // Test for numeric sort columns, otherwise sort alphabetic
+        if (sortColumn == "Distance") {
+            bezl.data.Accounts.sort(function (a, b) {
+                return a[sortColumn] - b[sortColumn];
+            });
+        } else {
+            bezl.data.Accounts.sort(function(a, b) {
+                var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                if (A < B) {
+                    return -1;
+                }
+                if (A > B) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
+            });
+        }
+
+    }
   
     return {
         runQuery: RunQuery,
-        select: Select
+        select: Select,
+        sort: Sort
     }
 });
