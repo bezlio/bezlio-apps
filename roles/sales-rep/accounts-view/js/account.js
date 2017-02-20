@@ -60,7 +60,11 @@ define(function () {
         if (sortColumn == "Distance" || sortColumn == "LastContact" || sortColumn == "TaskDue") {
             if (bezl.vars.sort == "asc") {
                 bezl.data.Accounts.sort(function (a, b) {
-                    return a[sortColumn] - b[sortColumn];
+                    if (a[sortColumn] == null) {
+                        return -1;
+                    } else {
+                        return a[sortColumn] - b[sortColumn];
+                    }
                 });
             } else {
                 bezl.data.Accounts.sort(function (a, b) {
