@@ -33,6 +33,7 @@ define(function () {
         for (var i = 0; i < bezl.data.Accounts.length; i++) {
             if (bezl.data.Accounts[i].ID == account.ID) {
                 bezl.data.Accounts[i].Selected = !bezl.data.Accounts[i].Selected;
+                localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
             } else {
                 bezl.data.Accounts[i].Selected = false;
             }
