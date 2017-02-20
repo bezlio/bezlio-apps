@@ -36,6 +36,7 @@ define(function () {
                 localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
             } else {
                 bezl.data.Accounts[i].Selected = false;
+                localStorage.setItem('selectedAccount', '');
             }
         };
     }
