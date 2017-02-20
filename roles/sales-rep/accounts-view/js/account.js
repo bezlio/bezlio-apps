@@ -57,7 +57,7 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if (sortColumn == "Distance" || sortColumn == "Last Contact" || sortColumn == "Task Due") {
+        if (sortColumn == "Distance" || sortColumn == "LastContact" || sortColumn == "TaskDue") {
             if (bezl.vars.sort == "asc") {
                 bezl.data.Accounts.sort(function (a, b) {
                     if (a[sortColumn] == null) {
