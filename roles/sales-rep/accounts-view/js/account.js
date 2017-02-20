@@ -43,9 +43,9 @@ define(function () {
 
         // If the previous sort column was picked, make it the opposite sort
         if (bezl.vars.sortCol = sortColumn) {
-           bezl.vars.sort = "asc";
+           bezl.vars.sort = "desc";
         } else {
-            bezl.vars.sort = "desc";
+            bezl.vars.sort = "asc";
         }
         
         // Store the sort column so the UI can reflect it
