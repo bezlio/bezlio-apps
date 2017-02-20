@@ -68,7 +68,11 @@ define(function () {
                 });
             } else {
                 bezl.data.Accounts.sort(function (a, b) {
-                    return b[sortColumn] - a[sortColumn];
+                    if (a[sortColumn] == null) {
+                        return -1;
+                    } else {
+                        return b[sortColumn] - a[sortColumn];
+                    }
                 });
             }
 
