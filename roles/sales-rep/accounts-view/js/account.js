@@ -42,7 +42,7 @@ define(function () {
     function Sort(bezl, sortColumn) {
 
         // If the previous sort column was picked, make it the opposite sort
-        if (bezl.vars.sortCol = sortColumn) {
+        if (bezl.vars.sortCol == sortColumn) {
             if (bezl.vars.sort == "desc") {
                 bezl.vars.sort = "asc";
             } else {
