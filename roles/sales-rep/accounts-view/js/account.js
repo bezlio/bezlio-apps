@@ -57,25 +57,34 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if (sortColumn == "Distance" || sortColumn == "LastContact" || sortColumn == "TaskDue") {
+        if (sortColumn == "Distance") {
             if (bezl.vars.sort == "asc") {
                 bezl.data.Accounts.sort(function (a, b) {
-                    if (a[sortColumn] == null) {
-                        return -1;
-                    } else {
-                        return a[sortColumn] - b[sortColumn];
-                    }
+                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    return A - B;
                 });
             } else {
                 bezl.data.Accounts.sort(function (a, b) {
-                    if (a[sortColumn] == null) {
-                        return -1;
-                    } else {
-                        return b[sortColumn] - a[sortColumn];
-                    }
+                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    return B - A;
                 });
             }
-
+        } else if (sortColumn == "LastContact" || sortColumn == "NextTaskDue") {
+            if (bezl.vars.sort == "asc") {
+                bezl.data.Accounts.sort(function (a, b) {
+                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    return A - B;
+                });
+            } else {
+                bezl.data.Accounts.sort(function (a, b) {
+                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    return B - A;
+                });
+            } 
         } else {
             if (bezl.vars.sort == "asc") { 
                 bezl.data.Accounts.sort(function(a, b) {
