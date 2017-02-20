@@ -11,7 +11,7 @@ define(function () {
                     "QueryName": "GetCallHistory",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser },
-                        { "Key": "ID", "Value": bezl.vars.currentAccount.ID }
+                        { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
                 break;
             default:
