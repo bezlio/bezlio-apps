@@ -20,7 +20,7 @@ define(function () {
                 }
 
                 // This will get filled in on the AccountContacts query
-                bezl.data.Accounts[x].Contacts = [];
+                bezl.data.Accounts[i].Contacts = [];
             };
 
             bezl.vars.loading = false;
