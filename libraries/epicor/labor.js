@@ -4,12 +4,15 @@ define(function () {
      * Clocks in one or many employees into MES.  Function simply creates BRDB call so monitor
      * for return in onDataChange.  The return presented there will return the LaborHed record
      * for each of the employees that were successfully clocked in.
+     * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
      * @param {string} company - The company ID within Epicor
      * @param {Object[]} employees - An array of employee IDs
      * @param {Number} shift - The shift number to clock all employees onto
      */
     function ClockIn (bezl
+                    , plugin
                     , connection
                     , company
                     , employees
@@ -17,7 +20,7 @@ define(function () {
         bezl.dataService.add(
             'ClockIn'
             ,'brdb'
-            ,'Epicor905'
+            ,plugin
             ,'Labor_ClockIn'
             , { 
                 "Connection"    : connection,
@@ -32,12 +35,15 @@ define(function () {
      * for return in onDataChange.  The return presented there will be an array of EmployeeNum,
      * an Error column indicating whether there was an error, and ErrorText containing the errors
      * presented by the BO if an error did occur
+     * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
      * @param {string} company - The company ID within Epicor
      * @param {Object[]} employees - An array of employee IDs
      * @param {Number} shift - The shift number to clock all employees onto
      */
     function ClockOut (bezl
+                    , plugin
                     , connection
                     , company
                     , employees) { 
@@ -45,7 +51,7 @@ define(function () {
         bezl.dataService.add(
             'ClockOut'
             ,'brdb'
-            ,'Epicor905'
+            ,plugin
             ,'Labor_ClockOut'
             , { 
                 "Connection"    : connection,
@@ -58,6 +64,8 @@ define(function () {
      * Start the provided job on the specified list of LaborHed numbers.  Function simply creates BRDB 
      * call so monitor for return in onDataChange.  The return presented there will be a dataset
      * of Labor records for the provided LaborHed numbers
+     * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
      * @param {string} company - The company ID within Epicor
      * @param {Object[]} laborHeds - An array of laborhed numbers
@@ -66,6 +74,7 @@ define(function () {
      * @param {Number} oprSeq - The operation sequence to clock onto
      */
     function StartJob (bezl
+                    , plugin
                     , connection
                     , company
                     , laborHeds
@@ -75,7 +84,7 @@ define(function () {
         bezl.dataService.add(
             'StartJob'
             ,'brdb'
-            ,'Epicor905'
+            ,plugin
             ,'Labor_StartActivity'
             , { 
                 'Connection'    : connection
@@ -87,14 +96,12 @@ define(function () {
         },0);
     }
 
-    function StartIndirect (bezl, indirect) {        
-
-    }
-
     /**
      * Ends all activities on the specified list of LaborHed numbers.  Function simply creates BRDB 
      * call so monitor for return in onDataChange.  The return presented there will be a dataset
      * of Labor records for the provided LaborHed numbers
+     * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
      * @param {string} company - The company ID within Epicor
      * @param {Object[]} laborHeds - An array of laborhed numbers
@@ -106,7 +113,7 @@ define(function () {
         bezl.dataService.add(
             'EndActivities'
             ,'brdb'
-            ,'Epicor905'
+            ,plugin
             ,'Labor_EndActivities'
             , { 
                 'Connection'    : connection

@@ -116,37 +116,29 @@ define(function () {
         }
     }
 
-    function ClockIn (bezl) {        
+    function ClockIn (bezl) {
         // Since this is going to be an API call as opposed to a straight
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
-        switch (bezl.vars.config.Platform) {
-            case "Epicor905":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
+        if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+            require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
 
-                    var clockInEmployees = [];
-                    for (var i = 0; i < bezl.vars.team.length; i++) {
-                        if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
-                            clockInEmployees.push(bezl.vars.team[i].key);
-                        }
+                var clockInEmployees = [];
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
+                        clockInEmployees.push(bezl.vars.team[i].key);
                     }
+                }
 
-                    labor.clockIn(bezl
-                                , bezl.vars.config.Connection
-                                , bezl.vars.config.Company
-                                , clockInEmployees
-                                , bezl.vars.config.Shift);
+                labor.clockIn(bezl
+                            , bezl.vars.config.Platform
+                            , bezl.vars.config.Connection
+                            , bezl.vars.config.Company
+                            , clockInEmployees
+                            , bezl.vars.config.Shift);
 
-                    bezl.vars.clockingIn = true;  
-                });
-                break;
-            case "Excel":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                    functions.clockIn(bezl)
-                });
-                break;
-            default:
-                break;
+                bezl.vars.clockingIn = true;  
+            });
         }
     }
 
@@ -154,32 +146,24 @@ define(function () {
         // Since this is going to be an API call as opposed to a straight
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
-        switch (bezl.vars.config.Platform) {
-            case "Epicor905":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
-                    
-                    var clockOutEmployees = [];
-                    for (var i = 0; i < bezl.vars.team.length; i++) {
-                        if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                            clockOutEmployees.push(bezl.vars.team[i].key);
-                        }
+        if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+            require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
+                
+                var clockOutEmployees = [];
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                        clockOutEmployees.push(bezl.vars.team[i].key);
                     }
+                }
 
-                    labor.clockOut(bezl
-                                , bezl.vars.config.Connection
-                                , bezl.vars.config.Company
-                                , clockOutEmployees);
+                labor.clockOut(bezl
+                            , bezl.vars.config.Platform
+                            , bezl.vars.config.Connection
+                            , bezl.vars.config.Company
+                            , clockOutEmployees);
 
-                    bezl.vars.clockingOut = true;  
-                });
-                break;
-            case "Excel":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                    functions.clockOut(bezl)
-                });
-                break;
-            default:
-                break;
+                bezl.vars.clockingOut = true;  
+            });
         }
     }
 
@@ -187,9 +171,8 @@ define(function () {
         // Since this is going to be an API call as opposed to a straight
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
-        switch (bezl.vars.config.Platform) {
-            case "Epicor905":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
+        if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
                     var laborHeds = [];
                     for (var i = 0; i < bezl.vars.team.length; i++) {
                         if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
@@ -198,20 +181,13 @@ define(function () {
                     }                   
 
                     labor.endActivities(bezl
+                                , bezl.vars.config.Platform
                                 , bezl.vars.config.Connection
                                 , bezl.vars.config.Company
                                 , laborHeds);
 
                     bezl.vars.endingActivities = true;
                 });
-                break;
-            case "Excel":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                    functions.endActivities(bezl)
-                });
-                break;
-            default:
-                break;
         }
     }
 
@@ -219,57 +195,29 @@ define(function () {
         // Since this is going to be an API call as opposed to a straight
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
-        switch (bezl.vars.config.Platform) {
-            case "Epicor905":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(labor) {
-                    var laborHeds = [];
-                    for (var i = 0; i < bezl.vars.team.length; i++) {
-                        if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                            laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
-                        }
+        if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+            require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
+                var laborHeds = [];
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                        laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
                     }
+                }
 
-                    labor.startJob(bezl
-                                , bezl.vars.config.Connection
-                                , bezl.vars.config.Company
-                                , laborHeds
-                                , job.data.JobNum
-                                , job.data.AssemblySeq
-                                , job.data.OprSeq);
+                labor.startJob(bezl
+                            , bezl.vars.config.Platform
+                            , bezl.vars.config.Connection
+                            , bezl.vars.config.Company
+                            , laborHeds
+                            , job.data.JobNum
+                            , job.data.AssemblySeq
+                            , job.data.OprSeq);
 
-                    bezl.vars.startingJob = true;
-                });
-                break;
-            case "Excel":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                    functions.startJob(bezl, job)
-                });
-                break;
-            default:
-                break;
+                bezl.vars.startingJob = true;
+            });
         }
 
         bezl.vars.showJobDialog = false;
-    }
-
-    function StartIndirect (bezl, indirect) {        
-        // Since this is going to be an API call as opposed to a straight
-        // query, detect the platform (via what was specified on setConfig)
-        // and route this request to the appropriate integration
-        switch (bezl.vars.config.Platform) {
-            case "Epicor905":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor905/labor.js'], function(functions) {
-                    functions.startIndirect(bezl, indirect)
-                });
-                break;
-            case "Excel":
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/excel/labor.js'], function(functions) {
-                    functions.startIndirect(bezl, indirect)
-                });
-                break;
-            default:
-                break;
-        }
     }
  
     return {
@@ -282,7 +230,6 @@ define(function () {
         clockIn: ClockIn,
         clockOut: ClockOut,
         endActivities: EndActivities,
-        startJob: StartJob,
-        startIndirect: StartIndirect
+        startJob: StartJob
     }
 });
