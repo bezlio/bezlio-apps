@@ -2,8 +2,6 @@ define(function () {
  
     function OnDataChange (bezl) {
         if (bezl.data.Accounts) {
-            bezl.vars.loading = false;
-
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 // Add a Selected property to the account record
@@ -20,7 +18,25 @@ define(function () {
                                                                 , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
                                                                 , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
                 }
+
+                // This will get filled in on the AccountContacts query
+                bezl.data.Accounts[i].Contacts = [];
             };
+
+            bezl.vars.loading = false;
+        }
+
+        // If we got the account contacts back, merge those in
+        if (bezl.data.Accounts && bezl.data.AccountContacts) {
+            for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
+                    }
+                }
+            }
+
+            bezl.vars.loadingContacts = false;
         }
     }
 
