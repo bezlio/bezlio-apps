@@ -36,6 +36,7 @@ define(function () {
 
                 if (bezl.data.Accounts[i].Selected) {
                     localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
+                    $('.panel').trigger('selectAccount', [bezl.data.Accounts[i]]);
                 } else {
                     localStorage.setItem('selectedAccount', '');
                 }
