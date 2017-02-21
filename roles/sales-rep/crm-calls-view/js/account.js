@@ -18,8 +18,31 @@ define(function () {
                 break;
         }
     }
+
+    function AddNote (bezl) {
+
+        // Since this is going to be an API call as opposed to a straight
+        // query, detect the CRM platform (via what was specified on setConfig)
+        // and route this request to the appropriate integration
+        switch (bezl.vars.config.CRMPlatform) {
+            case "Epicor10":
+                require(['https://rawgit.com/bezlio/bezlio-apps/master/libraries/epicor905/crm.js'], function(functions) {
+                    functions.addNote(bezl)
+                });
+                break;
+            case "Excel":
+                require(['https://rawgit.com/bezlio/bezlio-apps/master/libraries/excel/crm.js'], function(functions) {
+                    functions.addNote(bezl)
+                });
+                break;
+            default:
+                break;
+        }
+
+    }
   
     return {
-        runQuery: RunQuery
+        runQuery: RunQuery,
+        addNote: AddNote
     }
 });

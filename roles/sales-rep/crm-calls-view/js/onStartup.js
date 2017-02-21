@@ -9,6 +9,7 @@ define(["./account.js"], function (account) {
 
       // Initiate the call to refresh the crm calls
       if (bezl.vars.selectedAccount) {
+        account.runQuery(bezl, 'CallTypes');
         account.runQuery(bezl, 'CRMCalls');
       }
   }
