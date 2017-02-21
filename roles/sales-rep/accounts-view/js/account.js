@@ -39,6 +39,7 @@ define(function () {
                     $('.panel').trigger('selectAccount', [bezl.data.Accounts[i]]);
                 } else {
                     localStorage.setItem('selectedAccount', '');
+                    $('.panel').trigger('selectAccount', '']);
                 }
                 
             } else {
