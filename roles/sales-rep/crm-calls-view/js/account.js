@@ -18,8 +18,43 @@ define(function () {
                 break;
         }
     }
+
+    function AddNote (bezl) {
+        // Since this is going to be an API call as opposed to a straight
+        // query, detect the CRM platform (via what was specified on setConfig)
+        // and route this request to the appropriate integration
+        if (bezl.vars.config.CRMPlatform == "Epicor10" || bezl.vars.config.CRMPlatform == "Epicor905") {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/library/epicor/crm.js'], function(functions) {
+                functions.addNote(bezl
+                                , bezl.vars.config.Platform
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , bezl.vars.selectedAccount.CustNum
+                                , bezl.vars.shortSummary
+                                , bezl.vars.details
+                                , bezl.vars.type
+                                , bezl.vars.selectedAccount.SalesRep);
+            }); 
+        }
+
+        bezl.data.CRMCalls.push({
+            "ShortSummary"  : bezl.vars.shortSummary,
+            "Details"       : bezl.vars.details,
+            "CallDate"      : new  Date(),
+            "SalesRepName"  : bezl.env.currentUserName,
+            "RelatedToFile" : "customer",
+            "CallTypeDesc"  : null
+        });
+        
+        bezl.data.CRMCalls.sort(function (a, b) {
+            var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
+            var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
+            return A - B;
+        });
+    }
   
     return {
-        runQuery: RunQuery
+        runQuery: RunQuery,
+        addNote: AddNote
     }
 });
