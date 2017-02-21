@@ -2,10 +2,22 @@ define(function () {
  
     function OnDataChange (bezl) {
         if (bezl.data.Accounts) {
+            // If there was a previously selected account in localStorage, grab a reference
+            // so we can know whether to mark them as selected
+            bezl.vars.selectedAccount = {};
+            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
+                bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+            }
+
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 // Add a Selected property to the account record
-                bezl.data.Accounts[i].Selected = false;
+                if (bezl.data.Accounts[i].ID == bezl.vars.selectedAccount.ID) {
+                    bezl.data.Accounts[i].Selected = true;
+                } else {
+                    bezl.data.Accounts[i].Selected = false;
+                }
+                
 
                 // Create an AddressURL column with an encoded version of each Address
                 // so that it can be part of a Google Maps AddressURL
