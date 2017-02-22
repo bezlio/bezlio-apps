@@ -17,6 +17,13 @@ define(["./account.js"], function (account) {
         bezl.vars.selectedAccount = param1;
         bezl.data.CRMCalls = bezl.vars.selectedAccount.CRMCalls;
         bezl.vars.loadedMore = false;
+
+        // If there are no CRM calls present with what was passed over, go
+        // ahead and run the full query now
+        if (bezl.data.CRMCalls.length == 0) {
+          account.runQuery('CRMCalls');
+        }
+        
       });
 
   }

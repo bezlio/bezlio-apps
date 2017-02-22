@@ -35,7 +35,7 @@ define(function () {
                 bezl.data.Accounts[i].Contacts = [];
 
                 // Same thing with the recent CRM calls
-                bezl.data.Accounts[x].CRMCalls = [];
+                bezl.data.Accounts[i].CRMCalls = [];
             };
 
             bezl.vars.loading = false;
@@ -57,41 +57,26 @@ define(function () {
         }
 
         // If we got the account calls back, merge those in
-        if (bezl.data.Account && bezl.data.CRMCalls) {
-            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
-                    }
-                }
-            }
-
-            bezl.vars.loadingCalls = false;
-            bezl.data.CRMCalls = null;
-            bezl.dataService.remove('CRMCalls');
-        }
-
-        // If we got the account calls back, merge those in
         if (bezl.data.CRMCalls) {
             if (bezl.data.Accounts) {
-            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
+                for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                    for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                        if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+                            bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
 
-                        // If this is a selected account, trigger the jQuery to notify
-                        // any other panels that loaded before this one that the selection
-                        // has changed
-                        if (bezl.data.Accounts[x].Selected) {
-                            $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
-                        } 
+                            // If this is a selected account, trigger the jQuery to notify
+                            // any other panels that loaded before this one that the selection
+                            // has changed
+                            if (bezl.data.Accounts[x].Selected) {
+                                $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
+                            } 
+                        }
                     }
                 }
-            }
 
-            bezl.vars.loadingCalls = false;
-            bezl.data.CRMCalls = null;
-            bezl.dataService.remove('CRMCalls');
+                bezl.vars.loadingCalls = false;
+                bezl.data.CRMCalls = null;
+                bezl.dataService.remove('CRMCalls');
             }
         }
     }
