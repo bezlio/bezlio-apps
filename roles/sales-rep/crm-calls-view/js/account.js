@@ -41,10 +41,14 @@ define(function () {
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
-            "SalesRepName"  : bezl.env.currentUserName,
+            "SalesRepName"  : bezl.env.currentUser,
             "RelatedToFile" : "customer",
             "CallTypeDesc"  : null
         });
+
+        bezl.vars.shortSummary = '';
+        bezl.vars.details = '';
+        bezl.vars.type = '';
         
         bezl.data.CRMCalls.sort(function (a, b) {
             var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
