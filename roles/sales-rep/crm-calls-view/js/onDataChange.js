@@ -3,6 +3,7 @@ define(function () {
     function OnDataChange (bezl) {
         if (bezl.data.CRMCalls) {
             bezl.vars.loading = false;
+            bezl.vars.selectedAccount.CRMCalls = bezl.data.CRMCalls;
         }
 
         if (bezl.data.AddCRMCall) {

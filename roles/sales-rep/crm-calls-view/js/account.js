@@ -49,7 +49,7 @@ define(function () {
         }
         
 
-        bezl.data.CRMCalls.push({
+        bezl.vars.selectedAccount.CRMCalls.push({
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
@@ -58,7 +58,7 @@ define(function () {
             "CallTypeDesc"  : callTypeDesc
         });
         
-        bezl.data.CRMCalls.sort(function (a, b) {
+        bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
             var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
             var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
             return B - A;

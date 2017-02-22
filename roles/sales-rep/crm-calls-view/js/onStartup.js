@@ -5,7 +5,6 @@ define(["./account.js"], function (account) {
       // a variable we can work with
       if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
           bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
-          bezl.data.CRMCalls = bezl.vars.selectedAccount.CRMCalls;
       }
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
@@ -15,15 +14,14 @@ define(["./account.js"], function (account) {
 
       $(".panel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
-        bezl.data.CRMCalls = bezl.vars.selectedAccount.CRMCalls;
         bezl.vars.loadedMore = false;
 
         // If there are no CRM calls present with what was passed over, go
         // ahead and run the full query now
-        if (bezl.data.CRMCalls.length == 0) {
+        if (bezl.vars.selectedAccount.CRMCalls.length == 0) {
           account.runQuery('CRMCalls');
         }
-        
+
       });
 
   }
