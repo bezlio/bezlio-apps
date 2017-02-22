@@ -33,6 +33,9 @@ define(function () {
 
                 // This will get filled in on the AccountContacts query
                 bezl.data.Accounts[i].Contacts = [];
+
+                // Same thing with the recent CRM calls
+                bezl.data.Accounts[x].CRMCalls = [];
             };
 
             bezl.vars.loading = false;
@@ -74,7 +77,6 @@ define(function () {
             for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].CRMCalls = [];
                         bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
                     }
                 }
