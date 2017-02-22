@@ -6,7 +6,7 @@ define(function () {
         }
 
         if (bezl.data.AddCRMCall) {
-            if (bezl.data.AddCRMCall.BOUpdError) {
+            if (bezl.data.AddCRMCall.BOUpdError && bezl.data.AddCRMCall.BOUpdError.length > 0) {
                 bezl.notificationService.showCriticalError(JSON.stringify(bezl.data.AddCRMCall.BOUpdError));
             }
         }

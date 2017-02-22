@@ -41,13 +41,21 @@ define(function () {
             }); 
         }
 
+        var callTypeDesc = ''
+        for (var i = 0; i < bezl.data.CallTypes.length; i++) {
+            if (bezl.data.CallTypes[i].CallType == bezl.vars.type) {
+                callTypeDesc = bezl.data.CallTypes[i].CallTypeDesc;
+            }
+        }
+        
+
         bezl.data.CRMCalls.push({
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
             "SalesRepName"  : bezl.env.currentUser,
             "RelatedToFile" : "customer",
-            "CallTypeDesc"  : null
+            "CallTypeDesc"  : callTypeDesc
         });
         
         bezl.data.CRMCalls.sort(function (a, b) {
