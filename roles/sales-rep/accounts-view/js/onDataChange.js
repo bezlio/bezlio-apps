@@ -67,6 +67,24 @@ define(function () {
             bezl.data.CRMCalls = null;
             bezl.dataService.remove('CRMCalls');
         }
+
+        // If we got the account calls back, merge those in
+        if (bezl.data.CRMCalls) {
+            if (bezl.data.Accounts) {
+            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].CRMCalls = [];
+                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
+                    }
+                }
+            }
+
+            bezl.vars.loadingCalls = false;
+            bezl.data.CRMCalls = null;
+            bezl.dataService.remove('CRMCalls');
+            }
+        }
     }
 
     function CalcDistance(lat1, lon1, lat2, lon2, unit) {
