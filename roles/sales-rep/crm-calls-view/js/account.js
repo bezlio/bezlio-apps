@@ -49,7 +49,7 @@ define(function () {
         bezl.data.CRMCalls.sort(function (a, b) {
             var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
             var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
-            return A - B;
+            return B - A;
         });
     }
   
