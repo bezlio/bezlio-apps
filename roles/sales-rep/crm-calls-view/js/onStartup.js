@@ -18,7 +18,7 @@ define(["./account.js"], function (account) {
 
         // If there are no CRM calls present with what was passed over, go
         // ahead and run the full query now
-        if (bezl.vars.selectedAccount.CRMCalls.length == 0) {
+        if (!bezl.vars.selectedAccount.CRMCalls) {
           account.runQuery('CRMCalls');
         }
 
