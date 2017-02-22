@@ -47,7 +47,6 @@ define(function () {
                 callTypeDesc = bezl.data.CallTypes[i].CallTypeDesc;
             }
         }
-        
 
         bezl.vars.selectedAccount.CRMCalls.push({
             "ShortSummary"  : bezl.vars.shortSummary,
@@ -63,6 +62,8 @@ define(function () {
             var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
             return B - A;
         });
+
+        localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
   
     return {
