@@ -34,6 +34,10 @@ define(function () {
                                 , bezl.vars.details
                                 , bezl.vars.type
                                 , bezl.vars.selectedAccount.SalesRep);
+
+                bezl.vars.shortSummary = '';
+                bezl.vars.details = '';
+                bezl.vars.type = '';
             }); 
         }
 
@@ -45,10 +49,6 @@ define(function () {
             "RelatedToFile" : "customer",
             "CallTypeDesc"  : null
         });
-
-        bezl.vars.shortSummary = '';
-        bezl.vars.details = '';
-        bezl.vars.type = '';
         
         bezl.data.CRMCalls.sort(function (a, b) {
             var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
