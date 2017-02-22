@@ -35,8 +35,6 @@ define(function () {
                 break;
             default:
                 break;
-            default:
-                break;
         }
     }
 
