@@ -75,8 +75,6 @@ define(function () {
                 }
 
                 bezl.vars.loadingCalls = false;
-                bezl.data.CRMCalls = null;
-                bezl.dataService.remove('CRMCalls');
             }
         }
     }
