@@ -19,6 +19,7 @@ define(["./account.js"], function (account) {
 
       $(".panel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
+        bezl.data.CRMCalls = [];
         if (bezl.vars.selectedAccount.ID != null) {
           account.runQuery(bezl, 'CRMCalls');
         }
