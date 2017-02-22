@@ -49,6 +49,23 @@ define(function () {
             }
 
             bezl.vars.loadingContacts = false;
+            bezl.data.AccountContacts = null;
+            bezl.dataService.remove('AccountContacts');
+        }
+
+        // If we got the account calls back, merge those in
+        if (bezl.data.Account && bezl.data.CRMCalls) {
+            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
+                    }
+                }
+            }
+
+            bezl.vars.loadingCalls = false;
+            bezl.data.CRMCalls = null;
+            bezl.dataService.remove('CRMCalls');
         }
     }
 

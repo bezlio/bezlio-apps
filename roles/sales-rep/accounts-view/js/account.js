@@ -23,6 +23,18 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "CRMCalls":
+                bezl.vars.loadingCalls = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetCRMCalls",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
+            default:
+                break;
             default:
                 break;
         }

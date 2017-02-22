@@ -5,12 +5,13 @@ define(["./account.js"], function (account) {
       // a variable we can work with
       if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
           bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+          bezl.data.CRMCalls = bezl.vars.selectedAccount.CRMCalls;
       }
 
       // Initiate the call to refresh the crm calls
-      if (bezl.vars.selectedAccount.ID != null) {
-        account.runQuery(bezl, 'CRMCalls');
-      }
+      //if (bezl.vars.selectedAccount.ID != null) {
+      //  account.runQuery(bezl, 'CRMCalls');
+      //}
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
       // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
@@ -19,10 +20,12 @@ define(["./account.js"], function (account) {
 
       $(".panel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
-        bezl.data.CRMCalls = [];
-        if (bezl.vars.selectedAccount.ID != null) {
-          account.runQuery(bezl, 'CRMCalls');
-        }
+        bezl.data.CRMCalls = bezl.vars.selectedAccount.CRMCalls;
+        bezl.vars.loadedMore = false;
+        //bezl.data.CRMCalls = [];
+        //if (bezl.vars.selectedAccount.ID != null) {
+        //  account.runQuery(bezl, 'CRMCalls');
+        //}
       });
 
   }
