@@ -78,26 +78,26 @@ define(function () {
         }
 
         // If we got the account tasks back, merge those in
-        if (bezl.data.Tasks) {
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Tasks.length; i++) {
-                        if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
-                        }
-                    }
+        // if (bezl.data.Tasks) {
+        //     if (bezl.data.Accounts) {
+        //         for (var x = 0; x < bezl.data.Accounts.length; x++) {
+        //             for (var i = 0; i < bezl.data.Tasks.length; i++) {
+        //                 if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+        //                     bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
+        //                 }
+        //             }
 
-                    // If this is a selected account, trigger the jQuery to notify
-                    // any other panels that loaded before this one that the selection
-                    // has changed
-                    if (bezl.data.Accounts[x].Selected) {
-                        $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
-                    } 
-                }
+        //             // If this is a selected account, trigger the jQuery to notify
+        //             // any other panels that loaded before this one that the selection
+        //             // has changed
+        //             if (bezl.data.Accounts[x].Selected) {
+        //                 $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
+        //             } 
+        //         }
 
-                bezl.vars.loadingTasks = false;
-            }
-        }
+        //         bezl.vars.loadingTasks = false;
+        //     }
+        // }
     }
 
     function CalcDistance(lat1, lon1, lat2, lon2, unit) {
