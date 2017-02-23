@@ -52,8 +52,6 @@ define(function () {
             }
 
             bezl.vars.loadingContacts = false;
-            bezl.data.AccountContacts = null;
-            bezl.dataService.remove('AccountContacts');
         }
 
         // If we got the account calls back, merge those in
