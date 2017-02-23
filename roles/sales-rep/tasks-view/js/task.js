@@ -50,7 +50,7 @@ define(function () {
         // the libraries folder
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/crm.js'], function(functions) {
-                functions.UpdateTasks(bezl,
+                functions.updateTasks(bezl,
                                         bezl.vars.selectedAccount.Company,
                                         bezl.vars.selectedAccount.Tasks);
             }); 
