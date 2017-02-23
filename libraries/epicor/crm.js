@@ -67,24 +67,23 @@ define(function () {
      * @param {string} salesRep - The sales rep code to associate with this task
      * @param {string} taskType - The task type code for this new task
      */
-    function GetNewTask(bezl,
-                        custNum,
+    function GetNewTask(custNum,
                         salesRepCode,
                         taskType) {
         return {
                 "RelatedToFile" 	:	"Customer"
-                ,"Key1"			    :	bezl.vars.selectedCustomer.CustNum
+                ,"Key1"			    :	custNum
                 ,"Key2"			    :	""
                 ,"Key3"			    :	""
                 ,"TaskID"			:	""
                 ,"TaskSeqNum"		:	0
                 ,"TaskDescription"  :	""
-                ,"SalesRepCode"	    :	bezl.vars.selectedCustomer.SalesRep
+                ,"SalesRepCode"	    :	salesRep
                 ,"StartDate"		:	new Date()
                 ,"DueDate"			:	new Date()
                 ,"PercentComplete"	:	0
                 ,"RowState"			: 	"Added"
-                ,"TaskType"		    :	bezl.data.TaskTypes[0].TaskType
+                ,"TaskType"		    :	taskType
             };
     }
 
