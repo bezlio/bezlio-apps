@@ -93,11 +93,10 @@ define(function () {
      * @param {Object[]} tasks - An array of tasks
      */
     function UpdateTasks(bezl
-                        , company
                         , tasks) {
 
+        var ds = { "Task": [] };
         for (var i = 0; i < tasks.length; i++) {
-            var ds = { "Task": [] };
             if (tasks[i].RowState == 'Added' || tasks[i].RowState == 'Updated') {
                 ds.Task.push(
                 {
