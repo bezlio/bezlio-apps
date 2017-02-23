@@ -40,6 +40,7 @@ define(function () {
         // Dropdown only allows single selecting
         // Mark all of them as not selected
         bezl.data.Accounts.forEach(a => a.Selected = false);
+        bezl.vars.selectedShipTo = null;
 
         // Select the one we selected
         bezl.vars.selectedAccount = bezl.data.Accounts.find(a => a.ID == account.ID);
