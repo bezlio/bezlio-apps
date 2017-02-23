@@ -42,7 +42,8 @@ define(function () {
         bezl.data.Accounts.forEach(a => a.Selected = false);
 
         // Select the one we selected
-        var selectedAcct = bezl.data.Accounts.find(a => a.ID == account.ID).Selected = true;
+        var selectedAcct = bezl.data.Accounts.find(a => a.ID == account.ID);
+        selectedAcct.Selected = true;
         localStorage.setItem('selectedAccount', JSON.stringify(selectedAcct));
         $('.panel').trigger('selectAccount', [selectedAcct]);
 
@@ -55,9 +56,21 @@ define(function () {
         // Filter out shiptos
         bezl.vars.filteredShipTos = bezl.data.AccountShipTos.filter(st => st.ID == account.ID);
     }
+
+    function SelectShipTo(bezl, shipto) {
+        // Dropdown only allows single selecting
+        // Mark all of them as not selected
+        bezl.data.AccountShipTos.forEach(a => a.Selected = false);
+        var selectedShipTo = bezl.data.AccountShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
+        selectedShipTo.Selected = true;
+
+        // Grab a selected ship to
+        bezl.vars.selectedShipTo = bezl.data.AccountShipTos.find(st => st.Selected == true);
+    }
     
     return {
         runQuery: RunQuery,
-        select: Select
+        select: Select,
+        selectShipTo: SelectShipTo
     }
 });
