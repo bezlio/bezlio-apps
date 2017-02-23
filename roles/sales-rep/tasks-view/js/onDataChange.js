@@ -12,6 +12,9 @@ define(function () {
             } else {
                 bezl.notificationService.showSuccess('Tasks Saved');
             }
+
+            bezl.data.UpdateTasks = null;
+            bezl.dataService.remove('UpdateTasks');
         }
     }
   
