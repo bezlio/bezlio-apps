@@ -37,8 +37,8 @@ define(function () {
         $('.panel').trigger('selectAccount', [selectedAcct]);
 
         // Filter our contacts
-        bezl.vars.filteredContacts = [];
-        bezl.vars.filteredContacts = bezl.data.AccountContacts.filter(c => c.ID == account.ID);
+        bezl.vars.filteredContacts = [{ID: account.ID, CustNum: account.CustNum, Name: '', EMailAddress: '', ContactTitle: '', PhoneNum: ''}];
+        bezl.vars.filteredContacts += bezl.data.AccountContacts.filter(c => c.ID == account.ID);
     }
     
     return {
