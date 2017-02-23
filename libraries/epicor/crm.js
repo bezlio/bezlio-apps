@@ -87,8 +87,51 @@ define(function () {
             };
     }
 
+    /**
+     * Updates the dataset of tasks in Epicor using UpdateExt
+     * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} company - The company ID within Epicor
+     * @param {Object[]} tasks - An array of tasks
+     */
+    function UpdateTasks(bezl
+                        , company
+                        , tasks) {
+
+        for (var i = 0; i < tasks.length; i++) {
+            var ds = { "Task": [] };
+            if (tasks[i].RowState == 'Added' || tasks[i].RowState == 'Updated') {
+                ds.Task.push(
+                {
+                    "Company"			: 	company
+                    ,"RelatedToFile"	:	"Customer"
+                    ,"Key1"			    :	tasks[i].CustNum
+                    ,"Key2"			    :	""
+                    ,"Key3"			    :	""
+                    ,"TaskID"			:	tasks[i].TaskID
+                    ,"TaskSeqNum"		:	tasks[i].TaskSeqNum
+                    ,"Complete" 		:	((tasks[i].Complete) ? 1 : 0)
+                    ,"PercentComplete"	:	tasks[i].PercentComplete
+                    ,"TaskDescription"  :	tasks[i].TaskDescription
+                    ,"StartDate"		:	tasks[i].StartDate
+                    ,"DueDate"			:	tasks[i].DueDate
+                    ,"TypeCode"		    :	tasks[i].TaskType
+                    ,"SalesRepCode"	    :	tasks[i].SalesRepCode
+                    ,"RowMod"           : ((tasks[i].RowState == 'Added'), 'A', 'U')
+                }
+                );
+            }
+        }
+
+        bezl.dataService.add('UpdateTasks', 'brdb', 'sales-rep-updateTasks', 'ExecuteBOMethod',
+        {
+            'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+        }
+        , 0);
+    }
+
     return {
         addNote: AddNote,
-        getNewTask: GetNewTask
+        getNewTask: GetNewTask,
+        updateTasks: UpdateTasks
     }
 });
