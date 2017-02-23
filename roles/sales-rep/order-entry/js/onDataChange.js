@@ -20,6 +20,7 @@ define(function () {
 
                 // This will get filled in on the AccountContacts query
                 bezl.data.Accounts[i].Contacts = [];
+                bezl.data.Accounts[i].ShipTos = [];
 
                 // Same thing with the recent CRM calls
                 bezl.data.Accounts[i].CRMCalls = [];
@@ -30,15 +31,21 @@ define(function () {
 
         // If we got the account contacts back, merge those in
         if (bezl.data.Accounts && bezl.data.AccountContacts) {
-            for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
-                    }
-                }
-            }
-
+            bezl.data.AccountContacts.forEach(ac => {
+                bezl.data.Accounts.find(a => a.ID == ac.ID).Contacts.push(ac);
+            });
             bezl.vars.loadingContacts = false;
+        }
+
+        // If we got the account ship tos back, merge those in
+        if (bezl.data.Accounts && bezl.data.AccountShipTos) {
+            bezl.data.AccountShipTos.forEach(st => {
+                var acct = bezl.data.Accounts.find(a => a.ID == st.ID);
+                if (acct != undefined) {
+                    acct.ShipTos.push(st);
+                }              
+            })
+            bezl.vars.loadingShipTos = false;
         }
     }
   

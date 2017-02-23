@@ -23,6 +23,16 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "AccountShipTos":
+                bezl.vars.loadingShipTos = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('AccountShipTos','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsShipTos",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
         }
     }
   
@@ -36,9 +46,14 @@ define(function () {
         localStorage.setItem('selectedAccount', JSON.stringify(selectedAcct));
         $('.panel').trigger('selectAccount', [selectedAcct]);
 
+        // Filter our account
+        bezl.vars.filteredAccount = bezl.data.Accounts.filter(a => a.ID == account.ID);
+
         // Filter our contacts
-        bezl.vars.filteredContacts = [{ID: account.ID, CustNum: account.CustNum, Name: '', EMailAddress: '', ContactTitle: '', PhoneNum: ''}];
-        bezl.vars.filteredContacts += bezl.data.AccountContacts.filter(c => c.ID == account.ID);
+        bezl.vars.filteredContacts = bezl.data.AccountContacts.filter(c => c.ID == account.ID);
+
+        // Filter out shiptos
+        bezl.vars.filteredShipTos = bezl.data.AccountShipTos.filter(st => st.ID == account.ID);
     }
     
     return {
