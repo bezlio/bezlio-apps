@@ -47,8 +47,8 @@ define(function () {
         $('.panel').trigger('selectAccount', [selectedAcct]);
 
         // Filter our account
-        bezl.vars.filteredAccount = bezl.data.Account.filter(a => a.ID == account.ID);
-        
+        bezl.vars.filteredAccount = bezl.data.Accounts.filter(a => a.ID == account.ID);
+
         // Filter our contacts
         bezl.vars.filteredContacts = bezl.data.AccountContacts.filter(c => c.ID == account.ID);
 
