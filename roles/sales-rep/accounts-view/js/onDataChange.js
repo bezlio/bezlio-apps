@@ -31,11 +31,12 @@ define(function () {
                                                                 , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
                 }
 
-                // This will get filled in on the AccountContacts query
+                // Set up any of the properties we wish to consolidate additional
+                // data into from subsequent queries
                 bezl.data.Accounts[i].Contacts = [];
-
-                // Same thing with the recent CRM calls
                 bezl.data.Accounts[i].CRMCalls = [];
+                bezl.data.Accounts[i].Tasks = [];
+                
             };
 
             bezl.vars.loading = false;
@@ -73,6 +74,28 @@ define(function () {
                 }
 
                 bezl.vars.loadingCalls = false;
+            }
+        }
+
+        // If we got the account tasks back, merge those in
+        if (bezl.data.Tasks) {
+            if (bezl.data.Accounts) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    for (var i = 0; i < bezl.data.Tasks.length; i++) {
+                        if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+                            bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
+                        }
+                    }
+
+                    // If this is a selected account, trigger the jQuery to notify
+                    // any other panels that loaded before this one that the selection
+                    // has changed
+                    if (bezl.data.Accounts[x].Selected) {
+                        $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
+                    } 
+                }
+
+                bezl.vars.loadingTasks = false;
             }
         }
     }
