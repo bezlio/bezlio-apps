@@ -59,7 +59,37 @@ define(function () {
 
     }
 
+    /**
+     * Returns an Epicor-compatible new Task row that can later be saved as a 
+     * part of an UpdateExt
+     * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {Number} custNum - The customer number to add this task for
+     * @param {string} salesRep - The sales rep code to associate with this task
+     * @param {string} taskType - The task type code for this new task
+     */
+    function GetNewTask(bezl,
+                        custNum,
+                        salesRepCode,
+                        taskType) {
+        return {
+                "RelatedToFile" 	:	"Customer"
+                ,"Key1"			    :	bezl.vars.selectedCustomer.CustNum
+                ,"Key2"			    :	""
+                ,"Key3"			    :	""
+                ,"TaskID"			:	""
+                ,"TaskSeqNum"		:	0
+                ,"TaskDescription"  :	""
+                ,"SalesRepCode"	    :	bezl.vars.selectedCustomer.SalesRep
+                ,"StartDate"		:	new Date()
+                ,"DueDate"			:	new Date()
+                ,"PercentComplete"	:	0
+                ,"RowState"			: 	"Added"
+                ,"TaskType"		    :	bezl.data.TaskTypes[0].TaskType
+            };
+    }
+
     return {
-        addNote: AddNote
+        addNote: AddNote,
+        getNewTask: GetNewTask
     }
 });

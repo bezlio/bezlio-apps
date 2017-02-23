@@ -31,8 +31,19 @@ define(function () {
         task.Selected = !task.Selected;
     }
 
+    function AddTask (bezl) {
+        // Since alternate systems may require different columns for newly added tasks, direct to
+        // the libraries folder
+        if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/crm.js'], function(functions) {
+                bezl.vars.selectedAccount.Tasks.push(functions.getNewTask());
+            }); 
+        }
+    }
+
     return {
         runQuery: RunQuery,
-        select: Select
+        select: Select,
+        addTask: AddTask
     }
 });
