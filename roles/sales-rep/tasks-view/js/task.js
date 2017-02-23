@@ -53,9 +53,11 @@ define(function () {
                 functions.updateTasks(bezl,
                                         bezl.vars.selectedAccount.Tasks);
 
-                bezl.notificationService.showSuccess('Tasks is being saved.  You will be notified if any errors occurs.');
+                bezl.notificationService.showSuccess('Task changes are being saved.  You will be notified if any errors occurs.');
             }); 
         }
+
+        localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
 
     return {
