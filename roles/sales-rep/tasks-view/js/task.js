@@ -11,12 +11,28 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "Tasks":
+                bezl.vars.loading = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('Tasks','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountTasks",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
+                    ] },0);
+                break;
             default:
                 break;
         }
     }
 
+    function Select(bezl, task) {
+        task.Selected = !task.Selected;
+    }
+
     return {
-        runQuery: RunQuery
+        runQuery: RunQuery,
+        select: Select
     }
 });
