@@ -2,6 +2,8 @@ define(function () {
  
     function OnDataChange (bezl) {
         if (bezl.data.Accounts) {
+            bezl.vars.loading = false;
+
             // If there was a previously selected account in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedAccount = {};
@@ -38,8 +40,6 @@ define(function () {
                 bezl.data.Accounts[i].Tasks = [];
                 
             };
-
-            bezl.vars.loading = false;
         }
 
         // If we got the account contacts back, merge those in
