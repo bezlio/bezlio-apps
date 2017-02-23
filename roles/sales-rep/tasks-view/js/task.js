@@ -51,8 +51,9 @@ define(function () {
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/crm.js'], function(functions) {
                 functions.updateTasks(bezl,
-                                        bezl.vars.selectedAccount.Company,
                                         bezl.vars.selectedAccount.Tasks);
+
+                bezl.notificationService.showSuccess('Tasks is being saved.  You will be notified if any errors occurs.');
             }); 
         }
     }
