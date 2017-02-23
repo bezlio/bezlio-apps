@@ -27,23 +27,18 @@ define(function () {
     }
   
     function Select(bezl, account) {
-        // Mark the selected customer as selected
-        for (var i = 0; i < bezl.data.Accounts.length; i++) {
-            if (bezl.data.Accounts[i].ID == account.ID) {
-                bezl.data.Accounts[i].Selected = !bezl.data.Accounts[i].Selected;
+        // Dropdown only allows single selecting
+        // Mark all of them as not selected
+        bezl.data.Accounts.forEach(a => a.Selected = false);
 
-                if (bezl.data.Accounts[i].Selected) {
-                    localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
-                    $('.panel').trigger('selectAccount', [bezl.data.Accounts[i]]);
-                } else {
-                    localStorage.setItem('selectedAccount', '');
-                    $('.panel').trigger('selectAccount', [{}]);
-                }
-                
-            } else {
-                bezl.data.Accounts[i].Selected = false;
-            }
-        };
+        // Select the one we selected
+        var selectedAcct = bezl.data.Accounts.find(a => a.ID == account.ID).Selected = true;
+        localStorage.setItem('selectedAccount', JSON.stringify(selectedAcct));
+        $('.panel').trigger('selectAccount', [selectedAcct]);
+
+        // Filter our contacts
+        bezl.vars.filteredContacts = [{ID: account.ID, CustNum: account.CustNum, Name: '', EMailAddress: '', ContactTitle: '', PhoneNum: ''}];
+        bezl.vars.filteredContacts += bezl.data.AccountContacts.filter(c => c.ID == account.ID);
     }
     
     return {
