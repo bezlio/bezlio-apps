@@ -90,7 +90,6 @@ define(function () {
     /**
      * Updates the dataset of tasks in Epicor using UpdateExt
      * @param {Object[]} bezl - A reference to the calling Bezl
-     * @param {string} company - The company ID within Epicor
      * @param {Object[]} tasks - An array of tasks
      */
     function UpdateTasks(bezl
@@ -102,7 +101,7 @@ define(function () {
             if (tasks[i].RowState == 'Added' || tasks[i].RowState == 'Updated') {
                 ds.Task.push(
                 {
-                    "Company"			: 	company
+                    "Company"			: 	tasks[i].Company
                     ,"RelatedToFile"	:	"Customer"
                     ,"Key1"			    :	tasks[i].CustNum
                     ,"Key2"			    :	""
