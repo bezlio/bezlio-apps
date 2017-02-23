@@ -40,7 +40,10 @@ define(function () {
         // If we got the account ship tos back, merge those in
         if (bezl.data.Accounts && bezl.data.AccountShipTos) {
             bezl.data.AccountShipTos.forEach(st => {
-                bezl.data.Accounts.find(a => a.ID == st.ID).ShipTos.push(st);
+                var acct = bezl.data.Accounts.find(a => a.ID == st.ID);
+                if (acct != undefined) {
+                    acct.ShipTos.push(st);
+                }              
             })
             bezl.vars.loadingShipTos = false;
         }
