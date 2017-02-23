@@ -46,9 +46,14 @@ define(function () {
         localStorage.setItem('selectedAccount', JSON.stringify(selectedAcct));
         $('.panel').trigger('selectAccount', [selectedAcct]);
 
+        // Filter our account
+        bezl.vars.filteredAccount = bezl.data.Account.filter(a => a.ID == account.ID);
+        
         // Filter our contacts
-        bezl.vars.filteredContacts = [{ID: account.ID, CustNum: account.CustNum, Name: '', EMailAddress: '', ContactTitle: '', PhoneNum: ''}];
-        bezl.vars.filteredContacts += bezl.data.AccountContacts.filter(c => c.ID == account.ID);
+        bezl.vars.filteredContacts = bezl.data.AccountContacts.filter(c => c.ID == account.ID);
+
+        // Filter out shiptos
+        bezl.vars.filteredShipTos = bezl.data.AccountShipTos.filter(st => st.ID == account.ID);
     }
     
     return {
