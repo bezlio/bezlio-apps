@@ -23,6 +23,16 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "AccountShipTos":
+                bezl.vars.loadingShipTos = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('AccountShipTos','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsShipTos",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
         }
     }
   

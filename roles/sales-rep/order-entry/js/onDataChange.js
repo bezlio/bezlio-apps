@@ -30,15 +30,18 @@ define(function () {
 
         // If we got the account contacts back, merge those in
         if (bezl.data.Accounts && bezl.data.AccountContacts) {
-            for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
-                    }
-                }
-            }
-
+            bezl.data.AccountContacts.forEach(ac => {
+                bezl.data.Accounts.find(a => a.ID == ac.ID).Contacts.push(ac);
+            });
             bezl.vars.loadingContacts = false;
+        }
+
+        // If we got the account ship tos back, merge those in
+        if (bezl.data.Accounts && bezl.data.AccountShipTos) {
+            bezl.data.AccountShipTos.forEach(st => {
+                bezl.data.Accounts.find(a => a.ID == st.ID).ShipTos.push(st);
+            })
+            bezl.vars.loadingShipTos = false;
         }
     }
   
