@@ -68,9 +68,9 @@ define(function () {
                     // If this is a selected account, trigger the jQuery to notify
                     // any other panels that loaded before this one that the selection
                     // has changed
-                    if (bezl.data.Accounts[x].Selected) {
-                        $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
-                    } 
+                    // if (bezl.data.Accounts[x].Selected) {
+                    //     $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
+                    // } 
                 }
 
                 bezl.vars.loadingCalls = false;
@@ -90,9 +90,9 @@ define(function () {
                     // If this is a selected account, trigger the jQuery to notify
                     // any other panels that loaded before this one that the selection
                     // has changed
-                    if (bezl.data.Accounts[x].Selected) {
-                        $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
-                    } 
+                    // if (bezl.data.Accounts[x].Selected) {
+                    //     $('.panel').trigger('selectAccount', [bezl.data.Accounts[x]]);
+                    // } 
                 }
 
                 bezl.vars.loadingTasks = false;
