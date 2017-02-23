@@ -18,7 +18,7 @@ define(function () {
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('AccountContacts','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountContacts",
+                    "QueryName": "GetAccountsContacts",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
@@ -28,7 +28,17 @@ define(function () {
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetCRMCalls",
+                    "QueryName": "GetAccountsCallHistory",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
+            case "Tasks":
+                bezl.vars.loadingTasks = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('Tasks','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsTasks",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);

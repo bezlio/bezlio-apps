@@ -1,11 +1,10 @@
-SELECT
+SELECT TOP 100 
 	CallDesc AS ShortSummary
 	, CallText AS Details
 	, cl.LastDate AS CallDate
 	, sr.Name AS SalesRepName
 	, cl.RelatedToFile
 	, ct.CallTypeDesc
-	, cust.CustID AS ID
 FROM 
 	Erp.CRMCall cl with(nolock)
 
@@ -20,14 +19,9 @@ FROM
 	INNER JOIN Erp.Customer cust with(nolock) ON
 	cust.Company = cl.Company
 	AND cust.CustNum = cl.CallCustNum
-	
-	INNER JOIN Erp.SalesRep csr with(nolock) ON
-	csr.Company = cust.Company
-	AND csr.SalesRepCode = cust.SalesRepCode
 WHERE 
-	cl.Company = 'EPIC06' 
-	and DATEDIFF (day, cl.LastDate , GetDate()) < 90  
-	--AND csr.EMailAddress = '{EmailAddress}'
+	cust.CustID = '{ID}'
+	--and cl.Company = 'EPIC06' 
 ORDER BY
 	cl.LastDate desc
 	, cl.LastTime desc

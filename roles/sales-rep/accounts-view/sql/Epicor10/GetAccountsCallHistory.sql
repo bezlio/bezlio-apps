@@ -25,8 +25,8 @@ FROM
 	csr.Company = cust.Company
 	AND csr.SalesRepCode = cust.SalesRepCode
 WHERE 
-	cl.Company = 'EPIC06' 
-	and DATEDIFF (day, cl.LastDate , GetDate()) < 90  
+	DATEDIFF (day, cl.LastDate , GetDate()) < 90  
+	--and cl.Company = 'EPIC06' 
 	--AND csr.EMailAddress = '{EmailAddress}'
 ORDER BY
 	cl.LastDate desc

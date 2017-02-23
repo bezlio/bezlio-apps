@@ -8,7 +8,7 @@ define(function () {
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetCallHistory",
+                    "QueryName": "GetAccountCallHistory",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser },
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }

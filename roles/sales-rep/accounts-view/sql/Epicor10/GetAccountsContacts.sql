@@ -18,4 +18,4 @@ FROM
 WHERE
 	c.ZIP <> ''
 	--AND sr.EMailAddress = '{EmailAddress}'
-	AND c.Company = 'EPIC06'
+	--AND c.Company = 'EPIC06'
