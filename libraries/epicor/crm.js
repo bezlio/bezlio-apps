@@ -78,7 +78,7 @@ define(function () {
                 ,"TaskID"			:	""
                 ,"TaskSeqNum"		:	0
                 ,"TaskDescription"  :	""
-                ,"SalesRepCode"	    :	salesRep
+                ,"SalesRepCode"	    :	salesRepCode
                 ,"StartDate"		:	new Date()
                 ,"DueDate"			:	new Date()
                 ,"PercentComplete"	:	0
