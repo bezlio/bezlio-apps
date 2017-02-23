@@ -25,10 +25,6 @@ define(function () {
                 break;
         }
     }
-
-    return {
-        runQuery: RunQuery,
-    }
   
     function Select(bezl, account) {
         // Mark the selected customer as selected
@@ -48,5 +44,10 @@ define(function () {
                 bezl.data.Accounts[i].Selected = false;
             }
         };
+    }
+    
+    return {
+        runQuery: RunQuery,
+        select: Select
     }
 });
