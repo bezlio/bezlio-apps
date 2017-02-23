@@ -42,13 +42,11 @@ define(function () {
         bezl.data.Accounts.forEach(a => a.Selected = false);
 
         // Select the one we selected
-        var selectedAcct = bezl.data.Accounts.find(a => a.ID == account.ID);
-        selectedAcct.Selected = true;
+        bezl.vars.selectedAccount = bezl.data.Accounts.find(a => a.ID == account.ID);
+        bezl.vars.selectedAccount.Selected = true;
+
         localStorage.setItem('selectedAccount', JSON.stringify(selectedAcct));
         $('.panel').trigger('selectAccount', [selectedAcct]);
-
-        // Filter our account
-        bezl.vars.filteredAccount = bezl.data.Accounts.filter(a => a.ID == account.ID);
 
         // Filter our contacts
         bezl.vars.filteredContacts = bezl.data.AccountContacts.filter(c => c.ID == account.ID);
