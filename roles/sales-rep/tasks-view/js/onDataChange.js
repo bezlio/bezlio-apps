@@ -7,7 +7,11 @@ define(function () {
         }
 
         if (bezl.data.UpdateTasks) {
-            bezl.notificationService.showSuccess(JSON.stringify(bezl.data.UpdateTasks));
+            if (bezl.data.UpdateTasks.BOUpdError && bezl.data.UpdateTasks.BOUpdError.length > 0) {
+                bezl.notificationService.showCriticalError(JSON.stringify(bezl.data.UpdateTasks.BOUpdError));
+            } else {
+                bezl.notificationService.showSuccess('Tasks Saved');
+            }
         }
     }
   
