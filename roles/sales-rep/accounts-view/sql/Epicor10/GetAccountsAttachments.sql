@@ -20,7 +20,6 @@ FROM
 WHERE
 	fa.RelatedToSchemaName = 'Erp'
 	AND fa.RelatedToFile = 'Customer'
-	AND fa.Key1 = {CustNum}
 	--AND fa.Company = 'YourCompanyID'
 	AND sr.EmailAddress = '{EmailAddress}'
 ORDER BY
