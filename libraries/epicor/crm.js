@@ -70,11 +70,8 @@ define(function () {
     function GetNewTask(custNum,
                         salesRepCode,
                         taskType) {
-        return {
-                "RelatedToFile" 	:	"Customer"
-                ,"Key1"			    :	custNum
-                ,"Key2"			    :	""
-                ,"Key3"			    :	""
+        return {       
+                "CustNum"			:	custNum
                 ,"TaskID"			:	""
                 ,"TaskSeqNum"		:	0
                 ,"TaskDescription"  :	""
