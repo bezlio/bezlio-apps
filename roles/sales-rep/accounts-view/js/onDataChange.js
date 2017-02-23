@@ -38,6 +38,7 @@ define(function () {
                 bezl.data.Accounts[i].Contacts = [];
                 bezl.data.Accounts[i].CRMCalls = [];
                 bezl.data.Accounts[i].Tasks = [];
+                bezl.data.Accounts[i].Attachments = [];
                 
             };
         }
@@ -82,6 +83,21 @@ define(function () {
                 }
 
                 bezl.vars.loadingTasks = false;
+            }
+        }
+
+        // If we got the account tasks back, merge those in
+        if (bezl.data.Attachments) {
+            if (bezl.data.Accounts) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    for (var i = 0; i < bezl.data.Attachments.length; i++) {
+                        if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
+                            bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
+                        }
+                    }
+                }
+
+                bezl.vars.loadingAttachments = false;
             }
         }
     }

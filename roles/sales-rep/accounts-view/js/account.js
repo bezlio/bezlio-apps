@@ -43,6 +43,16 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "Attachments":
+                bezl.vars.loadingTasks = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsAttachments",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
             default:
                 break;
         }
