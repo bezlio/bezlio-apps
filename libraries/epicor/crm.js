@@ -1,11 +1,10 @@
 define(function () {
     /**
      * Adds a CRM Call for the specified customer.  Function simply creates BRDB call so monitor
-     * for return in onDataChange.  
+     * for return in onDataChange.  Note that using this method requires a plugin instance to
+     * be created in BRDB called 'sales-rep-addNote' pointing to the appropriate plugin (Epicor10 for
+     * Epicor905), ExecuteBOMethod for the Method, CRMCall for BOName, and UpdateExt for BOMethodName
      * @param {Object[]} bezl - A reference to the calling Bezl
-     * @param {string} plugin - The plugin name (Epicor10, Epicor905)
-     * @param {string} connection - The nammed connection as specified in Epicor*.dll.config
-     * @param {string} company - The company ID within Epicor
      * @param {Number} custNum - The customer number to add this call for
      * @param {string} shortSummary - The short summary for the call (CallDesc)
      * @param {string} details - The details for the call (CallText)
@@ -44,13 +43,9 @@ define(function () {
         bezl.dataService.add(
             'AddCRMCall'
             , 'brdb'
-            , plugin
+            , 'sales-rep-addNote'
             , 'ExecuteBOMethod'
             , {
-                "Connection"    : connection,
-                "Company"       : company,
-                'BOName'        : 'CRMCall',
-                'BOMethodName'  : 'UpdateExt',
                 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
             }
             , 0);
