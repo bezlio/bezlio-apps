@@ -6,12 +6,12 @@ define(function () {
             bezl.vars.selectedAccount.Tasks = bezl.data.Tasks;
         }
 
-        if (bezl.data.TaskTypes) {
+        if (bezl.data.TaskTypes && bezl.data.Tasks) {
             // Check to see if any tasks that were added before the task TaskTypes
             // came back need one filled in
-            for (var i = 0; i < tasks.length; i++) {
-                if (tasks[i].RowState == 'Added' && tasks[i].TaskType == '') {
-                    tasks[i].TaskType[0].TaskType;
+            for (var i = 0; i < bezl.data.Tasks.length; i++) {
+                if (bezl.data.Tasks[i].RowState == 'Added' && bezl.data.Tasks[i].TaskType == '') {
+                    bezl.data.Tasks[i].TaskType[0].TaskType;
                 }
             }
         }
