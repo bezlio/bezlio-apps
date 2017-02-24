@@ -26,6 +26,7 @@ define(function () {
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/crm.js'], function(functions) {
                 functions.addNote(bezl
+                                , bezl.vars.selectedAccount.Company
                                 , bezl.vars.selectedAccount.CustNum
                                 , bezl.vars.shortSummary
                                 , bezl.vars.details

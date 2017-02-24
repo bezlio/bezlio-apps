@@ -5,6 +5,7 @@ define(function () {
      * be created in BRDB called 'sales-rep-addNote' pointing to the appropriate plugin (Epicor10 for
      * Epicor905), ExecuteBOMethod for the Method, CRMCall for BOName, and UpdateExt for BOMethodName
      * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} company - Company ID for the call
      * @param {Number} custNum - The customer number to add this call for
      * @param {string} shortSummary - The short summary for the call (CallDesc)
      * @param {string} details - The details for the call (CallText)
@@ -13,6 +14,7 @@ define(function () {
      */
     function AddNote (bezl,
                       company,
+                      custNum,
                       shortSummary,
                       details,
                       type,
