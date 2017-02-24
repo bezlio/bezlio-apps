@@ -1,17 +1,12 @@
 define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.Tasks) {
-            bezl.vars.loading = false;
-            bezl.vars.selectedAccount.Tasks = bezl.data.Tasks;
-        }
-
-        if (bezl.data.TaskTypes && bezl.data.Tasks) {
+        if (bezl.data.TaskTypes) {
             // Check to see if any tasks that were added before the task TaskTypes
             // came back need one filled in
-            for (var i = 0; i < bezl.data.Tasks.length; i++) {
-                if (bezl.data.Tasks[i].RowState == 'Added' && bezl.data.Tasks[i].TaskType == '') {
-                    bezl.data.Tasks[i].TaskType[0].TaskType;
+            for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
+                if (bezl.vars.selectedAccount.Tasks[i].RowState == 'Added' && bezl.vars.selectedAccount.Tasks[i].TaskType == '') {
+                    bezl.vars.selectedAccount.Tasks[i].TaskType[0].TaskType;
                 }
             }
         }
