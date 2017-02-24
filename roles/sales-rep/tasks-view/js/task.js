@@ -36,10 +36,15 @@ define(function () {
         // the libraries folder
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/crm.js'], function(functions) {
+                var taskType = '';
+                if (bezl.data.TaskTypes) {
+                    taskType = bezl.data.TaskTypes[0].TaskType;
+                }
+
                 bezl.vars.selectedAccount.Tasks.push(
                     functions.getNewTask(bezl.vars.selectedAccount.CustNum,
                                         bezl.vars.selectedAccount.SalesRep,
-                                        bezl.data.TaskTypes[0].TaskType)
+                                        taskType)
                 );
             }); 
         }
