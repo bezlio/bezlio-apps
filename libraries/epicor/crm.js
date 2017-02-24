@@ -12,10 +12,6 @@ define(function () {
      * @param {string} salesRep - The sales rep code to associate with this call
      */
     function AddNote (bezl,
-                      plugin,
-                      connection,
-                      company,
-                      custNum,
                       shortSummary,
                       details,
                       type,
