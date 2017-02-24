@@ -6,7 +6,7 @@ define(function () {
             // came back need one filled in
             for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
                 if (bezl.vars.selectedAccount.Tasks[i].RowState == 'Added' && bezl.vars.selectedAccount.Tasks[i].TaskType == '') {
-                    bezl.vars.selectedAccount.Tasks[i].TaskType[0].TaskType;
+                    bezl.vars.selectedAccount.Tasks[i].TaskType = bezl.data.TaskTypes[0].TaskType;
                 }
             }
         }
