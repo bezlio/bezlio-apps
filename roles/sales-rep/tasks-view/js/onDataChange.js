@@ -14,6 +14,10 @@ define(function () {
         if (bezl.data.UpdateTasks) {
             if (bezl.data.UpdateTasks.BOUpdError && bezl.data.UpdateTasks.BOUpdError.length > 0) {
                 bezl.notificationService.showCriticalError(JSON.stringify(bezl.data.UpdateTasks.BOUpdError));
+            } else {
+                for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
+                    bezl.vars.selectedAccount.Tasks[i].RowState = '';
+                }
             }
 
             bezl.data.UpdateTasks = null;
