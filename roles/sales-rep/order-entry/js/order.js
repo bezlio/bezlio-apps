@@ -90,6 +90,7 @@ define(function () {
             UnitPrice: bezl.vars.selectedPart.BasePrice,
             Comment: ''
         });
+        $(bezl.container.nativeElement).find(".partList").typeahead('setQuery', '');
     }
 
     function NewOrder (bezl) {
