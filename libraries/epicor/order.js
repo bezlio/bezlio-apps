@@ -13,7 +13,7 @@ define(function () {
             'NewOrder'
             , 'brdb'
             , 'sales-rep-newOrder'
-            , 'ExecuteBOMethod'
+            , 'SalesOrder_NewOrderByCustomer'
             , {
                 'Parameters': [{ 'Key': 'CustNum', 'Value': custNum }]
             }
