@@ -8,12 +8,21 @@ define(function () {
     function NewOrder (bezl,
                       company,
                       custNum) {
+        
+            //     bezl.dataService.add(
+            // 'NewOrder'
+            // , 'brdb'
+            // , 'sales-rep-newOrder'
+            // , 'SalesOrder_NewOrderByCustomer'
+            // , {
+            //     'CustNum': custNum
+            // }
+            // , 0);
 
         bezl.dataService.add(
             'NewOrder'
             , 'brdb'
             , 'sales-rep-newOrder'
-            , 'SalesOrder_NewOrderByCustomer'
             , {
                 'CustNum': custNum
             }
