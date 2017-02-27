@@ -60,8 +60,7 @@ define(function () {
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        console.log(item);
-                        //bezl.functions['selectPart'](item);
+                        bezl.vars.selectedPart = item;
                     }
                 }
             });
