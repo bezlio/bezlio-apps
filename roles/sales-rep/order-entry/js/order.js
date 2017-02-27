@@ -8,9 +8,9 @@ define(function () {
             PartNum: bezl.vars.selectedPart.PartNum,
             PartDescription: bezl.vars.selectedPart.PartDescription, 
             Qty: 0,
-            UOM: bezl.selectedPart.IUM, 
-            QtyOnHand: bezl.selectedPart.OnHandQty,
-            UnitPrice: bezl.selectedPart.BasePrice,
+            UOM: bezl.vars.selectedPart.IUM, 
+            QtyOnHand: bezl.vars.selectedPart.OnHandQty,
+            UnitPrice: bezl.vars.selectedPart.BasePrice,
             Comment: ''
         });
     }
