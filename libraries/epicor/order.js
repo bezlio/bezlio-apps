@@ -15,7 +15,7 @@ define(function () {
             , 'sales-rep-newOrder'
             , 'SalesOrder_NewOrderByCustomer'
             , {
-                'Parameters': [{ 'Key': 'CustNum', 'Value': custNum }]
+                'CustNum': custNum
             }
             , 0);
 
