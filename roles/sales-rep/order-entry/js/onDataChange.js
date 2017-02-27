@@ -50,6 +50,19 @@ define(function () {
 
         if (bezl.data.GetPartsByCustNum) {
             bezl.vars.parts = bezl.data.GetPartsByCustNum;
+            $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
+            $(bezl.container.nativeElement).find(".partList").typeahead({
+                order: "asc",
+                maxItem: 8,
+                source: {
+                    data: function() { return bezl.vars.parts; }
+                },
+                callback: {
+                    onClick: function (node, a, item, event) {
+                        //bezl.functions['selectPart'](item);
+                    }
+                }
+            });
         }
     }
   
