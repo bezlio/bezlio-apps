@@ -1,4 +1,4 @@
-define(["./account.js"], function (account) {
+define(["./order.js"], function (account) {
  
     function OnStartup (bezl) {        
         // Initiate the call to refresh the customer list
