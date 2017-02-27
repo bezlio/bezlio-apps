@@ -55,7 +55,7 @@ define(function () {
                 order: "asc",
                 maxItem: 8,
                 source: {
-                    data: function() { return bezl.vars.parts; }
+                    data: function() { return bezl.vars.parts.map(p => {return p.PartNum}); }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
