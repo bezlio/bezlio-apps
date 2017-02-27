@@ -54,8 +54,9 @@ define(function () {
             $(bezl.container.nativeElement).find(".partList").typeahead({
                 order: "asc",
                 maxItem: 8,
+                display: ['PartNum', 'PartDescription'],
                 source: {
-                    data: function() { return bezl.vars.parts.map(p => {return p.PartNum + ' - ' + p.PartDescription}); }
+                    data: function() { return bezl.vars.parts; }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
