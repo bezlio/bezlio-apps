@@ -38,7 +38,7 @@ define(function () {
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('AccountParts','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountParts",
+                    "QueryName": "GetAccountsParts",
                     "Parameters": [
                         { "Key": "CustNum", "Value": bezl.vars.selectedAccount.CustNum }
                     ] },0);
