@@ -64,9 +64,6 @@ define(function () {
 
         // Filter out shiptos
         bezl.vars.filteredShipTos = bezl.data.AccountShipTos.filter(st => st.ID == account.ID);
-
-        // Load our parts
-        this.RunQuery(bezl, 'AccountParts');
     }
 
     function SelectShipTo(bezl, shipto) {
