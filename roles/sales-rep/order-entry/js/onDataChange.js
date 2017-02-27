@@ -47,6 +47,10 @@ define(function () {
             })
             bezl.vars.loadingShipTos = false;
         }
+
+        if (bezl.data.AccountParts) {
+            bezl.vars.AccountParts = bezl.data.AccountParts;
+        }
     }
   
     return {

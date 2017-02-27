@@ -33,6 +33,16 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "AccountParts":
+                bezl.vars.loadingParts = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('AccountParts','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountParts",
+                    "Parameters": [
+                        { "Key": "CustNum", "Value": bezl.vars.selectedAccount.CustNum }
+                    ] },0);
+                break;
         }
     }
   
@@ -54,6 +64,9 @@ define(function () {
 
         // Filter out shiptos
         bezl.vars.filteredShipTos = bezl.data.AccountShipTos.filter(st => st.ID == account.ID);
+
+        // Load our parts
+        this.RunQuery(bezl, 'AccountParts');
     }
 
     function SelectShipTo(bezl, shipto) {
