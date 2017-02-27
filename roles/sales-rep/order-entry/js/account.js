@@ -33,12 +33,12 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
-            case "AccountParts":
+            case "GetPartsByCustNum":
                 bezl.vars.loadingParts = true; 
 
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('AccountParts','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountsParts",
+                bezl.dataService.add('GetPartsByCustNum','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetPartsByCustNum",
                     "Parameters": [
                         { "Key": "CustNum", "Value": bezl.vars.selectedAccount.CustNum }
                     ] },0);
@@ -55,6 +55,9 @@ define(function () {
         // Select the one we selected
         bezl.vars.selectedAccount = bezl.data.Accounts.find(a => a.ID == account.ID);
         bezl.vars.selectedAccount.Selected = true;
+
+        // Run our query to load parts
+        RunQuery(bezl, 'GetPartsByCustNum');
 
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
         $('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
