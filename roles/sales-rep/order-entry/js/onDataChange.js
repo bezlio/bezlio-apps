@@ -69,6 +69,10 @@ define(function () {
         if (bezl.data.newOrder) {
             bezl.vars.ds = bezl.data.newOrder;
         }
+
+        if (bezl.data.submitOrder) {
+            bezl.vars.submitOrder = bezl.data.submitOrder;
+        }
     }
   
     return {
