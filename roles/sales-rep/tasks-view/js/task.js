@@ -49,8 +49,10 @@ define(function () {
 
                 // Order the added tasks to the top
                 bezl.vars.selectedAccount.Tasks.sort(function(a, b) {
-                    if (a['RowState'] == 'Added') {
+                    if (a.RowState && a.RowState == 'Added') {
                         return -1;
+                    } else {
+                        return 1;
                     }
                 });
             }); 
