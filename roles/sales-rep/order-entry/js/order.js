@@ -106,11 +106,23 @@ define(function () {
         }
     }
     
+    function SubmitOrder (bezl) {
+        // Since this is going to be an API call as opposed to a straight
+        // query, detect the CRM platform (via what was specified on setConfig)
+        // and route this request to the appropriate integration
+        if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/order.js'], function(functions) {
+                functions.SubmitOrder(bezl, bezl.vars.selectedAccount.Company);
+            }); 
+        }
+    }
+
     return {
         runQuery: RunQuery,
         select: Select,
         selectShipTo: SelectShipTo,
         addLine: AddLine,
-        newOrder: NewOrder
+        newOrder: NewOrder,
+        submitOrder: SubmitOrder
     }
 });
