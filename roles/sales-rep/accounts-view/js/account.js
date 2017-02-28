@@ -119,8 +119,8 @@ define(function () {
                 });
             } else {
                 bezl.data.Accounts.sort(function (a, b) {
-                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
-                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
+                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
                 });
             } 
