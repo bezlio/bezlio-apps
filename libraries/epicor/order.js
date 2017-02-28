@@ -28,6 +28,41 @@ define(function () {
 
     }
 
+    function SubmitOrder (bezl, company) {
+        
+        // This will take the structure from our bezl vars and stuff it into the ds specific to Epicor
+        bezl.vars.partList.forEach(p => {
+            bezl.vars.ds.OrderDtl.push({
+                OpenLine: true,
+                VoidLine: false,
+                Company: company,
+                OrderNum: 0,
+                OrderLine: 0,
+                LineType: 'PART',
+                PartNum: p.PartNum,
+                LineDesc: p.PartDescription,
+                IUM: p.IUM,
+                RevisionNum: '',
+                SellingQuantity: p.Qty,
+                UnitPrice: p.UnitPrice,
+                DocUnitPrice: p.UnitPrice,
+                MktgCampaignID: 'Customer',
+                MktgEvntSeq: 1,
+                CustNum: bezl.vars.selectedAccount.CustNum,
+                LockQty: false
+            })
+        });
+        // Now we will submit the order for processing
+        bezl.dataService.add('submitOrder','brdb','Epicor10','SalesOrder_SubmitNewOrder',
+                            { "Connection":"Epicor 10 AE", 
+                            "Company":"EPIC06", 
+                            "ds": JSON.stringify(bezl.vars.ds)
+                            },0);
+
+        bezl.vars.submitOrder = true;
+
+    }
+
     return {
         newOrder: NewOrder
     }
