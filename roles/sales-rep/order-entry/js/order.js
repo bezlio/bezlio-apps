@@ -112,7 +112,7 @@ define(function () {
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/order.js'], function(functions) {
-                functions.SubmitOrder(bezl, bezl.vars.selectedAccount.Company);
+                functions.submitOrder(bezl, bezl.vars.selectedAccount.Company);
             }); 
         }
     }
