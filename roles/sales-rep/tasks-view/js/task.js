@@ -46,15 +46,17 @@ define(function () {
                                         bezl.vars.selectedAccount.SalesRep,
                                         taskType)
                 );
+
+                // Order the added tasks to the top
+                bezl.vars.selectedAccount.Tasks.sort(function(a, b) {
+                    if (a.RowState && a.RowState == 'Added') {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                });
             }); 
         }
-
-        // Order the added tasks to the top
-        bezl.vars.selectedAccount.Tasks.sort(function(a, b) {
-            if (a['RowState'] == 'Added') {
-                return -1;
-            }
-        });
     }
 
     function UpdateTasks (bezl) {
