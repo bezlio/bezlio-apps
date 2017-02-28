@@ -17,25 +17,9 @@ define(function () {
                 byteArrays[sliceIndex] = new Uint8Array(bytes);
             }
             
-            var reader = new FileReader();
-            var file = new Blob(byteArrays, {type: bezl.vars.attachmentFileType});
-
-
-
-            reader.onload = function(e){
-                window.location.href = reader.result;
-            }
-
-            reader.addEventListener("load", function () {
-                window.open(reader.result);
-            }, false);
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-            
-            //var fileURL = URL.createObjectURL(file);
-            //window.open(fileURL);
+            var file = new Blob(byteArrays, {type: bezl.vars.attachmentFileType});     
+            var fileURL = URL.createObjectURL(file);
+            window.open(fileURL);
             
             bezl.vars.loading.attachment[bezl.vars.attachmentFileName] = false;
             
