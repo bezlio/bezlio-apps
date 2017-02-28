@@ -35,7 +35,7 @@ define(function () {
             bezl.vars.ds.OrderDtl.push({
                 OpenLine: true,
                 VoidLine: false,
-                Company: company,
+                Company: 'EPIC06',
                 OrderNum: 0,
                 OrderLine: 0,
                 LineType: 'PART',
@@ -53,11 +53,11 @@ define(function () {
             })
         });
         // Now we will submit the order for processing
-        // bezl.dataService.add('submitOrder','brdb','Epicor10','SalesOrder_SubmitNewOrder',
-        //                     { "Connection":"Epicor 10 AE", 
-        //                     "Company":"EPIC06", 
-        //                     "ds": JSON.stringify(bezl.vars.ds)
-        //                     },0);
+        bezl.dataService.add('submitOrder','brdb','Epicor10','SalesOrder_SubmitNewOrder',
+                            { "Connection":"Epicor 10 AE", 
+                            "Company":"EPIC06", 
+                            "ds": JSON.stringify(bezl.vars.ds)
+                            },0);
 
         bezl.vars.submitOrder = true;
 
