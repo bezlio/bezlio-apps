@@ -48,6 +48,13 @@ define(function () {
                 );
             }); 
         }
+
+        // Order the added tasks to the top
+        bezl.vars.selectedAccount.Tasks.sort(function(a, b) {
+            if (a['RowState'] == 'Added') {
+                return -1;
+            }
+        });
     }
 
     function UpdateTasks (bezl) {
