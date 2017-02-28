@@ -6,6 +6,7 @@ define(function () {
 
         switch(file.FileExt) {
             case ".doc": bezl.vars.attachmentFileType = "application/msword"; break;
+            case ".docx": bezl.vars.attachmentFileType = "application/msword"; break;
             case ".dot": bezl.vars.attachmentFileType = "application/msword"; break;
             case ".onetoc": bezl.vars.attachmentFileType = "application/onenote"; break;
             case ".onetoc2": bezl.vars.attachmentFileType = "application/onenote"; break;
@@ -50,7 +51,6 @@ define(function () {
             case ".potx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.presentationml.template"; break;
             case ".xlsx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; break;
             case ".xltx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.template"; break;
-            case ".docx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"; break;
             case ".dotx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.wordprocessingml.template"; break;
             case ".bmp": bezl.vars.attachmentFileType = "image/bmp"; break;
             case ".gif": bezl.vars.attachmentFileType = "image/gif"; break;
