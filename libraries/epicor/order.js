@@ -49,7 +49,8 @@ define(function () {
                 MktgCampaignID: 'Customer',
                 MktgEvntSeq: 1,
                 CustNum: bezl.vars.selectedAccount.CustNum,
-                LockQty: false
+                LockQty: false,
+                RowMod: 'U'
             })
         });
         // Now we will submit the order for processing
