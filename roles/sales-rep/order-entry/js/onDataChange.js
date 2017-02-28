@@ -66,8 +66,8 @@ define(function () {
             });
         }
 
-        if (bezl.data.NewOrder) {
-            bezl.vars.ds = bezl.data.NewOrder;
+        if (bezl.data.newOrder) {
+            bezl.vars.ds = bezl.data.newOrder;
         }
     }
   
