@@ -64,6 +64,7 @@ define(function () {
     }
 
     return {
-        newOrder: NewOrder
+        newOrder: NewOrder,
+        submitOrder: SubmitOrder
     }
 });
