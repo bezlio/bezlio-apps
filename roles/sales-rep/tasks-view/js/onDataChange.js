@@ -1,7 +1,7 @@
 define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.TaskTypes) {
+        if (bezl.data.TaskTypes && bezl.vars.selectedAccount.Tasks) {
             // Check to see if any tasks that were added before the task TaskTypes
             // came back need one filled in
             for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
