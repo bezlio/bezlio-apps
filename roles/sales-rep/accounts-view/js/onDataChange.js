@@ -2,10 +2,24 @@ define(function () {
  
     function OnDataChange (bezl) {
         if (bezl.data.Accounts) {
+            bezl.vars.loading = false;
+
+            // If there was a previously selected account in localStorage, grab a reference
+            // so we can know whether to mark them as selected
+            bezl.vars.selectedAccount = {};
+            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
+                bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+            }
+
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 // Add a Selected property to the account record
-                bezl.data.Accounts[i].Selected = false;
+                if (bezl.data.Accounts[i].ID == bezl.vars.selectedAccount.ID) {
+                    bezl.data.Accounts[i].Selected = true;
+                } else {
+                    bezl.data.Accounts[i].Selected = false;
+                }
+                
 
                 // Create an AddressURL column with an encoded version of each Address
                 // so that it can be part of a Google Maps AddressURL
@@ -19,11 +33,14 @@ define(function () {
                                                                 , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
                 }
 
-                // This will get filled in on the AccountContacts query
+                // Set up any of the properties we wish to consolidate additional
+                // data into from subsequent queries
                 bezl.data.Accounts[i].Contacts = [];
+                bezl.data.Accounts[i].CRMCalls = [];
+                bezl.data.Accounts[i].Tasks = [];
+                bezl.data.Accounts[i].Attachments = [];
+                
             };
-
-            bezl.vars.loading = false;
         }
 
         // If we got the account contacts back, merge those in
@@ -37,6 +54,51 @@ define(function () {
             }
 
             bezl.vars.loadingContacts = false;
+        }
+
+        // If we got the account calls back, merge those in
+        if (bezl.data.CRMCalls) {
+            if (bezl.data.Accounts) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                        if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+                            bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
+                        }
+                    }
+                }
+
+                bezl.vars.loadingCalls = false;
+            }
+        }
+
+        // If we got the account tasks back, merge those in
+        if (bezl.data.Tasks) {
+            if (bezl.data.Accounts) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    for (var i = 0; i < bezl.data.Tasks.length; i++) {
+                        if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+                            bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
+                        }
+                    }
+                }
+
+                bezl.vars.loadingTasks = false;
+            }
+        }
+
+        // If we got the account tasks back, merge those in
+        if (bezl.data.Attachments) {
+            if (bezl.data.Accounts) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    for (var i = 0; i < bezl.data.Attachments.length; i++) {
+                        if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
+                            bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
+                        }
+                    }
+                }
+
+                bezl.vars.loadingAttachments = false;
+            }
         }
     }
 

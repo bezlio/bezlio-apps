@@ -1,120 +1,12 @@
-define(["./map.js"], function (map) {
- 
-    function Select (bezl, custNum) {
-        if (bezl.vars.markers[custNum]) {
-        // Locate this customer and navigate to them on the map
-        bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
-                                                                    bezl.vars.markers[custNum].data.Address,
-                                                                    bezl.vars.markers[custNum].data.Contacts));
+define(function () {
 
-        bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
-        bezl.vars.selectedCustomer.EstDate = (bezl.vars.selectedCustomer.EstDate || 'T').split('T')[0];
-        bezl.vars.selectedCustomer.LastContact = (bezl.vars.selectedCustomer.LastContact || 'T').split('T')[0];
-        bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
-
-        $('html, body').animate({
-                scrollTop: $("#map").offset().top
-            }, 2000);
-        } else {
-        // If there is not a marker for the given address, geocode it now
-        for (var i = 0; i < bezl.vars.customers.length; i++) {
-            if (bezl.vars.customers[i].custNum == custNum) {
-                map.geocodeAddress(bezl, bezl.vars.customers[i]); 
-                break;
-            }
-        };
-        }
-
-        // Load the customers CRM call history
-        RunQuery(bezl, 'CRMCallHistory');
-
-        // Load the customers attachments
-        RunQuery(bezl, 'Attachments');
-
-        // Load the open tasks
-        RunQuery(bezl, 'OpenTasks');
-    }
-
-    function RunQuery (bezl, queryName) {
-
-        switch (queryName) {
-            case "CustList":
-                // Pull in the customer list for the logged in user
-                bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetCustomersWithAddress",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            case "CRMCallHistory":
-                // Load the customers CRM call history
-                bezl.dataService.add('CRMCallHistory','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetCRMCallHistory",
-                    "Parameters": [
-                        { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum },
-                        { "Key": "CustID", "Value": bezl.vars.selectedCustomer.CustID },  
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                bezl.vars.loading.crmHistory = true;
-                break;
-            case "OpenTasks":
-                bezl.dataService.add('OpenTasks','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetOpenTasks",
-                    "Parameters": [
-                        { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum },
-                        { "Key": "CustID", "Value": bezl.vars.selectedCustomer.CustID },  
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                bezl.vars.loading.openTasks = true;
-                break;
-            case "Attachments":
-                switch (bezl.vars.config.CRMPlatform) {
-                    case "Epicor10":
-                        bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
-                            "QueryName": "GetCustomerAttachments",
-                            "Parameters": [
-                                { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum },
-                                { "Key": "CustID", "Value": bezl.vars.selectedCustomer.CustID },  
-                                { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                            ] },0);
-                        break;
-                    case "Excel":
-                        bezl.dataService.add('Attachments','brdb','sales-rep-customerFiles','GetFileList', { },0);
-                        break;
-                    default:
-                        break;
-                }
-
-                bezl.vars.loading.attachments = true;
-                break;
-            default:
-                // Otherwise, assume this was a custom inquiry
-                bezl.dataService.add('Inquiry','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": queryName,
-                    "Parameters": [
-                        { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum },
-                        { "Key": "CustID", "Value": bezl.vars.selectedCustomer.CustID }
-                    ]
-                },0);
-                bezl.vars.loading.inquiry = true;
-
-                // Push details about the selected inquiry into the selectedInquiry variable
-                for (var i = 0; i < bezl.vars.config.CustomerInquiries.length; i++) {
-                    if (bezl.vars.config.CustomerInquiries[i].QueryName == queryName) {
-                        bezl.vars.selectedInquiry = bezl.vars.config.CustomerInquiries[i];
-                    }
-                };
-
-                break;
-        }
-    }
-
-    function ViewFile (bezl, file) {
+    function ViewFile(bezl, file) {
         bezl.vars.attachmentFileName = file.FileName;
         bezl.vars.loading.attachment[file.FileName] = true;
 
         switch(file.FileExt) {
             case ".doc": bezl.vars.attachmentFileType = "application/msword"; break;
+            case ".docx": bezl.vars.attachmentFileType = "application/msword"; break;
             case ".dot": bezl.vars.attachmentFileType = "application/msword"; break;
             case ".onetoc": bezl.vars.attachmentFileType = "application/onenote"; break;
             case ".onetoc2": bezl.vars.attachmentFileType = "application/onenote"; break;
@@ -159,7 +51,6 @@ define(["./map.js"], function (map) {
             case ".potx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.presentationml.template"; break;
             case ".xlsx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; break;
             case ".xltx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.template"; break;
-            case ".docx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"; break;
             case ".dotx": bezl.vars.attachmentFileType = "application/vnd.openxmlformats-officedocument.wordprocessingml.template"; break;
             case ".bmp": bezl.vars.attachmentFileType = "image/bmp"; break;
             case ".gif": bezl.vars.attachmentFileType = "image/gif"; break;
@@ -188,10 +79,8 @@ define(["./map.js"], function (map) {
 
         bezl.dataService.add('fileview','brdb','FileSystem','GetFile', { "Context": "Default", "FileName": file.FileName},0);
     }
-  
+
     return {
-        select: Select,
-        runQuery: RunQuery,
         viewFile: ViewFile
     }
 });

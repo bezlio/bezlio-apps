@@ -18,7 +18,37 @@ define(function () {
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('AccountContacts','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountContacts",
+                    "QueryName": "GetAccountsContacts",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
+            case "CRMCalls":
+                bezl.vars.loadingCalls = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsCallHistory",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
+            case "Tasks":
+                bezl.vars.loadingTasks = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('Tasks','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsTasks",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
+            case "Attachments":
+                bezl.vars.loadingTasks = true; 
+
+                // Pull in the accounts list for the logged in user
+                bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsAttachments",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
@@ -36,8 +66,10 @@ define(function () {
 
                 if (bezl.data.Accounts[i].Selected) {
                     localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
+                    $('.panel').trigger('selectAccount', [bezl.data.Accounts[i]]);
                 } else {
                     localStorage.setItem('selectedAccount', '');
+                    $('.panel').trigger('selectAccount', [{}]);
                 }
                 
             } else {
@@ -87,8 +119,8 @@ define(function () {
                 });
             } else {
                 bezl.data.Accounts.sort(function (a, b) {
-                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
-                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
+                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
                 });
             } 

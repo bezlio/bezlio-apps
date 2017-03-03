@@ -106,19 +106,15 @@ define(["./employees.js"], function (employees) {
         if (bezl.data.ClockIn) {
             bezl.vars.clockingIn = false;
 
-            switch (bezl.vars.config.Platform) {
-                case "Epicor905":
-                    for (var i = 0; i < bezl.data.ClockIn.LaborHed.length; i++) {
-                        for (var x = 0; x < bezl.vars.team.length; x++) {
-                            if (bezl.vars.team[x].key == bezl.data.ClockIn.LaborHed[i].EmployeeNum) {
-                                bezl.vars.team[x].LaborHed = bezl.data.ClockIn.LaborHed[i];
-                                bezl.vars.team[x].clockedIn = 1;
-                            }
+            if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                for (var i = 0; i < bezl.data.ClockIn.LaborHed.length; i++) {
+                    for (var x = 0; x < bezl.vars.team.length; x++) {
+                        if (bezl.vars.team[x].key == bezl.data.ClockIn.LaborHed[i].EmployeeNum) {
+                            bezl.vars.team[x].LaborHed = bezl.data.ClockIn.LaborHed[i];
+                            bezl.vars.team[x].clockedIn = 1;
                         }
                     }
-                    break;
-                default:
-                    break;
+                }
             }
 
             bezl.dataService.remove('ClockIn');
@@ -154,18 +150,14 @@ define(["./employees.js"], function (employees) {
         if (bezl.data.StartJob) {
             bezl.vars.startingJob = false;
 
-            switch (bezl.vars.config.Platform) {
-                case "Epicor905":
-                    for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
-                        for (var x = 0; x < bezl.vars.team.length; x++) {
-                            if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
-                                bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
-                            }
+            if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
+                    for (var x = 0; x < bezl.vars.team.length; x++) {
+                        if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
+                            bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
                         }
                     }
-                    break;
-                default:
-                    break;
+                }
             }
 
             bezl.dataService.remove('StartJob');
@@ -177,18 +169,14 @@ define(["./employees.js"], function (employees) {
         if (bezl.data.EndActivities) {
             bezl.vars.endingActivities = false;
 
-            switch (bezl.vars.config.Platform) {
-                case "Epicor905":
-                    for (var i = 0; i < bezl.data.EndActivities.LaborHed.length; i++) {
-                        for (var x = 0; x < bezl.vars.team.length; x++) {
-                            if (bezl.vars.team[x].key == bezl.data.EndActivities.LaborHed[i].EmployeeNum) {
-                                bezl.vars.team[x].currentActivity = '';
-                            }
+            if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                for (var i = 0; i < bezl.data.EndActivities.LaborHed.length; i++) {
+                    for (var x = 0; x < bezl.vars.team.length; x++) {
+                        if (bezl.vars.team[x].key == bezl.data.EndActivities.LaborHed[i].EmployeeNum) {
+                            bezl.vars.team[x].currentActivity = '';
                         }
                     }
-                    break;
-                default:
-                    break;
+                }
             }
 
             bezl.dataService.remove('EndActivities');

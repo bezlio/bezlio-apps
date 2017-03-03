@@ -21,16 +21,6 @@ define(["./map.js",
         // Initiate the call to refresh the customer list
         customer.runQuery(bezl, 'CustList');
 
-        // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
-        // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
-        // types
-        bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetCallTypes" },0);
-
-        // Also pull in the list of defined CRM task types.  This is expecting a plugin instance
-        // to be defined in BRDB named sales-rep-tasktypes which points to a data source for task
-        // types
-        bezl.dataService.add('TaskTypes','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetTaskTypes" },0);
-
         // Google Maps requires async so pull it in.
         require.config({
             paths: {
