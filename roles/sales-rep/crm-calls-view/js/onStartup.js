@@ -23,7 +23,6 @@ define(["./account.js"], function (account) {
         }
 
       });
-
   }
   
   return {
