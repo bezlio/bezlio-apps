@@ -5,9 +5,9 @@ This is a repository for all of the open-source applications that run on top of 
 
 These are the roles we are actively focusing on currently:
 
-* [Sales Manager](https://github.com/bezlio/bezlio-recipes/tree/master/roles/sales-manager)
+* [Sales Manager](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-manager)
 
-* [Sales Rep](https://github.com/bezlio/bezlio-recipes/tree/master/roles/sales-rep)
+* [Sales Rep](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep)
 
 The sales rep role should provide what most users would expect out of a CRM - the ability to easily pull up assigned accounts and related information, call logging, account task maintenance, RFQ entry, personal performance metrics, and pipeline.
 
