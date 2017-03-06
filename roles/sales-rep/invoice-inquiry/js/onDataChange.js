@@ -14,7 +14,7 @@ define(function () {
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.data.Invoices.length; i++) {
                 // Add a Selected property to the account record
-                if (bezl.data.Invoices[i].ID == bezl.vars.selectedInvoice.ID) {
+                if (bezl.data.Invoices[i].InvoiceNum == bezl.vars.selectedInvoice.InvoiceNum) {
                     bezl.data.Invoices[i].Selected = true;
                 } else {
                     bezl.data.Invoices[i].Selected = false;
