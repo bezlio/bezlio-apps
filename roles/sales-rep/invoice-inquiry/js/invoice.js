@@ -116,8 +116,9 @@ define(function () {
                 });
             }
         }
+    }
 
-        function InnerSort(bezl, sortColumn) {
+    function InnerSort(bezl, sortColumn) {
 
         // If the previous sort column was picked, make it the opposite sort
         if (bezl.vars.sortCol == sortColumn) {
@@ -181,7 +182,7 @@ define(function () {
             }
         }
     }
-    }
+}
   
     return {
         runQuery: RunQuery,
