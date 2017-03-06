@@ -181,10 +181,12 @@ define(function () {
             }
         }
     }
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
-        sort: Sort
+        sort: Sort,
+        innerSort: innerSort
     }
 });
