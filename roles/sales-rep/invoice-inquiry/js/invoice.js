@@ -187,6 +187,6 @@ define(function () {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
-        innerSort: innerSort
+        innerSort: InnerSort
     }
 });
