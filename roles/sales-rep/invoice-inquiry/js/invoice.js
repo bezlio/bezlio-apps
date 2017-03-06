@@ -57,7 +57,7 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if (sortColumn == "Distance") {
+        if (sortColumn == "Invoice #" || sortColumn == "PO #" || sortColumn == "Amount" || sortColumn == "Balance") {
             if (bezl.vars.sort == "asc") {
                 bezl.data.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
@@ -71,7 +71,7 @@ define(function () {
                     return B - A;
                 });
             }
-        } else if (sortColumn == "LastContact" || sortColumn == "NextTaskDue") {
+        } else if (sortColumn == "Invoice Date" || sortColumn == "Order Date") {
             if (bezl.vars.sort == "asc") {
                 bezl.data.Invoices.sort(function (a, b) {
                     var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
