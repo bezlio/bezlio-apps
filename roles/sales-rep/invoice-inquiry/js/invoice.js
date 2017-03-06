@@ -19,10 +19,10 @@ define(function () {
         }
     }
 
-    function Select(bezl, account) {
+    function Select(bezl, Invoice) {
         // Mark the selected customer as selected
         for (var i = 0; i < bezl.data.Invoices.length; i++) {
-            if (bezl.data.Invoices[i].ID == account.ID) {
+            if (bezl.data.Invoices[i].ID == Invoice.ID) {
                 bezl.data.Invoices[i].Selected = !bezl.data.Invoices[i].Selected;
 
                 if (bezl.data.Invoices[i].Selected) {
