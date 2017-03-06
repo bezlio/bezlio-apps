@@ -61,9 +61,7 @@ define(function () {
             if (bezl.vars.sort == "asc") {
                 bezl.data.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    console.log(A);
                     var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    console.log(B);
                     return A - B;
                 });
             } else {
