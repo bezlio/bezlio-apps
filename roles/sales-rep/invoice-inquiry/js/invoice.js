@@ -12,6 +12,7 @@ define(function () {
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate },
                         { "Key": "EndDate", "Value": bezl.vars.endDate },
+                        { "Key": "Company", "Value": bezl.vars.company }
                     ] },0);
                 break;
             default:
