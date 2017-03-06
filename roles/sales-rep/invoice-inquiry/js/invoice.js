@@ -182,7 +182,6 @@ define(function () {
             }
         }
     }
-}
   
     return {
         runQuery: RunQuery,
