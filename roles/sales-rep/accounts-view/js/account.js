@@ -157,10 +157,22 @@ define(function () {
         }
 
     }
+
+    function ApplyFilter(bezl) {
+        for (var i = 0; i < bezl.data.Accounts.length; i++) {
+		if (bezl.data.Accounts[i].Name.startsWith(bezl.vars.searchString)) {
+			bezl.data.Accounts[i].show = true;
+		}
+		else {
+			bezl.data.Accounts[i].show = false;
+		}
+	};
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
-        sort: Sort
+        sort: Sort,
+        applyFilter: ApplyFilter
     }
 });
