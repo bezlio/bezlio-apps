@@ -22,20 +22,20 @@ define(function () {
 
     function Select(bezl, Invoice) {
         // Mark the selected customer as selected
-        for (var i = 0; i < bezl.data.Invoices.length; i++) {
-            if (bezl.data.Invoices[i].InvoiceNum == Invoice.InvoiceNum) {
-                bezl.data.Invoices[i].Selected = !bezl.data.Invoices[i].Selected;
+        for (var i = 0; i < bezl.vars.Invoices.length; i++) {
+            if (bezl.vars.Invoices[i].InvoiceNum == Invoice.InvoiceNum) {
+                bezl.vars.Invoices[i].Selected = !bezl.vars.Invoices[i].Selected;
 
-                if (bezl.data.Invoices[i].Selected) {
-                    localStorage.setItem('selectedInvoice', JSON.stringify(bezl.data.Invoices[i]));
-                    $('.panel').trigger('selectedInvoice', [bezl.data.Invoices[i]]);
+                if (bezl.vars.Invoices[i].Selected) {
+                    localStorage.setItem('selectedInvoice', JSON.stringify(bezl.vars.Invoices[i]));
+                    $('.panel').trigger('selectedInvoice', [bezl.vars.Invoices[i]]);
                 } else {
                     localStorage.setItem('selectedInvoice', '');
                     $('.panel').trigger('selectedInvoice', [{}]);
                 }
                 
             } else {
-                bezl.data.Invoices[i].Selected = false;
+                bezl.vars.Invoices[i].Selected = false;
             }
         };
     }
@@ -60,13 +60,13 @@ define(function () {
         // Test for numeric sort columns, otherwise sort alphabetic
         if (sortColumn == "InvoiceNum" || sortColumn == "PoNum" || sortColumn == "InvoiceAmt" || sortColumn == "InvoiceBal") {
             if (bezl.vars.sort == "asc") {
-                bezl.data.Invoices.sort(function (a, b) {
+                bezl.vars.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
                     var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
                     return A - B;
                 });
             } else {
-                bezl.data.Invoices.sort(function (a, b) {
+                bezl.vars.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
                     var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
                     return B - A;
@@ -74,13 +74,13 @@ define(function () {
             }
         } else if (sortColumn == "InvoiceDate" || sortColumn == "OrderDate") {
             if (bezl.vars.sort == "asc") {
-                bezl.data.Invoices.sort(function (a, b) {
+                bezl.vars.Invoices.sort(function (a, b) {
                     var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
                     return A - B;
                 });
             } else {
-                bezl.data.Invoices.sort(function (a, b) {
+                bezl.vars.Invoices.sort(function (a, b) {
                     var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
@@ -88,7 +88,7 @@ define(function () {
             } 
         } else {
             if (bezl.vars.sort == "asc") { 
-                bezl.data.Invoices.sort(function(a, b) {
+                bezl.vars.Invoices.sort(function(a, b) {
                     var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
@@ -102,7 +102,7 @@ define(function () {
                     return 0;
                 });
             } else {
-                bezl.data.Invoices.sort(function(a, b) {
+                bezl.vars.Invoices.sort(function(a, b) {
                     var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
@@ -139,13 +139,13 @@ define(function () {
         // Test for numeric sort columns, otherwise sort alphabetic
         if (sortColumn == "InvoiceLine" || sortColumn == "PartNum" || sortColumn == "UnitPrice" || sortColumn == "ExtPrice" || sortColumn == "Qty") {
             if (bezl.vars.sortInner == "asc") {
-                bezl.data.Invoices.sort(function (a, b) {
+                bezl.vars.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
                     var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
                     return A - B;
                 });
             } else {
-                bezl.data.Invoices.sort(function (a, b) {
+                bezl.vars.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
                     var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
                     return B - A;
@@ -153,7 +153,7 @@ define(function () {
             }
         } else {
             if (bezl.vars.sortInner == "asc") { 
-                bezl.data.Invoices.sort(function(a, b) {
+                bezl.vars.Invoices.sort(function(a, b) {
                     var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
@@ -167,7 +167,7 @@ define(function () {
                     return 0;
                 });
             } else {
-                bezl.data.Invoices.sort(function(a, b) {
+                bezl.vars.Invoices.sort(function(a, b) {
                     var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
