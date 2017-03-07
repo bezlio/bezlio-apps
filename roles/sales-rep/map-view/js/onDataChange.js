@@ -49,7 +49,7 @@ define(["./customer.js",
             });
         
             // Tell the jsGrid to load up
-            $("#jsGrid170123").jsGrid("loadData");
+            bezl.vars.jsgrid.jsGrid("loadData");
             
             bezl.vars.loading.customerList = false;
             
