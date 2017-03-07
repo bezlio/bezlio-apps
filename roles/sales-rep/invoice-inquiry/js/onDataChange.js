@@ -2,7 +2,8 @@ define(function () {
  
     function OnDataChange (bezl) {
         if (bezl.data.Invoices) {
-            bezl.vars.loading = false;
+            
+            bezl.vars.Invoices = new Array();
 
             // If there was a previously selected Invoice in localStorage, grab a reference
             // so we can know whether to mark them as selected
@@ -13,7 +14,7 @@ define(function () {
 
             var tempInvoice = {};
             var tempLine = {};
-            bezl.vars.Invoices = new Array();
+            
             // Organize new object
             for(var i = 0; i < bezl.data.Invoices.length; i++) {
 
@@ -65,7 +66,7 @@ define(function () {
                     bezl.vars.Invoices.push(tempInvoice); 
                 }
             }
-
+            bezl.vars.loading = false;
     }
 }
 
