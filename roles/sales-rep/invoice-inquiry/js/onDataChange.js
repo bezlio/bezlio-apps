@@ -11,7 +11,7 @@ define(function () {
                 bezl.vars.selectedInvoice = JSON.parse(localStorage.getItem("selectedInvoice"));
             }
 
-            var tempInvoice = [];
+            var tempInvoice = {};
             var tempLine = {};
             bezl.vars.Invoices = new Array();
             // Organize new object
@@ -35,7 +35,7 @@ define(function () {
                 // Line
                 tempLine.InvoiceLine = bezl.data.Invoices[i].InvoiceLine;
                 tempLine.PartNum = bezl.data.Invoices[i].PartNum;
-                tempLine.PartDescrition = bezl.data.Invoices[i].PartDescrition;
+                tempLine.PartDescription = bezl.data.Invoices[i].PartDescription;
                 tempLine.Qty = bezl.data.Invoices[i].Qty;
                 tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice;
                 tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice;
