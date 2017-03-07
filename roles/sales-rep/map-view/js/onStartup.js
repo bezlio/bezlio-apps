@@ -2,9 +2,6 @@ define(["./map.js",
         "./customer.js"], function (map, customer) {
  
     function OnStartup (bezl) {
-        // Call setConfig which defines the handful of settings that you may wish to tweak
-        bezl.functions['setConfig']();
-
         // Initialize any variables used in the logic
         bezl.vars.currentAddress = "";
         bezl.vars.markers = [];
