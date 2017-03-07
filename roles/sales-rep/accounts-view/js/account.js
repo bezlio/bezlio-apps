@@ -44,7 +44,7 @@ define(function () {
                     ] },0);
                 break;
             case "Attachments":
-                bezl.vars.loadingTasks = true; 
+                bezl.vars.loadingAttachments = true; 
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
