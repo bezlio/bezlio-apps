@@ -27,7 +27,7 @@ define(function () {
                 tempLine.Qty = bezl.data.Invoices[i].Qty;
                 tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice;
                 tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice;
-                bezl.data.Invoices[i].InvoiceLines[].push(tempLine); 
+                bezl.data.Invoices[i].InvoiceLines.push(tempLine); 
                 //remove old 'line'
                 delete bezl.data.Invoices[i].InvoiceLine;
                 delete bezl.data.Invoices[i].PartNum;
