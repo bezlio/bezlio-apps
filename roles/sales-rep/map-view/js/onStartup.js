@@ -31,7 +31,7 @@ define(["./map.js",
             bezl.vars.geocoder = new google.maps.Geocoder();
             bezl.vars.directionsService = new google.maps.DirectionsService;
             bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
-            bezl.vars.directionsDisplay.setPanel($(bezl.container.nativeElement).find("#directions"));
+            //bezl.vars.directionsDisplay.setPanel($(bezl.container.nativeElement).find("#directions"));
                 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) { 
