@@ -40,18 +40,21 @@ define(function () {
 
         // Place the same invoice numbers together 
         // sort by invoice number
-        /* bezl.data.Invoices.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+         bezl.data.Invoices.sort(function (a, b) {
+                    var A = a['InvoiceNum'] || Number.MAX_SAFE_INTEGER;
+                    var B = b['InvoiceNum'] || Number.MAX_SAFE_INTEGER;
                     return A - B;
                 });
-        // group invoices together
-        var previousInvoiceNum;
+         // group invoices together
+        var previousInvoice = {};
          for (var i = 0; i < bezl.data.Invoices.length; i++) {
-                if (previousInvoiceNum == bezl.date.Invoices[i].InvoiceNum) {
-                    bezl.data.Invoices.
-                }
-        }    */    
+                if (previousInvoice.InvoiceNum == bezl.date.Invoices[i].InvoiceNum) {
+                    for (var j = 0; j < previousInvoice.InvoiceLines.length; j++){
+                        bezl.data.Invoices[i].InvoicesLines.push(previousInvoice.InvoiceLines[j]);
+                    }
+                } 
+            } 
+         previousInvoice = bezl.date.Invoices[i];    
 
     }
     }
