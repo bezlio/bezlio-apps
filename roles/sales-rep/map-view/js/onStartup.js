@@ -95,7 +95,8 @@ define(["./map.js",
             },
             fields: [
                 { name: "display", title: "Name", type: "text", visible: true, width: 50, editing: false },
-                { name: "distance", title: "Distance", type: "number", visible: true, width: 25, editing: false },
+                { name: "distance", title: "Distance", type: "number", visible: true, width: 15, editing: false },
+                { name: "navigate", title: "Navigate To", type: "checkbox", visible: true, width: 10, editing: true}
             ],
             rowClick: function(args) {
                 customer.select(bezl, args.item.key);
