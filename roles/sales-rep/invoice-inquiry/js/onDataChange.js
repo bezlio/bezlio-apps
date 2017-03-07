@@ -16,6 +16,17 @@ define(function () {
             bezl.vars.Invoices = new Array();
             // Organize new object
             for(var i = 0; i < bezl.data.Invoices.length; i++) {
+
+                 //clear temps
+                tempInvoice = {};
+                tempLine = {};
+
+                // If invoice num already exist in new object, move invoice lines over
+                if (bezl.vars.Invoices.find(i.InvoiceNum == bezl.data.Invoice[i])) {
+                    console.log(bezl.data.Invoice[i]);
+                }
+
+
                 // Invoice
                 tempInvoice.InvoiceNum = bezl.data.Invoices[i].InvoiceNum;
                 tempInvoice.InvoiceDate = bezl.data.Invoices[i].InvoiceDate;
@@ -94,7 +105,7 @@ define(function () {
          previousInvoice = bezl.date.Invoices[i];    */
 
     }
-    }
+}
 
 return {
         onDataChange: OnDataChange
