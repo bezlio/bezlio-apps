@@ -73,8 +73,8 @@ define(["./customer.js"], function (customer) {
         };
 
         // Tell the jsGrid to load up
-        $("#jsGrid170123").jsGrid("loadData");
-        $("#jsGrid170123").jsGrid("sort", { field: "distance", order: "asc" });
+        bezl.vars.jsgrid.jsGrid("loadData");
+        bezl.vars.jsgrid.jsGrid("sort", { field: "distance", order: "asc" });
     }
 
     function GeocodeAddress(bezl, customerRecord) {

@@ -83,33 +83,32 @@ define(["./map.js",
 
 
         // Configure the jsGrid
-        $("#jsGrid170123").jsGrid({
-        width: "100%",
-        height: "100%",
-        heading: true,
-        sorting: true,
-        autoload: true, 	
-        inserting: false,
-        controller: {
-            loadData: function() {
-            return bezl.vars.customers;
-            }
-        },
-        fields: [
-            { name: "display", title: "Name", type: "text", visible: true, width: 50, editing: false },
-            { name: "lastContact", title: "Last Contact", type: "text", visible: true, width: 25, editing: false },
-            { name: "nextTaskDue", title: "Next Task Due", type: "text", visible: true, width: 25, editing: false },
-            { name: "distance", title: "Distance", type: "number", visible: true, width: 25, editing: false },
-        ],
-        rowClick: function(args) {
-            customer.select(bezl, args.item.key);
+        bezl.vars.jsgrid = $("#customerGrid");
+        bezl.vars.jsgrid.jsGrid({
+            width: "100%",
+            height: "100%",
+            heading: true,
+            sorting: true,
+            autoload: true, 	
+            inserting: false,
+            controller: {
+                loadData: function() {
+                return bezl.vars.customers;
+                }
+            },
+            fields: [
+                { name: "display", title: "Name", type: "text", visible: true, width: 50, editing: false },
+                { name: "distance", title: "Distance", type: "number", visible: true, width: 25, editing: false },
+            ],
+            rowClick: function(args) {
+                customer.select(bezl, args.item.key);
 
-            // Highlight the selected row in jsGrid
-            if ( bezl.vars.selectedRow ) { bezl.vars.selectedRow.children('.jsgrid-cell').css('background-color', ''); }
-            var $row = this.rowByItem(args.item);
-            $row.children('.jsgrid-cell').css('background-color','#F7B64B');
-            bezl.vars.selectedRow = $row;
-        }
+                // Highlight the selected row in jsGrid
+                if ( bezl.vars.selectedRow ) { bezl.vars.selectedRow.children('.jsgrid-cell').css('background-color', ''); }
+                var $row = this.rowByItem(args.item);
+                $row.children('.jsgrid-cell').css('background-color','#F7B64B');
+                bezl.vars.selectedRow = $row;
+            }
         });
     }
   
