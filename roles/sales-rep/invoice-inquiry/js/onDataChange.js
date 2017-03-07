@@ -11,7 +11,7 @@ define(function () {
                 bezl.vars.selectedInvoice = JSON.parse(localStorage.getItem("selectedInvoice"));
             }
 
-            var tempLine;
+            var tempLine = {};
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.data.Invoices.length; i++) {
                 // Add a Selected property to the account record
@@ -27,6 +27,7 @@ define(function () {
                 tempLine.Qty = bezl.data.Invoices[i].Qty;
                 tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice;
                 tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice;
+                bezl.data.Invoices[i].InvoiceLines = new Array();
                 bezl.data.Invoices[i].InvoiceLines.push(tempLine); 
                 //remove old 'line'
                 delete bezl.data.Invoices[i].InvoiceLine;
