@@ -29,6 +29,8 @@ define(["./map.js",
             // Google Maps API and all its dependencies will be loaded here.
             bezl.vars.client = google.maps;
             bezl.vars.geocoder = new google.maps.Geocoder();
+            bezl.vars.directionsService = new google.maps.DirectionsService;
+            bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
                 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) { 
@@ -38,6 +40,7 @@ define(["./map.js",
                         scrollwheel: false,
                         zoom: 10
                     });
+                bezl.vars.directionsDisplay.setMap(bezl.vars.map);
                 
                 // Create an infowindow
                 bezl.vars.infoWindow = new google.maps.InfoWindow;
@@ -75,37 +78,6 @@ define(["./map.js",
                 });
             } else {
                 bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
-            }
-        });
-
-
-        // Configure the jsGrid
-        bezl.vars.jsgrid = $("#customerGrid");
-        bezl.vars.jsgrid.jsGrid({
-            width: "100%",
-            height: "100%",
-            heading: true,
-            sorting: true,
-            autoload: true, 	
-            inserting: false,
-            controller: {
-                loadData: function() {
-                return bezl.vars.customers;
-                }
-            },
-            fields: [
-                { name: "display", title: "Name", type: "text", visible: true, width: 50, editing: false },
-                { name: "distance", title: "Distance", type: "number", visible: true, width: 15, editing: false },
-                { name: "navigate", title: "Navigate To", type: "checkbox", visible: true, width: 10, editing: true}
-            ],
-            rowClick: function(args) {
-                customer.select(bezl, args.item.key);
-
-                // Highlight the selected row in jsGrid
-                if ( bezl.vars.selectedRow ) { bezl.vars.selectedRow.children('.jsgrid-cell').css('background-color', ''); }
-                var $row = this.rowByItem(args.item);
-                $row.children('.jsgrid-cell').css('background-color','#F7B64B');
-                bezl.vars.selectedRow = $row;
             }
         });
     }
