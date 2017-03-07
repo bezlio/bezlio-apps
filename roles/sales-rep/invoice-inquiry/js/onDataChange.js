@@ -22,8 +22,8 @@ define(function () {
                 tempLine = {};
 
                 // If invoice num already exist in new object, move invoice lines over
-                if (bezl.vars.Invoices.find(i.InvoiceNum == bezl.data.Invoice[i])) {
-                    console.log(bezl.data.Invoice[i]);
+                if (bezl.vars.Invoices.find(invoice => invoice.InvoiceNum == bezl.data.Invoices[i].InvoiceNum)) {
+                    console.log(bezl.data.Invoices[i].InvoiceNum);
                 }
 
 
