@@ -31,18 +31,18 @@ define(["./map.js",
             bezl.vars.geocoder = new google.maps.Geocoder();
             bezl.vars.directionsService = new google.maps.DirectionsService;
             bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
-            //bezl.vars.directionsDisplay.setPanel($(bezl.container.nativeElement).find("#directions"));
                 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) { 
                 // First create the map
                 //console.log($(bezl.container.nativeElement).find("div#map"));
-                bezl.vars.map = new google.maps.Map($("#map"), {
+                bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: position.coords.latitude, lng: position.coords.longitude},
                         scrollwheel: false,
                         zoom: 10
                     });
                 bezl.vars.directionsDisplay.setMap(bezl.vars.map);
+                bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
                 
                 // Create an infowindow
                 bezl.vars.infoWindow = new google.maps.InfoWindow;
