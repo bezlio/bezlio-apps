@@ -19,7 +19,6 @@ define(function () {
                 } else {
                     bezl.data.Accounts[i].Selected = false;
                 }
-                
 
                 // Create an AddressURL column with an encoded version of each Address
                 // so that it can be part of a Google Maps AddressURL
@@ -40,6 +39,9 @@ define(function () {
                 bezl.data.Accounts[i].Tasks = [];
                 bezl.data.Accounts[i].Attachments = [];
                 
+
+                // Make all records visible to start off with
+                bezl.data.Accounts[i].show = true;
             };
         }
 
