@@ -31,7 +31,7 @@ define(function () {
                     tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice;
                     tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice;
                     // Push line into invoice
-                    bezl.vars.Invoices[bezl.vars.Invoices.findIndex(inv => inv.InvoiceNum == bezl.data.Invoices[i].InvoiceNum)].push(tempLine);
+                    bezl.vars.Invoices[bezl.vars.Invoices.findIndex(inv => inv.InvoiceNum == bezl.data.Invoices[i].InvoiceNum)].InvoiceLines.push(tempLine);
                 } else {
 
                     // Invoice
