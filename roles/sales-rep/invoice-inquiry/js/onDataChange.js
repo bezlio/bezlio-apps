@@ -42,7 +42,6 @@ define(function () {
                     tempInvoice.InvoiceBal = bezl.data.Invoices[i].InvoiceBal;
                     tempInvoice.OrderDate = bezl.data.Invoices[i].OrderDate;
                     tempInvoice.PoNum = bezl.data.Invoices[i].PoNum;
-                    tempInvoice.Company = bezl.data.Invoices[i].Company;
 
                     // Add a Selected property to the account record
                     if (bezl.data.Invoices[i].InvoiceNum == bezl.vars.selectedInvoice.InvoiceNum) {
