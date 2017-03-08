@@ -77,6 +77,7 @@ define(function () {
     return {
         runQuery: RunQuery,
         runReport: RunReport,
-        addParameterValue: AddParameterValue
+        addParameterValue: AddParameterValue,
+        back: Back
     }
 });
