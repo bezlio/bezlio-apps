@@ -72,6 +72,17 @@ define(function () {
 
         if (bezl.data.submitOrder) {
             bezl.vars.submitOrder = bezl.data.submitOrder;
+            bezl.dataService.remove('submitOrder');
+
+            if (bezl.vars.submitOrder.BOUpdError != null) {
+                if (bezl.vars.submitOrder.BOUpdError.length > 0) {
+                    bezl.vars.submitOrder.BOUpdError.forEach(err => {
+                        bezl.notificationService.showCriticalError(err.TableName + ': ' + err.ErrorText);
+                    });          
+                } else {
+                    bezl.notificationService.showSuccess('Order Submitted!');
+                }
+            }
         }
     }
   
