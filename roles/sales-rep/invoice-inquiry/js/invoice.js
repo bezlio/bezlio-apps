@@ -89,8 +89,8 @@ define(function () {
         } else {
             if (bezl.vars.sort == "asc") { 
                 bezl.vars.Invoices.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
                         return -1;
                     }
@@ -103,8 +103,8 @@ define(function () {
                 });
             } else {
                 bezl.vars.Invoices.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
                         return -1;
                     }
@@ -154,8 +154,8 @@ define(function () {
         } else {
             if (bezl.vars.sortInner == "asc") { 
                 bezl.vars.Invoices.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
                         return -1;
                     }
@@ -168,8 +168,8 @@ define(function () {
                 });
             } else {
                 bezl.vars.Invoices.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
                         return -1;
                     }
