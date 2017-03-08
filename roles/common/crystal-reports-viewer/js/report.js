@@ -40,7 +40,7 @@ define(function () {
         } else {
             bezl.vars.promptForParameters = false;
             bezl.dataService.add('Report','brdb','CrystalReports','ReturnAsPDF',
-                { "FolderName": "Demo", "Connection": "Workflow", "ReportName": parm.Name,
+                { "FolderName": parm.FolderName, "Connection": "Workflow", "ReportName": parm.Name,
                 "Parameters": [
                 { "Key": "ReportDetails", "Value": JSON.stringify(parm.ReportDetails) }
                 ] },0);
