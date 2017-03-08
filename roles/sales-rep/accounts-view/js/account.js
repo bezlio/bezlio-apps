@@ -169,7 +169,15 @@ define(function () {
             bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                 bezl.data.Accounts[i].show = true;
             } else {
-                bezl.data.Accounts[i].show = false;
+                // If we haven't already matched then look through any attached
+                // contact names for a match as well
+                for (var j = 0; j < bezl.data.Accounts[i].Contacts.length; j++) {
+                    if (bezl.data.Accounts[i].Contacts[j].ContactName.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                        bezl.data.Accounts[i].show = true;
+                    } else {
+                        bezl.data.Accounts[i].show = false;
+                    }
+                }
             }
         };
     }
