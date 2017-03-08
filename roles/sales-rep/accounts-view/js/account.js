@@ -174,6 +174,7 @@ define(function () {
                 for (var j = 0; j < bezl.data.Accounts[i].Contacts.length; j++) {
                     if (bezl.data.Accounts[i].Contacts[j].ContactName.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                         bezl.data.Accounts[i].show = true;
+                        break;
                     } else {
                         bezl.data.Accounts[i].show = false;
                     }
