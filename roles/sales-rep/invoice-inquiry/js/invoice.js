@@ -11,8 +11,7 @@ define(function () {
                     "QueryName": "InvoiceInquiry",
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate },
-                        { "Key": "EndDate", "Value": bezl.vars.endDate },
-                        { "Key": "Company", "Value": bezl.vars.company }
+                        { "Key": "EndDate", "Value": bezl.vars.endDate }
                     ] },0);
                 break;
             default:
