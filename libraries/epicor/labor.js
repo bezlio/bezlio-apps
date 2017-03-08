@@ -126,7 +126,6 @@ define(function () {
         clockIn: ClockIn,
         clockOut: ClockOut,
         endActivities: EndActivities,
-        startJob: StartJob,
-        startIndirect: StartIndirect
+        startJob: StartJob
     }
 });
