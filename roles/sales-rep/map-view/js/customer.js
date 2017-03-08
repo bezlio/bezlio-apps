@@ -42,9 +42,69 @@ define(["./map.js"], function (map) {
         }
     }
 
+    function Sort (bezl, column) {
+        if (column == bezl.vars.sortCol) {
+            // We clicked on the same column so make the sort opposite
+            if (bezl.vars.sort == 'asc') {
+                bezl.vars.sort = 'desc';
+            } else {
+                bezl.vars.sort = 'asc';
+            }
+        } else {
+            // It is a new sort
+            bezl.vars.sortCol = column;
+            bezl.vars.sort = 'asc';
+        }
+
+        if (bezl.vars.sortCol == 'Name') {
+            if (bezl.vars.sort == 'asc') {
+            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
+                var A = a.display.toUpperCase(); // ignore upper and lowercase
+                var B = b.display.toUpperCase(); // ignore upper and lowercase
+                if (A < B) {
+                    return -1;
+                }
+                if (A > B) {
+                    return 1;
+                }
+                // names must be equal
+                return 0;
+            });
+            } else {
+            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
+                var A = a.display.toUpperCase(); // ignore upper and lowercase
+                var B = b.display.toUpperCase(); // ignore upper and lowercase
+                if (A > B) {
+                    return -1;
+                }
+                if (A < B) {
+                    return 1;
+                }
+                // names must be equal
+                return 0;
+            });
+            }
+        } else {
+            if (bezl.vars.sort == 'asc') {
+            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
+                var A = a.distance || Number.MAX_SAFE_INTEGER;
+                var B = b.distance || Number.MAX_SAFE_INTEGER;
+                return A - B;
+            });
+            } else {
+            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
+                var A = a.distance || Number.MAX_SAFE_INTEGER;
+                var B = b.distance || Number.MAX_SAFE_INTEGER;
+                return B - A;
+            });
+            }
+        }
+    }
+
   
     return {
         select: Select,
+        sort: Sort,
         runQuery: RunQuery
     }
 });

@@ -2,9 +2,6 @@ define(["./map.js",
         "./customer.js"], function (map, customer) {
  
     function OnStartup (bezl) {
-        // Call setConfig which defines the handful of settings that you may wish to tweak
-        bezl.functions['setConfig']();
-
         // Initialize any variables used in the logic
         bezl.vars.currentAddress = "";
         bezl.vars.markers = [];
@@ -32,15 +29,20 @@ define(["./map.js",
             // Google Maps API and all its dependencies will be loaded here.
             bezl.vars.client = google.maps;
             bezl.vars.geocoder = new google.maps.Geocoder();
+            bezl.vars.directionsService = new google.maps.DirectionsService;
+            bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
                 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) { 
                 // First create the map
+                //console.log($(bezl.container.nativeElement).find("div#map"));
                 bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: position.coords.latitude, lng: position.coords.longitude},
                         scrollwheel: false,
                         zoom: 10
                     });
+                bezl.vars.directionsDisplay.setMap(bezl.vars.map);
+                bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
                 
                 // Create an infowindow
                 bezl.vars.infoWindow = new google.maps.InfoWindow;
@@ -79,37 +81,6 @@ define(["./map.js",
             } else {
                 bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
             }
-        });
-
-
-        // Configure the jsGrid
-        $("#jsGrid170123").jsGrid({
-        width: "100%",
-        height: "100%",
-        heading: true,
-        sorting: true,
-        autoload: true, 	
-        inserting: false,
-        controller: {
-            loadData: function() {
-            return bezl.vars.customers;
-            }
-        },
-        fields: [
-            { name: "display", title: "Name", type: "text", visible: true, width: 50, editing: false },
-            { name: "lastContact", title: "Last Contact", type: "text", visible: true, width: 25, editing: false },
-            { name: "nextTaskDue", title: "Next Task Due", type: "text", visible: true, width: 25, editing: false },
-            { name: "distance", title: "Distance", type: "number", visible: true, width: 25, editing: false },
-        ],
-        rowClick: function(args) {
-            customer.select(bezl, args.item.key);
-
-            // Highlight the selected row in jsGrid
-            if ( bezl.vars.selectedRow ) { bezl.vars.selectedRow.children('.jsgrid-cell').css('background-color', ''); }
-            var $row = this.rowByItem(args.item);
-            $row.children('.jsgrid-cell').css('background-color','#F7B64B');
-            bezl.vars.selectedRow = $row;
-        }
         });
     }
   
