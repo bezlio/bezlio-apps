@@ -61,14 +61,14 @@ define(function () {
         if (sortColumn == "InvoiceNum" || sortColumn == "PoNum" || sortColumn == "InvoiceAmt" || sortColumn == "InvoiceBal") {
             if (bezl.vars.sort == "asc") {
                 bezl.vars.Invoices.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return A - B;
                 });
             } else {
                 bezl.vars.Invoices.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return B - A;
                 });
             }
