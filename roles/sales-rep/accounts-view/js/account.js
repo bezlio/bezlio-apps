@@ -162,16 +162,18 @@ define(function () {
     // filter input box. This function updates the "show" variable on the
     // account object.
     function ApplyFilter(bezl) {
-        for (var i = 0; i < bezl.data.Accounts.length; i++) {
-            if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-            bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-            bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-            bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
-                bezl.data.Accounts[i].show = true;
-            } else {
-                bezl.data.Accounts[i].show = false;
-            }
-        };
+        if (bezl.data.Accounts) { // Avoid throwing errors if the account data hasn't been returned yet
+            for (var i = 0; i < bezl.data.Accounts.length; i++) {
+                if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.data.Accounts[i].show = true;
+                } else {
+                    bezl.data.Accounts[i].show = false;
+                }
+            };
+        }
     }
   
     return {
