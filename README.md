@@ -15,6 +15,6 @@ The sales rep role should provide what most users would expect out of a CRM - th
 
 In the long-term a great number of roles will be represented here.  We are not yet explicitly focusing on the development of these roles, but as we perform custom projects for users if they can fit into a cleanly-defined role we will place them out here:
 
-* [Production Team Leader](https://github.com/bezlio/bezlio-recipes/tree/master/roles/production-team-leader)
+* [Production Team Leader](https://github.com/bezlio/bezlio-apps/tree/master/roles/production-team-leader)
 
 

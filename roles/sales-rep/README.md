@@ -44,7 +44,7 @@ Authorized Connections: Check all connections for sales reps you authorize
 * The value for Connection / DSN refers to a conenction defined within your associated plugin config file.  If this is using the ODBC plugin, you will also need to configure a 32-bit ODBC driver.    See https://github.com/bezlio/bezlio-plugins for documentation.
 
 Also download all of the .SQL files from the appropriate subfolders and place them into the folder referrered to by 'Context'.  The locations of these .SQL files are:
-* https://github.com/bezlio/bezlio-recipes/tree/master/roles/sales-rep/main-view/sql
+* https://github.com/bezlio/bezlio-apps/tree/master/roles/sales-rep/main-view/sql
 
 ### If using the Epicor 10 integration also add these:
 Name: salesrep-addNote
