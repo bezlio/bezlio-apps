@@ -6,12 +6,13 @@ define(function () {
             case "Invoices":
                 bezl.vars.loading = true; 
 
+
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Invoices','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "InvoiceInquiry",
                     "Parameters": [
-                        { "Key": "StartDate", "Value": bezl.vars.startDate },
-                        { "Key": "EndDate", "Value": bezl.vars.endDate }
+                        { "Key": "StartDate", "Value": bezl.vars.startDate || '01/01/1900'},
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'}
                     ] },0);
                 break;
             default:
