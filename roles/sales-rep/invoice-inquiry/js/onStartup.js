@@ -5,6 +5,7 @@ define(function () {
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
         bezl.vars.sortInner = "";
+        bezl.vars.sortColInner = "";
     }
      return {
     onStartup: OnStartup

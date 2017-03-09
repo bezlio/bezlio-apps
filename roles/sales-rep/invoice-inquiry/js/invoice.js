@@ -122,7 +122,7 @@ define(function () {
     function InnerSort(bezl, sortColumn) {
 
         // If the previous sort column was picked, make it the opposite sort
-        if (bezl.vars.sortCol == sortColumn) {
+        if (bezl.vars.sortInner == sortColumn) {
             if (bezl.vars.sortInner == "desc") {
                 bezl.vars.sortInner = "asc";
             } else {
@@ -133,11 +133,11 @@ define(function () {
         }
         
         // Store the sort column so the UI can reflect it
-        bezl.vars.sortCol = sortColumn;
+        bezl.vars.sortColInner = sortColumn;
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if (sortColumn == "InvoiceLine" || sortColumn == "PartNum" || sortColumn == "UnitPrice" || sortColumn == "ExtPrice" || sortColumn == "Qty") {
+        if (sortColumn == "InvoiceLine" || sortColumn == "UnitPrice" || sortColumn == "ExtPrice" || sortColumn == "Qty") {
             if (bezl.vars.sortInner == "asc") {
                 bezl.vars.Invoices.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
