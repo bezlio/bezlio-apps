@@ -169,24 +169,6 @@ define(function () {
             bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                 bezl.data.Accounts[i].show = true;
             } else {
-                /**************************************************************
-                 * To enable searching through contact names as well:
-                 * - Uncomment the following block
-                 * - Comment out the "bezl.data.Accounts[i].show = false;" line
-                 *   immediately following
-                 *************************************************************/
-                /*
-                // If we haven't already matched then look through any attached
-                // contact names for a match as well
-                for (var j = 0; j < bezl.data.Accounts[i].Contacts.length; j++) {
-                    if (bezl.data.Accounts[i].Contacts[j].ContactName.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
-                        bezl.data.Accounts[i].show = true;
-                        break;
-                    } else {
-                        bezl.data.Accounts[i].show = false;
-                    }
-                }
-                */
                 bezl.data.Accounts[i].show = false;
             }
         };
