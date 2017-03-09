@@ -163,16 +163,27 @@ define(function () {
     // account object.
     function ApplyFilter(bezl) {
         if (bezl.data.Accounts) { // Avoid throwing errors if the account data hasn't been returned yet
+            var needsHighlighting = false;
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
                 bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
                 bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
                 bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                     bezl.data.Accounts[i].show = true;
+                    needsHighlighting = true;
                 } else {
                     bezl.data.Accounts[i].show = false;
                 }
             };
+            if (needsHighlighting) {
+                require(["https://cdn.jsdelivr.net/mark.js/8.8.3/mark.min.js"], function() {
+                    $(bezl.container.nativeElement).mark(bezl.vars.filterString);
+                });
+            } else {
+                require(["https://cdn.jsdelivr.net/mark.js/8.8.3/mark.min.js"], function() {
+                    $(bezl.container.nativeElement).unmark();
+                });
+            }
         }
     }
   
