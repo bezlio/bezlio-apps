@@ -21,3 +21,5 @@ FROM
 
 WHERE 
 	ERP.InvcHead.InvoiceDate >= '{StartDate}' AND ERP.InvcHead.InvoiceDate <= '{EndDate}'
+ORDER BY 
+	InvoiceDate Desc
