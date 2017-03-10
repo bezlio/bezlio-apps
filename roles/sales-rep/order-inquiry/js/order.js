@@ -58,7 +58,7 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if ( sortColumn == "PoNum" || sortColumn == "OrderAmt" ) {
+        if ( sortColumn == "PoNum" || sortColumn == "OrderAmt" || sortColumn == "OrderNum") {
             if (bezl.vars.sort == "asc") {
                 bezl.vars.Orders.sort(function (a, b) {
                     var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;

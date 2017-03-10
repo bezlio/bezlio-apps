@@ -37,7 +37,7 @@ define(function () {
                 } else {
 
                     // Order
-                    tempOrder.OrderNum = bezl.data.Orders.OrderNum;
+                    tempOrder.OrderNum = bezl.data.Orders[i].OrderNum;
                     tempOrder.PoNum = bezl.data.Orders[i].PoNum;
                     tempOrder.OrderDate = bezl.data.Orders[i].OrderDate;
                     tempOrder.OrderAmt = bezl.data.Orders[i].OrderAmt;
