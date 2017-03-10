@@ -1,7 +1,7 @@
 define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.Accounts) {
+        if (bezl.data.Accounts && bezl.vars.loading) {
             bezl.vars.loading = false;
 
             // If there was a previously selected account in localStorage, grab a reference
@@ -19,7 +19,6 @@ define(function () {
                 } else {
                     bezl.data.Accounts[i].Selected = false;
                 }
-                
 
                 // Create an AddressURL column with an encoded version of each Address
                 // so that it can be part of a Google Maps AddressURL
@@ -40,11 +39,16 @@ define(function () {
                 bezl.data.Accounts[i].Tasks = [];
                 bezl.data.Accounts[i].Attachments = [];
                 
+
+                // Make all records visible to start off with
+                bezl.data.Accounts[i].show = true;
             };
         }
 
         // If we got the account contacts back, merge those in
-        if (bezl.data.Accounts && bezl.data.AccountContacts) {
+        if (bezl.data.Accounts && bezl.data.AccountContacts && bezl.vars.loadingContacts) {
+            bezl.vars.loadingContacts = false;
+
             for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
@@ -52,12 +56,12 @@ define(function () {
                     }
                 }
             }
-
-            bezl.vars.loadingContacts = false;
         }
 
         // If we got the account calls back, merge those in
-        if (bezl.data.CRMCalls) {
+        if (bezl.data.CRMCalls && bezl.vars.loadingCalls) {
+            bezl.vars.loadingCalls = false;
+
             if (bezl.data.Accounts) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
@@ -66,13 +70,13 @@ define(function () {
                         }
                     }
                 }
-
-                bezl.vars.loadingCalls = false;
             }
         }
 
         // If we got the account tasks back, merge those in
-        if (bezl.data.Tasks) {
+        if (bezl.data.Tasks && bezl.vars.loadingTasks) {
+            bezl.vars.loadingTasks = false;
+
             if (bezl.data.Accounts) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     for (var i = 0; i < bezl.data.Tasks.length; i++) {
@@ -81,13 +85,13 @@ define(function () {
                         }
                     }
                 }
-
-                bezl.vars.loadingTasks = false;
             }
         }
 
         // If we got the account tasks back, merge those in
-        if (bezl.data.Attachments) {
+        if (bezl.data.Attachments && bezl.vars.loadingAttachments) {
+            bezl.vars.loadingAttachments = false;
+
             if (bezl.data.Accounts) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     for (var i = 0; i < bezl.data.Attachments.length; i++) {
@@ -96,8 +100,6 @@ define(function () {
                         }
                     }
                 }
-
-                bezl.vars.loadingAttachments = false;
             }
         }
     }
