@@ -140,15 +140,30 @@ define(function () {
         if (sortColumn == "InvoiceLine" || sortColumn == "UnitPrice" || sortColumn == "ExtPrice" || sortColumn == "Qty") {
             if (bezl.vars.sortInner == "asc") {
                 bezl.vars.Invoices.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    return A - B;
+                     a = JSON.parse(localStorage.getItem("selectedInvoice"));
+                   var A = new Array();
+                   var B = new Array();
+
+                    for( var i = 0; i < a.InvoiceLines.length; i++){
+                        A.push(a.InvoiceLines[i][sortColumn]);
+                        B.push(a.InvoiceLines[i][sortColumn]);
+                    }
+                    B.reverse();
+                    console.log(parseFloat(A) - parseFloat(B));
+                    return parseFloat(A) - parseFloat(B);
                 });
             } else {
                 bezl.vars.Invoices.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    return B - A;
+                    a = JSON.parse(localStorage.getItem("selectedInvoice"));
+                   var A = new Array();
+                   var B = new Array();
+
+                    for( var i = 0; i < a.InvoiceLines.length; i++){
+                        A.push(a.InvoiceLines[i][sortColumn]);
+                        B.push(a.InvoiceLines[i][sortColumn]);
+                    }
+                    B.reverse();
+                    return parseFloat(B) - parseFloat(A);
                 });
             }
         } else {
