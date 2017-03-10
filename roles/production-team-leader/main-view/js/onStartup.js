@@ -48,6 +48,7 @@ define(["./employees.js"], function (employees) {
         width: "600",
         height: "400",
         heading: true,
+        filtering: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
