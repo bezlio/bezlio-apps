@@ -56,7 +56,7 @@ define(["./employees.js"], function (employees) {
             loadData: function(filter) {
                 return $.grep(bezl.vars.openJobs, function (item) {
                     return (!filter.JobID || item.JobID.indexOf(filter.JobID) >= 0);
-                }
+                })
             }
         },
         fields: [
