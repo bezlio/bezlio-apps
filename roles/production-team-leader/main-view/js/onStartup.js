@@ -53,8 +53,10 @@ define(["./employees.js"], function (employees) {
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function() {
-            return bezl.vars.openJobs;
+            loadData: function(filter) {
+                return $.grep(bezl.vars.openJobs, function (item) {
+                    return (!filter.JobID || item.JobID.indexOf(filter.JobID) >= 0);
+                }
             }
         },
         fields: [
