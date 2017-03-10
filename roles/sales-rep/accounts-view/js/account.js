@@ -44,7 +44,7 @@ define(function () {
                     ] },0);
                 break;
             case "Attachments":
-                bezl.vars.loadingTasks = true; 
+                bezl.vars.loadingAttachments = true; 
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
@@ -157,10 +157,29 @@ define(function () {
         }
 
     }
+
+    // Only display accounts that have data matching the data string in the
+    // filter input box. This function updates the "show" variable on the
+    // account object.
+    function ApplyFilter(bezl) {
+        if (bezl.data.Accounts) { // Avoid throwing errors if the account data hasn't been returned yet
+            for (var i = 0; i < bezl.data.Accounts.length; i++) {
+                if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.data.Accounts[i].show = true;
+                } else {
+                    bezl.data.Accounts[i].show = false;
+                }
+            };
+        }
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
-        sort: Sort
+        sort: Sort,
+        applyFilter: ApplyFilter
     }
 });
