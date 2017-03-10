@@ -10,8 +10,8 @@ define(function () {
                 bezl.dataService.add('Orders','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "OrderInquiry",
                     "Parameters": [
-                        { "Key": "StartDate", "Value": bezl.vars.startDate },
-                        { "Key": "EndDate", "Value": bezl.vars.endDate },
+                        { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || "01/01/2100"},
                         { "Key": "Company", "Value": 'All' }
                     ] },0);
                 break;
