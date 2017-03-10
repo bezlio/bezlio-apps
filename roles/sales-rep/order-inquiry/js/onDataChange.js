@@ -25,10 +25,10 @@ define(function () {
                 // If Order num already exist in new object, move Order lines over
                 if (bezl.vars.Orders.find(order => order.OrderNum == bezl.data.Orders[i].OrderNum)) {
                     // Line
-                    tempLine.LineNum = bezl.data.Orders[i].LineNum;
+                    tempLine.OrderLine = bezl.data.Orders[i].OrderLine;
                     tempLine.PartNum = bezl.data.Orders[i].PartNum;
-                    tempLine.PartDescription = bezl.data.Orders[i].PartDescription;
-                    tempLine.Qty = bezl.data.Orders[i].Qty;
+                    tempLine.PartDesc = bezl.data.Orders[i].PartDesc;
+                    tempLine.OrderQty = bezl.data.Orders[i].OrderQty;
                     tempLine.UnitPrice = bezl.data.Orders[i].UnitPrice;
                     tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice;
                     tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty;
@@ -49,10 +49,10 @@ define(function () {
                     }
 
                     // Line
-                    tempLine.LineNum = bezl.data.Orders[i].LineNum;
+                    tempLine.OrderLine = bezl.data.Orders[i].OrderLine;
                     tempLine.PartNum = bezl.data.Orders[i].PartNum;
-                    tempLine.PartDescription = bezl.data.Orders[i].PartDescription;
-                    tempLine.Qty = bezl.data.Orders[i].Qty;
+                    tempLine.PartDesc = bezl.data.Orders[i].PartDesc;
+                    tempLine.OrderQty = bezl.data.Orders[i].OrderQty;
                     tempLine.UnitPrice = bezl.data.Orders[i].UnitPrice;
                     tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice;
                     tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty;
