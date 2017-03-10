@@ -9,7 +9,7 @@ define(function () {
         bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
                 "Connection": "Epicor 10 RS",
-                "Company": "EPIC06",
+                "Company": "EPIC03",
                 "CustNum": custNum,
             }, 0);
 
