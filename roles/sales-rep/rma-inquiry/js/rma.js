@@ -3,54 +3,16 @@ define(function () {
     function RunQuery (bezl, queryName) {
 
         switch (queryName) {
-            case "Accounts":
+            case "RMAs":
                 bezl.vars.loading = true; 
 
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccounts",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            case "AccountContacts":
-                bezl.vars.loadingContacts = true; 
 
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('AccountContacts','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountsContacts",
+                bezl.dataService.add('RMAs','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "RMAInquiry",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            case "CRMCalls":
-                bezl.vars.loadingCalls = true; 
-
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountsCallHistory",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            case "Tasks":
-                bezl.vars.loadingTasks = true; 
-
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Tasks','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountsTasks",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            case "Attachments":
-                bezl.vars.loadingTasks = true; 
-
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountsAttachments",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                        { "Key": "StartDate", "Value": bezl.vars.startDate || '01/01/1900'},
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'}
                     ] },0);
                 break;
             default:
@@ -58,22 +20,22 @@ define(function () {
         }
     }
 
-    function Select(bezl, account) {
+    function Select(bezl, RMA) {
         // Mark the selected customer as selected
-        for (var i = 0; i < bezl.data.Accounts.length; i++) {
-            if (bezl.data.Accounts[i].ID == account.ID) {
-                bezl.data.Accounts[i].Selected = !bezl.data.Accounts[i].Selected;
+        for (var i = 0; i < bezl.vars.RMAs.length; i++) {
+            if (bezl.vars.RMAs[i].RMANum == RMA.RMANum) {
+                bezl.vars.RMAs[i].Selected = !bezl.vars.RMAs[i].Selected;
 
-                if (bezl.data.Accounts[i].Selected) {
-                    localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
-                    $('.panel').trigger('selectAccount', [bezl.data.Accounts[i]]);
+                if (bezl.vars.RMAs[i].Selected) {
+                    localStorage.setItem('selectedRMA', JSON.stringify(bezl.vars.RMAs[i]));
+                    $('.panel').trigger('selectedRMA', [bezl.vars.RMAs[i]]);
                 } else {
-                    localStorage.setItem('selectedAccount', '');
-                    $('.panel').trigger('selectAccount', [{}]);
+                    localStorage.setItem('selectedRMA', '');
+                    $('.panel').trigger('selectedRMA', [{}]);
                 }
                 
             } else {
-                bezl.data.Accounts[i].Selected = false;
+                bezl.vars.RMAs[i].Selected = false;
             }
         };
     }
@@ -96,29 +58,29 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if (sortColumn == "Distance") {
+        if (sortColumn == "RMANum" || sortColumn == "PoNum" || sortColumn == "RMAAmt" || sortColumn == "RMABal") {
             if (bezl.vars.sort == "asc") {
-                bezl.data.Accounts.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                bezl.vars.RMAs.sort(function (a, b) {
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return A - B;
                 });
             } else {
-                bezl.data.Accounts.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                bezl.vars.RMAs.sort(function (a, b) {
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return B - A;
                 });
             }
-        } else if (sortColumn == "LastContact" || sortColumn == "NextTaskDue") {
+        } else if (sortColumn == "RMADate" || sortColumn == "OrderDate") {
             if (bezl.vars.sort == "asc") {
-                bezl.data.Accounts.sort(function (a, b) {
+                bezl.vars.RMAs.sort(function (a, b) {
                     var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
                     return A - B;
                 });
             } else {
-                bezl.data.Accounts.sort(function (a, b) {
+                bezl.vars.RMAs.sort(function (a, b) {
                     var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
@@ -126,9 +88,9 @@ define(function () {
             } 
         } else {
             if (bezl.vars.sort == "asc") { 
-                bezl.data.Accounts.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                bezl.vars.RMAs.sort(function(a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
                         return -1;
                     }
@@ -140,9 +102,9 @@ define(function () {
                     return 0;
                 });
             } else {
-                bezl.data.Accounts.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                bezl.vars.RMAs.sort(function(a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
                         return -1;
                     }
@@ -155,12 +117,92 @@ define(function () {
                 });
             }
         }
+    }
 
+    function InnerSort(bezl, sortColumn) {
+
+        // If the previous sort column was picked, make it the opposite sort
+        if (bezl.vars.sortInner == sortColumn) {
+            if (bezl.vars.sortInner == "desc") {
+                bezl.vars.sortInner = "asc";
+            } else {
+                bezl.vars.sortInner = "desc";
+            }
+        } else {
+            bezl.vars.sortInner = "asc";
+        }
+        
+        // Store the sort column so the UI can reflect it
+        bezl.vars.sortColInner = sortColumn;
+
+
+        // Test for numeric sort columns, otherwise sort alphabetic
+        if (sortColumn == "RMALine" || sortColumn == "UnitPrice" || sortColumn == "ExtPrice" || sortColumn == "Qty") {
+            if (bezl.vars.sortInner == "asc") {
+                bezl.vars.RMAs.sort(function (a, b) {
+                     a = JSON.parse(localStorage.getItem("selectedRMA"));
+                   var A = new Array();
+                   var B = new Array();
+
+                    for( var i = 0; i < a.RMALines.length; i++){
+                        A.push(a.RMALines[i][sortColumn]);
+                        B.push(a.RMALines[i][sortColumn]);
+                    }
+                    B.reverse();
+                    console.log(parseFloat(A) - parseFloat(B));
+                    return parseFloat(A) - parseFloat(B);
+                });
+            } else {
+                bezl.vars.RMAs.sort(function (a, b) {
+                    a = JSON.parse(localStorage.getItem("selectedRMA"));
+                   var A = new Array();
+                   var B = new Array();
+
+                    for( var i = 0; i < a.RMALines.length; i++){
+                        A.push(a.RMALines[i][sortColumn]);
+                        B.push(a.RMALines[i][sortColumn]);
+                    }
+                    B.reverse();
+                    return parseFloat(B) - parseFloat(A);
+                });
+            }
+        } else {
+            if (bezl.vars.sortInner == "asc") { 
+                bezl.vars.RMAs.sort(function(a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    if (A < B) {
+                        return -1;
+                    }
+                    if (A > B) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                });
+            } else {
+                bezl.vars.RMAs.sort(function(a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    if (A > B) {
+                        return -1;
+                    }
+                    if (A < B) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                });
+            }
+        }
     }
   
     return {
         runQuery: RunQuery,
         select: Select,
-        sort: Sort
+        sort: Sort,
+        innerSort: InnerSort
     }
 });

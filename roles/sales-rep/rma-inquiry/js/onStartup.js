@@ -1,23 +1,11 @@
-define(["./account.js"], function (account) {
- 
-    function OnStartup (bezl) {        
-        // Initiate the call to refresh the customer list
-        account.runQuery(bezl, 'Accounts');
-        account.runQuery(bezl, 'AccountContacts');
-        account.runQuery(bezl, 'CRMCalls');
-        account.runQuery(bezl, 'Tasks');
-        account.runQuery(bezl, 'Attachments');
-
-        // Determine the current position of the user
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) { 
-              bezl.vars.currentLat = position.coords.latitude;
-              bezl.vars.currentLng = position.coords.longitude;
-            });
-        }
+define(function () {
+    function OnStartup(bezl) {
+        bezl.vars.startDate = "";
+        bezl.vars.endDate = "";
+        bezl.vars.sort = "";
+        bezl.vars.sortCol = "";
     }
-  
-  return {
+     return {
     onStartup: OnStartup
   }
 });

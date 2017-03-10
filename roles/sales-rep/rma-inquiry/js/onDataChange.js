@@ -1,122 +1,75 @@
 define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.Accounts) {
-            bezl.vars.loading = false;
+        if (bezl.data.RMAs) {
+            
+            bezl.vars.RMAs = new Array();
 
-            // If there was a previously selected account in localStorage, grab a reference
+            // If there was a previously selected RMA in localStorage, grab a reference
             // so we can know whether to mark them as selected
-            bezl.vars.selectedAccount = {};
-            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
-                bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+            bezl.vars.selectedRMA = {};
+            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedRMA")) {
+                bezl.vars.selectedRMA = JSON.parse(localStorage.getItem("selectedRMA"));
             }
 
-            // Perform additional processing on the returned data
-            for (var i = 0; i < bezl.data.Accounts.length; i++) {
-                // Add a Selected property to the account record
-                if (bezl.data.Accounts[i].ID == bezl.vars.selectedAccount.ID) {
-                    bezl.data.Accounts[i].Selected = true;
+            var tempRMA = {};
+            var tempLine = {};
+            
+            // Organize new object
+            for(var i = 0; i < bezl.data.RMAs.length; i++) {
+
+                 //clear temps
+                tempRMA = {};
+                tempLine = {};
+
+                // If RMA num already exist in new object, move RMA lines over
+                if (bezl.vars.RMAs.find(rma => rma.RMANum == bezl.data.RMAs[i].RMANum)) {
+                    // Line
+                    tempLine.RMALine = bezl.data.RMAs[i].RMALine;
+                    tempLine.PartNum = bezl.data.RMAs[i].PartNum;
+                    tempLine.PartDescription = bezl.data.RMAs[i].PartDescription;
+                    tempLine.Qty = bezl.data.RMAs[i].Qty;
+                    tempLine.UnitPrice = bezl.data.RMAs[i].UnitPrice;
+                    tempLine.ExtPrice = bezl.data.RMAs[i].ExtPrice;
+                    // Push line into RMA
+                    bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum == bezl.data.RMAs[i].RMANum)].RMALines.push(tempLine);
                 } else {
-                    bezl.data.Accounts[i].Selected = false;
-                }
-                
 
-                // Create an AddressURL column with an encoded version of each Address
-                // so that it can be part of a Google Maps AddressURL
-                bezl.data.Accounts[i].AddressURL = encodeURI(bezl.data.Accounts[i].Address);
+                    // RMA
+                    tempRMA.RMANum = bezl.data.RMAs[i].RMANum;
+                    tempRMA.RMADate = bezl.data.RMAs[i].RMADate;
+                    tempRMA.RMAAmt = bezl.data.RMAs[i].RMAAmt;
+                    tempRMA.RMABal = bezl.data.RMAs[i].RMABal;
+                    tempRMA.OrderDate = bezl.data.RMAs[i].OrderDate;
+                    tempRMA.PoNum = bezl.data.RMAs[i].PoNum;
 
-                // Determine the distance from the current location, if applicable
-                if (bezl.data.Accounts[i].Geocode_Location) {
-                    bezl.data.Accounts[i].Distance = CalcDistance(bezl.vars.currentLat
-                                                                , bezl.vars.currentLng
-                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
-                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
-                }
-
-                // Set up any of the properties we wish to consolidate additional
-                // data into from subsequent queries
-                bezl.data.Accounts[i].Contacts = [];
-                bezl.data.Accounts[i].CRMCalls = [];
-                bezl.data.Accounts[i].Tasks = [];
-                bezl.data.Accounts[i].Attachments = [];
-                
-            };
-        }
-
-        // If we got the account contacts back, merge those in
-        if (bezl.data.Accounts && bezl.data.AccountContacts) {
-            for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
+                    // Add a Selected property to the account record
+                    if (bezl.data.RMAs[i].RMANum == bezl.vars.selectedRMA.RMANum) {
+                        tempRMA.Selected = true;
+                    } else {
+                        tempRMA.Selected = false;
                     }
+
+                    // Line
+                    tempLine.RMALine = bezl.data.RMAs[i].RMALine;
+                    tempLine.PartNum = bezl.data.RMAs[i].PartNum;
+                    tempLine.PartDescription = bezl.data.RMAs[i].PartDescription;
+                    tempLine.Qty = bezl.data.RMAs[i].Qty;
+                    tempLine.UnitPrice = bezl.data.RMAs[i].UnitPrice;
+                    tempLine.ExtPrice = bezl.data.RMAs[i].ExtPrice;
+                    // Push line into RMA
+                    tempRMA.RMALines = new Array();
+                    tempRMA.RMALines.push(tempLine); 
+
+                    // Push RMA into final data var
+                    bezl.vars.RMAs.push(tempRMA); 
                 }
             }
-
-            bezl.vars.loadingContacts = false;
-        }
-
-        // If we got the account calls back, merge those in
-        if (bezl.data.CRMCalls) {
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                        if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
-                        }
-                    }
-                }
-
-                bezl.vars.loadingCalls = false;
-            }
-        }
-
-        // If we got the account tasks back, merge those in
-        if (bezl.data.Tasks) {
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Tasks.length; i++) {
-                        if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
-                        }
-                    }
-                }
-
-                bezl.vars.loadingTasks = false;
-            }
-        }
-
-        // If we got the account tasks back, merge those in
-        if (bezl.data.Attachments) {
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Attachments.length; i++) {
-                        if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
-                        }
-                    }
-                }
-
-                bezl.vars.loadingAttachments = false;
-            }
-        }
+            bezl.vars.loading = false;
     }
+}
 
-    function CalcDistance(lat1, lon1, lat2, lon2, unit) {
-        var radlat1 = Math.PI * lat1/180
-        var radlat2 = Math.PI * lat2/180
-        var theta = lon1-lon2
-        var radtheta = Math.PI * theta/180
-        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-        dist = Math.acos(dist)
-        dist = dist * 180/Math.PI
-        dist = dist * 60 * 1.1515
-        if (unit=="K") { dist = dist * 1.609344 }
-        if (unit=="N") { dist = dist * 0.8684 }
-        return Math.round(dist)
-    }
-  
-    return {
+return {
         onDataChange: OnDataChange
     }
 });
