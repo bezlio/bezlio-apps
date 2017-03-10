@@ -22,7 +22,7 @@ define(function () {
 
     function Select(bezl, Order) {
         // Mark the selected customer as selected
-        for (var i = 0; i < bezl.vars.Order.length; i++) {
+        for (var i = 0; i < bezl.vars.Orders.length; i++) {
             if (bezl.vars.Orders[i].OrderNum == Order.OrderNum) {
                 bezl.vars.Orders[i].Selected = !bezl.vars.Orders[i].Selected;
 

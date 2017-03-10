@@ -33,10 +33,11 @@ define(function () {
                     tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice;
                     tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty;
                     // Push line into order
-                    bezl.vars.Orders[bezl.vars.Orders.findIndex(inv => inv.OrderNum == bezl.data.Orders[i].OrderNum)].OrderLines.push(tempLine);
+                    bezl.vars.Orders[bezl.vars.Orders.findIndex(ord => ord.OrderNum == bezl.data.Orders[i].OrderNum)].OrderLines.push(tempLine);
                 } else {
 
                     // Order
+                    tempOrder.OrderNum = bezl.data.Orders.OrderNum;
                     tempOrder.PoNum = bezl.data.Orders[i].PoNum;
                     tempOrder.OrderDate = bezl.data.Orders[i].OrderDate;
                     tempOrder.OrderAmt = bezl.data.Orders[i].OrderAmt;
