@@ -44,7 +44,7 @@ define(function () {
                     // RMA
                     tempRMA.RMANum = bezl.data.RMAs[i].RMANum || "";
                     tempRMA.RMADate = bezl.data.RMAs[i].RMADate || "";
-                    tempRMA.CustName = bezl.data.RMAs[i].CustNamev || "";
+                    tempRMA.CustName = bezl.data.RMAs[i].CustName || "";
                     tempRMA.ContactName = bezl.data.RMAs[i].ContactName || "";
 
                     // Add a Selected property to the account record
