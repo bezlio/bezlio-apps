@@ -8,6 +8,9 @@ define(["./map.js"], function (map) {
                                                                         bezl.vars.markers[custNum].data.Contacts));
 
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
+            var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
+            bezl.vars.map.panTo(center);
+
             bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
         } else {
             // If there is not a marker for the given address, geocode it now
