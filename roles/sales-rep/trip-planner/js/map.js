@@ -143,6 +143,21 @@ define(["./customer.js"], function (customer) {
         });
     }
 
+    function OpenMap (bezl) {
+        // Open the navigation in a new tab
+        var url = 'http://maps.google.com?saddr=';
+        url += bezl.vars.currentAddress;
+        url += '&daddr=';
+        for (var i=0; i < bezl.vars.selectedCustomers.length; i++) {
+            if (i == 0) {
+            url += bezl.vars.selectedCustomers[i].address; 
+            } else {
+            url += '+to:' + bezl.vars.selectedCustomers[i].address;
+            }
+        }
+        window.open(url, "_blank");
+    }
+
     function UpdateAddress(bezl) {
         try 
         {
@@ -183,6 +198,7 @@ define(["./customer.js"], function (customer) {
         geocodeAddress: GeocodeAddress,
         getInfoWindowContent: GetInfoWindowContent,
         navigate: Navigate,
+        openMap: OpenMap,
         updateAddress: UpdateAddress
     }
 });

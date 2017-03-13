@@ -5,6 +5,16 @@ define(["./map.js"], function (map) {
         bezl.vars.selectedCustomers.push({key: customer.key, display: customer.display, address: customer.streetAddress});
     }
 
+    function Move (bezl, index, direction) {
+        // Direction positive moves it up, negative moves it down
+        // First get a copy of which one we are moving
+        var copy = bezl.vars.selectedCustomers.slice(index, index+1);
+        // Now remove it from the array
+        bezl.vars.selectedCustomers.splice(index, 1);
+        // Now we splice it back in
+        bezl.vars.selectedCustomers.splice(index + direction, 0, copy[0]);
+    }
+
     function Select (bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
             // Locate this customer and navigate to them on the map
