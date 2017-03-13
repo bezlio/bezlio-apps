@@ -37,14 +37,17 @@ define(function () {
                     tempOrder.ReturnQty = bezl.data.RMAs[i].ReturnQty;
                     tempOrder.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
 
-                    // Line
-                    tempLine.RMALine = bezl.data.RMAs[i].RMALine;
+                   // Line
+                    //tempLine.RMALine = bezl.data.RMAs[i].RMALine;
+
+                    var indexRMA = bezl.vars.RMAs.findIndex(inv => inv.RMANum == bezl.data.RMAs[i].RMANum);
+                    var indexOrder = bezl.vars.RMAs.findIndex(rma => rma.RMANum.OrderNum == bezl.data.RMAs[i].RMANum.OrderNum);
 
                      // Push order into Line
-                    bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum.OrderNum == bezl.data.RMAs[i].RMANum.OrderNum)].LineOrders.push(tempOrder);
-
+                    bezl.vars.RMAs[indexRMA].RMALines[indexOrder].LineOrders.push(tempOrder);
+                    
                     // Push line into RMA
-                    bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum == bezl.data.RMAs[i].RMANum)].RMALines.push(tempLine);
+                    //bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum == bezl.data.RMAs[i].RMANum)].RMALines.push(tempLine);
                    }
                 } else {
 
