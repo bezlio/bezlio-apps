@@ -6,12 +6,11 @@ define(function () {
             case "PriceList":
                 bezl.vars.loading = true; 
 
-
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('PriceList','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "CustomerPriceList",
                     "Parameters": [
-                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.CustID}
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID}
                     ] },0);
                 break;
             default:
