@@ -120,6 +120,7 @@ define(["./map.js"], function (map) {
   
     return {
         add: Add,
+        move: Move,
         select: Select,
         sort: Sort,
         remove: Remove,
