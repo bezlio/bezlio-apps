@@ -23,6 +23,6 @@ FROM Erp.RMAHead with (nolock)
 	LEFT OUTER JOIN Erp.Reason with(nolock) ON Erp.RMADtl.Company = Erp.Reason.Company AND Erp.RMADtl.ReturnReasonCode = Erp.Reason.ReasonCode
 WHERE 
 	Erp.RMAHead.RMADate >= '{StartDate}' AND Erp.RMAHead.RMADate <= '{EndDate}' AND
-	Erp.RMAHead.Company =  CASE WHEN '{Company}' <> 'ALL' THEN '{Company}' ELSE Erp.RMAHead.Company END
+	Erp.RMAHead.Company =  CASE WHEN 'ALL' <> 'ALL' THEN 'ALL' ELSE Erp.RMAHead.Company END
 ORDER BY 
 	Erp.RMAHead.RMADate Desc
