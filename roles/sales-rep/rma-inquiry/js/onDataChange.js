@@ -26,15 +26,15 @@ define(function () {
                 if (bezl.vars.RMAs.find(rma => rma.RMANum == bezl.data.RMAs[i].RMANum)) {
       
                     // Line
-                    tempLine.OrderNum = bezl.data.RMAs[i].OrderNum;
-                    tempLine.OrderLine = bezl.data.RMAs[i].OrderLine;
-                    tempLine.OrderRelNum = bezl.data.RMAs[i].OrderRelNum;
-                    tempLine.PartNum = bezl.data.RMAs[i].PartNum;
-                    tempLine.RevNum = bezl.data.RMAs[i].RevNum;
-                    tempLine.LineDesc = bezl.data.RMAs[i].LineDesc;
-                    tempLine.ReturnQty = bezl.data.RMAs[i].ReturnQty;
-                    tempLine.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
-                    tempLine.RMALine = bezl.data.RMAs[i].RMALine;
+                    tempLine.OrderNum = bezl.data.RMAs[i].OrderNum || "";
+                    tempLine.OrderLine = bezl.data.RMAs[i].OrderLine || "";
+                    tempLine.OrderRelNum = bezl.data.RMAs[i].OrderRelNum || "";
+                    tempLine.PartNum = bezl.data.RMAs[i].PartNum || "";
+                    tempLine.RevNum = bezl.data.RMAs[i].RevNum || "";
+                    tempLine.LineDesc = bezl.data.RMAs[i].LineDesc || "";
+                    tempLine.ReturnQty = bezl.data.RMAs[i].ReturnQty || "";
+                    tempLine.ReasonDesc = bezl.data.RMAs[i].ReasonDesc || "";
+                    tempLine.RMALine = bezl.data.RMAs[i].RMALine || "";
 
                     // Push line into RMA
                     bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum == bezl.data.RMAs[i].RMANum)].RMALines.push(tempLine);
@@ -42,10 +42,10 @@ define(function () {
                 } else {
 
                     // RMA
-                    tempRMA.RMANum = bezl.data.RMAs[i].RMANum;
-                    tempRMA.RMADate = bezl.data.RMAs[i].RMADate;
-                    tempRMA.CustName = bezl.data.RMAs[i].CustName;
-                    tempRMA.ContactName = bezl.data.RMAs[i].ContactName;
+                    tempRMA.RMANum = bezl.data.RMAs[i].RMANum || "";
+                    tempRMA.RMADate = bezl.data.RMAs[i].RMADate || "";
+                    tempRMA.CustName = bezl.data.RMAs[i].CustNamev || "";
+                    tempRMA.ContactName = bezl.data.RMAs[i].ContactName || "";
 
                     // Add a Selected property to the account record
                     if (bezl.data.RMAs[i].RMANum == bezl.vars.selectedRMA.RMANum) {
@@ -55,15 +55,15 @@ define(function () {
                     }
 
                     // Line
-                    tempLine.OrderNum = bezl.data.RMAs[i].OrderNum;
-                    tempLine.OrderLine = bezl.data.RMAs[i].OrderLine;
-                    tempLine.OrderRelNum = bezl.data.RMAs[i].OrderRelNum;
-                    tempLine.PartNum = bezl.data.RMAs[i].PartNum;
-                    tempLine.RevNum = bezl.data.RMAs[i].RevNum;
-                    tempLine.LineDesc = bezl.data.RMAs[i].LineDesc;
-                    tempLine.ReturnQty = bezl.data.RMAs[i].ReturnQty;
-                    tempLine.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
-                    tempLine.RMALine = bezl.data.RMAs[i].RMALine;
+                    tempLine.OrderNum = bezl.data.RMAs[i].OrderNum || "";
+                    tempLine.OrderLine = bezl.data.RMAs[i].OrderLine || "";
+                    tempLine.OrderRelNum = bezl.data.RMAs[i].OrderRelNum || "";
+                    tempLine.PartNum = bezl.data.RMAs[i].PartNum || "";
+                    tempLine.RevNum = bezl.data.RMAs[i].RevNum || "";
+                    tempLine.LineDesc = bezl.data.RMAs[i].LineDesc || "";
+                    tempLine.ReturnQty = bezl.data.RMAs[i].ReturnQty || "";
+                    tempLine.ReasonDesc = bezl.data.RMAs[i].ReasonDesc || "";
+                    tempLine.RMALine = bezl.data.RMAs[i].RMALine || "";
 
                     // Push line into RMA
                     tempRMA.RMALines = new Array();

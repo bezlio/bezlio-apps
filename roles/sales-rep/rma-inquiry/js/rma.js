@@ -58,7 +58,7 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if (sortColumn == "RMANum" || sortColumn == "PoNum" || sortColumn == "RMAAmt" || sortColumn == "RMABal") {
+        if (sortColumn == "RMANum") {
             if (bezl.vars.sort == "asc") {
                 bezl.vars.RMAs.sort(function (a, b) {
                     var A = a[sortColumn];
@@ -72,7 +72,7 @@ define(function () {
                     return B - A;
                 });
             }
-        } else if (sortColumn == "RMADate" || sortColumn == "OrderDate") {
+        } else if (sortColumn == "RMADate") {
             if (bezl.vars.sort == "asc") {
                 bezl.vars.RMAs.sort(function (a, b) {
                     var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
