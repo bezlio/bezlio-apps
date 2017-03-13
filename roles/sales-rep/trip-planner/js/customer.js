@@ -1,5 +1,10 @@
 define(["./map.js"], function (map) {
  
+    function Add (bezl, customer) {
+        // Add the selected customer to the list
+        bezl.vars.selectedCustomers.push({key: customer.key, display: customer.display, address: customer.streetAddress});
+    }
+
     function Select (bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
             // Locate this customer and navigate to them on the map
@@ -20,22 +25,6 @@ define(["./map.js"], function (map) {
                     break;
                 }
             };
-        }
-    }
-
-    function RunQuery (bezl, queryName) {
-
-        switch (queryName) {
-            case "CustList":
-                // Pull in the customer list for the logged in user
-                bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "/trip-planner/GetCustomersWithAddress",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            default:
-                break;
         }
     }
 
@@ -98,10 +87,32 @@ define(["./map.js"], function (map) {
         }
     }
 
+    function Remove (bezl, index) {
+        // Remove the selected customer
+        bezl.vars.selectedCustomers.splice(index, 1);
+    }
+
+    function RunQuery (bezl, queryName) {
+
+        switch (queryName) {
+            case "CustList":
+                // Pull in the customer list for the logged in user
+                bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "/trip-planner/GetCustomersWithAddress",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
+                break;
+            default:
+                break;
+        }
+    }
   
     return {
+        add: Add,
         select: Select,
         sort: Sort,
+        remove: Remove,
         runQuery: RunQuery
     }
 });
