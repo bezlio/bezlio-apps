@@ -21,21 +21,31 @@ define(function () {
                  //clear temps
                 tempRMA = {};
                 tempLine = {};
+                tempOrder = {};
 
                 // If RMA num already exist in new object, move RMA lines over
                 if (bezl.vars.RMAs.find(rma => rma.RMANum == bezl.data.RMAs[i].RMANum)) {
+                    
+                   if (bezl.vars.RMAs.find(rma => rma.RMANum.OrderNum == bezl.data.RMAs[i].RMANum.OrderNum)) {
+                    // order
+                    tempOrder.OrderNum = bezl.data.RMAs[i].OrderNum;
+                    tempOrder.OrderLine = bezl.data.RMAs[i].OrderLine;
+                    tempOrder.OrderRelNum = bezl.data.RMAs[i].OrderRelNum;
+                    tempOrder.PartNum = bezl.data.RMAs[i].PartNum;
+                    tempOrder.RevNum = bezl.data.RMAs[i].RevNum;
+                    tempOrder.LineDesc = bezl.data.RMAs[i].LineDesc;
+                    tempOrder.ReturnQty = bezl.data.RMAs[i].ReturnQty;
+                    tempOrder.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
+
                     // Line
                     tempLine.RMALine = bezl.data.RMAs[i].RMALine;
-                    tempLine.OrderNum = bezl.data.RMAs[i].OrderNum;
-                    tempLine.OrderLine = bezl.data.RMAs[i].OrderLine;
-                    tempLine.OrderRelNum = bezl.data.RMAs[i].OrderRelNum;
-                    tempLine.PartNum = bezl.data.RMAs[i].PartNum;
-                    tempLine.RevNum = bezl.data.RMAs[i].RevNum;
-                    tempLine.LineDesc = bezl.data.RMAs[i].LineDesc;
-                    tempLine.ReturnQty = bezl.data.RMAs[i].ReturnQty;
-                    tempLine.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
+
+                     // Push order into Line
+                    bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum.OrderNum == bezl.data.RMAs[i].RMANum.OrderNum)].LineOrders.push(tempOrder);
+
                     // Push line into RMA
                     bezl.vars.RMAs[bezl.vars.RMAs.findIndex(inv => inv.RMANum == bezl.data.RMAs[i].RMANum)].RMALines.push(tempLine);
+                   }
                 } else {
 
                     // RMA
@@ -51,16 +61,23 @@ define(function () {
                         tempRMA.Selected = false;
                     }
 
+                    // order
+                    tempOrder.OrderNum = bezl.data.RMAs[i].OrderNum;
+                    tempOrder.OrderLine = bezl.data.RMAs[i].OrderLine;
+                    tempOrder.OrderRelNum = bezl.data.RMAs[i].OrderRelNum;
+                    tempOrder.PartNum = bezl.data.RMAs[i].PartNum;
+                    tempOrder.RevNum = bezl.data.RMAs[i].RevNum;
+                    tempOrder.LineDesc = bezl.data.RMAs[i].LineDesc;
+                    tempOrder.ReturnQty = bezl.data.RMAs[i].ReturnQty;
+                    tempOrder.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
+
                     // Line
                     tempLine.RMALine = bezl.data.RMAs[i].RMALine;
-                    tempLine.OrderNum = bezl.data.RMAs[i].OrderNum;
-                    tempLine.OrderLine = bezl.data.RMAs[i].OrderLine;
-                    tempLine.OrderRelNum = bezl.data.RMAs[i].OrderRelNum;
-                    tempLine.PartNum = bezl.data.RMAs[i].PartNum;
-                    tempLine.RevNum = bezl.data.RMAs[i].RevNum;
-                    tempLine.LineDesc = bezl.data.RMAs[i].LineDesc;
-                    tempLine.ReturnQty = bezl.data.RMAs[i].ReturnQty;
-                    tempLine.ReasonDesc = bezl.data.RMAs[i].ReasonDesc;
+
+                    // Push Order into line
+                    tempLine.LineOrders = new Array();
+                    tempLine.LineOrders.push(tempOrder);
+
                     // Push line into RMA
                     tempRMA.RMALines = new Array();
                     tempRMA.RMALines.push(tempLine); 
