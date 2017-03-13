@@ -6,7 +6,7 @@ define(["./map.js"], function (map) {
     }
 
     function Move (bezl, index, direction) {
-        // Direction positive moves it up, negative moves it down
+        // Direction positive moves it down, negative moves it up (does it go before or after)
         // First get a copy of which one we are moving
         var copy = bezl.vars.selectedCustomers.slice(index, index+1);
         // Now remove it from the array
