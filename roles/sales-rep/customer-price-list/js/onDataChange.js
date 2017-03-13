@@ -25,8 +25,8 @@ define(function () {
                 // If invoice num already exist in new object, move invoice lines over
                 if (bezl.vars.PriceList.find(invoice => invoice.PartNum == bezl.data.PriceList[i].PartNum)) {
                     // Line
-                    tempLine.PriceBreakUnitPrice = bezl.data.PriceList[i].PriceBreakUnitPrice || "";
-                    tempLine.Quantity = bezl.data.PriceList[i].Quantity || "0";
+                    tempLine.PriceBreakUnitPrice = bezl.data.PriceList[i].PriceBreakUnitPrice;
+                    tempLine.Quantity = bezl.data.PriceList[i].Quantity;
                     // Push line into invoice
                     bezl.vars.PriceList[bezl.vars.PriceList.findIndex(inv => inv.PartNum == bezl.data.PriceList[i].PartNum)].PartLines.push(tempLine);
                 } else {
@@ -34,8 +34,7 @@ define(function () {
                     // Part
                     tempPart.PartNum = bezl.data.PriceList[i].PartNum || "";
                     tempPart.PartDescription = bezl.data.PriceList[i].PartDescription || "";
-                    tempPart.StartDate = bezl.data.PriceList[i].StartDate || "";
-                    tempPart.EndDateEndDate = bezl.data.PriceList[i].PartBal || "";
+                    tempPart.EffectiveDate = bezl.data.PriceList[i].StartDate + " - " + bezl.data.PriceList[i].EndDate;
                     tempPart.BasePrice = bezl.data.PriceList[i].BasePrice || "";
 
                     // Add a Selected property to the account record
@@ -46,8 +45,8 @@ define(function () {
                     }
 
                     // Line
-                    tempLine.PriceBreakUnitPrice = bezl.data.PriceList[i].PriceBreakUnitPrice || "0";
-                    tempLine.Quantity = bezl.data.PriceList[i].Quantity || "0";
+                    tempLine.PriceBreakUnitPrice = bezl.data.PriceList[i].PriceBreakUnitPrice;
+                    tempLine.Quantity = bezl.data.PriceList[i].Quantity;
                     // Push line into invoice
                     tempPart.PartLines = new Array();
                     tempPart.PartLines.push(tempLine); 
