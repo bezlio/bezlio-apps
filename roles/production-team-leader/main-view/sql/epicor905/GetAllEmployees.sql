@@ -13,5 +13,5 @@ FROM
 	AND lh.EmployeeNum = emp.EmpID
 	AND lh.ActiveTrans = 1
 WHERE
-	emp.EmpStatus = 'X'
+	emp.EmpStatus = 'A'
 	AND emp.Company = 'EPIC06'
