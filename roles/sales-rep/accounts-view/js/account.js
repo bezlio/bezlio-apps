@@ -175,11 +175,20 @@ define(function () {
             };
         }
     }
+
+    function ClickAddress(bezl, account) {
+        window.open('http://maps.google.com/maps?q=' + account.AddressURL,'_blank');
+
+        bezl.vars.selectedAccount.CRMShortSummary = "Customer Visit";
+        //bezl.vars.selectedAccount.CRMDetails = "";
+        //bezl.vars.selectedAccount.CRMType = "";
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
-        applyFilter: ApplyFilter
+        applyFilter: ApplyFilter,
+        clickAddress: ClickAddress
     }
 });
