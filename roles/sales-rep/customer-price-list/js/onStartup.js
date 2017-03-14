@@ -5,6 +5,7 @@ define(["./priceList.js"],function (priceList) {
         bezl.vars.CustID = "";
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
+        bezl.vars.filter = "";
 
         // If there was a previously selected customer in localStorage, grab a reference
             // so we can know whether to mark them as selected
