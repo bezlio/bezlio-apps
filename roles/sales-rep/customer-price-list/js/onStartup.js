@@ -7,10 +7,6 @@ define(["./priceList.js"],function (priceList) {
         bezl.vars.sortCol = "";
         bezl.vars.filter = "";
 
-        $("input").keyup( function(){
-            priceList.filter();
-        });
-
         // If there was a previously selected customer in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedAccount  = {};
