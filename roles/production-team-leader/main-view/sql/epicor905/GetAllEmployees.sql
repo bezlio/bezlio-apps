@@ -14,4 +14,4 @@ FROM
 	AND lh.ActiveTrans = 1
 WHERE
 	emp.EmpStatus = 'A'
-	AND emp.Company = 'EPIC06'
+	--AND emp.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

@@ -12,7 +12,7 @@ FROM
 	AND jh.JobNum = op.JobNum
 WHERE
 	op.OpComplete = 0
-	AND op.Company = 'EPIC06'
+	--AND op.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 	AND jh.JobClosed = 0
 	AND jh.JobComplete = 0
 	AND jh.JobReleased = 1

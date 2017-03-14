@@ -20,4 +20,4 @@ WHERE
 	And emp.Shift = sup.Shift -- Comment this line out if you want to see team members across shifts
 	And emp.JCDept = sup.JCDept -- Comment this line out if you want to see team members across departments
 	AND emp.EmpStatus = 'A'
-	--AND emp.Company = 'EPIC06'
+	--AND emp.Company = 'YourCompanyID' -- Set this to a specific company ID if you have more than one

@@ -17,5 +17,5 @@ FROM
 	AND sr.SalesRepCode = c.SalesRepCode
 WHERE
 	c.ZIP <> ''
-	--AND sr.EMailAddress = '{EmailAddress}'
-	--AND c.Company = 'EPIC06'
+	AND sr.EMailAddress = '{EmailAddress}'
+	--AND c.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

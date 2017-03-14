@@ -35,7 +35,7 @@ FROM
 	AND tm.TermsCode = c.TermsCode
 WHERE
 	c.ZIP <> ''
-	--AND sr.EMailAddress = '{EmailAddress}'
-	AND c.Company = 'EPIC06'
+	AND sr.EMailAddress = '{EmailAddress}'
+	--AND c.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 ORDER BY
 	c.Name asc
