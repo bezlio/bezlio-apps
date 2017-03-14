@@ -42,6 +42,11 @@ define(function () {
 
                 // Make all records visible to start off with
                 bezl.data.Accounts[i].show = true;
+
+                // Date pipe has rounding issue, truncate at "T" to get correct Date
+                if(bezl.data.Accounts[i].LastContact) {
+                    bezl.data.Accounts[i].LastContact = bezl.data.Accounts[i].LastContact.split("T")[0];
+                }
             };
         }
 
