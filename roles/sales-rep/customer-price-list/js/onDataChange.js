@@ -36,7 +36,7 @@ define(function () {
                     tempPart.PartDescription = bezl.data.PriceList[i].PartDescription || "";
                     tempPart.StartDate = bezl.data.PriceList[i].StartDate || "";
                     tempPart.EndDate = bezl.data.PriceList[i].EndDate || "";
-                    tempPart.BasePrice = bezl.data.PriceList[i].BasePrice || "";
+                    tempPart.BasePrice = bezl.data.PriceList[i].BasePrice;
 
                     // Add a Selected property to the account record
                     if (bezl.data.PriceList[i].PartNum == bezl.vars.selectedPart.PartNum) {
