@@ -20,7 +20,7 @@ FROM
 WHERE
 	fa.RelatedToSchemaName = 'Erp'
 	AND fa.RelatedToFile = 'Customer'
-	--AND fa.Company = 'YourCompanyID'
+	--AND fa.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 	AND sr.EmailAddress = '{EmailAddress}'
 ORDER BY
 	f.XFileName

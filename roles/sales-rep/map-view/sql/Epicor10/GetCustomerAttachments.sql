@@ -12,6 +12,6 @@ WHERE
 	fa.RelatedToSchemaName = 'Erp'
 	AND fa.RelatedToFile = 'Customer'
 	AND fa.Key1 = {CustNum}
-	--AND fa.Company = 'EPIC06'
+	--AND fa.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 ORDER BY
 	f.XFileName

@@ -4,4 +4,4 @@ SELECT
 FROM
     Erp.TaskType t
 --WHERE
---    t.Company = 'YourCompanyID'
+--    t.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

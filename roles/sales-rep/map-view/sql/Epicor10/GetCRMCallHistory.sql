@@ -17,7 +17,7 @@ FROM
 	AND ct.CallTypeCode = cl.CallTypeCode
 WHERE 
 	cl.CallCustNum = {CustNum}
-	--and cl.Company = 'EPIC06' 
+	--and cl.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 ORDER BY
 	cl.LastDate desc
 	, cl.LastTime desc

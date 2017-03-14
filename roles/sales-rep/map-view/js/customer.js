@@ -2,27 +2,24 @@ define(["./map.js"], function (map) {
  
     function Select (bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
-        // Locate this customer and navigate to them on the map
-        bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
-                                                                    bezl.vars.markers[custNum].data.Address,
-                                                                    bezl.vars.markers[custNum].data.Contacts));
+            // Locate this customer and navigate to them on the map
+            bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
+                                                                        bezl.vars.markers[custNum].data.Address,
+                                                                        bezl.vars.markers[custNum].data.Contacts));
 
-        bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
-        bezl.vars.selectedCustomer.EstDate = (bezl.vars.selectedCustomer.EstDate || 'T').split('T')[0];
-        bezl.vars.selectedCustomer.LastContact = (bezl.vars.selectedCustomer.LastContact || 'T').split('T')[0];
-        bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
+            bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
+            var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
+            bezl.vars.map.panTo(center);
 
-        $('html, body').animate({
-                scrollTop: $("#map").offset().top
-            }, 2000);
+            bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
         } else {
-        // If there is not a marker for the given address, geocode it now
-        for (var i = 0; i < bezl.vars.customers.length; i++) {
-            if (bezl.vars.customers[i].custNum == custNum) {
-                map.geocodeAddress(bezl, bezl.vars.customers[i]); 
-                break;
-            }
-        };
+            // If there is not a marker for the given address, geocode it now
+            for (var i = 0; i < bezl.vars.customers.length; i++) {
+                if (bezl.vars.customers[i].custNum == custNum) {
+                    map.geocodeAddress(bezl, bezl.vars.customers[i]); 
+                    break;
+                }
+            };
         }
     }
 

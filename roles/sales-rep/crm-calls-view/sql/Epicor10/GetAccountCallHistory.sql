@@ -21,7 +21,7 @@ FROM
 	AND cust.CustNum = cl.CallCustNum
 WHERE 
 	cust.CustID = '{ID}'
-	--and cl.Company = 'EPIC06' 
+	--and cl.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 ORDER BY
 	cl.LastDate desc
 	, cl.LastTime desc
