@@ -17,7 +17,7 @@ FROM
 WHERE
 	(emp.SupervisorID = sup.EmpID
 	 Or emp.EMailAddress = sup.EMailAddress)
-	And emp.Shift = sup.Shift
-	And emp.JCDept = sup.JCDept
+	And emp.Shift = sup.Shift -- Comment this line out if you want to see team members across shifts
+	And emp.JCDept = sup.JCDept -- Comment this line out if you want to see team members across departments
 	AND emp.EmpStatus = 'A'
-	AND emp.Company = 'EPIC06'
+	--AND emp.Company = 'EPIC06'
