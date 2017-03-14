@@ -10,7 +10,7 @@ define(function () {
                 bezl.dataService.add('PriceList','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "CustomerPriceList",
                     "Parameters": [
-                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID}
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
                     ] },0);
                 break;
             default:
