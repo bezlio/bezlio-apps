@@ -33,7 +33,7 @@ The IT administration will need to configure the plugin instances expected by th
 
 Name: salesrep-queries
 Description: Queries in support of the Sales Rep role
-Plugin: ODBC or SQLServer (dependiong on backend database)
+Plugin: ODBC or SQLServer (depending on backend database)
 Method: ExecuteQuery
 Context: SalesRep
 Connection / DSN: SalesRep
@@ -41,9 +41,9 @@ QueryName: <leave blank>
 Authorized Connections: Check all connections for sales reps you authorize
 
 * The value for Context here refers to where you will be placing the .SQL files and needs to be defined within your plugin .config file.  See https://github.com/bezlio/bezlio-plugins for documentation.
-* The value for Connection / DSN refers to a conenction defined within your associated plugin config file.  If this is using the ODBC plugin, you will also need to configure a 32-bit ODBC driver.    See https://github.com/bezlio/bezlio-plugins for documentation.
+* The value for Connection / DSN refers to a connection defined within your associated plugin config file.  If this is using the ODBC plugin, you will also need to configure a 32-bit ODBC driver.    See https://github.com/bezlio/bezlio-plugins for documentation.
 
-Also download all of the .SQL files from the appropriate subfolders and place them into the folder referrered to by 'Context'.  The locations of these .SQL files are:
+Also download all of the .SQL files from the appropriate subfolders and place them into the folder referred to by 'Context'.  The locations of these .SQL files are:
 * https://github.com/bezlio/bezlio-apps/tree/master/roles/sales-rep/main-view/sql
 
 ### If using the Epicor 10 integration also add these:
@@ -57,7 +57,7 @@ BOName: CRMCall
 BOMethodName: UpdateExt
 Authorized Connections: Check all connections for sales reps you authorize
 
-* The value for Connection refers to a conenction defined within your associated plugin config file.  See https://github.com/bezlio/bezlio-plugins for documentation.
+* The value for Connection refers to a connection defined within your associated plugin config file.  See https://github.com/bezlio/bezlio-plugins for documentation.
 
 Name: salesrep-updateTasks
 Description: Update tasks in Epicor in support of sales rep role
