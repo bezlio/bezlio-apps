@@ -24,7 +24,7 @@ define(function () {
         // query, detect the CRM platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.3/libraries/epicor/crm.js'], function(functions) {
+            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.5/libraries/epicor/crm.js'], function(functions) {
                 functions.addNote(bezl
                                 , bezl.vars.selectedAccount.Company
                                 , bezl.vars.selectedAccount.CustNum

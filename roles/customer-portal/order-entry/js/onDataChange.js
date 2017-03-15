@@ -1,46 +1,39 @@
 define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.Accounts) {
-            // If there was a previously selected account in localStorage, grab a reference
-            // so we can know whether to mark them as selected
-            bezl.vars.selectedAccount = {};
-            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
-                bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
-            }
-
+        if (bezl.data.Customers) {
             // Perform additional processing on the returned data
-            for (var i = 0; i < bezl.data.Accounts.length; i++) {
+            for (var i = 0; i < bezl.data.Customers.length; i++) {
                 // Add a Selected property to the account record
-                if (bezl.data.Accounts[i].ID == bezl.vars.selectedAccount.ID) {
-                    bezl.data.Accounts[i].Selected = true;
+                if (bezl.data.Customers[i].ID == bezl.vars.selectedCustomer.ID) {
+                    bezl.data.Customers[i].Selected = true;
                 } else {
-                    bezl.data.Accounts[i].Selected = false;
+                    bezl.data.Customers[i].Selected = false;
                 }
 
                 // This will get filled in on the AccountContacts query
-                bezl.data.Accounts[i].Contacts = [];
-                bezl.data.Accounts[i].ShipTos = [];
+                bezl.data.Customers[i].Contacts = [];
+                bezl.data.Customers[i].ShipTos = [];
 
                 // Same thing with the recent CRM calls
-                bezl.data.Accounts[i].CRMCalls = [];
+                bezl.data.Customers[i].CRMCalls = [];
             };
 
             bezl.vars.loading = false;
         }
 
         // If we got the account contacts back, merge those in
-        if (bezl.data.Accounts && bezl.data.AccountContacts) {
-            bezl.data.AccountContacts.forEach(ac => {
-                bezl.data.Accounts.find(a => a.ID == ac.ID).Contacts.push(ac);
+        if (bezl.data.Customers && bezl.data.CustomersContacts) {
+            bezl.data.CustomersContacts.forEach(ac => {
+                bezl.data.Customers.find(a => a.ID == ac.ID).Contacts.push(ac);
             });
             bezl.vars.loadingContacts = false;
         }
 
         // If we got the account ship tos back, merge those in
-        if (bezl.data.Accounts && bezl.data.AccountShipTos) {
-            bezl.data.AccountShipTos.forEach(st => {
-                var acct = bezl.data.Accounts.find(a => a.ID == st.ID);
+        if (bezl.data.Customers && bezl.data.CustomersShipTos) {
+            bezl.data.CustomersShipTos.forEach(st => {
+                var acct = bezl.data.Customers.find(a => a.ID == st.ID);
                 if (acct != undefined) {
                     acct.ShipTos.push(st);
                 }              
@@ -49,14 +42,32 @@ define(function () {
         }
 
         if (bezl.data.GetPartsByCustNum) {
-            bezl.vars.parts = bezl.data.GetPartsByCustNum;
+            console.log(bezl.vars.parts);
+            // We need to replace parts with customer parts if they are present because price list trumps web parts
+            bezl.data.GetPartsByCustNum.forEach(custPart => {
+                var idx = bezl.vars.parts.findIndex(p => {p.PartNum == custPart.PartNum});
+
+                if (idx != -1) {
+                    // We have a part already so remove it
+                    bezl.vars.parts.splice(idx, 1);                
+                }
+                // Add it
+                bezl.vars.parts.push(custPart)
+            });
+
+            // bezl.vars.parts = bezl.vars.parts.sort(function(a, b) {
+            //                         return a.PartNum - b.PartNum;
+            //                     });
+            
             $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partList").typeahead({
                 order: "asc",
                 maxItem: 8,
                 display: ['PartNum', 'PartDescription'],
                 source: {
-                    data: function() { return bezl.vars.parts; }
+                    data: function() { return bezl.vars.parts.sort(function(a, b) {
+                                    return a.PartNum - b.PartNum;
+                                });; }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
