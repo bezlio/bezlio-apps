@@ -48,7 +48,7 @@ define(function () {
                 bezl.dataService.add('GetPartsByCustNum','brdb','customer-portal-queries','ExecuteQuery', { 
                     "QueryName": "/order-entry/GetPartsByCustNum",
                     "Parameters": [
-                        { "Key": "CustNum", "Value": bezl.vars.selectedAccount.CustNum }
+                        { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum }
                     ] },0);
                 break;
         }
