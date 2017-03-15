@@ -2,13 +2,6 @@ define(function () {
  
     function OnDataChange (bezl) {
         if (bezl.data.Customers) {
-            // If there was a previously selected account in localStorage, grab a reference
-            // so we can know whether to mark them as selected
-            bezl.vars.selectedCustomer = {};
-            //if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
-            //    bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
-            //}
-
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.data.Customers.length; i++) {
                 // Add a Selected property to the account record
