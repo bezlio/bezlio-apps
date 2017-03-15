@@ -1,10 +1,10 @@
-define(["./order.js"], function (order) {
+define(["./customer.js"], function (order) {
  
     function OnStartup (bezl) {        
         // Initiate the call to refresh the customer list
-        order.runQuery(bezl, 'Accounts');
-        order.runQuery(bezl, 'AccountContacts');
-        order.runQuery(bezl, 'AccountShipTos');
+        order.runQuery(bezl, 'Customers');
+        order.runQuery(bezl, 'CustomersContacts');
+        order.runQuery(bezl, 'CustomersShipTos');
     }
   
   return {
