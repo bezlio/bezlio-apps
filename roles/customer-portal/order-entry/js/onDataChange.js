@@ -4,7 +4,7 @@ define(function () {
         if (bezl.data.Customers) {
             // If there was a previously selected account in localStorage, grab a reference
             // so we can know whether to mark them as selected
-            bezl.vars.selectedAccount = {};
+            bezl.vars.selectedCustomer = {};
             //if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
             //    bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
             //}
