@@ -20,7 +20,7 @@ define(function () {
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum }
                     ]
-                })
+                }, 0)
                 break;
         }
     }
