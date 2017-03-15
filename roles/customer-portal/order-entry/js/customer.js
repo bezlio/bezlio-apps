@@ -1,4 +1,4 @@
-define(function () {
+define(["./order.js"], function (order) {
  
     function RunQuery (bezl, queryName) {
 
@@ -68,7 +68,7 @@ define(function () {
         RunQuery(bezl, 'GetPartsByCustNum');
 
         // Load a new Order
-        NewOrder(bezl);
+        order.NewOrder(bezl);
 
         //localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
         //$('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
