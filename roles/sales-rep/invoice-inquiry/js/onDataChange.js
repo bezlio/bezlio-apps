@@ -29,8 +29,8 @@ define(function () {
                     tempLine.PartNum = bezl.data.Invoices[i].PartNum || "";
                     tempLine.PartDescription = bezl.data.Invoices[i].PartDescription || "";
                     tempLine.Qty = bezl.data.Invoices[i].Qty || "";
-                    tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice || "";
-                    tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice || "";
+                    tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice;
+                    tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice;
                     // Push line into invoice
                     bezl.vars.Invoices[bezl.vars.Invoices.findIndex(inv => inv.InvoiceNum == bezl.data.Invoices[i].InvoiceNum)].InvoiceLines.push(tempLine);
                 } else {
@@ -38,8 +38,8 @@ define(function () {
                     // Invoice
                     tempInvoice.InvoiceNum = bezl.data.Invoices[i].InvoiceNum || "";
                     tempInvoice.InvoiceDate = bezl.data.Invoices[i].InvoiceDate || "";
-                    tempInvoice.InvoiceAmt = bezl.data.Invoices[i].InvoiceAmt || "";
-                    tempInvoice.InvoiceBal = bezl.data.Invoices[i].InvoiceBal || "";
+                    tempInvoice.InvoiceAmt = bezl.data.Invoices[i].InvoiceAmt;
+                    tempInvoice.InvoiceBal = bezl.data.Invoices[i].InvoiceBal;
                     tempInvoice.OrderDate = bezl.data.Invoices[i].OrderDate || "";
                     tempInvoice.PoNum = bezl.data.Invoices[i].PoNum || "";
 
@@ -55,8 +55,8 @@ define(function () {
                     tempLine.PartNum = bezl.data.Invoices[i].PartNum || "";
                     tempLine.PartDescription = bezl.data.Invoices[i].PartDescription || "";
                     tempLine.Qty = bezl.data.Invoices[i].Qty || "";
-                    tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice || "";
-                    tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice || "";
+                    tempLine.UnitPrice = bezl.data.Invoices[i].UnitPrice;
+                    tempLine.ExtPrice = bezl.data.Invoices[i].ExtPrice;
                     // Push line into invoice
                     tempInvoice.InvoiceLines = new Array();
                     tempInvoice.InvoiceLines.push(tempLine); 

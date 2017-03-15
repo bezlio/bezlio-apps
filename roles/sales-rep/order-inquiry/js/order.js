@@ -40,6 +40,25 @@ define(function () {
         };
     }
 
+    function Filter(bezl) {
+        // Filter, will hide the table rows that do not match filter
+        var tr, td;
+        tr = document.getElementById("priceList").getElementsByTagName("tr");
+
+        // Loop through all rows
+        for(var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if(td) {
+                if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
+    }
+
     function Sort(bezl, sortColumn) {
 
         // If the previous sort column was picked, make it the opposite sort
@@ -187,6 +206,7 @@ define(function () {
     return {
         runQuery: RunQuery,
         select: Select,
+        filter: Filter,
         sort: Sort,
         innerSort: InnerSort
     }
