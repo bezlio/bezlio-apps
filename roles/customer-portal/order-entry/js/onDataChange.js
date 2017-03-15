@@ -45,7 +45,7 @@ define(function () {
             console.log(bezl.vars.parts);
             // We need to replace parts with customer parts if they are present because price list trumps web parts
             bezl.data.GetPartsByCustNum.forEach(custPart => {
-                var idx = bezl.vars.parts.findIndex(p => {p.PartNum == custPart.PartNum});
+                var idx = bezl.vars.parts.findIndex(p => p.PartNum == custPart.PartNum);
                 console.log(custPart.PartNum);
                 console.log(idx);
                 if (idx != -1) {
