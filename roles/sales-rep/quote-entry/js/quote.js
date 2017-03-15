@@ -15,7 +15,7 @@ define(function () {
                 }, 0);
                 break;
             case "QuoteDtls":
-                bezl.dataService.add('QuoteDtls', 'brbd', 'sales-rep-queries', 'ExecuteQuery', {
+                bezl.dataService.add('QuoteDtls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetQuoteDetails",
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum }
