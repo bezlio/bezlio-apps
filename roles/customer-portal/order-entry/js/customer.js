@@ -39,9 +39,7 @@ define(function () {
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('GetGlobalParts','brdb','customer-portal-queries','ExecuteQuery', { 
                     "QueryName": "/order-entry/GetGlobalParts",
-                    "Parameters": [
-                        {  }
-                    ] },0);
+                    "Parameters": [] },0);
                 break;
             case "GetPartsByCustNum":
                 bezl.vars.loadingParts = true; 
