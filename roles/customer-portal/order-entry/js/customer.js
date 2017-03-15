@@ -40,7 +40,7 @@ define(function () {
                 bezl.dataService.add('GetGlobalParts','brdb','customer-portal-queries','ExecuteQuery', { 
                     "QueryName": "/order-entry/GetGlobalParts",
                     "Parameters": [
-                        { "Key": "CustNum", "Value": bezl.vars.selectedAccount.CustNum }
+                        {  }
                     ] },0);
                 break;
             case "GetPartsByCustNum":
