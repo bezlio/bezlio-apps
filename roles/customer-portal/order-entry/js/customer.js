@@ -60,6 +60,8 @@ define(["./order.js"], function (order) {
         bezl.data.Customers.forEach(a => a.Selected = false);
         bezl.vars.selectedShipTo = null;
 
+        bezl.vars.parts = bezl.data.GetGlobalParts;
+
         // Select the one we selected
         bezl.vars.selectedCustomer = bezl.data.Customers.find(a => a.ID == account.ID);
         bezl.vars.selectedCustomer.Selected = true;
