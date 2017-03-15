@@ -65,7 +65,7 @@ define(function () {
         bezl.vars.selectedCustomer.Selected = true;
 
         // Run our query to load parts
-        customer.RunQuery(bezl, 'GetPartsByCustNum');
+        RunQuery(bezl, 'GetPartsByCustNum');
 
         // Load a new Order
         NewOrder(bezl);
