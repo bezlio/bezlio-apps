@@ -8,9 +8,9 @@ define(["./customer.js"], function (customer) {
             PartNum: bezl.vars.selectedPart.PartNum,
             PartDescription: bezl.vars.selectedPart.PartDescription, 
             Qty: 0,
-            UOM: bezl.vars.selectedPart.IUM, 
-            QtyOnHand: bezl.vars.selectedPart.OnHandQty,
-            UnitPrice: bezl.vars.selectedPart.BasePrice,
+            UOM: bezl.vars.selectedPart.UOM, 
+            QtyOnHand: bezl.vars.selectedPart.QOH,
+            UnitPrice: bezl.vars.selectedPart.UnitPrice,
             Comment: ''
         });
         $(bezl.container.nativeElement).find(".partList").typeahead('setQuery', '');
