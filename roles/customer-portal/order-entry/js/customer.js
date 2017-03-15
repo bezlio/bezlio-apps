@@ -83,9 +83,11 @@ define(["./order.js"], function (order) {
     function SelectShipTo(bezl, shipto) {
         // Dropdown only allows single selecting
         // Mark all of them as not selected
-        bezl.data.CustomersShipTos.forEach(a => a.Selected = false);
-        bezl.vars.selectedShipTo = bezl.data.CustomersShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
-        bezl.vars.selectedShipTo.Selected = true;
+        if (shipto) {
+            bezl.data.CustomersShipTos.forEach(a => a.Selected = false);
+            bezl.vars.selectedShipTo = bezl.data.CustomersShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
+            bezl.vars.selectedShipTo.Selected = true;
+        }
     }
 
     return {
