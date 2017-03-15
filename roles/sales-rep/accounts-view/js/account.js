@@ -180,8 +180,9 @@ define(function () {
         window.open('http://maps.google.com/maps?q=' + account.AddressURL,'_blank');
 
         bezl.vars.selectedAccount.CRMShortSummary = "Customer Visit";
-        //bezl.vars.selectedAccount.CRMDetails = "";
-        //bezl.vars.selectedAccount.CRMType = "";
+        bezl.vars.selectedAccount.CRMDetails = "";
+        bezl.vars.selectedAccount.CRMType = "";
+        $('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
     }
   
     return {
