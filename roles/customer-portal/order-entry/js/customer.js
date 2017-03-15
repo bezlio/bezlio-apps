@@ -68,7 +68,7 @@ define(["./order.js"], function (order) {
         RunQuery(bezl, 'GetPartsByCustNum');
 
         // Load a new Order
-        order.NewOrder(bezl);
+        order.newOrder(bezl);
 
         //localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
         //$('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
