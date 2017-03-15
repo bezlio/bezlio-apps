@@ -54,9 +54,9 @@ define(function () {
                 bezl.vars.parts.push(custPart)
             });
 
-            bezl.vars.parts = bezl.vars.parts.sort(function(a, b) {
-                                    return a.PartNum - b.PartNum;
-                                });
+            // bezl.vars.parts = bezl.vars.parts.sort(function(a, b) {
+            //                         return a.PartNum - b.PartNum;
+            //                     });
             
             $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partList").typeahead({
@@ -64,7 +64,9 @@ define(function () {
                 maxItem: 8,
                 display: ['PartNum', 'PartDescription'],
                 source: {
-                    data: function() { return bezl.vars.parts; }
+                    data: function() { return bezl.vars.parts.sort(function(a, b) {
+                                    return a.PartNum - b.PartNum;
+                                });; }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
