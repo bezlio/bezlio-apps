@@ -78,7 +78,7 @@ define(function () {
             });
         };
 
-        setTimeout(partTypeAhead, 1, bezl.vars['lineNum']);
+        setTimeout(partTypeAhead, 1, lineNum);
     }
 
     return {
