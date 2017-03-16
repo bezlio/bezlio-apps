@@ -22,6 +22,11 @@ define(function () {
                     ]
                 }, 0)
                 break;
+            case "Parts":
+                bezl.dataService.add('Parts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetParts"
+                }, 0);
+                break;
         }
     }
 
