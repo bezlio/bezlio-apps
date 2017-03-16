@@ -28,7 +28,7 @@ define(function () {
     function ReturnToSummary(bezl) {
         bezl.vars.editingQuote = false;
 
-        bez.vars.quoteData = {
+        bezl.vars.quoteData = {
             quoteDate: new Date(),
             salespersonId: bezl.env.currentUser,
             customerId: '',
