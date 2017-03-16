@@ -25,7 +25,7 @@ define(function () {
         }
     }
 
-    function ReturnToSummary() {
+    function ReturnToSummary(bezl) {
         bezl.vars.editingQuote = false;
 
         bez.vars.quoteData = {
