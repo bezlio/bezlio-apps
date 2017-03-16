@@ -74,6 +74,8 @@ define(function () {
                 }
             });
         };
+
+        setTimeout(partTypeAhead, 1, bezl.vars['lineNum']);
     }
 
     return {
