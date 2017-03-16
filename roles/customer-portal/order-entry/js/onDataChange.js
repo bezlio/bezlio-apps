@@ -83,6 +83,7 @@ define(function () {
 
         if (bezl.data.newOrder) {
             bezl.vars.ds = bezl.data.newOrder;
+            bezl.vars.newOrder = false;
         }
 
         if (bezl.data.submitOrder) {
@@ -98,6 +99,7 @@ define(function () {
                     bezl.notificationService.showSuccess('Order Submitted!');
                 }
             }
+            bezl.vars.submitOrder = false;
         }
     }
   

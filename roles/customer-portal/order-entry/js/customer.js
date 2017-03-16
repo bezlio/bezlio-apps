@@ -69,15 +69,6 @@ define(["./order.js"], function (order) {
 
         // Load a new Order
         order.newOrder(bezl);
-
-        //localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
-        //$('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
-
-        // Filter our contacts
-        //bezl.vars.filteredContacts = bezl.data.CustomersContacts.filter(c => c.ID == account.ID);
-
-        // Filter out shiptos
-        //bezl.vars.filteredShipTos = bezl.data.CustomersShipTos.filter(st => st.ID == account.ID);
     }
 
     function SelectShipTo(bezl, shipto) {
