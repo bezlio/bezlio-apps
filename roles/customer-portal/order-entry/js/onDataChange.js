@@ -27,6 +27,7 @@ define(function () {
             bezl.data.CustomersContacts.forEach(ac => {
                 bezl.data.Customers.find(a => a.ID == ac.ID).Contacts.push(ac);
             });
+            bezl.dataService.remove('CustomersContacts');
             bezl.vars.loadingContacts = false;
         }
 
@@ -38,6 +39,7 @@ define(function () {
                     acct.ShipTos.push(st);
                 }              
             })
+            bezl.dataService.remove('CustomersShipTos');
             bezl.vars.loadingShipTos = false;
         }
 
@@ -83,6 +85,7 @@ define(function () {
 
         if (bezl.data.newOrder) {
             bezl.vars.ds = bezl.data.newOrder;
+            bezl.dataService.remove('newOrder');
             bezl.vars.newOrder = false;
         }
 
@@ -100,6 +103,12 @@ define(function () {
                 }
             }
             bezl.vars.submitOrder = false;
+        }
+
+        if (bezl.data.GetShipVias) {
+            bezl.vars.shipVias = bezl.data.GetShipVias;
+            bezl.dataService.remove('GetShipVias');
+            bezl.vars.loadingShipVias = false;
         }
     }
   

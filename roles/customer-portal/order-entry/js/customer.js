@@ -36,7 +36,7 @@ define(["./order.js"], function (order) {
             case "GetGlobalParts":
                 bezl.vars.loadingGlobalParts = true; 
 
-                // Pull in the accounts list for the logged in user
+                // Pull in the global parts
                 bezl.dataService.add('GetGlobalParts','brdb','customer-portal-queries','ExecuteQuery', { 
                     "QueryName": "/order-entry/GetGlobalParts",
                     "Parameters": [] },0);
@@ -50,6 +50,14 @@ define(["./order.js"], function (order) {
                     "Parameters": [
                         { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum }
                     ] },0);
+                break;
+            case "GetShipVias":
+                bezl.vars.loadingShipVias = true; 
+
+                // Pull in the ship vias
+                bezl.dataService.add('GetShipVias','brdb','customer-portal-queries','ExecuteQuery', { 
+                    "QueryName": "/order-entry/GetShipVias",
+                    "Parameters": [] },0);
                 break;
         }
     }
