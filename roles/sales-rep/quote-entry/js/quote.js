@@ -49,6 +49,8 @@ define(function () {
 
         bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum + 1, PartNum: '', Qty: 1, UOM: 'EA' });
 
+        console.log(bezl.data.Parts);
+
         var partTypeAhead = function (lineNum) {
             $('.js-typeahead-parts' + lineNum).typeahead({
                 order: "asc",
