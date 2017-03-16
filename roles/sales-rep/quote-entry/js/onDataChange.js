@@ -9,7 +9,7 @@ define(function () {
             bezl.vars.linesloading = false;
 
             bezl.data.QuoteDtls.map(dtl => {
-                bezl.vars.quoteData.quoteLines.push({ lineNum: dtl.QuoteLine, partNum: dtl.PartNum, quoteQty: 1, quoteUom: '', deleted: 0 });
+                bezl.vars.quoteData.quoteLines.push({ lineNum: dtl.QuoteLine, partNum: dtl.PartNum, quoteQty: dtl.Qty, quoteUom: '', deleted: 0 });
             });
         }
     }
