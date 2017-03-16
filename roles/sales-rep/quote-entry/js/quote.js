@@ -73,7 +73,9 @@ define(function () {
                     }
                 }
             });
-        };
+        }
+
+        setTimeout(partTypeAhead, 1, lineNum);
     }
 
     return {
