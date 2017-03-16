@@ -25,7 +25,26 @@ define(function () {
         }
     }
 
+    function ReturnToSummary() {
+        bezl.vars.editingQuote = false;
+
+        bez.vars.quoteData = {
+            quoteDate: new Date(),
+            salespersonId: bezl.env.currentUser,
+            customerId: '',
+            comments: '',
+            status: 'Open',
+            result: '',
+            quoteLines: []
+        };
+    }
+
     return {
-        runQuery: RunQuery
+        runQuery: RunQuery,
+        returnToSummary: ReturnToSummary
     }
 });
+
+// require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function(functions) {
+// 	functions.runQuery(bezl, "Quotes");
+// });
