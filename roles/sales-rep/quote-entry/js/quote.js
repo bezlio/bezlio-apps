@@ -42,7 +42,7 @@ define(function () {
     function AddLine(bezl) {
         var lineNum = Math.max.apply(Math, bezl.vars.quoteData.quoteLines.map(function (dtl) { return dtl.QuoteLine; }));
 
-        bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum, PartNum: '', Qty: 1, UOM: 'EA' });
+        bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum + 1, PartNum: '', Qty: 1, UOM: 'EA' });
     }
 
     return {
