@@ -56,7 +56,7 @@ define(function () {
                 order: "asc",
                 maxItem: 8,
                 source: {
-                    data: function () { return partList }
+                    data: function () { return partList; }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
