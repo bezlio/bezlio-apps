@@ -51,7 +51,6 @@ define(function () {
 
         var partList = ["MRP100-LK", "Server"];
 
-
         var partTypeAhead = function (lineNum) {
             $('.js-typeahead-parts' + lineNum).typeahead({
                 order: "asc",
@@ -60,12 +59,12 @@ define(function () {
                     data: function () { return partList }
                 },
                 callback: {
-                    onClick: function (node, a, item, event) {
-                        // Add the line number into the item object so we can utilize it on partSelect
-                        item.lineNum = lineNum;
-                        // Now register the function that is called when you pick a part
-                        bezl.functions.partSelect(item);
-                    }
+                    // onClick: function (node, a, item, event) {
+                    //     // Add the line number into the item object so we can utilize it on partSelect
+                    //     item.lineNum = lineNum;
+                    //     // Now register the function that is called when you pick a part
+                    //     bezl.functions.partSelect(item);
+                    // }
                     // onCancel: function (node, event) {
                     //     for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
                     //         if (bezl.vars['quoteData'].quoteLines[i].lineNum == lineNum) {
