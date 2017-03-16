@@ -59,20 +59,20 @@ define(function () {
                     data: function () { return partList }
                 },
                 callback: {
-                    // onClick: function (node, a, item, event) {
-                    //     // Add the line number into the item object so we can utilize it on partSelect
-                    //     item.lineNum = lineNum;
-                    //     // Now register the function that is called when you pick a part
-                    //     bezl.functions.partSelect(item);
-                    // }
-                    // onCancel: function (node, event) {
-                    //     for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
-                    //         if (bezl.vars['quoteData'].quoteLines[i].lineNum == lineNum) {
-                    //             bezl.vars['quoteData'].quoteLines[i].partNum = "";
-                    //             bezl.vars['quoteData'].quoteLines[i].partDesc = "";
-                    //         }
-                    //     };
-                    // }
+                    onClick: function (node, a, item, event) {
+                        // Add the line number into the item object so we can utilize it on partSelect
+                        item.lineNum = lineNum;
+                        // Now register the function that is called when you pick a part
+                        bezl.functions.partSelect(item);
+                    },
+                    onCancel: function (node, event) {
+                        for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
+                            if (bezl.vars['quoteData'].quoteLines[i].lineNum == lineNum) {
+                                bezl.vars['quoteData'].quoteLines[i].partNum = "";
+                                bezl.vars['quoteData'].quoteLines[i].partDesc = "";
+                            }
+                        };
+                    }
                 }
             });
         };
