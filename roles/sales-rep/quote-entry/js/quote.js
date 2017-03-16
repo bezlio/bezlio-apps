@@ -49,14 +49,15 @@ define(function () {
 
         bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum + 1, PartNum: '', Qty: 1, UOM: 'EA' });
 
-        console.log(bezl.data.Parts);
+        var partList = ["MRP100-LK", "Server"];
+
 
         var partTypeAhead = function (lineNum) {
             $('.js-typeahead-parts' + lineNum).typeahead({
                 order: "asc",
                 maxItem: 8,
                 source: {
-                    data: function () { return bezl.data.Parts; }
+                    data: function () { return partList }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
