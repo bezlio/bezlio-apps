@@ -48,6 +48,32 @@ define(function () {
         var lineNum = Math.max.apply(Math, bezl.vars.quoteData.quoteLines.map(function (dtl) { return dtl.QuoteLine; }));
 
         bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum + 1, PartNum: '', Qty: 1, UOM: 'EA' });
+
+        var partTypeAhead = function (lineNum) {
+            $('.js-typeahead-parts' + lineNum).typeahead({
+                order: "asc",
+                maxItem: 8,
+                source: {
+                    data: function () { return bezl.data.Parts; }
+                },
+                callback: {
+                    onClick: function (node, a, item, event) {
+                        // Add the line number into the item object so we can utilize it on partSelect
+                        item.lineNum = lineNum;
+                        // Now register the function that is called when you pick a part
+                        bezl.functions.partSelect(item);
+                    }
+                    // onCancel: function (node, event) {
+                    //     for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
+                    //         if (bezl.vars['quoteData'].quoteLines[i].lineNum == lineNum) {
+                    //             bezl.vars['quoteData'].quoteLines[i].partNum = "";
+                    //             bezl.vars['quoteData'].quoteLines[i].partDesc = "";
+                    //         }
+                    //     };
+                    // }
+                }
+            });
+        };
     }
 
     return {
