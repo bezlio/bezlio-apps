@@ -19,6 +19,7 @@ SELECT
 	, sr.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0)
+	, c.CustURL as WebSite
 FROM
 	Erp.Customer c with(nolock)
 	
