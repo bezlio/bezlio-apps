@@ -41,13 +41,19 @@ define(function () {
             bezl.vars.loadingShipTos = false;
         }
 
+        if (bezl.data.GetGlobalParts) {
+            // Load our local part cache
+            bezl.vars.parts = bezl.data.GetGlobalParts;
+            // Remove the data service
+            bezl.dataService.remove('GetGlobalParts');
+            // Mark that we are done loading
+            bezl.vars.loadingGlobalParts = false;
+        }
+
         if (bezl.data.GetPartsByCustNum) {
-            console.log(bezl.vars.parts);
             // We need to replace parts with customer parts if they are present because price list trumps web parts
             bezl.data.GetPartsByCustNum.forEach(custPart => {
                 var idx = bezl.vars.parts.findIndex(p => p.PartNum == custPart.PartNum);
-                console.log(custPart.PartNum);
-                console.log(idx);
                 if (idx != -1) {
                     // We have a part already so remove it
                     bezl.vars.parts.splice(idx, 1);                
@@ -55,10 +61,6 @@ define(function () {
                 // Add it
                 bezl.vars.parts.push(custPart)
             });
-
-            // bezl.vars.parts = bezl.vars.parts.sort(function(a, b) {
-            //                         return a.PartNum - b.PartNum;
-            //                     });
             
             $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partList").typeahead({
@@ -76,6 +78,7 @@ define(function () {
                     }
                 }
             });
+            bezl.vars.loadingParts = false;
         }
 
         if (bezl.data.newOrder) {

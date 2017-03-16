@@ -34,7 +34,7 @@ define(["./order.js"], function (order) {
                     ] },0);
                 break;
             case "GetGlobalParts":
-                bezl.vars.loadingParts = true; 
+                bezl.vars.loadingGlobalParts = true; 
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('GetGlobalParts','brdb','customer-portal-queries','ExecuteQuery', { 
@@ -60,8 +60,6 @@ define(["./order.js"], function (order) {
         bezl.data.Customers.forEach(a => a.Selected = false);
         bezl.vars.selectedShipTo = null;
 
-        bezl.vars.parts = bezl.data.GetGlobalParts;
-
         // Select the one we selected
         bezl.vars.selectedCustomer = bezl.data.Customers.find(a => a.ID == account.ID);
         bezl.vars.selectedCustomer.Selected = true;
@@ -76,10 +74,10 @@ define(["./order.js"], function (order) {
         //$('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
 
         // Filter our contacts
-        bezl.vars.filteredContacts = bezl.data.CustomersContacts.filter(c => c.ID == account.ID);
+        //bezl.vars.filteredContacts = bezl.data.CustomersContacts.filter(c => c.ID == account.ID);
 
         // Filter out shiptos
-        bezl.vars.filteredShipTos = bezl.data.CustomersShipTos.filter(st => st.ID == account.ID);
+        //bezl.vars.filteredShipTos = bezl.data.CustomersShipTos.filter(st => st.ID == account.ID);
     }
 
     function SelectShipTo(bezl, shipto) {
