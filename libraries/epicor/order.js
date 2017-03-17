@@ -51,9 +51,6 @@ define(function () {
                 oh.ShipViaCode = bezl.vars.ShipVia;
             }
 
-            if (bezl.vars.AutoInvoice) {
-                oh.InvcOrderCmp = bezl.vars.AutoInvoice;
-            }
             //oh.ShipToNum='001';
         });
 
