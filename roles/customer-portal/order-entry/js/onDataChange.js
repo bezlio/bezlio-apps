@@ -4,7 +4,7 @@ define(function () {
         if (bezl.data.Customers) {
             // Perform additional processing on the returned data
             bezl.vars.Customers = bezl.data.Customers;
-            bezl.var.Customers.forEach(c => {
+            bezl.vars.Customers.forEach(c => {
                 c.Selected = false;
                 c.Contacts = [];
                 c.ShipTos = [];
