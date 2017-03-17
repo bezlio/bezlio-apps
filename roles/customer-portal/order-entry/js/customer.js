@@ -69,6 +69,7 @@ define(["./order.js"], function (order) {
         bezl.vars.selectedShipTo = null;
 
         // Select the one we selected
+        bezl.vars.Customers.find(a => a.ID == customer.ID).Selected = true;
         bezl.vars.selectedCustomer = bezl.vars.Customers.find(a => a.ID == customer.ID);
         bezl.vars.selectedCustomer.Selected = true;
 
@@ -83,8 +84,9 @@ define(["./order.js"], function (order) {
         // Dropdown only allows single selecting
         // Mark all of them as not selected
         if (shipto) {
-            bezl.data.CustomersShipTos.forEach(a => a.Selected = false);
-            bezl.vars.selectedShipTo = bezl.data.CustomersShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
+            bezl.vars.selectedCustomer.ShipTos.forEach(a => a.Selected = false);
+            bezl.vars.selectedCustomer.ShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum).Selected = true;
+            bezl.vars.selectedShipTo = bezl.vars.selectedCustomer.ShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
             bezl.vars.selectedShipTo.Selected = true;
         }
     }
