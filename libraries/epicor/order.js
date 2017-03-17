@@ -51,6 +51,10 @@ define(function () {
                 oh.ShipViaCode = bezl.vars.ShipVia;
             }
 
+            if (bezl.vars.OrderComment) {
+                oh.OrderComment = bezl.vars.OrderComment;
+            }
+
             oh.ReadyToCalc = false;
         });
 
@@ -65,6 +69,7 @@ define(function () {
                 LineType: 'PART',
                 PartNum: p.PartNum,
                 LineDesc: p.PartDescription,
+                OrderComment: p.Comment,
                 IUM: p.UOM,
                 RevisionNum: '',
                 SellingQuantity: p.Qty,
