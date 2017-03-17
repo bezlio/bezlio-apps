@@ -101,6 +101,7 @@ define(function () {
         console.log("Line: " + lineNum);
 
         bezl.vars.quoteData.quoteLines = bezl.vars.quoteData.quoteLines.filter(dtl => {
+            console.log(dtl.QuoteLine);
             dtl.QuoteLine !== lineNum;
         })
 
