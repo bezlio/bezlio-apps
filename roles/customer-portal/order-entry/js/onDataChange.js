@@ -3,38 +3,29 @@ define(function () {
     function OnDataChange (bezl) {
         if (bezl.data.Customers) {
             // Perform additional processing on the returned data
-            for (var i = 0; i < bezl.data.Customers.length; i++) {
-                // Add a Selected property to the account record
-                if (bezl.data.Customers[i].ID == bezl.vars.selectedCustomer.ID) {
-                    bezl.data.Customers[i].Selected = true;
-                } else {
-                    bezl.data.Customers[i].Selected = false;
-                }
-
-                // This will get filled in on the AccountContacts query
-                bezl.data.Customers[i].Contacts = [];
-                bezl.data.Customers[i].ShipTos = [];
-
-                // Same thing with the recent CRM calls
-                bezl.data.Customers[i].CRMCalls = [];
-            };
-
+            bezl.vars.Customers = bezl.data.Customers;
+            bezl.var.Customers.forEach(c => {
+                c.Selected = false;
+                c.Contacts = [];
+                c.ShipTos = [];
+            });
+            bezl.dataService.remove('Customers');
             bezl.vars.loading = false;
         }
 
         // If we got the account contacts back, merge those in
-        if (bezl.data.Customers && bezl.data.CustomersContacts) {
+        if (bezl.vars.Customers && bezl.data.CustomersContacts) {
             bezl.data.CustomersContacts.forEach(ac => {
-                bezl.data.Customers.find(a => a.ID == ac.ID).Contacts.push(ac);
+                bezl.vars.Customers.find(a => a.ID == ac.ID).Contacts.push(ac);
             });
             bezl.dataService.remove('CustomersContacts');
             bezl.vars.loadingContacts = false;
         }
 
         // If we got the account ship tos back, merge those in
-        if (bezl.data.Customers && bezl.data.CustomersShipTos) {
+        if (bezl.vars.Customers && bezl.data.CustomersShipTos) {
             bezl.data.CustomersShipTos.forEach(st => {
-                var acct = bezl.data.Customers.find(a => a.ID == st.ID);
+                var acct = bezl.vars.Customers.find(a => a.ID == st.ID);
                 if (acct != undefined) {
                     acct.ShipTos.push(st);
                 }              
