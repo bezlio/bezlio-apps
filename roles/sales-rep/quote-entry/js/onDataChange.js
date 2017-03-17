@@ -1,5 +1,16 @@
 define(function () {
     function OnDataChange(bezl) {
+        $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead('destroy');
+        $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead({
+            order: "asc",
+            maxItem: 8,
+            display: ['PartNum'],
+            source: {
+                data: function () { return partList; }
+            }
+        });
+
+
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
             console.log(bezl.data);
