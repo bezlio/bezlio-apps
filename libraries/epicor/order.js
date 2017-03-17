@@ -46,6 +46,14 @@ define(function () {
             if (bezl.vars.ShipBy) {
                 oh.RequestDate = bezl.vars.ShipBy; 
             }
+
+            if (bezl.vars.ShipVia) {
+                oh.ShipViaCode = bezl.vars.ShipVia;
+            }
+
+            if (bezl.vars.AutoInvoice) {
+                oh.InvcOrderCmp = bezl.vars.AutoInvoice;
+            }
             //oh.ShipToNum='001';
         });
 
