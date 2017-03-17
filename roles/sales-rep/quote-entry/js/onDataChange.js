@@ -18,9 +18,9 @@ define(function () {
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
                         order: "asc",
                         maxItem: 8,
-                        display: ['PartNum'],
+                        display: ['PartNum', 'PartDesc'],
                         source: {
-                            data: function () { return partList; }
+                            data: function () { return bezl.data.Parts; }
                         },
                         callback: {
                             onClick: function (node, a, item, event) {
