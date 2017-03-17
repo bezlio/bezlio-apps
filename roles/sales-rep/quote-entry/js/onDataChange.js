@@ -10,9 +10,30 @@ define(function () {
 
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
-            // bezl.data.QuoteDtls.map(dtl => {
-            //     bezl.vars.quoteData.quoteLines.push({ lineNum: dtl.QuoteLine, partNum: dtl.PartNum, quoteQty: dtl.Qty, quoteUom: '', deleted: 0 });
-            // });
+            bezl.vars.quoteData.quoteLines.map(dtl => {
+                console.log(dtl.QuoteLine);
+            });
+
+            // var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
+
+            // var typeAhead = function (lineNum) {
+            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
+            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
+            //         order: "asc",
+            //         maxItem: 8,
+            //         display: ['PartNum'],
+            //         source: {
+            //             data: function () { return partList; }
+            //         },
+            //         callback: {
+            //             onClick: function (node, a, item, event) {
+            //                 console.log("test");
+            //             }
+            //         }
+            //     });
+            // }
+
+            // setTimeout(typeAhead, 2, lineNum + 1);
         }
     }
 
