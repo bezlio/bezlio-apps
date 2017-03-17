@@ -23,16 +23,16 @@ define(function () {
         }
 
         // If we got the account ship tos back, merge those in
-        //if (bezl.vars.Customers && bezl.data.CustomersShipTos) {
-        //    bezl.data.CustomersShipTos.forEach(st => {
-        //        var acct = bezl.vars.Customers.find(a => a.ID == st.ID);
-        //        if (acct != undefined) {
-        //            acct.ShipTos.push(st);
-        //        }              
-        //    })
-        //    bezl.dataService.remove('CustomersShipTos');
-        //    bezl.vars.loadingShipTos = false;
-        //}
+        if (bezl.vars.Customers && bezl.data.CustomersShipTos) {
+           bezl.data.CustomersShipTos.forEach(st => {
+               var acct = bezl.vars.Customers.find(a => a.ID == st.ID);
+               if (acct != undefined) {
+                   acct.ShipTos.push(st);
+               }              
+           })
+           bezl.dataService.remove('CustomersShipTos');
+           bezl.vars.loadingShipTos = false;
+        }
 
         if (bezl.data.GetGlobalParts) {
             // Load our local part cache
