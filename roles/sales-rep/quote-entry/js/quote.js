@@ -51,20 +51,24 @@ define(function () {
 
         var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
-        $(bezl.container.nativeElement).find(".js-typeahead-parts" + (lineNum + 1)).typeahead('destroy');
-        $(bezl.container.nativeElement).find(".js-typeahead-parts" + (lineNum + 1)).typeahead({
-            order: "asc",
-            maxItem: 8,
-            display: ['PartNum'],
-            source: {
-                data: function () { return partList; }
-            },
-            callback: {
-                onClick: function (node, a, item, event) {
-                    console.log("test");
+        var typeAhead = function (lineNum) {
+            $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
+            $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
+                order: "asc",
+                maxItem: 8,
+                display: ['PartNum'],
+                source: {
+                    data: function () { return partList; }
+                },
+                callback: {
+                    onClick: function (node, a, item, event) {
+                        console.log("test");
+                    }
                 }
-            }
-        });
+            });
+        }
+
+        setTimeout(typeAhead, 2, lineNum + 1);
 
         // var partTypeAhead = function (lineNum) {
         //     $('.js-typeahead-parts' + lineNum).typeahead({
