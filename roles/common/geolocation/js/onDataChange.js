@@ -4,6 +4,7 @@ define(["./customer.js",
     function OnDataChange (bezl) {
         // Populate the 'customers' array if we got CustomerList back
         if (bezl.data.CustList) {
+            bezl.vars.loading.customerList = true;
             bezl.vars.customers = [];
             for (var i = 0; i < bezl.data.CustList.length; i++) {
                 bezl.vars.customers.push({ selected: false,
@@ -89,6 +90,7 @@ define(["./customer.js",
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
             bezl.data.CustList = null;
+            bezl.vars.loading.customerList = false;
         }
     }
   
