@@ -26,18 +26,22 @@ define(function () {
 
             oh.ShipToNum = bezl.vars.selectedShipTo.ShipToNum;
 
-            oh.PrcConNum = bezl.vars.selectedCustomer.Attention;
+            if (bezl.vars.selectedCustomer.Attention) {
+                oh.PrcConNum = bezl.vars.selectedCustomer.Attention;
+            }
 
-            oh.ShpConNum = bezl.vars.selectedShipTo.Attention;
+            if (bezl.vars.selectedShipTo.Attention) {
+                oh.ShpConNum = bezl.vars.selectedShipTo.Attention;
+            }
 
             if (bezl.vars.PONumber) {
                 oh.PONum = bezl.vars.PONumber;
             }
             if (bezl.vars.OrderDate) {
-            oh.OrderDate = bezl.vars.OrderDate;
+                oh.OrderDate = bezl.vars.OrderDate;
             }
             if (bezl.vars.NeedBy) {
-            oh.NeedByDate = bezl.vars.NeedBy;
+                oh.NeedByDate = bezl.vars.NeedBy;
             }
             if (bezl.vars.ShipBy) {
                 oh.RequestDate = bezl.vars.ShipBy; 
