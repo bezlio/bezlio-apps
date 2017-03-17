@@ -10,30 +10,28 @@ define(function () {
 
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
+            var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
+
             bezl.vars.quoteData.quoteLines.map(dtl => {
-                console.log(dtl.QuoteLine);
+                var typeAhead = function (lineNum) {
+                    $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
+                    $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
+                        order: "asc",
+                        maxItem: 8,
+                        display: ['PartNum'],
+                        source: {
+                            data: function () { return partList; }
+                        },
+                        callback: {
+                            onClick: function (node, a, item, event) {
+                                console.log("test");
+                            }
+                        }
+                    });
+                }
+
+                setTimeout(typeAhead, 2, dtl.QuoteLine);
             });
-
-            // var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
-
-            // var typeAhead = function (lineNum) {
-            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
-            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
-            //         order: "asc",
-            //         maxItem: 8,
-            //         display: ['PartNum'],
-            //         source: {
-            //             data: function () { return partList; }
-            //         },
-            //         callback: {
-            //             onClick: function (node, a, item, event) {
-            //                 console.log("test");
-            //             }
-            //         }
-            //     });
-            // }
-
-            // setTimeout(typeAhead, 2, lineNum + 1);
         }
     }
 
