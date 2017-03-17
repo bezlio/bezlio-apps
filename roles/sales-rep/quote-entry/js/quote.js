@@ -49,17 +49,19 @@ define(function () {
 
         bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum + 1, PartNum: '', Qty: 1, UOM: 'EA' });
 
-        var partList = [{ "PartNum": "MRP100-LK" }, { "PartNum": "Server" }];
-
-        console.log(partList);
+        var partList = [{ value: "string1" }, { value: "string2" }, { value: "string3" }]
 
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead('destroy');
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead({
             order: "asc",
             maxItem: 8,
-            display: ['PartNum'],
             source: {
                 data: function () { return partList; }
+            },
+            callback: {
+                onClick: function (node, a, item, event) {
+                    console.log("test");
+                }
             }
         });
 
