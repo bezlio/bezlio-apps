@@ -2,14 +2,6 @@ define(["./map.js",
         "./customer.js"], function (map, customer) {
  
     function OnStartup (bezl) {
-        // Initialize any variables used in the logic
-        bezl.vars.currentAddress = "";
-        bezl.vars.markers = [];
-        bezl.vars.customers = [];
-        bezl.vars.selectedCustomer = { "CustNum": 0 };
-        bezl.vars.loading = { 
-            customerList: true
-        }
 
         // Google Maps requires async so pull it in.
         require.config({
