@@ -97,10 +97,21 @@ define(function () {
         // }
     }
 
+    function DeleteLine(bezl, lineNum) {
+        console.log("Line: " + lineNum);
+
+        // for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
+        //     if (bezl.vars['quoteData'].quoteLines[i].lineNum == parm) {
+        //         bezl.vars['quoteData'].quoteLines[i].deleted = 1;
+        //     }
+        // };
+    }
+
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
-        addLine: AddLine
+        addLine: AddLine,
+        deleteLine: DeleteLine
     }
 });
 
