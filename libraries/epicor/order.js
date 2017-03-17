@@ -16,7 +16,35 @@ define(function () {
     }
 
     function SubmitOrder (bezl) {
-        
+        // Update our order head info
+        bezl.vars.ds.OrderHed.forEach(oh => {
+            oh.BTCustNum = oh.CustNum;
+
+            oh.ShipToCustNum = oh.CustNum;
+
+            oh.TermsCode = bezl.vars.selectedCustomer.TermsCode;
+
+            oh.ShipToNum = bezl.vars.selectedShipTo.ShipToNum;
+
+            oh.PrcConNum = bezl.vars.selectedCustomer.Attention;
+
+            oh.ShpConNum = bezl.vars.selectedShipTo.Attention;
+
+            if (bezl.vars.PONumber) {
+                oh.PONum = bezl.vars.PONumber;
+            }
+            if (bezl.vars.OrderDate) {
+            oh.OrderDate = bezl.vars.OrderDate;
+            }
+            if (bezl.vars.NeedBy) {
+            oh.NeedByDate = bezl.vars.NeedBy;
+            }
+            if (bezl.vars.ShipBy) {
+                oh.RequestDate = bezl.vars.ShipBy; 
+            }
+            //oh.ShipToNum='001';
+        });
+
         // This will take the structure from our bezl vars and stuff it into the ds specific to Epicor
         bezl.vars.partList.forEach(p => {
             bezl.vars.ds.OrderDtl.push({
