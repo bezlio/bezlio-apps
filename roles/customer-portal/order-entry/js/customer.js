@@ -62,14 +62,14 @@ define(["./order.js"], function (order) {
         }
     }
 
-    function Select(bezl, account) {
+    function Select(bezl, customer) {
         // Dropdown only allows single selecting
         // Mark all of them as not selected
-        bezl.data.Customers.forEach(a => a.Selected = false);
+        bezl.vars.Customers.forEach(a => a.Selected = false);
         bezl.vars.selectedShipTo = null;
 
         // Select the one we selected
-        bezl.vars.selectedCustomer = bezl.data.Customers.find(a => a.ID == account.ID);
+        bezl.vars.selectedCustomer = bezl.vars.Customers.find(a => a.ID == customer.ID);
         bezl.vars.selectedCustomer.Selected = true;
 
         // Run our query to load parts
