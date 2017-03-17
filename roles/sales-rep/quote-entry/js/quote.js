@@ -103,7 +103,7 @@ define(function () {
         bezl.vars.quoteData.quoteLines = bezl.vars.quoteData.quoteLines.filter(dtl => {
             console.log(dtl.QuoteLine);
             dtl.QuoteLine !== lineNum;
-        })
+        });
 
         // for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
         //     if (bezl.vars['quoteData'].quoteLines[i].lineNum == parm) {
