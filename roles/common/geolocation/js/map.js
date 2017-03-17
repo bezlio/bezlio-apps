@@ -50,6 +50,7 @@ define(["./customer.js"], function (customer) {
         try 
         {
         bezl.vars.geocoder.geocode( {address:`${customerRecord.streetAddress}`}, function(results, status) {
+            if(status == "OK"){  
             if (results != null && results.length > 0) {
             var marker = new bezl.vars.client.Marker({
                 position: results[0].geometry.location,
@@ -72,14 +73,13 @@ define(["./customer.js"], function (customer) {
             .replace('{', '')
             .replace('}', '');
 
-            // Update the database so we don't need to look this up next time
-           /* bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
-                                { "QueryName": "SetGeocodeOnAddress",
-                                    "Parameters": [
-                                        { "Key": "Geocode_Location", "Value": g || '' },
-                                        { "Key": "CustNum", "Value": customerRecord.custNum },
-                                        { "Key": "CustID", "Value": customerRecord.data.CustID || '' }
-                                    ] },0);   */ 
+             updateGeo(bezl, customerRecord, g);
+            } else if(status == "OVER_QUERY_LIMIT"){
+                if(bezl.vars.redo.find(a => a.CustID == customerRecord.CustID)) {
+                    bezl.vars.redo.push(customerRecord);
+                }
+                
+            }   
             }
 
         });
@@ -87,6 +87,17 @@ define(["./customer.js"], function (customer) {
         } catch(err) {
         console.log(err);
         }
+    }
+
+    function updateGeo(bezl, customerRecord, g) {
+         // Update the database so we don't need to look this up next time
+            bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
+                                { "QueryName": "SetGeocodeOnAddress",
+                                    "Parameters": [
+                                        { "Key": "Geocode_Location", "Value": g || '' },
+                                        { "Key": "CustNum", "Value": customerRecord.custNum },
+                                        { "Key": "CustID", "Value": customerRecord.data.CustID || '' }
+                                    ] },0);  
     }
 
     function UpdateAddress(bezl) {

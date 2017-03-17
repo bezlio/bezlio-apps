@@ -50,21 +50,25 @@ define(["./customer.js",
             });
                     
             bezl.vars.loading.customerList = false;*/
+
+            bezl.vars.redo = bezl.data.CustList;
             
             // Now loop through the results and plot each
-            for (var i = 0; i < bezl.data.CustList.length; i++) {
-                if (bezl.data.CustList[i].Address.length > 3) {
+            for (var i = 0; i < bezl.vars.redo.length; i++) {
+                var popped = bezl.vars.redo.pop();
+                if (popped.Address.length > 3) {
                 
+                    
                     // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
-                    if (bezl.data.CustList[i].Geocode_Location == "" ||  bezl.data.CustList[i].Geocode_Location == null) {
+                    if (popped.Geocode_Location == "" ||  popped.Geocode_Location == null) {
                         map.geocodeAddress(
                             bezl, 
                             { 
-                                streetAddress: bezl.data.CustList[i].Address, 
-                                title: bezl.data.CustList[i].Name, 
-                                custNum: bezl.data.CustList[i].CustNum,
-                                shipToNum: bezl.data.CustList[i].ShipToNum,
-                                data: bezl.data.CustList[i] 
+                                streetAddress: popped.Address, 
+                                title: popped.Name, 
+                                custNum: popped.CustNum,
+                                shipToNum: popped.ShipToNum,
+                                data: popped 
                             }
                         );                   
                     } /*else {
