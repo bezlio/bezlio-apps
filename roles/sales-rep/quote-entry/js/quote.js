@@ -49,12 +49,13 @@ define(function () {
 
         bezl.vars.quoteData.quoteLines.push({ QuoteLine: lineNum + 1, PartNum: '', Qty: 1, UOM: 'EA' });
 
-        var partList = [{ value: "string1" }, { value: "string2" }, { value: "string3" }]
+        var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead('destroy');
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead({
             order: "asc",
             maxItem: 8,
+            display: ['PartNum'],
             source: {
                 data: function () { return partList; }
             },
