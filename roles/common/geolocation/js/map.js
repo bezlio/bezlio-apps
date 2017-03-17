@@ -201,6 +201,7 @@ define(["./customer.js"], function (customer) {
     return {
         getInfoWindowContent: GetInfoWindowContent,
         geocodeAddress: GeocodeAddress,
-        updateAddress: UpdateAddress
+        updateAddress: UpdateAddress,
+        theNext: theNext
     }
 });
