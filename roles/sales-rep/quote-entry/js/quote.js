@@ -53,6 +53,7 @@ define(function () {
 
         console.log(partList);
 
+        $(bezl.container.nativeElement).find('.js-typeahead-parts').typeahead('destroy');
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead({
             order: "asc",
             maxItem: 8,
