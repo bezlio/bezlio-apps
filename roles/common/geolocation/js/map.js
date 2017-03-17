@@ -67,7 +67,7 @@ define(["./customer.js"], function (customer) {
 
       // ====== Geocoding ======
       function getAddress(search, next, bezl) {
-        geo.geocode({address:`${customerRecord.streetAddress}`}, function (results,status)
+        bezl.vars.geocoder.geocode({address:`${customerRecord.streetAddress}`}, function (results,status)
           { 
             // If that was successful
             if (status == google.maps.GeocoderStatus.OK) {
