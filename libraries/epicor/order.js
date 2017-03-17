@@ -51,7 +51,7 @@ define(function () {
                 oh.ShipViaCode = bezl.vars.ShipVia;
             }
 
-            //oh.ShipToNum='001';
+            oh.ReadyToCalc = false;
         });
 
         // This will take the structure from our bezl vars and stuff it into the ds specific to Epicor
