@@ -51,8 +51,8 @@ define(function () {
 
         var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
-        $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead('destroy');
-        $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead({
+        $(bezl.container.nativeElement).find(".js-typeahead-parts" + (lineNum + 1)).typeahead('destroy');
+        $(bezl.container.nativeElement).find(".js-typeahead-parts" + (lineNum + 1)).typeahead({
             order: "asc",
             maxItem: 8,
             display: ['PartNum'],
