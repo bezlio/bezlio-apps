@@ -51,7 +51,7 @@ define(function () {
 
         var partList = ["MRP100-LK", "Server"];
 
-        $(bezl.container.nativeElement).find("js-typeahead-parts" + lineNum).typeahead({
+        $(bezl.container.nativeElement).find("js-typeahead-parts").typeahead({
             order: "asc",
             maxItem: 8,
             source: {
