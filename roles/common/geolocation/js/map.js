@@ -1,5 +1,8 @@
 define(["./customer.js"], function (customer) {
 
+    var delay = 100;
+    var nextAddress = 0;
+
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
         var contactHtml = '<br><h4>Contacts</h4>';
@@ -45,11 +48,67 @@ define(["./customer.js"], function (customer) {
         return contentString;
     }
 
+     function theNext(bezl) {
+        if (nextAddress < bezl.vars.customers.length) {
+          setTimeout(function(){getAddress({ 
+                                streetAddress: bezl.vars.customers[nextAddress].data.Address, 
+                                title: bezl.vars.customers[nextAddress].data.Name, 
+                                custNum: bezl.vars.customers[nextAddress].data.CustNum,
+                                shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
+                                data: bezl.vars.customers[nextAddress].data 
+                            }, theNext, bezl)}, delay);
+          nextAddress++;
+        } else {
+          // We're done. 
+          console.log('Done');
+         
+        }
+      }
+
+      // ====== Geocoding ======
+      function getAddress(search, next, bezl) {
+        geo.geocode({address:`${customerRecord.streetAddress}`}, function (results,status)
+          { 
+            // If that was successful
+            if (status == google.maps.GeocoderStatus.OK) {
+              // Output the data
+
+              var g = JSON.stringify(results[0].geometry.location)
+            .replace(/"/g, '')
+            .replace('{', '')
+            .replace('}', '');
+
+            updateGeo(bezl, customerRecord, g);
+
+                
+            }
+            // ====== Decode the error status ======
+            else {
+              // === if we were sending the requests to fast, try this one again and increase the delay
+              if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                nextAddress--;
+                delay++;
+              } else {
+                console.log('errror');
+              }   
+            }
+            next();
+          }
+        );
+      }
+
+
 
     function GeocodeAddress(bezl, customerRecord) {
+        //if(bezl.vars.redo.length % 10 == 0) {
+                        setTimeout(function(){}, 3000);
+                        console.log("timeout");
+                        console.log(bezl.vars.redo.length);
+                   // }
         try 
         {
         bezl.vars.geocoder.geocode( {address:`${customerRecord.streetAddress}`}, function(results, status) {
+            console.log(status);
             if(status == "OK"){  
             if (results != null && results.length > 0) {
             var marker = new bezl.vars.client.Marker({
@@ -75,13 +134,15 @@ define(["./customer.js"], function (customer) {
 
              updateGeo(bezl, customerRecord, g);
             } else if(status == "OVER_QUERY_LIMIT"){
-                if(bezl.vars.redo.find(a => a.CustID == customerRecord.CustID)) {
-                    bezl.vars.redo.push(customerRecord);
-                }
+                nextAddress--;
+                delay++;
+               // if(bezl.vars.redo.find(a => a.CustID == customerRecord.CustID)) {
+               //     bezl.vars.redo.push(customerRecord);
+               // }
                 
             }   
             }
-
+        status = null;
         });
         
         } catch(err) {

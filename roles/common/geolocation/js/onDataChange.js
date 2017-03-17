@@ -51,16 +51,22 @@ define(["./customer.js",
                     
             bezl.vars.loading.customerList = false;*/
 
-            bezl.vars.redo = bezl.data.CustList;
+
+            map.theNext(bezl);
+
+            
+
+            //bezl.vars.redo = bezl.data.CustList;
             
             // Now loop through the results and plot each
-            for (var i = 0; i < bezl.vars.redo.length; i++) {
-                var popped = bezl.vars.redo.pop();
-                if (popped.Address.length > 3) {
+            //while(bezl.vars.redo.length > 0){
+             //   var popped = bezl.vars.redo.pop();
+             //   if (popped.Address.length > 3) {
                 
+
                     
                     // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
-                    if (popped.Geocode_Location == "" ||  popped.Geocode_Location == null) {
+                    /***if (popped.Geocode_Location == "" ||  popped.Geocode_Location == null) {
                         map.geocodeAddress(
                             bezl, 
                             { 
@@ -71,7 +77,9 @@ define(["./customer.js",
                                 data: popped 
                             }
                         );                   
-                    } /*else {
+                    } *****/
+                    
+                    /*else {
                         var marker = new bezl.vars.client.Marker({
                             position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
                             map: bezl.vars.map,
@@ -88,8 +96,8 @@ define(["./customer.js",
                         
                         bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
                     }*/
-                }
-            };   
+              //  }
+          //  };   
 
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
