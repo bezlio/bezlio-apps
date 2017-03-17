@@ -9,6 +9,11 @@ define(function () {
             display: ['PartNum'],
             source: {
                 data: function () { return partList; }
+            },
+            callback: {
+                onClick: function (node, a, item, event) {
+                    console.log("test");
+                }
             }
         });
 
