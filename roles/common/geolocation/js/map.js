@@ -61,11 +61,11 @@ define(["./customer.js"], function (customer) {
             });
                         
             // Add a click handler
-            marker.addListener('click', function() {          
+            /*marker.addListener('click', function() {          
                 customer.select(bezl, customerRecord.custNum);
             });
 
-            bezl.vars.markers[customerRecord.custNum] = marker;
+            bezl.vars.markers[customerRecord.custNum] = marker;*/
 
             var g = JSON.stringify(results[0].geometry.location)
             .replace(/"/g, '')
@@ -73,17 +73,14 @@ define(["./customer.js"], function (customer) {
             .replace('}', '');
 
             // Update the database so we don't need to look this up next time
-            bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
+           /* bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
                                 { "QueryName": "SetGeocodeOnAddress",
                                     "Parameters": [
                                         { "Key": "Geocode_Location", "Value": g || '' },
                                         { "Key": "CustNum", "Value": customerRecord.custNum },
                                         { "Key": "CustID", "Value": customerRecord.data.CustID || '' }
-                                    ] },0);    
+                                    ] },0);   */ 
             }
-            
-            // Calculate distances
-            CalculateDistances(bezl);
 
         });
         

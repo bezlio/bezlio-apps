@@ -49,10 +49,10 @@ define(["./customer.js",
                 }
             });
                     
-            bezl.vars.loading.customerList = false;
+            bezl.vars.loading.customerList = false;*/
             
             // Now loop through the results and plot each
-           /* for (var i = 0; i < bezl.data.CustList.length; i++) {
+            for (var i = 0; i < bezl.data.CustList.length; i++) {
                 if (bezl.data.CustList[i].Address.length > 3) {
                 
                     // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
@@ -67,7 +67,7 @@ define(["./customer.js",
                                 data: bezl.data.CustList[i] 
                             }
                         );                   
-                    } else {
+                    } /*else {
                         var marker = new bezl.vars.client.Marker({
                             position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
                             map: bezl.vars.map,
@@ -83,9 +83,9 @@ define(["./customer.js",
                         });
                         
                         bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
-                    }
+                    }*/
                 }
-            };   */
+            };   
 
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
