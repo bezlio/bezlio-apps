@@ -1,6 +1,6 @@
 define(function () {
     function OnDataChange(bezl) {
-        var partList = ["MRP100-LK", "Server"];
+        var partList = [{ value: "string1" }, { value: "string2" }, { value: "string3" }]
 
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead('destroy');
         $(bezl.container.nativeElement).find(".js-typeahead-parts").typeahead({
