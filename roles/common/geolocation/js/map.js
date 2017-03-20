@@ -85,7 +85,7 @@ define(["./customer.js"], function (customer) {
                 lat: results[0].geometry.location.lat(),
                 lng: results[0].geometry.location.lng()
             });
-
+               }
              bezl.vars.markers[customerRecord.custNum] = marker;
 
               var g = JSON.stringify(results[0].geometry.location)
