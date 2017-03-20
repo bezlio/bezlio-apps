@@ -56,7 +56,7 @@ define(["./customer.js"], function (customer) {
                                 custNum: bezl.vars.customers[nextAddress].data.CustNum,
                                 shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
                                 data: bezl.vars.customers[nextAddress].data 
-                            }, geocode, bezl)}, delay);
+                            }, Geocode, bezl)}, delay);
           nextAddress++;
         } else {
           // We're done. 
