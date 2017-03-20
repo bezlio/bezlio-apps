@@ -63,7 +63,8 @@ define(["./customer.js"], function (customer) {
           nextAddress++;
         } else {
           // We're done. 
-          bezl.vars.geoTracker = 100;
+          $('#geoProgress').attr('value',100);
+          //bezl.vars.geoTracker = 100;
          
         }
       }
@@ -83,6 +84,10 @@ define(["./customer.js"], function (customer) {
 
             bezl.vars.geoLocsDone++;
             bezl.vars.geoTracker = (bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100;
+
+             $('#geoProgress').attr('value', bezl.vars.geoTracker);
+             $('#geoProgress').attr('style.width', bezl.vars.geoTracker+'%');
+
             console.log(bezl.vars.geoTracker);
 
             updateGeo(bezl, customerRecord, g);
