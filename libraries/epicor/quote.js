@@ -17,20 +17,21 @@ define(function () {
     }
 
     function SaveQuote(bezl, company, quoteNum) {
+        bezl.vars.ds.QuoteHed.forEach(hed => {
+            hed.Company = 'EPIC03';
+            hed.CustNum = 3;
+        });
+
         bezl.vars.ds.QuoteDtl.forEach(dtl => {
             dtl.QuoteNum = bezl.vars.ds.QuoteHed.QuoteNum;
             dtl.Company = 'EPIC03';
             dtl.RowMod = 'U';
             dtl.CustNum = 3;
-            //desc
-            //UOM
-            //comment
-            //leadtime
-            //poline
-            //salescatid
+            dtl.LineDesc = 'TEST';
         });
 
-        console.log("Quote Update: " + bezl.vars.ds);
+        console.log("Quote Update: ");
+        console.log(bezl.vars.ds);
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
