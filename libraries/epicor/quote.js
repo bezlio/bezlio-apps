@@ -17,6 +17,8 @@ define(function () {
     }
 
     function SaveQuote(bezl, company, quoteNum) {
+        bezl.vars.quoteData.QuoteDtl = [];
+
         bezl.vars.quoteData.quoteLines.forEach(dtl => {
             bezl.vars.ds.QuoteDtl.push({
                 PartNum: dtl.PartNum,
