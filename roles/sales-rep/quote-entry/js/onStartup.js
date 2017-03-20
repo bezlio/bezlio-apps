@@ -4,7 +4,7 @@ define(["./quote.js"], function (quote) {
         quote.runQuery(bezl, 'SalesReps');
         quote.runQuery(bezl, 'Parts');
 
-        bezl.vars.ds = {};
+        bezl.vars.ds = new Array();
     }
 
     return {
