@@ -31,6 +31,7 @@ define(function () {
 
         console.log("Quote Update: ");
         console.log(bezl.vars.ds);
+        console.log(JSON.stringify(bezl.vars.ds));
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
