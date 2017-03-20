@@ -85,7 +85,6 @@ define(["./customer.js"], function (customer) {
                 lat: results[0].geometry.location.lat(),
                 lng: results[0].geometry.location.lng()
             });
-               }
 
              bezl.vars.markers[customerRecord.custNum] = marker;
 
@@ -126,6 +125,25 @@ define(["./customer.js"], function (customer) {
                                         { "Key": "CustNum", "Value": customerRecord.custNum },
                                         { "Key": "CustID", "Value": customerRecord.data.CustID || '' }
                                     ] },0);  
+    }
+
+    function UpdateAddress(bezl) {
+       
+        
+            bezl.vars.markers[nextAddress].setMap(null);
+            
+            var marker = new bezl.vars.client.Marker({
+                position: bezl.vars.customers[nextAddress].Geocode_Location,
+                map: bezl.vars.map,
+                label: 'A',
+                title: '',
+                lat: bezl.vars.customers[nextAddress].Geocode_Location.geometry.location.lat(),
+                lng: bezl.vars.customers[nextAddress].Geocode_Location.geometry.location.lng()
+            });
+              
+
+            bezl.vars.markers[nextAddress] = marker;
+            
     }
   
     return {
