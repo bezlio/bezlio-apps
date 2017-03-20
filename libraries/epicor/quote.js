@@ -18,8 +18,14 @@ define(function () {
 
     function SaveQuote(bezl, company, quoteNum) {
         bezl.vars.quoteData.quoteLines.forEach(dtl => {
-            console.log(dtl);
+            bezl.vars.ds.QuoteDtl.push({
+                PartNum: dtl.PartNum,
+                OrderQty: dtl.Qty,
+                RowMod: 'U'
+            })
         });
+
+        console.log(bezl.vars.ds.QuoteDtl);
 
         // bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
         //     {
