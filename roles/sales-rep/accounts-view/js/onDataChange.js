@@ -85,8 +85,8 @@ define(function () {
                     if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
                         // Not sure if this is the best place to do this...
                         // Convert any ISO 8601 datetime strings to just date strings
-                        bezl.data.Tasks[i].StartDate = bezl.data.Tasks[i].StartDate.split('T')[0]
-                        bezl.data.Tasks[i].DueDate = bezl.data.Tasks[i].EndDate.split('T')[0]
+                        bezl.data.Tasks[i].StartDate = (bezl.data.Tasks[i].StartDate || 'T').split('T')[0]
+                        bezl.data.Tasks[i].DueDate = (bezl.data.Tasks[i].EndDate || 'T').split('T')[0]
 
                         bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
                     }
