@@ -52,7 +52,7 @@ define(["./customer.js",
             bezl.vars.loading.customerList = false;*/
 
             //Geocode each address
-            map.theNext(bezl);
+            map.geocode(bezl);
 
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
