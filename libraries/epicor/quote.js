@@ -21,7 +21,8 @@ define(function () {
             {
                 "Connection": "Epicor 10 RS",
                 "Company": "EPIC03",
-                "QuoteNum": quoteNum
+                "QuoteNum": quoteNum,
+                "ds": JSON.stringify(bezl.vars.quoteData)
             }, 0);
     }
 

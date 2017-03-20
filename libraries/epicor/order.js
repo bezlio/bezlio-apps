@@ -5,10 +5,10 @@ define(function () {
      * @param {string} company - Company ID for the call
      * @param {Number} custNum - The customer number to add this call for
      */
-    function NewOrder (bezl,
-                      company,
-                      custNum) {
-        
+    function NewOrder(bezl,
+        company,
+        custNum) {
+
         // bezl.dataService.add(
         //     'NewOrder'
         //     , 'brdb'
@@ -18,18 +18,19 @@ define(function () {
         //         'CustNum': custNum
         //     }
         //     , 0);
-        bezl.dataService.add('newOrder','brdb','Epicor10','SalesOrder_NewOrderByCustomer',
-        { "Connection":"Epicor 10 AE", 
-            "Company":"EPIC06", 
-            "CustNum": custNum,
-        },0);
+        bezl.dataService.add('newOrder', 'brdb', 'Epicor10', 'SalesOrder_NewOrderByCustomer',
+            {
+                "Connection": "Epicor 10 AE",
+                "Company": "EPIC06",
+                "CustNum": custNum,
+            }, 0);
 
         bezl.vars.newOrder = true;
 
     }
 
-    function SubmitOrder (bezl, company) {
-        
+    function SubmitOrder(bezl, company) {
+
         // This will take the structure from our bezl vars and stuff it into the ds specific to Epicor
         bezl.vars.partList.forEach(p => {
             bezl.vars.ds.OrderDtl.push({
@@ -54,11 +55,12 @@ define(function () {
             })
         });
         // Now we will submit the order for processing
-        bezl.dataService.add('submitOrder','brdb','Epicor10','SalesOrder_SubmitNewOrder',
-                            { "Connection":"Epicor 10 AE", 
-                            "Company":"EPIC06", 
-                            "ds": JSON.stringify(bezl.vars.ds)
-                            },0);
+        bezl.dataService.add('submitOrder', 'brdb', 'Epicor10', 'SalesOrder_SubmitNewOrder',
+            {
+                "Connection": "Epicor 10 AE",
+                "Company": "EPIC06",
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
 
         bezl.vars.submitOrder = true;
 
