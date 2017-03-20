@@ -48,7 +48,7 @@ define(["./customer.js"], function (customer) {
         return contentString;
     }
 
-     function Geocode(bezl) {
+     function theNext(bezl) {
         if (nextAddress < bezl.vars.customers.length - 1) {
           setTimeout(function(){getAddress({ 
                                 streetAddress: bezl.vars.customers[nextAddress].data.Address, 
@@ -56,7 +56,7 @@ define(["./customer.js"], function (customer) {
                                 custNum: bezl.vars.customers[nextAddress].data.CustNum,
                                 shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
                                 data: bezl.vars.customers[nextAddress].data 
-                            }, geocode, bezl)}, delay);
+                            }, theNext, bezl)}, delay);
           nextAddress++;
         } else {
           // We're done. 
@@ -66,7 +66,7 @@ define(["./customer.js"], function (customer) {
       }
 
       // ====== Geocoding ======
-      function getAddress(customerRecord, geocode, bezl) {
+      function getAddress(customerRecord, next, bezl) {
         bezl.vars.geocoder.geocode({address:`${customerRecord.streetAddress}`}, function (results,status)
           { 
             // If that was successful
@@ -93,7 +93,7 @@ define(["./customer.js"], function (customer) {
                 console.log('Geocoding Error');
               }   
             }
-            gecode(bezl);
+            next(bezl);
           }
         );
       }
@@ -148,7 +148,6 @@ define(["./customer.js"], function (customer) {
   
     return {
         getInfoWindowContent: GetInfoWindowContent,
-        geocodeAddress: GeocodeAddress,
         updateAddress: UpdateAddress,
         theNext: theNext
     }
