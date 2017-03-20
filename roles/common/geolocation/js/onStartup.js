@@ -56,13 +56,6 @@ define(["./map.js",
                     }
                 });
                 
-                marker.addListener('click', function() {
-                        bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
-                                                                                    bezl.vars.currentAddress,
-                                                                                    ''));
-                        bezl.vars.infoWindow.open(bezl.vars.map, marker);
-                });
-                
                 bezl.vars.markers[0] = (marker);
 
                 

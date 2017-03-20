@@ -76,6 +76,18 @@ define(["./customer.js"], function (customer) {
             // If that was successful
             if (status == google.maps.GeocoderStatus.OK) {
               // Output the data
+               if (results != null && results.length > 0) {
+                var marker = new bezl.vars.client.Marker({
+                position: results[0].geometry.location,
+                map: bezl.vars.map,
+                title: customerRecord.title,
+                data: customerRecord.data,
+                lat: results[0].geometry.location.lat(),
+                lng: results[0].geometry.location.lng()
+            });
+               }
+
+             bezl.vars.markers[customerRecord.custNum] = marker;
 
               var g = JSON.stringify(results[0].geometry.location)
             .replace(/"/g, '')
@@ -84,15 +96,10 @@ define(["./customer.js"], function (customer) {
 
             bezl.vars.geoLocsDone++;
             bezl.vars.geoTracker = (bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100;
-            
-
-             $('#geoProgress').attr('value', bezl.vars.geoTracker);
-             $('#geoProgress').attr('style.width', bezl.vars.geoTracker+'%');
 
             console.log(bezl.vars.geoTracker);
 
             updateGeo(bezl, customerRecord, g);
-            UpdateAddress(bezl);
 
                 
             }
@@ -119,43 +126,6 @@ define(["./customer.js"], function (customer) {
                                         { "Key": "CustNum", "Value": customerRecord.custNum },
                                         { "Key": "CustID", "Value": customerRecord.data.CustID || '' }
                                     ] },0);  
-    }
-
-    function UpdateAddress(bezl) {
-        try 
-        {
-        bezl.vars.geocoder.geocode( {address:`${bezl.vars.currentAddress}`}, function(results, status) {
-            if(status == "OK") {
-            if (results != null && results.length > 0) {
-            bezl.vars.markers[0].setMap(null);
-            
-            var marker = new bezl.vars.client.Marker({
-                position: results[0].geometry.location,
-                map: bezl.vars.map,
-                label: 'A',
-                title: 'You are here',
-                lat: results[0].geometry.location.lat(),
-                lng: results[0].geometry.location.lng()
-            });
-                        
-            // Add a click handler
-           /* marker.addListener('click', function() {          
-                customer.select(bezl, parm.custNum);
-            });*/
-
-            bezl.vars.markers[0] = marker;
-            bezl.vars.map.setCenter(marker.getPosition());
-            }
-        } else if(status == "OVER_QUERY_LIMIT") {
-
-        }
-        
-
-        });
-        
-        } catch(err) {
-        console.log(err);
-        }
     }
   
     return {
