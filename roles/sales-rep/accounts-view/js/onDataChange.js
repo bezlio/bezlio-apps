@@ -83,6 +83,11 @@ define(function () {
             for (var x = 0; x < bezl.data.Accounts.length; x++) {
                 for (var i = 0; i < bezl.data.Tasks.length; i++) {
                     if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+                        // Not sure if this is the best place to do this...
+                        // Convert any ISO 8601 datetime strings to just date strings
+                        bezl.data.Tasks[i].StartDate = bezl.data.Tasks[i].StartDate.split('T')[0]
+                        bezl.data.Tasks[i].DueDate = bezl.data.Tasks[i].EndDate.split('T')[0]
+
                         bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
                     }
                 }
