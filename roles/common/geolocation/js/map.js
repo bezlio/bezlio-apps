@@ -56,7 +56,7 @@ define(["./customer.js"], function (customer) {
                                 custNum: bezl.vars.customers[nextAddress].data.CustNum,
                                 shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
                                 data: bezl.vars.customers[nextAddress].data 
-                            }, Geocode, bezl)}, delay);
+                            }, geocode, bezl)}, delay);
           nextAddress++;
         } else {
           // We're done. 
@@ -148,7 +148,8 @@ define(["./customer.js"], function (customer) {
   
     return {
         getInfoWindowContent: GetInfoWindowContent,
+        geocodeAddress: GeocodeAddress,
         updateAddress: UpdateAddress,
-        geocode: Geocode
+        theNext: theNext
     }
 });
