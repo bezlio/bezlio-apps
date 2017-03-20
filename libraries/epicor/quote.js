@@ -17,13 +17,17 @@ define(function () {
     }
 
     function SaveQuote(bezl, company, quoteNum) {
-        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
-            {
-                "Connection": "Epicor 10 RS",
-                "Company": "EPIC03",
-                "QuoteNum": quoteNum,
-                "ds": JSON.stringify(bezl.vars.quoteData)
-            }, 0);
+        bezl.vars.quoteData.quoteLines.forEach(dtl => {
+            console.log(dtl);
+        });
+
+        // bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+        //     {
+        //         "Connection": "Epicor 10 RS",
+        //         "Company": "EPIC03",
+        //         "QuoteNum": quoteNum,
+        //         "ds": JSON.stringify(bezl.vars.quoteData)
+        //     }, 0);
     }
 
     return {
