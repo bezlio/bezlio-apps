@@ -63,9 +63,7 @@ define(["./customer.js"], function (customer) {
           nextAddress++;
         } else {
           // We're done. 
-          setTimeout(function() {
-                bezl.vars.geoTracker = 100;
-                }, 0);
+         bezl.vars.geoTracker = 100;
           console.log(bezl.vars.geoTracker);
          
         }
@@ -85,9 +83,7 @@ define(["./customer.js"], function (customer) {
             .replace('}', '');
 
             bezl.vars.geoLocsDone++;
-            setTimeout(function() {
-                bezl.vars.geoTracker = (bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100;
-                }, 0);
+            bezl.vars.geoTracker = (bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100;
             
 
              $('#geoProgress').attr('value', bezl.vars.geoTracker);

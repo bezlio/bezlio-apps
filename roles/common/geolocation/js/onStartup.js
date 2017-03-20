@@ -22,7 +22,7 @@ define(["./map.js",
 
                 
             if (navigator.geolocation) {
-                /*navigator.geolocation.getCurrentPosition(function (position) { 
+                navigator.geolocation.getCurrentPosition(function (position) { 
                 // First create the map
                 //console.log($(bezl.container.nativeElement).find("div#map"));
                 bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
@@ -66,7 +66,7 @@ define(["./map.js",
                 bezl.vars.markers[0] = (marker);
 
                 
-                });*/
+                });
             } else {
                 bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
             }
