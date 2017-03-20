@@ -48,15 +48,15 @@ define(["./customer.js"], function (customer) {
         return contentString;
     }
 
-     function theNext(bezl) {
-        if (nextAddress < bezl.vars.customers.length) {
+     function Geocode(bezl) {
+        if (nextAddress < bezl.vars.customers.length - 1) {
           setTimeout(function(){getAddress({ 
                                 streetAddress: bezl.vars.customers[nextAddress].data.Address, 
                                 title: bezl.vars.customers[nextAddress].data.Name, 
                                 custNum: bezl.vars.customers[nextAddress].data.CustNum,
                                 shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
                                 data: bezl.vars.customers[nextAddress].data 
-                            }, theNext, bezl)}, delay);
+                            }, geocode, bezl)}, delay);
           nextAddress++;
         } else {
           // We're done. 
@@ -66,7 +66,7 @@ define(["./customer.js"], function (customer) {
       }
 
       // ====== Geocoding ======
-      function getAddress(search, next, bezl) {
+      function getAddress(customerRecord, geocode, bezl) {
         bezl.vars.geocoder.geocode({address:`${customerRecord.streetAddress}`}, function (results,status)
           { 
             // If that was successful
@@ -78,77 +78,25 @@ define(["./customer.js"], function (customer) {
             .replace('{', '')
             .replace('}', '');
 
+            console.log('Geo' + nextAddress);
+
             updateGeo(bezl, customerRecord, g);
 
                 
             }
-            // ====== Decode the error status ======
             else {
-              // === if we were sending the requests to fast, try this one again and increase the delay
+              // if we were sending the requests to fast, try this one again and increase the delay
               if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
                 nextAddress--;
                 delay++;
               } else {
-                console.log('errror');
+                console.log('Geocoding Error');
               }   
             }
-            next();
+            gecode(bezl);
           }
         );
       }
-
-
-
-    function GeocodeAddress(bezl, customerRecord) {
-        //if(bezl.vars.redo.length % 10 == 0) {
-                        setTimeout(function(){}, 3000);
-                        console.log("timeout");
-                        console.log(bezl.vars.redo.length);
-                   // }
-        try 
-        {
-        bezl.vars.geocoder.geocode( {address:`${customerRecord.streetAddress}`}, function(results, status) {
-            console.log(status);
-            if(status == "OK"){  
-            if (results != null && results.length > 0) {
-            var marker = new bezl.vars.client.Marker({
-                position: results[0].geometry.location,
-                map: bezl.vars.map,
-                title: customerRecord.title,
-                data: customerRecord.data,
-                lat: results[0].geometry.location.lat(),
-                lng: results[0].geometry.location.lng()
-            });
-                        
-            // Add a click handler
-            /*marker.addListener('click', function() {          
-                customer.select(bezl, customerRecord.custNum);
-            });
-
-            bezl.vars.markers[customerRecord.custNum] = marker;*/
-
-            var g = JSON.stringify(results[0].geometry.location)
-            .replace(/"/g, '')
-            .replace('{', '')
-            .replace('}', '');
-
-             updateGeo(bezl, customerRecord, g);
-            } else if(status == "OVER_QUERY_LIMIT"){
-                nextAddress--;
-                delay++;
-               // if(bezl.vars.redo.find(a => a.CustID == customerRecord.CustID)) {
-               //     bezl.vars.redo.push(customerRecord);
-               // }
-                
-            }   
-            }
-        status = null;
-        });
-        
-        } catch(err) {
-        console.log(err);
-        }
-    }
 
     function updateGeo(bezl, customerRecord, g) {
          // Update the database so we don't need to look this up next time
