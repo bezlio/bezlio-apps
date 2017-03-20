@@ -92,6 +92,7 @@ define(["./customer.js"], function (customer) {
             console.log(bezl.vars.geoTracker);
 
             updateGeo(bezl, customerRecord, g);
+            UpdateAddress(bezl);
 
                 
             }
@@ -138,9 +139,9 @@ define(["./customer.js"], function (customer) {
             });
                         
             // Add a click handler
-            marker.addListener('click', function() {          
+           /* marker.addListener('click', function() {          
                 customer.select(bezl, parm.custNum);
-            });
+            });*/
 
             bezl.vars.markers[0] = marker;
             bezl.vars.map.setCenter(marker.getPosition());
