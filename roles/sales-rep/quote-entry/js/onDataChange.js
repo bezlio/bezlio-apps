@@ -10,6 +10,9 @@ define(function () {
 
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
+            bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
+            bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
+
             var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
             bezl.vars.quoteData.quoteLines.map(dtl => {

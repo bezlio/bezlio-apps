@@ -3,6 +3,8 @@ define(["./quote.js"], function (quote) {
         quote.runQuery(bezl, 'Quotes');
         quote.runQuery(bezl, 'SalesReps');
         quote.runQuery(bezl, 'Parts');
+
+        bezl.vars.ds = [];
     }
 
     return {
