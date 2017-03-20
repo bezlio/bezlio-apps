@@ -100,6 +100,7 @@ define(function () {
                     ,"TaskSeqNum"		:	tasks[i].TaskSeqNum
                     ,"Complete" 		:	((tasks[i].Complete) ? 1 : 0)
                     ,"PercentComplete"	:	tasks[i].PercentComplete
+                    ,"PriorityCode"	    :	tasks[i].PriorityCode
                     ,"TaskDescription"  :	tasks[i].TaskDescription
                     ,"StartDate"		:	tasks[i].StartDate
                     ,"DueDate"			:	tasks[i].DueDate
