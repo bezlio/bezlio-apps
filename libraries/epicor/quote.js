@@ -16,6 +16,15 @@ define(function () {
         bezl.vars.newQuote = true;
     }
 
+    function SaveQuote(bezl, company, quoteNum) {
+        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+            {
+                "Connection": "Epicor 10 RS",
+                "Company": "EPIC03",
+                "QuoteNum": quoteNum
+            }, 0);
+    }
+
     return {
         newQuote: NewQuote
     }
