@@ -21,6 +21,13 @@ define(function () {
             dtl.QuoteNum = bezl.vars.ds.QuoteHed.QuoteNum;
             dtl.Company = 'EPIC03';
             dtl.RowMod = 'U';
+            dtl.CustNum = 3;
+            //desc
+            //UOM
+            //comment
+            //leadtime
+            //poline
+            //salescatid
         });
 
         console.log("Quote Update: " + bezl.vars.ds);
