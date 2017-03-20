@@ -64,7 +64,7 @@ define(function () {
         }
 
         // If we got the account calls back, merge those in
-        if (bezl.data.CRMCalls && bezl.vars.loadingCalls) {
+        if (bezl.data.Accounts && bezl.data.CRMCalls && bezl.vars.loadingCalls) {
             bezl.vars.loadingCalls = false;
 
             if (bezl.data.Accounts) {
@@ -79,7 +79,7 @@ define(function () {
         }
 
         // If we got the account tasks back, merge those in
-        if (bezl.data.Tasks && bezl.vars.loadingTasks) {
+        if (bezl.data.Accounts && bezl.data.Tasks && bezl.vars.loadingTasks) {
             bezl.vars.loadingTasks = false;
 
             if (bezl.data.Accounts) {
@@ -93,8 +93,8 @@ define(function () {
             }
         }
 
-        // If we got the account tasks back, merge those in
-        if (bezl.data.Attachments && bezl.vars.loadingAttachments) {
+        // If we got the account attachments back, merge those in
+        if (bezl.data.Accounts && bezl.data.Attachments && bezl.vars.loadingAttachments) {
             bezl.vars.loadingAttachments = false;
 
             if (bezl.data.Accounts) {
