@@ -18,6 +18,7 @@ define(function () {
 
     function SaveQuote(bezl, company, quoteNum) {
         bezl.vars.ds.QuoteDtl.forEach(dtl => {
+            dtl.QuoteNum = bezl.vars.ds.QuoteHed.QuoteNum;
             dtl.RowMod = 'U';
         });
 
