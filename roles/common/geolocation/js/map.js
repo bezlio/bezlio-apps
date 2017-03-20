@@ -50,13 +50,16 @@ define(["./customer.js"], function (customer) {
 
      function theNext(bezl) {
         if (nextAddress < bezl.vars.customers.length - 1) {
-          setTimeout(function(){getAddress({ 
-                                streetAddress: bezl.vars.customers[nextAddress].data.Address, 
-                                title: bezl.vars.customers[nextAddress].data.Name, 
-                                custNum: bezl.vars.customers[nextAddress].data.CustNum,
-                                shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
-                                data: bezl.vars.customers[nextAddress].data 
-                            }, theNext, bezl)}, delay);
+            if(bezl.vars.customers[nextAddress].data.Geocode_Location == '' || bezl.vars.customers[nextAddress].data.Geocode_Location == null)
+            {
+                setTimeout(function(){getAddress({ 
+                                    streetAddress: bezl.vars.customers[nextAddress].data.Address, 
+                                    title: bezl.vars.customers[nextAddress].data.Name, 
+                                    custNum: bezl.vars.customers[nextAddress].data.CustNum,
+                                    shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
+                                    data: bezl.vars.customers[nextAddress].data 
+                                }, theNext, bezl)}, delay);
+            }
           nextAddress++;
         } else {
           // We're done. 
@@ -78,7 +81,8 @@ define(["./customer.js"], function (customer) {
             .replace('{', '')
             .replace('}', '');
 
-            console.log('Geo' + nextAddress);
+            bezl.vars.geoTracker++;
+            console.log(bezl.vars.geoTracker);
 
             updateGeo(bezl, customerRecord, g);
 
