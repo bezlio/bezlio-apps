@@ -17,10 +17,9 @@ define(function () {
     }
 
     function SaveQuote(bezl, company, quoteNum) {
-        bezl.vars.ds.QuoteHed.forEach(hed => {
-            hed.Company = 'EPIC03';
-            hed.CustNum = 3;
-        });
+
+        bezl.vars.ds.QuoteHed.CustNum = 3;
+        bezl.vars.ds.QuoteHed.Company = 'EPIC03';
 
         bezl.vars.ds.QuoteDtl.forEach(dtl => {
             dtl.QuoteNum = bezl.vars.ds.QuoteHed.QuoteNum;
