@@ -67,12 +67,10 @@ define(function () {
         if (bezl.data.Accounts && bezl.data.CRMCalls && bezl.vars.loadingCalls) {
             bezl.vars.loadingCalls = false;
 
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                        if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
-                        }
+            for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
                     }
                 }
             }
@@ -82,12 +80,10 @@ define(function () {
         if (bezl.data.Accounts && bezl.data.Tasks && bezl.vars.loadingTasks) {
             bezl.vars.loadingTasks = false;
 
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Tasks.length; i++) {
-                        if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
-                        }
+            for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                for (var i = 0; i < bezl.data.Tasks.length; i++) {
+                    if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
                     }
                 }
             }
@@ -97,12 +93,10 @@ define(function () {
         if (bezl.data.Accounts && bezl.data.Attachments && bezl.vars.loadingAttachments) {
             bezl.vars.loadingAttachments = false;
 
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Attachments.length; i++) {
-                        if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
-                        }
+            for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                for (var i = 0; i < bezl.data.Attachments.length; i++) {
+                    if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
                     }
                 }
             }
