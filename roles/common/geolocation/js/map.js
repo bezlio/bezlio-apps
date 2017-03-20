@@ -63,7 +63,7 @@ define(["./customer.js"], function (customer) {
           nextAddress++;
         } else {
           // We're done. 
-          console.log('Done');
+          bezl.vars.geoTracker = 100;
          
         }
       }
