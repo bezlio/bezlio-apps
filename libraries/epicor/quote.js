@@ -26,6 +26,7 @@ define(function () {
     }
 
     return {
-        newQuote: NewQuote
+        newQuote: NewQuote,
+        saveQuote: SaveQuote
     }
 });
