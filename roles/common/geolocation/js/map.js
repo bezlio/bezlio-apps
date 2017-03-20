@@ -81,7 +81,8 @@ define(["./customer.js"], function (customer) {
             .replace('{', '')
             .replace('}', '');
 
-            bezl.vars.geoTracker++;
+            bezl.vars.geoLocsDone++;
+            bezl.vars.geoTracker = (bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100;
             console.log(bezl.vars.geoTracker);
 
             updateGeo(bezl, customerRecord, g);

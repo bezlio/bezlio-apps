@@ -18,7 +18,12 @@ define(["./customer.js",
                                             custNum: bezl.data.CustList[i].CustNum,
                                             shipToNum: bezl.data.CustList[i].ShipToNum,
                                             data: bezl.data.CustList[i]
-                                            });
+                                        });
+                                        
+                // Find how many address need geolocs
+                if(bezl.data.CustList[i].data.Geocode_Location != '' || bezl.data.CustList[i].data.Geocode_Location != null) {
+                    bezl.vars.geoLocsNeeded++;
+                }
             }
         
             // Configure the typeahead controls for the customer and customer search.  For full documentation of
@@ -50,6 +55,8 @@ define(["./customer.js",
             });
                     
             bezl.vars.loading.customerList = false;*/
+
+            
 
             //Geocode each address
             map.theNext(bezl);

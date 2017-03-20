@@ -17,6 +17,9 @@ define(["./map.js",
             bezl.vars.directionsService = new google.maps.DirectionsService;
             bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
             bezl.vars.geoTracker = 0;
+            bezl.vars.geoLocsNeeded = 0;
+            bezl.vars.geoLocsDone = 0;
+
                 
             if (navigator.geolocation) {
                 /*navigator.geolocation.getCurrentPosition(function (position) { 
