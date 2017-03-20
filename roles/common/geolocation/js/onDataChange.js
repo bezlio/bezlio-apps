@@ -4,6 +4,12 @@ define(["./customer.js",
     function OnDataChange (bezl) {
         // Populate the 'customers' array if we got CustomerList back
         if (bezl.data.CustList) {
+
+            // Reset Counters
+            bezl.vars.geoTracker = 0;
+            bezl.vars.geoLocsNeeded = 0;
+            bezl.vars.geoLocsDone = 0;
+
             bezl.vars.loading.customerList = true;
             bezl.vars.customers = [];
             for (var i = 0; i < bezl.data.CustList.length; i++) {

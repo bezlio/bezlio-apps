@@ -63,8 +63,8 @@ define(["./customer.js"], function (customer) {
           nextAddress++;
         } else {
           // We're done. 
-          $('#geoProgress').attr('value',100);
-          //bezl.vars.geoTracker = 100;
+          bezl.vars.geoTracker = 100;
+          console.log(bezl.vars.geoTracker);
          
         }
       }
