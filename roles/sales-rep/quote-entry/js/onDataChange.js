@@ -6,6 +6,7 @@ define(function () {
         }
 
         if (bezl.data.QuoteDtls) {
+            console.log('data changed!');
             bezl.vars.linesloading = false;
 
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
@@ -32,7 +33,8 @@ define(function () {
                     QuoteLine: dtl.QuoteLine,
                     PartNum: dtl.PartNum,
                     OrderQty: dtl.OrderQty,
-                    Company: 'EPIC03'
+                    Company: 'EPIC03',
+                    CustNum: dtl.CustNum
                 });
             });
             //bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
