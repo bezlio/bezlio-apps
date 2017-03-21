@@ -94,7 +94,12 @@ define(["./customer.js"], function (customer) {
             .replace('}', '');
 
             bezl.vars.geoLocsDone++;
-            bezl.vars.geoTracker = (bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100;
+            bezl.vars.geoTracker = Math.round((bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100);
+            var progressBar = document.getElementById('geoProgress');
+
+            progressBar.style.display='none';
+            progressBar.offsetHeight; // no need to store this anywhere, the reference is enough
+            progressBar.style.display='block';
 
             console.log(bezl.vars.geoTracker);
 
