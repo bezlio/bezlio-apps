@@ -33,6 +33,7 @@ define(function () {
                     QuoteLine: dtl.QuoteLine,
                     PartNum: dtl.PartNum,
                     OrderQty: dtl.OrderQty,
+                    SellingExpectedUM: dtl.SellingExpectedUM,
                     Company: 'EPIC03',
                     CustNum: dtl.CustNum
                 });
