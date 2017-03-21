@@ -11,14 +11,13 @@ define(function () {
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
             bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
-            if (bezl.data.QuoteDtl !== undefined) {
-                bezl.data.QuoteDtl.forEach(dtl => {
-                    console.log(dtl);
-                });
-                bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
-            }
 
-            console.log(bezl.vars.ds);
+            bezl.data.QuoteDtls.forEach(dtl => {
+                console.log(dtl);
+            });
+            bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
+
+            //console.log(bezl.vars.ds);
 
             var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
