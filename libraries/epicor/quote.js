@@ -33,7 +33,7 @@ define(function () {
                     Company: hed.Company
                 });
                 quoteNum = hed.QuoteNum;
-                custNum = hed.custNum;
+                custNum = hed.CustNum;
             }
         });
 
