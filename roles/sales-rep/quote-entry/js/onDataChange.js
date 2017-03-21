@@ -15,7 +15,6 @@ define(function () {
             bezl.vars.ds.QuoteDtl = [];
 
             bezl.data.Quotes.forEach(hed => {
-                console.log(hed);
                 if (hed.QuoteNum === bezl.vars.quoteData.quoteNum) {
                     bezl.vars.ds.QuoteHed.push({
                         QuoteNum: hed.QuoteNum,
