@@ -23,6 +23,20 @@ define(["./account.js"], function (account) {
         }
 
       });
+
+      // Prepopulate the CRM new interaction form for click to call/email/navigate
+      // Should pass data in param1 in the form of:
+      // {
+      //   "type": <enum: "phone", "email", "navigate">,
+      //   "shortSummary": <string>,
+      //   "details": <string>
+      // }
+      $(".panel").on("CRMNewInteraction", function(event, param1) {
+        // TODO: look up an appropriate type from the CallTypes list
+        bezl.vars.type = param1.type;
+        bezl.vars.shortSummary = param1.shortSummary;
+        bezl.vars.details = param1.details;
+      });
   }
   
   return {

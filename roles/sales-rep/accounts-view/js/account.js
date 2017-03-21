@@ -179,10 +179,13 @@ define(function () {
     function ClickAddress(bezl, account) {
         window.open('http://maps.google.com/maps?q=' + account.AddressURL,'_blank');
 
-        bezl.vars.selectedAccount.CRMShortSummary = "Customer Visit";
-        bezl.vars.selectedAccount.CRMDetails = "";
-        bezl.vars.selectedAccount.CRMType = "";
-        $('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
+        var param = {
+            "type": "navigate",
+            "shortSummary": "Customer Visit",
+            "details": "Site visit to " + account.Name + ".";
+        };
+
+        $('.panel').trigger('CRMNewInteraction', [param]);
     }
   
     return {
