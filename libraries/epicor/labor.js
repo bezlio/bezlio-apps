@@ -104,12 +104,12 @@ define(function () {
      * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
      * @param {string} company - The company ID within Epicor
-     * @param {Object[]} laborHeds - An array of laborhed numbers
+     * @param {Object[]} laborDtls - An array of the LaborDtl.  Only required property is LaborHedSeq
      */
     function EndActivities (bezl
                     , connection
                     , company
-                    , laborHeds) {      
+                    , laborDtls) {      
         bezl.dataService.add(
             'EndActivities'
             ,'brdb'
@@ -118,7 +118,7 @@ define(function () {
             , { 
                 'Connection'    : connection
                 ,'Company'      : company
-                ,'LaborHedSeq'  : laborHeds
+                ,'LaborDtl'     : laborDtls
         },0);
     }
  

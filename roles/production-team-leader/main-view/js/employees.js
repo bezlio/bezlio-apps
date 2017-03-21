@@ -169,10 +169,16 @@ define(function () {
         // and route this request to the appropriate integration
         if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
                 require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
-                    var laborHeds = [];
+                    var ds = {'LaborDtl': [ ] };
+
                     for (var i = 0; i < bezl.vars.team.length; i++) {
                         if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                            laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
+                            ds.LaborDtl.push(
+                                {
+                                'LaborHedSeq'		: 	((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId)
+                                ,'LaborQty'	        :	(bezl.vars.team[i].completedQty || 0)
+                                }
+                            );
                         }
                     }                   
 
@@ -180,7 +186,7 @@ define(function () {
                                 , bezl.vars.config.Platform
                                 , bezl.vars.config.Connection
                                 , bezl.vars.config.Company
-                                , laborHeds);
+                                , ds);
 
                     bezl.vars.endingActivities = true;
                 });
