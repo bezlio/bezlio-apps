@@ -64,6 +64,7 @@ define(["./customer.js"], function (customer) {
         } else {
           // We're done. 
          bezl.vars.geoTracker = 100;
+         var progressBar = document.getElementById('geoProgress');
          // Forces update of DOM
             setTimeout(function(){ 
                 progressBar.style.width= bezl.vars.geoTracker + '%';
