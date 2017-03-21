@@ -175,7 +175,8 @@ define(function () {
                         if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
                             ds.LaborDtl.push(
                                 {
-                                'LaborHedSeq'		: 	((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId)
+                                'Company'           :   bezl.vars.config.Company
+                                ,'LaborHedSeq'		: 	((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId)
                                 ,'LaborQty'	        :	(bezl.vars.team[i].completedQty || 0)
                                 }
                             );
