@@ -18,7 +18,7 @@ define(function () {
                 bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
             }
 
-            //console.log(bezl.vars.ds);
+            console.log(bezl.vars.ds);
 
             var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
