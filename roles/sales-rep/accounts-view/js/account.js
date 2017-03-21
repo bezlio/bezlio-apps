@@ -198,11 +198,11 @@ define(function () {
         $('.panel').trigger('CRMNewInteraction', [param]);
     }
 
-    function ClickPhoneNumber(bezl, contact) {
+    function ClickPhoneNum(bezl, contact) {
         var param = {
             "type": "phone",
             "shortSummary": "Call to " + contact.ContactName,
-            "details": "Phone call to " + contact.PhoneNumber + "."
+            "details": "Phone call to " + contact.PhoneNum + "."
         };
 
         $('.panel').trigger('CRMNewInteraction', [param]);
@@ -215,6 +215,6 @@ define(function () {
         applyFilter: ApplyFilter,
         clickAddress: ClickAddress,
         clickEmail: ClickEmail,
-        clickPhoneNumber: ClickPhoneNumber
+        clickPhoneNum: ClickPhoneNum
     }
 });
