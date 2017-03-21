@@ -18,6 +18,33 @@ define(function () {
 
     function SaveQuote(bezl, company, quoteNum) {
 
+        bezl.vars.ds.QuoteHed = [];
+        bezl.vars.ds.QuoteDtl = [];
+
+        bezl.data.Quotes.forEach(hed => {
+            if (hed.QuoteNum === bezl.vars.quoteData.quoteNum) {
+                bezl.vars.ds.QuoteHed.push({
+                    QuoteNum: hed.QuoteNum,
+                    CustNum: hed.CustNum,
+                    CustID: hed.CustID,
+                    Name: hed.Name,
+                    Company: hed.Company
+                });
+            }
+        });
+
+        bezl.data.QuoteDtls.forEach(dtl => {
+            bezl.vars.ds.QuoteDtl.push({
+                QuoteNum: dtl.QuoteNum,
+                QuoteLine: dtl.QuoteLine,
+                PartNum: dtl.PartNum,
+                OrderQty: dtl.OrderQty,
+                SellingExpectedUM: dtl.SellingExpectedUM,
+                Company: 'EPIC03',
+                CustNum: dtl.CustNum
+            });
+        });
+
         console.log("Quote Update: ");
         console.log(bezl.vars.ds);
         console.log(JSON.stringify(bezl.vars.ds));
