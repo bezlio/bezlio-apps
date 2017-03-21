@@ -64,8 +64,13 @@ define(["./customer.js"], function (customer) {
         } else {
           // We're done. 
          bezl.vars.geoTracker = 100;
+         // Forces update of DOM
+            setTimeout(function(){ 
+                progressBar.style.width= bezl.vars.geoTracker + '%';
+            }, 200);
          bezl.vars.loading.customerList = false;
-          console.log(bezl.vars.geoTracker);
+         //Updates list
+         //customer.runQuery(bezl, "CustList");
          
         }
       }
@@ -78,6 +83,7 @@ define(["./customer.js"], function (customer) {
             if (status == google.maps.GeocoderStatus.OK) {
               // Output the data
                if (results != null && results.length > 0) {
+
                 var marker = new bezl.vars.client.Marker({
                 position: results[0].geometry.location,
                 map: bezl.vars.map,
@@ -94,17 +100,17 @@ define(["./customer.js"], function (customer) {
             .replace('{', '')
             .replace('}', '');
 
+             //update customer in bezl
+            bezl.vars.customers[nextAddress].data.Geocode_Location = g;
+
             bezl.vars.geoLocsDone++;
             bezl.vars.geoTracker = Math.round((bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100);
             var progressBar = document.getElementById('geoProgress');
 
+            // Forces update of DOM
             setTimeout(function(){ 
                 progressBar.style.width= bezl.vars.geoTracker + '%';
-                
             }, 200);
-
-
-            console.log(bezl.vars.geoTracker);
 
             updateGeo(bezl, customerRecord, g);
 
