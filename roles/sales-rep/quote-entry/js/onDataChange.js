@@ -11,10 +11,12 @@ define(function () {
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
             bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
-            bezl.data.QuoteDtl.forEach(dtl => {
-                console.log(dtl);
-            });
-            bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
+            if (bezl.data.QuoteDtl !== undefined) {
+                bezl.data.QuoteDtl.forEach(dtl => {
+                    console.log(dtl);
+                });
+                bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
+            }
 
             //console.log(bezl.vars.ds);
 
