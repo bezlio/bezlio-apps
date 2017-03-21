@@ -14,7 +14,7 @@ define(function () {
             bezl.vars.ds.QuoteHed = [];
             bezl.vars.ds.QuoteDtl = [];
 
-            bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum).forEach(hed => {
+            bezl.data.Quotes.forEach(hed => {
                 bezl.vars.ds.QuoteHed.push({
                     QuoteNum: hed.QuoteNum,
                     CustNum: hed.CustNum,
