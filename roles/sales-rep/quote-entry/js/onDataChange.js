@@ -13,9 +13,13 @@ define(function () {
             bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
 
             bezl.data.QuoteDtls.forEach(dtl => {
-                console.log(dtl);
+                bezl.vars.ds.QuoteDtl.push({
+                    QuoteLine: dtl.QuoteLine,
+                    PartNum: dtl.PartNum,
+                    OrderQty: dtl.OrderQty
+                });
             });
-            bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
+            //bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
 
             //console.log(bezl.vars.ds);
 
