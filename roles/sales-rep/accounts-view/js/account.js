@@ -187,12 +187,34 @@ define(function () {
 
         $('.panel').trigger('CRMNewInteraction', [param]);
     }
+
+    function ClickEmail(bezl, contact) {
+        var param = {
+            "type": "email",
+            "shortSummary": "Email to " + contact.ContactName,
+            "details": "Email sent to " + contact.EMailAddress + "."
+        };
+
+        $('.panel').trigger('CRMNewInteraction', [param]);
+    }
+
+    function ClickPhoneNumber(bezl, contact) {
+        var param = {
+            "type": "phone",
+            "shortSummary": "Call to " + contact.ContactName,
+            "details": "Phone call to " + contact.PhoneNumber + "."
+        };
+
+        $('.panel').trigger('CRMNewInteraction', [param]);
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
         applyFilter: ApplyFilter,
-        clickAddress: ClickAddress
+        clickAddress: ClickAddress,
+        clickEmail: ClickEmail,
+        clickPhoneNumber: ClickPhoneNumber
     }
 });
