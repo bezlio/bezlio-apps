@@ -28,6 +28,7 @@ define(function () {
 
             bezl.data.QuoteDtls.forEach(dtl => {
                 bezl.vars.ds.QuoteDtl.push({
+                    QuoteNum: dtl.QuoteNum,
                     QuoteLine: dtl.QuoteLine,
                     PartNum: dtl.PartNum,
                     OrderQty: dtl.OrderQty,
