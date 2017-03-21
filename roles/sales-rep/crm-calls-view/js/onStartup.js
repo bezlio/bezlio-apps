@@ -33,7 +33,21 @@ define(["./account.js"], function (account) {
       // }
       $(".panel").on("CRMNewInteraction", function(event, param1) {
         // TODO: look up an appropriate type from the CallTypes list
-        bezl.vars.type = param1.type;
+        // This should eventually be a config option to select the local
+        // CallType to be used for phone/email/navigate. For now we will use
+        // some much less useful default strings.
+        switch (param1.type) {
+            case "phone":
+                bezl.vars.type = "Phone Call";
+                break;
+            case "email":
+                bezl.vars.type = "E-mail";
+                break;
+            case "navigate":
+                bezl.vars.type = "Customer Visit";
+                break;
+        }
+
         bezl.vars.shortSummary = param1.shortSummary;
         bezl.vars.details = param1.details;
       });
