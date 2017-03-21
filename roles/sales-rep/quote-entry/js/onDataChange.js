@@ -30,7 +30,8 @@ define(function () {
                 bezl.vars.ds.QuoteDtl.push({
                     QuoteLine: dtl.QuoteLine,
                     PartNum: dtl.PartNum,
-                    OrderQty: dtl.OrderQty
+                    OrderQty: dtl.OrderQty,
+                    Company: 'EPIC03'
                 });
             });
             //bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
