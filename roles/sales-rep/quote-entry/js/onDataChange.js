@@ -12,6 +12,8 @@ define(function () {
 
             bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
 
+            bezl.vars.ds.QuoteDtl = [];
+
             bezl.data.QuoteDtls.forEach(dtl => {
                 bezl.vars.ds.QuoteDtl.push({
                     QuoteLine: dtl.QuoteLine,
@@ -21,7 +23,7 @@ define(function () {
             });
             //bezl.vars.ds.QuoteDtl = bezl.data.QuoteDtls;
 
-            //console.log(bezl.vars.ds);
+            console.log(bezl.vars.ds);
 
             var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
