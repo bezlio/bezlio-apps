@@ -6,6 +6,10 @@ define(["./employees.js"], function (employees) {
 
         // Default the number of selected employees on the team grid to 0
         bezl.vars.employeesSelected = 0;
+
+        // Default the openJobs object so we do not get any errors when the jsGrid loadData
+        // is run (which includes a filter)
+        bezl.vars.openJobs = [];
         
         // Initiate the queries to run up front
         employees.runQuery(bezl, 'Team');
