@@ -20,6 +20,8 @@ define(function () {
 
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
+        var quoteNum;
+        var custNum;
 
         bezl.data.Quotes.forEach(hed => {
             if (hed.QuoteNum === bezl.vars.quoteData.quoteNum) {
@@ -30,18 +32,20 @@ define(function () {
                     Name: hed.Name,
                     Company: hed.Company
                 });
+                quoteNum = hed.QuoteNum;
+                custNum = hed.custNum;
             }
         });
 
         bezl.data.QuoteDtls.forEach(dtl => {
             bezl.vars.ds.QuoteDtl.push({
-                QuoteNum: dtl.QuoteNum,
+                QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
                 PartNum: dtl.PartNum,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: 'EPIC03',
-                CustNum: dtl.CustNum
+                CustNum: custNum
             });
         });
 
