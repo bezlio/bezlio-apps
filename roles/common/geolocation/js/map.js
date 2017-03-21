@@ -71,7 +71,8 @@ define(["./customer.js"], function (customer) {
                 progressBar.style.width= bezl.vars.geoTracker + '%';
             }, 200);
          
-         
+         bezl.vars.loading.customerList = false;
+
         }
     } else {
           // We're done. 
@@ -81,6 +82,8 @@ define(["./customer.js"], function (customer) {
             setTimeout(function(){ 
                 progressBar.style.width= bezl.vars.geoTracker + '%';
             }, 200);
+
+            bezl.vars.loading.customerList = false;
         }
     
       }
