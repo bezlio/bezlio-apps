@@ -2,6 +2,7 @@ define(["./customer.js"], function (customer) {
 
     var delay = 100;
     var nextAddress = 0;
+    var cust = customer;
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
@@ -70,7 +71,7 @@ define(["./customer.js"], function (customer) {
             }, 200);
          bezl.vars.loading.customerList = false;
          //Updates list
-         customer.runQuery(bezl, "CustList");
+         cust.runQuery(bezl, "CustList");
          
         }
       }
