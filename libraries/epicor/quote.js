@@ -39,17 +39,17 @@ define(function () {
             }
         });
 
-        bezl.data.QuoteDtls.forEach(dtl => {
-            bezl.vars.ds.QuoteDtl.push({
-                QuoteNum: quoteNum,
-                QuoteLine: dtl.QuoteLine,
-                PartNum: dtl.PartNum,
-                OrderQty: dtl.OrderQty,
-                SellingExpectedUM: dtl.SellingExpectedUM,
-                Company: 'EPIC03',
-                CustNum: custNum
-            });
-        });
+        // bezl.data.QuoteDtls.forEach(dtl => {
+        //     bezl.vars.ds.QuoteDtl.push({
+        //         QuoteNum: quoteNum,
+        //         QuoteLine: dtl.QuoteLine,
+        //         PartNum: dtl.PartNum,
+        //         OrderQty: dtl.OrderQty,
+        //         SellingExpectedUM: dtl.SellingExpectedUM,
+        //         Company: 'EPIC03',
+        //         CustNum: custNum
+        //     });
+        // });
 
         // console.log("Quote Update: ");
         // console.log(bezl.vars.ds);
