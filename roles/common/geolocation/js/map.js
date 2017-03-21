@@ -2,7 +2,6 @@ define(["./customer.js"], function (customer) {
 
     var delay = 100;
     var nextAddress = 0;
-    var cust = customer;
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
@@ -69,9 +68,7 @@ define(["./customer.js"], function (customer) {
             setTimeout(function(){ 
                 progressBar.style.width= bezl.vars.geoTracker + '%';
             }, 200);
-         bezl.vars.loading.customerList = false;
-         //Updates list
-         cust.runQuery(bezl, "CustList");
+         
          
         }
       }
