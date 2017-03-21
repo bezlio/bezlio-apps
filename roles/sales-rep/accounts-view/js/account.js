@@ -182,7 +182,7 @@ define(function () {
         var param = {
             "type": "navigate",
             "shortSummary": "Customer Visit",
-            "details": "Site visit to " + account.Name + ".";
+            "details": "Site visit to " + account.Name + "."
         };
 
         $('.panel').trigger('CRMNewInteraction', [param]);
