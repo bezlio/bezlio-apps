@@ -91,7 +91,7 @@ define(["./customer.js",
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
             bezl.data.CustList = null;
-            bezl.vars.loading.customerList = false;
+            
         }
     }
   
