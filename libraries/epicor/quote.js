@@ -18,6 +18,8 @@ define(function () {
 
     function SaveQuote(bezl, company, quoteNum) {
 
+        console.log(bezl.vars.ds);
+
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         var quoteNum;
