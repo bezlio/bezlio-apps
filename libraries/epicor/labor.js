@@ -107,6 +107,7 @@ define(function () {
      * @param {Object[]} laborDtls - An array of the LaborDtl.  Only required property is LaborHedSeq
      */
     function EndActivities (bezl
+                    , plugin
                     , connection
                     , company
                     , laborDtls) {      
