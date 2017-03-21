@@ -10,9 +10,19 @@ define(function () {
 
             bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
-            bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
-
+            //bezl.vars.ds.QuoteHed = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum);
+            bezl.vars.ds.QuoteHed = [];
             bezl.vars.ds.QuoteDtl = [];
+
+            bezl.vars.Quotes.find(hed => hed.QuoteNum === bezl.vars.quoteData.quoteNum).forEach(hed => {
+                bezl.vars.ds.QuoteHed.push({
+                    QuoteNum: hed.QuoteNum,
+                    CustNum: hed.CustNum,
+                    CustID: hed.CustID,
+                    Name: hed.Name,
+                    Company: hed.Company
+                });
+            });
 
             bezl.data.QuoteDtls.forEach(dtl => {
                 bezl.vars.ds.QuoteDtl.push({
