@@ -38,10 +38,10 @@ define(["./account.js"], function (account) {
         // some much less useful default strings.
         switch (param1.type) {
             case "phone":
-                bezl.vars.type = "Phone Call";
+                bezl.vars.type = "Sales";
                 break;
             case "email":
-                bezl.vars.type = "E-mail";
+                bezl.vars.type = "Email";
                 break;
             case "navigate":
                 bezl.vars.type = "Customer Visit";
