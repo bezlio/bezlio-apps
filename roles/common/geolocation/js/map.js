@@ -70,7 +70,7 @@ define(["./customer.js"], function (customer) {
             }, 200);
          bezl.vars.loading.customerList = false;
          //Updates list
-         //customer.runQuery(bezl, "CustList");
+         customer.runQuery(bezl, "CustList");
          
         }
       }
@@ -99,9 +99,6 @@ define(["./customer.js"], function (customer) {
             .replace(/"/g, '')
             .replace('{', '')
             .replace('}', '');
-
-             //update customer in bezl
-            bezl.vars.customers[nextAddress].data.Geocode_Location = g;
 
             bezl.vars.geoLocsDone++;
             bezl.vars.geoTracker = Math.round((bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100);
