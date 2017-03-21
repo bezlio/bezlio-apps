@@ -40,8 +40,6 @@ define(function () {
         });
 
         bezl.data.QuoteDtls.forEach(dtl => {
-            console.log(dtl);
-
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
@@ -53,9 +51,9 @@ define(function () {
             });
         });
 
-        console.log("Quote Update: ");
-        console.log(bezl.vars.ds);
-        console.log(JSON.stringify(bezl.vars.ds));
+        // console.log("Quote Update: ");
+        // console.log(bezl.vars.ds);
+        // console.log(JSON.stringify(bezl.vars.ds));
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
