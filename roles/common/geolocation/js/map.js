@@ -49,6 +49,7 @@ define(["./customer.js"], function (customer) {
     }
 
      function theNext(bezl) {
+        if(bezl.vars.geoLocsNeeded > 0) {
         if (nextAddress < bezl.vars.customers.length - 1) {
             if(bezl.vars.customers[nextAddress].data.Geocode_Location == '' || bezl.vars.customers[nextAddress].data.Geocode_Location == null)
             {
@@ -72,6 +73,16 @@ define(["./customer.js"], function (customer) {
          
          
         }
+    } else {
+          // We're done. 
+         bezl.vars.geoTracker = 100;
+         var progressBar = document.getElementById('geoProgress');
+         // Forces update of DOM
+            setTimeout(function(){ 
+                progressBar.style.width= bezl.vars.geoTracker + '%';
+            }, 200);
+        }
+    
       }
 
       // ====== Geocoding ======
