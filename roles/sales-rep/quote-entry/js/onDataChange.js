@@ -15,13 +15,15 @@ define(function () {
             bezl.vars.ds.QuoteDtl = [];
 
             bezl.data.Quotes.forEach(hed => {
-                bezl.vars.ds.QuoteHed.push({
-                    QuoteNum: hed.QuoteNum,
-                    CustNum: hed.CustNum,
-                    CustID: hed.CustID,
-                    Name: hed.Name,
-                    Company: hed.Company
-                });
+                if (hed.QuoteNum === bezl.vars.quoteData.quoteNum) {
+                    bezl.vars.ds.QuoteHed.push({
+                        QuoteNum: hed.QuoteNum,
+                        CustNum: hed.CustNum,
+                        CustID: hed.CustID,
+                        Name: hed.Name,
+                        Company: hed.Company
+                    });
+                }
             });
 
             bezl.data.QuoteDtls.forEach(dtl => {
