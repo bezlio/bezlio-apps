@@ -1,9 +1,11 @@
 SELECT
 	  emp.EmpID
 	, emp.Name
+	, (CASE WHEN emp.EmailAddress = '{EmailAddress}' THEN 1 ELSE 0 END) AS CurrentEmployee
 	, CASE WHEN lh.LaborHedSeq IS NULL THEN 0 ELSE 1 END AS ClockedIn
 	, lh.LaborHedSeq AS LaborID
-	, CurrentActivity = (SELECT TOP 1 CAST(ld.JobNum AS VARCHAR) + '.' + CAST(ld.AssemblySeq AS VARCHAR) + '.' + CAST(ld.OprSeq AS VARCHAR) FROM LaborDtl ld WHERE ld.Company = lh.Company AND ld.LaborHedSeq = lh.LaborHedSeq AND ld.ActiveTrans = 1)
+	, a.CurrentActivity
+	, a.PendingQty
 FROM
 	EmpBasic emp with(nolock)
 	
@@ -14,6 +16,26 @@ FROM
 	lh.Company = emp.Company
 	AND lh.EmployeeNum = emp.EmpID
 	AND lh.ActiveTrans = 1
+
+	LEFT JOIN 
+		(
+			SELECT 
+				CAST(ld.JobNum AS VARCHAR) + '.' + CAST(ld.AssemblySeq AS VARCHAR) + '.' + CAST(ld.OprSeq AS VARCHAR) AS CurrentActivity
+				, op.RunQty - op.QtyCompleted AS PendingQty
+				, ld.Company
+				, ld.LaborHedSeq
+			FROM 
+				LaborDtl ld with(nolock) 
+
+				LEFT OUTER JOIN JobOper op with(nolock) ON
+				op.Company = ld.Company
+				AND op.JobNum = ld.JobNum
+				AND op.AssemblySeq = ld.AssemblySeq
+				AND op.OprSeq = ld.OprSeq
+			WHERE 
+				ld.ActiveTrans = 1
+		) AS a
+	ON lh.Company = a.Company AND lh.LaborHedSeq = a.LaborHedSeq
 WHERE
 	(emp.SupervisorID = sup.EmpID
 	 Or emp.EMailAddress = sup.EMailAddress)
@@ -21,3 +43,5 @@ WHERE
 	And emp.JCDept = sup.JCDept -- Comment this line out if you want to see team members across departments
 	AND emp.EmpStatus = 'A'
 	--AND emp.Company = 'YourCompanyID' -- Set this to a specific company ID if you have more than one
+ORDER BY
+	(CASE WHEN emp.EmailAddress = '{EmailAddress}' THEN 1 ELSE 0 END) DESC

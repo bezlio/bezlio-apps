@@ -11,6 +11,7 @@ define(["./employees.js"], function (employees) {
                         bezl.vars.team[i].clockedIn = bezl.data.Team[i].ClockedIn;
                         bezl.vars.team[i].laborId = bezl.data.Team[i].LaborID;
                         bezl.vars.team[i].currentActivity = bezl.data.Team[i].CurrentActivity;
+                        bezl.vars.team[i].pendingQty = bezl.data.Team[i].PendingQty;
                     }
                 }
 
@@ -20,7 +21,8 @@ define(["./employees.js"], function (employees) {
                             display: bezl.data.Team[i].Name,
                             clockedIn: bezl.data.Team[i].ClockedIn,
                             laborId: bezl.data.Team[i].LaborID,
-                            currentActivity: bezl.data.Team[i].CurrentActivity
+                            currentActivity: bezl.data.Team[i].CurrentActivity,
+                            pendingQty: bezl.data.Team[i].PendingQty
                             });
                 }
             }
@@ -44,7 +46,9 @@ define(["./employees.js"], function (employees) {
                                             key: bezl.data.AllEmployees[i].EmpID,
                                             display: bezl.data.AllEmployees[i].Name,
                                             clockedIn: bezl.data.AllEmployees[i].ClockedIn,
-                                            laborId: bezl.data.AllEmployees[i].LaborID
+                                            laborId: bezl.data.AllEmployees[i].LaborID,
+                                            currentActivity: bezl.data.AllEmployees[i].CurrentActivity,
+                                            pendingQty: bezl.data.AllEmployees[i].PendingQty
                                             });
             }
         
@@ -132,6 +136,7 @@ define(["./employees.js"], function (employees) {
                         for (var x = 0; x < bezl.vars.team.length; x++) {
                             if (bezl.vars.team[x].key == bezl.data.ClockOut[i].EmployeeNum && !bezl.data.ClockOut[i].Error) {
                                 bezl.vars.team[x].LaborHed = [];
+                                bezl.vars.team[x].currentActivity = '';
                                 bezl.vars.team[x].clockedIn = 0;
                             }
                         }
@@ -155,6 +160,7 @@ define(["./employees.js"], function (employees) {
                     for (var x = 0; x < bezl.vars.team.length; x++) {
                         if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
                             bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
+                            bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
                         }
                     }
                 }

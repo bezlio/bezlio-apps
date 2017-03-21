@@ -27,10 +27,6 @@ define(function () {
         if (!teamUpdated) {
             bezl.vars.addToTeamPrompt = true;
             bezl.vars.addToTeam = employee;
-        } else {
-            $('html, body').animate({
-                    scrollTop: $("#actionButtons").offset().top
-                }, 2000);
         }
     }
 
