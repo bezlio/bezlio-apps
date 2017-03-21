@@ -18,17 +18,6 @@ define(function () {
 
     function SaveQuote(bezl, company, quoteNum) {
 
-        bezl.vars.ds.QuoteHed.CustNum = 3;
-        bezl.vars.ds.QuoteHed.Company = 'EPIC03';
-
-        bezl.vars.ds.QuoteDtl.forEach(dtl => {
-            dtl.QuoteNum = bezl.vars.ds.QuoteHed.QuoteNum;
-            dtl.Company = 'EPIC03';
-            dtl.RowMod = 'U';
-            dtl.CustNum = 3;
-            dtl.LineDesc = 'TEST';
-        });
-
         console.log("Quote Update: ");
         console.log(bezl.vars.ds);
         console.log(JSON.stringify(bezl.vars.ds));
