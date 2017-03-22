@@ -37,7 +37,8 @@ define(["./employees.js"], function (employees) {
               }
             },
             { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false },
-            { name: "shift", title: "Shift", type: "text", visible: true, width: 10, editing: false }
+            { name: "shift", title: "Shift", type: "text", visible: true, width: 10, editing: false },
+            { name: "department", title: "Department", type: "text", visible: true, width: 50, editing: false }
         ],
         rowClick: function(args) {
             employees.select(bezl, args.item);

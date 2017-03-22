@@ -13,7 +13,8 @@ define(["./employees.js"], function (employees) {
                                             laborId: bezl.data.Employees[i].LaborID,
                                             currentActivity: bezl.data.Employees[i].CurrentActivity,
                                             pendingQty: bezl.data.Employees[i].PendingQty,
-                                            shift: bezl.data.Employees[i].Shift
+                                            shift: bezl.data.Employees[i].Shift,
+                                            department: bezl.data.Employees[i].Department
                                         });
                                         
                 if (bezl.data.Employees[i].SupervisorEmail == bezl.env.currentUser 
@@ -39,7 +40,8 @@ define(["./employees.js"], function (employees) {
                                 currentActivity: bezl.data.Employees[i].CurrentActivity,
                                 pendingQty: bezl.data.Employees[i].PendingQty,
                                 employeeEmail: bezl.data.Employees[i].EmployeeEmail,
-                                shift: bezl.data.Employees[i].Shift
+                                shift: bezl.data.Employees[i].Shift,
+                                department: bezl.data.Employees[i].Department
                                 });
                     }
 
