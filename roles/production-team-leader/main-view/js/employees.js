@@ -225,7 +225,8 @@ define(function () {
                                 , laborHeds
                                 , job.data.JobNum
                                 , job.data.AssemblySeq
-                                , job.data.OprSeq);
+                                , job.data.OprSeq
+                                , setup);
 
                     bezl.vars.startingJob = true;
                 } else {
