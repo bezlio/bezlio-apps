@@ -1,16 +1,17 @@
 SELECT
-	  emp.EmpID
+	emp.EmpID
 	, emp.Name
-	, (CASE WHEN emp.EmailAddress = '{EmailAddress}' THEN 1 ELSE 0 END) AS CurrentEmployee
 	, CASE WHEN lh.LaborHedSeq IS NULL THEN 0 ELSE 1 END AS ClockedIn
 	, lh.LaborHedSeq AS LaborID
 	, a.CurrentActivity
 	, a.PendingQty
+	, sup.EMailAddress as SupervisorID
 FROM
 	EmpBasic emp with(nolock)
-	
-	INNER JOIN EmpBasic sup with(nolock) ON
-	sup.EMailAddress = '{EmailAddress}'
+
+	LEFT OUTER JOIN EmpBasic sup with(nolock) ON
+	sup.Company = emp.Company
+	AND sup.EmpID = emp.SupervisorID
 	
 	LEFT OUTER JOIN LaborHed lh with(nolock) ON
 	lh.Company = emp.Company
@@ -37,11 +38,5 @@ FROM
 		) AS a
 	ON lh.Company = a.Company AND lh.LaborHedSeq = a.LaborHedSeq
 WHERE
-	(emp.SupervisorID = sup.EmpID
-	 Or emp.EMailAddress = sup.EMailAddress)
-	And emp.Shift = sup.Shift -- Comment this line out if you want to see team members across shifts
-	And emp.JCDept = sup.JCDept -- Comment this line out if you want to see team members across departments
-	AND emp.EmpStatus = 'A'
-	--AND emp.Company = 'YourCompanyID' -- Set this to a specific company ID if you have more than one
-ORDER BY
-	(CASE WHEN emp.EmailAddress = '{EmailAddress}' THEN 1 ELSE 0 END) DESC
+	emp.EmpStatus = 'A'
+	--AND emp.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

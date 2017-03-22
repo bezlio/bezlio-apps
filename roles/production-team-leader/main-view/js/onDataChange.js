@@ -1,55 +1,44 @@
 define(["./employees.js"], function (employees) {
  
     function OnDataChange (bezl) {
-        // Populate the 'team' array if we got Team back
-        if (bezl.data.Team) {
-            for (var x = 0; x < bezl.data.Team.length; x++) {
-                var teamMemberFound = false;
-                for (var i = 0; i < bezl.vars.team.length; i++) {
-                    if (bezl.vars.team[i].key == bezl.data.Team[x].EmpID) {
-                        var teamMemberFound = true;
-                        bezl.vars.team[i].clockedIn = bezl.data.Team[i].ClockedIn;
-                        bezl.vars.team[i].laborId = bezl.data.Team[i].LaborID;
-                        bezl.vars.team[i].currentActivity = bezl.data.Team[i].CurrentActivity;
-                        bezl.vars.team[i].pendingQty = bezl.data.Team[i].PendingQty;
+        // Loop through the employees list and add them to bezl.vars.employees no matter what
+        // and to the team if the SupervisorID matches the currenly logged in user
+        if (bezl.data.Employees) {
+            bezl.vars.employees = [];
+            for (var i = 0; i < bezl.data.Employees.length; i++) {
+                bezl.vars.employees.push({ selected: false,
+                                            key: bezl.data.Employees[i].EmpID,
+                                            display: bezl.data.Employees[i].Name,
+                                            clockedIn: bezl.data.Employees[i].ClockedIn,
+                                            laborId: bezl.data.Employees[i].LaborID,
+                                            currentActivity: bezl.data.Employees[i].CurrentActivity,
+                                            pendingQty: bezl.data.Employees[i].PendingQty
+                                        });
+                                        
+                if (bezl.data.Employees[i].SupervisorID == bezl.env.currentUser) {
+                    var teamMemberFound = false;
+
+                    for (var i = 0; i < bezl.vars.team.length; i++) {
+                        if (bezl.vars.team[i].key == bezl.data.Employees[x].EmpID) {
+                            var teamMemberFound = true;
+                            bezl.vars.team[i].clockedIn = bezl.data.Employees[i].ClockedIn;
+                            bezl.vars.team[i].laborId = bezl.data.Employees[i].LaborID;
+                            bezl.vars.team[i].currentActivity = bezl.data.Employees[i].CurrentActivity;
+                            bezl.vars.team[i].pendingQty = bezl.data.Employees[i].PendingQty;
+                        }
+                    }
+
+                    if (!teamMemberFound) {
+                        bezl.vars.team.push({ selected: false,
+                                key: bezl.data.Employees[i].EmpID,
+                                display: bezl.data.Employees[i].Name,
+                                clockedIn: bezl.data.Employees[i].ClockedIn,
+                                laborId: bezl.data.Employees[i].LaborID,
+                                currentActivity: bezl.data.Employees[i].CurrentActivity,
+                                pendingQty: bezl.data.Employees[i].PendingQty
+                                });
                     }
                 }
-
-                if (!teamMemberFound) {
-                    bezl.vars.team.push({ selected: false,
-                            key: bezl.data.Team[i].EmpID,
-                            display: bezl.data.Team[i].Name,
-                            clockedIn: bezl.data.Team[i].ClockedIn,
-                            laborId: bezl.data.Team[i].LaborID,
-                            currentActivity: bezl.data.Team[i].CurrentActivity,
-                            pendingQty: bezl.data.Team[i].PendingQty
-                            });
-                }
-            }
-                
-            // Tell the jsGrid to load up
-            $("#jsGridTeam").jsGrid("loadData");
-            employees.highlightSelected(bezl);
-            
-            bezl.vars.refreshingTeam = false;
-            
-            // Clean up CustList data subscription as we no longer need it
-            bezl.dataService.remove('Team');
-            bezl.data.Team = null;
-        }
-
-        // Populate the 'allEmployees' array if we got AllEmployees back
-        if (bezl.data.AllEmployees) {
-            bezl.vars.allEmployees = [];
-            for (var i = 0; i < bezl.data.AllEmployees.length; i++) {
-                bezl.vars.allEmployees.push({ selected: false,
-                                            key: bezl.data.AllEmployees[i].EmpID,
-                                            display: bezl.data.AllEmployees[i].Name,
-                                            clockedIn: bezl.data.AllEmployees[i].ClockedIn,
-                                            laborId: bezl.data.AllEmployees[i].LaborID,
-                                            currentActivity: bezl.data.AllEmployees[i].CurrentActivity,
-                                            pendingQty: bezl.data.AllEmployees[i].PendingQty
-                                            });
             }
         
             // Configure the typeahead controls for the team search.  For full documentation of
@@ -58,7 +47,7 @@ define(["./employees.js"], function (employees) {
                 order: "asc",
                 maxItem: 8,
                 source: {
-                    data: function() { return bezl.vars.allEmployees; }
+                    data: function() { return bezl.vars.employees; }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
@@ -71,7 +60,7 @@ define(["./employees.js"], function (employees) {
                 order: "asc",
                 maxItem: 8,
                 source: {
-                    data: function() { return bezl.vars.allEmployees; }
+                    data: function() { return bezl.vars.employees; }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
@@ -79,12 +68,17 @@ define(["./employees.js"], function (employees) {
                     }
                 }
             });
+
+            // Tell the jsGrid to load up
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         
             bezl.vars.loadingEmployees = false;
+            bezl.vars.refreshingTeam = false;
             
-            // Clean up AllEmployees data subscription as we no longer need it
-            bezl.dataService.remove('AllEmployees');
-            bezl.data.AllEmployees = null;
+            // Clean up Employees data subscription as we no longer need it
+            bezl.dataService.remove('Employees');
+            bezl.data.Employees = null;
         }
 
         // Populate the 'jobs' array if we got Team back

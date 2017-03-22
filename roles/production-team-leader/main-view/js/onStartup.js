@@ -12,8 +12,7 @@ define(["./employees.js"], function (employees) {
         bezl.vars.openJobs = [];
         
         // Initiate the queries to run up front
-        employees.runQuery(bezl, 'Team');
-        employees.runQuery(bezl, 'AllEmployees');
+        employees.runQuery(bezl, 'Employees');
         employees.runQuery(bezl, 'OpenJobs');
 
         // Configure the team members jsGrid

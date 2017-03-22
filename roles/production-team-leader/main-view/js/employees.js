@@ -79,19 +79,10 @@ define(function () {
     function RunQuery (bezl, queryName) {
 
         switch (queryName) {
-            case "Team":
-                // Pull in the team for the logged in user
-                bezl.dataService.add('Team','brdb','production-team-leader-queries','ExecuteQuery', { 
-                    "QueryName": "GetTeam",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                bezl.vars.refreshingTeam = true;
-                break;
-            case "AllEmployees":
+            case "Employees":
                 // Pull in all of the employees for the search box
-                bezl.dataService.add('AllEmployees','brdb','production-team-leader-queries','ExecuteQuery', { 
-                    "QueryName": "GetAllEmployees",
+                bezl.dataService.add('Employees','brdb','production-team-leader-queries','ExecuteQuery', { 
+                    "QueryName": "GetEmployees",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
