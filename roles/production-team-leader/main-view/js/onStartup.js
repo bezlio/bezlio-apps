@@ -16,13 +16,18 @@ define(["./employees.js"], function (employees) {
         $("#jsGridTeam").jsGrid({
         width: "100%",
         height: "100%",
+        filtering: true,
         heading: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function() {
-            return bezl.vars.team;
+            loadData: function(filter) {
+                return $.grep(bezl.vars.team, function (item) {
+                    return (item.display.toUpperCase().indexOf(filter.display.toUpperCase()) >= 0
+                            && item.currentActivity.toUpperCase().indexOf(filter.currentActivity.toUpperCase()) 
+                            && item.shift.toUpperCase().indexOf(filter.shift.toUpperCase()) >= 0);
+                });
             }
         },
         fields: [
@@ -36,7 +41,8 @@ define(["./employees.js"], function (employees) {
                     });
               }
             },
-            { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false }
+            { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false },
+            { name: "shift", title: "Shift", type: "text", visible: true, width: 10, editing: false }
         ],
         rowClick: function(args) {
             employees.select(bezl, args.item);
