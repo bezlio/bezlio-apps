@@ -36,11 +36,32 @@ define(["./employees.js"], function (employees) {
                                 clockedIn: bezl.data.Employees[i].ClockedIn,
                                 laborId: bezl.data.Employees[i].LaborID,
                                 currentActivity: bezl.data.Employees[i].CurrentActivity,
-                                pendingQty: bezl.data.Employees[i].PendingQty
+                                pendingQty: bezl.data.Employees[i].PendingQty,
+                                employeeEmail: bezl.data.Employees[i].EmployeeEmail
                                 });
                     }
                 }
             }
+
+            // Sort the team list by display name, but always put the logged in user (supervisor) on top
+            bezl.vars.team.sort(function(a, b) {
+                var A = a['display'].toUpperCase(); // ignore upper and lowercase
+                var B = b['display'] .toUpperCase(); // ignore upper and lowercase
+
+                if (a['employeeEmail'] == bezl.env.currentUser) {
+                    return -1;
+                }
+
+                if (A < B) {
+                    return -1;
+                }
+                if (A > B) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
+            });
         
             // Configure the typeahead controls for the team search.  For full documentation of
             // available settings here see http://www.runningcoder.org/jquerytypeahead/documentation/
