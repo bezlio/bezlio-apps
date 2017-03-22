@@ -1,7 +1,7 @@
 define(["./customer.js"], function (customer) {
 
     var delay = 100;
-    var nextAddress = 0;
+    var nextAddress = -1;
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
@@ -63,8 +63,12 @@ define(["./customer.js"], function (customer) {
             }
           nextAddress++;
         } else {
-            // Run Query to update results. Acts as second check as well
-            bezl.functions["getCustomers"]();
+            // If no customers needed geocoding, do not run again.
+            if(bezl.vars.geoLocsNeeded == 0) {
+                // Run Query to update results. Acts as second check as well
+                bezl.functions["getCustomers"]();
+            }
+            
           // We're done. 
          bezl.vars.geoTracker = 100;
          var progressBar = document.getElementById('geoProgress');
