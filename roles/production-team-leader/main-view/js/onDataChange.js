@@ -15,16 +15,17 @@ define(["./employees.js"], function (employees) {
                                             pendingQty: bezl.data.Employees[i].PendingQty
                                         });
                                         
-                if (bezl.data.Employees[i].SupervisorID == bezl.env.currentUser) {
+                if (bezl.data.Employees[i].SupervisorEmail == bezl.env.currentUser 
+                    || bezl.data.Employees[i].EmployeeEmail == bezl.env.currentUser ) {
                     var teamMemberFound = false;
 
-                    for (var i = 0; i < bezl.vars.team.length; i++) {
-                        if (bezl.vars.team[i].key == bezl.data.Employees[x].EmpID) {
+                    for (var x = 0; x < bezl.vars.team.length; x++) {
+                        if (bezl.vars.team[x].key == bezl.data.Employees[i].EmpID) {
                             var teamMemberFound = true;
-                            bezl.vars.team[i].clockedIn = bezl.data.Employees[i].ClockedIn;
-                            bezl.vars.team[i].laborId = bezl.data.Employees[i].LaborID;
-                            bezl.vars.team[i].currentActivity = bezl.data.Employees[i].CurrentActivity;
-                            bezl.vars.team[i].pendingQty = bezl.data.Employees[i].PendingQty;
+                            bezl.vars.team[x].clockedIn = bezl.data.Employees[i].ClockedIn;
+                            bezl.vars.team[x].laborId = bezl.data.Employees[i].LaborID;
+                            bezl.vars.team[x].currentActivity = bezl.data.Employees[i].CurrentActivity;
+                            bezl.vars.team[x].pendingQty = bezl.data.Employees[i].PendingQty;
                         }
                     }
 

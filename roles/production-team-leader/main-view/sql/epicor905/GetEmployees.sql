@@ -5,7 +5,8 @@ SELECT
 	, lh.LaborHedSeq AS LaborID
 	, a.CurrentActivity
 	, a.PendingQty
-	, sup.EMailAddress as SupervisorID
+	, sup.EMailAddress as SupervisorEmail
+	, emp.EMailAddress as EmployeeEmail
 FROM
 	EmpBasic emp with(nolock)
 
