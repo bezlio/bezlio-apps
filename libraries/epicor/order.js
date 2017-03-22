@@ -61,6 +61,7 @@ define(function () {
             }
 
             if (bezl.vars.ShipToNum == 'CreateNew') {
+                oh.UseOTS = true;
                 oh.OTSSaveAs = 'T';
                 oh.OTSShipToNum = bezl.vars.selectedShipTo.ID;
                 oh.OTSName = bezl.vars.selectedShipTo.Name;
