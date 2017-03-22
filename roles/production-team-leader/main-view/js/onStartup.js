@@ -16,18 +16,13 @@ define(["./employees.js"], function (employees) {
         $("#jsGridTeam").jsGrid({
         width: "100%",
         height: "100%",
-        filtering: true,
         heading: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function(filter) {
-                return $.grep(bezl.vars.team, function (item) {
-                    return (item.display.toUpperCase().indexOf(filter.display.toUpperCase()) >= 0
-                            && item.currentActivity.toUpperCase().indexOf(filter.currentActivity.toUpperCase()) 
-                            && item.shift.toUpperCase().indexOf(filter.shift.toUpperCase()) >= 0);
-                });
+            loadData: function() {
+            return bezl.vars.team;
             }
         },
         fields: [
