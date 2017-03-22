@@ -175,11 +175,46 @@ define(function () {
             };
         }
     }
+
+    function ClickAddress(bezl, account) {
+        window.open('http://maps.google.com/maps?q=' + account.AddressURL,'_blank');
+
+        var param = {
+            "type": "navigate",
+            "shortSummary": "Customer Visit",
+            "details": "Site visit to " + account.Name + "."
+        };
+
+        $('.panel').trigger('CRMNewInteraction', [param]);
+    }
+
+    function ClickEmail(bezl, contact) {
+        var param = {
+            "type": "email",
+            "shortSummary": "Email to " + contact.ContactName,
+            "details": "Email sent to " + contact.EMailAddress + "."
+        };
+
+        $('.panel').trigger('CRMNewInteraction', [param]);
+    }
+
+    function ClickPhoneNum(bezl, contact) {
+        var param = {
+            "type": "phone",
+            "shortSummary": "Call to " + contact.ContactName,
+            "details": "Phone call to " + contact.PhoneNum + "."
+        };
+
+        $('.panel').trigger('CRMNewInteraction', [param]);
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
-        applyFilter: ApplyFilter
+        applyFilter: ApplyFilter,
+        clickAddress: ClickAddress,
+        clickEmail: ClickEmail,
+        clickPhoneNum: ClickPhoneNum
     }
 });
