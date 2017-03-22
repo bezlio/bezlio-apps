@@ -52,12 +52,32 @@ define(["./employees.js"], function (employees) {
                 }
             }
 
-            // Sort the logged in employee to the top of the list always
+            // Custom sorting.  Supervisor always first, then by shift, then by department.
             bezl.vars.team.sort(function(a, b) {
-                if (a['employeeEmail'] == bezl.env.currentUser) {
+                var ae = a['employeeEmail'];
+                var be = b['employeeEmail'];
+
+                if (ae == bezl.env.currentUser) {
                     return -1;
                 } else {
-                    return 1;
+                    // Now by shift
+                    var as = a['shift'] || Number.MAX_SAFE_INTEGER;
+                    var bs = b['shift'] || Number.MAX_SAFE_INTEGER;
+
+                    if (be != bezl.env.currentUser && bs > as) {
+                        return -1
+                    } else {
+                        // Lastly by department
+                        var ad = a['department'];
+                        var bd = b['department'];
+
+                        if (be != bezl.env.currentUser && bs == as && bd > ad) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
+                    }
+                    
                 }
             });
         
