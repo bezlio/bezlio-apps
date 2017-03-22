@@ -44,7 +44,7 @@ define(function () {
     function Filter(bezl) {
         // Filter, will hide the table rows that do not match filter
         var tr, td;
-        tr = document.getElementById("priceList").getElementsByTagName("tr");
+        tr = document.getElementById("RMAList").getElementsByTagName("tr");
 
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {
