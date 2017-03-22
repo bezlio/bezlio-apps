@@ -65,6 +65,12 @@ define(function () {
         bezl.vars.selectedEmployee.Name = "";
     }
 
+    function AddToTeamCancel (bezl) {   
+        bezl.vars.addToTeamPrompt = false;
+        bezl.vars.addToTeam = {};
+        bezl.vars.selectedEmployee.Name = "";
+    }
+
     function HighlightSelected (bezl) {
         // Re-highlight any employees that were previously selected on the team
         for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -183,6 +189,16 @@ define(function () {
                     bezl.vars.endingActivities = true;
                 });
         }
+
+        bezl.vars.endActivitiesPrompt = false;
+    }
+
+    function EndActivitiesPrompt (bezl) {        
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+        bezl.vars.team[i].pendingQtyTemp = bezl.vars.team[i].pendingQty;
+        };
+
+        bezl.vars.endActivitiesPrompt = true;
     }
 
     function StartJob (bezl, job) {        
@@ -213,17 +229,59 @@ define(function () {
 
         bezl.vars.showJobDialog = false;
     }
+
+    function ValidateQuantities (bezl, quantityRow) {        
+        // Clear out any past overrides or exceptions
+        quantityRow.override = false;
+        quantityRow.quantityException = false;
+        bezl.vars.endActivitiesDisabled = false;
+
+        // Determine the total quanty completed across all other employees on this activity
+        var totalCompleted = 0;
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            if (bezl.vars.team[i].selected && bezl.vars.team[i].key != quantityRow.key && bezl.vars.team[i].currentActivity == quantityRow.currentActivity) {
+            totalCompleted += (bezl.vars.team[i].completedQty || 0);
+            }
+        };
+
+        // Recalculate the current rows pendingQtyTemp based on the input
+        quantityRow.pendingQtyTemp = quantityRow.pendingQty - quantityRow.completedQty - totalCompleted;
+
+        // Mark the row with an exception if pendingQtyTemp now went to negative
+        if (quantityRow.pendingQtyTemp < 0 && quantityRow.completedQty > 0) {
+        quantityRow.quantityException = true;
+        bezl.vars.endActivitiesDisabled = true;
+        }
+
+        // Now update all of those other employees pendingQtyTemp
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            if (bezl.vars.team[i].selected && bezl.vars.team[i].key != quantityRow.key 
+                && bezl.vars.team[i].currentActivity == quantityRow.currentActivity
+                && !bezl.vars.team[i].completedQty) {
+            bezl.vars.team[i].pendingQtyTemp = bezl.vars.team[i].pendingQty - totalCompleted - quantityRow.completedQty + (bezl.vars.team[i].completedQty || 0);
+            }
+        };
+    }
+
+    function OverrideQuantityException (bezl, quantityRow) {  
+        quantityRow.override = true;
+        bezl.vars.endActivitiesDisabled = false;
+    }
  
     return {
         select: Select,
         selectAll: SelectAll,
         deselectAll: DeselectAll,
         addToTeam: AddToTeam,
+        addToTeamCancel: AddToTeamCancel,
         highlightSelected: HighlightSelected,
         runQuery: RunQuery,
         clockIn: ClockIn,
         clockOut: ClockOut,
         endActivities: EndActivities,
-        startJob: StartJob
+        endActivitiesPrompt: EndActivitiesPrompt,
+        startJob: StartJob,
+        validateQuantities: ValidateQuantities,
+        overrideQuantityException: OverrideQuantityException
     }
 });
