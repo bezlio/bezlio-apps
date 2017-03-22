@@ -109,7 +109,8 @@ define(["./employees.js"], function (employees) {
             for (var i = 0; i < bezl.data.OpenJobs.length; i++) {
                 bezl.vars.openJobs.push({ jobId: bezl.data.OpenJobs[i].JobID,
                         jobDesc: bezl.data.OpenJobs[i].JobDesc,
-                        data: bezl.data.OpenJobs[i]
+                        data: bezl.data.OpenJobs[i],
+                        pendingQty: bezl.data.OpenJobs[i].PendingQty
                         });
             }
                 

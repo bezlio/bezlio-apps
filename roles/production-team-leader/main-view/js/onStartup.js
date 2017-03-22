@@ -65,7 +65,8 @@ define(["./employees.js"], function (employees) {
         },
         fields: [
             { name: "jobId", title: "Job", type: "text", visible: true, width: 25, editing: false },
-            { name: "jobDesc", title: "Description", type: "text", visible: true, width: 50, editing: false }
+            { name: "jobDesc", title: "Description", type: "text", visible: true, width: 50, editing: false },
+            { name: "pendingQty", title: "Pending Qty", type: "number", visible: true, width: 50, editing: false }
         ],
         rowClick: function(args) {
             bezl.vars.selectedJob = args.item;
