@@ -63,6 +63,8 @@ define(["./customer.js"], function (customer) {
             }
           nextAddress++;
         } else {
+            // Run Query to update results. Acts as second check as well
+            customer.RunQuery("CustList");
           // We're done. 
          bezl.vars.geoTracker = 100;
          var progressBar = document.getElementById('geoProgress');
