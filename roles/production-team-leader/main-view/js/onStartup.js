@@ -1,9 +1,6 @@
 define(["./employees.js"], function (employees) {
  
     function OnStartup (bezl) {
-        // Call setConfig which defines the handful of settings that you may wish to tweak
-        bezl.functions['setConfig']();
-
         // Default the number of selected employees on the team grid to 0
         bezl.vars.employeesSelected = 0;
 

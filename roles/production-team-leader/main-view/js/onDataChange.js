@@ -40,6 +40,11 @@ define(["./employees.js"], function (employees) {
                                 employeeEmail: bezl.data.Employees[i].EmployeeEmail
                                 });
                     }
+
+                    // Pull the shift from the database into bezl.vars.config.Shift
+                    if (bezl.data.Employees[i].EmployeeEmail == bezl.env.currentUser) {
+                        bezl.vars.config.Shift = bezl.data.Employees[i].Shift;
+                    }
                 }
             }
 

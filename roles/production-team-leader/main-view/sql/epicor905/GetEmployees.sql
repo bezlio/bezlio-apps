@@ -7,6 +7,7 @@ SELECT
 	, a.PendingQty
 	, sup.EMailAddress as SupervisorEmail
 	, emp.EMailAddress as EmployeeEmail
+	, emp.Shift
 FROM
 	EmpBasic emp with(nolock)
 
@@ -40,4 +41,4 @@ FROM
 	ON lh.Company = a.Company AND lh.LaborHedSeq = a.LaborHedSeq
 WHERE
 	emp.EmpStatus = 'A'
-	--AND emp.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
+	AND emp.Company = 'EPIC06'  -- Set this to a specific company ID if you have more than one
