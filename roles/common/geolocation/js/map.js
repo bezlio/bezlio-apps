@@ -2,6 +2,7 @@ define(["./customer.js"], function (customer) {
 
     var delay = 100;
     var nextAddress = 0;
+    var cust = customer;
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
@@ -64,7 +65,7 @@ define(["./customer.js"], function (customer) {
           nextAddress++;
         } else {
             // Run Query to update results. Acts as second check as well
-            customer.RunQuery("CustList");
+            cust.RunQuery("CustList");
           // We're done. 
          bezl.vars.geoTracker = 100;
          var progressBar = document.getElementById('geoProgress');
