@@ -123,14 +123,17 @@ define(function () {
                     }
                 }
 
-                labor.clockIn(bezl
-                            , bezl.vars.config.Platform
-                            , bezl.vars.config.Connection
-                            , bezl.vars.config.Company
-                            , clockInEmployees
-                            , bezl.vars.shift);
-
-                bezl.vars.clockingIn = true;  
+                if (clockInEmployees.length > 0) {
+                    labor.clockIn(bezl
+                                , bezl.vars.config.Platform
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , clockInEmployees
+                                , bezl.vars.shift);
+                    bezl.vars.clockingIn = true;  
+                } else {
+                    bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
+                } 
             });
         }
     }
@@ -214,16 +217,20 @@ define(function () {
                     }
                 }
 
-                labor.startJob(bezl
-                            , bezl.vars.config.Platform
-                            , bezl.vars.config.Connection
-                            , bezl.vars.config.Company
-                            , laborHeds
-                            , job.data.JobNum
-                            , job.data.AssemblySeq
-                            , job.data.OprSeq);
+                if (laborHeds.lenthg > 0) {
+                    labor.startJob(bezl
+                                , bezl.vars.config.Platform
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , laborHeds
+                                , job.data.JobNum
+                                , job.data.AssemblySeq
+                                , job.data.OprSeq);
 
-                bezl.vars.startingJob = true;
+                    bezl.vars.startingJob = true;
+                } else {
+                    bezl.notificationService.showCriticalError('No selected clocked in employees available to start this job.');
+                }
             });
         }
 
