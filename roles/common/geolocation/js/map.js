@@ -68,8 +68,10 @@ define(["./customer.js"], function (customer) {
                 for (var i = 0; i < bezl.vars.customers.length; i++) {
                                         
                 // Find position of record that needs geocoded
-                if(bezl.data.CustList[i].Geocode_Location == '' || bezl.data.CustList[i].Geocode_Location == null) {
+                if(bezl.vars.customers[i].Geocode_Location == '' || bezl.vars.customers[i].Geocode_Location == null) {
+                   if( i < nextAddress ) {
                     nextAddress = i;
+                   }
                 }
             }
             
