@@ -128,7 +128,7 @@ define(function () {
                             , bezl.vars.config.Connection
                             , bezl.vars.config.Company
                             , clockInEmployees
-                            , bezl.vars.config.Shift);
+                            , bezl.vars.shift);
 
                 bezl.vars.clockingIn = true;  
             });
