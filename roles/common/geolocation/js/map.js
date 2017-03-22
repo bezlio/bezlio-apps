@@ -64,21 +64,21 @@ define(["./customer.js"], function (customer) {
           nextAddress++;
         } else {
             // If no customers needed geocoding, do not run again.
-            if(bezl.vars.geoLocsNeeded == 0) {
+            if(bezl.vars.geoLocsNeeded != 0) {
                 // Run Query to update results. Acts as second check as well
                 bezl.functions["getCustomers"]();
+            } else {
+
+                // We're done. 
+                bezl.vars.geoTracker = 100;
+                var progressBar = document.getElementById('geoProgress');
+                // Forces update of DOM
+                    setTimeout(function(){ 
+                        progressBar.style.width= bezl.vars.geoTracker + '%';
+                    }, 200);
+                
+                bezl.vars.loading.customerList = false;
             }
-
-          // We're done. 
-         bezl.vars.geoTracker = 100;
-         var progressBar = document.getElementById('geoProgress');
-         // Forces update of DOM
-            setTimeout(function(){ 
-                progressBar.style.width= bezl.vars.geoTracker + '%';
-            }, 200);
-         
-         bezl.vars.loading.customerList = false;
-
         }
     } else {
           // We're done. 
