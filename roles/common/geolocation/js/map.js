@@ -65,15 +65,6 @@ define(["./customer.js"], function (customer) {
         } else {
             // If no customers needed geocoding, do not run again.
             if(bezl.vars.geoLocsNeeded != 0) {
-                for (var i = 0; i < bezl.vars.customers.length; i++) {
-                                        
-                // Find position of record that needs geocoded
-                if(bezl.vars.customers[i].Geocode_Location == '' || bezl.vars.customers[i].Geocode_Location == null) {
-                   if( i < nextAddress ) {
-                    nextAddress = i;
-                   }
-                }
-            }
             
                 nextAddress = 0;
                 // Run Query to update results. Acts as second check as well

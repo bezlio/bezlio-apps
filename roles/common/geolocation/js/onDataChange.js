@@ -1,5 +1,6 @@
 define(["./customer.js",
         "./map.js"], function (customer, map) {
+            var firstTime = true;
  
     function OnDataChange (bezl) {
         // Populate the 'customers' array if we got CustomerList back
@@ -25,6 +26,12 @@ define(["./customer.js",
                                             shipToNum: bezl.data.CustList[i].ShipToNum,
                                             data: bezl.data.CustList[i]
                                         });
+
+                //for testing.
+                if(firstTime) {
+                bezl.data.CustList[i].Geocode_Location = '';
+                firstTime = false;
+                }
                                         
                 // Find how many address need geolocs
                 if(bezl.data.CustList[i].Geocode_Location == '' || bezl.data.CustList[i].Geocode_Location == null) {
