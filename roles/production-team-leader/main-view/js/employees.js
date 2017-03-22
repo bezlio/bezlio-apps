@@ -217,7 +217,7 @@ define(function () {
                     }
                 }
 
-                if (laborHeds.lenthg > 0) {
+                if (laborHeds.length > 0) {
                     labor.startJob(bezl
                                 , bezl.vars.config.Platform
                                 , bezl.vars.config.Connection
