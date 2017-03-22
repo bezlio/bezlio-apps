@@ -11,6 +11,15 @@ define(["./customer.js",
             bezl.vars.geoLocsNeeded = 0;
             bezl.vars.geoLocsDone = 0;
 
+            //for testing.
+                if(firstTime) {
+                    for (var i = 0; i < bezl.data.CustList.length; i++) {
+                        bezl.data.CustList[i].Geocode_Location = '';
+                    }
+                firstTime = false;
+                }
+    
+
             bezl.vars.loading.customerList = true;
             bezl.vars.customers = [];
             for (var i = 0; i < bezl.data.CustList.length; i++) {
@@ -27,11 +36,7 @@ define(["./customer.js",
                                             data: bezl.data.CustList[i]
                                         });
 
-                //for testing.
-                if(firstTime) {
-                bezl.data.CustList[i].Geocode_Location = '';
-                firstTime = false;
-                }
+                
                                         
                 // Find how many address need geolocs
                 if(bezl.data.CustList[i].Geocode_Location == '' || bezl.data.CustList[i].Geocode_Location == null) {
