@@ -27,7 +27,7 @@ define(["./customer.js",
                                         });
                                         
                 // Find how many address need geolocs
-                if(bezl.data.CustList[i].Geocode_Location != '' || bezl.data.CustList[i].Geocode_Location != null) {
+                if(bezl.data.CustList[i].Geocode_Location == '' || bezl.data.CustList[i].Geocode_Location == null) {
                     bezl.vars.geoLocsNeeded++;
                 }
             }
