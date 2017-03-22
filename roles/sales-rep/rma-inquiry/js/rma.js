@@ -13,7 +13,7 @@ define(function () {
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate || '01/01/1900'},
                         { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'},
-                        { "Key": "CustId", "Value": bezl.vars.selectedAccount.ID || ""}
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
                     ] },0);
                 break;
             default:
