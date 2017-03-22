@@ -114,10 +114,16 @@ define(["./customer.js"], function (customer) {
                }
              bezl.vars.markers[customerRecord.custNum] = marker;
 
-              var g = JSON.stringify(results[0].geometry.location)
-            .replace(/"/g, '')
-            .replace('{', '')
-            .replace('}', '');
+
+              var g;
+              if( results[0].geometry.location == '' ){
+                  g = 'Unavailable';
+              } else {
+                g = JSON.stringify(results[0].geometry.location)
+                .replace(/"/g, '')
+                .replace('{', '')
+                .replace('}', '');
+              }
 
             bezl.vars.geoLocsDone++;
             bezl.vars.geoTracker = Math.round((bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100);
@@ -127,6 +133,7 @@ define(["./customer.js"], function (customer) {
             setTimeout(function(){ 
                 progressBar.style.width= bezl.vars.geoTracker + '%';
             }, 200);
+
 
             updateGeo(bezl, customerRecord, g);
 
