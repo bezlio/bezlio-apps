@@ -72,6 +72,7 @@ define(function () {
      * @param {Number} jobNum - The job number to clock onto
      * @param {Number} assemblySeq - The assembly sequence to clock onto
      * @param {Number} oprSeq - The operation sequence to clock onto
+     * @param {Boolean} setup - Indicates this activity should be started for Setup
      */
     function StartJob (bezl
                     , plugin
@@ -80,7 +81,8 @@ define(function () {
                     , laborHeds
                     , jobNum
                     , assemblySeq
-                    , oprSeq) {
+                    , oprSeq
+                    , setup) {
         bezl.dataService.add(
             'StartJob'
             ,'brdb'
@@ -93,6 +95,7 @@ define(function () {
                 ,'JobNum'       : jobNum
                 ,'JobAsm'       : assemblySeq
                 ,'JobOp'        : oprSeq
+                ,'Setup'        : setup
         },0);
     }
 

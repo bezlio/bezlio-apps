@@ -16,13 +16,38 @@ define(["./employees.js"], function (employees) {
         $("#jsGridTeam").jsGrid({
         width: "100%",
         height: "100%",
+        filtering: true,
         heading: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function() {
-            return bezl.vars.team;
+            loadData: function(filter) {
+                return $.grep(bezl.vars.team, function (item) {
+                    var show = true;
+
+                    if (filter.display && item.display.toUpperCase().indexOf(filter.display.toUpperCase()) == -1) {
+                      show = false;
+                    }
+
+                    if (filter.currentActivity && item.currentActivity && item.currentActivity.toUpperCase().indexOf(filter.currentActivity.toUpperCase()) == -1) {
+                      show = false;
+                    }
+
+                    if (filter.currentActivity && !item.currentActivity) {
+                      show = false;
+                    }
+
+                    if (filter.shift && filter.shift != item.shift) {
+                      show = false;
+                    }
+
+                    if (filter.department && item.department.toUpperCase().indexOf(filter.department.toUpperCase()) == -1) {
+                      show = false;
+                    }
+
+                    return show;
+                });
             }
         },
         fields: [

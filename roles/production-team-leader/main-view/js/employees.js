@@ -204,7 +204,7 @@ define(function () {
         bezl.vars.endActivitiesPrompt = true;
     }
 
-    function StartJob (bezl, job) {        
+    function StartJob (bezl, job, setup) {        
         // Since this is going to be an API call as opposed to a straight
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration

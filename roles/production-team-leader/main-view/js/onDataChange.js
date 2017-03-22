@@ -52,24 +52,13 @@ define(["./employees.js"], function (employees) {
                 }
             }
 
-            // Sort the team list by display name, but always put the logged in user (supervisor) on top
+            // Sort the logged in employee to the top of the list always
             bezl.vars.team.sort(function(a, b) {
-                var A = a['display'].toUpperCase(); // ignore upper and lowercase
-                var B = b['display'] .toUpperCase(); // ignore upper and lowercase
-
                 if (a['employeeEmail'] == bezl.env.currentUser) {
                     return -1;
-                }
-
-                if (A < B) {
-                    return -1;
-                }
-                if (A > B) {
+                } else {
                     return 1;
                 }
-
-                // names must be equal
-                return 0;
             });
         
             // Configure the typeahead controls for the team search.  For full documentation of
