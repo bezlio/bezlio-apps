@@ -41,6 +41,7 @@ define(function () {
                     tempOrder.PoNum = bezl.data.Orders[i].PoNum || "";
                     tempOrder.OrderDate = bezl.data.Orders[i].OrderDate;
                     tempOrder.OrderAmt = bezl.data.Orders[i].OrderAmt;
+                    tempOrder.OpenOrder = bezl.data.Orders[i].OpenOrder;
 
                     // Add a Selected property to the account record
                     if (bezl.data.Orders[i].OrderNum == bezl.vars.selectedOrder.OrderNum) {
