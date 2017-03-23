@@ -11,7 +11,7 @@ define(["./quote.js"], function (quote) {
         // var parts = http.get('https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json', '', '')
         //     .map(result => result.json());
 
-        require(["https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json?callback=define"],
+        require(["https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json"],
             function (data) {
                 //The data object will be the API response for the
                 //JSONP data call.
