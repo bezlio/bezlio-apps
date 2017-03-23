@@ -49,14 +49,18 @@ define(function () {
             });
         });
 
+
+        var removeLines = [];
         for (var x of bezl.data.QuoteDtls) {
-            console.log(x);
             if (x.Deleted === 1) {
-                var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === x.QuoteLine));
-                console.log("Index: " + index);
-                bezl.data.QuoteDtls.splice(index, 1);
+                removeLines.push(x.QuoteLine);
             }
         }
+
+        removeLines.forEach(dtl => {
+            var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === dtl));
+            bezl.data.QuoteDtls.splice(index, 1);
+        });
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
