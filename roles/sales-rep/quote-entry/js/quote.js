@@ -47,7 +47,7 @@ define(function () {
     function AddLine(bezl) {
         var lineNum = Math.max.apply(Math, bezl.vars.quoteData.quoteLines.map(function (dtl) { return dtl.QuoteLine; }));
 
-        bezl.vars.QuoteDtls.push({ QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA' });
+        bezl.data.QuoteDtls.push({ QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA' });
 
         var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
@@ -74,9 +74,9 @@ define(function () {
     function DeleteLine(bezl, lineNum) {
         console.log("Line: " + lineNum);
 
-        bezl.vars.quoteData.quoteLines = bezl.vars.quoteData.quoteLines.filter(dtl =>
-            dtl.QuoteLine !== lineNum
-        );
+        // bezl.vars.quoteData.quoteLines = bezl.vars.quoteData.quoteLines.filter(dtl =>
+        //     dtl.QuoteLine !== lineNum
+        // );
 
         bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl =>
             dtl.QuoteLine !== lineNum
