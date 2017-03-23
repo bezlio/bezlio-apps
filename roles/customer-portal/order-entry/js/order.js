@@ -7,7 +7,7 @@ define(["./customer.js"], function (customer) {
         // See if we have a different base price we need to use
         var basePrice = bezl.vars.selectedPart.UnitPrice;
 
-        var disc = bezl.vars.priceDiscounts.filter(p => p.PartNum == bezl.vars.selectedPart.PartNum);
+        var disc = bezl.vars.partDiscounts.filter(p => p.PartNum == bezl.vars.selectedPart.PartNum);
 
         if (disc.length > 0) {
             // We will just pick the first because this is not qty based
