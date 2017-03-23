@@ -9,6 +9,7 @@ SELECT
 	, c.State
 	, c.ZIP
 	, c.Address1 + ' ' + c.City + ', ' + c.State + ' ' + c.ZIP + ' ' AS Address
+	, c.TermsCode
 FROM
 	Erp.Customer c with(nolock)
 INNER JOIN 
