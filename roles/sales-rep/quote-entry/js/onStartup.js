@@ -17,6 +17,9 @@ define(["./quote.js"], function (quote) {
         //         //JSONP data call.
         //         console.log(data);
         //     });
+
+        $.ajaxSetup({ dataType: "jsonp" });
+
         console.log('test');
         $.getJSON("https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json", function (data) {
             console.log(data);
