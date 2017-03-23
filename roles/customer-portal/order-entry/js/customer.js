@@ -41,12 +41,12 @@ define(["./order.js"], function (order) {
                     "QueryName": "/order-entry/GetGlobalParts",
                     "Parameters": [] },0);
                 break;
-            case "GetPartsByCustNum":
+            case "GetPartDiscounts":
                 bezl.vars.loadingParts = true; 
 
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('GetPartsByCustNum','brdb','customer-portal-queries','ExecuteQuery', { 
-                    "QueryName": "/order-entry/GetPartsByCustNum",
+                bezl.dataService.add('GetPartDiscounts','brdb','customer-portal-queries','ExecuteQuery', { 
+                    "QueryName": "/order-entry/GetPartDiscounts",
                     "Parameters": [
                         { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum }
                     ] },0);
@@ -73,7 +73,7 @@ define(["./order.js"], function (order) {
         bezl.vars.selectedCustomer.Selected = true;
 
         // Run our query to load parts
-        RunQuery(bezl, 'GetPartsByCustNum');
+        RunQuery(bezl, 'GetPartDiscounts');
 
         // Load a new Order
         order.newOrder(bezl);
