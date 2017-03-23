@@ -9,7 +9,7 @@ define(function () {
             console.log('data changed!');
             bezl.vars.linesloading = false;
 
-            bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
+            //bezl.vars.quoteData.quoteLines = bezl.data.QuoteDtls;
 
             var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
