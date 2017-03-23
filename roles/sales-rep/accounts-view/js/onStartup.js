@@ -15,6 +15,29 @@ define(["./account.js"], function (account) {
               bezl.vars.currentLng = position.coords.longitude;
             });
         }
+
+        // Listen for new/updated tasks from the Task panel. The "Next Task
+        // Due" value for an account might have possibly changed.
+        $(".panel").on("updateTask", function(event, param1) {
+            for (var i = 0; i < bezl.data.Accounts.length; i++) {
+                if (bezl.data.Accounts[i].ID == param1.ID) {
+                    bezl.data.Accounts[i].Tasks = param1.Tasks
+
+                    var nextTaskDue = "";
+                    for (var j = 0; j < bezl.data.Accounts[i].Tasks.length; j++) {
+                        if (nextTaskDue == "") {
+                            nextTaskDue = bezl.data.Accounts[i].Tasks[j].DueDate;
+                        } else {
+                            if (bezl.data.Accounts[i].Tasks[j].DueDate < nextTaskDue) {
+                                nextTaskDue = bezl.data.Accounts[i].Tasks[j].DueDate;
+                            }
+                        }
+                    }
+
+                    bezl.data.Accounts[i].NextTaskDue = nextTaskDue;
+                }
+            }
+        });
     }
   
   return {
