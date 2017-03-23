@@ -20,6 +20,9 @@ SELECT
 	, tm.Description AS TermsDescription
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0)
 	, c.CustURL as WebSite
+	, ShipVia = (SELECT top 1 Description FROM erp.ShipVia sv with(nolock) WHERE sv.ShipViaCode = c.ShipViaCode)
+	, '' as HoursOfOperation
+	, c.Comment as CustomerNotes
 FROM
 	Erp.Customer c with(nolock)
 	

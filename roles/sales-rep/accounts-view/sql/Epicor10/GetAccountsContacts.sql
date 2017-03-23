@@ -1,10 +1,15 @@
 SELECT
 	c.CustID AS ID
+	, case when c.PrimPCon = ct.ConNum then 'True' else NULL end as primaryContactPurchase
 	, c.CustNum
 	, ct.Name AS ContactName
 	, ct.EMailAddress
 	, ct.ContactTitle
 	, ct.PhoneNum
+	, ct.ConNum
+	,ct.Twitter
+	,ct.FaceBook
+	,ct.LinkedIn
 FROM 
 	Erp.CustCnt ct with(nolock)
 	
