@@ -45,6 +45,7 @@ define(function () {
     }
 
     function AddLine(bezl) {
+        console.log(bezl.data.QuoteDtls);
         var lineNum = Math.max.apply(Math, bezl.data.QuoteDtls.map(function (dtl) { return dtl.QuoteLine; }));
 
         bezl.data.QuoteDtls.push({ QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', Deleted: 0 });
