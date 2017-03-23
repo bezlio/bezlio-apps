@@ -13,6 +13,7 @@ define(["./customer.js"], function (customer) {
             UnitPrice: bezl.vars.selectedPart.UnitPrice,
             Comment: ''
         });
+        bezl.vars.selectedPart = null;
         $(bezl.container.nativeElement).find(".partList").typeahead('setQuery', '');
     }
 
