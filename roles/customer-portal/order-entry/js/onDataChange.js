@@ -69,11 +69,13 @@ define(function () {
                     onSearch: function(node, query) {
                         // First remove any selected parts
                         bezl.vars.selectedPart = null;
-                        console.log(query);
+                        
+                        if (bezl.vars.parts.findIndex(p => p.PartNum == query) != -1) {
+                            bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == query);
+                        }
 
                     },
                     onClick: function (node, a, item, event) {
-                        console.log('onClick');
                         bezl.vars.selectedPart = item;
                     }
                 }
