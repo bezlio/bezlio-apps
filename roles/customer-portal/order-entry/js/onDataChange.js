@@ -67,9 +67,11 @@ define(function () {
                 },
                 callback: {
                     onSearch: function() {
+                        console.log('search');
                         bezl.vars.selectedPart = null;
                     },
                     onClick: function (node, a, item, event) {
+                        console.log('onClick');
                         bezl.vars.selectedPart = item;
                     }
                 }
