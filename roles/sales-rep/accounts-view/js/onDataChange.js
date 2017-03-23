@@ -64,45 +64,44 @@ define(function () {
         }
 
         // If we got the account calls back, merge those in
-        if (bezl.data.CRMCalls && bezl.vars.loadingCalls) {
+        if (bezl.data.Accounts && bezl.data.CRMCalls && bezl.vars.loadingCalls) {
             bezl.vars.loadingCalls = false;
 
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                        if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
-                        }
+            for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
                     }
                 }
             }
         }
 
         // If we got the account tasks back, merge those in
-        if (bezl.data.Tasks && bezl.vars.loadingTasks) {
+        if (bezl.data.Accounts && bezl.data.Tasks && bezl.vars.loadingTasks) {
             bezl.vars.loadingTasks = false;
 
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Tasks.length; i++) {
-                        if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
-                        }
+            for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                for (var i = 0; i < bezl.data.Tasks.length; i++) {
+                    if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+                        // Not sure if this is the best place to do this...
+                        // Convert any ISO 8601 datetime strings to just date strings
+                        bezl.data.Tasks[i].StartDate = (bezl.data.Tasks[i].StartDate || 'T').split('T')[0]
+                        bezl.data.Tasks[i].DueDate = (bezl.data.Tasks[i].DueDate || 'T').split('T')[0]
+
+                        bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
                     }
                 }
             }
         }
 
-        // If we got the account tasks back, merge those in
-        if (bezl.data.Attachments && bezl.vars.loadingAttachments) {
+        // If we got the account attachments back, merge those in
+        if (bezl.data.Accounts && bezl.data.Attachments && bezl.vars.loadingAttachments) {
             bezl.vars.loadingAttachments = false;
 
-            if (bezl.data.Accounts) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    for (var i = 0; i < bezl.data.Attachments.length; i++) {
-                        if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
-                            bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
-                        }
+            for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                for (var i = 0; i < bezl.data.Attachments.length; i++) {
+                    if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
                     }
                 }
             }

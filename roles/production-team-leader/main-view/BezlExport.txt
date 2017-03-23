@@ -1,4 +1,4 @@
-﻿{
+{
 	"name": "Production Team Leader - Main View",
 	"template": "custom",
 	"owner": "aellis@saberlogic.com",
