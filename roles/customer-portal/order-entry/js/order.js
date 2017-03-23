@@ -4,13 +4,29 @@ define(["./customer.js"], function (customer) {
     }
 
     function AddLine (bezl) {
+        // See if we have a different base price we need to use
+        var basePrice = bezl.vars.selectedPart.UnitPrice;
+
+        var disc = bezl.vars.priceDiscounts.filter(p => p.PartNum == bezl.vars.selectedPart.PartNum);
+
+        if (disc.length > 0) {
+            // We will just pick the first because this is not qty based
+            if (disc[0].GroupBasePrice != null && disc[0].GroupBasePrice != 0) {
+                basePrice = disc[0].GroupBasePrice;
+            }
+
+            if (disc[0].PartBasePrice != null && disc[0].PartBasePrice != 0) {
+                basePrice = disc[0].PartBasePrice;
+            }
+        }
+
         bezl.vars.partList.push({
             PartNum: bezl.vars.selectedPart.PartNum,
             PartDescription: bezl.vars.selectedPart.PartDescription, 
             Qty: 0,
             UOM: bezl.vars.selectedPart.UOM, 
             QtyOnHand: bezl.vars.selectedPart.QOH,
-            UnitPrice: bezl.vars.selectedPart.UnitPrice,
+            UnitPrice: basePrice,
             Comment: ''
         });
         bezl.vars.selectedPart = null;
