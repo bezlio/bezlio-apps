@@ -86,7 +86,7 @@ define(function () {
 
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
 
-        console.log(bezl.data.QuoteDtl.indexOf(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)));
+        console.log(bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)));
 
         //bezl.data.QuoteDtls.splice(bezl.data.QuoteDtls.)
 
