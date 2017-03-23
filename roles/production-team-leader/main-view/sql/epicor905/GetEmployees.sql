@@ -8,6 +8,7 @@ SELECT
 	, sup.EMailAddress as SupervisorEmail
 	, emp.EMailAddress as EmployeeEmail
 	, emp.Shift
+	, emp.JCDept as Department
 FROM
 	EmpBasic emp with(nolock)
 
@@ -23,7 +24,7 @@ FROM
 	LEFT JOIN 
 		(
 			SELECT 
-				CAST(ld.JobNum AS VARCHAR) + '.' + CAST(ld.AssemblySeq AS VARCHAR) + '.' + CAST(ld.OprSeq AS VARCHAR) AS CurrentActivity
+				CAST(ld.JobNum AS VARCHAR) + '.' + CAST(ld.AssemblySeq AS VARCHAR) + '.' + CAST(ld.OprSeq AS VARCHAR) + ' (' + ld.LaborType + ')' AS CurrentActivity
 				, op.RunQty - op.QtyCompleted AS PendingQty
 				, ld.Company
 				, ld.LaborHedSeq
@@ -41,4 +42,4 @@ FROM
 	ON lh.Company = a.Company AND lh.LaborHedSeq = a.LaborHedSeq
 WHERE
 	emp.EmpStatus = 'A'
-	AND emp.Company = 'EPIC06'  -- Set this to a specific company ID if you have more than one
+	--AND emp.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
