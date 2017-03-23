@@ -1,28 +1,53 @@
 define(["./employees.js"], function (employees) {
  
     function OnStartup (bezl) {
-        // Call setConfig which defines the handful of settings that you may wish to tweak
-        bezl.functions['setConfig']();
-
         // Default the number of selected employees on the team grid to 0
         bezl.vars.employeesSelected = 0;
+
+        // Default the openJobs object so we do not get any errors when the jsGrid loadData
+        // is run (which includes a filter)
+        bezl.vars.openJobs = [];
         
         // Initiate the queries to run up front
-        employees.runQuery(bezl, 'Team');
-        employees.runQuery(bezl, 'AllEmployees');
+        employees.runQuery(bezl, 'Employees');
         employees.runQuery(bezl, 'OpenJobs');
 
         // Configure the team members jsGrid
         $("#jsGridTeam").jsGrid({
         width: "100%",
         height: "100%",
+        filtering: true,
         heading: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function() {
-            return bezl.vars.team;
+            loadData: function(filter) {
+                return $.grep(bezl.vars.team, function (item) {
+                    var show = true;
+
+                    if (filter.display && item.display.toUpperCase().indexOf(filter.display.toUpperCase()) == -1) {
+                      show = false;
+                    }
+
+                    if (filter.currentActivity && item.currentActivity && item.currentActivity.toUpperCase().indexOf(filter.currentActivity.toUpperCase()) == -1) {
+                      show = false;
+                    }
+
+                    if (filter.currentActivity && !item.currentActivity) {
+                      show = false;
+                    }
+
+                    if (filter.shift && filter.shift != item.shift) {
+                      show = false;
+                    }
+
+                    if (filter.department && item.department.toUpperCase().indexOf(filter.department.toUpperCase()) == -1) {
+                      show = false;
+                    }
+
+                    return show;
+                });
             }
         },
         fields: [
@@ -36,7 +61,9 @@ define(["./employees.js"], function (employees) {
                     });
               }
             },
-            { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false }
+            { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false },
+            { name: "shift", title: "Shift", type: "text", visible: true, width: 10, editing: false },
+            { name: "department", title: "Department", type: "text", visible: true, width: 50, editing: false }
         ],
         rowClick: function(args) {
             employees.select(bezl, args.item);
@@ -62,7 +89,8 @@ define(["./employees.js"], function (employees) {
         },
         fields: [
             { name: "jobId", title: "Job", type: "text", visible: true, width: 25, editing: false },
-            { name: "jobDesc", title: "Description", type: "text", visible: true, width: 50, editing: false }
+            { name: "jobDesc", title: "Description", type: "text", visible: true, width: 50, editing: false },
+            { name: "pendingQty", title: "Pending Qty", type: "number", visible: true, width: 50, editing: false }
         ],
         rowClick: function(args) {
             bezl.vars.selectedJob = args.item;

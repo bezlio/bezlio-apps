@@ -27,10 +27,6 @@ define(function () {
         if (!teamUpdated) {
             bezl.vars.addToTeamPrompt = true;
             bezl.vars.addToTeam = employee;
-        } else {
-            $('html, body').animate({
-                    scrollTop: $("#actionButtons").offset().top
-                }, 2000);
         }
     }
 
@@ -69,6 +65,12 @@ define(function () {
         bezl.vars.selectedEmployee.Name = "";
     }
 
+    function AddToTeamCancel (bezl) {   
+        bezl.vars.addToTeamPrompt = false;
+        bezl.vars.addToTeam = {};
+        bezl.vars.selectedEmployee.Name = "";
+    }
+
     function HighlightSelected (bezl) {
         // Re-highlight any employees that were previously selected on the team
         for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -83,19 +85,10 @@ define(function () {
     function RunQuery (bezl, queryName) {
 
         switch (queryName) {
-            case "Team":
-                // Pull in the team for the logged in user
-                bezl.dataService.add('Team','brdb','production-team-leader-queries','ExecuteQuery', { 
-                    "QueryName": "GetTeam",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                bezl.vars.refreshingTeam = true;
-                break;
-            case "AllEmployees":
+            case "Employees":
                 // Pull in all of the employees for the search box
-                bezl.dataService.add('AllEmployees','brdb','production-team-leader-queries','ExecuteQuery', { 
-                    "QueryName": "GetAllEmployees",
+                bezl.dataService.add('Employees','brdb','production-team-leader-queries','ExecuteQuery', { 
+                    "QueryName": "GetEmployees",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
@@ -130,14 +123,17 @@ define(function () {
                     }
                 }
 
-                labor.clockIn(bezl
-                            , bezl.vars.config.Platform
-                            , bezl.vars.config.Connection
-                            , bezl.vars.config.Company
-                            , clockInEmployees
-                            , bezl.vars.config.Shift);
-
-                bezl.vars.clockingIn = true;  
+                if (clockInEmployees.length > 0) {
+                    labor.clockIn(bezl
+                                , bezl.vars.config.Platform
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , clockInEmployees
+                                , bezl.vars.shift);
+                    bezl.vars.clockingIn = true;  
+                } else {
+                    bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
+                } 
             });
         }
     }
@@ -173,10 +169,17 @@ define(function () {
         // and route this request to the appropriate integration
         if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
                 require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
-                    var laborHeds = [];
+                    var ds = {'LaborDtl': [ ] };
+
                     for (var i = 0; i < bezl.vars.team.length; i++) {
                         if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                            laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
+                            ds.LaborDtl.push(
+                                {
+                                'Company'           :   bezl.vars.config.Company
+                                ,'LaborHedSeq'		: 	((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId)
+                                ,'LaborQty'	        :	(bezl.vars.team[i].completedQty || 0)
+                                }
+                            );
                         }
                     }                   
 
@@ -184,14 +187,24 @@ define(function () {
                                 , bezl.vars.config.Platform
                                 , bezl.vars.config.Connection
                                 , bezl.vars.config.Company
-                                , laborHeds);
+                                , ds);
 
                     bezl.vars.endingActivities = true;
                 });
         }
+
+        bezl.vars.endActivitiesPrompt = false;
     }
 
-    function StartJob (bezl, job) {        
+    function EndActivitiesPrompt (bezl) {        
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+        bezl.vars.team[i].pendingQtyTemp = bezl.vars.team[i].pendingQty;
+        };
+
+        bezl.vars.endActivitiesPrompt = true;
+    }
+
+    function StartJob (bezl, job, setup) {        
         // Since this is going to be an API call as opposed to a straight
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
@@ -201,23 +214,73 @@ define(function () {
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
                         laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
+
+                        // Update the selected job variable to note whether they are doing a setup or production
+                        if (setup) {
+                            bezl.vars.selectedJob.jobId += " (S)";
+                        } else {
+                            bezl.vars.selectedJob.jobId += " (P)";
+                        }
                     }
                 }
 
-                labor.startJob(bezl
-                            , bezl.vars.config.Platform
-                            , bezl.vars.config.Connection
-                            , bezl.vars.config.Company
-                            , laborHeds
-                            , job.data.JobNum
-                            , job.data.AssemblySeq
-                            , job.data.OprSeq);
+                if (laborHeds.length > 0) {
+                    labor.startJob(bezl
+                                , bezl.vars.config.Platform
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , laborHeds
+                                , job.data.JobNum
+                                , job.data.AssemblySeq
+                                , job.data.OprSeq
+                                , setup);
 
-                bezl.vars.startingJob = true;
+                    bezl.vars.startingJob = true;
+                } else {
+                    bezl.notificationService.showCriticalError('No selected clocked in employees available to start this job.');
+                }
             });
         }
 
         bezl.vars.showJobDialog = false;
+    }
+
+    function ValidateQuantities (bezl, quantityRow) {        
+        // Clear out any past overrides or exceptions
+        quantityRow.override = false;
+        quantityRow.quantityException = false;
+        bezl.vars.endActivitiesDisabled = false;
+
+        // Determine the total quanty completed across all other employees on this activity
+        var totalCompleted = 0;
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            if (bezl.vars.team[i].selected && bezl.vars.team[i].key != quantityRow.key && bezl.vars.team[i].currentActivity == quantityRow.currentActivity) {
+            totalCompleted += (bezl.vars.team[i].completedQty || 0);
+            }
+        };
+
+        // Recalculate the current rows pendingQtyTemp based on the input
+        quantityRow.pendingQtyTemp = quantityRow.pendingQty - quantityRow.completedQty - totalCompleted;
+
+        // Mark the row with an exception if pendingQtyTemp now went to negative
+        if (quantityRow.pendingQtyTemp < 0 && quantityRow.completedQty > 0) {
+        quantityRow.quantityException = true;
+        bezl.vars.endActivitiesDisabled = true;
+        }
+
+        // Now update all of those other employees pendingQtyTemp
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            if (bezl.vars.team[i].selected && bezl.vars.team[i].key != quantityRow.key 
+                && bezl.vars.team[i].currentActivity == quantityRow.currentActivity
+                && !bezl.vars.team[i].completedQty) {
+            bezl.vars.team[i].pendingQtyTemp = bezl.vars.team[i].pendingQty - totalCompleted - quantityRow.completedQty + (bezl.vars.team[i].completedQty || 0);
+            }
+        };
+    }
+
+    function OverrideQuantityException (bezl, quantityRow) {  
+        quantityRow.override = true;
+        bezl.vars.endActivitiesDisabled = false;
     }
  
     return {
@@ -225,11 +288,15 @@ define(function () {
         selectAll: SelectAll,
         deselectAll: DeselectAll,
         addToTeam: AddToTeam,
+        addToTeamCancel: AddToTeamCancel,
         highlightSelected: HighlightSelected,
         runQuery: RunQuery,
         clockIn: ClockIn,
         clockOut: ClockOut,
         endActivities: EndActivities,
-        startJob: StartJob
+        endActivitiesPrompt: EndActivitiesPrompt,
+        startJob: StartJob,
+        validateQuantities: ValidateQuantities,
+        overrideQuantityException: OverrideQuantityException
     }
 });
