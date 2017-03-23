@@ -78,9 +78,11 @@ define(function () {
         //     dtl.QuoteLine !== lineNum
         // );
 
-        bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl =>
-            dtl.QuoteLine !== lineNum
-        );
+        // bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl =>
+        //     dtl.QuoteLine !== lineNum
+        // );
+
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
     function SaveQuote(bezl, quoteNum) {
