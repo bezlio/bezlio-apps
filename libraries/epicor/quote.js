@@ -47,6 +47,11 @@ define(function () {
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
+
+            if (dtl.Deleted === 1) {
+                var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === dtl.QuoteLine));
+                bezl.data.QuoteDtls.splice(index, 1);
+            }
         });
 
         // console.log("Quote Update: ");
