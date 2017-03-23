@@ -86,10 +86,9 @@ define(function () {
 
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
 
-        console.log(bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)));
+        var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum));
 
-        //bezl.data.QuoteDtls.splice(bezl.data.QuoteDtls.)
-
+        bezl.data.QuoteDtls.splice(index, 1);
     }
 
     function SaveQuote(bezl, quoteNum) {
