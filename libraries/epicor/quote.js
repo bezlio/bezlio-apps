@@ -49,8 +49,6 @@ define(function () {
             });
         });
 
-        bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl => dtl.Deleted === 0);
-
         // console.log("Quote Update: ");
         //console.log(bezl.vars.ds);
         // console.log(JSON.stringify(bezl.vars.ds));
