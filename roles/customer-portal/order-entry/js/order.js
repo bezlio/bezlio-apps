@@ -14,7 +14,7 @@ define(["./customer.js"], function (customer) {
             Comment: ''
         });
         bezl.vars.selectedPart = null;
-        $(bezl.container.nativeElement).find(".partList").typeahead('setQuery', '');
+        $(bezl.container.nativeElement).find(".partList").typeahead('val', '');
     }
 
     function NewOrder (bezl) {

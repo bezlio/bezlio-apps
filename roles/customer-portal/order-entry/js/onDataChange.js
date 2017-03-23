@@ -59,6 +59,7 @@ define(function () {
             $(bezl.container.nativeElement).find(".partList").typeahead({
                 order: "asc",
                 maxItem: 8,
+                hint: true,
                 display: ['PartNum', 'PartDescription'],
                 source: {
                     data: function() { return bezl.vars.parts.sort(function(a, b) {
@@ -70,13 +71,11 @@ define(function () {
                         // First remove any selected parts
                         bezl.vars.selectedPart = null;
                         
+                        // Select a part if its matching
                         if (bezl.vars.parts.findIndex(p => p.PartNum == query) != -1) {
                             bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == query);
                         }
 
-                    },
-                    onClick: function (node, a, item, event) {
-                        bezl.vars.selectedPart = item;
                     }
                 }
             });
