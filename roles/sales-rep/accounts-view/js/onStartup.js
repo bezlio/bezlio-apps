@@ -21,15 +21,17 @@ define(["./account.js"], function (account) {
         $(".panel").on("updateTask", function(event, param1) {
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.data.Accounts[i].ID == param1.ID) {
-                    bezl.data.Accounts[i].Tasks = param1.Tasks
+                    //bezl.data.Accounts[i].Tasks = param1.Tasks // Doesn't seem to be necessary
 
                     var nextTaskDue = "";
                     for (var j = 0; j < bezl.data.Accounts[i].Tasks.length; j++) {
-                        if (nextTaskDue == "") {
-                            nextTaskDue = bezl.data.Accounts[i].Tasks[j].DueDate;
-                        } else {
-                            if (bezl.data.Accounts[i].Tasks[j].DueDate < nextTaskDue) {
+                        if (bezl.data.Accounts[i].Tasks[j].Complete == false) {
+                            if (nextTaskDue == "") {
                                 nextTaskDue = bezl.data.Accounts[i].Tasks[j].DueDate;
+                            } else {
+                                if (bezl.data.Accounts[i].Tasks[j].DueDate < nextTaskDue) {
+                                    nextTaskDue = bezl.data.Accounts[i].Tasks[j].DueDate;
+                                }
                             }
                         }
                     }
