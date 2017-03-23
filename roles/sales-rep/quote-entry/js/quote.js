@@ -77,6 +77,10 @@ define(function () {
         bezl.vars.quoteData.quoteLines = bezl.vars.quoteData.quoteLines.filter(dtl =>
             dtl.QuoteLine !== lineNum
         );
+
+        bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl =>
+            dtl.QuoteLine !== lineNum
+        );
     }
 
     function SaveQuote(bezl, quoteNum) {
