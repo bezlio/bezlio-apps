@@ -9,15 +9,15 @@ define(function () {
             console.log('data changed!');
             bezl.vars.linesloading = false;
 
-            bezl.data.QuoteDtls.forEach(dtl => {
-                console.log(dtl);
-            });
+            // bezl.data.QuoteDtls.forEach(dtl => {
+            //     console.log(dtl);
+            // });
 
-            bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl => dtl.Deleted === 0);
+            // bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl => dtl.Deleted === 0);
 
-            bezl.data.QuoteDtls.forEach(dtl => {
-                console.log(dtl);
-            });
+            // bezl.data.QuoteDtls.forEach(dtl => {
+            //     console.log(dtl);
+            // });
 
             var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
