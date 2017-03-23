@@ -118,6 +118,7 @@ define(["./customer.js"], function (customer) {
         addLine: AddLine,
         clearOrder: ClearOrder,
         newOrder: NewOrder,
+        qtyChange: QtyChange,
         submitOrder: SubmitOrder
     }
 });
