@@ -53,6 +53,7 @@ define(function () {
             console.log(x);
             if (x.Deleted === 1) {
                 var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === x.QuoteLine));
+                console.log("Index: " + index);
                 bezl.data.QuoteDtls.splice(index, 1);
             }
         }
