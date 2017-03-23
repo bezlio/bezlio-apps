@@ -91,6 +91,7 @@ define(function () {
                         bezl.notificationService.showCriticalError(err.TableName + ': ' + err.ErrorText);
                     });          
                 } else {
+                    bezl.vars.submittedOrder = true;
                     bezl.notificationService.showSuccess('Order Submitted!');
                 }
             }
