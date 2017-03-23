@@ -26,6 +26,7 @@ define(["./customer.js"], function (customer) {
             Qty: 0,
             UOM: bezl.vars.selectedPart.UOM, 
             QtyOnHand: bezl.vars.selectedPart.QOH,
+            BasePrice: basePrice,
             UnitPrice: basePrice,
             Comment: ''
         });
