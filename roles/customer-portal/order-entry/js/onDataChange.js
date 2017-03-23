@@ -43,17 +43,9 @@ define(function () {
             bezl.vars.loadingGlobalParts = false;
         }
 
-        if (bezl.data.GetPartsByCustNum) {
+        if (bezl.data.GetPartDiscounts) {
             // We need to replace parts with customer parts if they are present because price list trumps web parts
-            bezl.data.GetPartsByCustNum.forEach(custPart => {
-                var idx = bezl.vars.parts.findIndex(p => p.PartNum == custPart.PartNum);
-                if (idx != -1) {
-                    // We have a part already so remove it
-                    bezl.vars.parts.splice(idx, 1);                
-                }
-                // Add it
-                bezl.vars.parts.push(custPart)
-            });
+            bezl.vars.partDiscounts = bezl.data.GetPartDiscounts;
             
             $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partList").typeahead({
@@ -79,6 +71,7 @@ define(function () {
                     }
                 }
             });
+            bezl.dataService.remove('GetPartDiscounts');
             bezl.vars.loadingParts = false;
         }
 
