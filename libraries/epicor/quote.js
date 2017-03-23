@@ -47,16 +47,14 @@ define(function () {
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
+        });
 
-            if (dtl.Deleted === 1) {
+        for (var x of bezl.data.QuoteDtls) {
+            if (x.Deleted === 1) {
                 var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === dtl.QuoteLine));
                 bezl.data.QuoteDtls.splice(index, 1);
             }
-        });
-
-        // console.log("Quote Update: ");
-        //console.log(bezl.vars.ds);
-        // console.log(JSON.stringify(bezl.vars.ds));
+        }
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
