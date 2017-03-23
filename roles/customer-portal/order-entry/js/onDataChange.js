@@ -66,9 +66,11 @@ define(function () {
                                 });; }
                 },
                 callback: {
-                    onSearch: function() {
-                        console.log('search');
+                    onSearch: function(node, query) {
+                        // First remove any selected parts
                         bezl.vars.selectedPart = null;
+                        console.log(query);
+
                     },
                     onClick: function (node, a, item, event) {
                         console.log('onClick');
