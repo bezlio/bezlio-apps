@@ -66,6 +66,9 @@ define(function () {
                                 });; }
                 },
                 callback: {
+                    onSearch: function() {
+                        bezl.vars.selectedPart = null;
+                    },
                     onClick: function (node, a, item, event) {
                         bezl.vars.selectedPart = item;
                     }
