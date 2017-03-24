@@ -19,7 +19,7 @@ define(function () {
             //     console.log(dtl);
             // });
 
-            var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
+            //var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
             bezl.vars.quoteData.quoteLines.map(dtl => {
                 var typeAhead = function (lineNum) {
@@ -27,9 +27,9 @@ define(function () {
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
                         order: "asc",
                         maxItem: 8,
-                        display: ['PartNum', 'PartDesc'],
+                        display: ['PART_DESCRIPTION', 'PART_ID'],
                         source: {
-                            data: function () { return bezl.data.Parts; }
+                            data: function () { return bezl.vars.parts; }
                         },
                         callback: {
                             onClick: function (node, a, item, event) {
