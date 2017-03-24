@@ -4,7 +4,7 @@ define(function () {
         bezl.vars.endDate = "";
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
-        bezl.vars.filter = "";
+        bezl.vars.filter = "All";
     }
      return {
     onStartup: OnStartup
