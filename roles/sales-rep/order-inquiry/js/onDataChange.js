@@ -66,6 +66,8 @@ define(function () {
                     bezl.vars.Orders.push(tempOrder); 
                 }
             }
+            // Show filter for data
+            $("#Filter").show();
             bezl.vars.loading = false;
     }
 }

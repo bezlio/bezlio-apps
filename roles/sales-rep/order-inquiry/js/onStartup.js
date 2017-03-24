@@ -10,6 +10,8 @@ define(function () {
         $("#Filter").change(function () {
             bezl.functions.filter(bezl);
         });
+        // hide filter, ngIf will prevent jquery from setting up the listener
+        $("#Filter").hide();
     }
      return {
     onStartup: OnStartup
