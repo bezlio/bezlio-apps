@@ -21,7 +21,7 @@ define(function () {
 
             //var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
-            bezl.vars.data.QuoteDtls.map(dtl => {
+            bezl.data.QuoteDtls.map(dtl => {
                 var typeAhead = function (lineNum) {
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
