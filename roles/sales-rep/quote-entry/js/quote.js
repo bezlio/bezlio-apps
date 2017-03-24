@@ -93,11 +93,15 @@ define(function () {
         console.log(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES);
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
+        bezl.vars.curAttr = [];
         filterArray.forEach(attr => {
-            console.log(attr);
-        });
-        bezl.vars.curAttr.push({
+            var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
 
+            console.log(attrFnd);
+
+            // bezl.vars.curAttr.push({
+
+            // });
         });
     }
 
