@@ -60,18 +60,6 @@ define(function () {
                     tr[i].style.display = "none";
                 }
             }
-
-            /*if(td) {
-                if(td.children[0].children[4].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) == "All") 
-                {
-                    tr[i].style.display = "";
-                } else if(td.children[0].children[4].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1){
-                    tr[i].style.display = "";
-                }
-                else {
-                    tr[i].style.display = "none";
-                }
-            }*/
         }
         
     }
