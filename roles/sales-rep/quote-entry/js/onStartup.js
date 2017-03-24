@@ -22,6 +22,10 @@ define(["./quote.js"], function (quote) {
             console.log(data);
             bezl.vars.parts = data;
         });
+
+        $.getJSON("https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Attribute.json", function (data) {
+            bezl.vars.attributes = data;
+        });
     }
 
     return {
