@@ -96,12 +96,7 @@ define(function () {
         bezl.vars.curAttr = [];
         filterArray.forEach(attr => {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
-
-            console.log(attrFnd);
-
-            // bezl.vars.curAttr.push({
-
-            // });
+            bezl.vars.curAttr.push(attrFnd);
         });
     }
 
