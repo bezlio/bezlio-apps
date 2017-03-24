@@ -100,10 +100,6 @@ define(function () {
         });
     }
 
-    function SaveQuote(bezl, quoteNum) {
-
-    }
-
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
