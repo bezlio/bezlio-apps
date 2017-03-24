@@ -87,66 +87,22 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
+    function ConfigureLine(bezl, partNum) {
+        console.log('PartNum: ' + partNum);
+        console.log(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES);
+        //bezl.vars.attributes = 
+    }
+
     function SaveQuote(bezl, quoteNum) {
 
     }
-
-
-    // // Write the header and the lines.  Saving will flip back to false in onDataChange
-    // bezl.dataService.add('SaveQuoteHeader'
-    //     , 'brdb'
-    //     , 'SQLServer'
-    //     , 'ExecuteNonQuery'
-    //     ,
-    //     {
-    //         "Context": "QuoteEntry"
-    //         , "Connection": "VMFG"
-    //         , "QueryName": ((bezl.vars['quoteData'].newQuote) ? "AddQuoteHeader" : "UpdateQuoteHeader")
-    //         , "Parameters": [
-    //             { Key: "QuoteNum", Value: bezl.vars['quoteData'].quoteNum },
-    //             { Key: "Date", Value: bezl.vars['quoteData'].quoteDate },
-    //             { Key: "CustomerID", Value: bezl.vars['quoteData'].customerId || 0 },
-    //             { Key: "CustomerName", Value: bezl.vars['quoteData'].customerName || 0 },
-    //             { Key: "Comments", Value: bezl.vars['quoteData'].comments || "" },
-    //             { Key: "Status", Value: bezl.vars['quoteData'].status || "" },
-    //             { Key: "Result", Value: bezl.vars['quoteData'].result || "" },
-    //             { Key: "SalespersonID", Value: bezl.vars['quoteData'].salespersonId || "" }
-    //         ]
-    //     }
-    //     , 0);
-
-    // // Now add / update the rows according to whether they are listed in the addedLines
-    // for (var i = 0; i < bezl.vars['quoteData'].quoteLines.length; i++) {
-    //     if (bezl.vars['quoteData'].quoteLines[i].deleted == 0) {
-    //         bezl.dataService.add('SaveQuoteLine_' + i
-    //             , 'brdb'
-    //             , 'SQLServer'
-    //             , 'ExecuteNonQuery'
-    //             ,
-    //             {
-    //                 "Context": "QuoteEntry"
-    //                 , "Connection": "VMFG"
-    //                 , "QueryName": ((bezl.vars['addedLines'].indexOf(bezl.vars['quoteData'].quoteLines[i].lineNum) != -1) ? "AddQuoteLine" : "UpdateQuoteLine")
-    //                 , "Parameters": [
-    //                     { Key: "QuoteNum", Value: bezl.vars['quoteData'].quoteNum },
-    //                     { Key: "LineNum", Value: bezl.vars['quoteData'].quoteLines[i].lineNum },
-    //                     { Key: "PartNum", Value: bezl.vars['quoteData'].quoteLines[i].partNum || bezl.vars['quoteData'].quoteLines[i].partDesc || '' },
-    //                     { Key: "PartDesc", Value: bezl.vars['quoteData'].quoteLines[i].partDesc || '' },
-    //                     { Key: "QuoteQty", Value: bezl.vars['quoteData'].quoteLines[i].quoteQty || 0 },
-    //                     { Key: "UOM", Value: bezl.vars['quoteData'].quoteLines[i].quoteUom || '' },
-    //                     { Key: "Deleted", Value: bezl.vars['quoteData'].quoteLines[i].deleted }
-    //                 ]
-    //             }
-    //             , 0);
-    //     }
-    // };
-
 
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
         addLine: AddLine,
-        deleteLine: DeleteLine
+        deleteLine: DeleteLine,
+        configureLine: ConfigureLine
     }
 });
 
