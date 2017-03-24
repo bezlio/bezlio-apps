@@ -89,10 +89,8 @@ define(function () {
 
     function ConfigureLine(bezl, partNum) {
         console.log('PartNum: ' + partNum);
-        bezl.vars.parts.forEach(part => {
-            console.log(part);
-        });
-        //console.log(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES);
+
+        console.log(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES);
         //bezl.vars.attributes = 
     }
 
