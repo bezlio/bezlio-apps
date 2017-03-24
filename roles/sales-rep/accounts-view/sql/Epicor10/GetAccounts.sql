@@ -19,7 +19,7 @@ SELECT
 	, sr.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0)
-	, Coalesce(ARAging.[0to30], 0) As CurrentInvc
+	, Coalesce(ARAging.[0to30], 0) As CurrentBalance
 	, Coalesce(ARAging.[31to60], 0) As ThirtyToSixty
 	, Coalesce(ARAging.[61to90], 0) As SixtytoNinety
 	, Coalesce(ARAging.[91to120], 0) As NinetyToOneHundredTwenty
