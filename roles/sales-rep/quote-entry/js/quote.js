@@ -91,7 +91,14 @@ define(function () {
         console.log('PartNum: ' + partNum);
 
         console.log(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES);
-        //bezl.vars.attributes = 
+        var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
+
+        filterArray.forEach(attr => {
+            console.log(attr);
+        });
+        bezl.vars.curAttr.push({
+
+        });
     }
 
     function SaveQuote(bezl, quoteNum) {
