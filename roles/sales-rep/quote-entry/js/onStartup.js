@@ -19,12 +19,13 @@ define(["./quote.js"], function (quote) {
         //     });
 
         $.getJSON("https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json", function (data) {
-            console.log(data);
             bezl.vars.parts = data;
+            console.log(data);
         });
 
         $.getJSON("https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Attribute.json", function (data) {
             bezl.vars.attributes = data;
+            console.log(data);
         });
     }
 
