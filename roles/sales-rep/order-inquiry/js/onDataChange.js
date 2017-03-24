@@ -5,6 +5,9 @@ define(function () {
             
             bezl.vars.Orders = new Array();
 
+            // Resets Filter, so displayed value is correct
+            $("#cbAll").attr('selected', 'selected');
+
             // If there was a previously selected Order in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedOrder = {};
