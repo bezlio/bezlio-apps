@@ -6,7 +6,7 @@ define(function () {
             bezl.vars.Orders = new Array();
 
             // Resets Filter, so displayed value is correct
-            $("#cbAll").attr('selected', 'selected');
+            $("#topForm select").val("All")
 
             // If there was a previously selected Order in localStorage, grab a reference
             // so we can know whether to mark them as selected
