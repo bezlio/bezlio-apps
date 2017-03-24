@@ -20,7 +20,7 @@ define(["./quote.js"], function (quote) {
 
         $.getJSON("https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json", function (data) {
             console.log(data);
-            bezl.var.parts = data;
+            bezl.vars.parts = data;
         });
     }
 
