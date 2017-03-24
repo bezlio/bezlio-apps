@@ -48,9 +48,10 @@ define(function () {
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
+
             console.log(td);
             if(td) {
-                if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1) {
+                if(td.children[0].children[4].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";
