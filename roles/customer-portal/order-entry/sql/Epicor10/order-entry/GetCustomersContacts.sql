@@ -12,6 +12,6 @@ FROM
 	c.Company = ct.Company
 	AND c.CustNum = ct.CustNum
 WHERE
-	ct.EMailAddress = 'administrator@wfo.epicor.com'
-	--AND ct.EMailAddress = '{EmailAddress}'
+	--ct.EMailAddress = 'administrator@wfo.epicor.com'
+	ct.EMailAddress = '{EmailAddress}'
 	AND c.Company = 'EPIC06'
