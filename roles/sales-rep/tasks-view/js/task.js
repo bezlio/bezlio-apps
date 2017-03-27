@@ -86,7 +86,7 @@ define(function () {
         runQuery: RunQuery,
         select: Select,
         addTask: AddTask,
-        canceladdTask: CancelAddTask,
+        cancelAddTask: CancelAddTask,
         updateTasks: UpdateTasks
     }
 });
