@@ -20,6 +20,11 @@ define(["./account.js"], function (account) {
         // ahead and run the full query now
         if (!bezl.vars.selectedAccount.CRMCalls) {
           account.runQuery('CRMCalls');
+        } else {
+          // Perform additional processing on the returned data
+          for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+            bezl.vars.selectedAccount.CRMCalls[i].show = true;
+          }
         }
 
       });

@@ -68,15 +68,13 @@ define(function () {
     // filter input box. This function updates the "show" variable on the
     // CRM call object.
     function ApplyFilter(bezl) {
-        if (bezl.data.CRMCalls) { // Avoid throwing errors if the account data hasn't been returned yet
-            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                if (bezl.data.CRMCalls[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                bezl.data.CRMCalls[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                bezl.data.CRMCalls[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                bezl.data.CRMCalls[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
-                    bezl.data.CRMCalls[i].show = true;
+        if (bezl.vars.selectedAccount.CRMCalls) { // Avoid throwing errors if the account data hasn't been returned yet
+            for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+                if (bezl.vars.selectedAccount.CRMCalls[i].ShortSummary.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.vars.selectedAccount.CRMCalls[i].Details.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = true;
                 } else {
-                    bezl.data.CRMCalls[i].show = false;
+                    bezl.vars.selectedAccount.CRMCalls[i].show = false;
                 }
             };
         }
