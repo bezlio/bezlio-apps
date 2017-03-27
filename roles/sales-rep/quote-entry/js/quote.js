@@ -74,15 +74,7 @@ define(function () {
     }
 
     function DeleteLine(bezl, lineNum) {
-        console.log("Line: " + lineNum);
-
-        // bezl.vars.quoteData.quoteLines = bezl.vars.quoteData.quoteLines.filter(dtl =>
-        //     dtl.QuoteLine !== lineNum
-        // );
-
-        // bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl =>
-        //     dtl.QuoteLine !== lineNum
-        // );
+        //console.log("Line: " + lineNum);
 
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
@@ -95,8 +87,6 @@ define(function () {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
             attrFnd.Display = false;
             bezl.vars.curAttr.push(attrFnd);
-
-            console.log(attrFnd);
         });
     }
 
