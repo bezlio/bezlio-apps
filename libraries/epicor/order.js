@@ -94,7 +94,7 @@ define(function () {
                 SellingQuantity: p.Qty,
                 UnitPrice: p.UnitPrice,
                 DocUnitPrice: p.UnitPrice,
-                MktgCampaignID: 'Customer',
+                MktgCampaignID: 'CURR',
                 MktgEvntSeq: 1,
                 CustNum: bezl.vars.selectedCustomer.CustNum,
                 LockQty: false,
