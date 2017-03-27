@@ -63,9 +63,28 @@ define(function () {
 
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
+
+    // Only display CRM interactions that have data matching the data string in the
+    // filter input box. This function updates the "show" variable on the
+    // CRM call object.
+    function ApplyFilter(bezl) {
+        if (bezl.data.CRMCalls) { // Avoid throwing errors if the account data hasn't been returned yet
+            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                if (bezl.data.CRMCalls[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.CRMCalls[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.CRMCalls[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.data.CRMCalls[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.data.CRMCalls[i].show = true;
+                } else {
+                    bezl.data.CRMCalls[i].show = false;
+                }
+            };
+        }
+    }
   
     return {
         runQuery: RunQuery,
-        addNote: AddNote
+        addNote: AddNote,
+        applyFilter: ApplyFilter
     }
 });
