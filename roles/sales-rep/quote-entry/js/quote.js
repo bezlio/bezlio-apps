@@ -98,6 +98,8 @@ define(function () {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
             attrFnd.Display = false;
             bezl.vars.curAttr.push(attrFnd);
+
+            console.log(attrFnd);
         });
     }
 
