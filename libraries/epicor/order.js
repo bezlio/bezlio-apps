@@ -98,7 +98,8 @@ define(function () {
                 MktgEvntSeq: 1,
                 CustNum: bezl.vars.selectedCustomer.CustNum,
                 LockQty: false,
-                RowMod: 'U'
+                RowMod: 'U',
+                ShortChar10: ''
             })
         });
         // Now we will submit the order for processing
