@@ -63,7 +63,9 @@ define(["./order.js"], function (order) {
     }
 
     function Select(bezl, customer) {
-        // Dropdown only allows single selecting
+        // Dropdown only allows single selecting 
+        // Clear out the partlist
+        bezl.vars.partList = [];
         // Mark all of them as not selected
         bezl.vars.Customers.forEach(a => a.Selected = false);
         bezl.vars.selectedShipTo = null;

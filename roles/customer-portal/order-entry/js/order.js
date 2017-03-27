@@ -45,6 +45,44 @@ define(["./customer.js"], function (customer) {
             }); 
         }
     }
+
+    function QtyChange (bezl) {
+        bezl.vars.orderTotal = 0;
+        // Find out if we have hit a quantity break discount
+        bezl.vars.partList.forEach(p => {
+        var disc = bezl.vars.partDiscounts.filter(pd => pd.PartNum == p.PartNum);
+        
+        for (var i = 0; i < disc.length; i++) {
+            if (p.Qty >= disc[i].GroupQty) {
+            if (disc[i].GroupDiscount != null && disc[i].GroupDiscount != 0) {
+                var discPrice = ((100 - disc[i].GroupDiscount)/100) * p.BasePrice;
+                if (p.UnitPrice > discPrice) {
+                p.UnitPrice = discPrice;
+                }
+            }
+            if (disc[i].GroupPrice != null && disc[i].GroupPrice != 0) {
+                if (p.UnitPrice > disc[i].GroupPrice) {
+                p.UnitPrice = disc[i].GroupPrice;
+                }
+            }
+            }
+            if (p.Qty >= disc[i].PartQty) {
+            if (disc[i].PartDiscount != null && disc[i].PartDiscount != 0) {
+                var discPrice = ((100 - disc[i].PartDiscount)/100) * p.BasePrice;
+                if (p.UnitPrice > discPrice) {
+                p.UnitPrice = discPrice;
+                }
+            }
+            if (disc[i].PartPrice != null && disc[i].PartPrice != 0) {
+                if (p.UnitPrice > disc[i].PartPrice) {
+                p.UnitPrice = disc[i].PartPrice;
+                }
+            }
+            }
+        }
+        bezl.vars.orderTotal += p.Qty * p.UnitPrice;
+        });
+    }
     
     function SubmitOrder (bezl) {
         // Since this is going to be an API call as opposed to a straight
@@ -57,10 +95,30 @@ define(["./customer.js"], function (customer) {
         }
     }
 
+    function ClearOrder (bezl) {
+        // Clears the order to add a new order
+        bezl.vars.partList = [];
+        bezl.vars.orderTotal = 0;
+        bezl.vars.CustomerID = '';
+        bezl.vars.selectedCustomer = {};
+        bezl.vars.selectedShipTo = {};
+        bezl.vars.OrderDate = new Date();
+        bezl.vars.PONumber = null;
+        bezl.vars.NeedBy = null;
+        bezl.vars.ShipBy = null;
+        bezl.vars.ShipVia = null;
+        bezl.vars.OrderComment = null;
+        bezl.vars.NotifyEmail = null;
+
+        bezl.vars.submittedOrder = false;
+    }
+
     return {
         runQuery: RunQuery,
         addLine: AddLine,
+        clearOrder: ClearOrder,
         newOrder: NewOrder,
+        qtyChange: QtyChange,
         submitOrder: SubmitOrder
     }
 });
