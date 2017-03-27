@@ -4,6 +4,11 @@ define(function () {
         if (bezl.data.CRMCalls) {
             bezl.vars.loading = false;
             bezl.vars.selectedAccount.CRMCalls = bezl.data.CRMCalls;
+
+            // Perform additional processing on the returned data
+            for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+                bezl.data.CRMCalls[i].show = true;
+            }
         }
 
         if (bezl.data.AddCRMCall) {
