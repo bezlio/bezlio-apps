@@ -63,6 +63,9 @@ define(function () {
         for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
             if (bezl.vars.selectedAccount.Tasks[i] == task) {
                 bezl.vars.selectedAccount.Tasks.splice(i, 1);
+                // Because we removed an item in the array we are iterating
+                // over we need to decrement our current index by one
+                i--;
             }
         }
     }
