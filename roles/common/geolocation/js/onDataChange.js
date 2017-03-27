@@ -1,6 +1,5 @@
 define(["./customer.js",
         "./map.js"], function (customer, map) {
-            var firstTime = true;
  
     function OnDataChange (bezl) {
         // Populate the 'customers' array if we got CustomerList back
@@ -10,15 +9,6 @@ define(["./customer.js",
             bezl.vars.geoTracker = 0;
             bezl.vars.geoLocsNeeded = 0;
             bezl.vars.geoLocsDone = 0;
-
-            //for testing.
-                if(firstTime) {
-                    for (var i = 0; i < bezl.data.CustList.length; i++) {
-                        bezl.data.CustList[i].Geocode_Location = '';
-                    }
-                firstTime = false;
-                }
-    
 
             bezl.vars.loading.customerList = true;
             bezl.vars.customers = [];
@@ -43,59 +33,6 @@ define(["./customer.js",
                     bezl.vars.geoLocsNeeded++;
                 }
             }
-        
-            // Configure the typeahead controls for the customer and customer search.  For full documentation of
-            // available settings here see http://www.runningcoder.org/jquerytypeahead/documentation/
-            /*$('.js-typeahead-customers').typeahead({
-                order: "asc",
-                maxItem: 8,
-                source: {
-                    data: function() { return bezl.vars.customers; }
-                },
-                callback: {
-                    onClick: function (node, a, item, event) {
-                        customer.select(bezl, item.key);
-                    }
-                }
-            });
-        
-            $('.js-typeahead-customers2').typeahead({
-                order: "asc",
-                maxItem: 8,
-                source: {
-                    data: function() { return bezl.vars.customers; }
-                },
-                callback: {
-                    onClick: function (node, a, item, event) {
-                        customer.select(bezl, item);
-                    }
-                }
-            });
-                    
-            bezl.vars.loading.customerList = false;*/
-
-             // Now loop through the results and plot each
-            /*for (var i = 0; i < bezl.data.CustList.length; i++) {
-                if (bezl.data.CustList[i].Address.length > 3) {
-                
-                    // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
-                    if (bezl.data.CustList[i].Geocode_Location == "" ||  bezl.data.CustList[i].Geocode_Location == null) {
-                                           
-                    } else {
-                        var marker = new bezl.vars.client.Marker({
-                            position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
-                            map: bezl.vars.map,
-                            title: bezl.data.CustList[i].Name,
-                            data: bezl.data.CustList[i],
-                            lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
-                            lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
-                        });
-                        
-                        bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
-                    }
-                }
-            };*/
-            
 
             //Geocode each address that doesnt have a geocode.
             map.theNext(bezl);
