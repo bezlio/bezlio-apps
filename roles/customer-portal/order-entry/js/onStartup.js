@@ -6,6 +6,7 @@ define(["./customer.js"], function (customer) {
         customer.runQuery(bezl, 'CustomersContacts');
         customer.runQuery(bezl, 'CustomersShipTos');
         customer.runQuery(bezl, 'GetGlobalParts');
+        customer.runQuery(bezl, 'GetShipVias');
     }
   
   return {

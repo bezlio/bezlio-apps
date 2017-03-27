@@ -34,60 +34,59 @@ define(["./order.js"], function (order) {
                     ] },0);
                 break;
             case "GetGlobalParts":
-                bezl.vars.loadingParts = true; 
+                bezl.vars.loadingGlobalParts = true; 
 
-                // Pull in the accounts list for the logged in user
+                // Pull in the global parts
                 bezl.dataService.add('GetGlobalParts','brdb','customer-portal-queries','ExecuteQuery', { 
                     "QueryName": "/order-entry/GetGlobalParts",
                     "Parameters": [] },0);
                 break;
-            case "GetPartsByCustNum":
+            case "GetPartDiscounts":
                 bezl.vars.loadingParts = true; 
 
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('GetPartsByCustNum','brdb','customer-portal-queries','ExecuteQuery', { 
-                    "QueryName": "/order-entry/GetPartsByCustNum",
+                bezl.dataService.add('GetPartDiscounts','brdb','customer-portal-queries','ExecuteQuery', { 
+                    "QueryName": "/order-entry/GetPartDiscounts",
                     "Parameters": [
                         { "Key": "CustNum", "Value": bezl.vars.selectedCustomer.CustNum }
                     ] },0);
                 break;
+            case "GetShipVias":
+                bezl.vars.loadingShipVias = true; 
+
+                // Pull in the ship vias
+                bezl.dataService.add('GetShipVias','brdb','customer-portal-queries','ExecuteQuery', { 
+                    "QueryName": "/order-entry/GetShipVias",
+                    "Parameters": [] },0);
+                break;
         }
     }
 
-    function Select(bezl, account) {
-        // Dropdown only allows single selecting
+    function Select(bezl, customer) {
+        // Dropdown only allows single selecting 
+        // Clear out the partlist
+        bezl.vars.partList = [];
         // Mark all of them as not selected
-        bezl.data.Customers.forEach(a => a.Selected = false);
+        bezl.vars.Customers.forEach(a => a.Selected = false);
         bezl.vars.selectedShipTo = null;
 
-        bezl.vars.parts = bezl.data.GetGlobalParts;
-
         // Select the one we selected
-        bezl.vars.selectedCustomer = bezl.data.Customers.find(a => a.ID == account.ID);
+        bezl.vars.selectedCustomer = bezl.vars.Customers.find(a => a.ID == customer.ID);
         bezl.vars.selectedCustomer.Selected = true;
 
         // Run our query to load parts
-        RunQuery(bezl, 'GetPartsByCustNum');
+        RunQuery(bezl, 'GetPartDiscounts');
 
         // Load a new Order
         order.newOrder(bezl);
-
-        //localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
-        //$('.panel').trigger('selectAccount', [bezl.vars.selectedAccount]);
-
-        // Filter our contacts
-        bezl.vars.filteredContacts = bezl.data.CustomersContacts.filter(c => c.ID == account.ID);
-
-        // Filter out shiptos
-        bezl.vars.filteredShipTos = bezl.data.CustomersShipTos.filter(st => st.ID == account.ID);
     }
 
     function SelectShipTo(bezl, shipto) {
         // Dropdown only allows single selecting
         // Mark all of them as not selected
         if (shipto) {
-            bezl.data.CustomersShipTos.forEach(a => a.Selected = false);
-            bezl.vars.selectedShipTo = bezl.data.CustomersShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
+            bezl.vars.selectedCustomer.ShipTos.forEach(a => a.Selected = false);
+            bezl.vars.selectedShipTo = bezl.vars.selectedCustomer.ShipTos.find(st => st.ID == shipto.ID && st.ShipToNum == shipto.ShipToNum);
             bezl.vars.selectedShipTo.Selected = true;
         }
     }
