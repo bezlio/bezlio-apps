@@ -5,6 +5,11 @@ define(["./account.js"], function (account) {
       // a variable we can work with
       if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
           bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+
+          // Perform additional processing on the returned data
+          for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+            bezl.vars.selectedAccount.CRMCalls[i].show = true;
+          }
       }
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
