@@ -88,9 +88,6 @@ define(function () {
     }
 
     function ConfigureLine(bezl, partNum) {
-        console.log('PartNum: ' + partNum);
-
-        console.log(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES);
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         bezl.vars.curAttr = [];
