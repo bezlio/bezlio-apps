@@ -32,6 +32,8 @@ define(["./account.js"], function (account) {
           }
         }
 
+        $(bezl.container.nativeElement).find('#filterString')[0].value = ""; // Clear out the search filter box
+
       });
 
       // Prepopulate the CRM new interaction form for click to call/email/navigate
