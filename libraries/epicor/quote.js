@@ -41,6 +41,7 @@ define(function () {
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
                 PartNum: dtl.PartNum,
+                LineDesc: dtl.PartNum,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: 'EPIC03',
