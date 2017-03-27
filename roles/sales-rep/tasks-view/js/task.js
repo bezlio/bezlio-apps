@@ -59,6 +59,14 @@ define(function () {
         }
     }
 
+    function CancelAddTask (bezl, task) {
+        for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
+            if (bezl.vars.selectedAccount.Tasks[i] == task) {
+                bezl.vars.selectedAccount.Tasks.splice(i, 1);
+            }
+        }
+    }
+
     function UpdateTasks (bezl) {
         // Since alternate systems may require different columns for newly added tasks, direct to
         // the libraries folder
@@ -78,6 +86,7 @@ define(function () {
         runQuery: RunQuery,
         select: Select,
         addTask: AddTask,
+        canceladdTask: CancelAddTask,
         updateTasks: UpdateTasks
     }
 });
