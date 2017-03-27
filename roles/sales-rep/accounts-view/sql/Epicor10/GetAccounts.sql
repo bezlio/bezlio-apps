@@ -18,20 +18,17 @@ SELECT
 	, LYTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE())-1)
 	, sr.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
-<<<<<<< HEAD
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0)
 	, c.CustURL as WebSite
 	, ShipVia = (SELECT top 1 Description FROM erp.ShipVia sv with(nolock) WHERE sv.ShipViaCode = c.ShipViaCode)
 	, '' as HoursOfOperation
 	, c.Comment as CustomerNotes
-=======
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0 ORDER BY tsk.DueDate)
 	, Coalesce(ARAging.[0to30], 0) As CurrentBalance
 	, Coalesce(ARAging.[31to60], 0) As ThirtyToSixty
 	, Coalesce(ARAging.[61to90], 0) As SixtytoNinety
 	, Coalesce(ARAging.[91to120], 0) As NinetyToOneHundredTwenty
 	, Coalesce(ArAging.Over120, 0) As OneHundredTwentyPlus
->>>>>>> development
 FROM
 	Erp.Customer c with(nolock)
 	
