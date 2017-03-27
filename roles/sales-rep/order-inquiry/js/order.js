@@ -43,15 +43,20 @@ define(function () {
     function Filter(bezl) {
         // Filter, will hide the table rows that do not match filter
         var tr, td;
-        tr = document.getElementById("priceList").getElementsByTagName("tr");
+        tr = document.getElementById("orderList").getElementsByTagName("tr");
 
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
+
             if(td) {
-                if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1) {
+                if(bezl.vars.filter.toUpperCase() == "ALL") 
+                {
                     tr[i].style.display = "";
-                } else {
+                } else if(td.children[0].children[4].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1){
+                    tr[i].style.display = "";
+                }
+                else {
                     tr[i].style.display = "none";
                 }
             }
