@@ -72,6 +72,7 @@ define(function () {
      * @param {Number} jobNum - The job number to clock onto
      * @param {Number} assemblySeq - The assembly sequence to clock onto
      * @param {Number} oprSeq - The operation sequence to clock onto
+     * @param {Boolean} setup - Indicates this activity should be started for Setup
      */
     function StartJob (bezl
                     , plugin
@@ -80,7 +81,8 @@ define(function () {
                     , laborHeds
                     , jobNum
                     , assemblySeq
-                    , oprSeq) {
+                    , oprSeq
+                    , setup) {
         bezl.dataService.add(
             'StartJob'
             ,'brdb'
@@ -93,6 +95,7 @@ define(function () {
                 ,'JobNum'       : jobNum
                 ,'JobAsm'       : assemblySeq
                 ,'JobOp'        : oprSeq
+                ,'Setup'        : setup
         },0);
     }
 
@@ -104,12 +107,13 @@ define(function () {
      * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
      * @param {string} company - The company ID within Epicor
-     * @param {Object[]} laborHeds - An array of laborhed numbers
+     * @param {Object[]} laborDataSet - An array of the LaborDtl.  Only required property is LaborHedSeq
      */
     function EndActivities (bezl
+                    , plugin
                     , connection
                     , company
-                    , laborHeds) {      
+                    , laborDataSet) {      
         bezl.dataService.add(
             'EndActivities'
             ,'brdb'
@@ -118,7 +122,7 @@ define(function () {
             , { 
                 'Connection'    : connection
                 ,'Company'      : company
-                ,'LaborHedSeq'  : laborHeds
+                ,'LaborDataSet' : JSON.stringify(laborDataSet)
         },0);
     }
  

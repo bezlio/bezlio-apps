@@ -3,6 +3,7 @@ Select TOP 100
 	ERP.OrderHed.OrderDate As OrderDate,
 	ERP.OrderHed.PONum As PoNum,
 	ERP.OrderHed.DocOrderAmt As OrderAmt,
+	ERP.OrderHed.OpenOrder As OpenOrder,
 	ERP.OrderDtl.OrderLine As OrderLine,
 	ERP.OrderDtl.PartNum As PartNum,
 	ERP.Part.PartDescription As PartDesc,

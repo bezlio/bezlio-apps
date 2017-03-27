@@ -55,7 +55,26 @@ define(function () {
                 oh.OrderComment = bezl.vars.OrderComment;
             }
 
-            oh.ReadyToCalc = false;
+            if (bezl.vars.NotifyEmail && bezl.vars.NotifyEmail != '') {
+                oh.NotifyFlag = true;
+                oh.NotifyEMail = bezl.vars.NotifyEmail;
+            }
+
+            if (bezl.vars.ShipToNum == 'CreateNew') {
+                oh.CustAllowOTS = true;
+                oh.UseOTS = true;
+                oh.OTSSaveAs = 'T';
+                oh.OTSShipToNum = bezl.vars.selectedShipTo.ID;
+                oh.OTSName = bezl.vars.selectedShipTo.Name;
+                oh.OTSAddress1 = bezl.vars.selectedShipTo.Address1;
+                oh.OTSAddress2 = bezl.vars.selectedShipTo.Address2;
+                oh.OTSAddress3 = bezl.vars.selectedShipTo.Address3;
+                oh.OTSCity = bezl.vars.selectedShipTo.City;
+                oh.OTSState = bezl.vars.selectedShipTo.State;
+                oh.OTSZIP = bezl.vars.selectedShipTo.Zip;
+            }
+
+            oh.OrderHeld = true;
         });
 
         // This will take the structure from our bezl vars and stuff it into the ds specific to Epicor
