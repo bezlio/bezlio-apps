@@ -16,7 +16,7 @@ define(function () {
             }
         ]}
 
-        bezl.vars.ds.mergeDs.forEach( oh => {
+        bezl.vars.mergeDs.forEach( oh => {
             if (bezl.vars.PONumber) {
                 oh.CUSTOMER_PO_REF = bezl.vars.PONumber;
             }
