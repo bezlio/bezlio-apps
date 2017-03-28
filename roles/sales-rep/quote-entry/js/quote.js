@@ -95,12 +95,14 @@ define(function () {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         bezl.vars.curAttr = [];
-        console.log(bezl.data.QuoteDtls.find(dtl => dtl.PartNum === partNum));
+        var curLine = bezl.data.QuoteDtls.find(dtl => dtl.PartNum === partNum);
+        curLine.Attributes = [];
 
         filterArray.forEach(attr => {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
             attrFnd.Display = false;
-            bezl.vars.curAttr.push(attrFnd);
+            //bezl.vars.curAttr.push(attrFnd);
+            curLine.Attributes.push(attrFnd);
         });
     }
 
