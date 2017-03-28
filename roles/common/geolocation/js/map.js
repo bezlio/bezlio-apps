@@ -50,10 +50,10 @@ define(["./customer.js"], function (customer) {
     }
 
      function theNext(bezl) {
-        if(bezl.vars.geoLocsNeeded > 0) {
-        if (nextAddress < bezl.vars.geoLocsNeeded) {
-            if(bezl.vars.customers[nextAddress].data.Geocode_Location == '' || bezl.vars.customers[nextAddress].data.Geocode_Location == null)
-            {
+            //check to see if the nextAddress is less than needed qty
+        if (nextAddress < bezl.vars.geoLocsNeeded - 1) {
+            //if geoloc is empty, get it.
+            if(bezl.vars.customers[nextAddress].data.Geocode_Location == '' || bezl.vars.customers[nextAddress].data.Geocode_Location == null) {
                 setTimeout(function(){getAddress({ 
                                     streetAddress: bezl.vars.customers[nextAddress].data.Address, 
                                     title: bezl.vars.customers[nextAddress].data.Name, 
@@ -62,15 +62,15 @@ define(["./customer.js"], function (customer) {
                                     data: bezl.vars.customers[nextAddress].data 
                                 }, theNext, bezl)}, delay);
             }
+            //move onto next address
           nextAddress++;
-        } else {
+        } else if(bezl.vars.geoLocsNeeded != bezl.vars.geoLocsDone ){ 
             // If no customers needed geocoding, do not run again.
-            if(bezl.vars.geoLocsNeeded != 0) {
             
                 nextAddress = 0;
                 // Run Query to update results. Acts as second check as well
                 bezl.functions["getCustomers"]();
-            } else {
+        } else {
 
                 // We're done. 
                 bezl.vars.geoTracker = 100;
@@ -82,19 +82,6 @@ define(["./customer.js"], function (customer) {
                 nextAddress = 0;
                 bezl.vars.loading.customerList = false;
             }
-        }
-    } else {
-          // We're done. 
-         bezl.vars.geoTracker = 100;
-         var progressBar = document.getElementById('geoProgress');
-         // Forces update of DOM
-            setTimeout(function(){ 
-                progressBar.style.width= bezl.vars.geoTracker + '%';
-            }, 200);
-            nextAddress = 0;
-            bezl.vars.loading.customerList = false;
-        }
-    
       }
 
       // ====== Geocoding ======
@@ -116,7 +103,6 @@ define(["./customer.js"], function (customer) {
             });
                }
              bezl.vars.markers[customerRecord.custNum] = marker;
-
 
               var g;
               if( results[0].geometry.location == '' || results[0].geometry.location == null ){
@@ -142,11 +128,8 @@ define(["./customer.js"], function (customer) {
 
             }
 
+                updateGeo(bezl, customerRecord, g);
 
-
-            updateGeo(bezl, customerRecord, g);
-
-                
             }
             else {
               // if we were sending the requests to fast, try this one again and increase the delay
@@ -174,7 +157,6 @@ define(["./customer.js"], function (customer) {
     }
 
     function UpdateAddress(bezl) {
-       
         
             bezl.vars.markers[nextAddress].setMap(null);
             
@@ -186,7 +168,6 @@ define(["./customer.js"], function (customer) {
                 lat: bezl.vars.customers[nextAddress].Geocode_Location.geometry.location.lat(),
                 lng: bezl.vars.customers[nextAddress].Geocode_Location.geometry.location.lng()
             });
-              
 
             bezl.vars.markers[nextAddress] = marker;
             
