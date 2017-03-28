@@ -100,7 +100,7 @@ define(function () {
 
         filterArray.forEach(attr => {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
-            if (!"SELECTION_MODE" in attrFnd) {
+            if (attrFnd.hasOwnProperty("SELECTION_MODE")) {
                 attrFnd.SELECTED_VALUE = null;
             }
             attrFnd.Display = false;
