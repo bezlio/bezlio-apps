@@ -95,19 +95,20 @@ define(function () {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
-        console.log(curLine.Attributes);
 
-        curLine.Attributes = [];
+        if (curLine.Attributes === undefined) {
+            curLine.Attributes = [];
 
-        filterArray.forEach(attr => {
-            var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
+            filterArray.forEach(attr => {
+                var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
 
-            if (!attrFnd.hasOwnProperty("SELECTION_MODE")) {
-                attrFnd.SELECTED_VALUE = 'HIGH';
-            }
-            attrFnd.Display = false;
-            curLine.Attributes.push(attrFnd);
-        });
+                if (!attrFnd.hasOwnProperty("SELECTION_MODE")) {
+                    attrFnd.SELECTED_VALUE = 'HIGH';
+                }
+                attrFnd.Display = false;
+                curLine.Attributes.push(attrFnd);
+            });
+        }
     }
 
     return {
