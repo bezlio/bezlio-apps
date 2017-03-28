@@ -2,6 +2,7 @@ define(["./customer.js"], function (customer) {
 
     var delay = 100;
     var nextAddress = 0;
+    var tempTracker = 0;
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
@@ -128,13 +129,19 @@ define(["./customer.js"], function (customer) {
               }
 
             bezl.vars.geoLocsDone++;
-            bezl.vars.geoTracker = Math.round((bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100);
-            var progressBar = document.getElementById('geoProgress');
+            tempTracker = Math.round((bezl.vars.geoLocsDone / bezl.vars.geoLocsNeeded)*100);
 
-            // Forces update of DOM
-            setTimeout(function(){ 
-                progressBar.style.width= bezl.vars.geoTracker + '%';
-            }, 200);
+            if(tempTracker > bezl.vars.geoTracker) {
+                
+                var progressBar = document.getElementById('geoProgress');
+
+                // Forces update of DOM
+                setTimeout(function(){ 
+                    progressBar.style.width= bezl.vars.geoTracker + '%';
+                }, 200);
+                
+            }
+
 
 
             updateGeo(bezl, customerRecord, g);
