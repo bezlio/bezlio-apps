@@ -68,7 +68,7 @@ define(function () {
             [
             { "Key": "Load", "Value": JSON.stringify({customerID: ""}) },
             { "Key": "NewOrderRow", "Value": JSON.stringify({orderID: "<1>"}) },
-            { "Key": "MergeDataSet", "Value": JSON.stringify(bezl.vars.ds.mergeDs) },
+            { "Key": "MergeDataSet", "Value": JSON.stringify(bezl.vars.mergeDs) },
             { "Key": "Save", "Value": JSON.stringify({}) }
             ] },0);
 
