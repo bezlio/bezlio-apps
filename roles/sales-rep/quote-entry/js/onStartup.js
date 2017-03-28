@@ -5,7 +5,7 @@ define(["./quote.js"], function (quote) {
         quote.runQuery(bezl, 'Parts');
 
         bezl.vars.ds = {};
-        bezl.vars.attrs = {};
+        bezl.vars.attrs = [];
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
 
