@@ -100,6 +100,9 @@ define(function () {
 
         filterArray.forEach(attr => {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
+            if (!"SELECTION_MODE" in attrFnd) {
+                attrFnd.SELECTED_VALUE = null;
+            }
             attrFnd.Display = false;
             //bezl.vars.curAttr.push(attrFnd);
             curLine.Attributes.push(attrFnd);
