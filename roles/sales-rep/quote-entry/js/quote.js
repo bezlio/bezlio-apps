@@ -70,6 +70,18 @@ define(function () {
             });
         }
 
+        // $('#example').DataTable({
+        //     data: dataSet,
+        //     columns: [
+        //         { title: "Name" },
+        //         { title: "Position" },
+        //         { title: "Office" },
+        //         { title: "Extn." },
+        //         { title: "Start date" },
+        //         { title: "Salary" }
+        //     ]
+        // });
+
         setTimeout(typeAhead, 2, lineNum + 1);
     }
 
@@ -83,6 +95,8 @@ define(function () {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         bezl.vars.curAttr = [];
+        console.log(bezl.data.QuoteDtls.find(dtl => dtl.PartNum === partNum));
+
         filterArray.forEach(attr => {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
             attrFnd.Display = false;
