@@ -51,7 +51,7 @@ define(["./customer.js"], function (customer) {
 
      function theNext(bezl) {
         if(bezl.vars.geoLocsNeeded > 0) {
-        if (nextAddress < bezl.vars.customers.length - 1) {
+        if (nextAddress < bezl.vars.geoLocsNeeded) {
             if(bezl.vars.customers[nextAddress].data.Geocode_Location == '' || bezl.vars.customers[nextAddress].data.Geocode_Location == null)
             {
                 setTimeout(function(){getAddress({ 
