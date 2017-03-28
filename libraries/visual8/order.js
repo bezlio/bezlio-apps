@@ -53,7 +53,8 @@ define(function () {
             // Add our values to the merge DS
             bezl.vars.mergeDs.CUST_ORDER_LINE.push({
                 PART_ID: p.PartNum,
-                ORDER_QTY: p.Qty
+                ORDER_QTY: p.Qty,
+                USER_ORDER_QTY: p.Qty
             })
         });
 
