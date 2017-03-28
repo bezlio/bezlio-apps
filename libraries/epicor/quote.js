@@ -46,7 +46,8 @@ define(function () {
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: 'EPIC03',
                 CustNum: custNum,
-                RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
+                RowMod: (dtl.Deleted === 1) ? 'D' : 'U',
+                Attributes: dtl.Attributes
             });
         });
 
