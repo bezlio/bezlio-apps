@@ -45,27 +45,21 @@ define(function () {
         // This will take the structure from our bezl vars and stuff it into the ds specific to Visual
 
         // Create our order line table
-        //bezl.vars.mergeDs.CUST_ORDER_LINE = [];
+        bezl.vars.mergeDs.CUST_ORDER_LINE = [];
 
         bezl.vars.partList.forEach(p => {
             // Add a new line in the chain
             parms.push({ "Key": "NewOrderLineRow", "Value": JSON.stringify({orderID: "<1>"}) });
             // Add our values to the merge DS
-            // bezl.vars.mergeDs.CUST_ORDER_LINE.push({
-            //     PART_ID: p.PartNum,
-            //     ORDER_QTY: p.Qty
-            // })
+            bezl.vars.mergeDs.CUST_ORDER_LINE.push({
+                PART_ID: p.PartNum,
+                ORDER_QTY: p.Qty
+            })
         });
         // Now we will submit the order for processing
         bezl.dataService.add('submitOrder','brdb','Visual8','ExecuteBOMethod',
         { "Connection": bezl.vars.connection, "BOName": "Lsa.Vmfg.Sales.CustomerOrder",
-        "Parameters": 
-            [
-            { "Key": "Load", "Value": JSON.stringify({customerID: ""}) },
-            { "Key": "NewOrderRow", "Value": JSON.stringify({orderID: "<1>"}) },
-            { "Key": "MergeDataSet", "Value": JSON.stringify(bezl.vars.mergeDs) },
-            { "Key": "Save", "Value": JSON.stringify({}) }
-            ] },0);
+        "Parameters": parms },0);
 
         bezl.vars.submitOrder = true;
 
