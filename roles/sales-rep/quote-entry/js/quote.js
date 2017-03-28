@@ -91,7 +91,7 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
-    function ConfigureLine(bezl, quoteLine) {
+    function ConfigureLine(bezl, partNum, quoteLine) {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
