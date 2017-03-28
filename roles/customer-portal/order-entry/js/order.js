@@ -43,6 +43,10 @@ define(["./customer.js"], function (customer) {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/order.js'], function(functions) {
                 functions.newOrder(bezl);
             }); 
+        } else if (bezl.vars.Platform == "Visual8") {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/visual8/order.js'], function(functions) {
+                functions.newOrder(bezl);
+            }); 
         }
     }
 
@@ -90,6 +94,10 @@ define(["./customer.js"], function (customer) {
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/epicor/order.js'], function(functions) {
+                functions.submitOrder(bezl);
+            }); 
+        } else if (bezl.vars.Platform == "Visual8") {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/visual8/order.js'], function(functions) {
                 functions.submitOrder(bezl);
             }); 
         }
