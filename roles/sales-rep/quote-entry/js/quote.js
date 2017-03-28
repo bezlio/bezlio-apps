@@ -91,11 +91,10 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
-    function ConfigureLine(bezl, partNum) {
+    function ConfigureLine(bezl, quoteLine) {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
-        bezl.vars.curAttr = [];
-        var curLine = bezl.data.QuoteDtls.find(dtl => dtl.PartNum === partNum);
+        var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
         curLine.Attributes = [];
 
         filterArray.forEach(attr => {
