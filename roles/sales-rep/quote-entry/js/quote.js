@@ -95,6 +95,8 @@ define(function () {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
+        console.log(curLine.Attributes);
+
         curLine.Attributes = [];
 
         filterArray.forEach(attr => {
