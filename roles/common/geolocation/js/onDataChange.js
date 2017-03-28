@@ -6,7 +6,6 @@ define(["./customer.js",
         if (bezl.data.CustList) {
 
             // Reset Counters
-            bezl.vars.geoTracker = 0;
             bezl.vars.geoLocsNeeded = 0;
             bezl.vars.geoLocsDone = 0;
 

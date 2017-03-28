@@ -3,6 +3,7 @@ define(["./customer.js"], function (customer) {
     var delay = 100;
     var nextAddress = 0;
     var tempTracker = 0;
+    bezl.vars.geoTracker = 0;
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
