@@ -8,6 +8,7 @@ define(["./customer.js",
             // Reset Counters
             bezl.vars.geoLocsNeeded = 0;
             bezl.vars.geoLocsDone = 0;
+             bezl.vars.custWithoutLocations = [];
 
             //resets if another attempt happens after one finishes.
             if(bezl.vars.geoTracker == 100) {
@@ -34,6 +35,7 @@ define(["./customer.js",
                                         
                 // Find how many address need geolocs
                 if(bezl.data.CustList[i].Geocode_Location == '' || bezl.data.CustList[i].Geocode_Location == null) {
+                    bezl.vars.custWithoutLocations.push(bezl.data.CustList[i]);
                     bezl.vars.geoLocsNeeded++;
                 }
             }

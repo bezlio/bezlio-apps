@@ -19,6 +19,7 @@ define(["./map.js",
             bezl.vars.geoTracker = 0;
             bezl.vars.geoLocsNeeded = 0;
             bezl.vars.geoLocsDone = 0;
+            bezl.vars.custWithoutLocations = [];
 
                 
             if (navigator.geolocation) {

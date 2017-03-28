@@ -51,15 +51,15 @@ define(["./customer.js"], function (customer) {
 
      function theNext(bezl) {
             //check to see if the nextAddress is less than needed qty
-        if (nextAddress < bezl.vars.geoLocsNeeded - 1) {
+        if (nextAddress <=  bezl.vars.custWithoutLocations.length - 1) {
             //if geoloc is empty, get it.
-            if(bezl.vars.customers[nextAddress].data.Geocode_Location == '' || bezl.vars.customers[nextAddress].data.Geocode_Location == null) {
+            if( bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == '' ||  bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == null) {
                 setTimeout(function(){getAddress({ 
-                                    streetAddress: bezl.vars.customers[nextAddress].data.Address, 
-                                    title: bezl.vars.customers[nextAddress].data.Name, 
-                                    custNum: bezl.vars.customers[nextAddress].data.CustNum,
-                                    shipToNum: bezl.vars.customers[nextAddress].data.ShipToNum,
-                                    data: bezl.vars.customers[nextAddress].data 
+                                    streetAddress:  bezl.vars.custWithoutLocations[nextAddress].data.Address, 
+                                    title:  bezl.vars.custWithoutLocations[nextAddress].data.Name, 
+                                    custNum:  bezl.vars.custWithoutLocations[nextAddress].data.CustNum,
+                                    shipToNum:  bezl.vars.custWithoutLocations[nextAddress].data.ShipToNum,
+                                    data:  bezl.vars.custWithoutLocations[nextAddress].data 
                                 }, theNext, bezl)}, delay);
             }
             //move onto next address
@@ -134,6 +134,8 @@ define(["./customer.js"], function (customer) {
             else {
               // if we were sending the requests to fast, try this one again and increase the delay
               if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                  //push customer back onto stack
+            bezl.vars.custWithoutLocations.push(customerRecord);
                 nextAddress--;
                 delay++;
               } else {
