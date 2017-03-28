@@ -43,6 +43,10 @@ define(function () {
         // Add a new order row
         parms.push({ "Key": "NewOrderRow", "Value": JSON.stringify({orderID: "<1>"}) });
         // This will take the structure from our bezl vars and stuff it into the ds specific to Visual
+
+        // Create our order line table
+        bezl.vars.mergeDs.CUST_ORDER_LINE = [];
+        
         bezl.vars.partList.forEach(p => {
             // Add a new line in the chain
             parms.push({ "Key": "NewOrderLineRow", "Value": JSON.stringify({orderID: "<1>"}) });
