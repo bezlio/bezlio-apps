@@ -36,31 +36,22 @@ define(function () {
 
         })
 
-        // // This will take the structure from our bezl vars and stuff it into the ds specific to Epicor
-        // bezl.vars.partList.forEach(p => {
-        //     bezl.vars.ds.OrderDtl.push({
-        //         OpenLine: true,
-        //         VoidLine: false,
-        //         Company: bezl.vars.company,
-        //         OrderNum: 0,
-        //         OrderLine: 0,
-        //         LineType: 'PART',
-        //         PartNum: p.PartNum,
-        //         LineDesc: p.PartDescription,
-        //         OrderComment: p.Comment,
-        //         IUM: p.UOM,
-        //         RevisionNum: '',
-        //         SellingQuantity: p.Qty,
-        //         UnitPrice: p.UnitPrice,
-        //         DocUnitPrice: p.UnitPrice,
-        //         MktgCampaignID: 'CURR',
-        //         MktgEvntSeq: 1,
-        //         CustNum: bezl.vars.selectedCustomer.CustNum,
-        //         LockQty: false,
-        //         RowMod: 'U',
-        //         ShortChar10: ''
-        //     })
-        // });
+        var parms = [];
+        // Add the default load, empty because we are creating a new order
+        parms.push({ "Key": "Load", "Value": JSON.stringify({customerID: ""}) });
+
+        // Add a new order row
+        parms.push({ "Key": "NewOrderRow", "Value": JSON.stringify({orderID: "<1>"}) });
+        // This will take the structure from our bezl vars and stuff it into the ds specific to Visual
+        bezl.vars.partList.forEach(p => {
+            // Add a new line in the chain
+            parms.push({ "Key": "NewOrderLineRow", "Value": JSON.stringify({orderID: "<1>"}) });
+            // Add our values to the merge DS
+            bezl.vars.mergeDs.CUST_ORDER_LINE.push({
+                PART_ID: p.PartNum,
+                ORDER_QTY: p.Qty
+            })
+        });
         // Now we will submit the order for processing
         bezl.dataService.add('submitOrder','brdb','Visual8','ExecuteBOMethod',
         { "Connection": bezl.vars.connection, "BOName": "Lsa.Vmfg.Sales.CustomerOrder",
