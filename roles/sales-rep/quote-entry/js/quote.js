@@ -102,7 +102,7 @@ define(function () {
             var attrFnd = bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
 
             if (!attrFnd.hasOwnProperty("SELECTION_MODE")) {
-                attrFnd.SELECTED_VALUE = null;
+                attrFnd.SELECTED_VALUE = 'HIGH';
             }
             attrFnd.Display = false;
             curLine.Attributes.push(attrFnd);
