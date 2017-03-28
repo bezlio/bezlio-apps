@@ -46,9 +46,10 @@ define(function () {
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: 'EPIC03',
                 CustNum: custNum,
-                RowMod: (dtl.Deleted === 1) ? 'D' : 'U',
-                Attributes: dtl.Attributes
+                RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
+
+            bezl.vars.attrs.push(dtl.Attributes);
         });
 
 
@@ -69,7 +70,8 @@ define(function () {
                 "Connection": "Epicor 10 RS",
                 "Company": "EPIC03",
                 "QuoteNum": quoteNum,
-                "ds": JSON.stringify(bezl.vars.ds)
+                "ds": JSON.stringify(bezl.vars.ds),
+                "attrDs": JSON.stringify(bezl.vars.attrs)
             }, 0);
     }
 

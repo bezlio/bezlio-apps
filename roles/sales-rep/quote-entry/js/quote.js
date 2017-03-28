@@ -106,6 +106,8 @@ define(function () {
                     attrFnd.SELECTED_VALUE = 'HIGH';
                 }
                 attrFnd.Display = false;
+                attrFnd.QuoteNum = curLine.QuoteNum;
+                attrFnd.QuoteLine = curLine.QuoteLine;
                 curLine.Attributes.push(attrFnd);
             });
         }
