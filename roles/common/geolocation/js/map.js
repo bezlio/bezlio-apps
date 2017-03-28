@@ -134,12 +134,12 @@ define(["./customer.js"], function (customer) {
             if(tempTracker > bezl.vars.geoTracker) {
                 
                 var progressBar = document.getElementById('geoProgress');
-
+                bezl.vars.geoTracker = tempTracker;
                 // Forces update of DOM
                 setTimeout(function(){ 
                     progressBar.style.width= bezl.vars.geoTracker + '%';
                 }, 200);
-                
+
             }
 
 
