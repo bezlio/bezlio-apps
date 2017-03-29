@@ -51,7 +51,7 @@ define(["./customer.js"], function (customer) {
 
      function theNext(bezl) {
             //check to see if the nextAddress is less than needed qty
-        if (nextAddress <=  bezl.vars.custWithoutLocations.length - 1) {
+        if (nextAddress <=  (bezl.vars.custWithoutLocations.length - 1)) {
             //if geoloc is empty, get it.
             if( bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == '' ||  bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == null) {
                 setTimeout(function(){getAddress({ 
