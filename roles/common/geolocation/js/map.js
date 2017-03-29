@@ -134,8 +134,6 @@ define(["./customer.js"], function (customer) {
             else {
               // if we were sending the requests to fast, try this one again and increase the delay
               if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-                  //push customer back onto stack
-            bezl.vars.custWithoutLocations.push(customerRecord);
                 nextAddress--;
                 delay++;
               } else {
