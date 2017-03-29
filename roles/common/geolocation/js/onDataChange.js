@@ -35,7 +35,18 @@ define(["./customer.js",
                                         
                 // Find how many address need geolocs
                 if(bezl.data.CustList[i].Geocode_Location == '' || bezl.data.CustList[i].Geocode_Location == null) {
-                    bezl.vars.custWithoutLocations.push(bezl.data.CustList[i]);
+                    bezl.vars.custWithoutLocations.push({ selected: false,
+                                            key: bezl.data.CustList[i].CustNum,
+                                            display: bezl.data.CustList[i].Name,
+                                            lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
+                                            nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
+                                            distance: null,
+                                            streetAddress: bezl.data.CustList[i].Address, 
+                                            title: bezl.data.CustList[i].Name, 
+                                            custNum: bezl.data.CustList[i].CustNum,
+                                            shipToNum: bezl.data.CustList[i].ShipToNum,
+                                            data: bezl.data.CustList[i]
+                                        });
                     bezl.vars.geoLocsNeeded++;
                 }
             }
