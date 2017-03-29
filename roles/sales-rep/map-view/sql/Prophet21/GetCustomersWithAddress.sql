@@ -3,7 +3,7 @@ SELECT
 	, c.customer_id As CustNum
 	, c.customer_name As Name
 	, c.phys_address1 + ' ' + c.phys_city + ', ' + c.phys_state + ' ' + c.phys_postal_code + ' ' AS Address
-	, '' AS Geocode_Location -- (originally Epicor10 Erp.Customer.ServRef5)
+	, gl.Geocode_Location AS Geocode_Location
 	, ct.customer_type AS CustomerType
 	, t.territory_id AS Territory
 	, c.date_acct_opened AS EstDate
@@ -48,6 +48,10 @@ FROM
 
 	LEFT OUTER JOIN p21_view_terms tm with(nolock) ON
 	c.service_terms_id = tm.terms_id
+
+	LEFT OUTER JOIN Bezlio_Customer_Geocode_Location gl with(nolock) ON
+	c.customer_id = gl.customer_id
+	And c.company_id = gl.company_id
 WHERE
 	c.phys_postal_code <> ''
 	AND sr.email_address = '{EmailAddress}'
