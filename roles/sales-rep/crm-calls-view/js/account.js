@@ -62,7 +62,8 @@ define(function () {
             "CallDate"      : new  Date(),
             "SalesRepName"  : bezl.env.currentUser,
             "RelatedToFile" : "customer",
-            "CallTypeDesc"  : callTypeDesc
+            "CallTypeDesc"  : callTypeDesc,
+            "show"          : true
         });
         
         bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
