@@ -51,8 +51,6 @@ define(function () {
 
             if (dtl.Attributes !== undefined) {
                 bezl.vars.attrs.push(dtl.Attributes);
-            } else {
-                bezl.vars.attrs = null;
             }
         });
 
