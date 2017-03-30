@@ -1,6 +1,8 @@
 define(["./account.js"], function (account) {
  
   function OnStartup (bezl) {        
+      bezl.vars.filterString = "";
+
       // Load the object for the selected customer from local storage into
       // a variable we can work with
       if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
