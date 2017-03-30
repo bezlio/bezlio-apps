@@ -13,7 +13,7 @@ define(["./account.js"], function (account) {
       }
 
       // Refresh all call data at regular interval
-      account.runQuery("AllCRMCalls");
+      account.runQuery(bezl, "AllCRMCalls");
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
       // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
@@ -27,7 +27,7 @@ define(["./account.js"], function (account) {
         // If there are no CRM calls present with what was passed over, go
         // ahead and run the full query now
         if (!bezl.vars.selectedAccount.CRMCalls) {
-          account.runQuery('CRMCalls');
+          account.runQuery(bezl, "CRMCalls");
         } else {
           // Perform additional processing on the returned data
           for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
