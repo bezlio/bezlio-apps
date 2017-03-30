@@ -25,7 +25,7 @@ define(["./account.js"], function (account) {
             }
 
             // Perform additional processing on the returned data
-            account.applyFilter()
+            account.applyFilter(bezl);
         }
 
         if (bezl.data.AddCRMCall) {
