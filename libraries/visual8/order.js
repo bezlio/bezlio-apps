@@ -54,13 +54,12 @@ define(function () {
             bezl.vars.mergeDs.CUST_ORDER_LINE.push({
                 PART_ID: p.PartNum,
                 ORDER_QTY: p.Qty,
-                USER_ORDER_QTY: p.Qty,
-                TRADE_DISC_PERCENT: 0
+                USER_ORDER_QTY: p.Qty
             })
         });
 
         parms.push({ "Key": "MergeDataSet", "Value": JSON.stringify(bezl.vars.mergeDs) });
-        //parms.push({ "Key": "Save", "Value": JSON.stringify({}) });
+        parms.push({ "Key": "Save", "Value": JSON.stringify({}) });
         // Now we will submit the order for processing
         bezl.dataService.add('submitOrder','brdb','Visual8','ExecuteBOMethod',
         { "Connection": bezl.vars.connection, "BOName": "Lsa.Vmfg.Sales.CustomerOrder",
