@@ -1,4 +1,4 @@
-define(function () {
+define(["./account.js"], function (account) {
  
     function OnDataChange (bezl) {
         if (bezl.data.CRMCalls && bezl.vars.loading) {
@@ -25,14 +25,7 @@ define(function () {
             }
 
             // Perform additional processing on the returned data
-            for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
-                if (bezl.vars.selectedAccount.CRMCalls[i].ShortSummary.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                bezl.vars.selectedAccount.CRMCalls[i].Details.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
-                    bezl.vars.selectedAccount.CRMCalls[i].show = true;
-                } else {
-                    bezl.vars.selectedAccount.CRMCalls[i].show = false;
-                }
-            }
+            account.applyFilter()
         }
 
         if (bezl.data.AddCRMCall) {
