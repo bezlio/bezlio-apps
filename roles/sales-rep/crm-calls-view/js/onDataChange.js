@@ -1,13 +1,37 @@
 define(function () {
  
     function OnDataChange (bezl) {
-        if (bezl.data.CRMCalls) {
+        if (bezl.data.CRMCalls && bezl.vars.loading) {
             bezl.vars.loading = false;
             bezl.vars.selectedAccount.CRMCalls = bezl.data.CRMCalls;
 
             // Perform additional processing on the returned data
             for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
                 bezl.vars.selectedAccount.CRMCalls[i].show = true;
+            }
+        }
+
+        if (bezl.data.AllCRMCalls && bezl.vars.loadingAllCalls) {
+            bezl.vars.loadingAllCalls = false;
+
+            // Set the currently selected accounts call data
+            if (bezl.vars.selectedAccount) {
+                bezl.vars.selectedAccount.CRMCalls = [];
+                for (var i = 0; i < bezl.data.AllCRMCalls.length; i++) {
+                    if (bezl.data.AllCRMCalls[i].ID == bezl.vars.selectedAccount.ID) {
+                        bezl.vars.selectedAccount.CRMCalls.push(bezl.data.AllCRMCalls[i])
+                    }
+                }
+            }
+
+            // Perform additional processing on the returned data
+            for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+                if (bezl.vars.selectedAccount.CRMCalls[i].ShortSummary.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.vars.selectedAccount.CRMCalls[i].Details.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = true;
+                } else {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = false;
+                }
             }
         }
 

@@ -12,6 +12,13 @@ define(["./account.js"], function (account) {
           }
       }
 
+      // Refresh call data at regular interval
+      function RefreshAllCRMCalls() {
+          bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetAccountsCallHistory" },0);
+          setTimeout(RefreshAllCRMCalls, 60000);
+      }
+      RefreshAllCRMCalls();
+
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
       // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
       // types
