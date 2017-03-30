@@ -43,22 +43,15 @@ define(function () {
             bezl.vars.loadingGlobalParts = false;
         }
 
-        if (bezl.data.GetPartsByCustNum) {
+        if (bezl.data.GetPartDiscounts) {
             // We need to replace parts with customer parts if they are present because price list trumps web parts
-            bezl.data.GetPartsByCustNum.forEach(custPart => {
-                var idx = bezl.vars.parts.findIndex(p => p.PartNum == custPart.PartNum);
-                if (idx != -1) {
-                    // We have a part already so remove it
-                    bezl.vars.parts.splice(idx, 1);                
-                }
-                // Add it
-                bezl.vars.parts.push(custPart)
-            });
+            bezl.vars.partDiscounts = bezl.data.GetPartDiscounts;
             
             $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partList").typeahead({
                 order: "asc",
                 maxItem: 8,
+                hint: true,
                 display: ['PartNum', 'PartDescription'],
                 source: {
                     data: function() { return bezl.vars.parts.sort(function(a, b) {
@@ -66,14 +59,19 @@ define(function () {
                                 });; }
                 },
                 callback: {
-                    onSearch: function() {
+                    onSearch: function(node, query) {
+                        // First remove any selected parts
                         bezl.vars.selectedPart = null;
-                    },
-                    onClick: function (node, a, item, event) {
-                        bezl.vars.selectedPart = item;
+                        
+                        // Select a part if its matching
+                        if (bezl.vars.parts.findIndex(p => p.PartNum == query) != -1) {
+                            bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == query);
+                        }
+
                     }
                 }
             });
+            bezl.dataService.remove('GetPartDiscounts');
             bezl.vars.loadingParts = false;
         }
 
@@ -93,8 +91,13 @@ define(function () {
                         bezl.notificationService.showCriticalError(err.TableName + ': ' + err.ErrorText);
                     });          
                 } else {
+                    bezl.vars.submittedOrder = true;
                     bezl.notificationService.showSuccess('Order Submitted!');
                 }
+            } else {
+                // We will assume ok for now
+                bezl.vars.submittedOrder = true;
+                bezl.notificationService.showSuccess('Order Submitted!');
             }
             bezl.vars.submitOrder = false;
         }

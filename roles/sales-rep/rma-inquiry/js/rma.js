@@ -12,7 +12,8 @@ define(function () {
                     "QueryName": "RMAInquiry",
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate || '01/01/1900'},
-                        { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'}
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'},
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
                     ] },0);
                 break;
             default:
@@ -43,7 +44,7 @@ define(function () {
     function Filter(bezl) {
         // Filter, will hide the table rows that do not match filter
         var tr, td;
-        tr = document.getElementById("priceList").getElementsByTagName("tr");
+        tr = document.getElementById("RMAList").getElementsByTagName("tr");
 
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {

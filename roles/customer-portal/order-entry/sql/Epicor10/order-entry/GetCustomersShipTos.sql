@@ -22,5 +22,5 @@ FROM
 	AND cnt.CustNum = c.CustNum
 WHERE
 	c.Company = 'EPIC06'
-	AND cnt.EMailAddress = 'administrator@wfo.epicor.com'
-	--AND sr.EMailAddress = '{EmailAddress}'
+	--AND cnt.EMailAddress = 'administrator@wfo.epicor.com'
+	AND cnt.EMailAddress = '{EmailAddress}'

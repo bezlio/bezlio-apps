@@ -94,11 +94,12 @@ define(function () {
                 SellingQuantity: p.Qty,
                 UnitPrice: p.UnitPrice,
                 DocUnitPrice: p.UnitPrice,
-                MktgCampaignID: 'Customer',
+                MktgCampaignID: 'CURR',
                 MktgEvntSeq: 1,
                 CustNum: bezl.vars.selectedCustomer.CustNum,
                 LockQty: false,
-                RowMod: 'U'
+                RowMod: 'U',
+                ShortChar10: ''
             })
         });
         // Now we will submit the order for processing

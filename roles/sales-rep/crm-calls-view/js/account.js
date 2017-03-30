@@ -24,7 +24,7 @@ define(function () {
         // query, detect the CRM platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.6/libraries/epicor/crm.js'], function(functions) {
+            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.7/libraries/epicor/crm.js'], function(functions) {
                 functions.addNote(bezl
                                 , bezl.vars.selectedAccount.Company
                                 , bezl.vars.selectedAccount.CustNum
@@ -63,9 +63,26 @@ define(function () {
 
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
+
+    // Only display CRM interactions that have data matching the data string in the
+    // filter input box. This function updates the "show" variable on the
+    // CRM call object.
+    function ApplyFilter(bezl) {
+        if (bezl.vars.selectedAccount.CRMCalls) { // Avoid throwing errors if the account data hasn't been returned yet
+            for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+                if (bezl.vars.selectedAccount.CRMCalls[i].ShortSummary.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.vars.selectedAccount.CRMCalls[i].Details.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = true;
+                } else {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = false;
+                }
+            };
+        }
+    }
   
     return {
         runQuery: RunQuery,
-        addNote: AddNote
+        addNote: AddNote,
+        applyFilter: ApplyFilter
     }
 });

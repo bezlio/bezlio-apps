@@ -18,6 +18,8 @@ define(function () {
                 for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
                     bezl.vars.selectedAccount.Tasks[i].RowState = '';
                 }
+                // Trigger the "updateTask" event for any bezls that need to know about the new/updated task
+                $('.panel').trigger('updateTask', [bezl.vars.selectedAccount]);
             }
 
             bezl.data.UpdateTasks = null;

@@ -35,7 +35,7 @@ define(function () {
         // Since alternate systems may require different columns for newly added tasks, direct to
         // the libraries folder
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.6/libraries/epicor/crm.js'], function(functions) {
+            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.7/libraries/epicor/crm.js'], function(functions) {
                 var taskType = '';
                 if (bezl.data.TaskTypes) {
                     taskType = bezl.data.TaskTypes[0].TaskType;
@@ -59,11 +59,22 @@ define(function () {
         }
     }
 
+    function CancelAddTask (bezl, task) {
+        for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
+            if (bezl.vars.selectedAccount.Tasks[i] == task) {
+                bezl.vars.selectedAccount.Tasks.splice(i, 1);
+                // Because we removed an item in the array we are iterating
+                // over we need to decrement our current index by one
+                i--;
+            }
+        }
+    }
+
     function UpdateTasks (bezl) {
         // Since alternate systems may require different columns for newly added tasks, direct to
         // the libraries folder
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.6/libraries/epicor/crm.js'], function(functions) {
+            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.7/libraries/epicor/crm.js'], function(functions) {
                 functions.updateTasks(bezl,
                                         bezl.vars.selectedAccount.Tasks);
 
@@ -78,6 +89,7 @@ define(function () {
         runQuery: RunQuery,
         select: Select,
         addTask: AddTask,
+        cancelAddTask: CancelAddTask,
         updateTasks: UpdateTasks
     }
 });
