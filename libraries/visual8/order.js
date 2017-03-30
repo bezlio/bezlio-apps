@@ -60,7 +60,7 @@ define(function () {
         });
 
         parms.push({ "Key": "MergeDataSet", "Value": JSON.stringify(bezl.vars.mergeDs) });
-        parms.push({ "Key": "Save", "Value": JSON.stringify({}) });
+        //parms.push({ "Key": "Save", "Value": JSON.stringify({}) });
         // Now we will submit the order for processing
         bezl.dataService.add('submitOrder','brdb','Visual8','ExecuteBOMethod',
         { "Connection": bezl.vars.connection, "BOName": "Lsa.Vmfg.Sales.CustomerOrder",
