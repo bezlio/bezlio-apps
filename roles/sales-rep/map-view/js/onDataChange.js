@@ -47,6 +47,9 @@ define(["./customer.js",
                     }
                 }
             });
+           
+            // Tell the jsGrid to load up
+            bezl.vars.jsgrid.jsGrid("loadData");
                     
             bezl.vars.loading.customerList = false;
             
