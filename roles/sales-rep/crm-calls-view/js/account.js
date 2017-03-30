@@ -22,7 +22,7 @@ define(function () {
                     "QueryName": "GetAccountsCallHistory",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] }, 60000);
+                    ] }, 0);
                 break;
             default:
                 break;
