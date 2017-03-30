@@ -49,8 +49,9 @@ define(function () {
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
 
-            console.log(dtl.Attributes);
-            bezl.vars.attrs.push(dtl.Attributes);
+            if (dtl.Attributes !== undefined) {
+                bezl.vars.attrs.push(dtl.Attributes);
+            }
         });
 
 
