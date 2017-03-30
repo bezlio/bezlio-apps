@@ -44,7 +44,7 @@ define(["./customer.js"], function (customer) {
                 functions.newOrder(bezl);
             }); 
         } else if (bezl.vars.Platform == "Visual8") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.7/libraries/visual8/order.js'], function(functions) {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/visual8/order.js'], function(functions) {
                 functions.newOrder(bezl);
             }); 
         }
@@ -97,7 +97,7 @@ define(["./customer.js"], function (customer) {
                 functions.submitOrder(bezl);
             }); 
         } else if (bezl.vars.Platform == "Visual8") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.7/libraries/visual8/order.js'], function(functions) {
+            require(['https://rawgit.com/bezlio/bezlio-apps/development/libraries/visual8/order.js'], function(functions) {
                 functions.submitOrder(bezl);
             }); 
         }
