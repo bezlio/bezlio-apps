@@ -54,7 +54,8 @@ define(function () {
             bezl.vars.mergeDs.CUST_ORDER_LINE.push({
                 PART_ID: p.PartNum,
                 ORDER_QTY: p.Qty,
-                USER_ORDER_QTY: p.Qty
+                USER_ORDER_QTY: p.Qty,
+                TRADE_DISC_PERCENT: 0
             })
         });
 
