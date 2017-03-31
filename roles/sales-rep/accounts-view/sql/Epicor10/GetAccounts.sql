@@ -18,7 +18,6 @@ SELECT
 	, LYTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE())-1)
 	, sr.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
-	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0)
 	, c.CustURL as WebSite
 	, ShipVia = (SELECT top 1 Description FROM erp.ShipVia sv with(nolock) WHERE sv.ShipViaCode = c.ShipViaCode)
 	, '' as HoursOfOperation
