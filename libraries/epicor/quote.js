@@ -52,6 +52,8 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
+                console.log(dtl);
+
                 bezl.vars.ds.QuoteQty.push({
                     QuoteNum: quoteNum,
                     QuoteLine: dtl.QuoteLine,
@@ -62,7 +64,6 @@ define(function () {
                     Company: 'EPIC03',
                     RowMod: 'U'
                 });
-                //bezl.vars.attrs.push(dtl.Attributes);
             }
         });
 
