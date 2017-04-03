@@ -43,12 +43,8 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
-            // let newQuote = {
-            //     Company: 'EPIC03',
-            //     CustID: bezl.data.newQuote.QuoteHed[0].CustID,
-            //     CustNum: bezl.data.newQuote.QuoteHed[0].CustNum,
 
-            // }
+            console.log("QuoteNum: " + bezl.data.newQuote.QuoteHed[0].QuoteNum);
 
             //bezl.functions.loadExistingQuote(bezl.data.newQuote);
             bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
