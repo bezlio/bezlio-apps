@@ -56,22 +56,17 @@ define(function () {
             }
         }
 
-        bezl.vars.selectedAccount.CRMCalls.push({
+        bezl.vars.AllCRMCalls.push({
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
             "SalesRepName"  : bezl.env.currentUser,
             "RelatedToFile" : "customer",
             "CallTypeDesc"  : callTypeDesc,
+            "ID"            : bezl.vars.selectedAccount.ID,
             "show"          : true
         });
         
-        bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
-            var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
-            var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
-            return B - A;
-        });
-
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
 
@@ -90,10 +85,19 @@ define(function () {
             };
         }
     }
+
+    function SortCalls(bezl) {
+        bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
+            var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
+            var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
+            return B - A;
+        });
+    }
   
     return {
         runQuery: RunQuery,
         addNote: AddNote,
-        applyFilter: ApplyFilter
+        applyFilter: ApplyFilter,
+        sortCalls: SortCalls
     }
 });
