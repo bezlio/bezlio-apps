@@ -51,6 +51,9 @@ define(function () {
             // }
 
             //bezl.functions.loadExistingQuote(bezl.data.newQuote);
+            bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                "QueryName": "GetQuotesByRep"
+            }, 0);
         }
 
     }
