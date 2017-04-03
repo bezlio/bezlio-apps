@@ -14,16 +14,16 @@ define(function () {
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
                 break;
-            case "AllCRMCalls":
-                bezl.vars.loadingAllCalls = true; 
+            //case "AllCRMCalls":
+            //    bezl.vars.loadingAllCalls = true; 
 
-                // Pull in the call list for all accounts
-                bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAccountsCallHistory",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] }, 0);
-                break;
+            //    // Pull in the call list for all accounts
+            //    bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+            //        "QueryName": "GetAccountsCallHistory",
+            //        "Parameters": [
+            //            { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+            //        ] }, 0);
+            //    break;
             default:
                 break;
         }

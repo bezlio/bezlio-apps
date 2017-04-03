@@ -11,8 +11,9 @@ define(["./account.js"], function (account) {
             }
         }
 
-        if (bezl.data.AllCRMCalls && bezl.vars.loadingAllCalls) {
-            bezl.vars.loadingAllCalls = false;
+        //if (bezl.data.AllCRMCalls && bezl.vars.loadingAllCalls) {
+        if (bezl.data.AllCRMCalls) {
+            //bezl.vars.loadingAllCalls = false;
 
             // Set the currently selected accounts call data
             if (bezl.vars.selectedAccount) {
