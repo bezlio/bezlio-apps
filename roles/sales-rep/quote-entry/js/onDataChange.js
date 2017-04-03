@@ -2,10 +2,10 @@ define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
+            console.log(bezl.data.Quotes);
         }
 
         if (bezl.data.QuoteDtls) {
-            console.log('data changed!');
             bezl.vars.linesloading = false;
 
             // bezl.data.QuoteDtls.forEach(dtl => {
@@ -43,7 +43,7 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
-            bezl.functions.loadExistingQuote(newQuote);
+            bezl.functions.loadExistingQuote(bezl.data.newQuote);
         }
 
     }
