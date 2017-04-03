@@ -11,7 +11,6 @@ define(function () {
                 if (quote !== undefined) {
                     bezl.data.newQuote = null;
                 }
-
                 //bezl.functions.loadExistingQuote(bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum));
             }
         }
