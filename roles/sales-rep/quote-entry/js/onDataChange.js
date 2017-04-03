@@ -45,11 +45,11 @@ define(function () {
 
         if (bezl.data.newQuote) {
             bezl.vars.newQuoteNum = bezl.data.newQuote.QuoteHed[0].QuoteNum;
+            bezl.data.newQuote = null;
 
             bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                 "QueryName": "GetQuotesByRep"
             }, 0);
-            bezl.data.newQuote = null;
         }
 
     }
