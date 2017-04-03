@@ -50,9 +50,9 @@ define(function () {
         if (bezl.data.newQuote) {
             bezl.vars.newQuoteNum = bezl.data.newQuote.QuoteHed[0].QuoteNum;
 
-            bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                "QueryName": "GetQuotesByRep"
-            }, 0);
+            // bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+            //     "QueryName": "GetQuotesByRep"
+            // }, 0);
         }
 
     }
