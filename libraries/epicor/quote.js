@@ -68,6 +68,20 @@ define(function () {
                         cnt++;
                     }
                 });
+
+                dtl.Attributes.map(attr => {
+                    console.log(attr);
+                    // bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                    //     "QueryName": "InsertAttributes",
+                    //     "Parameters": [
+                    //         { Key: "QuoteNum", Value: quoteNum },
+                    //         { Key: "QuoteLine", Value: dtl.QuoteLine },
+                    //         { Key: "PartID", Value: dtl.PartNum },
+                    //         { Key: "AttributeID", Value: attr.ATTRIBUTE_ID }
+                    //         { Key: "AttributeValue", Value: attr.ATTRIBUTE_ID }
+                    //     ]
+                    // }, 0)
+                });
             }
         });
 
