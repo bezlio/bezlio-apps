@@ -52,19 +52,20 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
-                //let cnt = ;
+                let cnt = 2;
                 dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
                     if (!isNaN(Number(quoteQty.ATTRIBUTE_VALUE))) {
                         bezl.vars.ds.QuoteQty.push({
                             QuoteNum: quoteNum,
                             QuoteLine: dtl.QuoteLine,
-                            QtyNum: 1,
+                            QtyNum: cnt,
                             OurQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             SellingQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             PricePerCode: 'E',
                             Company: 'EPIC03',
                             RowMod: 'U'
                         });
+                        cnt++;
                     }
                 });
             }
