@@ -28,7 +28,7 @@ define(["./account.js"], function (account) {
             // Perform additional processing on the returned data
             account.applyFilter(bezl);
 
-            account.SortCalls(bezl);
+            account.sortCalls(bezl);
         }
 
         if (bezl.data.AddCRMCall) {
