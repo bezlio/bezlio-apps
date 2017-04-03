@@ -3,11 +3,11 @@ define(function () {
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
 
+            console.log(bezl.data);
+
             if (bezl.vars.newQuote == true && bezl.data.newQuote) {
                 bezl.functions.loadExistingQuote(bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum));
             }
-
-            console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls) {
