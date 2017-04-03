@@ -80,6 +80,7 @@ define(function () {
                                 { Key: "QuoteLine", Value: dtl.QuoteLine },
                                 { Key: "PartID", Value: dtl.PartNum },
                                 { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                                { Key: "ParentID", Value: '' },
                                 { Key: "AttributeValue", Value: attr.SELECTED_VALUE },
                                 { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                 { Key: "PartNum", Value: dtl.PartNum }
