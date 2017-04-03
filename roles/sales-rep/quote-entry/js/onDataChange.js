@@ -46,7 +46,9 @@ define(function () {
             bezl.functions.loadExistingQuote(newQuote);
         }
 
-        return {
-            onDataChange: OnDataChange
-        }
-    });
+    }
+
+    return {
+        onDataChange: OnDataChange
+    }
+});
