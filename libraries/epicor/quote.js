@@ -52,7 +52,7 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
-                console.log(dtl);
+                console.log(dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES);
 
                 bezl.vars.ds.QuoteQty.push({
                     QuoteNum: quoteNum,
