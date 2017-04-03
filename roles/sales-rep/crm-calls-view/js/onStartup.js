@@ -24,7 +24,7 @@ define(["./account.js"], function (account) {
         "QueryName": "GetAccountsCallHistory",
         "Parameters": [
           { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-        ] }, 60000);
+        ] }, 1);
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
       // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
