@@ -58,8 +58,8 @@ define(function () {
                             QuoteNum: quoteNum,
                             QuoteLine: dtl.QuoteLine,
                             QtyNum: 0,
-                            OurQuantity: Number(dtl.ATTRIBUTE_VALUE),
-                            SellingQuantity: Number(dtl.ATTRIBUTE_VALUE),
+                            OurQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
+                            SellingQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             PricePerCode: 'E',
                             Company: 'EPIC03',
                             RowMod: 'U'
