@@ -7,8 +7,8 @@ define(function () {
 
             if (bezl.vars.newQuote == true && bezl.data.newQuote) {
                 var quote = bezl.data.Quotes.find(hed => hed.QuoteNum.toString() === bezl.data.newQuote.QuoteHed[0].QuoteNum.toString());
-                console.log(quote);
                 if (quote !== undefined) {
+                    console.log('test!');
                     bezl.data.newQuote = null;
                 }
                 //bezl.functions.loadExistingQuote(bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum));
