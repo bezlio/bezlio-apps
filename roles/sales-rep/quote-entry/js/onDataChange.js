@@ -2,7 +2,6 @@ define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
-            console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls) {
@@ -42,9 +41,12 @@ define(function () {
                 setTimeout(typeAhead, 2, dtl.QuoteLine);
             });
         }
-    }
 
-    return {
-        onDataChange: OnDataChange
-    }
-});
+        if (bezl.data.newQuote) {
+            bezl.functions.loadExistingQuote(newQuote);
+        }
+
+        return {
+            onDataChange: OnDataChange
+        }
+    });
