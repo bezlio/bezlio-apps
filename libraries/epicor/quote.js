@@ -50,7 +50,9 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
-                bezl.vars.attrs.push(dtl.Attributes);
+                //adding quote qty rows
+                console.log(dtl.Attributes);
+                //bezl.vars.attrs.push(dtl.Attributes);
             }
         });
 
