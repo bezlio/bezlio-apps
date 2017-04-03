@@ -8,8 +8,7 @@ define(function () {
             if (bezl.vars.newQuote == true && bezl.data.newQuote) {
                 var quote = bezl.data.Quotes.find(hed => hed.QuoteNum.toString() === bezl.data.newQuote.QuoteHed[0].QuoteNum.toString());
                 if (quote !== undefined) {
-                    console.log('test!');
-                    bezl.data.newQuote = null;
+                    bezl.vars.newQuote = false;
                 }
                 //bezl.functions.loadExistingQuote(bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum));
             }
@@ -53,9 +52,11 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
-            bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                "QueryName": "GetQuotesByRep"
-            }, 0);
+            if (bezl.vars.newQuote) {
+                bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetQuotesByRep"
+                }, 0);
+            }
         }
 
     }
