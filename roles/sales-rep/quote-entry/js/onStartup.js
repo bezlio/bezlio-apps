@@ -8,6 +8,7 @@ define(["./quote.js"], function (quote) {
         bezl.vars.attrs = [];
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
+        bezl.vars.ds.QuoteQty = [];
 
         // var parts = http.get('https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/json/Part.json', '', '')
         //     .map(result => result.json());

@@ -50,8 +50,16 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
-                //adding quote qty rows
-                console.log(dtl.Attributes);
+                bezl.vars.ds.QuoteQty.push({
+                    QuoteNum: quoteNum,
+                    QuoteLine: dtl.QuoteLine,
+                    QtyNum: 0,
+                    OurQuantity: 50,
+                    SellingQuantity: 50,
+                    PricePerCode: E,
+                    Company: 'EPIC03',
+                    RowMod: 'U'
+                });
                 //bezl.vars.attrs.push(dtl.Attributes);
             }
         });
