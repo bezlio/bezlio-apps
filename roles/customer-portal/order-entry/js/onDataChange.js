@@ -94,6 +94,10 @@ define(function () {
                     bezl.vars.submittedOrder = true;
                     bezl.notificationService.showSuccess('Order Submitted!');
                 }
+            } else {
+                // We will assume ok for now
+                bezl.vars.submittedOrder = true;
+                bezl.notificationService.showSuccess('Order Submitted!');
             }
             bezl.vars.submitOrder = false;
         }

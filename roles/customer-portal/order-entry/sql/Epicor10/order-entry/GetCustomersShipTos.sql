@@ -23,4 +23,4 @@ FROM
 WHERE
 	c.Company = 'EPIC06'
 	--AND cnt.EMailAddress = 'administrator@wfo.epicor.com'
-	AND sr.EMailAddress = '{EmailAddress}'
+	AND cnt.EMailAddress = '{EmailAddress}'
