@@ -6,7 +6,9 @@ define(function () {
             console.log(bezl.data);
 
             if (bezl.vars.newQuote == true && bezl.data.newQuote) {
-                console.log(bezl.data.newQuote.QuoteHed[0].QuoteNum);
+                var quote = bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum);
+                console.log(quote);
+                bezl.data.newQuote = null;
                 //bezl.functions.loadExistingQuote(bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum));
             }
         }
