@@ -21,6 +21,7 @@ define(function () {
     function SaveQuote(bezl, company, quoteNum) {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
+        bezl.vars.ds.QuoteQty = [];
         var quoteNum;
         var custNum;
 
