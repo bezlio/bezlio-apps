@@ -2,7 +2,7 @@ define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
-            console.log(bezl.data.Quotes);
+            console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls) {
@@ -43,7 +43,14 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
-            bezl.functions.loadExistingQuote(bezl.data.newQuote);
+            // let newQuote = {
+            //     Company: 'EPIC03',
+            //     CustID: bezl.data.newQuote.QuoteHed[0].CustID,
+            //     CustNum: bezl.data.newQuote.QuoteHed[0].CustNum,
+
+            // }
+
+            //bezl.functions.loadExistingQuote(bezl.data.newQuote);
         }
 
     }
