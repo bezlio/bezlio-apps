@@ -55,17 +55,18 @@ define(function () {
 
                 dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(dtl => {
                     console.log(Number(dtl.ATTRIBUTE_VALUE));
-                });
-
-                bezl.vars.ds.QuoteQty.push({
-                    QuoteNum: quoteNum,
-                    QuoteLine: dtl.QuoteLine,
-                    QtyNum: 0,
-                    OurQuantity: 50,
-                    SellingQuantity: 50,
-                    PricePerCode: 'E',
-                    Company: 'EPIC03',
-                    RowMod: 'U'
+                    if (!isNan(Number(dtl.ATTRIBUTE_VALUE))) {
+                        bezl.vars.ds.QuoteQty.push({
+                            QuoteNum: quoteNum,
+                            QuoteLine: dtl.QuoteLine,
+                            QtyNum: 0,
+                            OurQuantity: Number(dtl.ATTRIBUTE_VALUE),
+                            SellingQuantity: Number(dtl.ATTRIBUTE_VALUE),
+                            PricePerCode: 'E',
+                            Company: 'EPIC03',
+                            RowMod: 'U'
+                        });
+                    }
                 });
             }
         });
