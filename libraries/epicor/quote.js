@@ -54,7 +54,7 @@ define(function () {
             if (dtl.Attributes !== undefined) {
 
                 dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(dtl => {
-                    console.log(dtl.ATTRIBUTE_VALUE);
+                    console.log(Number(dtl.ATTRIBUTE_VALUE));
                 });
 
                 bezl.vars.ds.QuoteQty.push({
