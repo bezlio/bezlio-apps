@@ -2,7 +2,7 @@ define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
-            console.log(bezl.data);
+            //console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls) {
@@ -43,13 +43,11 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
-
-            console.log("QuoteNum: " + bezl.data.newQuote.QuoteHed[0].QuoteNum);
-
-            //bezl.functions.loadExistingQuote(bezl.data.newQuote);
             bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                 "QueryName": "GetQuotesByRep"
             }, 0);
+
+            bezl.functions.loadExistingQuote(bezl.data.Quotes.find(hed => hed.QuoteNum === bezl.data.newQuote.QuoteHed[0].QuoteNum));
         }
 
     }
