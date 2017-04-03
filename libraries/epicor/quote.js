@@ -52,9 +52,7 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
-
-                dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(dtl => {
-                    console.log(Number(dtl.ATTRIBUTE_VALUE));
+                dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
                     if (!isNaN(Number(dtl.ATTRIBUTE_VALUE))) {
                         bezl.vars.ds.QuoteQty.push({
                             QuoteNum: quoteNum,
@@ -71,6 +69,7 @@ define(function () {
             }
         });
 
+        console.log(bezl.vars.ds);
 
         var removeLines = [];
         for (var x of bezl.data.QuoteDtls) {
