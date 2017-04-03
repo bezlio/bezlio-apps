@@ -45,7 +45,8 @@ define(function () {
 
         if (bezl.data.newQuote) {
             bezl.vars.newQuoteNum = bezl.data.newQuote.QuoteHed[0].QuoteNum;
-            bezl.data.newQuote = null;
+
+            bezl.data.slice(bezl.data.indexOf("newQuote"), 1);
 
             bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                 "QueryName": "GetQuotesByRep"
