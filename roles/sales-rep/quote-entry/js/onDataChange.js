@@ -2,7 +2,7 @@ define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
-            //console.log(bezl.data);
+            console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls) {
