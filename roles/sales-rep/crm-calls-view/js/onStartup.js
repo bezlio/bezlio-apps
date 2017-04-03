@@ -15,16 +15,9 @@ define(["./account.js"], function (account) {
       }
 
       // Refresh all call data at regular interval
-      //function RefreshAllCRMCalls() {
-      //    account.runQuery(bezl, "AllCRMCalls");
-      //    setTimeout(RefreshAllCRMCalls, 60000);
-      //}
-      //RefreshAllCRMCalls();
       bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
         "QueryName": "GetAccountsCallHistory",
-        "Parameters": [
-          { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-        ] }, 1);
+        "Parameters": [] }, 1);
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
       // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
@@ -45,15 +38,9 @@ define(["./account.js"], function (account) {
             }
         }
 
-        // If there are no CRM calls present with what was passed over, go
-        // ahead and run the full query now
-        if (!bezl.vars.selectedAccount.CRMCalls) {
-          account.runQuery(bezl, "CRMCalls");
-        } else {
-          // Perform additional processing on the returned data
-          for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
-            bezl.vars.selectedAccount.CRMCalls[i].show = true;
-          }
+        // Perform additional processing on the returned data
+        for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+          bezl.vars.selectedAccount.CRMCalls[i].show = true;
         }
 
         $(bezl.container.nativeElement).find('#filterString')[0].value = ""; // Clear out the search filter box

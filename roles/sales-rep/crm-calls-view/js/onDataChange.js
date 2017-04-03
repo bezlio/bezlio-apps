@@ -11,8 +11,10 @@ define(["./account.js"], function (account) {
             }
         }
 
-        //if (bezl.data.AllCRMCalls && bezl.vars.loadingAllCalls) {
-        if (bezl.data.AllCRMCalls) {
+        // Note: If user has clicked on the "more" button then auto updates
+        // will no longer display because the auto updates are just a subset of
+        // the full data
+        if (bezl.data.AllCRMCalls && !bezl.vars.loadedMore) { 
             //bezl.vars.loadingAllCalls = false;
 
             // Set the currently selected accounts call data
@@ -27,7 +29,6 @@ define(["./account.js"], function (account) {
 
             // Perform additional processing on the returned data
             account.applyFilter(bezl);
-
             account.sortCalls(bezl);
         }
 

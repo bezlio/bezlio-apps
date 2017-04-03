@@ -27,7 +27,6 @@ FROM
 WHERE 
 	DATEDIFF (day, cl.LastDate , GetDate()) < 90  
 	--and cl.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
-	AND csr.EMailAddress = '{EmailAddress}'
 ORDER BY
 	cl.LastDate desc
 	, cl.LastTime desc

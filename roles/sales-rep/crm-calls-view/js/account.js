@@ -10,20 +10,9 @@ define(function () {
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountCallHistory",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
                 break;
-            //case "AllCRMCalls":
-            //    bezl.vars.loadingAllCalls = true; 
-
-            //    // Pull in the call list for all accounts
-            //    bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
-            //        "QueryName": "GetAccountsCallHistory",
-            //        "Parameters": [
-            //            { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-            //        ] }, 0);
-            //    break;
             default:
                 break;
         }
@@ -56,7 +45,7 @@ define(function () {
             }
         }
 
-        bezl.vars.AllCRMCalls.push({
+        bezl.data.AllCRMCalls.push({
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
