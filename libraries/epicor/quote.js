@@ -77,8 +77,10 @@ define(function () {
                     //         { Key: "QuoteNum", Value: quoteNum },
                     //         { Key: "QuoteLine", Value: dtl.QuoteLine },
                     //         { Key: "PartID", Value: dtl.PartNum },
-                    //         { Key: "AttributeID", Value: attr.ATTRIBUTE_ID }
-                    //         { Key: "AttributeValue", Value: attr.ATTRIBUTE_ID }
+                    //         { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                    //         { Key: "AttributeValue", Value: attr.SELECTED_VALUE },
+                    //         { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
+                    //         { Key: "PartNum", Value: dtl.PartNum }
                     //     ]
                     // }, 0)
                 });
