@@ -56,7 +56,7 @@ define(function () {
                     QtyNum: 0,
                     OurQuantity: 50,
                     SellingQuantity: 50,
-                    PricePerCode: E,
+                    PricePerCode: 'E',
                     Company: 'EPIC03',
                     RowMod: 'U'
                 });
