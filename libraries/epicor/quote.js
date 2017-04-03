@@ -53,7 +53,7 @@ define(function () {
 
             if (dtl.Attributes !== undefined) {
                 dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
-                    if (!isNaN(Number(dtl.ATTRIBUTE_VALUE))) {
+                    if (!isNaN(Number(quoteQty.ATTRIBUTE_VALUE))) {
                         bezl.vars.ds.QuoteQty.push({
                             QuoteNum: quoteNum,
                             QuoteLine: dtl.QuoteLine,
