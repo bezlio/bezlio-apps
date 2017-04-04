@@ -42,6 +42,8 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
+            console.log(bezl.data.newQuote);
+
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum
                 // Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
