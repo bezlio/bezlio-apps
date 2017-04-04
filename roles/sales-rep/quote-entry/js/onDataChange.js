@@ -1,13 +1,7 @@
 define(function () {
     function OnDataChange(bezl) {
-        console.log(bezl.data);
-
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
-
-            if (bezl.data.newQuote) {
-                bezl.data.slice(bezl.data.indexOf("newQuote"), 1);
-            }
         }
 
         if (bezl.data.QuoteDtls) {
