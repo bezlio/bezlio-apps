@@ -7,6 +7,7 @@ define(function () {
         }
 
         if (bezl.data.QuoteDtls) {
+            console.log('true - details exist');
             bezl.vars.linesloading = false;
 
             // bezl.data.QuoteDtls.forEach(dtl => {
