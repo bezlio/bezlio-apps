@@ -44,14 +44,12 @@ define(function () {
                 CustNum: bezl.data.newQuote.QuoteHed[0].CustNum
             }
 
-            console.log(bezl.data.Quotes.find(qte => qte.QuoteNum === newQuote.QuoteNum));
+            var quoteExists = bezl.data.Quotes.find(qte => qte.QuoteNum === newQuote.QuoteNum);
 
-            bezl.data.Quotes.push(newQuote);
-            bezl.functions.loadExistingQuote(newQuote);
-
-            // bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-            //     "QueryName": "GetQuotesByRep"
-            // }, 0);
+            if (quoteExists === undefined) {
+                bezl.data.Quotes.push(newQuote);
+                bezl.functions.loadExistingQuote(newQuote);
+            }
         }
 
     }
