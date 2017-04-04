@@ -4,8 +4,10 @@ define(function () {
         switch (queryName) {
             case "Quotes":
                 bezl.vars.loading = true;
+                console.log(bezl.data);
                 bezl.data = bezl.data.splice(bezl.data.indexOf("QuoteDtls"), 1);
                 bezl.data = bezl.data.splice(bezl.data.indexOf("newQuote"), 1);
+                console.log(bezl.data);
 
                 bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetQuotesByRep"

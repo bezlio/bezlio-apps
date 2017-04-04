@@ -1,13 +1,13 @@
 define(function () {
     function OnDataChange(bezl) {
-        console.log(bezl.data);
+        //console.log(bezl.data);
 
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
         }
 
         if (bezl.data.QuoteDtls) {
-            console.log('true - details exist');
+            //console.log('true - details exist');
             bezl.vars.linesloading = false;
 
             // bezl.data.QuoteDtls.forEach(dtl => {
