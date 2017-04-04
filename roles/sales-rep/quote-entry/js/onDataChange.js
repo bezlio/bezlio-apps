@@ -41,7 +41,7 @@ define(function () {
             });
         }
 
-        if (bezl.data.newQuote) {
+        if (bezl.data.newQuote && !bezl.data.editingQuote) {
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
                 Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
