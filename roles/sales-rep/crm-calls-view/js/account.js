@@ -6,11 +6,10 @@ define(function () {
             case "CRMCalls":
                 bezl.vars.loading = true; 
 
-                // Pull in the accounts list for the logged in user
+                // Pull in the call list for just the currently selected account
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountCallHistory",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
                 break;
@@ -46,21 +45,17 @@ define(function () {
             }
         }
 
-        bezl.vars.selectedAccount.CRMCalls.push({
+        bezl.data.AllCRMCalls.push({
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
             "SalesRepName"  : bezl.env.currentUser,
             "RelatedToFile" : "customer",
-            "CallTypeDesc"  : callTypeDesc
+            "CallTypeDesc"  : callTypeDesc,
+            "ID"            : bezl.vars.selectedAccount.ID,
+            "show"          : true
         });
         
-        bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
-            var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
-            var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
-            return B - A;
-        });
-
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
 
@@ -79,10 +74,19 @@ define(function () {
             };
         }
     }
+
+    function SortCalls(bezl) {
+        bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
+            var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
+            var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
+            return B - A;
+        });
+    }
   
     return {
         runQuery: RunQuery,
         addNote: AddNote,
-        applyFilter: ApplyFilter
+        applyFilter: ApplyFilter,
+        sortCalls: SortCalls
     }
 });
