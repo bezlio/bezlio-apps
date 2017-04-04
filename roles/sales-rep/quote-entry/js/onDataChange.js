@@ -7,31 +7,28 @@ define(function () {
         }
 
         if (bezl.data.QuoteDtls) {
-            if (bezl.data.QuoteDtls !== undefined) {
+            bezl.vars.linesloading = false;
 
-                bezl.vars.linesloading = false;
-
-                bezl.data.QuoteDtls.map(dtl => {
-                    var typeAhead = function (lineNum) {
-                        $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
-                        $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
-                            order: "asc",
-                            maxItem: 8,
-                            display: ['PART_DESCRIPTION', 'PART_ID'],
-                            source: {
-                                data: function () { return bezl.vars.parts; }
-                            },
-                            callback: {
-                                onClick: function (node, a, item, event) {
-                                    console.log("test");
-                                }
+            bezl.data.QuoteDtls.map(dtl => {
+                var typeAhead = function (lineNum) {
+                    $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
+                    $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
+                        order: "asc",
+                        maxItem: 8,
+                        display: ['PART_DESCRIPTION', 'PART_ID'],
+                        source: {
+                            data: function () { return bezl.vars.parts; }
+                        },
+                        callback: {
+                            onClick: function (node, a, item, event) {
+                                console.log("test");
                             }
-                        });
-                    }
+                        }
+                    });
+                }
 
-                    setTimeout(typeAhead, 2, dtl.QuoteLine);
-                });
-            }
+                setTimeout(typeAhead, 2, dtl.QuoteLine);
+            });
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
