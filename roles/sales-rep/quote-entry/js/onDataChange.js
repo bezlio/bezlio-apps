@@ -43,15 +43,15 @@ define(function () {
 
         if (bezl.data.newQuote) {
             let newQuote = {
-                QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
-                Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
-                EntryDate: bezl.data.newQuote.QuoteHed[0].EntryDate,
-                SalesRepCode: bezl.data.newQuote.QSalesRep[0].SalesRepCode,
-                CustID: bezl.data.newQuote.QuoteHed[0].CustomerCustID,
-                QuoteComment: bezl.data.newQuote.QuoteHed[0].QuoteComment,
-                QuoteClosed: bezl.data.newQuote.QuoteHed[0].QuoteClosed,
-                Company: bezl.data.newQuote.QuoteHed[0].Company,
-                CustNum: bezl.data.newQuote.QuoteHed[0].CustNum
+                QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum
+                // Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
+                // EntryDate: bezl.data.newQuote.QuoteHed[0].EntryDate,
+                // SalesRepCode: bezl.data.newQuote.QSalesRep[0].SalesRepCode,
+                // CustID: bezl.data.newQuote.QuoteHed[0].CustomerCustID,
+                // QuoteComment: bezl.data.newQuote.QuoteHed[0].QuoteComment,
+                // QuoteClosed: bezl.data.newQuote.QuoteHed[0].QuoteClosed,
+                // Company: bezl.data.newQuote.QuoteHed[0].Company,
+                // CustNum: bezl.data.newQuote.QuoteHed[0].CustNum
             }
 
             console.log(newQuote);
