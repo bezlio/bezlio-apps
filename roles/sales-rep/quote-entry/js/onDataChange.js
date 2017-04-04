@@ -6,7 +6,7 @@ define(function () {
             bezl.vars.loading = false;
         }
 
-        if (bezl.data.QuoteDtls) {
+        if (bezl.data.QuoteDtls.length > 0) {
             //console.log('true - details exist');
             bezl.vars.linesloading = false;
 
