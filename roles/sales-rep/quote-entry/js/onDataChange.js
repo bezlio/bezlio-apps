@@ -48,7 +48,13 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
-            bezl.vars.newQuoteNum = bezl.data.newQuote.QuoteHed[0].QuoteNum;
+            console.log(newQuote);
+            //bezl.vars.newQuoteNum = bezl.data.newQuote.QuoteHed[0].QuoteNum;
+            // let newQuote = {
+            //     QuoteNum = bezl.vars.newQuote.QuoteHed[0].QuoteNum,
+            //     Name = bezl.vars.newQuote.QuoteHed[0].CustomerName,
+            //     EntryDate = bezl.vars.newQuote.QuoteHed[0].EntryDate
+            // }
 
             // bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
             //     "QueryName": "GetQuotesByRep"
