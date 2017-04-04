@@ -44,6 +44,8 @@ define(function () {
                 CustNum: bezl.data.newQuote.QuoteHed[0].CustNum
             }
 
+            console.log(bezl.data.Quotes.find(qte => qte.QuoteNum === newQuote.QuoteNum));
+
             bezl.data.Quotes.push(newQuote);
             bezl.functions.loadExistingQuote(newQuote);
 
