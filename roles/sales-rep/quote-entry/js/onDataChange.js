@@ -42,13 +42,19 @@ define(function () {
         }
 
         if (bezl.data.newQuote) {
+            let newQuote = {
+                QuoteNum: bezl.vars.newQuote.QuoteHed[0].QuoteNum,
+                Name: bezl.vars.newQuote.QuoteHed[0].CustomerName,
+                EntryDate: bezl.vars.newQuote.QuoteHed[0].EntryDate,
+                SalesRepCode: bezl.vars.newQuote.QSalesRep[0].SalesRepCode,
+                CustID: bezl.vars.newQuote.QuoteHed[0].CustomerCustID,
+                QuoteComment: bezl.vars.newQuote.QuoteHed[0].QuoteComment,
+                QuoteClosed: bezl.vars.newQuote.QuoteHed[0].QuoteClosed,
+                Company: bezl.vars.newQuote.QuoteHed[0].Company,
+                CustNum: bezl.vars.newQuote.QuoteHed[0].CustNum
+            }
+
             console.log(newQuote);
-            //bezl.vars.newQuoteNum = bezl.data.newQuote.QuoteHed[0].QuoteNum;
-            // let newQuote = {
-            //     QuoteNum = bezl.vars.newQuote.QuoteHed[0].QuoteNum,
-            //     Name = bezl.vars.newQuote.QuoteHed[0].CustomerName,
-            //     EntryDate = bezl.vars.newQuote.QuoteHed[0].EntryDate
-            // }
 
             // bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
             //     "QueryName": "GetQuotesByRep"
