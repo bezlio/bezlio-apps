@@ -1,5 +1,7 @@
 define(function () {
     function OnDataChange(bezl) {
+        console.log(bezl.data);
+
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
         }
@@ -41,7 +43,7 @@ define(function () {
             });
         }
 
-        if (bezl.data.newQuote && !bezl.vars.editingQuote) {
+        if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
                 Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
