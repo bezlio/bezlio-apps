@@ -54,7 +54,8 @@ define(function () {
                 CustNum: bezl.data.newQuote.QuoteHed[0].CustNum
             }
 
-            console.log(newQuote);
+            bezl.data.Quotes.push(newQuote);
+            bezl.functions.loadExistingQuote(newQuote);
 
             // bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
             //     "QueryName": "GetQuotesByRep"
