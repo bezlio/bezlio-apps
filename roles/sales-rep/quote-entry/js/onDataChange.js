@@ -6,7 +6,7 @@ define(function () {
             bezl.vars.loading = false;
         }
 
-        if (bezl.data.QuoteDtls) {
+        if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
             bezl.vars.linesloading = false;
 
             bezl.data.QuoteDtls.map(dtl => {
