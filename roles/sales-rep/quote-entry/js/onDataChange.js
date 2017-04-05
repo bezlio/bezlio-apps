@@ -53,6 +53,8 @@ define(function () {
         }
 
         if (bezl.data.Attributes) {
+            console.log(bezl.vars.quoteAttributeLine);
+
             bezl.data.Attributes.map(attrs => {
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
