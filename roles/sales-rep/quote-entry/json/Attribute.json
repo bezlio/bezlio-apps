@@ -32,7 +32,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Quantity 1:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "0",
                 "EDITABLE": true,
                 "IS_DEFAULT": true,
                 "ImagePath": "/Assets/size.jpg",
@@ -66,7 +66,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Quantity 2:",
-                "ATTRIBUTE_VALUE": "NULL1",
+                "ATTRIBUTE_VALUE": "0",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/size.jpg",
                 "SUB_ATTRIBUTE": [
@@ -99,7 +99,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Quantity 3:",
-                "ATTRIBUTE_VALUE": "NULL2",
+                "ATTRIBUTE_VALUE": "0",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/size.jpg",
                 "SUB_ATTRIBUTE": [
@@ -132,7 +132,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Quantity 4:",
-                "ATTRIBUTE_VALUE": "NULL3",
+                "ATTRIBUTE_VALUE": "0",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/size.jpg",
                 "SUB_ATTRIBUTE": [
@@ -165,7 +165,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Quantity 5:",
-                "ATTRIBUTE_VALUE": "NULL4",
+                "ATTRIBUTE_VALUE": "0",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/size.jpg",
                 "SUB_ATTRIBUTE": [
@@ -246,7 +246,7 @@
                 "ATTRIBUTE_VALUE_LABEL": "Enter Fill Location:",
                 "ATTRIBUTE_VALUE": "NULL0",
                 "WIDTH": 900,
-				"IS_DEFAULT": true,
+                "IS_DEFAULT": true,
                 "EDITABLE": true
             }
         ]
@@ -255,8 +255,7 @@
         "ATTRIBUTE_ID": "000_DECO",
         "ATTRIBUTE_DESCRIPTION": "Decoration",
         "SELECTION_MODE": "Multiple",
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No Decoration",
                 "ATTRIBUTE_VALUE": "NO_DECORATION"
@@ -265,7 +264,7 @@
                 "ATTRIBUTE_VALUE_LABEL": "Silk Screening",
                 "ATTRIBUTE_VALUE": "SILK_SCREENING",
                 "SUB_ATTRIBUTE": [
-					{
+                    {
                         "ATTRIBUTE_ID": "DECO_NUMBER_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
@@ -276,7 +275,7 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "PASS_CONFIGURATION",
                         "ATTRIBUTE_DESCRIPTION": "Pass Configuration",
                         "ATTRIBUTE_VALUES": [
@@ -312,13 +311,11 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Hot Stamping",
                 "ATTRIBUTE_VALUE": "Hot Stamping",
-                "SUB_ATTRIBUTE": 
-				[
+                "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "HOTSTAMPING_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -326,11 +323,10 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "HOTSTAMPING_PASSES",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -363,13 +359,11 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Labeling",
                 "ATTRIBUTE_VALUE": "LABELING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -377,11 +371,10 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "LABEL_SPECS",
                         "ATTRIBUTE_DESCRIPTION": "Label Specs",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -389,122 +382,111 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "KCC_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "KCC Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "KCC Supplied",
                                 "ATTRIBUTE_VALUE": "KCC Supplied"
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "CUSTOMER_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "Customer Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Customer Supplied",
                                 "ATTRIBUTE_VALUE": "Customer Supplied",
-								"IS_DEFAULT": true
+                                "IS_DEFAULT": true
                             }
                         ]
                     }
-					
-				]
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Offset Printing",
                 "ATTRIBUTE_VALUE": "OFFSET_PRINTING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "Number of Passes",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Number of Passes",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Pad Printing",
                 "ATTRIBUTE_VALUE": "PAD_PRINTING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Colors",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Colors",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Spray or Frost Coating",
                 "ATTRIBUTE_VALUE": "SPRAY_FROST_COATING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "COLOR",
                         "ATTRIBUTE_DESCRIPTION": "Color",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Color",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "EFFECTS",
                         "ATTRIBUTE_DESCRIPTION": "Effects",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Color",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Mold Labeling",
                 "ATTRIBUTE_VALUE": "MOLD_LABELING"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER"
             }
         ]
     },
-	{
-		"ATTRIBUTE_ID": "000_DECO_ONLY",
-		"ATTRIBUTE_DESCRIPTION": "Decoration only",
-		"ATTRIBUTE_VALUES": 
-		[
-		    {
+    {
+        "ATTRIBUTE_ID": "000_DECO_ONLY",
+        "ATTRIBUTE_DESCRIPTION": "Decoration only",
+        "ATTRIBUTE_VALUES": [
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Decoration_Only",
                 "ATTRIBUTE_VALUE": "DECORATION_ONLY"
-            }		
-		]
-	},
+            }
+        ]
+    },
     {
         "ATTRIBUTE_ID": "000_DRAWING_NUMBER",
         "ATTRIBUTE_DESCRIPTION": "Drawing Number",
@@ -553,8 +535,7 @@
         "ATTRIBUTE_ID": "000_SAMPLES",
         "ATTRIBUTE_DESCRIPTION": "Samples",
         "SELECTION_MODE": "Multiple",
-        "ATTRIBUTE_VALUES": 
-        [
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No. of Samples",
                 "ATTRIBUTE_VALUE": "NULL0",
@@ -651,12 +632,11 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "100_DECO",
         "ATTRIBUTE_DESCRIPTION": "Decoration",
         "SELECTION_MODE": "Multiple",
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No Decoration",
                 "ATTRIBUTE_VALUE": "NO_DECORATION"
@@ -665,7 +645,7 @@
                 "ATTRIBUTE_VALUE_LABEL": "Silk Screening",
                 "ATTRIBUTE_VALUE": "SILK_SCREENING",
                 "SUB_ATTRIBUTE": [
-					{
+                    {
                         "ATTRIBUTE_ID": "DECO_NUMBER_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
@@ -676,7 +656,7 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "PASS_CONFIGURATION",
                         "ATTRIBUTE_DESCRIPTION": "Pass Configuration",
                         "ATTRIBUTE_VALUES": [
@@ -712,13 +692,11 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Hot Stamping",
                 "ATTRIBUTE_VALUE": "Hot Stamping",
-                "SUB_ATTRIBUTE": 
-				[
+                "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "HOTSTAMPING_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -726,11 +704,10 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "HOTSTAMPING_PASSES",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -763,13 +740,11 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Labeling",
                 "ATTRIBUTE_VALUE": "LABELING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -777,11 +752,10 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "LABEL_SPECS",
                         "ATTRIBUTE_DESCRIPTION": "Label Specs",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -789,87 +763,79 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "KCC_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "KCC Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "KCC Supplied",
                                 "ATTRIBUTE_VALUE": "KCC Supplied"
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "CUSTOMER_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "Customer Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Customer Supplied",
                                 "ATTRIBUTE_VALUE": "Customer Supplied",
-								"IS_DEFAULT": true
+                                "IS_DEFAULT": true
                             }
                         ]
                     }
-					
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Pad Printing",
                 "ATTRIBUTE_VALUE": "PAD_PRINTING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Colors",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Colors",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Spray or Frost Coating",
                 "ATTRIBUTE_VALUE": "SPRAY_FROST_COATING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "COLOR",
                         "ATTRIBUTE_DESCRIPTION": "Color",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Color",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "EFFECTS",
                         "ATTRIBUTE_DESCRIPTION": "Effects",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Color",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Mold Labeling",
                 "ATTRIBUTE_VALUE": "MOLD_LABELING"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER"
             }
@@ -946,26 +912,23 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
                 "ATTRIBUTE_VALUE": "NULL0",
-				"WIDTH": 900,
-				"HEIGHT": 300,
+                "WIDTH": 900,
+                "HEIGHT": 300,
                 "EDITABLE": true
-				
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "100_PACKOUT",
         "ATTRIBUTE_DESCRIPTION": "Pack Out",
         "DISPLAY_IN_TITLE": true,
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pack Out:",
                 "ATTRIBUTE_VALUE": "NULL0",
-				"WIDTH": 900,
-				"HEIGHT": 300,
+                "WIDTH": 900,
+                "HEIGHT": 300,
                 "EDITABLE": true
-				
             }
         ]
     },
@@ -1023,89 +986,84 @@
                 "ATTRIBUTE_VALUE": "OZ",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LITER.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/ML.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
                 "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             }
         ]
     },
@@ -1140,55 +1098,50 @@
         "ATTRIBUTE_DESCRIPTION": "Style",
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Arizona",
                 "ATTRIBUTE_VALUE": "ARIZONA",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Atlas",
                 "ATTRIBUTE_VALUE": "ATLAS",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Barrel",
                 "ATTRIBUTE_VALUE": "BARREL",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Belgian Beer",
                 "ATTRIBUTE_VALUE": "BELGIAN_BEER",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Belgian Share",
                 "ATTRIBUTE_VALUE": "BELGIAN_SHARE",
-                "DEPENDENT_ATTRIBUTE":
-                [
+                "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
                         "ATTRIBUTE_VALUE": "BEER"
@@ -1199,163 +1152,148 @@
                 "ATTRIBUTE_VALUE_LABEL": "Belissima",
                 "ATTRIBUTE_VALUE": "BELISSIMA",
                 "ImagePath": "/Assets/STYLE/BELISSIMA.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Bordeaux",
                 "ATTRIBUTE_VALUE": "BORDEAUX",
                 "ImagePath": "/Assets/STYLE/BORDEAUX.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Burgundy",
                 "ATTRIBUTE_VALUE": "BURGUNDY",
                 "ImagePath": "/Assets/STYLE/BURGUNDY.jpg",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "California",
                 "ATTRIBUTE_VALUE": "CALIFORNIA",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Flask",
                 "ATTRIBUTE_VALUE": "FLASK",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Growler",
                 "ATTRIBUTE_VALUE": "GROWLER",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Hock",
                 "ATTRIBUTE_VALUE": "HOCK",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Long Neck",
                 "ATTRIBUTE_VALUE": "LONG_NECK",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mini Liquor",
                 "ATTRIBUTE_VALUE": "MINI_LIQUOR",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Moonshine",
                 "ATTRIBUTE_VALUE": "MOONSHINE",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Nordic",
                 "ATTRIBUTE_VALUE": "Nordic",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
                 "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true,
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
                         "ATTRIBUTE_VALUE": "WINE"
                     }
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Base",
                 "ATTRIBUTE_VALUE": "BASE",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					}
-				],
-				 "SUB_ATTRIBUTE": 
-				 [
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    }
+                ],
+                "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_Base",
                         "ATTRIBUTE_DESCRIPTION": "Base",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE": "FLAT_BOTTOM",
                                 "ATTRIBUTE_VALUE_LABEL": "Flat Bottom"
@@ -1370,7 +1308,7 @@
                             }
                         ]
                     }
-				]
+                ]
             }
         ]
     },
@@ -1382,120 +1320,113 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Amber",
                 "ATTRIBUTE_VALUE": "AMBER",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Antique Green",
                 "ATTRIBUTE_VALUE": "ANTIQUE_GREEN",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Champagne Green",
                 "ATTRIBUTE_VALUE": "CHAMPAGNE_GREEN",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Cobalt Blue",
                 "ATTRIBUTE_VALUE": "COBALT_BLUE",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Dead Leaf Green",
                 "ATTRIBUTE_VALUE": "DEAD_LEAF_GREEN",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Flint",
                 "ATTRIBUTE_VALUE": "FLINT",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
                 "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true,
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "WINE"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "SPIRIT"
-					},
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "WINE"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "SPIRIT"
+                    },
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             }
         ]
     },
@@ -1525,7 +1456,7 @@
         "DISPLAY_IN_TITLE": true,
         "TITLE_PREFIX": "Neck:",
         "ATTRIBUTE_VALUES": [
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Screw",
                 "ATTRIBUTE_VALUE": "SCREW"
             },
@@ -1540,13 +1471,12 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Crown",
                 "ATTRIBUTE_VALUE": "CROWN",
-				"DEPENDENT_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "110_CATEGORY",
-						"ATTRIBUTE_VALUE": "BEER"
-					}
-				]
+                "DEPENDENT_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "110_CATEGORY",
+                        "ATTRIBUTE_VALUE": "BEER"
+                    }
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Stelvin",
@@ -1559,7 +1489,7 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "110_MATERIAL",
         "ATTRIBUTE_DESCRIPTION": "Material",
         "DISPLAY_IN_TITLE": true,
@@ -1567,7 +1497,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "GLASS",
                 "ATTRIBUTE_VALUE": "GLASS",
-				"IS_DEFAULT": true
+                "IS_DEFAULT": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PET",
@@ -1582,12 +1512,11 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "110_PACK_OUT",
         "ATTRIBUTE_DESCRIPTION": "Pack Out",
         "DISPLAY_IN_TITLE": true,
-		"ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pack Out:",
                 "ATTRIBUTE_VALUE": "NULL0",
@@ -1602,19 +1531,19 @@
         "ATTRIBUTE_DESCRIPTION": "Unit Of Measure",
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/ML.jpg"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
                 "EDITABLE": true,
@@ -1626,7 +1555,7 @@
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/CC.jpg"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
                 "EDITABLE": true,
@@ -1643,7 +1572,7 @@
     {
         "ATTRIBUTE_ID": "200_MATERIAL",
         "ATTRIBUTE_DESCRIPTION": "Material",
-		"SELECTION_MODE": "Multiple",
+        "SELECTION_MODE": "Multiple",
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
@@ -1662,12 +1591,12 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "MDPE",
                 "ATTRIBUTE_VALUE": "MDPE",
-				"EDITABLE": true
+                "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PCR %",
                 "ATTRIBUTE_VALUE": "PCR_%",
-				"EDITABLE": true
+                "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PET",
@@ -1772,7 +1701,6 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Bullet",
                 "ATTRIBUTE_VALUE": "BULLET",
-
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1920,7 +1848,6 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Nasa Ez Grip",
                 "ATTRIBUTE_VALUE": "NASA_EZ_GRIP",
-
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "SHAPE",
@@ -2117,12 +2044,10 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Flourinate* Level",
                 "ATTRIBUTE_VALUE": "FLOURINATE",
-				"EDITABLE": true
+                "EDITABLE": true
             }
         ]
     },
-
-
     {
         "ATTRIBUTE_ID": "210_MEASURE",
         "ATTRIBUTE_DESCRIPTION": "Unit Of Measure",
@@ -2181,7 +2106,7 @@
     {
         "ATTRIBUTE_ID": "210_MATERIAL",
         "ATTRIBUTE_DESCRIPTION": "Material",
-		"SELECTION_MODE": "Multiple",
+        "SELECTION_MODE": "Multiple",
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
@@ -2394,7 +2319,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Flourinate Level",
                 "ATTRIBUTE_VALUE": "FLOURINATE_LEVEL",
-				"EDITABLE": true
+                "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Electrostatic",
@@ -2537,7 +2462,6 @@
             }
         ]
     },
-
     {
         "ATTRIBUTE_ID": "220_SHAPE",
         "ATTRIBUTE_DESCRIPTION": "Shape",
@@ -2578,7 +2502,6 @@
                 "ATTRIBUTE_VALUE_LABEL": "Closed Head",
                 "ATTRIBUTE_VALUE": "CLOSED_HEAD"
             },
-
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "NULL0",
@@ -2586,7 +2509,7 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "220_NECK_STYLE",
         "ATTRIBUTE_DESCRIPTION": "Neck Style",
         "ATTRIBUTE_VALUES": [
@@ -2710,7 +2633,6 @@
             }
         ]
     },
-
     {
         "ATTRIBUTE_ID": "300_SHOULDER_DESIGN",
         "ATTRIBUTE_DESCRIPTION": "Shoulder Design",
@@ -3017,17 +2939,16 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "300_DECO",
         "ATTRIBUTE_DESCRIPTION": "Decoration",
         "SELECTION_MODE": "Multiple",
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Silk Screening",
                 "ATTRIBUTE_VALUE": "SILK_SCREENING",
                 "SUB_ATTRIBUTE": [
-					{
+                    {
                         "ATTRIBUTE_ID": "DECO_NUMBER_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
@@ -3038,7 +2959,7 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "PASS_CONFIGURATION",
                         "ATTRIBUTE_DESCRIPTION": "Pass Configuration",
                         "ATTRIBUTE_VALUES": [
@@ -3074,13 +2995,11 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Labeling",
                 "ATTRIBUTE_VALUE": "LABELING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -3088,11 +3007,10 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "LABEL_SPECS",
                         "ATTRIBUTE_DESCRIPTION": "Label Specs",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -3100,50 +3018,45 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "KCC_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "KCC Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "KCC Supplied",
                                 "ATTRIBUTE_VALUE": "KCC Supplied"
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "CUSTOMER_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "Customer Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Customer Supplied",
                                 "ATTRIBUTE_VALUE": "Customer Supplied",
-								"IS_DEFAULT": true
+                                "IS_DEFAULT": true
                             }
                         ]
                     }
-					
-				]
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Offset Printing",
                 "ATTRIBUTE_VALUE": "OFFSET_PRINTING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "Number of Passes",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Number of Passes",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             }
         ]
     },
@@ -3280,8 +3193,7 @@
             {
                 "ATTRIBUTE_VALUE": "NA",
                 "ATTRIBUTE_VALUE_LABEL": "Not Applicable",
-                "DEPENDENT_ATTRIBUTE": 
-				[
+                "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
                         "ATTRIBUTE_VALUE": "METAL"
@@ -4132,7 +4044,7 @@
             }
         ]
     },
-        {
+    {
         "ATTRIBUTE_ID": "410_DL_MEASUREMENT",
         "ATTRIBUTE_DESCRIPTION": "Diptube Length Measurement",
         "ATTRIBUTE_VALUES": [
@@ -4159,7 +4071,7 @@
             }
         ]
     },
-        {
+    {
         "ATTRIBUTE_ID": "410_OUTPUT_MEASUREMENT",
         "ATTRIBUTE_DESCRIPTION": "Output Measurement",
         "ATTRIBUTE_VALUES": [
@@ -4602,7 +4514,7 @@
         "ATTRIBUTE_ID": "500_MEASURE",
         "ATTRIBUTE_DESCRIPTION": "Measure",
         "DISPLAY_IN_TITLE": true,
-		"SELECTION_MODE": "Multiple",
+        "SELECTION_MODE": "Multiple",
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "oz",
@@ -4619,12 +4531,12 @@
                 "ATTRIBUTE_VALUE": "ML",
                 "EDITABLE": true
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Diameter",
                 "ATTRIBUTE_VALUE": "DIAMETER",
                 "EDITABLE": true
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Length",
                 "ATTRIBUTE_VALUE": "LENGTH",
                 "EDITABLE": true
@@ -4640,10 +4552,10 @@
                 "ATTRIBUTE_VALUE_LABEL": "Aluminum",
                 "ATTRIBUTE_VALUE": "ALUMINUM"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Aluminum Barrier Laminate",
                 "ATTRIBUTE_VALUE": "ABL",
-				"EDITABLE": true
+                "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "HDPE",
@@ -4657,8 +4569,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "MDPE",
                 "ATTRIBUTE_VALUE": "MDPE",
-				"SUB_ATTRIBUTE": 
-				[
+                "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "BLEND",
                         "ATTRIBUTE_DESCRIPTION": "Blend",
@@ -4666,16 +4577,16 @@
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Blend",
                                 "ATTRIBUTE_VALUE": "BLEND",
-								"EDITABLE": true
+                                "EDITABLE": true
                             }
                         ]
                     }
                 ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Plastic Barrier Laminate",
                 "ATTRIBUTE_VALUE": "ABL",
-				"EDITABLE": true
+                "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PP",
@@ -5074,8 +4985,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Deodorant Stick",
                 "ATTRIBUTE_VALUE": "DEODORANT_STICK",
-                "SUB_ATTRIBUTE": 
-				[
+                "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "510_DEODORANT_TYPE",
                         "ATTRIBUTE_DESCRIPTION": "Deodorant Type",
@@ -5104,7 +5014,7 @@
                 "ATTRIBUTE_VALUE_LABEL": "Syringe Single",
                 "ATTRIBUTE_VALUE": "SYRINGE_SINGLE"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Syringe Dual",
                 "ATTRIBUTE_VALUE": "SYRINGE_DUAL"
             },
@@ -5200,9 +5110,8 @@
         "ATTRIBUTE_ID": "510_COLOR",
         "ATTRIBUTE_DESCRIPTION": "Color",
         "DISPLAY_IN_TITLE": true,
-		"SELECTION_MODE": "Multiple",
-        "ATTRIBUTE_VALUES": 
-		[
+        "SELECTION_MODE": "Multiple",
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Natural",
                 "ATTRIBUTE_VALUE": "NATURAL"
@@ -5215,19 +5124,18 @@
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
                 "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true
-            },			
-			{
-				"ATTRIBUTE_VALUE_LABEL": "Knurl Color",
-				"ATTRIBUTE_VALUE": "Knurl",
-				"EDITABLE": true,
-				"DEPENDENT_ATTRIBUTE": 
-				[
+            },
+            {
+                "ATTRIBUTE_VALUE_LABEL": "Knurl Color",
+                "ATTRIBUTE_VALUE": "Knurl",
+                "EDITABLE": true,
+                "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "510_TYPE",
                         "ATTRIBUTE_VALUE": "LIP_BALM"
                     }
                 ]
-			}
+            }
         ]
     },
     {
@@ -5351,7 +5259,7 @@
                                 "ATTRIBUTE_VALUE": "NULL0",
                                 "EDITABLE": true
                             },
-							{
+                            {
                                 "ATTRIBUTE_VALUE_LABEL": "Art Description:",
                                 "ATTRIBUTE_VALUE": "NULL0",
                                 "EDITABLE": true
@@ -5396,7 +5304,7 @@
                 "ATTRIBUTE_VALUE_LABEL": "In-mold",
                 "ATTRIBUTE_VALUE": "IN_MOLD"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Spot Label",
                 "ATTRIBUTE_VALUE": "SPOT_LABEL"
             },
@@ -5531,8 +5439,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Roll",
                 "ATTRIBUTE_VALUE": "ROLL",
-                "SUB_ATTRIBUTE": 
-				[
+                "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "700_KCC_WIND_NUMBER",
                         "ATTRIBUTE_DESCRIPTION": "KCC Wind #",
@@ -5564,43 +5471,38 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "700_DECO",
         "ATTRIBUTE_DESCRIPTION": "Decoration",
-		"ATTRIBUTE_VALUES": 
-		[
-			{
-				"ATTRIBUTE_VALUE_LABEL": "Hot Stamp",
-				"ATTRIBUTE_VALUE": "HOT_STAMP",
-				"SUB_ATTRIBUTE":
-				[
-					{
-						"ATTRIBUTE_ID": "NUMBER_OF_COLORS",
-						"ATTRIBUTE_DESCRIPTION": "Number of Colors",
-						"ATTRIBUTE_VALUES": 
-						[
-							{		
-								"ATTRIBUTE_VALUE_LABEL": "Number of Colors",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
-						]
-					}
-				]
-			},
-			{
+        "ATTRIBUTE_VALUES": [
+            {
+                "ATTRIBUTE_VALUE_LABEL": "Hot Stamp",
+                "ATTRIBUTE_VALUE": "HOT_STAMP",
+                "SUB_ATTRIBUTE": [
+                    {
+                        "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
+                        "ATTRIBUTE_DESCRIPTION": "Number of Colors",
+                        "ATTRIBUTE_VALUES": [
+                            {
+                                "ATTRIBUTE_VALUE_LABEL": "Number of Colors",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Coating Type",
                 "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true
             }
-			
-		]
+        ]
     },
     {
         "ATTRIBUTE_ID": "700_SKU",
         "ATTRIBUTE_DESCRIPTION": "# of SKU's",
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "SKU #",
                 "ATTRIBUTE_VALUE": "NULL0",
@@ -5630,7 +5532,7 @@
             }
         ]
     },
-        {
+    {
         "ATTRIBUTE_ID": "700_FREIGHT_CLASS_WITH_SAVE_OPTION",
         "ATTRIBUTE_DESCRIPTION": "Freight Class",
         "ATTRIBUTE_VALUES": [
@@ -5895,12 +5797,11 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "800_DECO",
         "ATTRIBUTE_DESCRIPTION": "Decoration",
         "SELECTION_MODE": "Multiple",
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No Decoration",
                 "ATTRIBUTE_VALUE": "NO_DECORATION"
@@ -5909,7 +5810,7 @@
                 "ATTRIBUTE_VALUE_LABEL": "Silk Screening",
                 "ATTRIBUTE_VALUE": "SILK_SCREENING",
                 "SUB_ATTRIBUTE": [
-					{
+                    {
                         "ATTRIBUTE_ID": "DECO_NUMBER_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
@@ -5920,7 +5821,7 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "PASS_CONFIGURATION",
                         "ATTRIBUTE_DESCRIPTION": "Pass Configuration",
                         "ATTRIBUTE_VALUES": [
@@ -5956,13 +5857,11 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Labeling",
                 "ATTRIBUTE_VALUE": "LABELING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -5970,11 +5869,10 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "LABEL_SPECS",
                         "ATTRIBUTE_DESCRIPTION": "Label Specs",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
                                 "ATTRIBUTE_VALUE": "NULL0",
@@ -5982,75 +5880,68 @@
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "KCC_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "KCC Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "KCC Supplied",
                                 "ATTRIBUTE_VALUE": "KCC Supplied"
                             }
                         ]
                     },
-					{
+                    {
                         "ATTRIBUTE_ID": "CUSTOMER_SUPPLIED",
                         "ATTRIBUTE_DESCRIPTION": "Customer Supplied",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Customer Supplied",
                                 "ATTRIBUTE_VALUE": "Customer Supplied",
-								"IS_DEFAULT": true
+                                "IS_DEFAULT": true
                             }
                         ]
                     }
-					
-				]
+                ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Offset Printing",
                 "ATTRIBUTE_VALUE": "OFFSET_PRINTING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "Number of Passes",
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Number of Passes",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Pad Printing",
                 "ATTRIBUTE_VALUE": "PAD_PRINTING",
-				"SUB_ATTRIBUTE":
-				[
-					{
+                "SUB_ATTRIBUTE": [
+                    {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
-                        "ATTRIBUTE_VALUES": 
-						[
+                        "ATTRIBUTE_VALUES": [
                             {
-								"ATTRIBUTE_VALUE_LABEL": "Colors",
-								"ATTRIBUTE_VALUE": "NULL0",
-								"EDITABLE": true
-							}
+                                "ATTRIBUTE_VALUE_LABEL": "Colors",
+                                "ATTRIBUTE_VALUE": "NULL0",
+                                "EDITABLE": true
+                            }
                         ]
                     }
-				]
+                ]
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Mold Labeling",
                 "ATTRIBUTE_VALUE": "MOLD_LABELING"
             },
-			{
+            {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER"
             }
@@ -6153,12 +6044,11 @@
             }
         ]
     },
-	{
+    {
         "ATTRIBUTE_ID": "900_FURTHERDESC",
         "ATTRIBUTE_DESCRIPTION": "Description",
         "DISPLAY_IN_TITLE": true,
-        "ATTRIBUTE_VALUES": 
-		[
+        "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Description:",
                 "ATTRIBUTE_VALUE": "NULL0",
