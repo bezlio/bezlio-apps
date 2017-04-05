@@ -55,6 +55,7 @@ define(function () {
         if (bezl.data.Attributes) {
             var attrs = bezl.data.Attributes[0];
 
+            console.log(attrs);
             bezl.data.QuoteDtls.map(dtl => {
                 if (dtl.QuoteNum === attrs.Key1 && dtl.QuoteLine === attrs.Key2) {
                     console.log(dtl);
