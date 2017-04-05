@@ -53,9 +53,12 @@ define(function () {
         }
 
         if (bezl.data.Attributes) {
+            var attrs = bezl.data.Attributes[0];
+
             bezl.data.QuoteDtls.map(dtl => {
-                console.log(dtl);
-                console.log(bezl.data.Attributes);
+                if (dtl.QuoteNum === attrs.Key1 && dtl.QuoteLine === attrs.Key2) {
+                    console.log(dtl);
+                }
             });
         }
 
