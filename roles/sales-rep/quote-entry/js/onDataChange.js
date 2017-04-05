@@ -64,6 +64,7 @@ define(function () {
                     }
                 });
             });
+            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine).Display = !bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine).Display;
         }
     }
 
