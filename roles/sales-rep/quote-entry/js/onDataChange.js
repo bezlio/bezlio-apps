@@ -53,20 +53,20 @@ define(function () {
         }
 
         if (bezl.data.Attributes) {
-            console.log(bezl.vars.quoteAttributeLine);
-
             bezl.data.Attributes.map(attrs => {
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
                         dtl.Attributes.map(attr => {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
+
+                                //bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === parm.QuoteLine).Display = !bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === parm.QuoteLine).Display;
+                                dtl.Display = !dtl.Display;
                             }
                         });
                     }
                 });
             });
-            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine).Display = !bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine).Display;
         }
     }
 
