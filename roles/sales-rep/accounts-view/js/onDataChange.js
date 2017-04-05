@@ -4,106 +4,106 @@ define(function () {
         if (bezl.data.Accounts && bezl.vars.loading) {
             bezl.vars.loading = false;
 
-            // If there was a previously selected account in localStorage, grab a reference
-            // so we can know whether to mark them as selected
-            bezl.vars.selectedAccount = {};
-            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
-                bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
-            }
+            // // If there was a previously selected account in localStorage, grab a reference
+            // // so we can know whether to mark them as selected
+            // bezl.vars.selectedAccount = {};
+            // if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
+            //     bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+            // }
 
-            // Perform additional processing on the returned data
-            for (var i = 0; i < bezl.data.Accounts.length; i++) {
-                // Add a Selected property to the account record
-                if (bezl.data.Accounts[i].ID == bezl.vars.selectedAccount.ID) {
-                    bezl.data.Accounts[i].Selected = true;
-                } else {
-                    bezl.data.Accounts[i].Selected = false;
-                }
+            // // Perform additional processing on the returned data
+            // for (var i = 0; i < bezl.data.Accounts.length; i++) {
+            //     // Add a Selected property to the account record
+            //     if (bezl.data.Accounts[i].ID == bezl.vars.selectedAccount.ID) {
+            //         bezl.data.Accounts[i].Selected = true;
+            //     } else {
+            //         bezl.data.Accounts[i].Selected = false;
+            //     }
 
-                // Create an AddressURL column with an encoded version of each Address
-                // so that it can be part of a Google Maps AddressURL
-                bezl.data.Accounts[i].AddressURL = encodeURI(bezl.data.Accounts[i].Address);
+            //     // Create an AddressURL column with an encoded version of each Address
+            //     // so that it can be part of a Google Maps AddressURL
+            //     bezl.data.Accounts[i].AddressURL = encodeURI(bezl.data.Accounts[i].Address);
 
-                // Determine the distance from the current location, if applicable
-                if (bezl.data.Accounts[i].Geocode_Location) {
-                    bezl.data.Accounts[i].Distance = CalcDistance(bezl.vars.currentLat
-                                                                , bezl.vars.currentLng
-                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
-                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
-                }
+            //     // Determine the distance from the current location, if applicable
+            //     if (bezl.data.Accounts[i].Geocode_Location) {
+            //         bezl.data.Accounts[i].Distance = CalcDistance(bezl.vars.currentLat
+            //                                                     , bezl.vars.currentLng
+            //                                                     , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
+            //                                                     , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
+            //     }
 
-                // Set up any of the properties we wish to consolidate additional
-                // data into from subsequent queries
-                bezl.data.Accounts[i].Contacts = [];
-                bezl.data.Accounts[i].CRMCalls = [];
-                bezl.data.Accounts[i].Tasks = [];
-                bezl.data.Accounts[i].Attachments = [];
+            //     // Set up any of the properties we wish to consolidate additional
+            //     // data into from subsequent queries
+            //     bezl.data.Accounts[i].Contacts = [];
+            //     bezl.data.Accounts[i].CRMCalls = [];
+            //     bezl.data.Accounts[i].Tasks = [];
+            //     bezl.data.Accounts[i].Attachments = [];
                 
 
-                // Make all records visible to start off with
-                bezl.data.Accounts[i].show = true;
+            //     // Make all records visible to start off with
+            //     bezl.data.Accounts[i].show = true;
 
-                // Date pipe has rounding issue, truncate at "T" to get correct Date
-                bezl.data.Accounts[i].LastContact = (bezl.data.Accounts[i].LastContact || 'T').split("T")[0];
-                bezl.data.Accounts[i].NextTaskDue = (bezl.data.Accounts[i].NextTaskDue || 'T').split('T')[0]
-            };
+            //     // Date pipe has rounding issue, truncate at "T" to get correct Date
+            //     bezl.data.Accounts[i].LastContact = (bezl.data.Accounts[i].LastContact || 'T').split("T")[0];
+            //     bezl.data.Accounts[i].NextTaskDue = (bezl.data.Accounts[i].NextTaskDue || 'T').split('T')[0]
+            // };
         }
 
         // If we got the account contacts back, merge those in
         if (bezl.data.Accounts && bezl.data.AccountContacts && bezl.vars.loadingContacts) {
             bezl.vars.loadingContacts = false;
 
-            for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
-                for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                    if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
-                    }
-                }
-            }
+            // for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
+            //     for (var x = 0; x < bezl.data.Accounts.length; x++) {
+            //         if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
+            //             bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
+            //         }
+            //     }
+            // }
         }
 
         // If we got the account calls back, merge those in
         if (bezl.data.Accounts && bezl.data.CRMCalls && bezl.vars.loadingCalls) {
             bezl.vars.loadingCalls = false;
 
-            for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
-                    }
-                }
-            }
+            // for (var x = 0; x < bezl.data.Accounts.length; x++) {
+            //     for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
+            //         if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
+            //             bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
+            //         }
+            //     }
+            // }
         }
 
         // If we got the account tasks back, merge those in
         if (bezl.data.Accounts && bezl.data.Tasks && bezl.vars.loadingTasks) {
             bezl.vars.loadingTasks = false;
 
-            for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                for (var i = 0; i < bezl.data.Tasks.length; i++) {
-                    if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
-                        // Not sure if this is the best place to do this...
-                        // Convert any ISO 8601 datetime strings to just date strings
-                        bezl.data.Tasks[i].StartDate = (bezl.data.Tasks[i].StartDate || 'T').split('T')[0]
-                        bezl.data.Tasks[i].DueDate = (bezl.data.Tasks[i].DueDate || 'T').split('T')[0]
+            // for (var x = 0; x < bezl.data.Accounts.length; x++) {
+            //     for (var i = 0; i < bezl.data.Tasks.length; i++) {
+            //         if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
+            //             // Not sure if this is the best place to do this...
+            //             // Convert any ISO 8601 datetime strings to just date strings
+            //             bezl.data.Tasks[i].StartDate = (bezl.data.Tasks[i].StartDate || 'T').split('T')[0]
+            //             bezl.data.Tasks[i].DueDate = (bezl.data.Tasks[i].DueDate || 'T').split('T')[0]
 
-                        bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
-                    }
-                }
-            }
+            //             bezl.data.Accounts[x].Tasks.push(bezl.data.Tasks[i]);
+            //         }
+            //     }
+            // }
         }
 
         // If we got the account attachments back, merge those in
         if (bezl.data.Accounts && bezl.data.Attachments && bezl.vars.loadingAttachments) {
             bezl.vars.loadingAttachments = false;
 
-            for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                for (var i = 0; i < bezl.data.Attachments.length; i++) {
-                    if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
-                    }
-                }
-            }
+            // for (var x = 0; x < bezl.data.Accounts.length; x++) {
+            //     for (var i = 0; i < bezl.data.Attachments.length; i++) {
+            //         if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {
+            //             bezl.data.Accounts[x].Attachments.push(bezl.data.Attachments[i]);
+            //         }
+            //     }
+            // }
         }
     }
 
