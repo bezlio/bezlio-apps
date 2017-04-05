@@ -52,6 +52,12 @@ define(function () {
             }
         }
 
+        if (bezl.data.Attributes) {
+            bezl.data.QuoteDtls.map(dtl => {
+                console.log(dtl);
+            });
+        }
+
     }
 
     return {

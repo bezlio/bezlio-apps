@@ -27,6 +27,15 @@ define(function () {
                     "QueryName": "GetParts"
                 }, 0);
                 break;
+            case "Attributes":
+                bezl.dataService.add('Attributes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetQuoteAttributes",
+                    "Parameters": [
+                        { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
+                        { Key: "QuoteLine", Value: bezl.vars.quoteAttributeLine }
+                    ]
+                })
+                break;
         }
     }
 
@@ -71,24 +80,10 @@ define(function () {
             });
         }
 
-        // $('#example').DataTable({
-        //     data: dataSet,
-        //     columns: [
-        //         { title: "Name" },
-        //         { title: "Position" },
-        //         { title: "Office" },
-        //         { title: "Extn." },
-        //         { title: "Start date" },
-        //         { title: "Salary" }
-        //     ]
-        // });
-
         setTimeout(typeAhead, 2, lineNum + 1);
     }
 
     function DeleteLine(bezl, lineNum) {
-        //console.log("Line: " + lineNum);
-
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
@@ -96,6 +91,9 @@ define(function () {
         var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
 
         var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
+        bezl.vars.quoteAttributeLine = quoteLine;
+
+        this.RunQuery(bezl, "Attributes");
 
         if (curLine.Attributes === undefined) {
             curLine.Attributes = [];
