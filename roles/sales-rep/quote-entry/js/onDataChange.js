@@ -53,19 +53,18 @@ define(function () {
         }
 
         if (bezl.data.Attributes) {
-            var attrs = bezl.data.Attributes[0];
-
-            bezl.data.QuoteDtls.map(dtl => {
-                if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
-                    dtl.Attributes.map(attr => {
-                        if (attr.ATTRIBUTE_ID === attrs.Key4) {
-                            attr.SELECTED_VALUE = attrs.Character01;
-                        }
-                    });
-                }
+            bezl.data.Attributes.map(attrs => {
+                bezl.data.QuoteDtls.map(dtl => {
+                    if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
+                        dtl.Attributes.map(attr => {
+                            if (attr.ATTRIBUTE_ID === attrs.Key4) {
+                                attr.SELECTED_VALUE = attrs.Character01;
+                            }
+                        });
+                    }
+                });
             });
         }
-
     }
 
     return {
