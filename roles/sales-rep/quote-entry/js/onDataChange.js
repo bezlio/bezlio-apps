@@ -62,6 +62,9 @@ define(function () {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
                             }
+                            if (attr.ATTRIBUTE_ID === "000_QUANTITY") {
+                                console.log('truth!');
+                            }
                         });
                     }
                 });
