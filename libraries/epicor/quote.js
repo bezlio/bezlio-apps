@@ -110,8 +110,6 @@ define(function () {
             }
         });
 
-        console.log(bezl.data);
-
         var removeLines = [];
         for (var x of bezl.data.QuoteDtls) {
             if (x.Deleted === 1) {
