@@ -63,8 +63,14 @@ define(function () {
                                 attr.SELECTED_VALUE = attrs.Character01;
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY") {
-                                console.log(bezl.data.QuoteQty);
-                                console.log(attr);
+                                var cnt = 0;
+                                bezl.data.QuoteQty.map(qty => {
+                                    attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
+                                    cnt++;
+                                });
+
+                                //console.log(bezl.data.QuoteQty);
+                                //console.log(attr);
                             }
                         });
                     }
