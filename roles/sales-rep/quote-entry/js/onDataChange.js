@@ -62,7 +62,7 @@ define(function () {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
                             }
-                            if (attr.ATTRIBUTE_ID === "000_QUANTITY") {
+                            if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
                                 var cnt = 0;
                                 bezl.data.QuoteQty.map(qty => {
                                     attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
