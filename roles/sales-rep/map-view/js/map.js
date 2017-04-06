@@ -101,7 +101,7 @@ define(["./customer.js"], function (customer) {
 
             // Update the database so we don't need to look this up next time
             bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
-                                { "QueryName": "SetGeocodeOnAddress",
+                                { "QueryName": "/map-view/SetGeocodeOnAddress",
                                     "Parameters": [
                                         { "Key": "Geocode_Location", "Value": g || '' },
                                         { "Key": "CustNum", "Value": customerRecord.custNum },
