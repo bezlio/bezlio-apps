@@ -63,7 +63,7 @@ define(function () {
                                 attr.SELECTED_VALUE = attrs.Character01;
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY") {
-                                console.log('truth!');
+                                console.log(bezl.data);
                             }
                         });
                     }
