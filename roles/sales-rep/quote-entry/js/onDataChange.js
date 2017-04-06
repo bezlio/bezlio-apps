@@ -55,21 +55,21 @@ define(function () {
         if (bezl.data.Attributes) {
             bezl.vars.attrLoading = false;
 
-            bezl.data.Attributes.map(attrs => {
-                bezl.data.QuoteDtls.map(dtl => {
-                    if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
-                        dtl.Attributes.map(attr => {
-                            if (attr.ATTRIBUTE_ID === attrs.Key4) {
-                                attr.SELECTED_VALUE = attrs.Character01;
-                            }
-                            if (attr.ATTRIBUTE_ID === "000_QUANTITY") {
-                                console.log(bezl.data.QuoteQty);
-                                console.log(attr);
-                            }
-                        });
-                    }
-                });
+            //bezl.data.Attributes.map(attrs => {
+            bezl.data.QuoteDtls.map(dtl => {
+                if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
+                    dtl.Attributes.map(attr => {
+                        if (attr.ATTRIBUTE_ID === attrs.Key4) {
+                            attr.SELECTED_VALUE = attrs.Character01;
+                        }
+                        if (attr.ATTRIBUTE_ID === "000_QUANTITY") {
+                            console.log(bezl.data.QuoteQty);
+                            console.log(attr);
+                        }
+                    });
+                }
             });
+            //});
         }
     }
 
