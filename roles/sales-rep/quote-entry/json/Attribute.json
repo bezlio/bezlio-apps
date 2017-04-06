@@ -899,7 +899,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
