@@ -57,7 +57,7 @@ define(function () {
 
             bezl.data.Attributes.map(attrs => {
                 bezl.data.QuoteDtls.map(dtl => {
-                    if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2) {
+                    if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
                         dtl.Attributes.map(attr => {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
