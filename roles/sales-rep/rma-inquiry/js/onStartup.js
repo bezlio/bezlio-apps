@@ -13,7 +13,6 @@ define(["./rma.js"], function (rma) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
             }
 
-             rma.runQuery(bezl, 'RMAs');
     }
      return {
     onStartup: OnStartup
