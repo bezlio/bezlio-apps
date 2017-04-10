@@ -55,26 +55,29 @@ define(function () {
         if (bezl.data.Attributes) {
             bezl.vars.attrLoading = false;
 
-            // bezl.data.Attributes.map(attrs => {
-            //     bezl.data.QuoteDtls.map(dtl => {
-            //         if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
+            bezl.data.Attributes.map(attrs => {
+                bezl.data.QuoteDtls.map(dtl => {
+                    if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
 
-            //             dtl.Attributes.map(attr => {
-            //                 if (attr.ATTRIBUTE_ID === attrs.Key4) {
-            //                     attr.SELECTED_VALUE = attrs.Character01;
-            //                 }
-            //                 if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
-            //                     var cnt = 0;
-            //                     bezl.data.QuoteQty.map(qty => {
-            //                         attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
-            //                         cnt++;
-            //                     });
-            //                 }
-            //             });
-            //         }
-            //     });
-            // });
-            // bezl.dataService.remove('Attributes');
+                        dtl.Attributes.map(attr => {
+                            if (attr.ATTRIBUTE_ID === attrs.Key4) {
+                                attr.SELECTED_VALUE = attrs.Character01;
+                            }
+                            if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
+                                var cnt = 0;
+                                bezl.data.QuoteQty.map(qty => {
+                                    attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
+                                    cnt++;
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+            try {
+                bezl.dataService.remove('Attributes');
+            }
+            catch { }
         }
     }
 
