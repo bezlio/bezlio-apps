@@ -111,6 +111,7 @@ define(function () {
 
             filterArray.forEach(attr => {
                 var attrFnd = bezl.vars.attributes.filter(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
+                console.log(attrFnd);
 
                 attrFnd.Display = false;
                 attrFnd.QuoteNum = curLine.QuoteNum;
