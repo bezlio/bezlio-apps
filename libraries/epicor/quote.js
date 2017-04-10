@@ -19,10 +19,6 @@ define(function () {
     }
 
     function SaveQuote(bezl, company, quoteNum) {
-        bezl.dataService.remove('Quotes');
-        bezl.dataService.remove('QuoteDtls');
-        bezl.dataService.remove('Attributes');
-
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
@@ -134,6 +130,10 @@ define(function () {
                 "ds": JSON.stringify(bezl.vars.ds),
                 "attrDs": JSON.stringify(bezl.vars.attrs)
             }, 0);
+
+        bezl.dataService.remove('Quotes');
+        bezl.dataService.remove('QuoteDtls');
+        bezl.dataService.remove('Attributes');
     }
 
     return {
