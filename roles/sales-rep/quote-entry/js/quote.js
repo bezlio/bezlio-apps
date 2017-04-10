@@ -121,6 +121,8 @@ define(function () {
                 curLine.Attributes.push(attrFnd);
             });
         }
+
+        bezl.vars.updatingAttributes = true;
     }
 
     return {
