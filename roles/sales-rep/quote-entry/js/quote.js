@@ -110,8 +110,7 @@ define(function () {
             curLine.Attributes = [];
 
             filterArray.forEach(attr => {
-                var attrFnd = bezl.vars.attributes.filter(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID);
-                console.log(attrFnd);
+                var attrFnd = bezl.vars.attributes.filter(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)[0];
 
                 attrFnd.Display = false;
                 attrFnd.QuoteNum = curLine.QuoteNum;
