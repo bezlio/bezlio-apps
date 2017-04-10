@@ -60,6 +60,8 @@ define(function () {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
                         dtl.Attributes.map(attr => {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
+                                console.log("UI Value: " + attr.SELECTED_VALUE);
+                                console.log("DB Cached Value: " + attrs.Character01);
                                 attr.SELECTED_VALUE = attrs.Character01;
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
