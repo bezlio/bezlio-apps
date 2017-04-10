@@ -73,8 +73,8 @@ define(function () {
                     }
                 });
             });
+            bezl.vars.updatingAttributes = true;
         }
-        bezl.vars.updatingAttributes = true;
     }
 
     return {
