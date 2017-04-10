@@ -131,7 +131,3 @@ define(function () {
         configureLine: ConfigureLine
     }
 });
-
-// require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function(functions) {
-// 	functions.runQuery(bezl, "Quotes");
-// });

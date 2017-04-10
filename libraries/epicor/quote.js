@@ -131,7 +131,10 @@ define(function () {
                 "attrDs": JSON.stringify(bezl.vars.attrs)
             }, 0);
 
-        bezl.dataService.remove('Attributes');
+        //bezl.dataService.remove('Attributes');
+        require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+            functions.runQuery(bezl, "Attributes");
+        });
     }
 
     return {

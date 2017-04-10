@@ -68,9 +68,6 @@ define(function () {
                                     attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
                                     cnt++;
                                 });
-
-                                //console.log(bezl.data.QuoteQty);
-                                //console.log(attr);
                             }
                         });
                     }
