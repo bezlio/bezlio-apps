@@ -19,6 +19,10 @@ define(function () {
     }
 
     function SaveQuote(bezl, company, quoteNum) {
+        bezl.dataService.remove('Quotes');
+        bezl.dataService.remove('QuoteDtls');
+        bezl.dataService.remove('Attributes');
+
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
