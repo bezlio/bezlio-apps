@@ -81,7 +81,7 @@ define(function () {
                                 { Key: "PartID", Value: dtl.PartNum },
                                 { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                 { Key: "ParentID", Value: '' },
-                                { Key: "AttributeValue", Value: attr.SELECTED_VALUE },
+                                { Key: "AttributeValue", Value: (attr.SELECTED_VALUE === 'OTHER') ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : attr.SELECTED_VALUE },
                                 { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                 { Key: "PartNum", Value: dtl.PartNum }
                             ]
