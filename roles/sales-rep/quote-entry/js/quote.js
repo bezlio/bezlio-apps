@@ -110,7 +110,8 @@ define(function () {
             curLine.Attributes = [];
 
             filterArray.forEach(attr => {
-                var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
+                //var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
+                var attrFnd = jQuery.extend(true, {}, bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID));
 
                 attrFnd.Display = false;
                 attrFnd.QuoteNum = curLine.QuoteNum;
