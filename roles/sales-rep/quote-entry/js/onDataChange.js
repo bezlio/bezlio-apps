@@ -52,6 +52,7 @@ define(function () {
             }
         }
 
+        console.log("Updating: " + bezl.vars.updatingAttributes);
         if (bezl.data.Attributes && !bezl.vars.updatingAttributes) {
             bezl.vars.attrLoading = false;
 
