@@ -53,7 +53,7 @@ define(function () {
         }
 
         if (bezl.data.Attributes) {
-            // bezl.vars.attrLoading = false;
+            bezl.vars.attrLoading = false;
 
             // bezl.data.Attributes.map(attrs => {
             //     bezl.data.QuoteDtls.map(dtl => {
