@@ -77,7 +77,7 @@ define(function () {
             try {
                 bezl.dataService.remove('Attributes');
             }
-            catch { }
+            catch (err) { }
         }
     }
 
