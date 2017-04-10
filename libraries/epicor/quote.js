@@ -74,8 +74,9 @@ define(function () {
                     }
                 });
 
+                console.log(bezl.vars.ds);
+
                 dtl.Attributes.map(attr => {
-                    console.log(attr);
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
                         bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                             "QueryName": "InsertAttributes",
@@ -134,12 +135,6 @@ define(function () {
                 "ds": JSON.stringify(bezl.vars.ds),
                 "attrDs": JSON.stringify(bezl.vars.attrs)
             }, 0);
-
-        //bezl.dataService.remove('Attributes');
-        // console.log("Update Line: " + bezl.vars.quoteAttributeLine);
-        // require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
-        //     functions.runQuery(bezl, "Attributes");
-        // });
     }
 
     return {
