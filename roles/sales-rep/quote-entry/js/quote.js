@@ -98,7 +98,7 @@ define(function () {
 
     function ConfigureLine(bezl, partNum, quoteLine) {
         bezl.vars.attrLoading = true;
-        var filterArray = bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES;
+        var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES));
 
         var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
         bezl.vars.quoteAttributeLine = quoteLine;
