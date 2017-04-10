@@ -74,6 +74,7 @@ define(function () {
                 });
             });
         }
+        bezl.vars.updatingAttributes = true;
     }
 
     return {
