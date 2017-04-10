@@ -103,8 +103,6 @@ define(function () {
         var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
         bezl.vars.quoteAttributeLine = quoteLine;
 
-        console.log(curLine);
-
         this.runQuery(bezl, "QuoteQty");
         this.runQuery(bezl, "Attributes");
 
