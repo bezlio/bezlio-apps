@@ -131,8 +131,6 @@ define(function () {
                 "attrDs": JSON.stringify(bezl.vars.attrs)
             }, 0);
 
-        bezl.dataService.remove('Quotes');
-        bezl.dataService.remove('QuoteDtls');
         bezl.dataService.remove('Attributes');
     }
 
