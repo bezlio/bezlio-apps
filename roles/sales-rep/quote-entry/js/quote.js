@@ -121,7 +121,6 @@ define(function () {
                 curLine.Attributes.push(attrFnd);
             });
         }
-        //bezl.dataService.remove('Attributes');
     }
 
     return {

@@ -52,8 +52,7 @@ define(function () {
             }
         }
 
-        //console.log("Updating: " + bezl.vars.updatingAttributes);
-        if (bezl.data.Attributes && !bezl.vars.updatingAttributes) {
+        if (bezl.data.Attributes) {
             bezl.vars.attrLoading = false;
 
             bezl.data.Attributes.map(attrs => {
@@ -74,7 +73,7 @@ define(function () {
                     }
                 });
             });
-            bezl.vars.updatingAttributes = true;
+            bezl.dataService.remove('Attributes');
         }
     }
 
