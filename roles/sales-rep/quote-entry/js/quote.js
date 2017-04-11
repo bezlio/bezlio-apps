@@ -66,13 +66,10 @@ define(function () {
         //bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl => dtl.Deleted === 0);
 
         var lineNum = Math.max.apply(Math, bezl.data.QuoteDtls.map(function (dtl) { return dtl.QuoteLine; }));
-        console.log("Orig: " + lineNum);
 
         lineNum = (lineNum === -Infinity) ? 0 : lineNum;
 
         bezl.data.QuoteDtls.push({ QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', Deleted: 0 });
-
-        console.log("After push: " + lineNum);
 
         //var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
@@ -87,9 +84,8 @@ define(function () {
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        console.log("After part: " + lineNum);
-                        console.log(bezl.data.QuoteDtls);
-                        //console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum + 1)));
+                        console.log("node: " + node + " | a: " + a + " | item: " + item + " | event: " + event);
+                        console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                     }
                 }
             });
