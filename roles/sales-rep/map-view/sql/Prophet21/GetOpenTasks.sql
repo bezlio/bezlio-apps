@@ -7,7 +7,7 @@ SELECT TOP 100
 	, '' As PriorityCode -- (originally Epicor10 Erp.Task.PriorityCode)
 	, t.activity_id As TaskID
 	--, t.TaskSeqNum -- (originally Epicor10 Erp.Task.TaskSeqNum) (n/a?)
-	, td.completed_flag
+	, td.completed_flag AS Complete
 	, tt.category_id AS TaskType
 	, '' AS RowMod
 FROM
