@@ -31,7 +31,7 @@ FROM
 	t.activity_id = cxa.activity_id
 	LEFT JOIN p21_view_category tt with(nolock) ON
 	cxa.category_uid = tt.category_uid
-WHERE
+--WHERE
 	--(sr.email_address IS NULL OR sr.email_address = '{EmailAddress}') -- Disabled for TESTING
 	--AND td.completed_flag = 'N' -- 'N' was assumed -- Disabled for TESTING
 	--AND td.company_id = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

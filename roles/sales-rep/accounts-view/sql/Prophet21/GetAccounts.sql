@@ -54,24 +54,23 @@ FROM
 	LEFT OUTER JOIN p21_view_terms tm with(nolock) ON
 	c.service_terms_id = tm.terms_id
 	LEFT OUTER JOIN
-	(SELECT 
-	    iAR.customer_id As CustNum,
-		iAR.company_id As Company,
-		-- (Or iAR.net_due_date? vs iAR.terms_due_date)
-        sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 30 then iAR.total_amount - iAR.amount_paid else 0 end) As "0to30",
-        sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 30 and DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 60 then iAR.total_amount - iAR.amount_paid else 0 end) As "31to60",
-        sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 60 and DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 90 then iAR.total_amount - iAR.amount_paid else 0 end) As "61to90",
-        sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 90 and DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 120 then iAR.total_amount - iAR.amount_paid else 0 end) As "91to120",       
-        sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 120 then iAR.total_amount - iAR.amount_paid else 0 end) As "Over120"
-	FROM
-		p21_view_invoice_hdr iAR with(nolock)
-	WHERE 
-		iAR.total_amount - iAR.amount_paid <> 0
-	GROUP BY
-	   iAR.company_id,iAR.customer_id) As ARAging 
-	   On  c.company_id = ARAging.Company 
-	   AND c.customer_id = ArAging.CustNum
-
+		(SELECT 
+			iAR.customer_id As CustNum,
+			iAR.company_no As Company,
+			-- (Or iAR.net_due_date? vs iAR.terms_due_date)
+			sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 30 then iAR.total_amount - iAR.amount_paid else 0 end) As "0to30",
+			sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 30 and DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 60 then iAR.total_amount - iAR.amount_paid else 0 end) As "31to60",
+			sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 60 and DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 90 then iAR.total_amount - iAR.amount_paid else 0 end) As "61to90",
+			sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 90 and DATEDIFF(DD, iAR.terms_due_date, GETDATE()) < 120 then iAR.total_amount - iAR.amount_paid else 0 end) As "91to120",       
+			sum(case when DATEDIFF(DD, iAR.terms_due_date, GETDATE()) > 120 then iAR.total_amount - iAR.amount_paid else 0 end) As "Over120"
+		FROM
+			p21_view_invoice_hdr iAR with(nolock)
+		WHERE 
+			(iAR.total_amount - iAR.amount_paid) <> 0
+		GROUP BY
+		iAR.company_no,iAR.customer_id) As ARAging 
+	ON  c.company_id = ARAging.Company 
+	AND c.customer_id = ArAging.CustNum
 WHERE
 	a.phys_postal_code <> ''
 	--AND sr.email_address = '{EmailAddress}' -- Disabled for TESTING
