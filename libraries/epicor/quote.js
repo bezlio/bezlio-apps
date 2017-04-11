@@ -48,7 +48,7 @@ define(function () {
             CustID: bezl.vars.quoteData.customerId,
             Name: bezl.vars.quoteData.customerName,
             Company: 'EPIC03',
-            QuoteClosed: bezl.vars.status
+            QuoteClosed: bezl.vars.quoteData.status
         });
 
         quoteNum = bezl.vars.quoteData.quoteNum;
