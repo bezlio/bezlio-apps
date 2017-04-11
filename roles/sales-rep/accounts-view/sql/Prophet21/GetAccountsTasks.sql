@@ -22,7 +22,7 @@ FROM
 	LEFT OUTER JOIN p21_view_contacts cn with(nolock) ON
 	td.contact_id = cn.id
 	LEFT JOIN p21_view_customer c with(nolock) ON
-	cn.address_id = c.id
+	cn.address_id = c.customer_id
 
 	LEFT OUTER JOIN p21_view_contacts sr with(nolock) ON
 	c.salesrep_id = sr.id

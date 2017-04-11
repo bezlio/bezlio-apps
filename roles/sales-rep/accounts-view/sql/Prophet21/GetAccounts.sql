@@ -77,4 +77,4 @@ WHERE
 	--AND c.company_id = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 	AND c.customer_name NOT LIKE '%DO NOT USE%'
 ORDER BY
-	c.Name asc
+	c.customer_name asc
