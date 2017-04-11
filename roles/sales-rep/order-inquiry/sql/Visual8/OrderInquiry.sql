@@ -3,7 +3,7 @@
 
 Select TOP 100
 	o.ID As OrderNum,
-	o.ORDER_DATE As OrderDate,
+	convert(varchar,o.ORDER_DATE,101) As OrderDate,
 	o.CUSTOMER_PO_REF As PoNum,
 	o.TOTAL_AMT_ORDERED As OrderAmt,
 	NULL As OpenOrder,
@@ -20,7 +20,7 @@ From
 	inner join CUSTOMER c with(nolock) on c.ID = o.CUSTOMER_ID
 	LEFT OUTER JOIN PART p with (nolock) On p.ID = l.PART_ID
 WHERE 
-	o.ORDER_DATE >= '{StartDate}' AND o.ORDER_DATE <= '{EndDate}' AND
-	c.NAME =  CASE WHEN '{Company}' <> 'ALL' THEN '{Company}' ELSE c.NAME END
+	o.ORDER_DATE >= '{StartDate}' AND o.ORDER_DATE <= '{EndDate}' 
+	AND	c.NAME =  CASE WHEN '{Company}' <> 'ALL' THEN '{Company}' ELSE c.NAME END
 ORDER BY 
 	o.ORDER_DATE Desc
