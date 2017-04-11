@@ -14,8 +14,6 @@ define(function () {
             }, 0);
 
         bezl.vars.newQuote = true;
-
-        //console.log(bezl.data);
     }
 
     function SaveQuote(bezl, company, quoteNum) {
