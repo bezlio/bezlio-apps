@@ -32,7 +32,8 @@ define(function () {
                     CustNum: hed.CustNum,
                     CustID: hed.CustID,
                     Name: hed.Name,
-                    Company: hed.Company
+                    Company: hed.Company,
+                    QuoteClosed: hed.QuoteClosed
                 });
                 quoteNum = hed.QuoteNum;
                 custNum = hed.CustNum;
