@@ -85,6 +85,7 @@ define(function () {
                 callback: {
                     onClick: function (node, a, item, event) {
                         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
+                        console.log(bezl.data.QuoteDtls);
                     }
                 }
             });
