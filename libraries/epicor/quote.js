@@ -25,22 +25,34 @@ define(function () {
         var quoteNum;
         var custNum;
 
-        bezl.data.Quotes.forEach(hed => {
-            if (hed.QuoteNum === bezl.vars.quoteData.quoteNum) {
-                console.log(hed);
-                console.log(bezl.vars.quoteData);
-                bezl.vars.ds.QuoteHed.push({
-                    QuoteNum: hed.QuoteNum,
-                    CustNum: hed.CustNum,
-                    CustID: hed.CustID,
-                    Name: hed.Name,
-                    Company: hed.Company,
-                    QuoteClosed: (hed.QuoteClosed === false) ? 0 : 1
-                });
-                quoteNum = hed.QuoteNum;
-                custNum = hed.CustNum;
-            }
+        // bezl.data.Quotes.forEach(hed => {
+        //     if (hed.QuoteNum === bezl.vars.quoteData.quoteNum) {
+        //         console.log(hed);
+        //         console.log(bezl.vars.quoteData);
+        //         bezl.vars.ds.QuoteHed.push({
+        //             QuoteNum: hed.QuoteNum,
+        //             CustNum: hed.CustNum,
+        //             CustID: hed.CustID,
+        //             Name: hed.Name,
+        //             Company: hed.Company,
+        //             QuoteClosed: (hed.QuoteClosed === false) ? 0 : 1
+        //         });
+        //         quoteNum = hed.QuoteNum;
+        //         custNum = hed.CustNum;
+        //     }
+        // });
+
+        bezl.vars.ds.QuoteHed.push({
+            QuoteNum: bezl.vars.quoteData.quoteNum,
+            CustNum: bezl.vars.quoteData.custNum,
+            CustID: bezl.vars.quoteData.customerId,
+            Name: bezl.vars.quoteData.customerName,
+            Company: 'EPIC03',
+            QuoteClosed: bezl.vars.status
         });
+
+        quoteNum = bezl.vars.quoteData.quoteNum;
+        custNum = bezl.vars.quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
             bezl.vars.ds.QuoteDtl.push({
