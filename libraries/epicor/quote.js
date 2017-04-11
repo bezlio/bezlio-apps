@@ -51,6 +51,8 @@ define(function () {
             QuoteClosed: bezl.vars.quoteData.status
         });
 
+        console.log(bezl.vars.ds.QuoteHed);
+
         quoteNum = bezl.vars.quoteData.quoteNum;
         custNum = bezl.vars.quoteData.custNum;
 
