@@ -33,7 +33,7 @@
 		},
 		{
 			"method": "setConfig",
-			"code": "bezl.vars.config = {};\nbezl.vars.config.ScriptsBasePath = 'https://cdn.rawgit.com/bezlio/bezlio-apps/1.8'\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\nbezl.vars.config.Shift = '';",
+			"code": "bezl.vars.config = {};\nbezl.vars.config.ScriptsBasePath = 'https://bezlio-apps.bezl.io'\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\nbezl.vars.config.Shift = '';",
 			"declares": [
 				"$",
 				"parm",
@@ -41,7 +41,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.config = {};\r\nbezl.vars.config.ScriptsBasePath = 'https://cdn.rawgit.com/bezlio/bezlio-apps/1.8';\r\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\r\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\r\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\r\nbezl.vars.config.Shift = '';\r\n"
+			"compiled": "bezl.vars.config = {};\r\nbezl.vars.config.ScriptsBasePath = 'https://bezlio-apps.bezl.io';\r\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\r\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\r\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\r\nbezl.vars.config.Shift = '';\r\n"
 		},
 		{
 			"method": "refresh",
