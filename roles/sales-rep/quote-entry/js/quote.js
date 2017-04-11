@@ -84,7 +84,11 @@ define(function () {
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        console.log("node: " + node + " | a: " + a + " | item: " + item + " | event: " + event);
+                        console.log(node);
+                        console.log(a);
+                        console.log(item);
+                        console.log(event);
+
                         console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                     }
                 }
