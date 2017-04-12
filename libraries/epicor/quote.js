@@ -50,6 +50,7 @@ define(function () {
             RowMod: 'U'
         });
 
+
         console.log(bezl.vars.ds.QuoteHed);
 
         quoteNum = bezl.vars.quoteData.quoteNum;
