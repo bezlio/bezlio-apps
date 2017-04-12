@@ -45,7 +45,7 @@ define(["./account.js"], function (account) {
                 bezl.data.Accounts[i].NextTaskDue = (bezl.data.Accounts[i].NextTaskDue || 'T').split('T')[0]
             };
 
-            account.applyFilter();
+            account.applyFilter(bezl);
         }
 
         // If we got the account contacts back, merge those in
