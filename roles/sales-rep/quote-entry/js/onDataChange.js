@@ -23,6 +23,8 @@ define(function () {
                     }
                 });
             }
+
+            setTimeout(typeAhead, 2);
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
