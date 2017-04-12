@@ -13,7 +13,7 @@ define(function () {
                     order: 'asc',
                     maxItem: 8,
                     display: ['Name'],
-                    source {
+                    source: {
                         data: function () { return bezl.data.Customers; }
                     },
                     callback: {
