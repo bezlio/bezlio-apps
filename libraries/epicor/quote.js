@@ -44,9 +44,9 @@ define(function () {
             QuoteNum: bezl.vars.quoteData.quoteNum,
             CustNum: bezl.vars.quoteData.custNum,
             CustID: bezl.vars.quoteData.customerId,
+            BTCustNum: bezl.vars.quoteData.custNum,
             Name: bezl.vars.quoteData.customerName,
             Company: 'EPIC03',
-            QuoteClosed: (bezl.vars.quoteData.status === false) ? false : true,
             RowMod: 'U'
         });
 
