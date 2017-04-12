@@ -6,6 +6,10 @@ define(function () {
             bezl.vars.loading = false;
         }
 
+        if (bezl.data.Customers) {
+            console.log(bezl.data);
+        }
+
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
             bezl.vars.linesloading = false;
 
