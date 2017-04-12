@@ -16,7 +16,9 @@ define(function () {
                     },
                     callback: {
                         onClick: function (node, a, item, event) {
-                            console.log(item);
+                            bezl.vars.quoteData.custNum = item.CustNum;
+                            bezl.vars.quoteData.customerId = item.CustID;
+                            bezl.vars.quoteData.customerName = item.Name;
                         }
                     }
                 });
