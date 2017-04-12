@@ -46,6 +46,7 @@ define(function () {
             CustID: bezl.vars.quoteData.customerId,
             BTCustNum: bezl.vars.quoteData.custNum,
             Name: bezl.vars.quoteData.customerName,
+            CustomerCustID: bezl.vars.quoteData.customerId,
             Company: 'EPIC03',
             RowMod: 'U'
         });
