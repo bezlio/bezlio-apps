@@ -17,6 +17,14 @@ define(function () {
                     "QueryName": "GetSalesReps"
                 }, 0);
                 break;
+            case "Customers":
+                bezl.dataService.add('Customers', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetCustomersByRep",
+                    "Parameters": [
+                        { Key: "SalesRep", Value: bezl.env.currentUser }
+                    ]
+                })
+                break;
             case "QuoteDtls":
                 bezl.dataService.add('QuoteDtls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetQuoteDetails",
