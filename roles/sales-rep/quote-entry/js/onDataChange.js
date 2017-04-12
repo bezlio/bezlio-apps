@@ -7,7 +7,7 @@ define(function () {
         }
 
         if (bezl.data.Customers && bezl.vars.editingQuote) {
-            var typeHead = function () {
+            var typeAhead = function () {
                 $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead('destroy');
                 $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead({
                     order: 'asc',
