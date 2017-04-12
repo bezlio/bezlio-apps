@@ -6,7 +6,10 @@ define(function () {
                 bezl.vars.loading = true;
 
                 bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetQuotesByRep"
+                    "QueryName": "GetQuotesByRep",
+                    "Parameters": [
+                        { Key: "SalesRep", Value: bezl.env.currentUser }
+                    ]
                 }, 0);
                 break;
             case "SalesReps":
