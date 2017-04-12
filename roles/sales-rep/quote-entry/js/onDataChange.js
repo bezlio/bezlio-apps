@@ -1,7 +1,5 @@
 define(function () {
     function OnDataChange(bezl) {
-        //console.log(bezl.data);
-
         if (bezl.data.Quotes) {
             bezl.vars.loading = false;
         }
@@ -18,7 +16,7 @@ define(function () {
                     },
                     callback: {
                         onClick: function (node, a, item, event) {
-                            console.log('test');
+                            console.log(item);
                         }
                     }
                 });
