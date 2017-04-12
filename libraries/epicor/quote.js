@@ -46,7 +46,8 @@ define(function () {
             CustID: bezl.vars.quoteData.customerId,
             Name: bezl.vars.quoteData.customerName,
             Company: 'EPIC03',
-            QuoteClosed: (bezl.vars.quoteData.status === false) ? false : true
+            QuoteClosed: (bezl.vars.quoteData.status === false) ? false : true,
+            RowMod: 'U'
         });
 
         console.log(bezl.vars.ds.QuoteHed);
