@@ -49,9 +49,7 @@ define(["./account.js"], function (account) {
         }
 
         // If we got the account contacts back, merge those in
-        if (bezl.data.Accounts && bezl.data.AccountContacts && bezl.vars.loadingContacts) {
-            bezl.vars.loadingContacts = false;
-
+        if (bezl.data.Accounts && bezl.data.AccountContacts) {
             for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
@@ -62,9 +60,7 @@ define(["./account.js"], function (account) {
         }
 
         // If we got the account tasks back, merge those in
-        if (bezl.data.Accounts && bezl.data.Tasks && bezl.vars.loadingTasks) {
-            bezl.vars.loadingTasks = false;
-
+        if (bezl.data.Accounts && bezl.data.Tasks) {
             for (var x = 0; x < bezl.data.Accounts.length; x++) {
                 for (var i = 0; i < bezl.data.Tasks.length; i++) {
                     if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
@@ -80,9 +76,7 @@ define(["./account.js"], function (account) {
         }
 
         // If we got the account attachments back, merge those in
-        if (bezl.data.Accounts && bezl.data.Attachments && bezl.vars.loadingAttachments) {
-            bezl.vars.loadingAttachments = false;
-
+        if (bezl.data.Accounts && bezl.data.Attachments) {
             for (var x = 0; x < bezl.data.Accounts.length; x++) {
                 for (var i = 0; i < bezl.data.Attachments.length; i++) {
                     if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {

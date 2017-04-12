@@ -14,8 +14,6 @@ define(function () {
                     ] },0);
                 break;
             case "AccountContacts":
-                bezl.vars.loadingContacts = true; 
-
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('AccountContacts','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountsContacts",
@@ -24,8 +22,6 @@ define(function () {
                     ] },0);
                 break;
             case "Tasks":
-                bezl.vars.loadingTasks = true; 
-
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Tasks','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountsTasks",
@@ -34,8 +30,6 @@ define(function () {
                     ] },0);
                 break;
             case "Attachments":
-                bezl.vars.loadingAttachments = true; 
-
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountsAttachments",
