@@ -6,8 +6,23 @@ define(function () {
             bezl.vars.loading = false;
         }
 
-        if (bezl.data.Customers) {
-            console.log(bezl.data);
+        if (bezl.data.Customers && bezl.vars.editingQuote) {
+            var typeHead = function () {
+                $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead('destroy');
+                $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead({
+                    order: 'asc',
+                    maxItem: 8,
+                    display: ['Name'],
+                    source {
+                        data: function () { return bezl.data.Customers; }
+                    },
+                    callback: {
+                        onClick: function (node, a, item, event) {
+                            console.log('test');
+                        }
+                    }
+                });
+            }
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
