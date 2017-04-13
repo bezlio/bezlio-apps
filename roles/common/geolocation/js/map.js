@@ -50,10 +50,32 @@ define(["./customer.js"], function (customer) {
     }
 
      function theNext(bezl) {
+
+            //do the last one, temp fix
+            if(bezl.vars.custWithoutLocations.length == 1 && bezl.vars.geoLocsNeeded != bezl.vars.geoLocsDone)
+            {
+               try{
+               if( bezl.vars.custWithoutLocations[0].data.Geocode_Location == "" ||  bezl.vars.custWithoutLocations[0].data.Geocode_Location == null) {
+                setTimeout(function(){getAddress({ 
+                                    streetAddress:  bezl.vars.custWithoutLocations[0].data.Address, 
+                                    title:  bezl.vars.custWithoutLocations[0].data.Name, 
+                                    custNum:  bezl.vars.custWithoutLocations[0].data.CustNum,
+                                    shipToNum:  bezl.vars.custWithoutLocations[0].data.ShipToNum,
+                                    data:  bezl.vars.custWithoutLocations[0].data 
+                                }, theNext, bezl)}, delay);
+
+                nextAddress++;
+            } } catch(ex) {
+                console.log(ex);
+            }
+            }
+
             //check to see if the nextAddress is less than needed qty
-            if (nextAddress <=  (bezl.vars.custWithoutLocations.length - 1)) {
+            if (nextAddress < bezl.vars.custWithoutLocations.length-1) {
+                
             //if geoloc is empty, get it.
             if( bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == '' ||  bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == null) {
+                
                 setTimeout(function(){getAddress({ 
                                     streetAddress:  bezl.vars.custWithoutLocations[nextAddress].data.Address, 
                                     title:  bezl.vars.custWithoutLocations[nextAddress].data.Name, 
@@ -135,7 +157,12 @@ define(["./customer.js"], function (customer) {
               // if we were sending the requests to fast, try this one again and increase the delay
               if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
                 nextAddress--;
-                delay++;
+
+                if (delay > 5000){
+                    delay = 100;
+                } else{
+                    delay++;
+                }
               } else {
                 console.log('Geocoding Error');
               }   
