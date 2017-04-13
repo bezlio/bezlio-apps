@@ -51,7 +51,7 @@ define(["./customer.js"], function (customer) {
 
      function theNext(bezl) {
             //check to see if the nextAddress is less than needed qty
-        if (nextAddress <=  (bezl.vars.custWithoutLocations.length - 1)) {
+            if (nextAddress <=  (bezl.vars.custWithoutLocations.length - 1)) {
             //if geoloc is empty, get it.
             if( bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == '' ||  bezl.vars.custWithoutLocations[nextAddress].data.Geocode_Location == null) {
                 setTimeout(function(){getAddress({ 
@@ -148,7 +148,7 @@ define(["./customer.js"], function (customer) {
     function updateGeo(bezl, customerRecord, g) {
          // Update the database so we don't need to look this up next time
             bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
-                                { "QueryName": "SetGeocodeOnAddress",
+                                { "QueryName": "/Geocoder/SetGeocodeOnAddress",
                                     "Parameters": [
                                         { "Key": "Geocode_Location", "Value": g || '' },
                                         { "Key": "CustNum", "Value": customerRecord.custNum },
