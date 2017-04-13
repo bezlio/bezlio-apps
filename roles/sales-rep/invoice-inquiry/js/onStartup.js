@@ -1,7 +1,11 @@
 define(function () {
     function OnStartup(bezl) {
-        bezl.vars.startDate = "";
-        bezl.vars.endDate = "";
+
+      var endDate= new Date();
+      var startDate= new Date().setDate(endDate.getDate()-30);
+
+        bezl.vars.startDate = startDate.toISOString().split('T')[0];
+        bezl.vars.endDate = new Date(endDate).toISOString().split('T')[0];
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
         bezl.vars.sortInner = "";
