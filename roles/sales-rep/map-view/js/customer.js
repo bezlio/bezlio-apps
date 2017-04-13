@@ -29,8 +29,10 @@ define(["./map.js"], function (map) {
             case "CustList":
                 // Pull in the customer list for the logged in user
                 bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAllCustomersWithAddress",
-                    "Parameters": [] },0);
+                   "QueryName": "/map-view/GetCustomersWithAddress",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0);
                 break;
             default:
                 break;
