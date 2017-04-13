@@ -1,10 +1,12 @@
 define(["./account.js"], function (account) {
  
     function OnStartup (bezl) {        
+        bezl.vars.filterString = ""
+
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
         account.runQuery(bezl, 'AccountContacts');
-        account.runQuery(bezl, 'CRMCalls');
+        //account.runQuery(bezl, 'CRMCalls');
         account.runQuery(bezl, 'Tasks');
         account.runQuery(bezl, 'Attachments');
 

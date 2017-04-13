@@ -1,11 +1,25 @@
 define(["./account.js"], function (account) {
  
   function OnStartup (bezl) {        
+      bezl.vars.filterString = "";
+
       // Load the object for the selected customer from local storage into
       // a variable we can work with
       if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
           bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
+
+          // Perform additional processing on the returned data
+          for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+            bezl.vars.selectedAccount.CRMCalls[i].show = true;
+          }
       }
+
+      // Refresh all call data at regular interval
+      bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+        "QueryName": "GetAccountsCallHistory",
+        "Parameters": [
+          { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+        ] }, 1);
 
       // Also pull in the list of defined CRM call types.  This is expecting a plugin instance
       // to be defined in BRDB named sales-rep-calltypes which points to a data source for call
@@ -16,11 +30,23 @@ define(["./account.js"], function (account) {
         bezl.vars.selectedAccount = param1;
         bezl.vars.loadedMore = false;
 
-        // If there are no CRM calls present with what was passed over, go
-        // ahead and run the full query now
-        if (!bezl.vars.selectedAccount.CRMCalls) {
-          account.runQuery('CRMCalls');
+        // Load up the CRM calls for this newly selected account
+        if (bezl.data.AllCRMCalls) {
+            bezl.vars.selectedAccount.CRMCalls = [];
+            for (var i = 0; i < bezl.data.AllCRMCalls.length; i++) {
+                if (bezl.data.AllCRMCalls[i].ID == bezl.vars.selectedAccount.ID) {
+                    bezl.vars.selectedAccount.CRMCalls.push(bezl.data.AllCRMCalls[i])
+                }
+            }
         }
+
+        // Perform additional processing on the returned data
+        for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+          bezl.vars.selectedAccount.CRMCalls[i].show = true;
+        }
+
+        $(bezl.container.nativeElement).find('#filterString')[0].value = ""; // Clear out the search filter box
+        bezl.vars.filterString = "";
 
       });
 

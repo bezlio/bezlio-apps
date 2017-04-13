@@ -6,4 +6,4 @@ SELECT
 	, ct.CONTACT_POSITION AS ContactTitle
 	, ct.CONTACT_PHONE AS PhoneNum
 FROM 
-	Erp.CustCnt ct with(nolock)
+	CUSTOMER_CONTACT ct with(nolock)

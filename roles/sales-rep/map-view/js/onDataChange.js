@@ -47,6 +47,9 @@ define(["./customer.js",
                     }
                 }
             });
+           
+            // Tell the jsGrid to load up
+            bezl.vars.jsgrid.jsGrid("loadData");
                     
             bezl.vars.loading.customerList = false;
             
@@ -88,6 +91,9 @@ define(["./customer.js",
         
             // Calculate distances
             map.calculateDistances(bezl);
+
+            // Tell the jsGrid to load up, refreshes
+            bezl.vars.jsgrid.jsGrid("loadData");
 
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
