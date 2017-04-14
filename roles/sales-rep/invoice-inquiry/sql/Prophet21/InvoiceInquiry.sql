@@ -10,7 +10,7 @@ Select
 	p21_view_invoice_line.unit_price As UnitPrice,
 	p21_view_invoice_line.extended_price As ExtPrice,
 	p21_view_invoice_line.item_desc As PartDescription,
-	p21_view_invoice_line.SellingShipQty As Qty
+	p21_view_invoice_line.qty_shipped As Qty
 FROM
 	p21_view_invoice_line with (nolock)
 	INNER JOIN p21_view_invoice_hdr with (nolock) ON p21_view_invoice_line.company_id = p21_view_invoice_hdr.company_no  AND p21_view_invoice_line.invoice_no = p21_view_invoice_hdr.invoice_no
