@@ -13,6 +13,13 @@ define(function () {
         bezl.vars.sortInner = "";
         bezl.vars.sortColInner = "";
         bezl.vars.filter = "";
+
+        // If there was a previously selected customer in localStorage, grab a reference
+            bezl.vars.selectedAccount  = {};
+            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
+                bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+            }
+
     }
      return {
     onStartup: OnStartup
