@@ -1,20 +1,21 @@
 define(function () {
     function FilterEdiStatus(bezl) {
         // FilterEdiStatus, will hide the table rows that are not in the correct filter status.
-        var tr, td;
+        var tr, td, div;
 
         //Get bezl rows in mainTable.
         tr = $(bezl.container.nativeElement).find("#mainTable tr")
 
-
-
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[6];
+            td = tr[i].getElementsByTagName("td")[0];
             
             if(td) {
+                div = td.getElementsByTagName("div")
+                ediStatus = div[8].innerHTML;
+             
                 //If not the correct edi status, hide the row.
-                if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filterEdiStatus.toUpperCase()) > -1) {
+                if(ediStatus.toUpperCase().indexOf(bezl.vars.filterEdiStatus.toUpperCase()) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";
@@ -43,7 +44,7 @@ define(function () {
     
     function FilterBy(bezl) {
         // Filter, will hide the table rows that are not in the filter.
-        var tr, td, found, ediStatus;
+        var tr, td, div, found, ediStatus;
 
         //Get bezl rows in mainTable.
         tr = $(bezl.container.nativeElement).find("#mainTable tr")
@@ -54,11 +55,13 @@ define(function () {
             
             for(var j = 0; j < tr[i].cells.length; j++) {
                 td = tr[i].getElementsByTagName("td")[j];
-                ediStatus = tr[i].getElementsByTagName("td")[6];
-                
+
                 if(td) {
+                    div = td.getElementsByTagName("div")
+                    ediStatus = div[8].innerHTML;
+
                     //If not the correct edi status, hide the row.
-                    if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1 && ediStatus.innerHTML.toUpperCase().indexOf(bezl.vars.filterEdiStatus.toUpperCase()) > -1) {
+                    if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1 && ediStatus.toUpperCase().indexOf(bezl.vars.filterEdiStatus.toUpperCase()) > -1) {
                         found = true;
                     }
                 }
