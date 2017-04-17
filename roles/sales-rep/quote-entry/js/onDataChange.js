@@ -71,7 +71,7 @@ define(function () {
                             },
                             onNavigateBefore: function (node, query, event) {
                                 console.log(node);
-                                console.log(query);
+                                console.log("Query: " + query);
                                 console.log(event);
                             },
                             onNavigateAfter: function (node, lis, a, item, query, event) {
