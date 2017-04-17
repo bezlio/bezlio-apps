@@ -96,6 +96,11 @@ define(function () {
                 callback: {
                     onClick: function (node, a, item, event) {
                         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
+                        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
+                    },
+                    onNavigateBefore: function (node, query, event) {
+                        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
+                        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
                     }
                 }
             });
