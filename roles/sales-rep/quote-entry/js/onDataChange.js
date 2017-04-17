@@ -67,15 +67,17 @@ define(function () {
                             onClick: function (node, a, item, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = 0;
+
+                                console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             },
                             onNavigateBefore: function (node, query, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = 1;
+
+                                console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             }
                         }
                     });
-
-                    console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                 }
 
                 setTimeout(typeAhead, 2, dtl.QuoteLine);
