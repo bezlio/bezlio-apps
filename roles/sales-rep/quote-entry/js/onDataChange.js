@@ -126,7 +126,7 @@ define(function () {
                                 });
                             }
 
-                            console.log(attr);
+                            //console.log(attr);
                         });
                     }
                 });
