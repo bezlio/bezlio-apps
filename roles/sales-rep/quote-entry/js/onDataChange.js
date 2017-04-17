@@ -125,6 +125,8 @@ define(function () {
                                     cnt++;
                                 });
                             }
+
+                            console.log(attr);
                         });
                     }
                 });
