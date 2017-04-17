@@ -44,7 +44,7 @@ define(function () {
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
                 PartNum: dtl.PartNum,
-                LineDesc: dtl.PartNum,
+                LineDesc: dtl.LineComment,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: 'EPIC03',
@@ -54,9 +54,7 @@ define(function () {
 
             if (dtl.Attributes !== undefined) {
                 let cnt = 2;
-                if (dtl.QuoteLine === 4) {
-                    console.log(dtl);
-                }
+
                 dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
 
                     if (!isNaN(Number(quoteQty.ATTRIBUTE_VALUE))) {
