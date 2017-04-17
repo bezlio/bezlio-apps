@@ -109,31 +109,30 @@ define(function () {
     }
 
     function ConfigureLine(bezl, partNum, quoteLine, listItem) {
+        if (listItem) {
+            bezl.vars.attrLoading = true;
+            var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES));
 
-        console.log("PartNum: " + partNum + " | QuoteLine: " + quoteLine + " | ListItem: " + listItem);
+            var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
+            bezl.vars.quoteAttributeLine = quoteLine;
 
-        // bezl.vars.attrLoading = true;
-        // var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES));
+            this.runQuery(bezl, "QuoteQty");
+            this.runQuery(bezl, "Attributes");
 
-        // var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
-        // bezl.vars.quoteAttributeLine = quoteLine;
+            if (curLine.Attributes === undefined) {
+                curLine.Attributes = [];
 
-        // this.runQuery(bezl, "QuoteQty");
-        // this.runQuery(bezl, "Attributes");
+                filterArray.forEach(attr => {
+                    var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
+                    //var attrFnd = jQuery.extend(true, {}, bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID));
 
-        // if (curLine.Attributes === undefined) {
-        //     curLine.Attributes = [];
-
-        //     filterArray.forEach(attr => {
-        //         var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
-        //         //var attrFnd = jQuery.extend(true, {}, bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID));
-
-        //         attrFnd.Display = false;
-        //         attrFnd.QuoteNum = curLine.QuoteNum;
-        //         attrFnd.QuoteLine = curLine.QuoteLine;
-        //         curLine.Attributes.push(attrFnd);
-        //     });
-        // }
+                    attrFnd.Display = false;
+                    attrFnd.QuoteNum = curLine.QuoteNum;
+                    attrFnd.QuoteLine = curLine.QuoteLine;
+                    curLine.Attributes.push(attrFnd);
+                });
+            }
+        }
     }
 
     return {
