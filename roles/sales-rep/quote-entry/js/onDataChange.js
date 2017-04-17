@@ -87,6 +87,8 @@ define(function () {
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
+            bezl.vars.loading = false;
+
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
                 Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
