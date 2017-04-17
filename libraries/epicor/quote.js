@@ -72,7 +72,7 @@ define(function () {
                     }
                 });
 
-                console.log(bezl.vars.ds);
+                console.log(dtl);
 
                 dtl.Attributes.map(attr => {
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
