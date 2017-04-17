@@ -66,13 +66,13 @@ define(function () {
                         callback: {
                             onClick: function (node, a, item, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
-                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = 0;
+                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
 
                                 console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             },
                             onNavigateBefore: function (node, query, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
-                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = 1;
+                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
 
                                 console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             }
