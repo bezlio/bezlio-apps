@@ -108,29 +108,32 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
-    function ConfigureLine(bezl, partNum, quoteLine) {
-        bezl.vars.attrLoading = true;
-        var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES));
+    function ConfigureLine(bezl, partNum, quoteLine, listItem) {
 
-        var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
-        bezl.vars.quoteAttributeLine = quoteLine;
+        console.log("PartNum: " + partNum + " | QuoteLine: " + quoteLine + " | ListItem: " + listItem);
 
-        this.runQuery(bezl, "QuoteQty");
-        this.runQuery(bezl, "Attributes");
+        // bezl.vars.attrLoading = true;
+        // var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES));
 
-        if (curLine.Attributes === undefined) {
-            curLine.Attributes = [];
+        // var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
+        // bezl.vars.quoteAttributeLine = quoteLine;
 
-            filterArray.forEach(attr => {
-                var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
-                //var attrFnd = jQuery.extend(true, {}, bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID));
+        // this.runQuery(bezl, "QuoteQty");
+        // this.runQuery(bezl, "Attributes");
 
-                attrFnd.Display = false;
-                attrFnd.QuoteNum = curLine.QuoteNum;
-                attrFnd.QuoteLine = curLine.QuoteLine;
-                curLine.Attributes.push(attrFnd);
-            });
-        }
+        // if (curLine.Attributes === undefined) {
+        //     curLine.Attributes = [];
+
+        //     filterArray.forEach(attr => {
+        //         var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
+        //         //var attrFnd = jQuery.extend(true, {}, bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID));
+
+        //         attrFnd.Display = false;
+        //         attrFnd.QuoteNum = curLine.QuoteNum;
+        //         attrFnd.QuoteLine = curLine.QuoteLine;
+        //         curLine.Attributes.push(attrFnd);
+        //     });
+        // }
     }
 
     return {
