@@ -66,13 +66,16 @@ define(function () {
                         callback: {
                             onClick: function (node, a, item, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
-                                console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
+                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = 0;
                             },
                             onNavigateBefore: function (node, query, event) {
-                                console.log("Query: " + query);
+                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
+                                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = 1;
                             }
                         }
                     });
+
+                    console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                 }
 
                 setTimeout(typeAhead, 2, dtl.QuoteLine);
