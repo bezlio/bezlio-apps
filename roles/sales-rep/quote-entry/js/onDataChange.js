@@ -60,8 +60,6 @@ define(function () {
                     dtl.ListItem = 0;
                 }
 
-                console.log(dtl);
-
                 var typeAhead = function (lineNum) {
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
