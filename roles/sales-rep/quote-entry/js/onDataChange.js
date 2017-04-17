@@ -130,7 +130,7 @@ define(function () {
                 });
             });
             try {
-                bezl.dataService.remove('Attributes');
+                //bezl.dataService.remove('Attributes');
             }
             catch (err) { }
         }
