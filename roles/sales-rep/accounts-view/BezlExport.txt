@@ -1,7 +1,7 @@
 {
 	"name": "Accounts View",
 	"template": "custom",
-	"owner": "kprice@saberlogic.com",
+	"owner": "sremington@saberlogic.com",
 	"shares": [],
 	"vars": [],
 	"dataSubscriptions": [],
@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "bezl.vars.loading = true;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"code": "bezl.vars.loading = true;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.loading = true;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+			"compiled": "bezl.vars.loading = true;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,7 +29,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "clickAddress",
@@ -45,7 +45,7 @@
 		},
 		{
 			"method": "refresh",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/account.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Accounts');\n    functions.runQuery(bezl, 'AccountContacts');\n    functions.runQuery(bezl, 'CRMCalls');\n    functions.runQuery(bezl, 'Tasks');\n    functions.runQuery(bezl, 'Attachments');\n});\n\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box",
+			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/account.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Accounts');\n    functions.runQuery(bezl, 'AccountContacts');\n    functions.runQuery(bezl, 'Tasks');\n    functions.runQuery(bezl, 'Attachments');\n});\n\nbezl.vars.filterString = \"\";\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box",
 			"declares": [
 				"$",
 				"parm",
@@ -53,7 +53,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/account.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Accounts');\r\n    functions.runQuery(bezl, 'AccountContacts');\r\n    functions.runQuery(bezl, 'CRMCalls');\r\n    functions.runQuery(bezl, 'Tasks');\r\n    functions.runQuery(bezl, 'Attachments');\r\n});\r\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\n"
+			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/account.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Accounts');\r\n    functions.runQuery(bezl, 'AccountContacts');\r\n    functions.runQuery(bezl, 'Tasks');\r\n    functions.runQuery(bezl, 'Attachments');\r\n});\r\nbezl.vars.filterString = \"\";\r\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\n"
 		},
 		{
 			"method": "selectRow",

@@ -1,0 +1,51 @@
+{
+	"name": "Geolocator",
+	"template": "custom",
+	"owner": "nowens@saberlogic.com",
+	"shares": [],
+	"vars": [],
+	"dataSubscriptions": [],
+	"markup": "<style>\n#geoBar {\n    width: 00%;\n    height: 30px;\n    background-color: #4CAF50;\n    text-align: center; /* To center it horizontally (if you want) */\n    line-height: 30px; /* To center it vertically */\n    color: white; \n}\n  \n  .progress .progress-bar {\n  -webkit-transition: none;\n       -o-transition: none;\n          transition: none;\n}\n</style>\n\n<div *ngIf=\"!bezl.vars.loading.customerList\">\n\t<button (click)=\"bezl.functions['getCustomers']()\" class=\"btn btn-md btn-primary\">Geocode Customers</button>\n</div>\n<div *ngIf=\"bezl.vars.loading.customerList\">\n\t<label *ngIf=\"bezl.vars.geoTracker < 100\">Geocoding... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label>\n  <label *ngIf=\"bezl.vars.geoTracker == 100\">Finishing up... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label>\n</div>\n\n<div class=\"progress\" id=\"progress\" [hidden]=\"bezl.vars.geoTracker == 100\">\n  <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" id='geoProgress'\n  aria-valuenow=\"bezl.vars.geoTracker\" aria-valuemin=\"0\" aria-valuemax=\"100\" \n       [style.width]=\"bezl.vars.geoTracker + '%'\">\n  </div>\n</div>\n\n<!--<div class=\"progress\" id=\"progress\" [hidden]=\"bezl.vars.geoTracker < 100\">\n  <div class=\"progress-bar progress-bar-striped \" role=\"progressbar\" aria-valuemin=\"100\" aria-valuemax=\"100\">\n  </div>\n</div>-->\n\n<div class=\"col-sm-12\">\n  <div class=\"col-sm-6\">\n<h4>Customer Listing</h4>\n<div [hidden]=\"bezl.vars.loading.customerList\">\n  <table style=\"width:100%\" class=\"table-striped\">\n  <thead>\n     <tr>\n      <th>Company</th>\n      <th>Address</th>\n      <th>Geolocation</th>\n \t </tr>\n    </thead>\n  <tbody>\n   <tr class=\"read\" *ngFor=\"let row of bezl.vars.customers\">\n    <td> {{row.display}} </td>\n     <td> {{row.data.Address}} </td>\n     <td> {{row.data.Geocode_Location}} </td>\n    </tr>\n    </tbody>\n</table>\n</div>\n</div>\n\n<div class=\"col-sm-6\">\n  <div id=\"map\" style=\"height: 450px; border-style: solid;\"></div>\n</div>\n</div>",
+	"functions": [
+		{
+			"method": "ngOnInit",
+			"code": "bezl.vars.currentAddress = \"\";\n        bezl.vars.markers = [];\n        bezl.vars.customers = [];\n        bezl.vars.selectedCustomer = { \"CustNum\": 0 };\n        bezl.vars.loading = { \n            customerList: false\n        }\nbezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = \"AIzaSyAPveNcZ80xykDGeRhdKKHvvU9XINc9tqg\";\nbezl.vars.redo = [];\n\nvar progress = document.getElementById('geoProgress');\nvar pNum = progress.style.width;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/geolocation-bezl/roles/common/geolocation/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.loading = {\r\n    customerList: false\r\n};\r\nbezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = \"AIzaSyAPveNcZ80xykDGeRhdKKHvvU9XINc9tqg\";\r\nbezl.vars.redo = [];\r\nvar progress = document.getElementById('geoProgress');\r\nvar pNum = progress.style.width;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/geolocation-bezl/roles/common/geolocation/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "onDataChange",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/geolocation-bezl/roles/common/geolocation/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/geolocation-bezl/roles/common/geolocation/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "getCustomers",
+			"code": "bezl.vars.loading.customerList = true;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/geolocation-bezl/roles/common/geolocation/js/customer.js'], function(customer) {\n\tcustomer.runQuery(bezl, 'CustList');\n});\n\nbezl.vars.loading.customerList = false;",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.vars.loading.customerList = true;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/geolocation-bezl/roles/common/geolocation/js/customer.js'], function (customer) {\r\n    customer.runQuery(bezl, 'CustList');\r\n});\r\nbezl.vars.loading.customerList = false;\r\n"
+		}
+	],
+	"datatrans": null,
+	"data": "",
+	"id": "fe362260-36d3-4eec-8934-568c1f216408",
+	"type": "Bezl"
+}
