@@ -68,6 +68,9 @@ define(function () {
                                 console.log(item);
 
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
+                            },
+                            onClickBefore: function () {
+                                console.log('test test');
                             }
                         }
                     });
