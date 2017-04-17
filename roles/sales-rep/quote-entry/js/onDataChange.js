@@ -65,17 +65,11 @@ define(function () {
                         },
                         callback: {
                             onClick: function (node, a, item, event) {
-                                console.log(item);
-
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
+                                console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             },
                             onNavigateBefore: function (node, query, event) {
-                                console.log(node);
                                 console.log("Query: " + query);
-                                console.log(event);
-                            },
-                            onNavigateAfter: function (node, lis, a, item, query, event) {
-                                console.log('on submit');
                             }
                         }
                     });
