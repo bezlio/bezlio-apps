@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "bezl.vars.loading = true;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"code": "bezl.vars.loading = true;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.loading = true;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+			"compiled": "bezl.vars.loading = true;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,7 +29,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Accounts-View---Data-Disappears-due-to-data-cache-%23151/roles/sales-rep/accounts-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/accounts-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "clickAddress",
