@@ -30,7 +30,6 @@ define(function () {
             BTCustNum: bezl.vars.quoteData.custNum,
             Name: bezl.vars.quoteData.customerName,
             CustomerCustID: bezl.vars.quoteData.customerId,
-            EntryDate: bezl.vars.quoteData.quoteDate,
             MktgCampaignID: 'Customer',
             MktgEvntSeq: 1,
             Company: 'EPIC03',
