@@ -54,6 +54,9 @@ define(function () {
             bezl.vars.linesloading = false;
 
             bezl.data.QuoteDtls.map(dtl => {
+
+                console.log(dtl);
+
                 var typeAhead = function (lineNum) {
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
                     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
@@ -67,14 +70,10 @@ define(function () {
                             onClick: function (node, a, item, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
-
-                                console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             },
                             onNavigateBefore: function (node, query, event) {
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
-
-                                console.log(bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)));
                             }
                         }
                     });
