@@ -54,6 +54,11 @@ define(function () {
             bezl.vars.linesloading = false;
 
             bezl.data.QuoteDtls.map(dtl => {
+                if (bezl.vars.parts.find(part => part.PART_DESCRIPTION === dtl.PartNum) !== undefined) {
+                    dtl.ListItem = 1;
+                } else {
+                    dtl.ListItem = 0;
+                }
 
                 console.log(dtl);
 
