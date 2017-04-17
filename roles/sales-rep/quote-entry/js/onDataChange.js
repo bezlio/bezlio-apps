@@ -69,14 +69,11 @@ define(function () {
 
                                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
                             },
-                            onMouseLeave: function (node, a, item, event) {
+                            onNavigateBefore: function (node, query, event) {
                                 console.log('on mouse leave');
                             },
-                            onSubmit: function (node, form, item, event) {
+                            onNavigateAfter: function (node, lis, a, item, query, event) {
                                 console.log('on submit');
-                            },
-                            onResult: function (node, query, result, resultCount, resultCountPerGroup) {
-                                console.log('on result');
                             }
                         }
                     });
