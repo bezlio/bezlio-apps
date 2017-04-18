@@ -4,6 +4,8 @@ define(["./edi850I.js"], function (edi850I) {
         bezl.vars.filterEdiStatus = "H";
         bezl.vars.filter = "";
         bezl.vars.search = "";
+        bezl.vars.sort = "";
+        bezl.vars.sortCol = "";
 
         edi850I.runQuery(bezl, "GetDashHeaderData");
 
