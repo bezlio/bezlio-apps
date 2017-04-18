@@ -1,4 +1,4 @@
-﻿{
+{
 	"name": "Map View",
 	"template": "custom",
 	"owner": "nowens@saberlogic.com",
