@@ -19,6 +19,11 @@ define(["./rma.js"], function (rma) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
             }
 
+        // Set up event handler for selection of customer on account view
+        $("#bezlpanel").on( "selectAccount", function(event, param1) {
+                bezl.vars.selectedAccount = param1
+                rma.runQuery(bezl, 'RMAs');
+            });
     }
      return {
     onStartup: OnStartup
