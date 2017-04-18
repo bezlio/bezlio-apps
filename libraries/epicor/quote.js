@@ -30,7 +30,7 @@ define(function () {
             BTCustNum: bezl.vars.quoteData.custNum,
             Name: bezl.vars.quoteData.customerName,
             CustomerCustID: bezl.vars.quoteData.customerId,
-            MktgCampaignID: 'Customer',
+            MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
             Company: 'KCC',
             RowMod: 'U'
