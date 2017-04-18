@@ -56,8 +56,6 @@ define(function () {
                     bezl.vars.PriceList.push(tempPart); 
                 }
             }
-            bezl.dataService.remove('PriceList');
-            bezl.data.PriceList = null;
             bezl.vars.loading = false;
     }
 }
