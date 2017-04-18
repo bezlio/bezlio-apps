@@ -8,7 +8,7 @@ define(function () {
     function NewQuote(bezl, company, custNum) {
         bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
-                "Connection": "Epicor 10 RS",
+                "Connection": "Epicor Production",
                 "Company": "KCC",
                 "CustNum": custNum,
             }, 0);
@@ -127,7 +127,7 @@ define(function () {
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
-                "Connection": "Epicor 10 RS",
+                "Connection": "Epicor Production",
                 "Company": "KCC",
                 "QuoteNum": quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)

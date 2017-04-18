@@ -37,7 +37,7 @@ define(function () {
 
                             bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
                                 {
-                                    "Connection": "Epicor 10 RS",
+                                    "Connection": "Epicor Production",
                                     "Company": "KCC",
                                     "QuoteNum": bezl.vars.quoteData.quoteNum,
                                     "ds": JSON.stringify(bezl.vars.ds)
