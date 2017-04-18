@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,11 +29,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "search",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Orders')\n});\n\n",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Orders')\n});\n\n",
 			"declares": [
 				"$",
 				"parm",
@@ -41,11 +41,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Orders');\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Orders');\r\n});\r\n"
 		},
 		{
 			"method": "selectRow",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -53,11 +53,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "sort",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});\n",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});\n",
 			"declares": [
 				"$",
 				"parm",
@@ -65,11 +65,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "innerSort",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.innerSort(bezl, parm)\n});\n",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.innerSort(bezl, parm)\n});\n",
 			"declares": [
 				"$",
 				"parm",
@@ -77,11 +77,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.innerSort(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.innerSort(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "filter",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.filter(bezl)\n});\n",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function(functions) {\n\tfunctions.filter(bezl)\n});\n",
 			"declares": [
 				"$",
 				"parm",
@@ -89,7 +89,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.filter(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/order-inquiry/js/order.js'], function (functions) {\r\n    functions.filter(bezl);\r\n});\r\n"
 		}
 	],
 	"datatrans": null,

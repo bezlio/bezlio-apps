@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "bezl.vars.selectedAccount = {};\nbezl.vars.loading = { \n  attachment: []\n}\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/attachments-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"code": "bezl.vars.selectedAccount = {};\nbezl.vars.loading = { \n  attachment: []\n}\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.selectedAccount = {};\r\nbezl.vars.loading = {\r\n    attachment: []\r\n};\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/attachments-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+			"compiled": "bezl.vars.selectedAccount = {};\r\nbezl.vars.loading = {\r\n    attachment: []\r\n};\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/attachments-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,11 +29,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/attachments-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "viewFile",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/attachments-view/js/attachment.js'], function(functions) {\n\tfunctions.viewFile(bezl, parm);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/attachment.js'], function(functions) {\n\tfunctions.viewFile(bezl, parm);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -41,7 +41,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/attachments-view/js/attachment.js'], function (functions) {\r\n    functions.viewFile(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/attachment.js'], function (functions) {\r\n    functions.viewFile(bezl, parm);\r\n});\r\n"
 		}
 	],
 	"datatrans": null,
