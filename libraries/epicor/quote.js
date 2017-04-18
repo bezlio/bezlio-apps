@@ -9,7 +9,7 @@ define(function () {
         bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
                 "Connection": "Epicor 10 RS",
-                "Company": "EPIC03",
+                "Company": "KCC",
                 "CustNum": custNum,
             }, 0);
 
@@ -32,7 +32,7 @@ define(function () {
             CustomerCustID: bezl.vars.quoteData.customerId,
             MktgCampaignID: 'Customer',
             MktgEvntSeq: 1,
-            Company: 'EPIC03',
+            Company: 'KCC',
             RowMod: 'U'
         });
 
@@ -47,7 +47,7 @@ define(function () {
                 LineDesc: dtl.LineComment,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
-                Company: 'EPIC03',
+                Company: 'KCC',
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
@@ -65,7 +65,7 @@ define(function () {
                             OurQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             SellingQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             PricePerCode: 'E',
-                            Company: 'EPIC03',
+                            Company: 'KCC',
                             RowMod: 'U'
                         });
                         cnt++;
@@ -128,7 +128,7 @@ define(function () {
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
                 "Connection": "Epicor 10 RS",
-                "Company": "EPIC03",
+                "Company": "KCC",
                 "QuoteNum": quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
