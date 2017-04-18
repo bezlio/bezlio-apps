@@ -18,6 +18,14 @@ define(function () {
         });
         // hide filter, ngIf will prevent jquery from setting up the listener
         $("#Filter").hide();
+
+        // If there was a previously selected customer in localStorage, grab a reference
+            bezl.vars.selectedAccount  = {};
+            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
+                bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+            }
+
+
     }
      return {
     onStartup: OnStartup
