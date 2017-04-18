@@ -75,9 +75,87 @@ define(function () {
         }      
     }
 
+    function Sort(bezl, sortColumn) {
+        // If the previous sort column was picked, make it the opposite sort
+        if (bezl.vars.sortCol == sortColumn) {
+            if (bezl.vars.sort == "desc") {
+                bezl.vars.sort = "asc";
+            } else {
+                bezl.vars.sort = "desc";
+            }
+        } else {
+            bezl.vars.sort = "asc";
+        }
+        
+        // Store the sort column so the UI can reflect it
+        bezl.vars.sortCol = sortColumn;
+
+        // Test for numeric sort columns, otherwise sort alphabetic
+        if (sortColumn == "APPROVE") {
+            if (bezl.vars.sort == "asc") {
+                bezl.vars.Orders.sort(function (a, b) {
+                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    return A - B;
+                });
+            } else {
+                bezl.vars.Orders.sort(function (a, b) {
+                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    return B - A;
+                });
+            }
+        } else if (sortColumn == "DESIRED_SHIP_DATE" || "ORDER_DATE" || "CHANGE_DATE") {
+            if (bezl.vars.sort == "asc") {
+                bezl.vars.Orders.sort(function (a, b) {
+                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER;
+                    return A - B;
+                });
+            } else {
+                bezl.vars.Orders.sort(function (a, b) {
+                    var A = Date.parse(a[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
+                    var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
+                    return B - A;
+                });
+            } 
+        } else {
+            if (bezl.vars.sort == "asc") { 
+                bezl.vars.Orders.sort(function(a, b) {
+                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    if (A < B) {
+                        return -1;
+                    }
+                    if (A > B) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                });
+            } else {
+                bezl.vars.Orders.sort(function(a, b) {
+                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    if (A > B) {
+                        return -1;
+                    }
+                    if (A < B) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+                });
+            }
+        }
+    }
+
     return {
         filterEdiStatus: FilterEdiStatus,
         runQuery: RunQuery,
-        filterBy: FilterBy
+        filterBy: FilterBy,
+        sort: Sort
     }
 });
