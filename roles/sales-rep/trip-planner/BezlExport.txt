@@ -129,7 +129,7 @@
 		},
 		{
 			"method": "setConfig",
-			"code": "bezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\nbezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io/roles/sales-rep/trip-planner/js/\";",
+			"code": "bezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\nbezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io/roles/sales-rep/trip-planner/js/\";",
 			"declares": [
 				"$",
 				"parm",
@@ -137,7 +137,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\r\nbezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io/roles/sales-rep/trip-planner/js/\";\r\n"
+			"compiled": "bezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\r\nbezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io/roles/sales-rep/trip-planner/js/\";\r\n"
 		},
 		{
 			"method": "navigate",
