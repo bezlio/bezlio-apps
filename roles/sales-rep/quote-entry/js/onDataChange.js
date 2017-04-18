@@ -31,14 +31,14 @@ define(function () {
                                 CustomerCustID: bezl.vars.quoteData.customerId,
                                 MktgCampaignID: 'Customer',
                                 MktgEvntSeq: 1,
-                                Company: 'EPIC03',
+                                Company: 'KCC',
                                 RowMod: 'U'
                             });
 
                             bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
                                 {
                                     "Connection": "Epicor 10 RS",
-                                    "Company": "EPIC03",
+                                    "Company": "KCC",
                                     "QuoteNum": bezl.vars.quoteData.quoteNum,
                                     "ds": JSON.stringify(bezl.vars.ds)
                                 }, 0);
