@@ -36,8 +36,6 @@ define(function () {
             RowMod: 'U'
         });
 
-        console.log(bezl.vars.ds.QuoteHed);
-
         quoteNum = bezl.vars.quoteData.quoteNum;
         custNum = bezl.vars.quoteData.custNum;
 
@@ -136,8 +134,18 @@ define(function () {
             }, 0);
     }
 
+    function DeleteQuote(bezl, company, quoteNum) {
+        bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
+            {
+                "Connection": "Epicor Production",
+                "Company": "KCC",
+                "QuoteNum": quoteNum
+            }, 0);
+    }
+
     return {
         newQuote: NewQuote,
-        saveQuote: SaveQuote
+        saveQuote: SaveQuote,
+        deleteQuote: DeleteQuote
     }
 });
