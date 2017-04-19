@@ -46,6 +46,10 @@ define(["./account.js"], function (account) {
             };
 
             account.applyFilter(bezl);
+            // Apply the existing sort if there is one
+            if (bezl.vars.sortCol && bezl.vars.sort) {
+                account.sort(bezl, bezl.vars.sortCol, bezl.vars.sort);
+            }
         }
 
         // If we got the account contacts back, merge those in
