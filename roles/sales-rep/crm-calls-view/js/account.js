@@ -58,6 +58,8 @@ define(function () {
 
         bezl.data.AllCRMCalls.push(newCallDict);
         bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
+
+        SortCalls(bezl);
         
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
