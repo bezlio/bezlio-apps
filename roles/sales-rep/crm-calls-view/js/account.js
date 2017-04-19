@@ -45,7 +45,7 @@ define(function () {
             }
         }
 
-        bezl.data.AllCRMCalls.push({
+        var newCallDict = {
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
@@ -54,7 +54,10 @@ define(function () {
             "CallTypeDesc"  : callTypeDesc,
             "ID"            : bezl.vars.selectedAccount.ID,
             "show"          : true
-        });
+        };
+
+        bezl.data.AllCRMCalls.push(newCallDict);
+        bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
         
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
