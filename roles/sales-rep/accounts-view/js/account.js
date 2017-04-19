@@ -62,17 +62,22 @@ define(function () {
         };
     }
 
-    function Sort(bezl, sortColumn) {
+    function Sort(bezl, sortColumn, sortDirection = null) {
 
-        // If the previous sort column was picked, make it the opposite sort
-        if (bezl.vars.sortCol == sortColumn) {
-            if (bezl.vars.sort == "desc") {
-                bezl.vars.sort = "asc";
-            } else {
-                bezl.vars.sort = "desc";
-            }
+        // If the sort direction is passed we will use it, otherwise it will be calculated
+        if (sortDirection !== null && (sortDirection == "asc" || sortDirection == "desc")) {
+            bezl.vars.sort = sortDirection;
         } else {
-            bezl.vars.sort = "asc";
+            // If the previous sort column was picked, make it the opposite sort
+            if (bezl.vars.sortCol == sortColumn) {
+                if (bezl.vars.sort == "desc") {
+                    bezl.vars.sort = "asc";
+                } else {
+                    bezl.vars.sort = "desc";
+                }
+            } else {
+                bezl.vars.sort = "asc";
+            }
         }
         
         // Store the sort column so the UI can reflect it
