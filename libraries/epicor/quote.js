@@ -139,7 +139,8 @@ define(function () {
             {
                 "Connection": "Epicor Production",
                 "Company": "KCC",
-                "QuoteNum": quoteNum
+                "QuoteNum": quoteNum,
+                "ds": ""
             }, 0);
     }
 
