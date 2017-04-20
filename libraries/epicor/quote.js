@@ -135,12 +135,27 @@ define(function () {
     }
 
     function DeleteQuote(bezl, company, quoteNum) {
+        bezl.vars.ds.QuoteHed = [];
+
+        bezl.vars.ds.QuoteHed.push({
+            QuoteNum: bezl.vars.quoteData.quoteNum,
+            CustNum: bezl.vars.quoteData.custNum,
+            CustID: bezl.vars.quoteData.customerId,
+            BTCustNum: bezl.vars.quoteData.custNum,
+            Name: bezl.vars.quoteData.customerName,
+            CustomerCustID: bezl.vars.quoteData.customerId,
+            MktgCampaignID: 'Domestic',
+            MktgEvntSeq: 1,
+            Company: 'KCC',
+            RowMod: 'D'
+        });
+
         bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
             {
                 "Connection": "Epicor Production",
                 "Company": "KCC",
-                "QuoteNum": quoteNum,
-                "ds": ""
+                "QuoteNum": bezl.vars.quoteData.quoteNum,
+                "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
     }
 
