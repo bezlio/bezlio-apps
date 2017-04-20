@@ -135,7 +135,9 @@ define(function () {
         }
 
         if (bezl.data.deleteQuote) {
-            console.log('please confirm...');
+            require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+                functions.returnToSummary(bezl);
+            });
         }
     }
 
