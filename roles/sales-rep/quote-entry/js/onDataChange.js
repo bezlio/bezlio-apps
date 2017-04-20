@@ -132,10 +132,10 @@ define(function () {
                     }
                 });
             });
-            try {
-                //bezl.dataService.remove('Attributes');
-            }
-            catch (err) { }
+        }
+
+        if (bezl.data.deleteQuote) {
+            console.log('please confirm...');
         }
     }
 
