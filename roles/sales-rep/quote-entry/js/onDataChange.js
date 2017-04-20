@@ -135,11 +135,13 @@ define(function () {
         }
 
         if (bezl.data.deleteQuote) {
+            var quoteNum = bezl.vars.quoteData.quoteNum;
+
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
             });
 
-            console.log(bezl.data.deleteQuote);
+            console.log("Quote:" + quoteNum);
         }
     }
 
