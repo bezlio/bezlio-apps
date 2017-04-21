@@ -143,7 +143,7 @@ define(function () {
 
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
 
-            console.log("Quote:" + quoteNum);
+            bezl.dataService.remove('deleteQuote');
         }
     }
 
