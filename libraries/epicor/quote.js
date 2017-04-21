@@ -20,6 +20,10 @@ define(function () {
         console.log("CustID: " + custID);
         console.log(bezl.data.Customers);
 
+        var curCust = bezl.data.Customer.find(cust => cust.CustID === custID);
+
+        console.log(curCust);
+
         // bezl.vars.quoteData = {
         //     newQuote: false,
         //     quoteNum: parm.QuoteNum,
