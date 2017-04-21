@@ -19,6 +19,7 @@ define(function () {
     function UpdateCustomer(bezl, custID) {
         console.log("CustID: " + custID);
         console.log(bezl.data.Customers);
+
         // bezl.vars.quoteData = {
         //     newQuote: false,
         //     quoteNum: parm.QuoteNum,
@@ -180,6 +181,7 @@ define(function () {
     return {
         newQuote: NewQuote,
         saveQuote: SaveQuote,
-        deleteQuote: DeleteQuote
+        deleteQuote: DeleteQuote,
+        updateCustomer: UpdateCustomer
     }
 });
