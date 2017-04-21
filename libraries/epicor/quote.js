@@ -20,7 +20,7 @@ define(function () {
         console.log("CustID: " + custID);
         console.log(bezl.data.Customers);
 
-        var curCust = bezl.data.Customer.find(cust => cust.CustID === custID);
+        var curCust = bezl.data.Customers.find(cust => cust.CustID === custID);
 
         console.log(curCust);
 
