@@ -141,6 +141,8 @@ define(function () {
                 functions.returnToSummary(bezl);
             });
 
+            bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
+
             console.log("Quote:" + quoteNum);
         }
     }
