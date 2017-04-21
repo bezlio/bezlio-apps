@@ -16,6 +16,26 @@ define(function () {
         bezl.vars.newQuote = true;
     }
 
+    function UpdateCustomer(bezl, custID) {
+        console.log("CustID: " + custID);
+        console.log(bezl.data.Customers);
+        // bezl.vars.quoteData = {
+        //     newQuote: false,
+        //     quoteNum: parm.QuoteNum,
+        //     quoteDate: new Date(parm.EntryDate),
+        //     salespersonId: parm.SalesRepCode,
+        //     customerId: parm.CustID,
+        //     custNum: parm.CustNum,
+        //     customerName: parm.Name,
+        //     comments: parm.QuoteComment,
+        //     status: parm.QuoteClosed,
+        //     result: parm.Result,
+        //     quoteLines: []
+        // };
+
+
+    }
+
     function SaveQuote(bezl, company, quoteNum) {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
@@ -71,8 +91,6 @@ define(function () {
                         cnt++;
                     }
                 });
-
-                console.log(dtl);
 
                 dtl.Attributes.map(attr => {
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
