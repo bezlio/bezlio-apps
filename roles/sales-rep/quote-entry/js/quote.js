@@ -72,6 +72,8 @@ define(function () {
             result: '',
             quoteLines: []
         };
+
+        console.log(bezl.data.Quotes);
     }
 
     function AddLine(bezl) {

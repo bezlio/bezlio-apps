@@ -140,7 +140,7 @@ define(function () {
                 functions.returnToSummary(bezl);
             });
 
-            bezl.vars.deleting = true;
+            bezl.vars.deleting = false;
             bezl.dataService.remove('deleteQuote');
         }
     }
