@@ -73,7 +73,7 @@ define(function () {
             quoteLines: []
         };
 
-        console.log("Return: " + bezl.data.Quotes);
+        //console.log("Return: " + bezl.data.Quotes);
     }
 
     function AddLine(bezl) {
