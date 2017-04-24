@@ -116,7 +116,9 @@ define(function () {
         }
 
         if (bezl.data.changeCustomer) {
-            bezl.vars.saving = false;
+            setTimeout(() => {
+                bezl.vars.saving = false;
+            }, 3000);
 
             bezl.dataService.remove('changeCustomer');
         }
