@@ -31,7 +31,7 @@ define(function () {
                                 CustomerCustID: bezl.vars.quoteData.customerId,
                                 MktgCampaignID: 'Customer',
                                 MktgEvntSeq: 1,
-                                Company: 'KCC',
+                                Company: bezl.vars.Company,
                                 RowMod: 'U'
                             });
 
