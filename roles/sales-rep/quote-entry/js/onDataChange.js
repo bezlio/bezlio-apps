@@ -87,7 +87,7 @@ define(function () {
 
             setTimeout(() => {
                 bezl.vars.saving = false;
-            }, 3);
+            }, 3000);
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
