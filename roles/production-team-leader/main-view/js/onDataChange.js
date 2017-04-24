@@ -16,6 +16,7 @@ define(["./employees.js"], function (employees) {
                                             clockedIn: bezl.data.Employees[i].ClockedIn,
                                             laborId: bezl.data.Employees[i].LaborID,
                                             currentActivity: bezl.data.Employees[i].CurrentActivity,
+                                            laborType: bezl.data.Employees[i].LaborType,
                                             pendingQty: bezl.data.Employees[i].PendingQty,
                                             shift: bezl.data.Employees[i].Shift,
                                             department: bezl.data.Employees[i].Department,
@@ -34,6 +35,7 @@ define(["./employees.js"], function (employees) {
                             bezl.vars.team[x].clockedIn = bezl.data.Employees[i].ClockedIn;
                             bezl.vars.team[x].laborId = bezl.data.Employees[i].LaborID;
                             bezl.vars.team[x].currentActivity = bezl.data.Employees[i].CurrentActivity;
+                            bezl.vars.team[x].laborType = bezl.data.Employees[i].LaborType;
                             bezl.vars.team[x].pendingQty = bezl.data.Employees[i].PendingQty;
                         }
                     }
@@ -45,6 +47,7 @@ define(["./employees.js"], function (employees) {
                                 clockedIn: bezl.data.Employees[i].ClockedIn,
                                 laborId: bezl.data.Employees[i].LaborID,
                                 currentActivity: bezl.data.Employees[i].CurrentActivity,
+                                laborType: bezl.data.Employees[i].LaborType,
                                 pendingQty: bezl.data.Employees[i].PendingQty,
                                 employeeEmail: bezl.data.Employees[i].EmployeeEmail,
                                 shift: bezl.data.Employees[i].Shift,
@@ -204,6 +207,7 @@ define(["./employees.js"], function (employees) {
                     for (var x = 0; x < bezl.vars.team.length; x++) {
                         if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
                             bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
+                            bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
                             bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
                         }
                     }
