@@ -87,7 +87,6 @@ define(function () {
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
-            console.log('New Quote Test');
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
                 Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
