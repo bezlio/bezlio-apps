@@ -228,12 +228,9 @@ define(function () {
                         laborHeds.push(((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId));
 
                         // Update the selected job variable to note whether they are doing a setup or production
-                        bezl.vars.selectedJob = '';
                         if (setup) {
-                            bezl.vars.selectedJob.jobId += " (S)";
                             bezl.vars.selectedJob.laborType = 'S';
                         } else {
-                            bezl.vars.selectedJob.jobId += " (P)";
                             bezl.vars.selectedJob.laborType = 'P';
                         }
                     }
