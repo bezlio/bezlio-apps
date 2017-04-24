@@ -176,7 +176,7 @@ define(function () {
             {
                 "Connection": connection,
                 "Company": company,
-                "QuoteNum": quoteNum,
+                "QuoteNum": quoteData.quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
     }
