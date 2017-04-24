@@ -52,7 +52,6 @@ define(function () {
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
             bezl.vars.linesloading = false;
-            bezl.vars.saving = false;
 
             bezl.data.QuoteDtls.map(dtl => {
                 if (bezl.vars.parts.find(part => part.PART_DESCRIPTION === dtl.PartNum) !== undefined) {
@@ -85,6 +84,10 @@ define(function () {
 
                 setTimeout(typeAhead, 2, dtl.QuoteLine);
             });
+
+            setTimeout(() => {
+                bezl.vars.saving = false;
+            }, 3);
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
