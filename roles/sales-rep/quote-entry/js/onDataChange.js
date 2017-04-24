@@ -1,6 +1,6 @@
 define(function () {
     function OnDataChange(bezl) {
-        if (bezl.data.Quotes && !bezl.data.newQuote) {
+        if (bezl.data.Quotes && !bezl.vars.newQuote) {
             bezl.vars.loading = false;
         }
 
