@@ -4,6 +4,8 @@ Select TOP 100
 	ERP.OrderHed.PONum As PoNum,
 	ERP.OrderHed.DocOrderAmt As OrderAmt,
 	ERP.OrderHed.OpenOrder As OpenOrder,
+	ERP.Customer.CustID As CustID,
+	ERP.Customer.Name As CustName,
 	ERP.OrderDtl.OrderLine As OrderLine,
 	ERP.OrderDtl.PartNum As PartNum,
 	ERP.Part.PartDescription As PartDesc,
@@ -16,9 +18,11 @@ Select TOP 100
 		Group By Erp.OrderRel.Company,Erp.OrderRel.OrderNum, Erp.OrderRel.OrderLine) As ShippedQty
 From 
 	Erp.OrderHed with (nolock)
+	INNER JOIN Erp.Customer with (nolock) ON Erp.OrderHed.Company = Erp.Customer.Company AND Erp.OrderHed.CustNum = Erp.Customer.CustNum
 	INNER JOIN Erp.OrderDtl with (nolock) ON Erp.OrderHed.Company = Erp.OrderDtl.Company AND Erp.OrderHed.OrderNum = Erp.OrderDtl.OrderNum
-	LEFT OUTER JOIN Erp.Part On Erp.OrderDtl.Company = Erp.Part.Company AND Erp.OrderDtl.PartNum = Erp.Part.PartNum
+	LEFT OUTER JOIN Erp.Part with (nolock) ON Erp.OrderDtl.Company = Erp.Part.Company AND Erp.OrderDtl.PartNum = Erp.Part.PartNum
 WHERE 
+	Erp.Customer.CustID = '{CustID}' AND
 	ERP.OrderHed.OrderDate >= '{StartDate}' AND ERP.OrderHed.OrderDate <= '{EndDate}' AND
 	ERP.OrderHed.Company =  CASE WHEN '{Company}' <> 'ALL' THEN '{Company}' ELSE Erp.OrderHed.Company END
 ORDER BY 

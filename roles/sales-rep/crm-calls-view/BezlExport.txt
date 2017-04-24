@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "bezl.vars.loading = false;\nbezl.vars.selectedAccount = {};\nbezl.vars.loadedMore = false;\n\n// Prompt for the CRM platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"code": "bezl.vars.loading = false;\nbezl.vars.selectedAccount = {};\nbezl.vars.loadedMore = false;\n\n// Prompt for the CRM platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.loading = false;\r\nbezl.vars.selectedAccount = {};\r\nbezl.vars.loadedMore = false;\r\n// Prompt for the CRM platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+			"compiled": "bezl.vars.loading = false;\r\nbezl.vars.selectedAccount = {};\r\nbezl.vars.loadedMore = false;\r\n// Prompt for the CRM platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,11 +29,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "more",
-			"code": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\nbezl.vars.filterString = \"\";\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/account.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'CRMCalls');\n  \tbezl.vars.loadedMore = true;\n});",
+			"code": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\nbezl.vars.filterString = \"\";\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'CRMCalls');\n  \tbezl.vars.loadedMore = true;\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -41,11 +41,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\nbezl.vars.filterString = \"\";\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/account.js'], function (functions) {\r\n    functions.runQuery(bezl, 'CRMCalls');\r\n    bezl.vars.loadedMore = true;\r\n});\r\n"
+			"compiled": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\nbezl.vars.filterString = \"\";\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.runQuery(bezl, 'CRMCalls');\r\n    bezl.vars.loadedMore = true;\r\n});\r\n"
 		},
 		{
 			"method": "addNote",
-			"code": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\nbezl.vars.filterString = \"\";\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/account.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.addNote(bezl);\n});",
+			"code": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\nbezl.vars.filterString = \"\";\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.addNote(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -53,7 +53,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\nbezl.vars.filterString = \"\";\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/account.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.addNote(bezl);\r\n});\r\n"
+			"compiled": "$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\nbezl.vars.filterString = \"\";\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.addNote(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "saveSettings",
@@ -69,7 +69,7 @@
 		},
 		{
 			"method": "onFilterChange",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/account.js'], function(functions) {\n\tfunctions.applyFilter(bezl)\n});",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.applyFilter(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -77,11 +77,23 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/crm-calls-view/js/account.js'], function (functions) {\r\n    functions.applyFilter(bezl);\r\n});\r\n"
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.applyFilter(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "setConfig",
+			"code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    var tld = \"\";\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        tld = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        tld = \"https://bezlio-apps.bezl.io\";\n    }\n    bezl.vars.config.baseUrl = tld + \"/roles/sales-rep/crm-calls-view/js/\";\n}\n",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.vars.config = {};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    var tld = \"\";\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        tld = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        tld = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n    bezl.vars.config.baseUrl = tld + \"/roles/sales-rep/crm-calls-view/js/\";\r\n}\r\n"
 		}
 	],
 	"datatrans": null,
 	"data": "",
-	"id": "c65f94c8-044c-4c25-8160-6514e249413f",
+	"id": "f5b5305e-8a56-41cd-ae8a-13e31e94b89f",
 	"type": "Bezl"
 }

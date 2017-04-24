@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "bezl.vars.loading = true;\nbezl.vars.selectedAccount = {};\n\n// Prompt for the Platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"code": "bezl.vars.loading = true;\nbezl.vars.selectedAccount = {};\n\n// Prompt for the Platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.loading = true;\r\nbezl.vars.selectedAccount = {};\r\n// Prompt for the Platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+			"compiled": "bezl.vars.loading = true;\r\nbezl.vars.selectedAccount = {};\r\n// Prompt for the Platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,11 +29,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "addTask",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.addTask(bezl);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.addTask(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -41,7 +41,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.addTask(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.addTask(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "saveSettings",
@@ -69,7 +69,7 @@
 		},
 		{
 			"method": "updateTasks",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.updateTasks(bezl);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.updateTasks(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -77,11 +77,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.updateTasks(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.updateTasks(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "refresh",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Tasks')\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Tasks')\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -89,11 +89,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Tasks');\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Tasks');\r\n});\r\n"
 		},
 		{
 			"method": "selectRow",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -101,11 +101,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "sort",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/account.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/account.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -113,11 +113,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/account.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/account.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "cancelAddTask",
-			"code": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.cancelAddTask(bezl, parm);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.cancelAddTask(bezl, parm);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -125,7 +125,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://bezlio-apps-dev.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.cancelAddTask(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.cancelAddTask(bezl, parm);\r\n});\r\n"
 		}
 	],
 	"datatrans": null,
