@@ -16,10 +16,7 @@ define(function () {
         bezl.vars.newQuote = true;
     }
 
-    function UpdateCustomer(bezl, custID) {
-        console.log("CustID: " + custID);
-        console.log(bezl.data.Customers);
-
+    function UpdateCustomer(bezl, connection, company, quoteData, custID) {
         var curCust = bezl.data.Customers.find(cust => cust.CustID === custID);
 
         bezl.vars.quoteData.customerId = curCust.CustID;
