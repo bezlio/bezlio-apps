@@ -61,6 +61,7 @@ define(function () {
 
     function ReturnToSummary(bezl) {
         bezl.vars.editingQuote = false;
+        bezl.vars.newQuote = false;
 
         bezl.vars.quoteData = {
             quoteDate: new Date(),
