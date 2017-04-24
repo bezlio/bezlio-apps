@@ -130,7 +130,8 @@ define(["./employees.js"], function (employees) {
                 bezl.vars.openJobs.push({ jobId: bezl.data.OpenJobs[i].JobID,
                         jobDesc: bezl.data.OpenJobs[i].JobDesc,
                         data: bezl.data.OpenJobs[i],
-                        pendingQty: bezl.data.OpenJobs[i].PendingQty
+                        pendingQty: bezl.data.OpenJobs[i].PendingQty,
+                        show: true
                         });
             }
                 
