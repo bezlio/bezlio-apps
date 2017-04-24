@@ -11,7 +11,7 @@ SELECT Top 100 -- TESTING
 				(select (
 					select ContactName, EMailAddress, ContactTitle, PhoneNum from (
 						SELECT 
-							  cn.descending_combined_name AS ContactName
+							  cn.contact_name AS ContactName
 							, cn.email_address AS EMailAddress
 							, cn.title AS ContactTitle
 							, cn.direct_phone AS PhoneNum
