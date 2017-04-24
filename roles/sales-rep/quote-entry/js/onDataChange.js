@@ -19,29 +19,6 @@ define(function () {
                             bezl.vars.quoteData.custNum = item.CustNum;
                             bezl.vars.quoteData.customerId = item.CustID;
                             bezl.vars.quoteData.customerName = item.Name;
-
-                            bezl.vars.ds.QuoteHed = [];
-
-                            bezl.vars.ds.QuoteHed.push({
-                                QuoteNum: bezl.vars.quoteData.quoteNum,
-                                CustNum: bezl.vars.quoteData.custNum,
-                                CustID: bezl.vars.quoteData.customerId,
-                                BTCustNum: bezl.vars.quoteData.custNum,
-                                Name: bezl.vars.quoteData.customerName,
-                                CustomerCustID: bezl.vars.quoteData.customerId,
-                                MktgCampaignID: 'Customer',
-                                MktgEvntSeq: 1,
-                                Company: bezl.vars.Company,
-                                RowMod: 'U'
-                            });
-
-                            bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
-                                {
-                                    "Connection": bezl.vars.Connection,
-                                    "Company": bezl.vars.Company,
-                                    "QuoteNum": bezl.vars.quoteData.quoteNum,
-                                    "ds": JSON.stringify(bezl.vars.ds)
-                                }, 0);
                         }
                     }
                 });

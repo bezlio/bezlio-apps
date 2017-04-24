@@ -22,22 +22,32 @@ define(function () {
 
         var curCust = bezl.data.Customers.find(cust => cust.CustID === custID);
 
-        console.log(curCust);
+        bezl.vars.quoteData.customerId = curCust.CustID;
+        bezl.vars.quoteData.custNum = curCust.CustNum;
+        bezl.vars.quoteData.customerName = curCust.Name;
 
-        //reference 
-        // bezl.vars.quoteData = {
-        //     newQuote: false,
-        //     quoteNum: parm.QuoteNum,
-        //     quoteDate: new Date(parm.EntryDate),
-        //     salespersonId: parm.SalesRepCode,
-        //     customerId: parm.CustID,
-        //     custNum: parm.CustNum,
-        //     customerName: parm.Name,
-        //     comments: parm.QuoteComment,
-        //     status: parm.QuoteClosed,
-        //     result: parm.Result,
-        //     quoteLines: []
-        // };
+        bezl.vars.ds.QuoteHed = [];
+
+        bezl.vars.ds.QuoteHed.push({
+            QuoteNum: bezl.vars.quoteData.quoteNum,
+            CustNum: bezl.vars.quoteData.custNum,
+            CustID: bezl.vars.quoteData.customerId,
+            BTCustNum: bezl.vars.quoteData.custNum,
+            Name: bezl.vars.quoteData.customerName,
+            CustomerCustID: bezl.vars.quoteData.customerId,
+            MktgCampaignID: 'Customer',
+            MktgEvntSeq: 1,
+            Company: bezl.vars.Company,
+            RowMod: 'U'
+        });
+
+        bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
+            {
+                "Connection": bezl.vars.Connection,
+                "Company": bezl.vars.Company,
+                "QuoteNum": bezl.vars.quoteData.quoteNum,
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
     }
 
     function SaveQuote(bezl, connection, company, quoteData) {
