@@ -178,6 +178,7 @@ define(function () {
                                 'Company'           :   bezl.vars.config.Company
                                 ,'LaborHedSeq'		: 	((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId)
                                 ,'LaborQty'	        :	(bezl.vars.team[i].completedQty || 0)
+                                ,'SetupPctComplete'	:	(bezl.vars.team[i].setupPctComplete || 0)
                                 }
                             );
 
