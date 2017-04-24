@@ -284,7 +284,7 @@ define(function () {
     }
 
     function OnTeamFilterChange (bezl) {  
-        if (bezl.vars.team) { // Avoid throwing errors if the account data hasn't been returned yet  
+        if (bezl.vars.team) { // Avoid throwing errors if the team data hasn't been returned yet  
         for (var i = 0; i < bezl.vars.team.length; i++) {
             if (bezl.vars.teamFilterString) { // Make sure we have something to filter on
             if (bezl.vars.team[i].display && bezl.vars.team[i].display.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1 ||
@@ -303,6 +303,25 @@ define(function () {
         $("#jsGridTeam").jsGrid("loadData");
         HighlightSelected(bezl);
     }
+
+    function OnJobFilterChange (bezl) {  
+        if (bezl.vars.openJobs) { // Avoid throwing errors if the account data hasn't been returned yet  
+        for (var i = 0; i < bezl.vars.openJobs.length; i++) {
+            if (bezl.vars.jobFilterString) { // Make sure we have something to filter on
+            if (bezl.vars.openJobs[i].jobId && bezl.vars.openJobs[i].jobId.toUpperCase().indexOf(bezl.vars.jobFilterString.toUpperCase()) !== -1 ||
+                bezl.vars.openJobs[i].jobDesc && bezl.vars.openJobs[i].jobDesc.toUpperCase().indexOf(bezl.vars.jobFilterString.toUpperCase()) !== -1) {
+                bezl.vars.openJobs[i].show = true;
+            } else {
+                bezl.vars.openJobs[i].show = false;
+            }
+            } else {
+            bezl.vars.openJobs[i].show = true;
+            }
+        };
+        }
+
+        $("#jsGridJobs").jsGrid("loadData");
+    }
  
     return {
         select: Select,
@@ -319,6 +338,7 @@ define(function () {
         startJob: StartJob,
         validateQuantities: ValidateQuantities,
         overrideQuantityException: OverrideQuantityException,
-        onTeamFilterChange: OnTeamFilterChange
+        onTeamFilterChange: OnTeamFilterChange,
+        onJobFilterChange: OnJobFilterChange
     }
 });
