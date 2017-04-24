@@ -4,8 +4,10 @@ INSERT INTO Bezlio_Customer_Geocode_Location
 		, company_id -- or 'YourCompanyID'  -- Set this to match the company ID below if there is one
 		, '{Geocode_Location}' 
 	FROM 
-		Bezlio_Customer_Geocode_Location 
-	WHERE 
+		p21_view_customer 
+	WHERE
+	p21_view_customer.customer_id = {CustNum}
+		AND
 	   (SELECT 
 			COUNT(*) 
 		FROM 

@@ -1,4 +1,4 @@
-SELECT TOP 100
+SELECT
 	  '' AS FileName
 	, '' AS Description
 	, '' AS FileExt

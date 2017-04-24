@@ -1,10 +1,10 @@
-SELECT TOP 100 
+SELECT
 	  cl.category_id AS ShortSummary
 	, cl.notes AS Details
 	, Cast(cl.start_date As Date) AS CallDate
 	, sr.name AS SalesRepName
-	, '' AS RelatedToFile -- (originally Epicor10 Erp.CRMCall.RelatedToFile)
-	, ct.category_desc As CallTypeDesc
+	, '' AS RelatedToFile
+	, ct.category_desc AS CallTypeDesc
 FROM 
 	p21_view_call_log cl with(nolock)
 

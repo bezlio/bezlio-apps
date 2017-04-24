@@ -1,4 +1,4 @@
-SELECT Top 100 -- TESTING
+SELECT
 	  c.customer_id_string As CustID
 	, c.customer_id As CustNum
 	, c.customer_name As Name
