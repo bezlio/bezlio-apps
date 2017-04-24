@@ -140,6 +140,8 @@ define(function () {
                 functions.returnToSummary(bezl);
             });
 
+            console.log("QuoteNum Post: " + quoteNum);
+
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
 
             bezl.vars.deleting = true;
