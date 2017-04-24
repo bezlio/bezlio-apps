@@ -282,6 +282,27 @@ define(function () {
         quantityRow.override = true;
         bezl.vars.endActivitiesDisabled = false;
     }
+
+    function OnTeamFilterChange (bezl) {  
+        if (bezl.vars.team) { // Avoid throwing errors if the account data hasn't been returned yet  
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            if (bezl.vars.teamFilterString) { // Make sure we have something to filter on
+            if (bezl.vars.team[i].display && bezl.vars.team[i].display.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1 ||
+                bezl.vars.team[i].currentActivity && bezl.vars.team[i].currentActivity.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1 ||
+                bezl.vars.team[i].department && bezl.vars.team[i].department.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1) {
+                bezl.vars.team[i].show = true;
+            } else {
+                bezl.vars.team[i].show = false;
+            }
+            } else {
+            bezl.vars.team[i].show = true;
+            }
+        };
+        }
+
+        $("#jsGridTeam").jsGrid("loadData");
+        HighlightSelected(bezl);
+    }
  
     return {
         select: Select,
@@ -297,6 +318,7 @@ define(function () {
         endActivitiesPrompt: EndActivitiesPrompt,
         startJob: StartJob,
         validateQuantities: ValidateQuantities,
-        overrideQuantityException: OverrideQuantityException
+        overrideQuantityException: OverrideQuantityException,
+        onTeamFilterChange: OnTeamFilterChange
     }
 });
