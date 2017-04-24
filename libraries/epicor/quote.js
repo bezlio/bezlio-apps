@@ -10,7 +10,7 @@ define(function () {
             {
                 "Connection": bezl.vars.Connection,
                 "Company": bezl.vars.Company,
-                "CustNum": custNum,
+                "CustNum": bezl.vars.CustomerCustID,
             }, 0);
 
         bezl.vars.newQuote = true;
