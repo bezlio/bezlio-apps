@@ -64,18 +64,18 @@ define(function () {
         custNum = quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
-            console.log(dtl);
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
                 PartNum: dtl.PartNum,
-                LineDesc: dtl.LineComment,
+                LineDesc: (dtl.LineComment === '') ? dtl.PartNum : dtl.LineComment,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: company,
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
+            console.log(dtl);
 
             if (dtl.Attributes !== undefined) {
                 let cnt = 2;
