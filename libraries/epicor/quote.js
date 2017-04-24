@@ -17,6 +17,8 @@ define(function () {
     }
 
     function UpdateCustomer(bezl, connection, company, quoteData, custID) {
+        bezl.vars.saving = true;
+
         var curCust = bezl.data.Customers.find(cust => cust.CustID === custID);
 
         bezl.vars.quoteData.customerId = curCust.CustID;

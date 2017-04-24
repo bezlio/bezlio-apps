@@ -115,6 +115,12 @@ define(function () {
             });
         }
 
+        if (bezl.data.changeCustomer) {
+            bezl.vars.saving = false;
+
+            bezl.dataService.remove('changeCustomer');
+        }
+
         if (bezl.data.deleteQuote) {
             var quoteNum = bezl.vars.quoteData.quoteNum;
 
