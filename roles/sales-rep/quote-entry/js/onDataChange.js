@@ -134,15 +134,16 @@ define(function () {
 
         if (bezl.data.deleteQuote) {
             var quoteNum = bezl.vars.quoteData.quoteNum;
-            console.log("QuoteNum: " + quoteNum);
 
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
             });
 
-            console.log("QuoteNum Post: " + quoteNum);
+            console.log(bezl.data.Quotes);
 
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
+
+            console.log(bezl.data.Quotes);
 
             bezl.vars.deleting = true;
             bezl.dataService.remove('deleteQuote');
