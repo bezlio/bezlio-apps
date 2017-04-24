@@ -180,6 +180,9 @@ define(function () {
                                 ,'LaborQty'	        :	(bezl.vars.team[i].completedQty || 0)
                                 }
                             );
+
+                            // Clear out the completed qty
+                            bezl.vars.team[i].completedQty = 0;
                         }
                     }                   
 
@@ -192,6 +195,14 @@ define(function () {
                     bezl.vars.endingActivities = true;
                 });
         }
+
+        bezl.vars.endActivitiesPrompt = false;
+    }
+
+    function EndActivitiesCancel (bezl) {        
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            bezl.vars.team[i].completedQty = 0;
+        };
 
         bezl.vars.endActivitiesPrompt = false;
     }
@@ -334,6 +345,7 @@ define(function () {
         clockIn: ClockIn,
         clockOut: ClockOut,
         endActivities: EndActivities,
+        endActivitiesCancel: EndActivitiesCancel,
         endActivitiesPrompt: EndActivitiesPrompt,
         startJob: StartJob,
         validateQuantities: ValidateQuantities,
