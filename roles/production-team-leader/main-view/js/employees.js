@@ -183,6 +183,7 @@ define(function () {
 
                             // Clear out the completed qty
                             bezl.vars.team[i].completedQty = 0;
+                            bezl.vars.team[i].pendingQtyTemp = 0;
                         }
                     }                   
 

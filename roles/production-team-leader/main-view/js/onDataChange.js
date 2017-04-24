@@ -5,6 +5,10 @@ define(["./employees.js"], function (employees) {
         // and to the team if the SupervisorID matches the currenly logged in user
         if (bezl.data.Employees) {
             bezl.vars.employees = [];
+
+            // Grab a reference to the logged in employee
+            var currentEmployee = bezl.data.Employees.find(e => e.EmployeeEmail == bezl.env.currentUser);
+
             for (var i = 0; i < bezl.data.Employees.length; i++) {
                 bezl.vars.employees.push({ selected: false,
                                             key: bezl.data.Employees[i].EmpID,
@@ -18,8 +22,10 @@ define(["./employees.js"], function (employees) {
                                             show: true
                                         });
                                         
-                if (bezl.data.Employees[i].SupervisorEmail == bezl.env.currentUser 
-                    || bezl.data.Employees[i].EmployeeEmail == bezl.env.currentUser ) {
+                if ((bezl.vars.config.AssociateTeamBy == 'SupervisorEmail' && bezl.data.Employees[i].SupervisorEmail == bezl.env.currentUser)
+                    || (bezl.vars.config.AssociateTeamBy == 'DepartmentShift' && bezl.data.Employees[i].Department == currentEmployee.Department)
+                    || bezl.data.Employees[i].EmployeeEmail == bezl.env.currentUser
+                    ) {
                     var teamMemberFound = false;
 
                     for (var x = 0; x < bezl.vars.team.length; x++) {
