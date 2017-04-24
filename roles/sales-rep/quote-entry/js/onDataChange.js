@@ -134,7 +134,6 @@ define(function () {
 
         if (bezl.data.deleteQuote) {
             var quoteNum = bezl.vars.quoteData.quoteNum;
-            bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
 
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
@@ -142,6 +141,8 @@ define(function () {
 
             bezl.vars.deleting = false;
             bezl.dataService.remove('deleteQuote');
+
+            bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
         }
     }
 
