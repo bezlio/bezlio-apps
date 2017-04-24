@@ -64,6 +64,7 @@ define(function () {
         custNum = quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
+            console.log(dtl);
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
