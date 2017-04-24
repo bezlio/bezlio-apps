@@ -54,7 +54,7 @@ define(function () {
             BTCustNum: quoteData.custNum,
             Name: quoteData.customerName,
             CustomerCustID: quoteData.customerId,
-            MktgCampaignID: 'Domestic',
+            MktgCampaignID: 'Customer',
             MktgEvntSeq: 1,
             Company: company,
             RowMod: 'U'
@@ -166,7 +166,7 @@ define(function () {
             BTCustNum: quoteData.custNum,
             Name: quoteData.customerName,
             CustomerCustID: quoteData.customerId,
-            MktgCampaignID: 'Domestic',
+            MktgCampaignID: 'Customer',
             MktgEvntSeq: 1,
             Company: company,
             RowMod: 'D'
