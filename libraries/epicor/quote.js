@@ -5,12 +5,12 @@ define(function () {
     @param {Number} custNum - customer number
     */
 
-    function NewQuote(bezl, company, custNum) {
+    function NewQuote(bezl, connection, company, custID) {
         bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
-                "Connection": bezl.vars.Connection,
-                "Company": bezl.vars.Company,
-                "CustID": bezl.vars.CustomerCustID,
+                "Connection": connection,
+                "Company": company,
+                "CustID": custID,
             }, 0);
 
         bezl.vars.newQuote = true;
@@ -40,7 +40,7 @@ define(function () {
         // };
     }
 
-    function SaveQuote(bezl, company, quoteNum) {
+    function SaveQuote(bezl, connection, company, quoteNum) {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
@@ -56,7 +56,7 @@ define(function () {
             CustomerCustID: bezl.vars.quoteData.customerId,
             MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
-            Company: bezl.vars.Company,
+            Company: company,
             RowMod: 'U'
         });
 
@@ -71,7 +71,7 @@ define(function () {
                 LineDesc: dtl.LineComment,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
-                Company: bezl.vars.Company,
+                Company: company,
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
@@ -89,7 +89,7 @@ define(function () {
                             OurQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             SellingQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             PricePerCode: 'E',
-                            Company: bezl.vars.Company,
+                            Company: company,
                             RowMod: 'U'
                         });
                         cnt++;
@@ -149,18 +149,18 @@ define(function () {
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
-                "Connection": bezl.vars.Connection,
-                "Company": bezl.vars.Company,
+                "Connection": connection,
+                "Company": company,
                 "QuoteNum": quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
     }
 
-    function DeleteQuote(bezl, company, quoteNum) {
+    function DeleteQuote(bezl, connection, company, quoteNum) {
         bezl.vars.ds.QuoteHed = [];
 
         bezl.vars.ds.QuoteHed.push({
-            QuoteNum: bezl.vars.quoteData.quoteNum,
+            QuoteNum: quoteNum,
             CustNum: bezl.vars.quoteData.custNum,
             CustID: bezl.vars.quoteData.customerId,
             BTCustNum: bezl.vars.quoteData.custNum,
@@ -168,15 +168,15 @@ define(function () {
             CustomerCustID: bezl.vars.quoteData.customerId,
             MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
-            Company: bezl.vars.Company,
+            Company: company,
             RowMod: 'D'
         });
 
         bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
             {
-                "Connection": bezl.vars.Connection,
-                "Company": bezl.vars.Company,
-                "QuoteNum": bezl.vars.quoteData.quoteNum,
+                "Connection": connection,
+                "Company": company,
+                "QuoteNum": quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
     }
