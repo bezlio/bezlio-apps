@@ -229,9 +229,9 @@ define(function () {
 
                         // Update the selected job variable to note whether they are doing a setup or production
                         if (setup) {
-                            bezl.vars.selectedJob.jobId += " (S)";
+                            bezl.vars.selectedJob.laborType = 'S';
                         } else {
-                            bezl.vars.selectedJob.jobId += " (P)";
+                            bezl.vars.selectedJob.laborType = 'P';
                         }
                     }
                 }
