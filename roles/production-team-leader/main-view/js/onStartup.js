@@ -50,16 +50,12 @@ define(["./employees.js"], function (employees) {
         width: "600",
         height: "400",
         heading: true,
-        filtering: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function(filter) {
-                return $.grep(bezl.vars.openJobs, function (item) {
-                    return (item.jobId.indexOf(filter.jobId) >= 0
-                            && item.jobDesc.indexOf(filter.jobDesc) >= 0);
-                });
+            loadData: function() {
+                return bezl.vars.openJobs.filter(j => j.show == true);
             }
         },
         fields: [
