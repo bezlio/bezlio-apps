@@ -40,7 +40,7 @@ define(function () {
         // };
     }
 
-    function SaveQuote(bezl, connection, company, quoteNum) {
+    function SaveQuote(bezl, connection, company, quoteData) {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
@@ -48,20 +48,20 @@ define(function () {
         var custNum;
 
         bezl.vars.ds.QuoteHed.push({
-            QuoteNum: bezl.vars.quoteData.quoteNum,
-            CustNum: bezl.vars.quoteData.custNum,
-            CustID: bezl.vars.quoteData.customerId,
-            BTCustNum: bezl.vars.quoteData.custNum,
-            Name: bezl.vars.quoteData.customerName,
-            CustomerCustID: bezl.vars.quoteData.customerId,
+            QuoteNum: quoteData.quoteNum,
+            CustNum: quoteData.custNum,
+            CustID: quoteData.customerId,
+            BTCustNum: quoteData.custNum,
+            Name: quoteData.customerName,
+            CustomerCustID: quoteData.customerId,
             MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
             Company: company,
             RowMod: 'U'
         });
 
-        quoteNum = bezl.vars.quoteData.quoteNum;
-        custNum = bezl.vars.quoteData.custNum;
+        quoteNum = quoteData.quoteNum;
+        custNum = quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
             bezl.vars.ds.QuoteDtl.push({
@@ -156,16 +156,16 @@ define(function () {
             }, 0);
     }
 
-    function DeleteQuote(bezl, connection, company, quoteNum) {
+    function DeleteQuote(bezl, connection, company, quoteData) {
         bezl.vars.ds.QuoteHed = [];
 
         bezl.vars.ds.QuoteHed.push({
-            QuoteNum: quoteNum,
-            CustNum: bezl.vars.quoteData.custNum,
-            CustID: bezl.vars.quoteData.customerId,
-            BTCustNum: bezl.vars.quoteData.custNum,
-            Name: bezl.vars.quoteData.customerName,
-            CustomerCustID: bezl.vars.quoteData.customerId,
+            QuoteNum: quoteData.quoteNum,
+            CustNum: quoteData.custNum,
+            CustID: quoteData.customerId,
+            BTCustNum: quoteData.custNum,
+            Name: quoteData.customerName,
+            CustomerCustID: quoteData.customerId,
             MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
             Company: company,
