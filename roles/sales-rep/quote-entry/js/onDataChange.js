@@ -134,6 +134,7 @@ define(function () {
 
         if (bezl.data.deleteQuote) {
             var quoteNum = bezl.vars.quoteData.quoteNum;
+            console.log("QuoteNum: " + quoteNum);
 
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
