@@ -75,7 +75,6 @@ define(function () {
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
-            console.log(dtl);
 
             if (dtl.Attributes !== undefined) {
                 let cnt = 2;
