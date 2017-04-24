@@ -106,6 +106,8 @@ define(function () {
                 bezl.functions.loadExistingQuote(newQuote);
                 bezl.vars.loading = false;
             }
+
+            bezl.dataService.remove('newQuote');
         }
 
         if (bezl.data.Attributes) {
@@ -143,7 +145,6 @@ define(function () {
             bezl.dataService.remove('deleteQuote');
 
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
-            //console.log("Delete: " + bezl.data.Quotes);
         }
     }
 
