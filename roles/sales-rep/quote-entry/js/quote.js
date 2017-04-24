@@ -74,15 +74,12 @@ define(function () {
     }
 
     function AddLine(bezl) {
-        //bezl.data.QuoteDtls = bezl.data.QuoteDtls.filter(dtl => dtl.Deleted === 0);
 
         var lineNum = Math.max.apply(Math, bezl.data.QuoteDtls.map(function (dtl) { return dtl.QuoteLine; }));
 
         lineNum = (lineNum === -Infinity) ? 0 : lineNum;
 
         bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', Deleted: 0 });
-
-        //var partList = [{ "PartNum": "Server1" }, { "PartNum": "Server2" }, { "PartNum": "Server3" }]
 
         var typeAhead = function (lineNum) {
             $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');

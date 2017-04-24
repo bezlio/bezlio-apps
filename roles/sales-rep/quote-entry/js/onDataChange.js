@@ -37,8 +37,8 @@ define(function () {
 
                             bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
                                 {
-                                    "Connection": "Epicor Production",
-                                    "Company": "KCC",
+                                    "Connection": bezl.vars.Connection,
+                                    "Company": bezl.vars.Company,
                                     "QuoteNum": bezl.vars.quoteData.quoteNum,
                                     "ds": JSON.stringify(bezl.vars.ds)
                                 }, 0);
@@ -126,8 +126,6 @@ define(function () {
                                     cnt++;
                                 });
                             }
-
-                            //console.log(attr);
                         });
                     }
                 });

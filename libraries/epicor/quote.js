@@ -8,8 +8,8 @@ define(function () {
     function NewQuote(bezl, company, custNum) {
         bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
-                "Connection": "Epicor Production",
-                "Company": "KCC",
+                "Connection": bezl.vars.Connection,
+                "Company": bezl.vars.Company,
                 "CustNum": custNum,
             }, 0);
 
@@ -24,6 +24,7 @@ define(function () {
 
         console.log(curCust);
 
+        //reference 
         // bezl.vars.quoteData = {
         //     newQuote: false,
         //     quoteNum: parm.QuoteNum,
@@ -37,8 +38,6 @@ define(function () {
         //     result: parm.Result,
         //     quoteLines: []
         // };
-
-
     }
 
     function SaveQuote(bezl, company, quoteNum) {
@@ -57,7 +56,7 @@ define(function () {
             CustomerCustID: bezl.vars.quoteData.customerId,
             MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
-            Company: 'KCC',
+            Company: bezl.vars.Company,
             RowMod: 'U'
         });
 
@@ -72,7 +71,7 @@ define(function () {
                 LineDesc: dtl.LineComment,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
-                Company: 'KCC',
+                Company: bezl.vars.Company,
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
@@ -90,7 +89,7 @@ define(function () {
                             OurQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             SellingQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
                             PricePerCode: 'E',
-                            Company: 'KCC',
+                            Company: bezl.vars.Company,
                             RowMod: 'U'
                         });
                         cnt++;
@@ -150,8 +149,8 @@ define(function () {
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
-                "Connection": "Epicor Production",
-                "Company": "KCC",
+                "Connection": bezl.vars.Connection,
+                "Company": bezl.vars.Company,
                 "QuoteNum": quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
@@ -169,14 +168,14 @@ define(function () {
             CustomerCustID: bezl.vars.quoteData.customerId,
             MktgCampaignID: 'Domestic',
             MktgEvntSeq: 1,
-            Company: 'KCC',
+            Company: bezl.vars.Company,
             RowMod: 'D'
         });
 
         bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
             {
-                "Connection": "Epicor Production",
-                "Company": "KCC",
+                "Connection": bezl.vars.Connection,
+                "Company": bezl.vars.Company,
                 "QuoteNum": bezl.vars.quoteData.quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
