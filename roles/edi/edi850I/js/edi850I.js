@@ -50,6 +50,17 @@ define(function () {
                     ] },0);
 
                 break;
+
+            case "GetViewFile":
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewfile','brdb','EDI','GetViewFile', { 
+                    "QueryName": "GetViewFile",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": [
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
+                    ] },0);
+
+                break;
         }
     }
     
