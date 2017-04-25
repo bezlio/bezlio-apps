@@ -5,32 +5,31 @@ define(function () {
         }
 
         if (bezl.data.Customers && bezl.vars.editingQuote) {
-            var typeAhead = function () {
-                $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead('destroy');
-                $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead({
-                    order: 'asc',
-                    maxItem: 8,
-                    display: ['Name'],
-                    source: {
-                        data: function () { return bezl.data.Customers; }
-                    },
-                    callback: {
-                        onClick: function (node, a, item, event) {
-                            bezl.vars.quoteData.custNum = item.CustNum;
-                            bezl.vars.quoteData.customerId = item.CustID;
-                            bezl.vars.quoteData.customerName = item.Name;
-                        }
-                    }
-                });
-            }
+            console.log(bezl.data);
+            // var typeAhead = function () {
+            //     $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead('destroy');
+            //     $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead({
+            //         order: 'asc',
+            //         maxItem: 8,
+            //         display: ['Name'],
+            //         source: {
+            //             data: function () { return bezl.data.Customers; }
+            //         },
+            //         callback: {
+            //             onClick: function (node, a, item, event) {
+            //                 bezl.vars.quoteData.custNum = item.CustNum;
+            //                 bezl.vars.quoteData.customerId = item.CustID;
+            //                 bezl.vars.quoteData.customerName = item.Name;
+            //             }
+            //         }
+            //     });
+            // }
 
-            setTimeout(typeAhead, 2);
+            // setTimeout(typeAhead, 2);
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
             bezl.vars.linesloading = false;
-
-            console.log(bezl.data.QuoteDtls);
 
             bezl.data.QuoteDtls.map(dtl => {
                 if (bezl.vars.parts.find(part => part.PART_DESCRIPTION === dtl.PartNum) !== undefined) {
@@ -38,30 +37,6 @@ define(function () {
                 } else {
                     dtl.ListItem = 0;
                 }
-
-                // var typeAhead = function (lineNum) {
-                //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
-                //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
-                //         order: "asc",
-                //         maxItem: 8,
-                //         display: ['PART_DESCRIPTION', 'PART_ID'],
-                //         source: {
-                //             data: function () { return bezl.vars.parts; }
-                //         },
-                //         callback: {
-                //             onClick: function (node, a, item, event) {
-                //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
-                //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
-                //             },
-                //             onNavigateBefore: function (node, query, event) {
-                //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
-                //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
-                //             }
-                //         }
-                //     });
-                // }
-
-                // setTimeout(typeAhead, 2, dtl.QuoteLine);
             });
 
             setTimeout(() => {
