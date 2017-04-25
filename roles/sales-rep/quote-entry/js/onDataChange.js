@@ -5,27 +5,11 @@ define(function () {
         }
 
         if (bezl.data.Customers && bezl.vars.editingQuote) {
-            console.log(bezl.data);
-            // var typeAhead = function () {
-            //     $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead('destroy');
-            //     $(bezl.container.nativeElement).find(".js-typeahead-customers").typeahead({
-            //         order: 'asc',
-            //         maxItem: 8,
-            //         display: ['Name'],
-            //         source: {
-            //             data: function () { return bezl.data.Customers; }
-            //         },
-            //         callback: {
-            //             onClick: function (node, a, item, event) {
-            //                 bezl.vars.quoteData.custNum = item.CustNum;
-            //                 bezl.vars.quoteData.customerId = item.CustID;
-            //                 bezl.vars.quoteData.customerName = item.Name;
-            //             }
-            //         }
-            //     });
-            // }
 
-            // setTimeout(typeAhead, 2);
+        }
+
+        if (bezl.data.Customers) {
+            console.log('test');
         }
 
         if (bezl.data.Suspects) {
