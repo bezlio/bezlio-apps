@@ -82,6 +82,10 @@ define(function () {
         };
     }
 
+    function IncludeSuspects(bezl) {
+        console.log(bezl.data);
+    }
+
     function AddLine(bezl) {
 
         var lineNum = Math.max.apply(Math, bezl.data.QuoteDtls.map(function (dtl) { return dtl.QuoteLine; }));
@@ -148,6 +152,7 @@ define(function () {
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
+        includeSuspects: IncludeSuspects,
         addLine: AddLine,
         deleteLine: DeleteLine,
         configureLine: ConfigureLine
