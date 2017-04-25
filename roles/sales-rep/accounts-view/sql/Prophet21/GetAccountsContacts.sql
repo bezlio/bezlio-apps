@@ -1,7 +1,7 @@
 SELECT
 	  c.customer_id_string AS ID
 	, c.customer_id As CustNum
-	, ct.descending_combined_name AS ContactName
+	, ct.contact_name AS ContactName
 	, ct.email_address AS EMailAddress
 	, ct.title AS ContactTitle
 	, ct.direct_phone AS PhoneNum

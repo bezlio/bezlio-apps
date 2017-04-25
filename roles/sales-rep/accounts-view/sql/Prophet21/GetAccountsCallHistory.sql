@@ -1,9 +1,9 @@
-SELECT Top 100 -- TESTING
+SELECT
 	  cl.category_id AS ShortSummary
 	, cl.notes AS Details
 	, Cast(cl.start_date As Date) AS CallDate
 	, sr.name AS SalesRepName
-	, '' AS RelatedToFile -- (originally Epicor10 Erp.CRMCall.RelatedToFile)
+	, '' AS RelatedToFile
 	, ct.category_desc As CallTypeDesc
 	, cust.customer_id_string AS ID
 FROM 

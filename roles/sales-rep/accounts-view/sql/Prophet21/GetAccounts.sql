@@ -11,18 +11,17 @@ SELECT
 	, a.phys_address1 + ' ' + a.phys_city + ', ' + a.phys_state + ' ' + a.phys_postal_code + ' ' AS Address
 	, gl.Geocode_Location AS Geocode_Location
 	, ct.customer_type AS AccountType
-	, t.territory_id AS Territory
+	, '' AS Territory --t.territory_id AS Territory -- Multiple Territories found for a single Customer causing duplications
 	, '' As EstDate -- Not found for Prophet21. (Possible alternate c.date_acct_opened)
 	, LastContact = (SELECT TOP 1 Cast(cl.end_date As Date) FROM p21_view_call_log cl with(nolock) WHERE cl.customer_id = c.customer_id ORDER BY cl.end_date DESC)
 	  -- (Epicor offers a FiscalYear for an Invoice. Prophet 21 appears to require some additional qualifying for Fiscal - pending based on demand.)
 	, YTDSales = (SELECT SUM(ih.total_amount) FROM p21_view_invoice_hdr ih with(nolock) WHERE ih.company_no = c.company_id and ih.customer_id_number = c.customer_id and ih.year_for_period = YEAR(GETDATE()))
 	, LYTDSales = (SELECT SUM(ih.total_amount) FROM p21_view_invoice_hdr ih with(nolock) WHERE ih.company_no = c.company_id and ih.customer_id_number = c.customer_id and ih.year_for_period = YEAR(GETDATE())-1)
-	, sr.id AS SalesRep --(or sr.descending_combined_name)
+	, sr.id AS SalesRep
 	, tm.terms_desc AS TermsDescription
 	, NextTaskDue = (SELECT TOP 1 Cast(tsk.target_complete_date As Date) FROM p21_view_activity_trans tsk with(nolock) 
 					 WHERE tsk.company_id = c.company_id 
 						And tsk.contact_id In (Select id FROM p21_view_contacts with(nolock) WHERE address_id = a.id ) 
-						-- (tsk.completed_flag = '?')
 						And tsk.completed_flag = 'N' 
 					 ORDER BY tsk.target_complete_date ASC)
 	, Coalesce(ARAging.[0to30], 0) As CurrentBalance
@@ -43,10 +42,11 @@ FROM
 	INNER JOIN p21_view_customer_type ct with(nolock) ON
 	c.customer_type_cd = ct.customer_type_uid
 	
-	LEFT OUTER JOIN p21_view_territory_x_customer tc with(nolock) ON
-	c.customer_id = tc.customer_id
-	LEFT OUTER JOIN p21_view_territory t with(nolock) ON
-	tc.territory_uid = t.territory_uid
+	-- Multiple Territories found for a single Customer causing duplications
+	--LEFT OUTER JOIN p21_view_territory_x_customer tc with(nolock) ON
+	--c.customer_id = tc.customer_id
+	--LEFT OUTER JOIN p21_view_territory t with(nolock) ON
+	--tc.territory_uid = t.territory_uid
 	
 	LEFT OUTER JOIN p21_view_contacts sr with(nolock) ON
 	c.salesrep_id = sr.id
