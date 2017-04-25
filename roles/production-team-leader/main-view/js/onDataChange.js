@@ -5,6 +5,10 @@ define(["./employees.js"], function (employees) {
         // and to the team if the SupervisorID matches the currenly logged in user
         if (bezl.data.Employees) {
             bezl.vars.employees = [];
+
+            // Grab a reference to the logged in employee
+            var currentEmployee = bezl.data.Employees.find(e => e.EmployeeEmail == bezl.env.currentUser);
+
             for (var i = 0; i < bezl.data.Employees.length; i++) {
                 bezl.vars.employees.push({ selected: false,
                                             key: bezl.data.Employees[i].EmpID,
@@ -12,13 +16,17 @@ define(["./employees.js"], function (employees) {
                                             clockedIn: bezl.data.Employees[i].ClockedIn,
                                             laborId: bezl.data.Employees[i].LaborID,
                                             currentActivity: bezl.data.Employees[i].CurrentActivity,
+                                            laborType: bezl.data.Employees[i].LaborType,
                                             pendingQty: bezl.data.Employees[i].PendingQty,
                                             shift: bezl.data.Employees[i].Shift,
-                                            department: bezl.data.Employees[i].Department
+                                            department: bezl.data.Employees[i].Department,
+                                            show: true
                                         });
                                         
-                if (bezl.data.Employees[i].SupervisorEmail == bezl.env.currentUser 
-                    || bezl.data.Employees[i].EmployeeEmail == bezl.env.currentUser ) {
+                if ((bezl.vars.config.AssociateTeamBy == 'SupervisorEmail' && bezl.data.Employees[i].SupervisorEmail == bezl.env.currentUser)
+                    || (bezl.vars.config.AssociateTeamBy == 'DepartmentShift' && bezl.data.Employees[i].Department == currentEmployee.Department)
+                    || bezl.data.Employees[i].EmployeeEmail == bezl.env.currentUser
+                    ) {
                     var teamMemberFound = false;
 
                     for (var x = 0; x < bezl.vars.team.length; x++) {
@@ -27,6 +35,7 @@ define(["./employees.js"], function (employees) {
                             bezl.vars.team[x].clockedIn = bezl.data.Employees[i].ClockedIn;
                             bezl.vars.team[x].laborId = bezl.data.Employees[i].LaborID;
                             bezl.vars.team[x].currentActivity = bezl.data.Employees[i].CurrentActivity;
+                            bezl.vars.team[x].laborType = bezl.data.Employees[i].LaborType;
                             bezl.vars.team[x].pendingQty = bezl.data.Employees[i].PendingQty;
                         }
                     }
@@ -38,10 +47,12 @@ define(["./employees.js"], function (employees) {
                                 clockedIn: bezl.data.Employees[i].ClockedIn,
                                 laborId: bezl.data.Employees[i].LaborID,
                                 currentActivity: bezl.data.Employees[i].CurrentActivity,
+                                laborType: bezl.data.Employees[i].LaborType,
                                 pendingQty: bezl.data.Employees[i].PendingQty,
                                 employeeEmail: bezl.data.Employees[i].EmployeeEmail,
                                 shift: bezl.data.Employees[i].Shift,
-                                department: bezl.data.Employees[i].Department
+                                department: bezl.data.Employees[i].Department,
+                                show: true
                                 });
                     }
 
@@ -128,7 +139,8 @@ define(["./employees.js"], function (employees) {
                 bezl.vars.openJobs.push({ jobId: bezl.data.OpenJobs[i].JobID,
                         jobDesc: bezl.data.OpenJobs[i].JobDesc,
                         data: bezl.data.OpenJobs[i],
-                        pendingQty: bezl.data.OpenJobs[i].PendingQty
+                        pendingQty: bezl.data.OpenJobs[i].PendingQty,
+                        show: true
                         });
             }
                 
@@ -194,7 +206,8 @@ define(["./employees.js"], function (employees) {
                 for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
                     for (var x = 0; x < bezl.vars.team.length; x++) {
                         if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
-                            bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId;
+                            bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
+                            bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
                             bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
                         }
                     }

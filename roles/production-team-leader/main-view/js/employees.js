@@ -178,8 +178,13 @@ define(function () {
                                 'Company'           :   bezl.vars.config.Company
                                 ,'LaborHedSeq'		: 	((bezl.vars.team[i].LaborHed) ? bezl.vars.team[i].LaborHed.LaborHedSeq : bezl.vars.team[i].laborId)
                                 ,'LaborQty'	        :	(bezl.vars.team[i].completedQty || 0)
+                                ,'SetupPctComplete'	:	(bezl.vars.team[i].setupPctComplete || 0)
                                 }
                             );
+
+                            // Clear out the completed qty
+                            bezl.vars.team[i].completedQty = 0;
+                            bezl.vars.team[i].pendingQtyTemp = 0;
                         }
                     }                   
 
@@ -192,6 +197,14 @@ define(function () {
                     bezl.vars.endingActivities = true;
                 });
         }
+
+        bezl.vars.endActivitiesPrompt = false;
+    }
+
+    function EndActivitiesCancel (bezl) {        
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            bezl.vars.team[i].completedQty = 0;
+        };
 
         bezl.vars.endActivitiesPrompt = false;
     }
@@ -217,9 +230,9 @@ define(function () {
 
                         // Update the selected job variable to note whether they are doing a setup or production
                         if (setup) {
-                            bezl.vars.selectedJob.jobId += " (S)";
+                            bezl.vars.selectedJob.laborType = 'S';
                         } else {
-                            bezl.vars.selectedJob.jobId += " (P)";
+                            bezl.vars.selectedJob.laborType = 'P';
                         }
                     }
                 }
@@ -282,6 +295,46 @@ define(function () {
         quantityRow.override = true;
         bezl.vars.endActivitiesDisabled = false;
     }
+
+    function OnTeamFilterChange (bezl) {  
+        if (bezl.vars.team) { // Avoid throwing errors if the team data hasn't been returned yet  
+        for (var i = 0; i < bezl.vars.team.length; i++) {
+            if (bezl.vars.teamFilterString) { // Make sure we have something to filter on
+            if (bezl.vars.team[i].display && bezl.vars.team[i].display.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1 ||
+                bezl.vars.team[i].currentActivity && bezl.vars.team[i].currentActivity.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1 ||
+                bezl.vars.team[i].department && bezl.vars.team[i].department.toUpperCase().indexOf(bezl.vars.teamFilterString.toUpperCase()) !== -1) {
+                bezl.vars.team[i].show = true;
+            } else {
+                bezl.vars.team[i].show = false;
+            }
+            } else {
+            bezl.vars.team[i].show = true;
+            }
+        };
+        }
+
+        $("#jsGridTeam").jsGrid("loadData");
+        HighlightSelected(bezl);
+    }
+
+    function OnJobFilterChange (bezl) {  
+        if (bezl.vars.openJobs) { // Avoid throwing errors if the account data hasn't been returned yet  
+        for (var i = 0; i < bezl.vars.openJobs.length; i++) {
+            if (bezl.vars.jobFilterString) { // Make sure we have something to filter on
+            if (bezl.vars.openJobs[i].jobId && bezl.vars.openJobs[i].jobId.toUpperCase().indexOf(bezl.vars.jobFilterString.toUpperCase()) !== -1 ||
+                bezl.vars.openJobs[i].jobDesc && bezl.vars.openJobs[i].jobDesc.toUpperCase().indexOf(bezl.vars.jobFilterString.toUpperCase()) !== -1) {
+                bezl.vars.openJobs[i].show = true;
+            } else {
+                bezl.vars.openJobs[i].show = false;
+            }
+            } else {
+            bezl.vars.openJobs[i].show = true;
+            }
+        };
+        }
+
+        $("#jsGridJobs").jsGrid("loadData");
+    }
  
     return {
         select: Select,
@@ -294,9 +347,12 @@ define(function () {
         clockIn: ClockIn,
         clockOut: ClockOut,
         endActivities: EndActivities,
+        endActivitiesCancel: EndActivitiesCancel,
         endActivitiesPrompt: EndActivitiesPrompt,
         startJob: StartJob,
         validateQuantities: ValidateQuantities,
-        overrideQuantityException: OverrideQuantityException
+        overrideQuantityException: OverrideQuantityException,
+        onTeamFilterChange: OnTeamFilterChange,
+        onJobFilterChange: OnJobFilterChange
     }
 });
