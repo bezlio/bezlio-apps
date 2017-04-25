@@ -31,7 +31,7 @@ define(function () {
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company }
                     ]
-                });
+                }, 0);
                 break;
             case "QuoteDtls":
                 bezl.dataService.add('QuoteDtls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
@@ -39,7 +39,7 @@ define(function () {
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum }
                     ]
-                }, 0)
+                }, 0);
                 break;
             case "QuoteQty":
                 bezl.dataService.add('QuoteQty', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
@@ -48,7 +48,7 @@ define(function () {
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
                         { Key: "QuoteLine", Value: bezl.vars.quoteAttributeLine }
                     ]
-                })
+                }, 0);
                 break;
             case "Parts":
                 bezl.dataService.add('Parts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
