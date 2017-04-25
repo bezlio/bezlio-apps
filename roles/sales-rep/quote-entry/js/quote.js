@@ -25,7 +25,13 @@ define(function () {
                         { Key: "SalesRep", Value: bezl.env.currentUser },
                         { Key: "Company", Value: bezl.vars.Company }
                     ]
-                })
+                });
+                bezl.dataService.add('Suspects', 'brbd', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetSuspects",
+                    "Parameters": [
+                        { Key: "Company", Value: bezl.vars.Company }
+                    ]
+                });
                 break;
             case "QuoteDtls":
                 bezl.dataService.add('QuoteDtls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
