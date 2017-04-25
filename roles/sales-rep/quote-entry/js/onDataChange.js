@@ -28,6 +28,10 @@ define(function () {
             // setTimeout(typeAhead, 2);
         }
 
+        if (bezl.data.Suspects) {
+            console.log(bezl.data);
+        }
+
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
             bezl.vars.linesloading = false;
 
