@@ -8,7 +8,8 @@ define(function () {
                 bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetQuotesByRep",
                     "Parameters": [
-                        { Key: "SalesRep", Value: bezl.env.currentUser }
+                        { Key: "SalesRep", Value: bezl.env.currentUser },
+                        { Key: "Company", Value: bezl.vars.Compaany }
                     ]
                 }, 0);
                 break;
