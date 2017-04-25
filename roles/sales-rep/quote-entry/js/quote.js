@@ -28,7 +28,7 @@ define(function () {
                 }, 0);
                 break;
             case "Suspects":
-                bezl.dataService.add('Suspects', 'brbd', 'sales-rep-queries', 'ExecuteQuery', {
+                bezl.dataService.add('Suspects', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetSupects",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company }
