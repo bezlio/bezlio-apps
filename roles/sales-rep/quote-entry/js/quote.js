@@ -9,7 +9,7 @@ define(function () {
                     "QueryName": "GetQuotesByRep",
                     "Parameters": [
                         { Key: "SalesRep", Value: bezl.env.currentUser },
-                        { Key: "Company", Value: bezl.vars.Compaany }
+                        { Key: "Company", Value: bezl.vars.Company }
                     ]
                 }, 0);
                 break;
