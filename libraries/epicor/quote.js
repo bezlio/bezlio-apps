@@ -16,14 +16,14 @@ define(function () {
         bezl.vars.newQuote = true;
     }
 
-    function UpdateCustomer(bezl, connection, company, quoteData, custID) {
+    function UpdateCustomer(bezl, connection, company, quoteData, mktgEvnt, custID) {
         bezl.vars.saving = true;
 
         var curCust = bezl.data.Customers.find(cust => cust.CustID === custID);
 
-        bezl.vars.quoteData.customerId = curCust.CustID;
-        bezl.vars.quoteData.custNum = curCust.CustNum;
-        bezl.vars.quoteData.customerName = curCust.Name;
+        quoteData.customerId = curCust.CustID;
+        quoteData.custNum = curCust.CustNum;
+        quoteData.customerName = curCust.Name;
 
         bezl.vars.ds.QuoteHed = [];
 
@@ -34,7 +34,7 @@ define(function () {
             BTCustNum: bezl.vars.quoteData.custNum,
             Name: bezl.vars.quoteData.customerName,
             CustomerCustID: bezl.vars.quoteData.customerId,
-            MktgCampaignID: 'Customer',
+            MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: bezl.vars.Company,
             RowMod: 'U'
@@ -42,14 +42,14 @@ define(function () {
 
         bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
             {
-                "Connection": bezl.vars.Connection,
-                "Company": bezl.vars.Company,
-                "QuoteNum": bezl.vars.quoteData.quoteNum,
+                "Connection": connection,
+                "Company": company,
+                "QuoteNum": quoteData.quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
     }
 
-    function SaveQuote(bezl, connection, company, quoteData) {
+    function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
@@ -63,7 +63,7 @@ define(function () {
             BTCustNum: quoteData.custNum,
             Name: quoteData.customerName,
             CustomerCustID: quoteData.customerId,
-            MktgCampaignID: 'Customer',
+            MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: company,
             RowMod: 'U'
@@ -175,7 +175,6 @@ define(function () {
             BTCustNum: quoteData.custNum,
             Name: quoteData.customerName,
             CustomerCustID: quoteData.customerId,
-            MktgCampaignID: 'Customer',
             MktgEvntSeq: 1,
             Company: company,
             RowMod: 'D'
