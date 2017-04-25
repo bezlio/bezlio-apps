@@ -9,11 +9,11 @@ define(function () {
         }
 
         if (bezl.data.Customers) {
-            console.log('test');
+            console.log('custs');
         }
 
         if (bezl.data.Suspects) {
-            console.log(bezl.data);
+            console.log('susps');
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
