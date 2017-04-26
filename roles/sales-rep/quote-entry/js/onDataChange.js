@@ -48,7 +48,7 @@ define(function () {
             bezl.dataService.remove('newQuote');
         }
 
-        if (bezl.data.Attributes) {
+        if (bezl.data.Attributes && bezl.data.QuoteDtls) {
             bezl.vars.attrLoading = false;
 
             bezl.data.Attributes.map(attrs => {
