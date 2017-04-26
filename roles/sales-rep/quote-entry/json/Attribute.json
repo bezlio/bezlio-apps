@@ -538,12 +538,10 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No. of Samples",
-                "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pictures",
-                "ATTRIBUTE_VALUE": "NULL0",
                 "EDITABLE": true
             }
         ]
