@@ -70,6 +70,7 @@ define(function () {
                     }
                 });
             });
+            console.log(bezl.data.QuoteDtls);
         }
 
         if (bezl.data.changeCustomer) {
