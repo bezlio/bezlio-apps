@@ -86,11 +86,22 @@ define(function () {
 
     function IncludeSuspects(bezl, parm) {
         if (parm.srcElement.checked === true) {
-            console.log(bezl.data.Customers);
-            console.log(bezl.data.Suspects);
+            //console.log(bezl.data.Customers);
+            //console.log(bezl.data.Suspects);
+            bezl.data.Suspects.map(sus => {
+                bezl.data.Customers.push({
+                    CustID: sus.CustID,
+                    CustNum: sus.CustNum,
+                    CustomerType: 'SUS',
+                    Name: sus.Name,
+                    SalesRepCode: 'NONE'
+                });
+            });
         } else {
 
         }
+
+        console.log(bezl.data.Customers);
     }
 
     function AddLine(bezl) {
