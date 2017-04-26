@@ -85,7 +85,7 @@ define(function () {
     }
 
     function IncludeSuspects(bezl) {
-        console.log(bezl.data);
+        //console.log(bezl.data);
     }
 
     function AddLine(bezl) {
