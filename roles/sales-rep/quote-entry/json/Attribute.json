@@ -205,7 +205,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Further Description:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "HEIGHT": 300,
                 "WIDTH": 900
