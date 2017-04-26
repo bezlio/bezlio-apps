@@ -5,7 +5,7 @@ define(function () {
         }
 
         if (bezl.data.Customers && bezl.vars.editingQuote) {
-            console.log(bezl.data);
+            //console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {

@@ -85,7 +85,12 @@ define(function () {
     }
 
     function IncludeSuspects(bezl, parm) {
-        console.log(parm.srcElement.checked);
+        if (parm.srcElement.checked === true) {
+            console.log(bezl.data.Customers);
+            console.log(bezl.data.Suspects);
+        } else {
+
+        }
     }
 
     function AddLine(bezl) {
