@@ -98,10 +98,8 @@ define(function () {
                 });
             });
         } else {
-
+            bezl.data.Customers = bezl.data.Customers.filter(cust => cust.CustomerType !== 'SUS');
         }
-
-        console.log(bezl.data.Customers);
     }
 
     function AddLine(bezl) {
