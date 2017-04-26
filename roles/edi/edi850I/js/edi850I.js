@@ -61,6 +61,74 @@ define(function () {
                     ] },0);
 
                 break;
+
+            case "Revalidate":
+                var parameters = [], parameterCount = 0, parameterRow = 0;
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.viewdetails.HEADER){
+                    var obj = bezl.vars.viewdetails.HEADER[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "DESIRED_SHIP_DATE":
+                                parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ORDER_STATUS":
+                                parameters[parameterCount] = { "Key": "@ORDER_STATUS", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIP_VIA":
+                                parameters[parameterCount] = { "Key": "@SHIP_VIA", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIPTO_ID":
+                                parameters[parameterCount] = { "Key": "@SHIPTO_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+                
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.OVERRIDES){
+                    var obj = bezl.vars.viewdetails.OVERRIDES[key];
+
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString() + parameterRow.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+
+                    parameterRow = parameterRow + 1;
+                }
+                
+                //Reset the parameter row.
+                parameterRow = 0;
+
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.ITEMS){
+                    var obj = bezl.vars.viewdetails.ITEMS[key];
+                    
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString() + parameterRow.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+
+                    parameterRow = parameterRow + 1;
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','Revalidate', { 
+                    "QueryName": "Revalidate",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": parameters },0);
+
+                break;
         }
     }
     
