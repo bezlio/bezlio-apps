@@ -12,6 +12,7 @@ define(function () {
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
                         { "Key": "EndDate", "Value": bezl.vars.endDate || "01/01/2100"},
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""},
                         { "Key": "Company", "Value": 'All' }
                     ] },0);
                 break;
@@ -82,17 +83,17 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if ( sortColumn == "PoNum" || sortColumn == "OrderAmt" || sortColumn == "OrderNum") {
+        if (sortColumn == "OrderAmt" || sortColumn == "OrderNum") {
             if (bezl.vars.sort == "asc") {
                 bezl.vars.Orders.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return A - B;
                 });
             } else {
                 bezl.vars.Orders.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return B - A;
                 });
             }

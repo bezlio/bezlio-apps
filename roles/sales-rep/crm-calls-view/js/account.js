@@ -23,7 +23,7 @@ define(function () {
         // query, detect the CRM platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/libraries/epicor/crm.js'], function(functions) {
+            require(['https://bezlio-apps.bezl.io/libraries/epicor/crm.js'], function(functions) {
                 functions.addNote(bezl
                                 , bezl.vars.selectedAccount.Company
                                 , bezl.vars.selectedAccount.CustNum
@@ -45,7 +45,7 @@ define(function () {
             }
         }
 
-        bezl.data.AllCRMCalls.push({
+        var newCallDict = {
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
@@ -54,7 +54,12 @@ define(function () {
             "CallTypeDesc"  : callTypeDesc,
             "ID"            : bezl.vars.selectedAccount.ID,
             "show"          : true
-        });
+        };
+
+        bezl.data.AllCRMCalls.push(newCallDict);
+        bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
+
+        SortCalls(bezl);
         
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }

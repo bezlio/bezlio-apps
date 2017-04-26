@@ -1,1 +1,171 @@
-﻿{"name":"Trip Planner","template":"custom","owner":"bellis@saberlogic.com","shares":[],"vars":[],"dataSubscriptions":[],"markup":"<style>\n\t.input-group-btn > button { font-size: 14px; }\n  \n  .startLocation {\n  \tborder: none;    \n  }\n  \n  .startLocationText {\n    padding-top: 3px;\n    padding-bottom: 3px;\n    height: 34px;\n  }\n</style>\n\n<div class=\"row\">\n  <div class=\"col-sm-12\">\n    <div class=\"row\">\n\n          <div class=\"col-sm-7\">\n            <div class=\"row\">\n              <div class=\"col-sm-12\">\n                <div class=\"panel panel-primary\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">Trip Details</h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    <div class=\"row\">\n                      <table class=\"table\">\n                        <thead>\n                          <tr>\n                            <th></th>\n                            <th></th>\n                            <th>Name</th>\n                            <th>Address</th>\n                            <th></th>\n                          </tr>\n                         </thead>\n                        <tbody>\n                         <tr>\n                           <td>\n                             <button class=\"btn btn-sm btn-success mar-top\">\n                                <i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>\n                              </button>\n                           </td>\n                           <td colspan=\"4\">\n                             <div class=\"input-group form-control startLocation\" width=\"100%\">\n                              <input type=\"text\" class=\"form-control startLocationText\" [(ngModel)]=\"bezl.vars.currentAddress\">\n                              <span class=\"input-group-btn\">\n                                <button (click)=\"bezl.functions['updateAddress']()\" class=\"btn btn-md btn-primary\" style=\"margin-bottom:10px\">Update</button>\n                              </span>\n                            </div><!-- /input-group -->\n                           </td>\n                         </tr>\n                          <tr *ngFor=\"let item of bezl.vars.selectedCustomers; let i=index;\" (click)=\"bezl.functions['customerSelect'](item.key)\">\n                            <td>\n                              <button *ngIf=\"i < bezl.vars.selectedCustomers.length - 1\" (click)=\"bezl.functions['moveDown'](i)\" class=\"btn btn-sm btn-danger\">\n                                <i class=\"fa fa-arrow-down\" aria-hidden=\"true\"></i>\n                              </button>\n                              <button class=\"btn btn-sm btn-danger\" *ngIf=\"i >= bezl.vars.selectedCustomers.length - 1\" >\n                                <i class=\"fa fa-stop-circle\" aria-hidden=\"true\"></i>\n                              </button>\n                            </td>\n                            <td>\n                              <button *ngIf=\"i != 0\" (click)=\"bezl.functions['moveUp'](i)\" class=\"btn btn-sm btn-success\"><i class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></button>\n                            </td>\n                            <td>{{item.display}}</td>\n                            <td>{{item.address}}</td>\n                            <td>\n                              <button (click)=\"bezl.functions['customerRemove'](i)\" class=\"btn btn-sm btn-danger\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n                            </td>\n                          </tr>\n                        </tbody>\n                      </table>\n                    </div>\n                    <div class=\"row\">\n                      <button (click)=\"bezl.functions['navigate']()\" class=\"btn btn-md btn-primary\" [disabled]=\"bezl.vars.selectedCustomers.length == 0\">Navigate</button>\n                      <button (click)=\"bezl.functions['openMap']()\" class=\"btn btn-md btn-primary\" [disabled]=\"bezl.vars.selectedCustomers.length == 0\">Open Map</button>\n                    </div>\n                    \n                    \n                  </div>\n                </div>\n                 \n              </div>\n            </div>\n            <div class=\"row\">\n              <div id=\"map\" class=\"map\" style=\"height: 450px; border-style: solid;\"></div>\n            </div>\n            <div class=\"row\">\n              <div id=\"directions\"></div>\n            </div>\n          </div>\n          <div class=\"col-sm-5\">\n            <div class=\"row\">\n              <div class=\"col-sm-12 form-horizontal\">\n                <div class=\"control-group row-fluid form-inline\">\n                  <label for=\"js-typeahead-customers\" class=\"control-label\">Search</label>\n                  <div class=\"controls\">\n                    <div class=\"typeahead__container\">\n                      <div class=\"typeahead__field\">\n                        <span class=\"typeahead__query\">\n                          <input class=\"js-typeahead-customers\" name=\"js-typeahead-customers\" type=\"search\" [(ngModel)]=\"bezl.vars.selectedCustomer.Name\"  autocomplete=\"off\">\n                        </span>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"row\">\n              <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th width=\"70%\" colspan=\"2\">\n                      <div class=\"btn-group\" role=\"group\" width=\"100%\" style=\"display: block\">\n                        <button type=\"button\" \n                                (click)=\"bezl.functions['sort']('Name')\"\n                                class=\"btn btn-default btn-block\">\n                          <span class=\"pull-left\">Name</span>\n                          <i class=\"fa fa-sort-alpha-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol != 'Name'\" style=\"visibility: hidden\"></i>\n                          <i class=\"fa fa-sort-alpha-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Name' && bezl.vars.sort == 'asc'\"></i>\n                          <i class=\"fa fa-sort-alpha-desc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Name' && bezl.vars.sort == 'desc'\"></i>\n                        </button>\n                      </div>\n                    </th>\n                    <th width=\"30%\">\n                      <div class=\"btn-group\" role=\"group\" width=\"100%\" style=\"display: block\">\n                         <button type=\"button\" \n                                 (click)=\"bezl.functions['sort']('Distance')\"\n                                 class=\"btn btn-default btn-block\">\n                           <span class=\"pull-left\">Distance</span>\n                           <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol != 'Distance'\" style=\"visibility: hidden\"></i>\n                           <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Distance' && bezl.vars.sort == 'asc'\"></i>\n                           <i class=\"fa fa-sort-numeric-desc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Distance' && bezl.vars.sort == 'desc'\"></i>\n                         </button>\n                       </div>\n                    </th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr class=\"read\" *ngFor=\"let item of bezl.vars.customers\" (click)=\"bezl.functions['customerSelect'](item.key)\">\n                    <td><button (click)=\"bezl.functions['customerAdd'](item)\" class=\"btn btn-sm btn-primary\">+</button></td>\n                    <td>{{item.display}}</td>\n                    <td>{{item.distance}}</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n  </div>\n</div>","functions":[{"method":"ngOnInit","code":"bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.selectedCustomers = [];\nbezl.vars.loading = { \n  customerList: true\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(onStartup) {\n  onStartup.onStartup(bezl);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.selectedCustomers = [];\r\nbezl.vars.loading = {\r\n    customerList: true\r\n};\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (onStartup) {\r\n    onStartup.onStartup(bezl);\r\n});\r\n"},{"method":"onDataChange","code":"bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function(onDataChange) {\n  onDataChange.onDataChange(bezl);\n});\n","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function (onDataChange) {\r\n    onDataChange.onDataChange(bezl);\r\n});\r\n"},{"method":"refresh","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(customer) {\n  customer.runQuery(bezl, parm);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (customer) {\r\n    customer.runQuery(bezl, parm);\r\n});\r\n"},{"method":"updateAddress","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'map.js'], function(map) {\n  map.updateAddress(bezl);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'map.js'], function (map) {\r\n    map.updateAddress(bezl);\r\n});\r\n"},{"method":"sort","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.sort(bezl, parm);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.sort(bezl, parm);\r\n});\r\n"},{"method":"customerSelect","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.select(bezl, parm);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.select(bezl, parm);\r\n});\r\n"},{"method":"customerAdd","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.add(bezl, parm);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.add(bezl, parm);\r\n});\r\n"},{"method":"customerRemove","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.remove(bezl, parm);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.remove(bezl, parm);\r\n});\r\n"},{"method":"moveDown","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.move(bezl, parm, 1);\n});\n","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.move(bezl, parm, 1);\r\n});\r\n"},{"method":"moveUp","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.move(bezl, parm, -1);\n});\n","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.move(bezl, parm, -1);\r\n});\r\n"},{"method":"setConfig","code":"bezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\nbezl.vars.config.baseUrl = \"https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/trip-planner/js/\";","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\r\nbezl.vars.config.baseUrl = \"https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/trip-planner/js/\";\r\n"},{"method":"navigate","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'map.js'], function(map) {\n  map.navigate(bezl);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'map.js'], function (map) {\r\n    map.navigate(bezl);\r\n});\r\n"},{"method":"openMap","code":"bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'map.js'], function(map) {\n  map.openMap(bezl);\n});\n","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'map.js'], function (map) {\r\n    map.openMap(bezl);\r\n});\r\n"}],"datatrans":null,"data":"","id":"58fb7a10-e3da-4c6f-bc9d-5e944d75ac2b","type":"Bezl"}
+{
+	"name": "Trip Planner",
+	"template": "custom",
+	"owner": "bellis@saberlogic.com",
+	"shares": [],
+	"vars": [],
+	"dataSubscriptions": [],
+	"markup": "<style>\n\t.input-group-btn > button { font-size: 14px; }\n  \n  .startLocation {\n  \tborder: none;    \n  }\n  \n  .startLocationText {\n    padding-top: 3px;\n    padding-bottom: 3px;\n    height: 34px;\n  }\n</style>\n\n<div class=\"row\">\n  <div class=\"col-sm-12\">\n    <div class=\"row\">\n\n          <div class=\"col-sm-7\">\n            <div class=\"row\">\n              <div class=\"col-sm-12\">\n                <div class=\"panel panel-primary\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">Trip Details</h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    <div class=\"row\">\n                      <table class=\"table\">\n                        <thead>\n                          <tr>\n                            <th></th>\n                            <th></th>\n                            <th>Name</th>\n                            <th>Address</th>\n                            <th></th>\n                          </tr>\n                         </thead>\n                        <tbody>\n                         <tr>\n                           <td>\n                             <button class=\"btn btn-sm btn-success mar-top\">\n                                <i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>\n                              </button>\n                           </td>\n                           <td colspan=\"4\">\n                             <div class=\"input-group form-control startLocation\" width=\"100%\">\n                              <input type=\"text\" class=\"form-control startLocationText\" [(ngModel)]=\"bezl.vars.currentAddress\">\n                              <span class=\"input-group-btn\">\n                                <button (click)=\"bezl.functions['updateAddress']()\" class=\"btn btn-md btn-primary\" style=\"margin-bottom:10px\">Update</button>\n                              </span>\n                            </div><!-- /input-group -->\n                           </td>\n                         </tr>\n                          <tr *ngFor=\"let item of bezl.vars.selectedCustomers; let i=index;\" (click)=\"bezl.functions['customerSelect'](item.key)\">\n                            <td>\n                              <button *ngIf=\"i < bezl.vars.selectedCustomers.length - 1\" (click)=\"bezl.functions['moveDown'](i)\" class=\"btn btn-sm btn-danger\">\n                                <i class=\"fa fa-arrow-down\" aria-hidden=\"true\"></i>\n                              </button>\n                              <button class=\"btn btn-sm btn-danger\" *ngIf=\"i >= bezl.vars.selectedCustomers.length - 1\" >\n                                <i class=\"fa fa-stop-circle\" aria-hidden=\"true\"></i>\n                              </button>\n                            </td>\n                            <td>\n                              <button *ngIf=\"i != 0\" (click)=\"bezl.functions['moveUp'](i)\" class=\"btn btn-sm btn-success\"><i class=\"fa fa-arrow-up\" aria-hidden=\"true\"></i></button>\n                            </td>\n                            <td>{{item.display}}</td>\n                            <td>{{item.address}}</td>\n                            <td>\n                              <button (click)=\"bezl.functions['customerRemove'](i)\" class=\"btn btn-sm btn-danger\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n                            </td>\n                          </tr>\n                        </tbody>\n                      </table>\n                    </div>\n                    <div class=\"row\">\n                      <button (click)=\"bezl.functions['navigate']()\" class=\"btn btn-md btn-primary\" [disabled]=\"bezl.vars.selectedCustomers.length == 0\">Navigate</button>\n                      <button (click)=\"bezl.functions['openMap']()\" class=\"btn btn-md btn-primary\" [disabled]=\"bezl.vars.selectedCustomers.length == 0\">Open Map</button>\n                    </div>\n                    \n                    \n                  </div>\n                </div>\n                 \n              </div>\n            </div>\n            <div class=\"row\">\n              <div id=\"map\" class=\"map\" style=\"height: 450px; border-style: solid;\"></div>\n            </div>\n            <div class=\"row\">\n              <div id=\"directions\"></div>\n            </div>\n          </div>\n          <div class=\"col-sm-5\">\n            <div class=\"row\">\n              <div class=\"col-sm-12 form-horizontal\">\n                <div class=\"control-group row-fluid form-inline\">\n                  <label for=\"js-typeahead-customers\" class=\"control-label\">Search</label>\n                  <div class=\"controls\">\n                    <div class=\"typeahead__container\">\n                      <div class=\"typeahead__field\">\n                        <span class=\"typeahead__query\">\n                          <input class=\"js-typeahead-customers\" name=\"js-typeahead-customers\" type=\"search\" [(ngModel)]=\"bezl.vars.selectedCustomer.Name\"  autocomplete=\"off\">\n                        </span>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"row\">\n              <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th width=\"70%\" colspan=\"2\">\n                      <div class=\"btn-group\" role=\"group\" width=\"100%\" style=\"display: block\">\n                        <button type=\"button\" \n                                (click)=\"bezl.functions['sort']('Name')\"\n                                class=\"btn btn-default btn-block\">\n                          <span class=\"pull-left\">Name</span>\n                          <i class=\"fa fa-sort-alpha-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol != 'Name'\" style=\"visibility: hidden\"></i>\n                          <i class=\"fa fa-sort-alpha-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Name' && bezl.vars.sort == 'asc'\"></i>\n                          <i class=\"fa fa-sort-alpha-desc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Name' && bezl.vars.sort == 'desc'\"></i>\n                        </button>\n                      </div>\n                    </th>\n                    <th width=\"30%\">\n                      <div class=\"btn-group\" role=\"group\" width=\"100%\" style=\"display: block\">\n                         <button type=\"button\" \n                                 (click)=\"bezl.functions['sort']('Distance')\"\n                                 class=\"btn btn-default btn-block\">\n                           <span class=\"pull-left\">Distance</span>\n                           <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol != 'Distance'\" style=\"visibility: hidden\"></i>\n                           <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Distance' && bezl.vars.sort == 'asc'\"></i>\n                           <i class=\"fa fa-sort-numeric-desc pull-right\" aria-hidden=\"true\" *ngIf=\"bezl.vars.sortCol == 'Distance' && bezl.vars.sort == 'desc'\"></i>\n                         </button>\n                       </div>\n                    </th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr class=\"read\" *ngFor=\"let item of bezl.vars.customers\" (click)=\"bezl.functions['customerSelect'](item.key)\">\n                    <td><button (click)=\"bezl.functions['customerAdd'](item)\" class=\"btn btn-sm btn-primary\">+</button></td>\n                    <td>{{item.display}}</td>\n                    <td>{{item.distance}}</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n  </div>\n</div>",
+	"functions": [
+		{
+			"method": "ngOnInit",
+			"code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.selectedCustomers = [];\nbezl.vars.loading = { \n  customerList: true\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(onStartup) {\n  onStartup.onStartup(bezl);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.selectedCustomers = [];\r\nbezl.vars.loading = {\r\n    customerList: true\r\n};\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (onStartup) {\r\n    onStartup.onStartup(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "onDataChange",
+			"code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function(onDataChange) {\n  onDataChange.onDataChange(bezl);\n});\n",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function (onDataChange) {\r\n    onDataChange.onDataChange(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "refresh",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(customer) {\n  customer.runQuery(bezl, parm);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (customer) {\r\n    customer.runQuery(bezl, parm);\r\n});\r\n"
+		},
+		{
+			"method": "updateAddress",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'map.js'], function(map) {\n  map.updateAddress(bezl);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'map.js'], function (map) {\r\n    map.updateAddress(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "sort",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.sort(bezl, parm);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.sort(bezl, parm);\r\n});\r\n"
+		},
+		{
+			"method": "customerSelect",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.select(bezl, parm);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.select(bezl, parm);\r\n});\r\n"
+		},
+		{
+			"method": "customerAdd",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.add(bezl, parm);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.add(bezl, parm);\r\n});\r\n"
+		},
+		{
+			"method": "customerRemove",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.remove(bezl, parm);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.remove(bezl, parm);\r\n});\r\n"
+		},
+		{
+			"method": "moveDown",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.move(bezl, parm, 1);\n});\n",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.move(bezl, parm, 1);\r\n});\r\n"
+		},
+		{
+			"method": "moveUp",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function(customer) {\n  customer.move(bezl, parm, -1);\n});\n",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'customer.js'], function (customer) {\r\n    customer.move(bezl, parm, -1);\r\n});\r\n"
+		},
+		{
+			"method": "setConfig",
+			"code": "bezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\nbezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io/roles/sales-rep/trip-planner/js/\";",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\r\nbezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io/roles/sales-rep/trip-planner/js/\";\r\n"
+		},
+		{
+			"method": "navigate",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'map.js'], function(map) {\n  map.navigate(bezl);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'map.js'], function (map) {\r\n    map.navigate(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "openMap",
+			"code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'map.js'], function(map) {\n  map.openMap(bezl);\n});\n",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'map.js'], function (map) {\r\n    map.openMap(bezl);\r\n});\r\n"
+		}
+	],
+	"datatrans": null,
+	"data": "",
+	"id": "58fb7a10-e3da-4c6f-bc9d-5e944d75ac2b",
+	"type": "Bezl"
+}

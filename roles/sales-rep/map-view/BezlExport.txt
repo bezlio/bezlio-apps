@@ -1,4 +1,4 @@
-﻿{
+{
 	"name": "Map View",
 	"template": "custom",
 	"owner": "nowens@saberlogic.com",
@@ -9,7 +9,7 @@
 	"functions": [
 		{
 			"method": "ngOnInit",
-			"code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.loading = { \n  customerList: true,\n  inquiry: false,\n  crmHistory: false,\n  invoiceHistory: false,\n  attachment: []\n}\nbezl.vars.newNote = {};\nbezl.vars.config = {};\nbezl.functions['setConfig']();\n\nbezl.vars.config.CRMPlatform = \"Epicor10\";\nbezl.functions['saveSettings']();\n\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n  \n    // Prompt for the CRM platform if it has not been previously specified\n    if (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n    } else {\n        setTimeout(function(){ \n          bezl.vars.config.CRMPlatform = \"Excel\";\n          bezl.vars.showSettingsDialog = true; \n        }, 3000);\n    }\n});",
+			"code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.loading = { \n  customerList: true,\n  inquiry: false,\n  crmHistory: false,\n  invoiceHistory: false,\n  attachment: []\n}\nbezl.vars.newNote = {};\nbezl.vars.config = {};\nbezl.functions['setConfig']();\n\nbezl.vars.config.CRMPlatform = \"Epicor10\";\nbezl.functions['saveSettings']();\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n  \n    // Prompt for the CRM platform if it has not been previously specified\n    if (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n    } else {\n        setTimeout(function(){ \n          bezl.vars.config.CRMPlatform = \"Excel\";\n          bezl.vars.showSettingsDialog = true; \n        }, 3000);\n    }\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -17,11 +17,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.loading = {\r\n    customerList: true,\r\n    inquiry: false,\r\n    crmHistory: false,\r\n    invoiceHistory: false,\r\n    attachment: []\r\n};\r\nbezl.vars.newNote = {};\r\nbezl.vars.config = {};\r\nbezl.functions['setConfig']();\r\nbezl.vars.config.CRMPlatform = \"Epicor10\";\r\nbezl.functions['saveSettings']();\r\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n    // Prompt for the CRM platform if it has not been previously specified\r\n    if (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\r\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    }\r\n    else {\r\n        setTimeout(function () {\r\n            bezl.vars.config.CRMPlatform = \"Excel\";\r\n            bezl.vars.showSettingsDialog = true;\r\n        }, 3000);\r\n    }\r\n});\r\n"
+			"compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.loading = {\r\n    customerList: true,\r\n    inquiry: false,\r\n    crmHistory: false,\r\n    invoiceHistory: false,\r\n    attachment: []\r\n};\r\nbezl.vars.newNote = {};\r\nbezl.vars.config = {};\r\nbezl.functions['setConfig']();\r\nbezl.vars.config.CRMPlatform = \"Epicor10\";\r\nbezl.functions['saveSettings']();\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n    // Prompt for the CRM platform if it has not been previously specified\r\n    if (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\r\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    }\r\n    else {\r\n        setTimeout(function () {\r\n            bezl.vars.config.CRMPlatform = \"Excel\";\r\n            bezl.vars.showSettingsDialog = true;\r\n        }, 3000);\r\n    }\r\n});\r\n"
 		},
 		{
 			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl);\n});",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -29,11 +29,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "customerInquiry",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/customer.js'], function(customer) {\n\tcustomer.runQuery(bezl, parm);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/customer.js'], function(customer) {\n\tcustomer.runQuery(bezl, parm);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -41,7 +41,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/customer.js'], function (customer) {\r\n    customer.runQuery(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/customer.js'], function (customer) {\r\n    customer.runQuery(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "setConfig",
@@ -57,7 +57,7 @@
 		},
 		{
 			"method": "addNote",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/crm.js'], function(crm) {\n  \tbezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n\tcrm.addNote(bezl);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/crm.js'], function(crm) {\n  \tbezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n\tcrm.addNote(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -65,11 +65,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/crm.js'], function (crm) {\r\n    bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    crm.addNote(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/crm.js'], function (crm) {\r\n    bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    crm.addNote(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "viewFile",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/customer.js'], function(customer) {\n\tcustomer.viewFile(bezl, parm);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/customer.js'], function(customer) {\n\tcustomer.viewFile(bezl, parm);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -77,11 +77,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/customer.js'], function (customer) {\r\n    customer.viewFile(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/customer.js'], function (customer) {\r\n    customer.viewFile(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "updateTasks",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/crm.js'], function(crm) {\n  \tbezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n\tcrm.updateTasks(bezl);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/crm.js'], function(crm) {\n  \tbezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n\tcrm.updateTasks(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -89,11 +89,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/crm.js'], function (crm) {\r\n    bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    crm.updateTasks(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/crm.js'], function (crm) {\r\n    bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    crm.updateTasks(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "refresh",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/customer.js'], function(customer) {\n\tcustomer.runQuery(bezl, parm);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/customer.js'], function(customer) {\n\tcustomer.runQuery(bezl, parm);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -101,11 +101,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/customer.js'], function (customer) {\r\n    customer.runQuery(bezl, parm);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/customer.js'], function (customer) {\r\n    customer.runQuery(bezl, parm);\r\n});\r\n"
 		},
 		{
 			"method": "addTask",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/crm.js'], function(crm) {\n  \tbezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n\tcrm.addTask(bezl);\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/crm.js'], function(crm) {\n  \tbezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n\tcrm.addTask(bezl);\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -113,11 +113,11 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/crm.js'], function (crm) {\r\n    bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    crm.addTask(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/crm.js'], function (crm) {\r\n    bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    crm.addTask(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "updateAddress",
-			"code": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/map.js'], function(functions) {\n\tfunctions.updateAddress(bezl)\n});",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/map.js'], function(functions) {\n\tfunctions.updateAddress(bezl)\n});",
 			"declares": [
 				"$",
 				"parm",
@@ -125,7 +125,7 @@
 				"dataResp",
 				"require"
 			],
-			"compiled": "require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/map-view/js/map.js'], function (functions) {\r\n    functions.updateAddress(bezl);\r\n});\r\n"
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/map-view/js/map.js'], function (functions) {\r\n    functions.updateAddress(bezl);\r\n});\r\n"
 		},
 		{
 			"method": "saveSettings",

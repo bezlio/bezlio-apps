@@ -1,1 +1,51 @@
-﻿{"name":"Attachments View","template":"custom","owner":"sales-rep@bezl.io","shares":[],"vars":[],"dataSubscriptions":[],"markup":"<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID == null\">\n  <div class=\"col-9\"><h3>No Customer Selected</h3></div>\n</div>\n\n<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">\n  <div class=\"col-sm-9\"><h3>{{bezl.vars.selectedAccount.Name}}</h3></div>\n</div>\n\n<table class=\"table table-hover\">\n  <tbody>\n    <tr class=\"read\" *ngFor=\"let item of bezl.vars.selectedAccount.Attachments\">\n      <td>\n        <button [hidden]=\"!(item.FileExt == 'pdf' \n                          || item.FileExt == 'doc' \n                          || item.FileExt == 'txt')\" \n                (click)=\"bezl.functions['viewFile'](item)\" \n                [disabled]=\"bezl.vars.loading.attachment[item.FileName]\"\n                class=\"btn btn-md btn-primary\">Open</button>\n        <div [hidden]=\"!bezl.vars.loading.attachment[item.FileName]\">\n          <label>Loading... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label>\n        </div>\n      </td>\n      <td>{{item.Description}}</td>\n    </tr>\n  </tbody>\n</table>\n                              ","functions":[{"method":"ngOnInit","code":"bezl.vars.selectedAccount = {};\nbezl.vars.loading = { \n  attachment: []\n}\n\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/attachments-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.vars.selectedAccount = {};\r\nbezl.vars.loading = {\r\n    attachment: []\r\n};\r\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/attachments-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"},{"method":"onDataChange","code":"bezl.data = dataResp;\n\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/attachments-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"bezl.data = dataResp;\r\nrequire(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/attachments-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"},{"method":"viewFile","code":"require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/attachments-view/js/attachment.js'], function(functions) {\n\tfunctions.viewFile(bezl, parm);\n});","declares":["$","parm","bezl","dataResp","require"],"compiled":"require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.8/roles/sales-rep/attachments-view/js/attachment.js'], function (functions) {\r\n    functions.viewFile(bezl, parm);\r\n});\r\n"}],"datatrans":null,"data":"","id":"c14081e2-dba6-4f91-8f0b-5162e3977f1d","type":"Bezl"}
+{
+	"name": "Attachments View",
+	"template": "custom",
+	"owner": "sales-rep@bezl.io",
+	"shares": [],
+	"vars": [],
+	"dataSubscriptions": [],
+	"markup": "<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID == null\">\n  <div class=\"col-9\"><h3>No Customer Selected</h3></div>\n</div>\n\n<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">\n  <div class=\"col-sm-9\"><h3>{{bezl.vars.selectedAccount.Name}}</h3></div>\n</div>\n\n<table class=\"table table-hover\">\n  <tbody>\n    <tr class=\"read\" *ngFor=\"let item of bezl.vars.selectedAccount.Attachments\">\n      <td>\n        <button [hidden]=\"!(item.FileExt == 'pdf' \n                          || item.FileExt == 'doc' \n                          || item.FileExt == 'txt')\" \n                (click)=\"bezl.functions['viewFile'](item)\" \n                [disabled]=\"bezl.vars.loading.attachment[item.FileName]\"\n                class=\"btn btn-md btn-primary\">Open</button>\n        <div [hidden]=\"!bezl.vars.loading.attachment[item.FileName]\">\n          <label>Loading... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label>\n        </div>\n      </td>\n      <td>{{item.Description}}</td>\n    </tr>\n  </tbody>\n</table>\n                              ",
+	"functions": [
+		{
+			"method": "ngOnInit",
+			"code": "bezl.vars.selectedAccount = {};\nbezl.vars.loading = { \n  attachment: []\n}\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.vars.selectedAccount = {};\r\nbezl.vars.loading = {\r\n    attachment: []\r\n};\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "onDataChange",
+			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+		},
+		{
+			"method": "viewFile",
+			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/attachment.js'], function(functions) {\n\tfunctions.viewFile(bezl, parm);\n});",
+			"declares": [
+				"$",
+				"parm",
+				"bezl",
+				"dataResp",
+				"require"
+			],
+			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/attachments-view/js/attachment.js'], function (functions) {\r\n    functions.viewFile(bezl, parm);\r\n});\r\n"
+		}
+	],
+	"datatrans": null,
+	"data": "",
+	"id": "c14081e2-dba6-4f91-8f0b-5162e3977f1d",
+	"type": "Bezl"
+}
