@@ -84,8 +84,8 @@ define(function () {
         };
     }
 
-    function IncludeSuspects(bezl) {
-        //console.log(bezl.data);
+    function IncludeSuspects(bezl, parm) {
+        console.log(parm.srcElement.checked);
     }
 
     function AddLine(bezl) {
