@@ -75,6 +75,8 @@ define(function () {
                     }
                 });
             });
+
+            bezl.dataService.remove('Attributes');
         }
 
         if (bezl.data.changeCustomer) {
