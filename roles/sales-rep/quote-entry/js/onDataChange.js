@@ -52,7 +52,7 @@ define(function () {
             bezl.vars.attrLoading = false;
 
             bezl.data.Attributes.map(attrs => {
-                console.log(attrs);
+                //console.log(attrs);
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
 
@@ -61,7 +61,7 @@ define(function () {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
                                 if (attrs.Character01 === 'OTHER') {
-
+                                    attr.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE).SELECTED_VALUE = attrs.Character04;
                                 }
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
@@ -75,7 +75,6 @@ define(function () {
                     }
                 });
             });
-            console.log(bezl.data.QuoteDtls);
         }
 
         if (bezl.data.changeCustomer) {
