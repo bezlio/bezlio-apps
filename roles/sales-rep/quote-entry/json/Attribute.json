@@ -899,7 +899,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "HEIGHT": 300,
                 "EDITABLE": true
@@ -913,7 +913,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pack Out:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "HEIGHT": 300,
                 "EDITABLE": true
