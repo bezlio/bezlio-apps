@@ -29,10 +29,10 @@ define(function () {
 
                 if (bezl.vars.RMAs[i].Selected) {
                     localStorage.setItem('selectedRMA', JSON.stringify(bezl.vars.RMAs[i]));
-                    $('.panel').trigger('selectedRMA', [bezl.vars.RMAs[i]]);
+                    $('#bezlpanel').trigger('selectedRMA', [bezl.vars.RMAs[i]]);
                 } else {
                     localStorage.setItem('selectedRMA', '');
-                    $('.panel').trigger('selectedRMA', [{}]);
+                    $('#bezlpanel').trigger('selectedRMA', [{}]);
                 }
                 
             } else {

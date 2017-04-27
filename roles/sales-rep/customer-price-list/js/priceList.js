@@ -45,10 +45,10 @@ define(function () {
 
                 if (bezl.vars.PriceList[i].Selected) {
                     localStorage.setItem('selectedPart', JSON.stringify(bezl.vars.PriceList[i]));
-                    $('.panel').trigger('selectedPart', [bezl.vars.PriceList[i]]);
+                    $('#bezlpanel').trigger('selectedPart', [bezl.vars.PriceList[i]]);
                 } else {
                     localStorage.setItem('selectedPart', '');
-                    $('.panel').trigger('selectedPart', [{}]);
+                    $('#bezlpanel').trigger('selectedPart', [{}]);
                 }
                 
             } else {

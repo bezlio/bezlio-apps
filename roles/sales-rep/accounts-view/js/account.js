@@ -178,7 +178,7 @@ define(function () {
             "details": "Site visit to " + account.Name + "."
         };
 
-        $('.panel').trigger('CRMNewInteraction', [param]);
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
     }
 
     function ClickEmail(bezl, contact) {
@@ -188,7 +188,7 @@ define(function () {
             "details": "Email sent to " + contact.EMailAddress + "."
         };
 
-        $('.panel').trigger('CRMNewInteraction', [param]);
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
     }
 
     function ClickPhoneNum(bezl, contact) {
@@ -198,7 +198,7 @@ define(function () {
             "details": "Phone call to " + contact.PhoneNum + "."
         };
 
-        $('.panel').trigger('CRMNewInteraction', [param]);
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
     }
   
     return {
