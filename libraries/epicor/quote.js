@@ -107,6 +107,7 @@ define(function () {
 
                 dtl.Attributes.map(attr => {
                     console.log(attr);
+                    console.log(attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER'));
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
                         bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                             "QueryName": "InsertAttributes",
