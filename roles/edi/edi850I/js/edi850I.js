@@ -63,7 +63,7 @@ define(function () {
                 break;
 
             case "Revalidate":
-                var parameters = [], parameterCount = 0, parameterRow = 0;
+                var parameters = [], parameterCount = 0
 
                 //Loop through header for header information.
                 for (var key in bezl.vars.viewdetails.HEADER){
@@ -100,26 +100,19 @@ define(function () {
                     var obj = bezl.vars.viewdetails.OVERRIDES[key];
 
                     for (var prop in obj) {
-                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString() + parameterRow.toString(), "Value": obj[prop] };
+                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString(), "Value": obj[prop] };
                         parameterCount = parameterCount + 1;
                     }
-
-                    parameterRow = parameterRow + 1;
                 }
-                
-                //Reset the parameter row.
-                parameterRow = 0;
 
                 //Loop through overrides for override information.
                 for (var key in bezl.vars.viewdetails.ITEMS){
                     var obj = bezl.vars.viewdetails.ITEMS[key];
                     
                     for (var prop in obj) {
-                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString() + parameterRow.toString(), "Value": obj[prop] };
+                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString(), "Value": obj[prop] };
                         parameterCount = parameterCount + 1;
                     }
-
-                    parameterRow = parameterRow + 1;
                 }
 
                 // Pull in the header data for the logged in user
