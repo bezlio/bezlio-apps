@@ -939,7 +939,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
