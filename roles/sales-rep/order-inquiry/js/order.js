@@ -29,10 +29,10 @@ define(function () {
 
                 if (bezl.vars.Orders[i].Selected) {
                     localStorage.setItem('selectedOrder', JSON.stringify(bezl.vars.Orders[i]));
-                    $('.panel').trigger('selectedOrder', [bezl.vars.Orders[i]]);
+                    $('#bezlpanel').trigger('selectedOrder', [bezl.vars.Orders[i]]);
                 } else {
                     localStorage.setItem('selectedOrder', '');
-                    $('.panel').trigger('selectedOrder', [{}]);
+                    $('#bezlpanel').trigger('selectedOrder', [{}]);
                 }
                 
             } else {

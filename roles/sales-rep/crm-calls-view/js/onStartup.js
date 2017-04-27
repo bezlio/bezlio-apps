@@ -26,7 +26,7 @@ define(["./account.js"], function (account) {
       // types
       bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetCallTypes" },0);
 
-      $(".panel").on("selectAccount", function(event, param1) {
+      $("#bezlpanel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
         bezl.vars.loadedMore = false;
 
@@ -57,7 +57,7 @@ define(["./account.js"], function (account) {
       //   "shortSummary": <string>,
       //   "details": <string>
       // }
-      $(".panel").on("CRMNewInteraction", function(event, param1) {
+      $("#bezlpanel").on("CRMNewInteraction", function(event, param1) {
         // TODO: look up an appropriate type from the CallTypes list
         // This should eventually be a config option to select the local
         // CallType to be used for phone/email/navigate. For now we will use

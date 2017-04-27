@@ -29,10 +29,10 @@ define(function () {
 
                 if (bezl.vars.Invoices[i].Selected) {
                     localStorage.setItem('selectedInvoice', JSON.stringify(bezl.vars.Invoices[i]));
-                    $('.panel').trigger('selectedInvoice', [bezl.vars.Invoices[i]]);
+                    $('#bezlpanel').trigger('selectedInvoice', [bezl.vars.Invoices[i]]);
                 } else {
                     localStorage.setItem('selectedInvoice', '');
-                    $('.panel').trigger('selectedInvoice', [{}]);
+                    $('#bezlpanel').trigger('selectedInvoice', [{}]);
                 }
                 
             } else {
