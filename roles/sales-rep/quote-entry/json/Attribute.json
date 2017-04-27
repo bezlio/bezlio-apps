@@ -947,7 +947,7 @@
     {
         "ATTRIBUTE_ID": "100_SECONDARY_PROCESS",
         "ATTRIBUTE_DESCRIPTION": "Secondary Process",
-        "SELECTION_MODE": "Multiple",
+        // "SELECTION_MODE": "Multiple",
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Acid Etch",
@@ -959,7 +959,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
