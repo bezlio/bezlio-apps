@@ -57,9 +57,12 @@ define(function () {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
 
                         dtl.Attributes.map(attr => {
-                            //console.log(attr);
+                            console.log(attr);
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
+                                if (attrs.Character01 === 'OTHER') {
+
+                                }
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
                                 var cnt = 0;
