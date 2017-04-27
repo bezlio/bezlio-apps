@@ -136,6 +136,7 @@ define(function () {
                                         { Key: "AttributeID", Value: subAttr.ATTRIBUTE_ID },
                                         { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
                                         { Key: "AttributeValue", Value: subAttrVal.ATTRIBUTE_VALUE },
+                                        { Key: "OtherAttributeValue", Value: (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '' },
                                         { Key: "AttributeDesc", Value: subAttr.ATTRIBUTE_DESCRIPTION },
                                         { Key: "PartNum", Value: dtl.PartNum }
                                     ]
