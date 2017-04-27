@@ -61,7 +61,7 @@ define(function () {
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
                                 if (attrs.Character01 === 'OTHER') {
-                                    attr.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE).SELECTED_VALUE = attrs.Character04;
+                                    attr.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrs.Character04;
                                 }
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
