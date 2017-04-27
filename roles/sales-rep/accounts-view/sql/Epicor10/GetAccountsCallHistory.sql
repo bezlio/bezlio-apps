@@ -21,13 +21,16 @@ FROM
 	cust.Company = cl.Company
 	AND cust.CustNum = cl.CallCustNum
 	
-	INNER JOIN Erp.SalesRep csr with(nolock) ON
-	csr.Company = cust.Company
-	AND csr.SalesRepCode = cust.SalesRepCode
+	INNER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = cust.Company
+	AND sra.SalesRepCode = cust.SalesRepCode
+
+	INNER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
+	AND u.EMailAddress = '{EmailAddress}'
 WHERE 
 	DATEDIFF (day, cl.LastDate , GetDate()) < 90  
 	--and cl.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
-	AND csr.EMailAddress = '{EmailAddress}'
 ORDER BY
 	cl.LastDate desc
 	, cl.LastTime desc
