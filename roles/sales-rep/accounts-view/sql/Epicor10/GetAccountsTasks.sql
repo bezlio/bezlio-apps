@@ -28,8 +28,15 @@ FROM
 	INNER JOIN Erp.Customer cust with(nolock) ON
 	cust.Company = t.Company
 	AND cust.CustNum = t.Key1
+
+	LEFT OUTER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = sr.Company
+	AND sra.SalesRepCode = sr.SalesRepCode
+
+	LEFT OUTER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
 WHERE
 	t.RelatedToFile = 'Customer'
-	AND (sr.EMailAddress IS NULL OR sr.EMailAddress = '{EmailAddress}')
+	AND (sr.EMailAddress IS NULL OR u.EMailAddress = '{EmailAddress}')
 	AND t.Complete = 0
 	--AND t.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

@@ -14,13 +14,16 @@ FROM
 	cust.Company = fa.Company
 	AND cust.CustNum = fa.Key1
 	
-	LEFT OUTER JOIN Erp.SalesRep sr with(nolock) ON
-	sr.Company = cust.Company
-	AND sr.SalesRepCode = cust.SalesRepCode
+	INNER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = cust.Company
+	AND sra.SalesRepCode = cust.SalesRepCode
+
+	INNER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
+	AND u.EMailAddress = '{EmailAddress}'
 WHERE
 	fa.RelatedToSchemaName = 'Erp'
 	AND fa.RelatedToFile = 'Customer'
 	--AND fa.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
-	AND sr.EmailAddress = '{EmailAddress}'
 ORDER BY
 	f.XFileName

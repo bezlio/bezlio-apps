@@ -25,7 +25,7 @@ SELECT
 	, YTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE()))
 	, LYTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE())-1)
 	, TotalSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum)
-	, sr.SalesRepCode AS SalesRep
+	, c.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0 ORDER BY tsk.DueDate ASC)
 FROM
@@ -34,17 +34,20 @@ FROM
 	INNER JOIN Erp.SalesTer t with(nolock) ON
 	t.Company = c.Company
 	AND t.TerritoryID = c.TerritoryID
-	
-	INNER JOIN Erp.SalesRep sr with(nolock) ON
-	sr.Company = c.Company
-	AND sr.SalesRepCode = c.SalesRepCode
+
+	INNER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = c.Company
+	AND sra.SalesRepCode = c.SalesRepCode
+
+	INNER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
+	AND u.EMailAddress = '{EmailAddress}'
 
 	LEFT OUTER JOIN Erp.Terms tm with(nolock) ON
 	tm.Company = c.Company
 	AND tm.TermsCode = c.TermsCode
 WHERE
 	c.ZIP <> ''
-	AND sr.EMailAddress = '{EmailAddress}'
 	--AND c.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 ORDER BY
 	c.Name asc
