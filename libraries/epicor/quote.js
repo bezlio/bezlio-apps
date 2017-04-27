@@ -107,7 +107,6 @@ define(function () {
 
                 dtl.Attributes.map(attr => {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
-                    console.log(otherValue);
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
                         bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                             "QueryName": "InsertAttributes",
@@ -118,7 +117,7 @@ define(function () {
                                 { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                 { Key: "ParentID", Value: '' },
                                 { Key: "AttributeValue", Value: (attr.SELECTED_VALUE === 'OTHER') ? 'OTHER' : attr.SELECTED_VALUE },
-                                { Key: "OtherAttributeValue", Value: otherValue },
+                                { Key: "OtherAttributeValue", Value: (otherValue !== undefined) ? otherValue : '' },
                                 { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                 { Key: "PartNum", Value: dtl.PartNum }
                             ]
