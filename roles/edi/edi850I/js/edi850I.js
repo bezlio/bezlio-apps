@@ -75,6 +75,14 @@ define(function () {
                                 parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
+                           case "DOCUMENT_TYPE":
+                                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                           case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
                             case "EDI_SL_DASH_HEADER_ID":
                                 parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
