@@ -55,8 +55,6 @@ define(function () {
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
                         dtl.Attributes.map(attr => {
-                            console.log(attrs);
-                            console.log(attr)
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
                                 if (attrs.Character01 === 'OTHER') {
@@ -71,7 +69,8 @@ define(function () {
                                 });
                             }
                             if (attr.hasOwnProperty('SELECTION_MODE')) {
-                                attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
+                                console.log(attr);
+                                //attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
                             }
                         });
                     }
