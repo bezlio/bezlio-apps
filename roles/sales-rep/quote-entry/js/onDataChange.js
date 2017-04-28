@@ -69,6 +69,7 @@ define(function () {
                                 });
                             }
                             if (attr.hasOwnProperty('SELECTION_MODE')) {
+                                console.log(attr);
                                 if (attr.SELECTED_VALUE === true) {
                                     console.log(attr);
                                     //attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
