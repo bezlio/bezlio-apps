@@ -129,7 +129,20 @@ define(function () {
                     if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
                         attr.ATTRIBUTE_VALUES.map(val => {
                             if (val.SELECTED_VALUE === true) {
-                                console.log(val);
+                                bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                    "QueryName": "InsertAttributes",
+                                    "Parameters": [
+                                        { Key: "QuoteNum", Value: quoteNum },
+                                        { Key: "QuoteLine", Value: dtl.QuoteLine },
+                                        { Key: "PartID", Value: dtl.PartNum },
+                                        { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                                        { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
+                                        { Key: "AttributeValue", Value: true },
+                                        { Key: "OtherAttributeValue", Value: '' },
+                                        { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
+                                        { Key: "PartNum", Value: dtl.PartNum }
+                                    ]
+                                });
                             }
                         });
                     }
