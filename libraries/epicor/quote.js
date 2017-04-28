@@ -106,7 +106,6 @@ define(function () {
                 });
 
                 dtl.Attributes.map(attr => {
-                    console.log(attr);
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
                     //standard one select property
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
