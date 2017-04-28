@@ -127,7 +127,11 @@ define(function () {
 
                     //multi select properties
                     if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
-                        console.log(attr);
+                        attr.ATTRIBUTE_VALUES.map(val => {
+                            if (val.SELECTED_VALUE === true) {
+                                console.log(val);
+                            }
+                        });
                     }
 
                     //sub attributes
