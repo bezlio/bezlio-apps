@@ -534,6 +534,7 @@
     {
         "ATTRIBUTE_ID": "000_SAMPLES",
         "ATTRIBUTE_DESCRIPTION": "Samples",
+        "SELECTION_MODE": "Multiple",
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No. of Samples",
