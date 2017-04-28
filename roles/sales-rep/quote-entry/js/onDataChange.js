@@ -52,11 +52,11 @@ define(function () {
             bezl.vars.attrLoading = false;
 
             bezl.data.Attributes.map(attrs => {
-                //console.log(attrs);
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
-
                         dtl.Attributes.map(attr => {
+                            console.log(attrs);
+                            console.log(attr)
                             if (attr.ATTRIBUTE_ID === attrs.Key4) {
                                 attr.SELECTED_VALUE = attrs.Character01;
                                 if (attrs.Character01 === 'OTHER') {
