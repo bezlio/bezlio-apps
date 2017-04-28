@@ -129,7 +129,6 @@ define(function () {
                     if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
                         attr.ATTRIBUTE_VALUES.map(val => {
                             if (val.SELECTED_VALUE === true) {
-                                console.log(val);
                                 bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                     "QueryName": "InsertAttributes",
                                     "Parameters": [
