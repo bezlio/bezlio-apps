@@ -108,6 +108,7 @@ define(function () {
                 dtl.Attributes.map(attr => {
                     console.log(attr);
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
+                    //standard one select property
                     if (attr.hasOwnProperty("SELECTED_VALUE")) {
                         bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                             "QueryName": "InsertAttributes",
@@ -124,6 +125,13 @@ define(function () {
                             ]
                         }, 0)
                     }
+
+                    //multi select properties
+                    if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
+                        console.log(attr);
+                    }
+
+                    //sub attributes
                     if (attr.ATTRIBUTE_VALUES.hasOwnProperty("SUB_ATTRIBUTE")) {
                         attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
                             subAttr.ATTRIBUTE_VALUES.map(subAttrVal => {
