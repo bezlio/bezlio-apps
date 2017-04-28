@@ -142,7 +142,7 @@ define(function () {
                                         { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                         { Key: "PartNum", Value: dtl.PartNum }
                                     ]
-                                });
+                                }, 0);
                             }
                         });
                     }
@@ -164,7 +164,7 @@ define(function () {
                                         { Key: "AttributeDesc", Value: subAttr.ATTRIBUTE_DESCRIPTION },
                                         { Key: "PartNum", Value: dtl.PartNum }
                                     ]
-                                }, 0)
+                                }, 0);
                             });
                         });
                     }
