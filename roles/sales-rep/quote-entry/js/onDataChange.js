@@ -70,6 +70,7 @@ define(function () {
                             }
                             if (attr.hasOwnProperty('SELECTION_MODE')) {
                                 if (attr.SELECTED_VALUE === 'True') {
+                                    console.log(attr);
                                     attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
                                 }
                             }
