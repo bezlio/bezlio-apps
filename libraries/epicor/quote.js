@@ -148,26 +148,27 @@ define(function () {
                                     }, 0);
                                 }
                             });
-                        } else if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
-                            attr.ATTRIBUTE_VALUES.map(val => {
-                                if (val.hasOwnProperty('SELECTED_VALUE')) {
-                                    bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                                        "QueryName": "InsertAttributes",
-                                        "Parameters": [
-                                            { Key: "QuoteNum", Value: quoteNum },
-                                            { Key: "QuoteLine", Value: dtl.QuoteLine },
-                                            { Key: "PartID", Value: dtl.PartNum },
-                                            { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
-                                            { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                                            { Key: "AttributeValue", Value: val.SELECTED_VALUE },
-                                            { Key: "OtherAttributeValue", Value: '' },
-                                            { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
-                                            { Key: "PartNum", Value: dtl.PartNum }
-                                        ]
-                                    }, 0);
-                                }
-                            });
                         }
+                        // else if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
+                        //     attr.ATTRIBUTE_VALUES.map(val => {
+                        //         if (val.hasOwnProperty('SELECTED_VALUE')) {
+                        //             bezl.dataService.add('QuoteAttrs_Multi_Selection_Mode', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                        //                 "QueryName": "InsertAttributes",
+                        //                 "Parameters": [
+                        //                     { Key: "QuoteNum", Value: quoteNum },
+                        //                     { Key: "QuoteLine", Value: dtl.QuoteLine },
+                        //                     { Key: "PartID", Value: dtl.PartNum },
+                        //                     { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                        //                     { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
+                        //                     { Key: "AttributeValue", Value: val.SELECTED_VALUE },
+                        //                     { Key: "OtherAttributeValue", Value: '' },
+                        //                     { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
+                        //                     { Key: "PartNum", Value: dtl.PartNum }
+                        //                 ]
+                        //             }, 0);
+                        //         }
+                        //     });
+                        // }
                     }
 
                     //sub attributes
