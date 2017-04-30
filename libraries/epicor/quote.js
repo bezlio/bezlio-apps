@@ -127,7 +127,7 @@ define(function () {
 
                     console.log(attr);
                     //multi select properties
-                    if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
+                    if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true || val.SELECTED_VALUE.length > 0).length > 0) {
                         attr.ATTRIBUTE_VALUES.map(val => {
                             if (val.SELECTED_VALUE === true) {
                                 bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
