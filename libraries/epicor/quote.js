@@ -128,7 +128,6 @@ define(function () {
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
                     //multi select properties
                     if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
-                        //console.log(attr);
                         //true or false attr values
                         var attrVals = attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false);
                         attrVals.map(val => {
@@ -141,7 +140,7 @@ define(function () {
                                     { Key: "PartID", Value: dtl.PartNum },
                                     { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                     { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                                    { Key: "AttributeValue", Value: val.SELECTED_VALUE },
+                                    { Key: "AttributeValue", Value: (val.SELECTED_VALUE !== undefined) ? val.SELECTED_VALUE : false },
                                     { Key: "OtherAttributeValue", Value: '' },
                                     { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                     { Key: "PartNum", Value: dtl.PartNum }
