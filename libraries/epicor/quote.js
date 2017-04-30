@@ -128,6 +128,7 @@ define(function () {
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
                     //multi select properties
                     if (attr.hasOwnProperty('SELECTION_MODE"')) { //|| val.SELECTED_VALUE.length > 0
+                        console.log(attr);
                         if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
                             attr.ATTRIBUTE_VALUES.map(val => {
                                 if (val.SELECTED_VALUE === true) {
@@ -147,7 +148,8 @@ define(function () {
                                     }, 0);
                                 }
                             });
-                        } else if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE').length > 0)) {
+                        }
+                        if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE').length > 0)) {
                             attr.ATTRIBUTE_VALUES.map(val => {
                                 if (val.hasOwnProperty('SELECTED_VALUE')) {
                                     bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
