@@ -148,8 +148,7 @@ define(function () {
                                     }, 0);
                                 }
                             });
-                        }
-                        if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
+                        } else if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
                             attr.ATTRIBUTE_VALUES.map(val => {
                                 if (val.hasOwnProperty('SELECTED_VALUE')) {
                                     bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
