@@ -138,7 +138,7 @@ define(function () {
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
                                     { Key: "PartID", Value: dtl.PartNum },
-                                    { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                                    { Key: "AttributeID", Value: val.ATTRIBUTE_ID },
                                     { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
                                     { Key: "AttributeValue", Value: (val.hasOwnProperty('SELECTED_VALUE')) ? val.SELECTED_VALUE : false },
                                     { Key: "OtherAttributeValue", Value: '' },
