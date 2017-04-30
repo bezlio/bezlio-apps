@@ -84,6 +84,10 @@ define(function () {
             bezl.dataService.remove('Attributes');
         }
 
+        if (bezl.data.QuoteAttrs_Multi) {
+            console.log(bezl.data);
+        }
+
         if (bezl.data.changeCustomer) {
             setTimeout(() => {
                 bezl.vars.saving = false;

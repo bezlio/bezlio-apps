@@ -132,7 +132,7 @@ define(function () {
                         var attrVals = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                         attrVals.forEach(val => {
                             let cnt = 1;
-                            bezl.dataService.add('QuoteAttrs_Multi_' + cnt, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                            bezl.dataService.add('QuoteAttrs_Multi' + cnt, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
@@ -146,8 +146,6 @@ define(function () {
                                     { Key: "PartNum", Value: dtl.PartNum }
                                 ]
                             }, 0);
-
-                            bezl.dataService.remove('QuoteAttrs_Multi_' + cnt);
 
                             cnt++;
 
