@@ -130,7 +130,7 @@ define(function () {
                     if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
                         //console.log(attr);
                         //true or false attr values
-                        var attrVals = attr.ATTRIBUTE_VALUES.find(val => val.hasOwnProperty('EDITABLE') === false);
+                        var attrVals = attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false);
                         attrVals.map(val => {
                             console.log(val);
                             bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
