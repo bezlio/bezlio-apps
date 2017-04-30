@@ -67,6 +67,7 @@ define(function () {
                                 var cnt = 0;
                                 bezl.data.QuoteQty.map(qty => {
                                     attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
+                                    attr.ATTRIBUTE_VALUES[cnt].SELECTED_VALUE = qty.OurQuantity;
                                     cnt++;
                                 });
                             }
