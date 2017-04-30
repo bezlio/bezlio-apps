@@ -147,7 +147,10 @@ define(function () {
                                 ]
                             }, 0);
 
+                            bezl.dataService.remove('QuoteAttrs_Multi_' + cnt);
+
                             cnt++;
+
                         });
                         // else if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
                         //     attr.ATTRIBUTE_VALUES.map(val => {
