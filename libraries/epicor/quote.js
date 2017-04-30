@@ -130,7 +130,7 @@ define(function () {
                     if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
                         //true or false attr values
                         var attrVals = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
-                        attrVals.map(val => {
+                        attrVals.forEach(val => {
                             let cnt = 1;
                             bezl.dataService.add('QuoteAttrs_Multi_' + cnt, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
