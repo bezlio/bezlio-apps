@@ -95,8 +95,8 @@ define(function () {
                             QuoteNum: quoteNum,
                             QuoteLine: dtl.QuoteLine,
                             QtyNum: cnt,
-                            OurQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
-                            SellingQuantity: Number(quoteQty.ATTRIBUTE_VALUE),
+                            OurQuantity: Number(quoteQty.SELECTED_VALUE),
+                            SellingQuantity: Number(quoteQty.SELECTED_VALUE),
                             PricePerCode: 'E',
                             Company: company,
                             RowMod: 'U'

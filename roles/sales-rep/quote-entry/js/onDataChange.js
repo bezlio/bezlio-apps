@@ -62,11 +62,9 @@ define(function () {
                                 }
                             }
                             if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
-                                console.log(attrs);
-                                console.log(attr);
                                 var cnt = 0;
                                 bezl.data.QuoteQty.map(qty => {
-                                    attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
+                                    //attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
                                     attr.ATTRIBUTE_VALUES[cnt].SELECTED_VALUE = qty.OurQuantity;
                                     cnt++;
                                 });
