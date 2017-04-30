@@ -129,16 +129,16 @@ define(function () {
                     //multi select properties
                     if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
                         //true or false attr values
-                        var attrVals = attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false);
-                        attrVals.map(val => {
+                        //var attrVals = attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false);
+                        if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE')).length === 0) {
                             console.log(val);
-                            bezl.dataService.add('QuoteAttrs_Multi_' + val.ATTRIBUTE_VALUE.substring(0, 5), 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                            bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
                                     { Key: "PartID", Value: dtl.PartNum },
-                                    { Key: "AttributeID", Value: val.ATTRIBUTE_ID },
+                                    { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                     { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
                                     { Key: "AttributeValue", Value: (val.hasOwnProperty('SELECTED_VALUE')) ? val.SELECTED_VALUE : false },
                                     { Key: "OtherAttributeValue", Value: '' },
@@ -146,7 +146,7 @@ define(function () {
                                     { Key: "PartNum", Value: dtl.PartNum }
                                 ]
                             }, 0);
-                        });
+                        }
                         // else if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
                         //     attr.ATTRIBUTE_VALUES.map(val => {
                         //         if (val.hasOwnProperty('SELECTED_VALUE')) {
