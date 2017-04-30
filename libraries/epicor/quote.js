@@ -129,10 +129,10 @@ define(function () {
                     //multi select properties
                     if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
                         //true or false attr values
-                        var attrVals = attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false);
+                        var attrVals = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                         attrVals.map(val => {
                             console.log(val);
-                            bezl.dataService.add('QuoteAttrs_Multi' + val.ATTRIBUTE_VALUE.substring(0, 5), 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                            bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
