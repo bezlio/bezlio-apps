@@ -127,8 +127,7 @@ define(function () {
 
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
                     //multi select properties
-                    console.log(attr);
-                    if (attr.hasOwnProperty('SELECTION_MODE"')) { //|| val.SELECTED_VALUE.length > 0
+                    if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
                         console.log(attr);
                         if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
                             attr.ATTRIBUTE_VALUES.map(val => {
