@@ -27,7 +27,6 @@
     {
         "ATTRIBUTE_ID": "000_QUANTITY",
         "ATTRIBUTE_DESCRIPTION": "Quote Quantity",
-        "SELECTION_MODE": "Multiple",
         "MANDATORY": true,
         "ATTRIBUTE_VALUES": [
             {
