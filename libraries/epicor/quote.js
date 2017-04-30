@@ -129,7 +129,7 @@ define(function () {
                     //multi select properties
                     if (attr.hasOwnProperty('SELECTION_MODE')) { //|| val.SELECTED_VALUE.length > 0
                         console.log(attr);
-                        if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true).length > 0) {
+                        if (attr.ATTRIBUTE_VALUES.filter(val => val.SELECTED_VALUE === true || val.SELECTED_VALUE === false).length > 0) {
                             attr.ATTRIBUTE_VALUES.map(val => {
                                 if (val.SELECTED_VALUE === true) {
                                     bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
@@ -140,7 +140,7 @@ define(function () {
                                             { Key: "PartID", Value: dtl.PartNum },
                                             { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                             { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                                            { Key: "AttributeValue", Value: true },
+                                            { Key: "AttributeValue", Value: val.SELECTED_VALUE },
                                             { Key: "OtherAttributeValue", Value: '' },
                                             { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                             { Key: "PartNum", Value: dtl.PartNum }
@@ -149,7 +149,7 @@ define(function () {
                                 }
                             });
                         }
-                        if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE').length > 0)) {
+                        if (attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('SELECTED_VALUE')).length > 0) {
                             attr.ATTRIBUTE_VALUES.map(val => {
                                 if (val.hasOwnProperty('SELECTED_VALUE')) {
                                     bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
