@@ -148,30 +148,30 @@ define(function () {
                                 }
                             });
                         }
-                        { }
+                    }
 
-                        //sub attributes
-                        if (attr.ATTRIBUTE_VALUES.hasOwnProperty("SUB_ATTRIBUTE")) {
-                            attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
-                                subAttr.ATTRIBUTE_VALUES.map(subAttrVal => {
-                                    bezl.dataService.add('QuoteAttrs_Sub', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                                        "QueryName": "InsertAttributes",
-                                        "Parameters": [
-                                            { Key: "QuoteNum", Value: quoteNum },
-                                            { Key: "QuoteLine", Value: dtl.QuoteLine },
-                                            { Key: "PartID", Value: Date().now() },
-                                            { Key: "AttributeID", Value: subAttr.ATTRIBUTE_ID },
-                                            { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                                            { Key: "AttributeValue", Value: subAttrVal.ATTRIBUTE_VALUE },
-                                            { Key: "OtherAttributeValue", Value: 'TEST' }, //{ Key: "OtherAttributeValue", Value: (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '' },
-                                            { Key: "AttributeDesc", Value: subAttr.ATTRIBUTE_DESCRIPTION },
-                                            { Key: "PartNum", Value: dtl.PartNum }
-                                        ]
-                                    }, 0);
-                                });
+                    //sub attributes
+                    if (attr.ATTRIBUTE_VALUES.hasOwnProperty("SUB_ATTRIBUTE")) {
+                        attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
+                            subAttr.ATTRIBUTE_VALUES.map(subAttrVal => {
+                                bezl.dataService.add('QuoteAttrs_Sub', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                    "QueryName": "InsertAttributes",
+                                    "Parameters": [
+                                        { Key: "QuoteNum", Value: quoteNum },
+                                        { Key: "QuoteLine", Value: dtl.QuoteLine },
+                                        { Key: "PartID", Value: Date().now() },
+                                        { Key: "AttributeID", Value: subAttr.ATTRIBUTE_ID },
+                                        { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
+                                        { Key: "AttributeValue", Value: subAttrVal.ATTRIBUTE_VALUE },
+                                        { Key: "OtherAttributeValue", Value: 'TEST' }, //{ Key: "OtherAttributeValue", Value: (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '' },
+                                        { Key: "AttributeDesc", Value: subAttr.ATTRIBUTE_DESCRIPTION },
+                                        { Key: "PartNum", Value: dtl.PartNum }
+                                    ]
+                                }, 0);
                             });
-                        }
-                    });
+                        });
+                    }
+                });
             }
         });
 
