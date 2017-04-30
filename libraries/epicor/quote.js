@@ -132,7 +132,7 @@ define(function () {
                         var attrVals = attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false);
                         attrVals.map(val => {
                             console.log(val);
-                            bezl.dataService.add('QuoteAttrs_Multi' + attr.ATTRIBUTE_VALUE, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                            bezl.dataService.add('QuoteAttrs_Multi' + val.ATTRIBUTE_VALUE, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
