@@ -85,7 +85,7 @@ define(function () {
         }
 
         if (bezl.data.QuoteAttrs) {
-            bezl.dataService.remove('QuoteAttrs');
+            //bezl.dataService.remove('QuoteAttrs');
         }
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
