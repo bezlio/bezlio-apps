@@ -85,7 +85,7 @@ define(function () {
         }
 
         if (bezl.data) {
-            bezl.data.foreach(data => {
+            bezl.data.forEach(data => {
                 console.log(data);
             });
         }
