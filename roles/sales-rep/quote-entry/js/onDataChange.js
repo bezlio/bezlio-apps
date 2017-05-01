@@ -86,7 +86,7 @@ define(function () {
 
         if (bezl.data.saveQuote) {
             console.log(bezl.data);
-            console.log(typeof bezl.data);
+            console.log(Object.keys(bezl.data).length);
             bezl.data.forEach(data => {
                 console.log(data);
             });
