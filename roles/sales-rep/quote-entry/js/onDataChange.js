@@ -85,9 +85,10 @@ define(function () {
         }
 
         if (bezl.data.saveQuote) {
-            console.log(bezl.data);
             Object.keys(bezl.data).forEach(obj => {
-                console.log(obj);
+                if (obj.includes('QuoteAttrs_')) {
+                    console.log(obj);
+                }
             });
         }
 
