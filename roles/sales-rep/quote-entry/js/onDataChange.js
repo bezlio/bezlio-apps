@@ -91,7 +91,7 @@ define(function () {
                 if (typeof bezl.data[obj] === 'undefined') {
                     console.log('Undef: ' + obj);
                 } else {
-                    console.log('Def: ' + obj);
+                    console.log(typeof bezl.data[obj]);
                 }
             });
 
