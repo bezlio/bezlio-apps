@@ -85,9 +85,9 @@ define(function () {
         }
 
         if (bezl.data) {
-            if (bezl.data.includes('QuoteAttrs_')) {
-                console.log(bezl.data);
-            }
+            bezl.data.foreach(data => {
+                console.log(data);
+            });
         }
 
         if (bezl.data.changeCustomer) {
