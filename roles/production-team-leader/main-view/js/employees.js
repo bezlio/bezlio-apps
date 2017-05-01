@@ -114,7 +114,7 @@ define(function () {
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-            require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
+            require([bezl.vars.config.baseUrl + '/libraries/epicor/labor.js'], function(labor) {
 
                 var clockInEmployees = [];
                 for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -143,7 +143,7 @@ define(function () {
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-            require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
+            require([bezl.vars.config.baseUrl + '/libraries/epicor/labor.js'], function(labor) {
                 
                 var clockOutEmployees = [];
                 for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -168,7 +168,7 @@ define(function () {
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-                require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
+                require([bezl.vars.config.baseUrl + '/libraries/epicor/labor.js'], function(labor) {
                     var ds = {'LaborDtl': [ ] };
 
                     for (var i = 0; i < bezl.vars.team.length; i++) {
@@ -222,7 +222,7 @@ define(function () {
         // query, detect the platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-            require([bezl.vars.config.ScriptsBasePath + '/libraries/epicor/labor.js'], function(labor) {
+            require([bezl.vars.config.baseUrl + '/libraries/epicor/labor.js'], function(labor) {
                 var laborHeds = [];
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
