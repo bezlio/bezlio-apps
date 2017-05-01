@@ -39,6 +39,165 @@ define(function () {
                     ] },0);
 
                 break;
+
+            case "GetViewDetails":
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','GetViewDetails', { 
+                    "QueryName": "GetViewDetails",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": [
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
+                    ] },0);
+
+                break;
+
+            case "GetViewFile":
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewfile','brdb','EDI','GetViewFile', { 
+                    "QueryName": "GetViewFile",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": [
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
+                    ] },0);
+
+                break;
+
+            case "Revalidate":
+                var parameters = [], parameterCount = 0
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.viewdetails.HEADER){
+                    var obj = bezl.vars.viewdetails.HEADER[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "DESIRED_SHIP_DATE":
+                                parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "DOCUMENT_TYPE":
+                                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ORDER_STATUS":
+                                parameters[parameterCount] = { "Key": "@ORDER_STATUS", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIP_VIA":
+                                parameters[parameterCount] = { "Key": "@SHIP_VIA", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIPTO_ID":
+                                parameters[parameterCount] = { "Key": "@SHIPTO_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+                
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.OVERRIDES){
+                    var obj = bezl.vars.viewdetails.OVERRIDES[key];
+
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.ITEMS){
+                    var obj = bezl.vars.viewdetails.ITEMS[key];
+                    
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','Revalidate', { 
+                    "QueryName": "Revalidate",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": parameters },0);
+
+                break;
+            case "Save":
+                var parameters = [], parameterCount = 0
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.viewdetails.HEADER){
+                    var obj = bezl.vars.viewdetails.HEADER[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "DESIRED_SHIP_DATE":
+                                parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "DOCUMENT_TYPE":
+                                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ORDER_STATUS":
+                                parameters[parameterCount] = { "Key": "@ORDER_STATUS", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIP_VIA":
+                                parameters[parameterCount] = { "Key": "@SHIP_VIA", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIPTO_ID":
+                                parameters[parameterCount] = { "Key": "@SHIPTO_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+                
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.OVERRIDES){
+                    var obj = bezl.vars.viewdetails.OVERRIDES[key];
+
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.ITEMS){
+                    var obj = bezl.vars.viewdetails.ITEMS[key];
+                    
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','SaveDetails', { 
+                    "QueryName": "SaveDetails",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": parameters },0);
+
+                break;
         }
     }
     
