@@ -91,7 +91,6 @@ define(function () {
 
             var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj !== undefined);
             console.log("Def: " + definedObjs.length);
-
         }
 
         if (bezl.data.saveQuote) {
