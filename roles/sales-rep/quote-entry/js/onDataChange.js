@@ -84,6 +84,10 @@ define(function () {
             bezl.dataService.remove('Attributes');
         }
 
+        if (bezl.data.QuoteAttrs) {
+            bezl.dataService.remove('QuoteAttrs');
+        }
+
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
             //console.log(bezl.data);
             Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).forEach(obj => {
@@ -93,10 +97,6 @@ define(function () {
             });
         } else {
             bezl.vars.saving = false;
-        }
-
-        if (bezl.data.QuoteAttrs) {
-            bezl.dataService.remove('QuoteAttrs');
         }
 
         if (bezl.data.saveQuote) {
