@@ -89,7 +89,7 @@ define(function () {
 
             var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_'));
             definedObjs.map(obj => {
-                if (obj === undefined) {
+                if ("undefined" === typeof obj) {
                     console.log('Undef: ' + obj);
                 } else {
                     console.log('Def: ' + obj);
