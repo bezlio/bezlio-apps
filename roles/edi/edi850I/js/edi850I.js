@@ -198,6 +198,35 @@ define(function () {
                     "Parameters": parameters },0);
 
                 break;
+
+            case "DELETE":
+                var parameters = [], parameterCount = 0
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.viewdetails.HEADER){
+                    var obj = bezl.vars.viewdetails.HEADER[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "APPROVE":
+                                parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('datasub','brdb','EDI','Delete', { 
+                    "QueryName": "Delete",
+                    "Connection": "DEV-EDI01",
+                    "Parameters": parameters },0);
+
+                break;
         }
     }
     
