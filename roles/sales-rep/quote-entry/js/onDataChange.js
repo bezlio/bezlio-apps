@@ -84,7 +84,7 @@ define(function () {
             bezl.dataService.remove('Attributes');
         }
 
-        if (bezl.data) {
+        if (bezl.data.saveQuote) {
             bezl.data.forEach(data => {
                 console.log(data);
             });
