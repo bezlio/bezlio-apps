@@ -92,6 +92,7 @@ define(function () {
                     console.log('Undef: ' + obj);
                 } else {
                     console.log(typeof bezl.data[obj]);
+                    console.log(obj + " - " + bezl.data[obj]);
                 }
             });
 
