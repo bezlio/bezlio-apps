@@ -84,7 +84,7 @@ define(function () {
             bezl.dataService.remove('Attributes');
         }
 
-        if (bezl.data.QuoteAttrs_Multi1 || bezl.data.QuoteAttrs_Multi2) {
+        if (bezl.data.QuoteAttrs_Multi) {
             console.log(bezl.data);
         }
 
