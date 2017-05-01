@@ -88,13 +88,12 @@ define(function () {
             var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj !== undefined);
             definedObjs.forEach(obj => {
                 console.log(obj);
-                //bezl.data.remove(obj);
-
+                bezl.dataService.remove(obj);
             });
         }
 
         if (bezl.data.saveQuote) {
-            bezl.data.remove('saveQuote');
+            bezl.dataService.remove('saveQuote');
         }
 
         if (bezl.data.changeCustomer) {
