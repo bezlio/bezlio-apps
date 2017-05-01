@@ -88,15 +88,18 @@ define(function () {
             //console.log(bezl.data);
 
             Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).forEach(obj => {
-                if (typeof bezl.data[obj] === 'undefined') {
-                    console.log('Undef: ' + obj);
-                } else {
-                    console.log(typeof bezl.data[obj]);
-                    console.log(obj + " - " + bezl.data[obj]);
+                // if (typeof bezl.data[obj] === 'undefined') {
+                //     console.log('Undef: ' + obj);
+                // } else {
+                //     console.log(typeof bezl.data[obj]);
+                //     console.log(obj + " - " + bezl.data[obj]);
+                // }
+                if (bezl.data[obj] === 1) {
+                    bezl.dataService.remove(obj);
                 }
             });
 
-            //console.log("Acid: " + bezl.data.QuoteAttrs_Acid.length);
+            console.log(bezl.data);
         }
 
         if (bezl.data.saveQuote) {
