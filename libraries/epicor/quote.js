@@ -105,6 +105,8 @@ define(function () {
                     }
                 });
 
+                console.log(dtl.Attributes.toString());
+
                 dtl.Attributes.map(attr => {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
                     //standard one select property
@@ -131,7 +133,6 @@ define(function () {
                         //true or false attr values
                         var attrValsE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                         attrValsE.map(val => {
-                            console.log(val);
                             let name = val.ATTRIBUTE_VALUE_LABEL.substring(0, 5).replace(" ", "");
                             bezl.dataService.add('QuoteAttrs_' + name, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
