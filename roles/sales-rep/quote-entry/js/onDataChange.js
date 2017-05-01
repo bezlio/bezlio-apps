@@ -84,7 +84,7 @@ define(function () {
             bezl.dataService.remove('Attributes');
         }
 
-        if (bezl.data.QuoteAttrs_Multi) {
+        if (bezl.data.find(data => data.indexOf('QuoteAttrs_'))) {
             console.log(bezl.data);
         }
 
