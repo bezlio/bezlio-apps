@@ -87,6 +87,7 @@ define(function () {
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
             Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).forEach(obj => {
                 if (bezl.data[obj] === 1) {
+                    console.log(bezl.data.obj);
                     bezl.dataService.remove(obj);
                 }
             });
