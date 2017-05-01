@@ -105,7 +105,7 @@ define(function () {
                     }
                 });
 
-                console.log(dtl.Attributes.toString());
+                console.log(JSON.stringify(dtl.Attributes));
 
                 dtl.Attributes.map(attr => {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
