@@ -85,16 +85,16 @@ define(function () {
         }
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
-            console.log(bezl.data);
+            var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj !== undefined);
+            definedObjs.forEach(obj => {
+                console.log(obj);
+                //bezl.data.remove(obj);
+
+            });
         }
 
         if (bezl.data.saveQuote) {
-            // Object.keys(bezl.data).forEach(obj => {
-            //     if (obj.includes('QuoteAttrs_')) {
-            //         bezl.data.remove(obj);
-            //     }
-            // });
-            //bezl.data.remove('saveQuote');
+            bezl.data.remove('saveQuote');
         }
 
         if (bezl.data.changeCustomer) {
