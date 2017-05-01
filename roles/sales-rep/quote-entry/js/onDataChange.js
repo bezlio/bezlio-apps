@@ -85,10 +85,12 @@ define(function () {
         }
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
+            var undefinObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj === undefined);
+            console.log(undefinObjs.length);
+
             var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj !== undefined);
-            definedObjs.forEach(obj => {
-                //bezl.dataService.remove(obj);
-            });
+            console.log(definedObjs.length);
+
         }
 
         if (bezl.data.saveQuote) {
