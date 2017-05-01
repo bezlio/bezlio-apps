@@ -85,6 +85,7 @@ define(function () {
         }
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
+            console.log(bezl.data);
             var undefinObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj === undefined);
             console.log("Undef: " + undefinObjs.length);
 
