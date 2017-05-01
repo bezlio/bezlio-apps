@@ -85,9 +85,10 @@ define(function () {
         }
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
-            console.log(bezl.data);
+            //console.log(bezl.data);
 
             Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).map(obj => {
+                console.log(bezl.data.obj);
                 if (bezl.data.obj === undefined) {
                     console.log('Undef: ' + obj);
                 } else {
