@@ -20,7 +20,7 @@ define(function () {
             });
 
             setTimeout(() => {
-                bezl.vars.saving = false;
+
             }, 3000);
         }
 
@@ -85,21 +85,13 @@ define(function () {
         }
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
-            //console.log(bezl.data);
-
             Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).forEach(obj => {
-                // if (typeof bezl.data[obj] === 'undefined') {
-                //     console.log('Undef: ' + obj);
-                // } else {
-                //     console.log(typeof bezl.data[obj]);
-                //     console.log(obj + " - " + bezl.data[obj]);
-                // }
                 if (bezl.data[obj] === 1) {
                     bezl.dataService.remove(obj);
                 }
             });
-
-            console.log(bezl.data);
+        } else {
+            bezl.vars.saving = false;
         }
 
         if (bezl.data.saveQuote) {
