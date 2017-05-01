@@ -86,11 +86,17 @@ define(function () {
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
             console.log(bezl.data);
-            var undefinObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj === undefined);
 
-            var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_') && obj !== undefined);
+            var definedObjs = Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_'));
+            definedObjs.map(obj => {
+                if (obj === undefined) {
+                    console.log('Undef: ' + obj);
+                } else {
+                    console.log('Def: ' + obj);
+                }
+            });
 
-            console.log("Acid: " + bezl.data.QuoteAttrs_Acid.length);
+            //console.log("Acid: " + bezl.data.QuoteAttrs_Acid.length);
         }
 
         if (bezl.data.saveQuote) {
