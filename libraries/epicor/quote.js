@@ -140,7 +140,7 @@ define(function () {
                                     { Key: "PartID", Value: dtl.PartNum },
                                     { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                     { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                                    { Key: "AttributeValue", Value: (val.SELECTED_VALUE !== undefined) ? val.SELECTED_VALUE : false },
+                                    { Key: "AttributeValue", Value: val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE : false },
                                     { Key: "OtherAttributeValue", Value: '' },
                                     { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                     { Key: "PartNum", Value: dtl.PartNum }
