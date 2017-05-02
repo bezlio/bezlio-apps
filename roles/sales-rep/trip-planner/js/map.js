@@ -74,7 +74,7 @@ define(["./customer.js"], function (customer) {
         }
     }
 
-    function GetInfoWindowContent (Title, Address, Contacts, CustNum) {
+    function GetInfoWindowContent (Title, Address, Contacts, CustNum, bezl) {
         // Develop the HTML for the customer contacts
         var contactHtml = '<br><h4>Contacts</h4>';
         var contacts = $.parseXML(Contacts);
