@@ -79,7 +79,8 @@ define(function () {
                                         attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
                                     }
                                 }
-                            });
+                            }
+                        });
                     }
                 });
             });
