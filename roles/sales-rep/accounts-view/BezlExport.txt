@@ -1,5 +1,5 @@
 ﻿{
-  "id": "275cf34b-d56c-47c8-b52f-79d8ea482148",
+  "id": "abe5c9ff-e05e-4ef5-b537-dcd9ebdb31ad",
   "name": "Accounts View",
   "template": "custom",
   "owner": "sremington@saberlogic.com",
@@ -491,7 +491,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "bezl.vars.loading = true;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+      "code": "bezl.vars.loading = true;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
       "declares": [
         "$",
         "parm",
@@ -499,11 +499,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.loading = true;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+      "compiled": "bezl.vars.loading = true;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
     },
     {
       "method": "onDataChange",
-      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
       "declares": [
         "$",
         "parm",
@@ -511,11 +511,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
     },
     {
       "method": "clickAddress",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.clickAddress(bezl, parm)\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.clickAddress(bezl, parm)\n});",
       "declares": [
         "$",
         "parm",
@@ -523,11 +523,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.clickAddress(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.clickAddress(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "refresh",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Accounts');\n    functions.runQuery(bezl, 'AccountContacts');\n    functions.runQuery(bezl, 'Tasks');\n    functions.runQuery(bezl, 'Attachments');\n});\n\nbezl.vars.filterString = \"\";\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Accounts');\n    functions.runQuery(bezl, 'AccountContacts');\n    functions.runQuery(bezl, 'Tasks');\n    functions.runQuery(bezl, 'Attachments');\n});\n\nbezl.vars.filterString = \"\";\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box",
       "declares": [
         "$",
         "parm",
@@ -535,11 +535,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Accounts');\r\n    functions.runQuery(bezl, 'AccountContacts');\r\n    functions.runQuery(bezl, 'Tasks');\r\n    functions.runQuery(bezl, 'Attachments');\r\n});\r\nbezl.vars.filterString = \"\";\r\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Accounts');\r\n    functions.runQuery(bezl, 'AccountContacts');\r\n    functions.runQuery(bezl, 'Tasks');\r\n    functions.runQuery(bezl, 'Attachments');\r\n});\r\nbezl.vars.filterString = \"\";\r\n$(bezl.container.nativeElement).find('#filterString')[0].value = \"\"; // Clear out the search filter box\r\n"
     },
     {
       "method": "selectRow",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
       "declares": [
         "$",
         "parm",
@@ -547,11 +547,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "sort",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
       "declares": [
         "$",
         "parm",
@@ -559,11 +559,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "onFilterChange",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.applyFilter(bezl)\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.applyFilter(bezl)\n});",
       "declares": [
         "$",
         "parm",
@@ -571,11 +571,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.applyFilter(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.applyFilter(bezl);\r\n});\r\n"
     },
     {
       "method": "clickEmail",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.clickEmail(bezl, parm)\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.clickEmail(bezl, parm)\n});",
       "declares": [
         "$",
         "parm",
@@ -583,11 +583,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.clickEmail(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.clickEmail(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "clickPhoneNum",
-      "code": "require([bezl.vars.config.baseUrl + 'account.js'], function(functions) {\n\tfunctions.clickPhoneNum(bezl, parm)\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.clickPhoneNum(bezl, parm)\n});",
       "declares": [
         "$",
         "parm",
@@ -595,11 +595,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'account.js'], function (functions) {\r\n    functions.clickPhoneNum(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.clickPhoneNum(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    var tld = \"\";\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        tld = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        tld = \"https://bezlio-apps.bezl.io\";\n    }\n    bezl.vars.config.baseUrl = tld + \"/roles/sales-rep/accounts-view/js/\";\n}",
+      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/accounts-view/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
       "declares": [
         "$",
         "parm",
@@ -607,7 +607,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    var tld = \"\";\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        tld = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        tld = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n    bezl.vars.config.baseUrl = tld + \"/roles/sales-rep/accounts-view/js/\";\r\n}\r\n"
+      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/accounts-view/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
     }
   ],
   "data": ""
