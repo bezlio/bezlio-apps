@@ -70,6 +70,7 @@ define(function () {
                                 });
                             }
                             if (attr.hasOwnProperty('SELECTION_MODE')) {
+                                console.log(attr);
                                 if (attr.SELECTED_VALUE !== 'True') {
                                     if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5) !== undefined) {
                                         attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
