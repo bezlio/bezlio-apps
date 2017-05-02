@@ -90,11 +90,11 @@ define(function () {
 
         if (Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).length > 0) {
             //console.log(bezl.data);
-            Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).forEach(obj => {
-                if (bezl.data[obj] === 1) {
-                    bezl.dataService.remove(obj);
-                }
-            });
+            // Object.keys(bezl.data).filter(obj => obj.includes('QuoteAttrs_')).forEach(obj => {
+            //     if (bezl.data[obj] === 1) {
+            //         bezl.dataService.remove(obj);
+            //     }
+            // });
         } else {
             bezl.vars.saving = false;
         }
