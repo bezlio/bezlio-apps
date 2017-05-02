@@ -1,5 +1,5 @@
 ﻿{
-  "id": "18fb62b3-64e2-461b-8fbc-043ef96304c9",
+  "id": "db1fd6e1-5b6c-4347-b672-e754b2ff7e42",
   "name": "Production Team Leader - Main View",
   "template": "custom",
   "owner": "production-team-leader@bezl.io",
@@ -288,7 +288,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "bezl.vars.selectedEmployee = { Name: '' };\nbezl.vars.addToTeam = {};\nbezl.vars.addToTeamPrompt = false;\nbezl.vars.team = [];\nbezl.vars.showJobDialog = false;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl);\n});",
+      "code": "bezl.vars.selectedEmployee = { Name: '' };\nbezl.vars.addToTeam = {};\nbezl.vars.addToTeamPrompt = false;\nbezl.vars.team = [];\nbezl.vars.showJobDialog = false;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -296,11 +296,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.selectedEmployee = { Name: '' };\r\nbezl.vars.addToTeam = {};\r\nbezl.vars.addToTeamPrompt = false;\r\nbezl.vars.team = [];\r\nbezl.vars.showJobDialog = false;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+      "compiled": "bezl.vars.selectedEmployee = { Name: '' };\r\nbezl.vars.addToTeam = {};\r\nbezl.vars.addToTeamPrompt = false;\r\nbezl.vars.team = [];\r\nbezl.vars.showJobDialog = false;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
     },
     {
       "method": "onDataChange",
-      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl);\n});",
+      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -308,11 +308,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\nbezl.vars.config.Shift = '';\nbezl.vars.config.AssociateTeamBy = 'SupervisorEmail'; // Options = SupervisorEmail, DepartmentShift\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    var tld = \"\";\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        tld = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        tld = \"https://bezlio-apps.bezl.io\";\n    }\n    bezl.vars.config.baseUrl = tld + \"/roles/production-team-leader/main-view/js/\";\n}",
+      "code": "bezl.vars.config = {};\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\nbezl.vars.config.Shift = '';\nbezl.vars.config.AssociateTeamBy = 'SupervisorEmail'; // Options = SupervisorEmail, DepartmentShift\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/production-team-leader/main-view/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
       "declares": [
         "$",
         "parm",
@@ -320,11 +320,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\r\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\r\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\r\nbezl.vars.config.Shift = '';\r\nbezl.vars.config.AssociateTeamBy = 'SupervisorEmail'; // Options = SupervisorEmail, DepartmentShift\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    var tld = \"\";\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        tld = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        tld = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n    bezl.vars.config.baseUrl = tld + \"/roles/production-team-leader/main-view/js/\";\r\n}\r\n"
+      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.Platform = 'Epicor905'; // Options = 'Epicor905', 'Epicor10'\r\nbezl.vars.config.Connection = 'Epicor 905 Training'; // Specific to Epicor plugins\r\nbezl.vars.config.Company = 'EPIC06'; // Specific to Epicor plugins\r\nbezl.vars.config.Shift = '';\r\nbezl.vars.config.AssociateTeamBy = 'SupervisorEmail'; // Options = SupervisorEmail, DepartmentShift\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/production-team-leader/main-view/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
     },
     {
       "method": "refresh",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(functions) {\n\tfunctions.runQuery(bezl, parm);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(functions) {\n\tfunctions.runQuery(bezl, parm);\n});",
       "declares": [
         "$",
         "parm",
@@ -332,11 +332,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (functions) {\r\n    functions.runQuery(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (functions) {\r\n    functions.runQuery(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "addToTeam",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.addToTeam(bezl, bezl.vars.addToTeam);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.addToTeam(bezl, bezl.vars.addToTeam);\n});",
       "declares": [
         "$",
         "parm",
@@ -344,11 +344,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.addToTeam(bezl, bezl.vars.addToTeam);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.addToTeam(bezl, bezl.vars.addToTeam);\r\n});\r\n"
     },
     {
       "method": "addToTeamCancel",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.addToTeamCancel(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.addToTeamCancel(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -356,11 +356,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.addToTeamCancel(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.addToTeamCancel(bezl);\r\n});\r\n"
     },
     {
       "method": "selectAll",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.selectAll(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.selectAll(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -368,11 +368,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.selectAll(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.selectAll(bezl);\r\n});\r\n"
     },
     {
       "method": "deselectAll",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.deselectAll(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.deselectAll(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -380,11 +380,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.deselectAll(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.deselectAll(bezl);\r\n});\r\n"
     },
     {
       "method": "clockIn",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.clockIn(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.clockIn(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -392,11 +392,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.clockIn(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.clockIn(bezl);\r\n});\r\n"
     },
     {
       "method": "clockOut",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.clockOut(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.clockOut(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -404,11 +404,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.clockOut(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.clockOut(bezl);\r\n});\r\n"
     },
     {
       "method": "startJobSelect",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.startJob(bezl, bezl.vars.selectedJob, parm);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.startJob(bezl, bezl.vars.selectedJob, parm);\n});",
       "declares": [
         "$",
         "parm",
@@ -416,11 +416,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.startJob(bezl, bezl.vars.selectedJob, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.startJob(bezl, bezl.vars.selectedJob, parm);\r\n});\r\n"
     },
     {
       "method": "endActivitiesPrompt",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.endActivitiesPrompt(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.endActivitiesPrompt(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -428,11 +428,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.endActivitiesPrompt(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.endActivitiesPrompt(bezl);\r\n});\r\n"
     },
     {
       "method": "endActivities",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.endActivities(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.endActivities(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -440,11 +440,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.endActivities(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.endActivities(bezl);\r\n});\r\n"
     },
     {
       "method": "validateQuantities",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.validateQuantities(bezl, parm);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.validateQuantities(bezl, parm);\n});",
       "declares": [
         "$",
         "parm",
@@ -452,11 +452,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.validateQuantities(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.validateQuantities(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "overrideQuantityException",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.overrideQuantityException(bezl, parm);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.overrideQuantityException(bezl, parm);\n});",
       "declares": [
         "$",
         "parm",
@@ -464,11 +464,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.overrideQuantityException(bezl, parm);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.overrideQuantityException(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "onTeamFilterChange",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.onTeamFilterChange(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.onTeamFilterChange(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -476,11 +476,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.onTeamFilterChange(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.onTeamFilterChange(bezl);\r\n});\r\n"
     },
     {
       "method": "onJobFilterChange",
-      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.ScriptsBasePath + '/roles/production-team-leader/main-view/js/employees.js'], function(employees) {\n\temployees.onJobFilterChange(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.onJobFilterChange(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -488,11 +488,11 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.ScriptsBasePath + '/roles/production-team-leader/main-view/js/employees.js'], function (employees) {\r\n    employees.onJobFilterChange(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.onJobFilterChange(bezl);\r\n});\r\n"
     },
     {
       "method": "endActivitiesCancel",
-      "code": "require([bezl.vars.config.baseUrl + 'employees.js'], function(employees) {\n\temployees.endActivitiesCancel(bezl);\n});",
+      "code": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function(employees) {\n\temployees.endActivitiesCancel(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -500,7 +500,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "require([bezl.vars.config.baseUrl + 'employees.js'], function (employees) {\r\n    employees.endActivitiesCancel(bezl);\r\n});\r\n"
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'employees.js'], function (employees) {\r\n    employees.endActivitiesCancel(bezl);\r\n});\r\n"
     }
   ],
   "data": ""
