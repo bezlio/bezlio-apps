@@ -74,9 +74,12 @@ define(function () {
                                     if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5) !== undefined) {
                                         attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
                                     }
+                                } else {
+                                    if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5) !== undefined) {
+                                        attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
+                                    }
                                 }
-                            }
-                        });
+                            });
                     }
                 });
             });
