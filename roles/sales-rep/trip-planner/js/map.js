@@ -74,11 +74,14 @@ define(["./customer.js"], function (customer) {
         }
     }
 
-    function GetInfoWindowContent (Title, Address, Contacts) {
+    function GetInfoWindowContent (Title, Address, Contacts, CustNum) {
         // Develop the HTML for the customer contacts
         var contactHtml = '<br><h4>Contacts</h4>';
         var contacts = $.parseXML(Contacts);
         var contactsXml = $(contacts);
+
+        // Form object to pass into add function
+        var customerObj = {key: CustNum, display: Title, streetAddress: Address}
 
         contactsXml.find('Contact').each(function(index){
             var cntName = $(this).find('ContactName').text();
@@ -111,7 +114,9 @@ define(["./customer.js"], function (customer) {
                 '</div>'+
                 '<h4 id="firstHeading" class="firstHeading">' + Title + '</h4>'+
                 '<div id="bodyContent">'+
+                    
                     '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
+                    '<div align="center" style="margin-top: 7px;"><button (click)="bezl.functions["customerAdd"](' + customerObj + ')" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
                     ((contacts) ? contactHtml : '')
                 '</div>'+
             '</div>';

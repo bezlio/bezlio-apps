@@ -20,7 +20,8 @@ define(["./map.js"], function (map) {
             // Locate this customer and navigate to them on the map
             bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
                                                                         bezl.vars.markers[custNum].data.Address,
-                                                                        bezl.vars.markers[custNum].data.Contacts));
+                                                                        bezl.vars.markers[custNum].data.Contacts,
+                                                                        custNum));
 
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
