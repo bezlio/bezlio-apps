@@ -131,7 +131,6 @@ define(function () {
                         //true or false attr values
                         var attrValsE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                         attrValsE.map(val => {
-                            console.log(val);
                             let name = val.ATTRIBUTE_VALUE_LABEL.substring(0, 5).replace(" ", "");
                             bezl.dataService.add('QuoteAttrs_' + name, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
@@ -149,23 +148,23 @@ define(function () {
                             }, 0);
                         });
 
-                        // var attrValsNE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === true)));
-                        // attrValsNE.map(val => {
-                        //     bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                        //         "QueryName": "InsertAttributes",
-                        //         "Parameters": [
-                        //             { Key: "QuoteNum", Value: quoteNum },
-                        //             { Key: "QuoteLine", Value: dtl.QuoteLine },
-                        //             { Key: "PartID", Value: dtl.PartNum },
-                        //             { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
-                        //             { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                        //             { Key: "AttributeValue", Value: val.SELECTED_VALUE },
-                        //             { Key: "OtherAttribute", Value: '' },
-                        //             { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
-                        //             { Key: "PartNum", Value: dtl.PartNum }
-                        //         ]
-                        //     }, 0);
-                        // });
+                        var attrValsNE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === true)));
+                        attrValsNE.map(val => {
+                            bezl.dataService.add('QuoteAttrs_Multi', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                "QueryName": "InsertAttributes",
+                                "Parameters": [
+                                    { Key: "QuoteNum", Value: quoteNum },
+                                    { Key: "QuoteLine", Value: dtl.QuoteLine },
+                                    { Key: "PartID", Value: dtl.PartNum },
+                                    { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                                    { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
+                                    { Key: "AttributeValue", Value: val.SELECTED_VALUE },
+                                    { Key: "OtherAttribute", Value: '' },
+                                    { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
+                                    { Key: "PartNum", Value: dtl.PartNum }
+                                ]
+                            }, 0);
+                        });
                     }
 
                     //sub attributes
