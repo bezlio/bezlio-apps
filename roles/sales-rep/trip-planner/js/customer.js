@@ -21,7 +21,8 @@ define(["./map.js"], function (map) {
             bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
                                                                         bezl.vars.markers[custNum].data.Address,
                                                                         bezl.vars.markers[custNum].data.Contacts,
-                                                                        custNum));
+                                                                        custNum,
+                                                                        bezl));
 
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
