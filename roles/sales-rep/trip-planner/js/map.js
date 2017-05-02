@@ -116,7 +116,7 @@ define(["./customer.js"], function (customer) {
                 '<div id="bodyContent">'+
                     
                     '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
-                    '<div align="center" style="margin-top: 7px;"><button (click)="bezl.functions["customerAdd"](bezl.customerObj)" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
+                    '<div align="center" style="margin-top: 7px;"><button (click)="bezl.functions.customerAdd(bezl.customerObj)" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
                     ((contacts) ? contactHtml : '')
                 '</div>'+
             '</div>';
