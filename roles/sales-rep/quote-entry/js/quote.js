@@ -165,6 +165,7 @@ define(function () {
                     curLine.Attributes.push(attrFnd);
                 });
             }
+            console.log(curLine);
         }
     }
 
