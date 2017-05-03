@@ -79,9 +79,9 @@ define(function () {
                         });
                     }
                 });
-                bezl.vars.attrLoading = false;
             });
 
+            bezl.vars.attrLoading = false;
             bezl.dataService.remove('Attributes');
         }
 
