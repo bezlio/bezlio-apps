@@ -62,7 +62,8 @@ define(function () {
                     "QueryName": "GetQuoteAttributes",
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
-                        { Key: "QuoteLine", Value: bezl.vars.quoteAttributeLine }
+                        { Key: "QuoteLine", Value: bezl.vars.quoteAttributeLine },
+                        { Key: "PartNum", Value: bezl.vars.quotePart }
                     ]
                 })
                 break;
@@ -146,6 +147,7 @@ define(function () {
 
             var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
             bezl.vars.quoteAttributeLine = quoteLine;
+            bezl.vars.quotePart = curLine.PartNum;
 
             this.runQuery(bezl, "QuoteQty");
             this.runQuery(bezl, "Attributes");
