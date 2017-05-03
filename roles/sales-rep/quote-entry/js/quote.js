@@ -166,7 +166,8 @@ define(function () {
     }
 
     function ChangePart(bezl, lineNum, partNum) {
-        console.log("LineNum: " + lineNum + "| Part: " + partNum);
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine).PartNum = partNum;
+        bezl.data.QuoteDtls.Attributes = null;
     }
 
     return {
