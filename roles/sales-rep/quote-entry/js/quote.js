@@ -166,7 +166,7 @@ define(function () {
     }
 
     function ChangePart(bezl, lineNum, partNum) {
-        console.log("LineNum: " + line + "| Part: " + partNum);
+        console.log("LineNum: " + lineNum + "| Part: " + partNum);
     }
 
     return {
