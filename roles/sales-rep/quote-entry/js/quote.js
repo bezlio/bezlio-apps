@@ -175,16 +175,18 @@ define(function () {
     }
 
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
-        console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
-        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.filter(attr => attr.hasOwnProperty('DRIVING_ATTRIBUTE')).map(attr => {
-            attr.ATTRIBUTE_VALUES.map(attrVal => {
-                attrVal.Display = true;
-                if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
-                    if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
-                        attrVal.Display = false;
-                }
+        //console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
+        if (bezl.vars.Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
+            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.map(attr => {
+                attr.ATTRIBUTE_VALUES.map(attrVal => {
+                    attrVal.Display = true;
+                    if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
+                        if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
+                            attrVal.Display = false;
+                    }
+                });
             });
-        });
+        }
     }
 
     return {
