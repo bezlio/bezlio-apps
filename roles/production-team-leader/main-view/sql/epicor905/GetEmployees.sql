@@ -4,6 +4,7 @@ SELECT
 	, CASE WHEN lh.LaborHedSeq IS NULL THEN 0 ELSE 1 END AS ClockedIn
 	, lh.LaborHedSeq AS LaborID
 	, a.CurrentActivity
+	, a.LaborType
 	, a.PendingQty
 	, sup.EMailAddress as SupervisorEmail
 	, emp.EMailAddress as EmployeeEmail
@@ -28,6 +29,7 @@ FROM
 				, op.RunQty - op.QtyCompleted AS PendingQty
 				, ld.Company
 				, ld.LaborHedSeq
+				, ld.LaborType
 			FROM 
 				LaborDtl ld with(nolock) 
 
