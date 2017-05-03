@@ -176,7 +176,7 @@ define(function () {
 
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
         //console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
-        if (bezl.vars.Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
+        if (bezl.vars.attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
             bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.map(attr => {
                 attr.ATTRIBUTE_VALUES.map(attrVal => {
                     attrVal.Display = true;
