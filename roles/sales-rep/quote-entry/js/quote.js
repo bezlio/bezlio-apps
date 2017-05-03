@@ -139,6 +139,10 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
+    function ChangePart(bezl, lineNum, partNum) {
+        console.log("LineNum: " + line + "| Part: " + partNum);
+    }
+
     function ConfigureLine(bezl, partNum, quoteLine, listItem) {
         if (listItem) {
             bezl.vars.attrLoading = true;
