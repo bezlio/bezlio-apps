@@ -74,14 +74,14 @@ define(["./customer.js"], function (customer) {
         }
     }
 
-    function GetInfoWindowContent (Title, Address, Contacts, CustNum, bezl) {
+    function GetInfoWindowContent (Customer, bezl) {
         // Develop the HTML for the customer contacts
         var contactHtml = '<br><h4>Contacts</h4>';
-        var contacts = $.parseXML(Contacts);
+        var contacts = $.parseXML(Customer.Contacts);
         var contactsXml = $(contacts);
 
         // Form object to pass into add function
-        bezl.customerObj = {key: CustNum, display: Title, streetAddress: Address}
+       // bezl.customerObj = {key: CustNum, display: Title, streetAddress: Address}
 
         contactsXml.find('Contact').each(function(index){
             var cntName = $(this).find('ContactName').text();
@@ -109,14 +109,15 @@ define(["./customer.js"], function (customer) {
         });
 
         var contentString = 
+        '<script>function test() {console.log("hit");}</script>'+
             '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
-                '<h4 id="firstHeading" class="firstHeading">' + Title + '</h4>'+
+                '<h4 id="firstHeading" class="firstHeading">' + Customer.Name + '</h4>'+
                 '<div id="bodyContent">'+
                     
-                    '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
-                    '<div align="center" style="margin-top: 7px;"><button (click)="bezl.functions.customerAdd(bezl.customerObj)" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
+                    '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Customer.Address) + '\" target=\"_blank\">' + Customer.Address + '</a>' +
+                    '<div align="center" style="margin-top: 7px;"><button (click)="test()" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
                     ((contacts) ? contactHtml : '')
                 '</div>'+
             '</div>';

@@ -17,14 +17,10 @@ define(["./map.js"], function (map) {
 
     function Select (bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
-            // Locate this customer and navigate to them on the map
-            bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
-                                                                        bezl.vars.markers[custNum].data.Address,
-                                                                        bezl.vars.markers[custNum].data.Contacts,
-                                                                        custNum,
-                                                                        bezl));
-
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
+            // Locate this customer and navigate to them on the map
+            bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.selectedCustomer,bezl));
+
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
             bezl.vars.map.panTo(center);
 
