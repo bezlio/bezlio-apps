@@ -175,6 +175,7 @@ define(function () {
         includeSuspects: IncludeSuspects,
         addLine: AddLine,
         deleteLine: DeleteLine,
+        changePart: ChangePart,
         configureLine: ConfigureLine
     }
 });
