@@ -174,8 +174,8 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
     }
 
-    function ChangeAttribute(bezl, lineNum, attributeValue) {
-        console.log('true');
+    function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
+        console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
     }
 
     return {
