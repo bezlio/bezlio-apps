@@ -98,11 +98,11 @@ define(function () {
             });
         } else {
             bezl.vars.saving = false;
+            bezl.vars.savingQuote = false;
         }
 
         if (bezl.data.saveQuote) {
             bezl.dataService.remove('saveQuote');
-            bezl.vars.savingQuote = false;
         }
 
         if (bezl.data.changeCustomer) {
