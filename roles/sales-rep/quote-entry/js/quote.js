@@ -175,7 +175,10 @@ define(function () {
     }
 
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
-        //console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
+        //normal ngModelChange functionality
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ATTRIBUTES.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
+
+        //driving/dependent attribute functionality
         if (bezl.vars.attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
             bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.map(attr => {
                 attr.ATTRIBUTE_VALUES.map(attrVal => {
