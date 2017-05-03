@@ -1053,6 +1053,7 @@
     {
         "ATTRIBUTE_ID": "110_CATEGORY",
         "ATTRIBUTE_DESCRIPTION": "Category",
+        "DRIVING_ATTRIBUTE": true,
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
