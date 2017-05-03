@@ -83,7 +83,7 @@ define(function () {
             });
 
             bezl.vars.attrLoading = false;
-            bezl.dataService.remove('Attributes');
+            //bezl.dataService.remove('Attributes');
         }
 
         if (bezl.data.QuoteAttrs) {
