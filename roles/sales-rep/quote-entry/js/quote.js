@@ -174,6 +174,10 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
     }
 
+    function ChangeAttribute(bezl, lineNum, attributeValue) {
+        console.log('true');
+    }
+
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
@@ -181,6 +185,7 @@ define(function () {
         addLine: AddLine,
         deleteLine: DeleteLine,
         configureLine: ConfigureLine,
-        changePart: ChangePart
+        changePart: ChangePart,
+        changeAttribute: ChangeAttribute
     }
 });
