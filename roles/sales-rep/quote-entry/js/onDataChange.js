@@ -48,7 +48,7 @@ define(function () {
             bezl.dataService.remove('newQuote');
         }
 
-        if (bezl.data.Attributes && bezl.data.QuoteDtls) {
+        if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
             bezl.data.Attributes.map(attrs => {
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
@@ -102,6 +102,7 @@ define(function () {
 
         if (bezl.data.saveQuote) {
             bezl.dataService.remove('saveQuote');
+            bezl.vars.savingQuote = false;
         }
 
         if (bezl.data.changeCustomer) {
