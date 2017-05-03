@@ -53,6 +53,7 @@ define(function () {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
+        bezl.vars.savingQuote = true;
         var quoteNum;
         var custNum;
 
