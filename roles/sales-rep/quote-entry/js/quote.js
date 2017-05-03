@@ -175,7 +175,14 @@ define(function () {
     }
 
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
-        console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
+        //console.log('QuoteLine: ' + lineNum + ' | AttrID: ' + attributeID + ' | AttrVal: ' + attributeValue);
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.map(attr => {
+            attr.ATTRIBUTE_VALUES.map(attrVal => {
+                attrVal.Display = true;
+                if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
+                    attrVal.Display = false;
+            });
+        });
     }
 
     return {
