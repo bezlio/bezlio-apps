@@ -161,7 +161,7 @@ define(function () {
                     attrFnd.Display = false;
                     attrFnd.QuoteNum = curLine.QuoteNum;
                     attrFnd.QuoteLine = curLine.QuoteLine;
-                    attrFnd.ATTRIBUTE_VALUES.map(val => val.Display = true);
+                    attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
                     curLine.Attributes.push(attrFnd);
                 });
             }
