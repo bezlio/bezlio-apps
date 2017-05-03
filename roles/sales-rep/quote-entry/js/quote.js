@@ -179,8 +179,12 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.map(attr => {
             attr.ATTRIBUTE_VALUES.map(attrVal => {
                 attrVal.Display = true;
-                if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
-                    attrVal.Display = false;
+
+                attrVal.filter(attrVal_Filter => attrVal_Filter.hasOwnProperty('DEPENDENT_ATTRIBUTE').DEPENDENT_ATTRIBUTE.find(depAttr => depAttr.ATTRIBUTE_ID !== attributeID && depAttr.ATTRIBUTE_VALUE !== attributeValue)).Display = false;
+
+                // if(attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE'))
+                // if (attrVal.DEPENDENT_ATTRIBUTE.filter().length === 0)
+                //     attrVal.Display = false;
             });
         });
     }
