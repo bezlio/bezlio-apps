@@ -169,7 +169,7 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).PartNum = partNum;
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
 
-        console.log(bezl.data.QuoteDtls);
+        console.log(bezl.data);
     }
 
     return {
