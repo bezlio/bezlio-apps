@@ -49,8 +49,6 @@ define(function () {
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls) {
-            console.log(bezl.data);
-
             bezl.data.Attributes.map(attrs => {
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
