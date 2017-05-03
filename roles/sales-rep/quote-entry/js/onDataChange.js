@@ -49,7 +49,6 @@ define(function () {
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls) {
-            console.log(bezl.data);
             bezl.data.Attributes.map(attrs => {
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
@@ -73,7 +72,10 @@ define(function () {
                                     if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5) !== undefined) {
                                         attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
                                     }
-                                } else { }
+                                }
+                                attr.ATTRIBUTE_VALUES.map(attrVal => {
+                                    attrVal.SELECTED_VALUE = '';
+                                });
                             }
                         });
                     }
