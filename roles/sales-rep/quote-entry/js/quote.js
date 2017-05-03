@@ -176,7 +176,7 @@ define(function () {
 
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
         //normal ngModelChange functionality
-        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ATTRIBUTES.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
 
         //driving/dependent attribute functionality
         if (bezl.vars.attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
