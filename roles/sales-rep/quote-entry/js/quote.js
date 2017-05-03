@@ -168,6 +168,8 @@ define(function () {
     function ChangePart(bezl, lineNum, partNum) {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).PartNum = partNum;
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
+
+        console.log(bezl.data.QuoteDtls);
     }
 
     return {
