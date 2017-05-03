@@ -139,10 +139,6 @@ define(function () {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
     }
 
-    function ChangePart(bezl, lineNum, partNum) {
-        console.log("LineNum: " + line + "| Part: " + partNum);
-    }
-
     function ConfigureLine(bezl, partNum, quoteLine, listItem) {
         if (listItem) {
             bezl.vars.attrLoading = true;
@@ -169,13 +165,17 @@ define(function () {
         }
     }
 
+    function ChangePart(bezl, lineNum, partNum) {
+        console.log("LineNum: " + line + "| Part: " + partNum);
+    }
+
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
         includeSuspects: IncludeSuspects,
         addLine: AddLine,
         deleteLine: DeleteLine,
-        changePart: ChangePart,
-        configureLine: ConfigureLine
+        configureLine: ConfigureLine,
+        changePart: ChangePart
     }
 });
