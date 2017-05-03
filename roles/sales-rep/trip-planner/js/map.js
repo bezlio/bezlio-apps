@@ -80,8 +80,8 @@ define(["./customer.js"], function (customer) {
         var contacts = $.parseXML(Customer.Contacts);
         var contactsXml = $(contacts);
 
-        // Form object to pass into add function
-       // bezl.customerObj = {key: CustNum, display: Title, streetAddress: Address}
+        // Form object for selected customer
+        bezl.selectedCust = {key: Customer.CustNum, display: Customer.Name, streetAddress: Customer.Address}
 
         contactsXml.find('Contact').each(function(index){
             var cntName = $(this).find('ContactName').text();
@@ -109,7 +109,6 @@ define(["./customer.js"], function (customer) {
         });
 
         var contentString = 
-        '<script>function test() {console.log("hit");}</script>'+
             '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
@@ -117,7 +116,7 @@ define(["./customer.js"], function (customer) {
                 '<div id="bodyContent">'+
                     
                     '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Customer.Address) + '\" target=\"_blank\">' + Customer.Address + '</a>' +
-                    '<div align="center" style="margin-top: 7px;"><button (click)="test()" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
+                    '<div align="center" style="margin-top: 7px;"><button onclick="addCust()" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
                     ((contacts) ? contactHtml : '')
                 '</div>'+
             '</div>';
