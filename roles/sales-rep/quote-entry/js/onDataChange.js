@@ -75,7 +75,7 @@ define(function () {
                     if (attrVal !== undefined) {
                         console.log(attrFnd);
                         console.log(attrVal);
-                        attrFnd.SELECTED_VALUE = attrVal.Character01;
+                        attrFnd.SELECTED_VALUE = attrVal.find(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID).Character01;
                         if (attrVal.Character01 === 'OTHER') {
                             attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                         }
