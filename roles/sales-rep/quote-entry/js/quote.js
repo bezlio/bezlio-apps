@@ -83,6 +83,9 @@ define(function () {
             result: '',
             quoteLines: []
         };
+
+        bezl.dataService.remove('Attributes');
+        bezl.dataService.remove('QuoteDtls');
     }
 
     function IncludeSuspects(bezl, parm) {
