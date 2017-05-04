@@ -49,7 +49,11 @@ define(function () {
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
+
+            console.log(bezl.data.QuoteDtls);
+
             bezl.data.Attributes.map(attrs => {
+
                 bezl.data.QuoteDtls.map(dtl => {
                     if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
                         dtl.Attributes.map(attr => {
