@@ -84,9 +84,10 @@ define(function () {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined) ? Boolean(attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01) : '';
                                 console.log(attrFndVal);
+                                console.log(attrValList);
                             });
                             // console.log(attrFnd);
-                            // console.log(attrValList);
+
                         }
                     }
                 });
