@@ -71,15 +71,17 @@ define(function () {
                     attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
                     openLine.Attributes.push(attrFnd);
 
-                    var attrVal = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
-                    if (attrVal !== undefined) {
-                        console.log(attrFnd);
-                        console.log(attrVal);
-                        attrFnd.SELECTED_VALUE = attrVal.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID).Character01;
-                        if (attrVal.Character01 === 'OTHER') {
-                            //attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
+                    var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
+                    if (attrValList !== undefined) {
+                        var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
+                        if (attrVal !== undefined) {
+                            attrFnd.SELECTED_VALUE = attrVal.Character01;
+                            if (attrVal.Character01 === 'OTHER') {
+                                attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
+                            }
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
+
                         }
                     }
                 });
