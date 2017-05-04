@@ -71,11 +71,13 @@ define(function () {
                     attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
                     openLine.Attributes.push(attrFnd);
 
+                    console.log(attrFnd);
                     var attrVal = bezl.data.Attributes.find(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
-                    attrFnd.SELECTED_VALUE = attrVal.Character01;
-                    if (attrVal.Character01 === 'OTHER') {
-                        attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUES === 'OTHER').SELECTED_VALUE = attrVal.Character04;
-                    }
+                    console.log(attrVal);
+                    // attrFnd.SELECTED_VALUE = attrVal.Character01;
+                    // if (attrVal.Character01 === 'OTHER') {
+                    //     attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUES === 'OTHER').SELECTED_VALUE = attrVal.Character04;
+                    // }
 
                 });
 
