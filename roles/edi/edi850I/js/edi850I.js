@@ -22,6 +22,20 @@ define(function () {
                 }
             }
         }      
+
+        //Make buttons visible/invisible.
+        if (bezl.vars.filterEdiStatus == 'H'){
+            var div = document.getElementById('btnDelete');
+            div.style.display = '';
+            var div = document.getElementById('btnApprove');
+            div.style.display = '';
+        }     
+        else if (bezl.vars.filterEdiStatus == 'A' || bezl.vars.filterEdiStatus == 'D'){
+            var div = document.getElementById('btnDelete');
+            div.style.display = 'none';
+            var div = document.getElementById('btnApprove');
+            div.style.display = 'none';  
+        }
     }
   
     function RunQuery (bezl, queryName) {
