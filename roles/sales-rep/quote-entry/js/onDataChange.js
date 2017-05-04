@@ -61,7 +61,7 @@ define(function () {
                 openLine.Attributes = [];
 
                 //add attributes that do not exist yet, or were not set
-                var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === partNum).ATTRIBUTES));
+                var filterArray = JSON.parse(JSON.stringify(bezl.vars.parts.find(part => part.PART_DESCRIPTION === openLine.PartNum).ATTRIBUTES));
                 filterArray.map(attr => {
                     var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
 
