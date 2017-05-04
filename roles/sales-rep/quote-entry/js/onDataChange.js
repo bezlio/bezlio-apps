@@ -78,7 +78,8 @@ define(function () {
                             attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
-
+                            console.log(attrFnd);
+                            console.log(attrVal);
                         }
                     }
                 });
