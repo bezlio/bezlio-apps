@@ -51,6 +51,7 @@ define(function () {
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
 
             console.log(bezl.data.QuoteDtls);
+            console.log(bezl.data.Attributes);
 
             // if (curLine.Attributes === undefined) {
             //     curLine.Attributes = [];
