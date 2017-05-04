@@ -74,11 +74,12 @@ define(function () {
                     console.log(attrFnd);
                     var attrVal = bezl.data.Attributes.find(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     console.log(attrVal);
-                    // attrFnd.SELECTED_VALUE = attrVal.Character01;
-                    // if (attrVal.Character01 === 'OTHER') {
-                    //     attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUES === 'OTHER').SELECTED_VALUE = attrVal.Character04;
-                    // }
-
+                    if (attrVal !== undefined) {
+                        attrFnd.SELECTED_VALUE = attrVal.Character01;
+                        if (attrVal.Character01 === 'OTHER') {
+                            attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUES === 'OTHER').SELECTED_VALUE = attrVal.Character04;
+                        }
+                    }
                 });
 
                 bezl.data.Attributes.map(attr => {
