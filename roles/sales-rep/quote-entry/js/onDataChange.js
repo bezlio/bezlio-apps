@@ -71,7 +71,7 @@ define(function () {
                     attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
                     openLine.Attributes.push(attrFnd);
 
-                    var attrVal = bezl.data.Attributes.find(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
+                    var attrVal = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrVal !== undefined) {
                         attrFnd.SELECTED_VALUE = attrVal.Character01;
                         if (attrVal.Character01 === 'OTHER') {
@@ -80,6 +80,7 @@ define(function () {
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             console.log(attrFnd);
                             console.log(attrVal);
+
                         }
                     }
                 });
