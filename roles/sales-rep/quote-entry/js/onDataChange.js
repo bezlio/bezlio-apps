@@ -69,7 +69,7 @@ define(function () {
                     attrFnd.QuoteNum = openLine.QuoteNum;
                     attrFnd.QuoteLine = openLine.QuoteLine;
                     attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
-                    curLine.Attributes.push(attrFnd);
+                    openLine.Attributes.push(attrFnd);
                 });
 
                 bezl.data.Attributes.map(attr => {
