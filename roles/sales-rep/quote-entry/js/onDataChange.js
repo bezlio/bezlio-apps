@@ -82,7 +82,9 @@ define(function () {
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
-                                attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined) ? (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 !== 'False') ? true : false : '';
+                                attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined)
+                                    ? (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 !== 'False')
+                                        ? true : false : '';
                                 // console.log(attrFndVal);
                                 // console.log(attrValList);
                             });
