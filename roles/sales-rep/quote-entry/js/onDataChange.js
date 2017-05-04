@@ -75,9 +75,7 @@ define(function () {
                     if (attrVal !== undefined) {
                         attrFnd.SELECTED_VALUE = attrVal.Character01;
                         if (attrVal.Character01 === 'OTHER') {
-                            console.log(attrFnd);
-                            console.log(attrVal);
-                            //attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUES === 'OTHER').SELECTED_VALUE = attrVal.Character04;
+                            attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
 
