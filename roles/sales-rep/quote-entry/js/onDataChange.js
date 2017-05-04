@@ -82,7 +82,7 @@ define(function () {
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             console.log(attrFnd);
-                            console.log(attrVal);
+                            console.log(attrValList);
                         }
                     }
                 });
