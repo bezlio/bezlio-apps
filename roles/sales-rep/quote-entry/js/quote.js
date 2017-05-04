@@ -151,20 +151,6 @@ define(function () {
 
             this.runQuery(bezl, "QuoteQty");
             this.runQuery(bezl, "Attributes");
-
-            if (curLine.Attributes === undefined) {
-                curLine.Attributes = [];
-
-                filterArray.forEach(attr => {
-                    var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
-
-                    attrFnd.Display = false;
-                    attrFnd.QuoteNum = curLine.QuoteNum;
-                    attrFnd.QuoteLine = curLine.QuoteLine;
-                    attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
-                    curLine.Attributes.push(attrFnd);
-                });
-            }
         }
     }
 

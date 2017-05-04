@@ -52,6 +52,20 @@ define(function () {
 
             console.log(bezl.data.QuoteDtls);
 
+            // if (curLine.Attributes === undefined) {
+            //     curLine.Attributes = [];
+
+            //     filterArray.forEach(attr => {
+            //         var attrFnd = JSON.parse(JSON.stringify(bezl.vars.attributes.find(attribute => attribute.ATTRIBUTE_ID === attr.ATTRIBUTE_ID)));
+
+            //         attrFnd.Display = false;
+            //         attrFnd.QuoteNum = curLine.QuoteNum;
+            //         attrFnd.QuoteLine = curLine.QuoteLine;
+            //         attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
+            //         curLine.Attributes.push(attrFnd);
+            //     });
+            // }
+
             // bezl.data.Attributes.map(attrs => {
 
             //     bezl.data.QuoteDtls.map(dtl => {
