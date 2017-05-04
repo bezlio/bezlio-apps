@@ -82,7 +82,7 @@ define(function () {
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
-                                attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined) ? attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 : '';
+                                attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL && attrFndVal.SELECTED_VALUE !== 'False') !== undefined) ? attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 : '';
                             });
                             // console.log(attrFnd);
                             // console.log(attrValList);
