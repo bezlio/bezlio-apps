@@ -53,6 +53,8 @@ define(function () {
             console.log(bezl.data.QuoteDtls);
             console.log(bezl.data.Attributes);
 
+            console.log(bezl.vars.quoteAttributeLine);
+
             // if (curLine.Attributes === undefined) {
             //     curLine.Attributes = [];
 
