@@ -81,8 +81,11 @@ define(function () {
                             }
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
-                            console.log(attrFnd);
-                            console.log(attrValList);
+                            attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
+                                attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined) ? attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 : '';
+                            });
+                            // console.log(attrFnd);
+                            // console.log(attrValList);
                         }
                     }
                 });
