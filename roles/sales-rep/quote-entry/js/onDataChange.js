@@ -74,6 +74,7 @@ define(function () {
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
+                        console.log(attrVal);
                         if (attrVal !== undefined) {
                             attrFnd.SELECTED_VALUE = attrVal.Character01;
                             if (attrVal.Character01 === 'OTHER') {
@@ -84,54 +85,12 @@ define(function () {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 var attrVal_Char01 = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined) ? attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 : false;
                                 attrFndVal.SELECTED_VALUE = (attrVal_Char01 !== 'False') ? attrVal_Char01 : false;
-                                // attrFndVal.SELECTED_VALUE = (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL) !== undefined)
-                                //     ? (attrValList.find(attrValListItm => attrValListItm.Key5 === attrFndVal.ATTRIBUTE_VALUE_LABEL).Character01 !== 'False')
-                                //         ? true : false : '';
-                                // console.log(attrFndVal);
-                                // console.log(attrValList);
                             });
-                            // console.log(attrFnd);
 
                         }
                     }
                 });
-
-                bezl.data.Attributes.map(attr => {
-                    //console.log(attr);
-                    // if (attr.ATTRIBUTE_ID === attrs.Key4) {
-                    //     attr.SELECTED_VALUE = attrs.Character01;
-                    //     if (attrs.Character01 === 'OTHER') {
-                    //         attr.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrs.Character04;
-                    //     }
-                    // }
-                    // if (attr.ATTRIBUTE_ID === "000_QUANTITY" && bezl.data.QuoteQty) {
-                    //     var cnt = 0;
-                    //     bezl.data.QuoteQty.map(qty => {
-                    //         //attr.ATTRIBUTE_VALUES[cnt].ATTRIBUTE_VALUE = qty.OurQuantity;
-                    //         attr.ATTRIBUTE_VALUES[cnt].SELECTED_VALUE = qty.OurQuantity;
-                    //         cnt++;
-                    //     });
-                    // }
-                    // if (attr.hasOwnProperty('SELECTION_MODE')) {
-                    //     if (attr.SELECTED_VALUE !== 'False') {
-                    //         if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5) !== undefined) {
-                    //             attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === attrs.Key5).SELECTED_VALUE = attrs.Character01;
-                    //         }
-                    //     }
-                    // }
-                });
             }
-
-            // bezl.data.Attributes.map(attrs => {
-
-            //     bezl.data.QuoteDtls.map(dtl => {
-            //         if (dtl.QuoteNum.toString() === attrs.Key1 && dtl.QuoteLine.toString() === attrs.Key2 && dtl.Attributes) {
-            //             dtl.Attributes.map(attr => {
-
-            //             });
-            //         }
-            //     });
-            // });
 
             bezl.vars.attrLoading = false;
             //bezl.dataService.remove('Attributes');
