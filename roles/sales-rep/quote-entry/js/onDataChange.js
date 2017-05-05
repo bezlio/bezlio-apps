@@ -81,6 +81,12 @@ define(function () {
                             }
                             //dependent attribute display setting
                             console.log(attrFnd);
+                            attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
+                                if (attrFndVal.hasOwnProperty('DEPENDEDNT_ATTRIBUTE')) {
+                                    console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
+                                    //var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.)
+                                }
+                            });
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
