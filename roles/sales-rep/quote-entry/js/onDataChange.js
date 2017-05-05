@@ -79,7 +79,8 @@ define(function () {
                                     console.log(attrFndVal);
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
                                         var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
-                                        console.log(depAttrFndVal);
+                                        if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE)
+                                            attrFndValue.Display = false;
                                     });
                                 }
                             });
