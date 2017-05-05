@@ -49,12 +49,6 @@ define(function () {
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
-
-            console.log(bezl.data.QuoteDtls);
-            console.log(bezl.data.Attributes);
-
-            console.log(bezl.vars.quoteAttributeLine);
-
             var openLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine);
 
             if (openLine.Attributes === undefined) {
@@ -81,8 +75,8 @@ define(function () {
                             }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
-                                if (attrFndVal.hasOwnProperty('DEPENDEDNT_ATTRIBUTE')) {
-                                    //console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
+                                if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
+                                    console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
                                     //var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.)
                                 }
                             });
