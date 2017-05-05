@@ -80,10 +80,9 @@ define(function () {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             }
                             //dependent attribute display setting
-                            console.log(attrFnd);
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDEDNT_ATTRIBUTE')) {
-                                    //console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
+                                    console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
                                     //var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.)
                                 }
                             });
