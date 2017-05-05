@@ -77,7 +77,7 @@ define(function () {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     console.log(attrFndVal);
-                                    var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.ATTRIBUTE_ID === attrFndVal.ATTRIBUTE_ID);
+                                    var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.Key4 === attrFndVal.ATTRIBUTE_ID);
                                     console.log(depAttrVal);
                                 }
                             });
