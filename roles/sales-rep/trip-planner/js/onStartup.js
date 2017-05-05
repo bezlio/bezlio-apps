@@ -42,11 +42,6 @@ define(["./map.js",
                 
                 // Create an infowindow
                 bezl.vars.infoWindow = new google.maps.InfoWindow;
-
-                // Make local function to call global one for button in infowindow
-                function addCust() {
-                    bezl.functions.customerAdd(bezl.selectedCust);
-                }
                                 
                 // Drop a marker for home
                 var marker = new google.maps.Marker({
@@ -71,12 +66,6 @@ define(["./map.js",
                 marker.addListener('click', function() {
                         bezl.vars.infoWindow.setContent(map.getInfoWindowContent({title: 'Current Location', contacts: '', address: bezl.vars.currentAddress}, bezl));
                         bezl.vars.infoWindow.open(bezl.vars.map, marker);
-
-                        /*google.maps.event.addListener(infoWindow, 'domready', function() {
-
-                            // Bind the click event on your button here
-                        });*/
-                        //bezl.vars.infoWindow.addListener('click')
                 });
                 
                 bezl.vars.markers[0] = (marker);
