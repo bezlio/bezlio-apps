@@ -82,7 +82,7 @@ define(function () {
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDEDNT_ATTRIBUTE')) {
-                                    console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
+                                    //console.log(attrFndVal.DEPENDENT_ATTRIBUTE);
                                     //var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.)
                                 }
                             });
