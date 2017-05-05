@@ -74,12 +74,13 @@ define(function () {
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
-                        console.log(attrVal);
                         if (attrVal !== undefined) {
                             attrFnd.SELECTED_VALUE = attrVal.Character01;
                             if (attrVal.Character01 === 'OTHER') {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             }
+                            //dependent attribute display setting
+                            console.log(attrFnd);
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
