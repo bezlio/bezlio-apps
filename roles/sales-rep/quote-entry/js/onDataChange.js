@@ -74,11 +74,11 @@ define(function () {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             }
                             //dependent attribute display setting
-                            console.log(bezl.data.Attributes);
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     console.log(attrFndVal);
-                                    //var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.)
+                                    var depAttrVal = bezl.data.Attributes.find(depAttrFndVal => depAttrFndVal.ATTRIBUTE_ID === attrFndVal.ATTRIBUTE_ID);
+                                    console.log(depAttrVal);
                                 }
                             });
                         }
