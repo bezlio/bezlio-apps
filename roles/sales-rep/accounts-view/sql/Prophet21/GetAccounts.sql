@@ -52,7 +52,7 @@ FROM
 	c.salesrep_id = sr.id
 
 	LEFT OUTER JOIN p21_view_terms tm with(nolock) ON
-	c.service_terms_id = tm.terms_id
+	c.terms_id = tm.terms_id
 	LEFT OUTER JOIN
 		(SELECT 
 			iAR.customer_id As CustNum,
