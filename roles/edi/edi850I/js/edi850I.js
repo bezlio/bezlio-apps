@@ -63,6 +63,20 @@ define(function () {
                         { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
                     ] },0);
 
+                //Make buttons visible/invisible.
+                if (bezl.vars.filterEdiStatus == 'H'){
+                    var div = document.getElementById('btnRevalidate');
+                    div.style.display = '';
+                    var div = document.getElementById('btnSave');
+                    div.style.display = '';
+                }     
+                else if (bezl.vars.filterEdiStatus == 'A' || bezl.vars.filterEdiStatus == 'D'){
+                    var div = document.getElementById('btnRevalidate');
+                    div.style.display = 'none';
+                    var div = document.getElementById('btnSave');
+                    div.style.display = 'none';  
+                }
+
                 break;
 
             case "GetViewFile":
