@@ -11,7 +11,8 @@ define(["./map.js",
             customerList: true
         }
 
-        bezl.vars.mapFile = map;
+        bezl.vars.mapFile = require('map');
+        //bezl.vars.mapFile = map;
         bezl.vars.customerFile = customer;
         
         // Initiate the call to refresh the customer list
