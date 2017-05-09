@@ -18,7 +18,7 @@ define(["./map.js",
         bezl.vars.customerFile.runQuery(bezl, 'CustList');
 
         // Info Pin add customer event handler
-        $( "#bezlpanel" ).on( "addCust_Pin", function( event ) {
+        $("#bezlpanel").on("addCust_Pin", function(event) {
             console.log(event);
         });
 

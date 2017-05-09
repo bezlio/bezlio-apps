@@ -106,14 +106,13 @@ define([], function () {
         });
 
         var contentString = 
-            '<div id="content">'+
-                '<script> function test(){$("#bezlpanel").trigger("addCust_Pin");}</script>'+
+            '<div id="content">'+=
                 '<div id="siteNotice">'+
                 '</div>'+
                 '<h4 id="firstHeading" class="firstHeading">' + Title + '</h4>'+
                 '<div id="bodyContent">'+
                     '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
-                    '<div align="center" style="margin-top: 7px;"><button onclick="test()" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
+                    `<div align="center" style="margin-top: 7px;"><button onclick="$('#bezlpanel').trigger('addCust_Pin',[]);}" class="btn btn-sm btn-primary">+ Add to Route</button></div>` +
                     ((contacts) ? contactHtml : '')
                 '</div>'+
             '</div>';
