@@ -81,6 +81,10 @@ define(["./map.js",
                 
                 bezl.vars.markers[0] = (marker);
 
+                var testBtn = document.getElementById('test');
+                google.maps.event.addDomListener(testBtn, "click", function() {
+                    console.log('hit');
+                    });
                 
                 });
             } else {
