@@ -116,6 +116,11 @@ define([], function () {
                     ((contacts) ? contactHtml : '') //onclick="$(\'#bezlpanel\').trigger(\'addCust_Pin\',[]);"
                 '</div>'+
             '</div>';
+
+            var testBtn = document.getElementById('test');
+                google.maps.event.addDomListener(testBtn, "click", function() {
+                    console.log('hit');
+                    });
         
         return contentString;
     }
