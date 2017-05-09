@@ -44,7 +44,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('datasub','brdb','EDI','GetDashHeaderData', { 
                     "QueryName": "GetDashHeaderData",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
                     "Parameters": [
                         { "Key": "@SITE_ID", "Value": ' ' },
                         { "Key": "@USER_ID", "Value": '1' },
@@ -58,7 +58,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewdetails','brdb','EDI','GetViewDetails', { 
                     "QueryName": "GetViewDetails",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
                     "Parameters": [
                         { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
                     ] },0);
@@ -83,7 +83,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewfile','brdb','EDI','GetViewFile', { 
                     "QueryName": "GetViewFile",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
                     "Parameters": [
                         { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
                     ] },0);
@@ -154,7 +154,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewdetails','brdb','EDI','Revalidate', { 
                     "QueryName": "Revalidate",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
                     "Parameters": parameters },0);
 
                 break;
@@ -222,17 +222,17 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewdetails','brdb','EDI','SaveDetails', { 
                     "QueryName": "SaveDetails",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
                     "Parameters": parameters },0);
 
                 break;
 
-            case "DELETE":
+            case "Delete":
                 var parameters = [], parameterCount = 0
 
                 //Loop through header for header information.
-                for (var key in bezl.vars.viewdetails.HEADER){
-                    var obj = bezl.vars.viewdetails.HEADER[key];
+                for (var key in bezl.vars.datasub){
+                    var obj = bezl.vars.datasub[key];
 
                     for (var prop in obj) {
                         switch (prop.toString()){
@@ -251,7 +251,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('datasub','brdb','EDI','Delete', { 
                     "QueryName": "Delete",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
                     "Parameters": parameters },0);
 
                 break;
