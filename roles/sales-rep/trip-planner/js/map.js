@@ -44,7 +44,7 @@ define([], function () {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                //customer.select(bezl, customerRecord.custNum);
+                bezl.vars.customerFile.select(bezl, customerRecord.custNum);
             });
 
             bezl.vars.markers[customerRecord.custNum] = marker;
@@ -112,7 +112,6 @@ define([], function () {
                 '<h4 id="firstHeading" class="firstHeading">' + Title + '</h4>'+
                 '<div id="bodyContent">'+
                     '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
-                    '<div align="center" style="margin-top: 7px;"><button onclick="addCust()" class="btn btn-sm btn-primary">+ Add to Route</button></div>' +
                     ((contacts) ? contactHtml : '')
                 '</div>'+
             '</div>';
@@ -177,7 +176,7 @@ define([], function () {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                //customer.select(bezl, parm.custNum);
+                bezl.vars.customerFile.select(bezl, parm.custNum);
             });
 
             bezl.vars.markers[0] = marker;
