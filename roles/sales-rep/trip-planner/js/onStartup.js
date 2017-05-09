@@ -11,17 +11,16 @@ define(["./map.js",
             customerList: true
         }
 
-        bezl.vars.mapFile = require('map');
-        //bezl.vars.mapFile = map;
+        bezl.vars.mapFile = map;
         bezl.vars.customerFile = customer;
         
         // Initiate the call to refresh the customer list
         bezl.vars.customerFile.runQuery(bezl, 'CustList');
 
         // Info Pin add customer event handler
-        $("#bezlpanel").on("addCust_Pin", function(event) {
+       /* $("#bezlpanel").on("addCust_Pin", function(event) {
             console.log(event);
-        });
+        });*/
 
         $("#test").on('click', function(event) {
             console.log(event);
