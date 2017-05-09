@@ -17,6 +17,12 @@ define(["./map.js",
         // Initiate the call to refresh the customer list
         bezl.vars.customerFile.runQuery(bezl, 'CustList');
 
+        // Info Pin add customer event handler
+        $( "#bezlpanel" ).on( "addCust_Pin", function( event, param1 ) {
+            console.log(event);
+            console.log(param1);
+        });
+
         // Google Maps requires async so pull it in.
         require.config({
             paths: {
