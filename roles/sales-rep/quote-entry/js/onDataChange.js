@@ -77,7 +77,6 @@ define(function () {
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
-                                    console.log(attrFndVal);
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
                                         var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
                                         if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE)
