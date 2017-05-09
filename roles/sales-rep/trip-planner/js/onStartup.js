@@ -18,9 +18,8 @@ define(["./map.js",
         bezl.vars.customerFile.runQuery(bezl, 'CustList');
 
         // Info Pin add customer event handler
-        $( "#bezlpanel" ).on( "addCust_Pin", function( event, param1 ) {
+        $( "#bezlpanel" ).on( "addCust_Pin", function( event ) {
             console.log(event);
-            console.log(param1);
         });
 
         // Google Maps requires async so pull it in.
