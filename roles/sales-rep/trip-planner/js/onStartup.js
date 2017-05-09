@@ -22,6 +22,10 @@ define(["./map.js",
             console.log(event);
         });
 
+        $("#test").on('click', function(event) {
+            console.log(event);
+        });
+
         // Google Maps requires async so pull it in.
         require.config({
             paths: {
