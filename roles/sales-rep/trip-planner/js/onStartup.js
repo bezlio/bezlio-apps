@@ -10,9 +10,12 @@ define(["./map.js",
         bezl.vars.loading = { 
             customerList: true
         }
+
+        bezl.vars.mapFile = map;
+        bezl.vars.customerFile = customer;
         
         // Initiate the call to refresh the customer list
-        customer.runQuery(bezl, 'CustList');
+        bezl.vars.customerFile.runQuery(bezl, 'CustList');
 
         // Google Maps requires async so pull it in.
         require.config({
@@ -64,7 +67,7 @@ define(["./map.js",
                 });
                 
                 marker.addListener('click', function() {
-                        bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
+                        bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent('Current Location',
                                                                                     bezl.vars.currentAddress,
                                                                                     ''));
                         bezl.vars.infoWindow.open(bezl.vars.map, marker);

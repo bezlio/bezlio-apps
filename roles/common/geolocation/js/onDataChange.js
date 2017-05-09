@@ -15,6 +15,9 @@ define(["./customer.js",
                 bezl.vars.geoTracker = 0;
             }
 
+            bezl.vars.customerFile = customer;
+            bezl.vars.mapFile = map;
+
             bezl.vars.loading.customerList = true;
             bezl.vars.customers = [];
             for (var i = 0; i < bezl.data.CustList.length; i++) {
