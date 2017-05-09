@@ -73,7 +73,7 @@ FROM
 	AND c.customer_id = ArAging.CustNum
 WHERE
 	a.phys_postal_code <> ''
-	--AND sr.email_address = '{EmailAddress}' -- Disabled for TESTING
+	AND sr.email_address = '{EmailAddress}'
 	--AND c.company_id = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 	AND c.customer_name NOT LIKE '%DO NOT USE%'
 ORDER BY
