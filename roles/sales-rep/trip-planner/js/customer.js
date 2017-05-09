@@ -22,6 +22,11 @@ define([], function () {
                                                                         bezl.vars.markers[custNum].data.Address,
                                                                         bezl.vars.markers[custNum].data.Contacts));
 
+                var testBtn = document.getElementById('test');
+                google.maps.event.addDomListener(testBtn, "click", function() {
+                    console.log('hit');
+                    });                                                         
+
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
             bezl.vars.map.panTo(center);
