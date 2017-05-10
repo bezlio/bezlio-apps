@@ -68,6 +68,8 @@ define(function () {
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
+                        console.log(attrFnd);
+                        console.log(attrVal);
                         if (attrVal !== undefined) {
                             attrFnd.SELECTED_VALUE = attrVal.Character01;
                             if (attrVal.Character01 === 'OTHER') {
