@@ -178,7 +178,7 @@ define(function () {
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
-                                    { Key: "PartID", Value: Date().now() },
+                                    { Key: "PartID", Value: dtl.PartNum },
                                     { Key: "AttributeID", Value: selSubAttr.ATTRIBUTE_ID },
                                     { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
                                     { Key: "AttributeValue", Value: selSubAttr.ATTRIBUTE_VALUE },
