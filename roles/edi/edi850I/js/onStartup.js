@@ -14,13 +14,16 @@ define(["./edi850I.js"], function (edi850I) {
         bezl.vars.datasub = "";
         bezl.vars.viewdetails = "";
         bezl.vars.viewfile = "";
+        bezl.vars.user = "";
 
+        //Get User Settings.
+        edi850I.runQuery(bezl, "GetUserSettings");
+
+        //Get Header Data.
         edi850I.runQuery(bezl, "GetDashHeaderData");
 
         edi850I.filterEdiStatus(bezl);
     }
-
-
 
      return {
     onStartup: OnStartup

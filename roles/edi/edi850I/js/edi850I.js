@@ -40,6 +40,21 @@ define(function () {
   
     function RunQuery (bezl, queryName) {
         switch (queryName) {
+            case "GetUserSettings":
+                var user;
+                
+                //Get the current login user.
+                user = bezl.vars.currentUser;
+
+                bezl.dataService.add('user','brdb','EDI','GetUserSettings', { 
+                    "QueryName": "GetUserSettings",
+                    "Connection": "SQLConnection",
+                    "Parameters": [
+                        { "Key": "@EMAIL", "Value": user },
+                    ] },0);
+
+                break;
+
             case "GetDashHeaderData":
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('datasub','brdb','EDI','GetDashHeaderData', { 
