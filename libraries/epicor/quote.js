@@ -172,7 +172,10 @@ define(function () {
                     //sub attributes
                     var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
                     if (selSubAttr != undefined) {
-                        console.log(selSubAttr);
+                        if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
+                            console.log(selSubAttr);
+                        }
+
                         //if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).hasOwnProperty("SUB_ATTRIBUTE")) {
                         //  console.log(attr);
                         // attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
