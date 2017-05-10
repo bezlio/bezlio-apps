@@ -169,6 +169,7 @@ define(function () {
                         });
                     }
 
+                    console.log(attr);
                     //sub attributes
                     if (attr.ATTRIBUTE_VALUES.hasOwnProperty("SUB_ATTRIBUTE")) {
                         attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
