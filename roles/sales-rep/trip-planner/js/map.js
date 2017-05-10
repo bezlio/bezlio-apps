@@ -74,10 +74,10 @@ define([], function () {
         }
     }
 
-    function GetInfoWindowContent (Title, Address, Contacts) {
+    function GetInfoWindowContent (Customer) {
         // Develop the HTML for the customer contacts
         var contactHtml = '<br><h4>Contacts</h4>';
-        var contacts = $.parseXML(Contacts);
+        var contacts = $.parseXML(Customer.Contacts);
         var contactsXml = $(contacts);
 
         contactsXml.find('Contact').each(function(index){
@@ -109,10 +109,10 @@ define([], function () {
             '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
-                '<h4 id="firstHeading" class="firstHeading">' + Title + '</h4>'+
+                '<h4 id="firstHeading" class="firstHeading">' + Customer.Name + '</h4>'+
                 '<div id="bodyContent">'+
-                    '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
-                    `<div align="center" style="margin-top: 7px;"><button id="test" class="btn btn-sm btn-primary">+ Add to Route</button></div>` + 
+                    '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Customer.Address) + '\" target=\"_blank\">' + Customer.Address + '</a>' +
+                    `<div align="center" style="margin-top: 7px;"><button id="addBtn" data-id="" class="btn btn-sm btn-primary">+ Add to Route</button></div>` + 
                     ((contacts) ? contactHtml : '') //onclick="$(\'#bezlpanel\').trigger(\'addCust_Pin\',[]);"
                 '</div>'+
             '</div>';

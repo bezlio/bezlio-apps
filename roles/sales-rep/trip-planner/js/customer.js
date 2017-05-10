@@ -18,20 +18,18 @@ define([], function () {
     function Select (bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
             // Locate this customer and navigate to them on the map
-            bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent(bezl.vars.markers[custNum].title,
-                                                                        bezl.vars.markers[custNum].data.Address,
-                                                                        bezl.vars.markers[custNum].data.Contacts));
-
-                var testBtn = document.getElementById('test');
-                google.maps.event.addDomListener(testBtn, "click", function() {
-                    console.log('hit');
-                    });                                                         
+            bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent(bezl.vars.markers[custNum].data));                                                          
 
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
             bezl.vars.map.panTo(center);
 
             bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
+
+             var addBtn = document.getElementById('addBtn');
+                google.maps.event.addDomListener(addBtn, "click", function() {
+                    console.log('hit');
+                    });
         } else {
             // If there is not a marker for the given address, geocode it now
             for (var i = 0; i < bezl.vars.customers.length; i++) {

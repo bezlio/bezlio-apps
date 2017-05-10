@@ -73,10 +73,14 @@ define(["./map.js",
                 });
                 
                 marker.addListener('click', function() {
-                        bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent('Current Location',
-                                                                                    bezl.vars.currentAddress,
-                                                                                    ''));
+                        bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent({Name:'Current Location',
+                                                                                    Address:bezl.vars.currentAddress,
+                                                                                    Contacts:''}));
                         bezl.vars.infoWindow.open(bezl.vars.map, marker);
+                        var addBtn = document.getElementById('addBtn');
+                        google.maps.event.addDomListener(addBtn, "click", function() {
+                            console.log('hit');
+                        });
                 });
                 
                 bezl.vars.markers[0] = (marker);
