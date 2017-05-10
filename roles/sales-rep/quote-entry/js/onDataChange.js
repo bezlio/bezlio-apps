@@ -64,7 +64,6 @@ define(function () {
                     attrFnd.QuoteLine = openLine.QuoteLine;
                     attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
                     openLine.Attributes.push(attrFnd);
-                    console.log(attrFnd);
 
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
