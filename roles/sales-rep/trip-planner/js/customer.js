@@ -28,7 +28,8 @@ define([], function () {
 
              var addBtn = document.getElementById('addBtn');
                 google.maps.event.addDomListener(addBtn, "click", function() {
-                    console.log('hit');
+                    var custNum = $('#addBtn').attr('data-id');
+                    console.log(custNum);
                     });
         } else {
             // If there is not a marker for the given address, geocode it now

@@ -112,7 +112,7 @@ define([], function () {
                 '<h4 id="firstHeading" class="firstHeading">' + Customer.Name + '</h4>'+
                 '<div id="bodyContent">'+
                     '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Customer.Address) + '\" target=\"_blank\">' + Customer.Address + '</a>' +
-                    `<div align="center" style="margin-top: 7px;"><button id="addBtn" data-id="" class="btn btn-sm btn-primary">+ Add to Route</button></div>` + 
+                    `<div align="center" style="margin-top: 7px;"><button id="addBtn" data-id="` + Customer.CustNum + `" class="btn btn-sm btn-primary">+ Add to Route</button></div>` + 
                     ((contacts) ? contactHtml : '') //onclick="$(\'#bezlpanel\').trigger(\'addCust_Pin\',[]);"
                 '</div>'+
             '</div>';

@@ -79,7 +79,8 @@ define(["./map.js",
                         bezl.vars.infoWindow.open(bezl.vars.map, marker);
                         var addBtn = document.getElementById('addBtn');
                         google.maps.event.addDomListener(addBtn, "click", function() {
-                            console.log('hit');
+                            var custNum = $('#addBtn').attr('data-id');
+                            console.log(custNum);
                         });
                 });
                 
