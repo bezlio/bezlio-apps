@@ -173,18 +173,18 @@ define(function () {
                     var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
                     if (selSubAttr !== undefined) {
                         if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
-                            console.log(selSubAttr);
+                            var selSubAttrVal = selSubAttr.SUB_ATTRIBUTE[0];
                             bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
                                     { Key: "PartID", Value: dtl.PartNum },
-                                    { Key: "AttributeID", Value: selSubAttr.ATTRIBUTE_ID },
+                                    { Key: "AttributeID", Value: selSubAttrVal.ATTRIBUTE_ID },
                                     { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                                    { Key: "AttributeValue", Value: selSubAttr.ATTRIBUTE_VALUE },
+                                    { Key: "AttributeValue", Value: selSubAttrVal.SELECTED_VALUE },
                                     { Key: "OtherAttributeValue", Value: '' },
-                                    { Key: "AttributeDesc", Value: selSubAttr.ATTRIBUTE_DESCRIPTION },
+                                    { Key: "AttributeDesc", Value: selSubAttrVal.ATTRIBUTE_DESCRIPTION },
                                     { Key: "PartNum", Value: dtl.PartNum }
                                 ]
                             }, 0);
