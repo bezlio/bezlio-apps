@@ -145,7 +145,6 @@ define(function () {
 
     function ConfigureLine(bezl, partNum, quoteLine, listItem) {
         if (listItem) {
-            console.log("Line: " + quoteLine);
             bezl.vars.attrLoading = true;
 
             var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
