@@ -169,9 +169,9 @@ define(function () {
                         });
                     }
 
-                    console.log(attr);
                     //sub attributes
                     if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).hasOwnProperty("SUB_ATTRIBUTE")) {
+                        console.log(attr);
                         // attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
                         //     subAttr.ATTRIBUTE_VALUES.map(subAttrVal => {
                         //         bezl.dataService.add('QuoteAttrs_Sub', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
