@@ -75,7 +75,7 @@ define(function () {
                             }
                             //quantity logic
                             if(attrFnd.ATTRIBUTE_ID === '000_QUANTITY'){
-                                console.log(attrFnd);
+                                
                             }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
