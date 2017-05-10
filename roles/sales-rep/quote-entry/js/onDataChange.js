@@ -86,7 +86,10 @@ define(function () {
                             //sub attributes
                             var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
                             if (subAttrFnd !== undefined) {
-                                console.log(subAttrFnd);
+                                if (subAttrFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
+                                    console.log(attrFnd);
+                                    console.log(bezl.data.Attributes);
+                                }
                             }
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
