@@ -44,7 +44,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
@@ -77,7 +77,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
@@ -110,7 +110,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
@@ -143,7 +143,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
@@ -176,13 +176,13 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Quarterly",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
@@ -270,7 +270,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -281,7 +281,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Pass Configuration:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -301,7 +301,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -318,7 +318,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -329,7 +329,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -349,7 +349,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -366,7 +366,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -377,7 +377,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -415,7 +415,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -432,7 +432,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Colors",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -449,7 +449,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Color",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -460,7 +460,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Color",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -639,7 +639,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -650,7 +650,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Pass Configuration:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -670,7 +670,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -687,7 +687,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -698,7 +698,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -718,7 +718,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -735,7 +735,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -746,7 +746,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -784,7 +784,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Colors",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -801,7 +801,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Color",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -812,7 +812,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Color",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -1468,7 +1468,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -1547,7 +1547,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
             }
@@ -1608,7 +1608,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -1646,7 +1646,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -1975,7 +1975,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2007,7 +2007,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2081,7 +2081,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
             }
@@ -2144,7 +2144,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -2198,7 +2198,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2254,7 +2254,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2286,7 +2286,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2342,7 +2342,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
             }
@@ -2440,7 +2440,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -2468,7 +2468,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2488,7 +2488,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2499,7 +2499,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Neck Style:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2531,7 +2531,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2543,7 +2543,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Yes",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
@@ -2592,7 +2592,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
             }
@@ -2623,7 +2623,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Shoulder Design",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2655,7 +2655,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2719,7 +2719,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2730,7 +2730,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Diameter",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2741,7 +2741,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Length",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2757,7 +2757,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2798,7 +2798,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
@@ -2849,7 +2849,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2918,7 +2918,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -2938,7 +2938,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -2949,7 +2949,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Pass Configuration:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -2969,7 +2969,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -2986,7 +2986,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -2997,7 +2997,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -3035,7 +3035,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -3565,7 +3565,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -3586,7 +3586,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Neck Size",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -3655,7 +3655,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -3696,7 +3696,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -3722,7 +3722,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Please Specify:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "IS_DEFAULT": true,
                 "DEPENDENT_ATTRIBUTE": [
@@ -3783,7 +3783,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -3819,7 +3819,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -3930,7 +3930,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -3966,7 +3966,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -3982,7 +3982,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Yes",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4023,7 +4023,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Diptube Length",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4050,7 +4050,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Output per stroke",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4081,7 +4081,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4105,7 +4105,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -4124,7 +4124,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -4165,7 +4165,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -4192,7 +4192,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -4362,7 +4362,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4385,7 +4385,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4401,7 +4401,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Free",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4412,7 +4412,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Diptube Length",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4439,7 +4439,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Output per stroke",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4489,7 +4489,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4578,7 +4578,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -4647,7 +4647,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tube Orifice",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4658,7 +4658,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Diameter",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4669,7 +4669,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Length",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4693,7 +4693,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4704,7 +4704,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Head Style",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4744,7 +4744,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -4768,7 +4768,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4779,7 +4779,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Closure Style",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4813,7 +4813,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "None",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4836,7 +4836,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -4862,7 +4862,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "None",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
@@ -4882,7 +4882,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Yes (specify how far from open end)",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "EDITABLE": true
             },
@@ -4899,7 +4899,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Matte (specify distance from open end)",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "EDITABLE": true
             },
@@ -4945,7 +4945,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5012,7 +5012,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Tubing Length",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5057,7 +5057,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -5085,7 +5085,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5106,7 +5106,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
@@ -5129,7 +5129,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Celon Band:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5141,7 +5141,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Diameter",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5153,7 +5153,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Length",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5193,7 +5193,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other Color",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5221,7 +5221,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5240,12 +5240,12 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of colors :",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Art Description:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5273,7 +5273,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Yes",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             },
                             {
@@ -5306,7 +5306,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Yes",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             },
                             {
@@ -5370,7 +5370,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5410,7 +5410,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
             }
@@ -5446,7 +5446,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5469,7 +5469,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5478,7 +5478,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Coating Type",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5489,7 +5489,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "SKU #",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5500,7 +5500,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pieces Per Pallet",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5511,7 +5511,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Weight Per Carton",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5522,7 +5522,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Freight Class",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5533,7 +5533,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Vendor Item",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5544,7 +5544,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Supplier",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5555,7 +5555,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Planner",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5566,7 +5566,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Lead Time",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5602,7 +5602,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5638,7 +5638,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5649,7 +5649,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Yes:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
@@ -5666,7 +5666,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Dimensions L x W x H",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5702,7 +5702,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5731,7 +5731,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5743,7 +5743,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Partition Set (number of cells)",
                 "WIDTH": 900,
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5754,7 +5754,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Vendor Item",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5765,7 +5765,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Vendor",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5776,7 +5776,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Planner",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
@@ -5800,7 +5800,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5811,7 +5811,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Pass Configuration:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5831,7 +5831,7 @@
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5848,7 +5848,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5859,7 +5859,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Label Specs",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5897,7 +5897,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5914,7 +5914,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Colors",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5971,7 +5971,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Enter Target:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5982,7 +5982,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Enter Target:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -5993,7 +5993,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Enter Total Stock Max:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -6004,7 +6004,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Enter Vendor Min Order Qty:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -6015,7 +6015,7 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Enter Lead Time:",
-                                "ATTRIBUTE_VALUE": "NULL0",
+                                "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
                         ]
@@ -6035,7 +6035,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Description:",
-                "ATTRIBUTE_VALUE": "NULL0",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "HEIGHT": 200,
                 "WIDTH": 500
