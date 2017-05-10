@@ -126,6 +126,10 @@ define(function () {
 
         if (bezl.data.saveQuote) {
             bezl.dataService.remove('saveQuote');
+            setTimeout(() => {
+                bezl.vars.saving = false;
+                bezl.vars.savingQuote = false;
+            }, 5000);
         }
 
         if (bezl.data.changeCustomer) {

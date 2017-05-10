@@ -1518,37 +1518,31 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
-                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
-                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/ML.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
-                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "CC",
                 "ATTRIBUTE_VALUE": "CC",
-                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/CC.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
-                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LITER.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
                 "ATTRIBUTE_VALUE": "OTHER",
-                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
             }
         ]
