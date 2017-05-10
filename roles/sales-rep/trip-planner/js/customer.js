@@ -26,13 +26,16 @@ define([], function () {
 
             bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
 
-             var addBtn = document.getElementById('addBtn');
-                google.maps.event.addDomListener(addBtn, "click", function() {
-                    var custNum = $('#addBtn').attr('data-id');
-                    var customer = bezl.vars.customers.find(c => c.custNum == custNum);
-
-                    bezl.vars.customerFile.add(bezl, customer);
-                    });
+              // After the info window is open, add a DOM listener for the add button
+            var addBtn = document.getElementById('addBtn');
+            google.maps.event.addDomListener(addBtn, "click", function() {
+                // Get the custNum from the button data
+                var custNum = $('#addBtn').attr('data-id');
+                // Find customer from custNum
+                var customer = bezl.vars.customers.find(c => c.custNum == custNum);
+                // Add Customer to trip
+                bezl.vars.customerFile.add(bezl, customer);
+            });
         } else {
             // If there is not a marker for the given address, geocode it now
             for (var i = 0; i < bezl.vars.customers.length; i++) {

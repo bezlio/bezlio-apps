@@ -77,11 +77,15 @@ define(["./map.js",
                                                                                     Address:bezl.vars.currentAddress,
                                                                                     Contacts:''}));
                         bezl.vars.infoWindow.open(bezl.vars.map, marker);
+
+                        // After the info window is open, add a DOM listener for the add button
                         var addBtn = document.getElementById('addBtn');
                         google.maps.event.addDomListener(addBtn, "click", function() {
+                            // Get the custNum from the button data
                             var custNum = $('#addBtn').attr('data-id');
+                            // Find customer from custNum
                             var customer = bezl.vars.customers.find(c => c.custNum == custNum);
-
+                            // Add Customer to trip
                             bezl.vars.customerFile.add(bezl, customer);
                         });
                 });
