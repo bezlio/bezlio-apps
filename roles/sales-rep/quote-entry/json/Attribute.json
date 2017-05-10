@@ -5047,23 +5047,19 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Inches",
-                "ATTRIBUTE_VALUE": "Inch",
-                "EDITABLE": true
+                "ATTRIBUTE_VALUE": "Inch"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ml",
-                "ATTRIBUTE_VALUE": "ML",
-                "EDITABLE": true
+                "ATTRIBUTE_VALUE": "ML"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "oz",
-                "ATTRIBUTE_VALUE": "OZ",
-                "EDITABLE": true
+                "ATTRIBUTE_VALUE": "OZ"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
-                "ATTRIBUTE_VALUE": "OTHER",
-                "EDITABLE": true
+                "ATTRIBUTE_VALUE": "OTHER"
             }
         ]
     },
