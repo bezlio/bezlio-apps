@@ -68,8 +68,6 @@ define(function () {
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
-                        console.log(attrFnd);
-                        console.log(attrVal);
                         if (attrVal !== undefined) {
                             attrFnd.SELECTED_VALUE = attrVal.Character01;
                             if (attrVal.Character01 === 'OTHER') {
@@ -85,6 +83,11 @@ define(function () {
                                     });
                                 }
                             });
+                            //sub attributes
+                            var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
+                            if (subAttrFnd !== undefined) {
+                                console.log(subAttrFnd);
+                            }
                         }
                         if (attrFnd.hasOwnProperty('SELECTION_MODE')) {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
