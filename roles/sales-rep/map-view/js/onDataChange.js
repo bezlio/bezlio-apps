@@ -55,7 +55,7 @@ define(["./customer.js",
             
             // Now loop through the results and plot each
             for (var i = 0; i < bezl.data.CustList.length; i++) {
-                if(bezl.data.CustList[i].Address.length != null) {
+                if(bezl.data.CustList[i].Address != null) {
                     if (bezl.data.CustList[i].Address.length > 3) {
                     
                         // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
