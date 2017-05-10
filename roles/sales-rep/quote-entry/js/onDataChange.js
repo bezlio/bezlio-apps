@@ -73,6 +73,10 @@ define(function () {
                             if (attrVal.Character01 === 'OTHER') {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             }
+                            //quantity logic
+                            if(attrFnd.ATTRIBUTE_ID === '000_QUANTITY'){
+                                console.log(attrFnd);
+                            }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
