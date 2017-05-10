@@ -49,7 +49,6 @@ define(function () {
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
-            console.log(bezl.data.Attributes);
             var openLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine);
 
             if (openLine.Attributes === undefined) {
