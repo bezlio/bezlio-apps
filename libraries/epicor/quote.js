@@ -172,6 +172,8 @@ define(function () {
                     //sub attributes
                     console.log(attr);
                     console.log(attr.SELECTED_VALUE);
+                    var x = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
+                    console.log(x);
                     //if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).hasOwnProperty("SUB_ATTRIBUTE")) {
                     //  console.log(attr);
                     // attr.ATTRIBUTE_VALUES.SUB_ATTRIBUTE.map(subAttr => {
