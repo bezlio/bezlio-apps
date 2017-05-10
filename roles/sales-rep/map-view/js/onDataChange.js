@@ -55,37 +55,41 @@ define(["./customer.js",
             
             // Now loop through the results and plot each
             for (var i = 0; i < bezl.data.CustList.length; i++) {
-                if (bezl.data.CustList[i].Address.length > 3) {
-                
-                    // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
-                    if (bezl.data.CustList[i].Geocode_Location == "" ||  bezl.data.CustList[i].Geocode_Location == null) {
-                        map.geocodeAddress(
-                            bezl, 
-                            { 
-                                streetAddress: bezl.data.CustList[i].Address, 
-                                title: bezl.data.CustList[i].Name, 
-                                custNum: bezl.data.CustList[i].CustNum,
-                                shipToNum: bezl.data.CustList[i].ShipToNum,
-                                data: bezl.data.CustList[i] 
-                            }
-                        );                   
-                    } else {
-                        var marker = new bezl.vars.client.Marker({
-                            position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
-                            map: bezl.vars.map,
-                            title: bezl.data.CustList[i].Name,
-                            data: bezl.data.CustList[i],
-                            lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
-                            lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
-                        });
+                if(bezl.data.CustList[i].Address.length != null) {
+                    if (bezl.data.CustList[i].Address.length > 3) {
+                    
+                        // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
+                        if (bezl.data.CustList[i].Geocode_Location == "" ||  bezl.data.CustList[i].Geocode_Location == null) {
+                            map.geocodeAddress(
+                                bezl, 
+                                { 
+                                    streetAddress: bezl.data.CustList[i].Address, 
+                                    title: bezl.data.CustList[i].Name, 
+                                    custNum: bezl.data.CustList[i].CustNum,
+                                    shipToNum: bezl.data.CustList[i].ShipToNum,
+                                    data: bezl.data.CustList[i] 
+                                }
+                            );                   
+                        } else {
+                            var marker = new bezl.vars.client.Marker({
+                                position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
+                                map: bezl.vars.map,
+                                title: bezl.data.CustList[i].Name,
+                                data: bezl.data.CustList[i],
+                                lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
+                                lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
+                            });
 
-                        // Add a click handler
-                        marker.addListener('click', function() {
-                            customer.select(bezl, this.data.CustNum);
-                        });
-                        
-                        bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
+                            // Add a click handler
+                            marker.addListener('click', function() {
+                                customer.select(bezl, this.data.CustNum);
+                            });
+                            
+                            bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
+                        }
                     }
+                } else{
+                    console.log('Customer\'s address does not exist, Customer: ' + bezl.data.CustList[i].Name);
                 }
             };   
         
