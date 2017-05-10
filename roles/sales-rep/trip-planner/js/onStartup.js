@@ -80,7 +80,9 @@ define(["./map.js",
                         var addBtn = document.getElementById('addBtn');
                         google.maps.event.addDomListener(addBtn, "click", function() {
                             var custNum = $('#addBtn').attr('data-id');
-                            console.log(custNum);
+                            var customer = bezl.vars.customers.find(c => c.custNum == custNum);
+
+                            bezl.vars.customerFile.add(bezl, customer);
                         });
                 });
                 
