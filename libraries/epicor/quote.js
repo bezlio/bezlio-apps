@@ -173,7 +173,7 @@ define(function () {
                     var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
                     if (selSubAttr != undefined) {
                         if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
-                            bezl.dataService.add('QuoteAttrs_Sub', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                            bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
                                     { Key: "QuoteNum", Value: quoteNum },
