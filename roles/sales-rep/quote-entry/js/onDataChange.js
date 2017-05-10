@@ -90,6 +90,7 @@ define(function () {
                                     var subAttrVal = bezl.data.Attributes.find(subAttrFndVal => subAttrFndVal.Key5 === attrFnd.ATTRIBUTE_ID);
                                     console.log(subAttrFnd);
                                     console.log(subAttrVal);
+                                    subAttrFnd.SUB_ATTRIBUTE[0].SELECTED_VALUE = subAttrVal.Character01;
                                 }
                             }
                         }
