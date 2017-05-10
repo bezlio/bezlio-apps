@@ -183,7 +183,7 @@ define(function () {
                                     { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
                                     { Key: "AttributeValue", Value: selSubAttr.ATTRIBUTE_VALUE },
                                     { Key: "OtherAttributeValue", Value: '' },
-                                    { Key: "AttributeDesc", Value: subAttr.ATTRIBUTE_DESCRIPTION },
+                                    { Key: "AttributeDesc", Value: selSubAttr.ATTRIBUTE_DESCRIPTION },
                                     { Key: "PartNum", Value: dtl.PartNum }
                                 ]
                             }, 0);
