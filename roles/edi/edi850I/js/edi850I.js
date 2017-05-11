@@ -44,7 +44,7 @@ define(function () {
                 var user;
                 
                 //Get the current login user.
-                user = bezl.vars.currentUser;
+                user = bezl.env.currentUser;
 
                 bezl.dataService.add('user','brdb','EDI','GetUserSettings', { 
                     "QueryName": "GetUserSettings",
@@ -57,15 +57,67 @@ define(function () {
 
             case "GetDashHeaderData":
                 // Pull in the header data for the logged in user
+                var parameters = [], parameterCount = 0;
+                
+                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '850' };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SEARCHVALUE", "Value": bezl.vars.search };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SITE_ID", "Value": bezl.vars.siteId };
+                parameterCount = parameterCount + 1;
+
+                //Get User ID.
+                for (var key in bezl.vars.user.USERS){
+                    var obj = bezl.vars.user.USERS[key];
+
+                    for (var prop in obj){
+                        switch (prop.toString()){
+                            case "EDI_SL_USER_ID":
+                                parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ENABLED":
+                                parameters[parameterCount] = { "Key": "@USER_ENABLED", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+
+                //Loop through user for user rights.
+                for (var key in bezl.vars.user.USER_DOCS){
+                    var obj = bezl.vars.user.USER_DOCS[key];
+                    
+                    if (obj["DOCUMENT_TYPE"] == '850'){
+                        for (var prop in obj) {
+                            switch (prop.toString()){
+                                case "DELETE_DATE":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_DELETE_DATE", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "IS_ENABLED":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_IS_ENABLED", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "MODIFY_DOC":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_MODIFY_DOC", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "VIEW_DOC":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_VIEW_DOC", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                            }
+                        }
+                    }
+                }
+
                 bezl.dataService.add('datasub','brdb','EDI','GetDashHeaderData', { 
                     "QueryName": "GetDashHeaderData",
                     "Connection": "SQLConnection",
-                    "Parameters": [
-                        { "Key": "@SITE_ID", "Value": ' ' },
-                        { "Key": "@USER_ID", "Value": '1' },
-                        { "Key": "@DOC_TYPE", "Value": '850' },
-                        { "Key": "@SEARCHVALUE", "Value": bezl.vars.search }
-                    ] },0);
+                    "Parameters": parameters },0);
 
                 break;
 

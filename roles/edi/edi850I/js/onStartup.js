@@ -9,6 +9,7 @@ define(["./edi850I.js"], function (edi850I) {
         bezl.vars.EDI_SL_DASH_HEADER_ID = 0;
         bezl.vars.showViewDetails = false;
         bezl.vars.showViewFile = false;
+        bezl.vars.loading = true;
 
         //Reset bezl data.
         bezl.vars.datasub = "";
@@ -18,11 +19,6 @@ define(["./edi850I.js"], function (edi850I) {
 
         //Get User Settings.
         edi850I.runQuery(bezl, "GetUserSettings");
-
-        //Get Header Data.
-        edi850I.runQuery(bezl, "GetDashHeaderData");
-
-        edi850I.filterEdiStatus(bezl);
     }
 
      return {
