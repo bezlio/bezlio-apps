@@ -14,6 +14,9 @@ define(["./map.js",
             invoiceHistory: false,
             attachment: []
         }
+
+        bezl.vars.customerFile = customer;
+        bezl.vars.mapFile = map;
         
         // Initiate the call to refresh the customer list
         customer.runQuery(bezl, 'CustList');

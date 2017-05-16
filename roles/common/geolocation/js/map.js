@@ -1,4 +1,4 @@
-define(["./customer.js"], function (customer) {
+define([], function () {
 
     var delay = 100;
     var nextAddress = 0;

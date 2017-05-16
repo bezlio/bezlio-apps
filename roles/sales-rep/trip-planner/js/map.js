@@ -1,4 +1,4 @@
-define(["./customer.js"], function (customer) {
+define([], function () {
 
     function CalculateDistances(bezl) {
         var calcDistance = function distance(lat1, lon1, lat2, lon2, unit) {
@@ -44,7 +44,7 @@ define(["./customer.js"], function (customer) {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                customer.select(bezl, customerRecord.custNum);
+                bezl.vars.customerFile.select(bezl, customerRecord.custNum);
             });
 
             bezl.vars.markers[customerRecord.custNum] = marker;
@@ -176,7 +176,7 @@ define(["./customer.js"], function (customer) {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                customer.select(bezl, parm.custNum);
+                bezl.vars.customerFile.select(bezl, parm.custNum);
             });
 
             bezl.vars.markers[0] = marker;
