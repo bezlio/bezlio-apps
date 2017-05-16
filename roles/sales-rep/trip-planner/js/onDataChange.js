@@ -1,5 +1,4 @@
-define(["./customer.js",
-        "./map.js"], function (customer, map) {
+define([], function () {
  
     function OnDataChange (bezl) {
         // Populate the 'customers' array if we got CustomerList back
@@ -28,7 +27,7 @@ define(["./customer.js",
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        customer.select(bezl, item.key);
+                        bezl.vars.customerFile.select(bezl, item.key);
                     }
                 }
             });
@@ -42,7 +41,7 @@ define(["./customer.js",
                     
                         // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
                         if (bezl.data.CustList[i].Geocode_Location == "" ||  bezl.data.CustList[i].Geocode_Location == null) {
-                            map.geocodeAddress(
+                            bezl.vars.mapFile.geocodeAddress(
                                 bezl, 
                                 { 
                                     streetAddress: bezl.data.CustList[i].Address, 
@@ -64,7 +63,7 @@ define(["./customer.js",
 
                             // Add a click handler
                             marker.addListener('click', function() {
-                                customer.select(bezl, this.data.CustNum);
+                                bezl.vars.customerFile.select(bezl, this.data.CustNum);
                             });
                             
                             bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
@@ -76,7 +75,7 @@ define(["./customer.js",
             };   
         
             // Calculate distances
-            map.calculateDistances(bezl);
+            bezl.vars.mapFile.calculateDistances(bezl);
 
             // Clean up CustList data subscription as we no longer need it
             bezl.dataService.remove('CustList');
