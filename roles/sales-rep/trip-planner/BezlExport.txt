@@ -1,8 +1,8 @@
 ﻿{
-  "id": "d25fe804-23b6-44ee-ab9f-929452f5860b",
+  "id": "88bf0b7f-3382-4269-8256-957a7aad15cc",
   "name": "Trip Planner",
   "template": "custom",
-  "owner": "nowens@saberlogic.com",
+  "owner": "sremington@saberlogic.com",
   "shares": [],
   "vars": [],
   "dataSubscriptions": [],
@@ -150,6 +150,7 @@
     "                  </tr>",
     "               </thead>",
     "                <tbody>",
+    "                  <tr [hidden]=\"!bezl.vars.loading.customerList\"> <label class=\"pull-right\" style=\"margin-top: 5px;\">Loading... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label></tr>",
     "                  <tr class=\"read\" *ngFor=\"let item of bezl.vars.customers\" (click)=\"bezl.functions['customerSelect'](item.key)\">",
     "                   \t<div class=\"row col-md-12\">",
     "                      <br>",
@@ -166,6 +167,7 @@
     "             <div class=\"row visible-xs\">",
     "              <table class=\"table table-hover\">",
     "                <thead>",
+    "                  <tr [hidden]=\"!bezl.vars.loading.customerList\"><label class=\"pull-right\" style=\"margin-top: 5px;\">Loading... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label></tr>",
     "                  <tr>",
     "                    <h4>Sort by: </h4> ",
     "                      <div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"Justified button group\">",
@@ -331,7 +333,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\n\n//bezl.vars.config.baseJsUrl = \"https://bezlio-apps-dev.bezl.io/roles/sales-rep/trip-planner/js/\"\nbezl.vars.config.baseJsUrl = \"https://rawgit.com/bezlio/bezlio-apps/undefinedError-tripPlanner/roles/sales-rep/trip-planner/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
+      "code": "bezl.vars.config = {};\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\n\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/trip-planner/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
       "declares": [
         "$",
         "parm",
@@ -339,7 +341,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\n//bezl.vars.config.baseJsUrl = \"https://bezlio-apps-dev.bezl.io/roles/sales-rep/trip-planner/js/\"\r\nbezl.vars.config.baseJsUrl = \"https://rawgit.com/bezlio/bezlio-apps/undefinedError-tripPlanner/roles/sales-rep/trip-planner/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
+      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.GoogleAPIKey = 'AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI';\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/trip-planner/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
     },
     {
       "method": "navigate",
