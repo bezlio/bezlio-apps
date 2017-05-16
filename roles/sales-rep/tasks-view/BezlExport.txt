@@ -1,135 +1,308 @@
-{
-	"name": "Tasks View",
-	"template": "custom",
-	"owner": "sremington@saberlogic.com",
-	"shares": [],
-	"vars": [],
-	"dataSubscriptions": [],
-	"markup": "<!-- Settings Screen -->\n<p-dialog header=\"Initial Settings\" [(visible)]=\"bezl.vars.showSettingsDialog\" [modal]=\"false\" width=200 appendTo=\"body\">\n  <div class=\"row\">\n    <div class=\"col-sm-4\">\n      Platform: \n    </div>\n    <div class=\"col-sm-8\">\n      <select class=\"form-control\" [(ngModel)]=\"bezl.vars.Platform\">\n          <option value=\"Epicor10\">Epicor 10+</option>\n          <option value=\"Epicor905\">Epicor 9.05</option>\n      </select>\n    </div>\n  </div>\n  <div class=\"row\" [hidden]=\"bezl.vars.Platform != 'Epicor10' && bezl.vars.Platform != 'Epicor905'\">\n    <div class=\"col-sm-4\">\n      Connection: \n    </div>\n    <div class=\"col-sm-8\">\n      <input type=\"text\" [(ngModel)]=\"bezl.vars.Connection\">\n    </div>\n  </div>\n  <div class=\"row\" [hidden]=\"bezl.vars.Platform != 'Epicor10' && bezl.vars.Platform != 'Epicor905'\">\n    <div class=\"col-sm-4\">\n      Company: \n    </div>\n    <div class=\"col-sm-8\">\n      <input type=\"text\" [(ngModel)]=\"bezl.vars.Company\">\n    </div>\n  </div>\n  <div class=\"row\">\n  \t<button (click)=\"bezl.functions['saveSettings']()\" class=\"btn btn-md btn-primary\">Save</button>\n  </div>\n</p-dialog>\n<!-- END: Settings Screen -->\n\n<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID == null\">\n  <div class=\"col-9\"><h3>No Customer Selected</h3></div>\n</div>\n\n<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">\n  <div class=\"col-sm-6\"><h3>{{bezl.vars.selectedAccount.Name}}</h3></div>\n  <div class=\"col-sm-6 pull-right\">\n    <button (click)=\"bezl.vars.showSettingsDialog=true\" class=\"btn btn-md btn-default pull-right\">Settings</button>\n    <!--button (click)=\"bezl.functions['updateTasks']()\" class=\"btn btn-md btn-default pull-right\">Save</button-->\n    <button (click)=\"bezl.functions['addTask']()\" class=\"btn btn-md btn-default pull-right\">Add Task</button>\n  </div>\n</div>\n\n<table class=\"table table-striped\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">\n  <thead>\n    <tr>\n      <th>\n        <div class=\"col-sm-2\">Complete</div>\n        <div class=\"col-sm-8\">Task Description</div>\n        <div class=\"col-sm-2\"></div>\n      </th>\n    </tr>\n  </thead>\n  <tbody>\n   <tr class=\"read\"\n       *ngFor=\"let task of bezl.vars.selectedAccount.Tasks\">\n    <td>\n      <!-- Main row per task -->\n      <div class=\"row\">\n        <div class=\"col-sm-2\">\n          <input type=\"checkbox\" \n                 [(ngModel)]=\"task.Complete\"\n                 (change)=\"bezl.functions['taskChange'](task)\">\n        </div>\n        \n        <div class=\"col-sm-8\">\n          <input class=\"form-control\" type=\"text\" \n                 [(ngModel)]=\"task.TaskDescription\"\n                 (keyup)=\"bezl.functions['taskChange'](task)\">\n        </div>\n        <div class=\"col-sm-2\">\n\t\t\t<button (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>\n        </div>\n      </div>\n      <!-- END: Main row per task -->\n      \n      <!-- Drill-down view -->\n      <div class=\"row\" *ngIf=\"task.Selected\" style=\"margin-left:5px;margin-top:10px\">\n        \n        <!-- Details -->      \n        <div class=\"col-sm-12\">\n          <div class=\"panel panel-primary\">\n            <div class=\"panel-heading\">\n              <h4 class=\"panel-title\">Details</h4>\n            </div>\n            <div class=\"panel-body\">\n              <div class=\"row\">\n                <div class=\"col-sm-2\">Task Type:</div>\n                <div class=\"col-sm-10\">    \n                  <select class=\"form-control\" \n                          [(ngModel)]=\"task.TaskType\"\n                          (change)=\"bezl.functions['taskChange'](task)\">\n                    <option *ngFor=\"let item of bezl.data.TaskTypes\" [value]=\"item.TaskType\">{{item.TypeDescription}}</option>\n                  </select>\n                </div>\n              </div>\n              <div class=\"row\">\n                <div class=\"col-sm-2\">Start Date:</div>\n                <div class=\"col-sm-10\">    \n                  <input type=\"date\" [(ngModel)]=\"task.StartDate\"\n                                     (change)=\"bezl.functions['taskChange'](task)\">\n                </div>\n              </div>\n              <div class=\"row\">\n                <div class=\"col-sm-2\">Due Date:</div>\n                <div class=\"col-sm-10\">    \n                  <input type=\"date\" [(ngModel)]=\"task.DueDate\"\n                                     (change)=\"bezl.functions['taskChange'](task)\">\n                </div>\n              </div>\n              <div class=\"row\">\n                <div class=\"col-sm-2\">Percent Complete:</div>\n                <div class=\"col-sm-10\">    \n                  <input class=\"form-control\" type=\"number\" \n                         [(ngModel)]=\"task.PercentComplete\"\n                         style=\"width:75px\"\n                         (change)=\"bezl.functions['taskChange'](task)\">\n                </div>\n              </div>\n              <div class=\"row\">\n\t\t\t\t<div class=\"col-sm-2\">Priority:</div>\n                <div class=\"col-sm-10\">    \n                  <input class=\"form-control\" type=\"number\" \n                         [(ngModel)]=\"task.PriorityCode\" \n                         style=\"width:75px\"\n                         (change)=\"bezl.functions['taskChange'](task)\">\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <!-- END: Details -->\n                        \n      </div>\n      <!-- END: Drill-down view --> \n      \n      <!-- Save button --> \n      <div class=\"row\" *ngIf=\"task.RowState == 'Added' || task.RowState == 'Updated'\" style=\"margin-top:10px;\">\n        <div class=\"col-sm-8\"></div>\n        <div class=\"col-sm-2\" *ngIf=\"task.RowState != 'Added'\"></div>\n        <div class=\"col-sm-2\" *ngIf=\"task.RowState == 'Added'\">\n    \t\t<button (click)=\"bezl.functions['cancelAddTask'](task)\" class=\"btn btn-md btn-default pull-right\">Cancel</button>\n  \t\t</div>\n        <div class=\"col-sm-2 pull-right\">\n    \t\t<button (click)=\"bezl.functions['updateTasks']()\" class=\"btn btn-md btn-default pull-right\">Save</button>\n  \t\t</div>\n      </div>\n      <!-- END: Save button -->\n      \n     </td>\n   </tr>\n  </tbody>\n</table>",
-	"functions": [
-		{
-			"method": "ngOnInit",
-			"code": "bezl.vars.loading = true;\nbezl.vars.selectedAccount = {};\n\n// Prompt for the Platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "bezl.vars.loading = true;\r\nbezl.vars.selectedAccount = {};\r\n// Prompt for the Platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
-		},
-		{
-			"method": "onDataChange",
-			"code": "bezl.data = dataResp;\n\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "bezl.data = dataResp;\r\nrequire(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
-		},
-		{
-			"method": "addTask",
-			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.addTask(bezl);\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.addTask(bezl);\r\n});\r\n"
-		},
-		{
-			"method": "saveSettings",
-			"code": "localStorage.setItem(\"Platform\", bezl.vars.Platform);\nlocalStorage.setItem(\"Connection\", bezl.vars.Connection);\nlocalStorage.setItem(\"Company\", bezl.vars.Company);\nbezl.vars.showSettingsDialog = false;",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "localStorage.setItem(\"Platform\", bezl.vars.Platform);\r\nlocalStorage.setItem(\"Connection\", bezl.vars.Connection);\r\nlocalStorage.setItem(\"Company\", bezl.vars.Company);\r\nbezl.vars.showSettingsDialog = false;\r\n"
-		},
-		{
-			"method": "taskChange",
-			"code": "if (parm.RowState != 'Added') {\n \tparm.RowState = 'Updated'; \n}",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "if (parm.RowState != 'Added') {\r\n    parm.RowState = 'Updated';\r\n}\r\n"
-		},
-		{
-			"method": "updateTasks",
-			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.updateTasks(bezl);\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.updateTasks(bezl);\r\n});\r\n"
-		},
-		{
-			"method": "refresh",
-			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Tasks')\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Tasks');\r\n});\r\n"
-		},
-		{
-			"method": "selectRow",
-			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
-		},
-		{
-			"method": "sort",
-			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/account.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/account.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
-		},
-		{
-			"method": "cancelAddTask",
-			"code": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function(functions) {\n\tfunctions.cancelAddTask(bezl, parm);\n});",
-			"declares": [
-				"$",
-				"parm",
-				"bezl",
-				"dataResp",
-				"require"
-			],
-			"compiled": "require(['https://bezlio-apps.bezl.io/roles/sales-rep/tasks-view/js/task.js'], function (functions) {\r\n    functions.cancelAddTask(bezl, parm);\r\n});\r\n"
-		}
-	],
-	"datatrans": null,
-	"data": "",
-	"id": "f1981f34-623c-4dcf-99a7-d68c7db117b2",
-	"type": "Bezl"
+﻿{
+  "id": "3fb9d0b9-7e76-40f8-8fab-a2cf17dcce2c",
+  "name": "Tasks View",
+  "template": "custom",
+  "owner": "nowens@saberlogic.com",
+  "shares": [],
+  "vars": [],
+  "dataSubscriptions": [],
+  "markup": [
+    "<!-- Settings Screen -->",
+    "<p-dialog header=\"Initial Settings\" [(visible)]=\"bezl.vars.showSettingsDialog\" [modal]=\"false\" width=200 appendTo=\"body\">",
+    "  <div class=\"row\">",
+    "    <div class=\"col-sm-4\">",
+    "      Platform: ",
+    "    </div>",
+    "    <div class=\"col-sm-8\">",
+    "      <select class=\"form-control\" [(ngModel)]=\"bezl.vars.Platform\">",
+    "          <option value=\"Epicor10\">Epicor 10+</option>",
+    "          <option value=\"Epicor905\">Epicor 9.05</option>",
+    "      </select>",
+    "    </div>",
+    "  </div>",
+    "  <div class=\"row\" [hidden]=\"bezl.vars.Platform != 'Epicor10' && bezl.vars.Platform != 'Epicor905'\">",
+    "    <div class=\"col-sm-4\">",
+    "      Connection: ",
+    "    </div>",
+    "    <div class=\"col-sm-8\">",
+    "      <input type=\"text\" [(ngModel)]=\"bezl.vars.Connection\">",
+    "    </div>",
+    "  </div>",
+    "  <div class=\"row\" [hidden]=\"bezl.vars.Platform != 'Epicor10' && bezl.vars.Platform != 'Epicor905'\">",
+    "    <div class=\"col-sm-4\">",
+    "      Company: ",
+    "    </div>",
+    "    <div class=\"col-sm-8\">",
+    "      <input type=\"text\" [(ngModel)]=\"bezl.vars.Company\">",
+    "    </div>",
+    "  </div>",
+    "  <div class=\"row\">",
+    "  \t<button (click)=\"bezl.functions['saveSettings']()\" class=\"btn btn-md btn-primary\">Save</button>",
+    "  </div>",
+    "</p-dialog>",
+    "<!-- END: Settings Screen -->",
+    "",
+    "<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID == null\">",
+    "  <div class=\"col-9\"><h3>No Customer Selected</h3></div>",
+    "</div>",
+    "",
+    "<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">",
+    "  <div class=\"col-sm-6\"><h3>{{bezl.vars.selectedAccount.Name}}</h3></div>",
+    "  <div class=\"col-sm-6 pull-right\">",
+    "    <button (click)=\"bezl.vars.showSettingsDialog=true\" class=\"btn btn-md btn-default pull-right\">Settings</button>",
+    "    <!--button (click)=\"bezl.functions['updateTasks']()\" class=\"btn btn-md btn-default pull-right\">Save</button-->",
+    "    <button (click)=\"bezl.functions['addTask']()\" class=\"btn btn-md btn-default pull-right\">Add Task</button>",
+    "  </div>",
+    "</div>",
+    "",
+    "<table class=\"table table-striped\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">",
+    "  <thead>",
+    "    <tr>",
+    "      <th>",
+    "        <div class=\"col-sm-2\">Complete</div>",
+    "        <div class=\"col-sm-8\">Task Description</div>",
+    "        <div class=\"col-sm-2\"></div>",
+    "      </th>",
+    "    </tr>",
+    "  </thead>",
+    "  <tbody>",
+    "   <tr class=\"read\"",
+    "       *ngFor=\"let task of bezl.vars.selectedAccount.Tasks\">",
+    "    <td>",
+    "      <!-- Main row per task -->",
+    "      <div class=\"row\">",
+    "        <div class=\"col-sm-2\">",
+    "          <label class=\"visible-xs\"> <input type=\"checkbox\" ",
+    "                 [(ngModel)]=\"task.Complete\"",
+    "                 (change)=\"bezl.functions['taskChange'](task)\">",
+    "          Complete </label>",
+    "          <label class=\"hidden-xs\"> <input type=\"checkbox\" ",
+    "                 [(ngModel)]=\"task.Complete\"",
+    "                 (change)=\"bezl.functions['taskChange'](task)\"></label>",
+    "        </div>",
+    "        ",
+    "        <div class=\"col-sm-8\">",
+    "          <input class=\"form-control\" type=\"text\" [attr.maxlength]=\"bezl.vars.Platform.startsWith('Epicor')?30:null\" ",
+    "                 [(ngModel)]=\"task.TaskDescription\"",
+    "                 (keyup)=\"bezl.functions['taskChange'](task)\">",
+    "        </div>",
+    "        <div class=\"col-sm-2 hidden-xs\">",
+    "\t\t\t<button (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>",
+    "        </div>",
+    "      </div>",
+    "      <div class=\"col-sm-2 row pull-left visible-xs\">",
+    "\t\t\t<button (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>",
+    "        </div>",
+    "      <!-- END: Main row per task -->",
+    "      ",
+    "      <!-- Drill-down view -->",
+    "      <div class=\"row\" *ngIf=\"task.Selected\" style=\"margin-left:5px;margin-top:10px\">",
+    "        ",
+    "        <!-- Details -->      ",
+    "        <div class=\"col-sm-12\">",
+    "          <div class=\"panel panel-primary\">",
+    "            <div class=\"panel-heading\">",
+    "              <h4 class=\"panel-title\">Details</h4>",
+    "            </div>",
+    "            <div class=\"panel-body\">",
+    "              <div class=\"row\">",
+    "                <div class=\"col-sm-2\">Task Type:</div>",
+    "                <div class=\"col-sm-10\">    ",
+    "                  <select class=\"form-control\" ",
+    "                          [(ngModel)]=\"task.TaskType\"",
+    "                          (change)=\"bezl.functions['taskChange'](task)\">",
+    "                    <option *ngFor=\"let item of bezl.data.TaskTypes\" [value]=\"item.TaskType\">{{item.TypeDescription}}</option>",
+    "                  </select>",
+    "                </div>",
+    "              </div>",
+    "              <div class=\"row\">",
+    "                <div class=\"col-sm-2\">Start Date:</div>",
+    "                <div class=\"col-sm-10\">    ",
+    "                  <input type=\"date\" [(ngModel)]=\"task.StartDate\"",
+    "                                     (change)=\"bezl.functions['taskChange'](task)\">",
+    "                </div>",
+    "              </div>",
+    "              <div class=\"row\">",
+    "                <div class=\"col-sm-2\">Due Date:</div>",
+    "                <div class=\"col-sm-10\">    ",
+    "                  <input type=\"date\" [(ngModel)]=\"task.DueDate\"",
+    "                                     (change)=\"bezl.functions['taskChange'](task)\">",
+    "                </div>",
+    "              </div>",
+    "              <div class=\"row\">",
+    "                <div class=\"col-sm-2\">Percent Complete:</div>",
+    "                <div class=\"col-sm-10\">    ",
+    "                  <input class=\"form-control\" type=\"number\" ",
+    "                         [(ngModel)]=\"task.PercentComplete\"",
+    "                         style=\"width:75px\"",
+    "                         (change)=\"bezl.functions['taskChange'](task)\">",
+    "                </div>",
+    "              </div>",
+    "              <div class=\"row\">",
+    "\t\t\t\t<div class=\"col-sm-2\">Priority:</div>",
+    "                <div class=\"col-sm-10\">    ",
+    "                  <input class=\"form-control\" type=\"number\" ",
+    "                         [(ngModel)]=\"task.PriorityCode\" ",
+    "                         style=\"width:75px\"",
+    "                         (change)=\"bezl.functions['taskChange'](task)\">",
+    "                </div>",
+    "              </div>",
+    "            </div>",
+    "          </div>",
+    "        </div>",
+    "        <!-- END: Details -->",
+    "                        ",
+    "      </div>",
+    "      <!-- END: Drill-down view --> ",
+    "      ",
+    "      <!-- Save button --> ",
+    "      <div class=\"row\" *ngIf=\"task.RowState == 'Added' || task.RowState == 'Updated'\" style=\"margin-top:10px;\">",
+    "        <div *ngIf=\"task.RowState == 'Added'\">",
+    "          <div class=\"btn-group pull-right\" role=\"group\">",
+    "            <button type=\"button\" class=\"btn btn-secondary\" (click)=\"bezl.functions['updateTasks']()\">Save</button>",
+    "            <button type=\"button\" class=\"btn btn-secondary\" (click)=\"bezl.functions['cancelAddTask'](task)\">Cancel</button>",
+    "          </div>",
+    "        </div>",
+    "      </div>",
+    "       <!-- END: Save button -->",
+    "     </td>",
+    "   </tr>",
+    "  </tbody>",
+    "</table>"
+  ],
+  "functions": [
+    {
+      "method": "ngOnInit",
+      "code": "bezl.vars.loading = true;\nbezl.vars.selectedAccount = {};\n\n// Prompt for the Platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "bezl.vars.loading = true;\r\nbezl.vars.selectedAccount = {};\r\n// Prompt for the Platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "onDataChange",
+      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "addTask",
+      "code": "require([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.addTask(bezl);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.addTask(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "saveSettings",
+      "code": "localStorage.setItem(\"Platform\", bezl.vars.Platform);\nlocalStorage.setItem(\"Connection\", bezl.vars.Connection);\nlocalStorage.setItem(\"Company\", bezl.vars.Company);\nbezl.vars.showSettingsDialog = false;",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "localStorage.setItem(\"Platform\", bezl.vars.Platform);\r\nlocalStorage.setItem(\"Connection\", bezl.vars.Connection);\r\nlocalStorage.setItem(\"Company\", bezl.vars.Company);\r\nbezl.vars.showSettingsDialog = false;\r\n"
+    },
+    {
+      "method": "taskChange",
+      "code": "if (parm.RowState != 'Added') {\n \tparm.RowState = 'Updated'; \n}",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "if (parm.RowState != 'Added') {\r\n    parm.RowState = 'Updated';\r\n}\r\n"
+    },
+    {
+      "method": "updateTasks",
+      "code": "require([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n  \tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tfunctions.updateTasks(bezl);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    functions.updateTasks(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "refresh",
+      "code": "require([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Tasks')\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Tasks');\r\n});\r\n"
+    },
+    {
+      "method": "selectRow",
+      "code": "require([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n\tfunctions.select(bezl, parm)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    functions.select(bezl, parm);\r\n});\r\n"
+    },
+    {
+      "method": "sort",
+      "code": "require([bezl.vars.config.baseJsUrl + 'account.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'account.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
+    },
+    {
+      "method": "cancelAddTask",
+      "code": "require([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n\tfunctions.cancelAddTask(bezl, parm);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    functions.cancelAddTask(bezl, parm);\r\n});\r\n"
+    },
+    {
+      "method": "setConfig",
+      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/tasks-view/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/tasks-view/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
+    }
+  ],
+  "data": ""
 }

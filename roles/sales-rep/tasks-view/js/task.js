@@ -35,7 +35,7 @@ define(function () {
         // Since alternate systems may require different columns for newly added tasks, direct to
         // the libraries folder
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://bezlio-apps.bezl.io/libraries/epicor/crm.js'], function(functions) {
+            require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function(functions) {
                 var taskType = '';
                 if (bezl.data.TaskTypes) {
                     taskType = bezl.data.TaskTypes[0].TaskType;
@@ -74,7 +74,7 @@ define(function () {
         // Since alternate systems may require different columns for newly added tasks, direct to
         // the libraries folder
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://bezlio-apps.bezl.io/libraries/epicor/crm.js'], function(functions) {
+            require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function(functions) {
                 functions.updateTasks(bezl,
                                         bezl.vars.selectedAccount.Tasks);
 

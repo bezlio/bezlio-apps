@@ -7,7 +7,7 @@ define(["./attachment.js"], function (attachment) {
           bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
       }
 
-      $(".panel").on("selectAccount", function(event, param1) {
+      $("#bezlpanel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
       });
 

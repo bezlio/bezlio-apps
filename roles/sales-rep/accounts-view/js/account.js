@@ -60,6 +60,18 @@ define(function () {
                 bezl.data.Accounts[i].Selected = false;
             }
         };
+
+	// In case there was a CRM interaction with the previously selected
+	// account we need to clear it out here when selecting a different
+	// one.
+        var param = {
+            "type": "",
+            "shortSummary": "",
+            "details": ""
+        };
+
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
+        localStorage.setItem("CRMNewInteraction", "");
     }
 
     function Sort(bezl, sortColumn, sortDirection = null) {
@@ -178,7 +190,9 @@ define(function () {
             "details": "Site visit to " + account.Name + "."
         };
 
-        $('.panel').trigger('CRMNewInteraction', [param]);
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
+        // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
+        localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
 
     function ClickEmail(bezl, contact) {
@@ -188,7 +202,9 @@ define(function () {
             "details": "Email sent to " + contact.EMailAddress + "."
         };
 
-        $('.panel').trigger('CRMNewInteraction', [param]);
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
+        // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
+        localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
 
     function ClickPhoneNum(bezl, contact) {
@@ -198,7 +214,9 @@ define(function () {
             "details": "Phone call to " + contact.PhoneNum + "."
         };
 
-        $('.panel').trigger('CRMNewInteraction', [param]);
+        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
+        // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
+        localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
   
     return {

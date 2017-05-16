@@ -26,7 +26,7 @@ define(["./account.js"], function (account) {
       // types
       bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetCallTypes" },0);
 
-      $(".panel").on("selectAccount", function(event, param1) {
+      $("#bezlpanel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
         bezl.vars.loadedMore = false;
 
@@ -51,18 +51,18 @@ define(["./account.js"], function (account) {
       });
 
       // Prepopulate the CRM new interaction form for click to call/email/navigate
-      // Should pass data in param1 in the form of:
+      // Should pass data in crmInteraction in the form of:
       // {
       //   "type": <enum: "phone", "email", "navigate">,
       //   "shortSummary": <string>,
       //   "details": <string>
       // }
-      $(".panel").on("CRMNewInteraction", function(event, param1) {
+      function _handleNewCRMInteraction(crmInteraction) {
         // TODO: look up an appropriate type from the CallTypes list
         // This should eventually be a config option to select the local
         // CallType to be used for phone/email/navigate. For now we will use
         // some much less useful default strings.
-        switch (param1.type) {
+        switch (crmInteraction.type) {
             case "phone":
                 bezl.vars.type = "Sales";
                 break;
@@ -72,11 +72,22 @@ define(["./account.js"], function (account) {
             case "navigate":
                 bezl.vars.type = "Customer Visit";
                 break;
+            default:
+                bezl.vars.type = "";
         }
 
-        bezl.vars.shortSummary = param1.shortSummary;
-        bezl.vars.details = param1.details;
+        bezl.vars.shortSummary = crmInteraction.shortSummary;
+        bezl.vars.details = crmInteraction.details;
+      }
+      $("#bezlpanel").on("CRMNewInteraction", function(event, param1) {
+          _handleNewCRMInteraction(param1);
       });
+      // If case the bezels are on separate panels we will also check if there is a new CRM interaction stored in local storage
+      if (typeof(Storage) !== "undefined" && localStorage.getItem("CRMNewInteraction")) {
+          var crmNewInteraction  = JSON.parse(localStorage.getItem("CRMNewInteraction"));
+          _handleNewCRMInteraction(crmNewInteraction);
+          localStorage.setItem("CRMNewInteraction", ""); // Clear out the stored data now that we are done with it
+      }
   }
   
   return {

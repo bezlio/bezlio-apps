@@ -1,6 +1,6 @@
-﻿{
+{
   "id": "841cd636-68e3-4a8d-a034-a4418358374d",
-  "name": "Accounts View Dev",
+  "name": "Accounts View",
   "template": "custom",
   "owner": "kcrane@saberlogic.com",
   "shares": [],
