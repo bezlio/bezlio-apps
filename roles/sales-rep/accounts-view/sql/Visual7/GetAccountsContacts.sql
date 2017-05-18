@@ -1,7 +1,7 @@
 SELECT
-	c.ID AS ID
+	  c.ID AS ID
 	, c.ID AS CustNum
-	, ct.CONTACT_FIRST_NAME + ' ' + ct.CONTACT_LAST_NAME AS ContactName
+	, ISNULL(ct.CONTACT_FIRST_NAME,'') + ' ' + ISNULL(ct.CONTACT_LAST_NAME,'') AS ContactName
 	, ct.CONTACT_EMAIL AS EMailAddress
 	, ct.CONTACT_POSITION AS ContactTitle
 	, ct.CONTACT_PHONE AS PhoneNum

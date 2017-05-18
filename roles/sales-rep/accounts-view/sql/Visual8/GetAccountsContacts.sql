@@ -1,10 +1,14 @@
-
-select c.ID
+SELECT
+	  c.ID
 	, c.ID as CustNum
-	, isnull(ct.FIRST_NAME,'') + ' ' + isnull(ct.LAST_NAME,'') as ContactName
+	, ISNULL(ct.FIRST_NAME,'') + ' ' + ISNULL(ct.LAST_NAME,'') as ContactName
 	, ct.EMAIL as EMailAddress
-	, c.CONTACT_POSITION as ContactTitle
-	, c.CONTACT_PHONE as PhoneNum
-from CUSTOMER c
-	inner join CUST_CONTACT cc on c.ID = cc.CUSTOMER_ID
-	inner join CONTACT ct on ct.ID = cc.CONTACT_ID
+	, ct.POSITION as ContactTitle
+	, ct.PHONE as PhoneNum
+FROM CUSTOMER c with(nolock)
+
+	INNER JOIN CUST_CONTACT cc with(nolock) ON 
+	c.ID = cc.CUSTOMER_ID
+
+	INNER JOIN CONTACT ct with(nolock) ON 
+	ct.ID = cc.CONTACT_ID
