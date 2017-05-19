@@ -44,7 +44,15 @@ Authorized Connections: Check all connections for sales reps you authorize
 * The value for Connection / DSN refers to a conenction defined within your associated plugin config file.  If this is using the ODBC plugin, you will also need to configure a 32-bit ODBC driver.    See https://github.com/bezlio/bezlio-plugins for documentation.
 
 Also download all of the .SQL files from the appropriate subfolders and place them into the folder referrered to by 'Context'.  The locations of these .SQL files are:
-* https://github.com/bezlio/bezlio-apps/tree/master/roles/sales-rep/main-view/sql
+* [Accounts View](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/accounts-view/sql)
+* [CRM Calls View](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/crm-calls-view/sql)
+* [Customer Price List](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/customer-price-list/sql)
+* [Invoice Inquiry](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/invoice-inquiry/sql)
+* [Map View](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/map-view/sql)
+* [Order Inquiry](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/order-inquiry/sql)
+* [RMA Inquiry](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/rma-inquiry/sql)
+* [Tasks View](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/tasks-view/sql)
+* [Trip Planner](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/trip-planner/sql)
 
 ### If using the Epicor 10 integration also add these:
 Name: salesrep-addNote
