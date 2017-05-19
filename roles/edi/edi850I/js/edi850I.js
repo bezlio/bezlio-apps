@@ -36,6 +36,34 @@ define(function () {
             var div = document.getElementById('btnApprove');
             div.style.display = 'none';  
         }
+
+        //Loop through user for user rights.
+        for (var key in bezl.vars.user.USER_DOCS){
+            var obj = bezl.vars.user.USER_DOCS[key];
+
+            if (obj["DOCUMENT_TYPE"] == '850'){
+                for (var prop in obj) {
+                    switch (prop.toString()){
+                        case "MODIFY_DOC":
+                            if (obj[prop] == false){
+                                    //Make buttons visible/invisible.
+                                    var div = document.getElementById('btnApprove');
+                                    div.style.display = 'none';
+                                    var div = document.getElementById('btnDelete');
+                                    div.style.display = 'none';  
+                            }
+                            else {
+                                    //Make buttons visible/invisible.
+                                    var div = document.getElementById('btnApprove');
+                                    div.style.display = '';
+                                    var div = document.getElementById('btnDelete');
+                                    div.style.display = '';  
+                            }                                   
+                            break;
+                    }
+                }
+            }
+        }
     }
   
     function RunQuery (bezl, queryName) {
@@ -104,6 +132,21 @@ define(function () {
                                 case "MODIFY_DOC":
                                     parameters[parameterCount] = { "Key": "@USER_DOCS_MODIFY_DOC", "Value": obj[prop] };
                                     parameterCount = parameterCount + 1;
+
+                                    if (obj[prop] == false){
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnApprove');
+                                            div.style.display = 'none';
+                                            var div = document.getElementById('btnDelete');
+                                            div.style.display = 'none';  
+                                    }
+                                    else {
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnApprove');
+                                            div.style.display = '';
+                                            var div = document.getElementById('btnDelete');
+                                            div.style.display = '';  
+                                    }                                   
                                     break;
                                 case "VIEW_DOC":
                                     parameters[parameterCount] = { "Key": "@USER_DOCS_VIEW_DOC", "Value": obj[prop] };
@@ -142,6 +185,34 @@ define(function () {
                     div.style.display = 'none';
                     var div = document.getElementById('btnSave');
                     div.style.display = 'none';  
+                }
+
+                //Loop through user for user rights.
+                for (var key in bezl.vars.user.USER_DOCS){
+                    var obj = bezl.vars.user.USER_DOCS[key];
+
+                    if (obj["DOCUMENT_TYPE"] == '850'){
+                        for (var prop in obj) {
+                            switch (prop.toString()){
+                                case "MODIFY_DOC":
+                                    if (obj[prop] == false){
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnRevalidate');
+                                            div.style.display = 'none';
+                                            var div = document.getElementById('btnSave');
+                                            div.style.display = 'none';  
+                                    }
+                                    else {
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnRevalidate');
+                                            div.style.display = '';
+                                            var div = document.getElementById('btnSave');
+                                            div.style.display = '';  
+                                    }                                   
+                                    break;
+                            }
+                        }
+                    }
                 }
 
                 break;
