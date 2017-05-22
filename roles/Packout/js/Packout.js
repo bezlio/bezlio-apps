@@ -1,40 +1,29 @@
 define(function () {
-    function DetermineBrowserSettings(bezl) {
-        //determine if advanced settings can be used
-        var isAdvancedUpload = function() {
-            var div = document.createElement('div');
-            return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
-        }(); 
-
-        //add advnaced upload to class
-        var $form = $('.box');
-
-        if (isAdvancedUpload) 
-        {
-            $form.addClass('has-advanced-upload');
-        }
-
-        if (isAdvancedUpload) 
-        {
-            var droppedFiles = false;
-
-            $form.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            })
-            .on('dragover dragenter', function() {
-                $form.addClass('is-dragover');
-            })
-            .on('dragleave dragend drop', function() {
-                $form.removeClass('is-dragover');
-            })
-            .on('drop', function(e) {
-                droppedFiles = e.originalEvent.dataTransfer.files;
+    
+    function SyncDragDrop(bezl) {
+        $(document).ready(function () {
+            $('.event').on("dragstart", function (event) {
+                var dt = event.originalEvent.dataTransfer;
+                dt.setData('Text', $(this).attr('id'));
             });
+            $('table td').on("dragenter dragover drop", function (event) {
+                event.preventDefault();
+                if (event.type === 'drop') {
+                    var data = event.originalEvent.dataTransfer.getData('Text', $(this).attr('id'));
 
-        } 
-    }
+                    var de = $('#' + data).detach();
+                    if (event.originalEvent.target.tagName === "SPAN") {
+                        de.insertBefore($(event.originalEvent.target));
+                    }
+                    else {
+                        de.appendTo($(this));
+                    }
+                };
+            });
+        })     
+    }   
+
     return {
-        determineBrowserSettings: DetermineBrowserSettings
+        syncDragDrop: SyncDragDrop
     }
 });
