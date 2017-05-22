@@ -10,12 +10,14 @@ define(["./edi850I.js"], function (edi850I) {
         bezl.vars.showViewDetails = false;
         bezl.vars.showViewFile = false;
         bezl.vars.loading = true;
+        bezl.vars.showApproval = false;
 
         //Reset bezl data.
         bezl.vars.datasub = "";
         bezl.vars.viewdetails = "";
         bezl.vars.viewfile = "";
         bezl.vars.user = "";
+        bezl.vars.approve = "";
 
         //Get User Settings.
         edi850I.runQuery(bezl, "GetUserSettings");
