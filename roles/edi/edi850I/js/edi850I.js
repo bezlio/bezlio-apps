@@ -52,20 +52,32 @@ define(function () {
                                     var div = document.getElementById('btnDelete');
                                     div.style.display = 'none';  
                             }
-                            else {
-                                    //Make buttons visible/invisible.
-                                    var div = document.getElementById('btnApprove');
-                                    div.style.display = '';
-                                    var div = document.getElementById('btnDelete');
-                                    div.style.display = '';  
-                            }                                   
-                            break;
                     }
                 }
             }
         }
     }
-  
+    
+    function SelectAll(bezl) {
+        for (var key in bezl.vars.datasub){
+            var obj = bezl.vars.datasub[key];
+
+            if (obj['EDI_STATUS'] == bezl.vars.filterEdiStatus){
+                obj['APPROVE'] = true;
+            }
+        }
+    }
+
+    function SelectNone(bezl) {
+        for (var key in bezl.vars.datasub){
+            var obj = bezl.vars.datasub[key];
+
+            if (obj['EDI_STATUS'] == bezl.vars.filterEdiStatus){
+                obj['APPROVE'] = false;
+            }
+        }
+    }
+
     function RunQuery (bezl, queryName) {
         switch (queryName) {
             case "GetUserSettings":
@@ -201,14 +213,7 @@ define(function () {
                                             div.style.display = 'none';
                                             var div = document.getElementById('btnSave');
                                             div.style.display = 'none';  
-                                    }
-                                    else {
-                                            //Make buttons visible/invisible.
-                                            var div = document.getElementById('btnRevalidate');
-                                            div.style.display = '';
-                                            var div = document.getElementById('btnSave');
-                                            div.style.display = '';  
-                                    }                                   
+                                    }                               
                                     break;
                             }
                         }
@@ -385,10 +390,73 @@ define(function () {
                         }
                     }
                 }
+                
+                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '850' };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SEARCHVALUE", "Value": bezl.vars.search };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SITE_ID", "Value": bezl.vars.siteId };
+                parameterCount = parameterCount + 1;
+
+                //Get User ID.
+                for (var key in bezl.vars.user.USERS){
+                    var obj = bezl.vars.user.USERS[key];
+
+                    for (var prop in obj){
+                        switch (prop.toString()){
+                            case "EDI_SL_USER_ID":
+                                parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ENABLED":
+                                parameters[parameterCount] = { "Key": "@USER_ENABLED", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
 
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('datasub','brdb','EDI','Delete', { 
                     "QueryName": "Delete",
+                    "Connection": "SQLConnection",
+                    "Parameters": parameters },0);
+
+                break;
+
+            case "Approve":
+                var parameters = [], parameterCount = 0
+
+                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '850' };
+                parameterCount = parameterCount + 1;
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.datasub){
+                    var obj = bezl.vars.datasub[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "APPROVE":
+                                parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('approve','brdb','EDI','Approve', { 
+                    "QueryName": "Approve",
                     "Connection": "SQLConnection",
                     "Parameters": parameters },0);
 
@@ -526,6 +594,8 @@ define(function () {
 
     return {
         filterEdiStatus: FilterEdiStatus,
+        selectAll: SelectAll,
+        selectNone: SelectNone,
         runQuery: RunQuery,
         filterBy: FilterBy,
         sort: Sort
