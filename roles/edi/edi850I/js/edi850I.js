@@ -57,7 +57,27 @@ define(function () {
             }
         }
     }
-  
+    
+    function SelectAll(bezl) {
+        for (var key in bezl.vars.datasub){
+            var obj = bezl.vars.datasub[key];
+
+            if (obj['EDI_STATUS'] == bezl.vars.filterEdiStatus){
+                obj['APPROVE'] = true;
+            }
+        }
+    }
+
+    function SelectNone(bezl) {
+        for (var key in bezl.vars.datasub){
+            var obj = bezl.vars.datasub[key];
+
+            if (obj['EDI_STATUS'] == bezl.vars.filterEdiStatus){
+                obj['APPROVE'] = false;
+            }
+        }
+    }
+
     function RunQuery (bezl, queryName) {
         switch (queryName) {
             case "GetUserSettings":
@@ -574,6 +594,8 @@ define(function () {
 
     return {
         filterEdiStatus: FilterEdiStatus,
+        selectAll: SelectAll,
+        selectNone: SelectNone,
         runQuery: RunQuery,
         filterBy: FilterBy,
         sort: Sort
