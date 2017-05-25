@@ -3,7 +3,7 @@
 The sales rep role is currently comprised of the following:
 
 * Accounts View - Allow a sales rep to see all of their assigned customers account information.
-* Map View - See all customers location and distance from a sales rep current location.
+* Map View - See all assigned customers location and distance from a sales rep current location.
 * Trip Planner - Map View with the ability to add and navigate multiple locations.
 The following work with the the selected account from the Accounts View:
 * Attachments View - See associated doc, pdf and txt files.
@@ -128,9 +128,9 @@ Authorized Connections: (Check all connections for sales reps you authorize.)
 
 * The value for Context here refers to a name pointing a directory containing customer files and needs to be defined within your plugin .config file.  See https://github.com/bezlio/bezlio-plugins for documentation.
 
-## End users
+## End Users
 Once the IT administrator has configured the server, users simply install the Bezls for this role from the 'Shared Bezls' tab and select the ones with names starting with 'Sales Rep'.  Note that many other Bezls will exist on this list as the entirety of the recipe book it presented here, however users will only be able to see data in Bezls they select if the IT administrator has explicitly authorized it.  To select a shared Bezl:
 
 1. On either an existing panel or a new panel, click the arrow next to the panel name and select 'Create View'.
-2. Provide a name for the new view (i.e. 'Main').  Click OK.
+2. Provide a name for the new view (i.e. 'Sales').  Click OK.
 3. When returned back to the panel, press the 'Select Bezl' button, then click the 'Shared Bezls' tab, and pick the desired Bezl.
