@@ -83,22 +83,18 @@ define(function () {
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
+                                    attrFndVal.Display = false; // set to false as default for dependendent attributes
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
                                         var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
                                         if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
                                             attrFndVal.Display = false;
                                         }
                                         if (attrFnd.ATTRIBUTE_ID === '110_MEASURE') {
-                                            console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
-                                            console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
-
-                                            bezl.data.Attributes.map(depAttrMapVal => {
-                                                if (depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID && depAttrMapVal.Character01 === depAttrVal.ATTRIBUTE_VALUE) {
-                                                    attrFndVal.Display = true;
-                                                } else {
-                                                    attrFndVal.Display = false;
-                                                }
-                                            });
+                                            var joinedAttribute = bezl.data.Attributes.find(joinKey => joinKey.Key4 === depAttrVal.ATTRIBUTE_ID);
+                                            if (joinedAttribute.Character01 === depAttrVal.ATTRIBUTE_VALUE)
+                                                attrFndVal.Display = true;
+                                            //console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
+                                            //console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
                                         }
                                     });
                                 }
