@@ -65,9 +65,6 @@ define(function () {
                     attrFnd.ATTRIBUTE_VALUES.map(val => { val.Display = true });
                     openLine.Attributes.push(attrFnd);
 
-                    console.log(attrFnd);
-                    console.log(bezl.data.Attributes);
-
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
@@ -85,16 +82,9 @@ define(function () {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     attrFndVal.Display = false; // set to false as default for dependendent attributes
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
-                                        // var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
-                                        // if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
-                                        //     depAttrVal.Display = false;
-                                        // }
-
                                         var joinedAttribute = bezl.data.Attributes.find(joinKey => joinKey.Key4 === depAttrVal.ATTRIBUTE_ID);
                                         if (joinedAttribute.Character01 === depAttrVal.ATTRIBUTE_VALUE)
                                             attrFndVal.Display = true;
-                                        //console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
-                                        //console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
                                     });
                                 }
                             });

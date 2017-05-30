@@ -128,9 +128,6 @@ define(function () {
                             ]
                         }, 0)
 
-                        console.log("Sel Value: " + attr.SELECTED_VALUE);
-                        console.log("Oth Value: " + otherValue);
-
                         attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + " " : otherValue + " ";
 
                         console.log("Description: " + attributeConcat);
@@ -176,6 +173,8 @@ define(function () {
                                 ]
                             }, 0);
                         });
+
+                        attributeConcat += (val.SELECTED_VALUE != '') ? val.SELECTED_VALUE + ' ' : '';
                     }
 
                     //sub attributes
