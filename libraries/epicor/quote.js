@@ -170,9 +170,9 @@ define(function () {
                                     { Key: "PartNum", Value: dtl.PartNum }
                                 ]
                             }, 0);
-                        });
 
-                        attributeConcat += (val.SELECTED_VALUE != '') ? val.SELECTED_VALUE + ' ' : '';
+                            attributeConcat += (val.SELECTED_VALUE != '') ? val.SELECTED_VALUE + ' ' : '';
+                        });
                     }
 
                     //sub attributes
