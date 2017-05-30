@@ -171,7 +171,7 @@ define(function () {
                                 ]
                             }, 0);
 
-                            attributeConcat += (val.SELECTED_VALUE != '') ? val.SELECTED_VALUE + ' ' : '';
+                            attributeConcat += val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE + ' ' : '';
                         });
                     }
 
