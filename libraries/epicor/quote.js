@@ -201,6 +201,8 @@ define(function () {
                 });
             }
 
+            console.log("Comment: " + dtl.LineComment);
+            console.log("ListItem: " + dtl.ListItem);
             if (dtl.LineComment === '') { //set concatenated attribute values as description
                 bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.LineNum === dtl.QuoteLine).LineDesc = attributeConcat;
             }
