@@ -89,9 +89,10 @@ define(function () {
                                             attrFndVal.Display = false;
                                         }
                                         if (attrFnd.ATTRIBUTE_ID === '110_MEASURE') {
+                                            console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
+                                            console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
+
                                             bezl.data.Attributes.map(depAttrMapVal => {
-                                                console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
-                                                console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
                                                 if (depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID && depAttrMapVal.Character01 === depAttrVal.ATTRIBUTE_VALUE) {
                                                     attrFndVal.Display = true;
                                                 } else {
