@@ -171,7 +171,7 @@ define(function () {
                                 ]
                             }, 0);
 
-                            attributeConcat += val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE + ' ' : '';
+                            attributeConcat += (val.hasOwnProperty('SELECTED_VALUE')) ? val.SELECTED_VALUE + ' ' : '';
                         });
                     }
 
@@ -194,10 +194,10 @@ define(function () {
                                     { Key: "PartNum", Value: dtl.PartNum }
                                 ]
                             }, 0);
+
+                            attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
                         }
                     }
-
-                    attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
                 });
             }
 
