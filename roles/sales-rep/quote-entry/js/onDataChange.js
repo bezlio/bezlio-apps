@@ -66,6 +66,7 @@ define(function () {
                     openLine.Attributes.push(attrFnd);
 
                     console.log(attrFnd);
+                    console.log(bezl.data.Attributes);
 
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
                     if (attrValList !== undefined) {
