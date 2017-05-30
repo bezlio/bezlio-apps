@@ -89,13 +89,12 @@ define(function () {
                                         // if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
                                         //     depAttrVal.Display = false;
                                         // }
-                                        if (attrFnd.ATTRIBUTE_ID === '110_MEASURE') {
-                                            var joinedAttribute = bezl.data.Attributes.find(joinKey => joinKey.Key4 === depAttrVal.ATTRIBUTE_ID);
-                                            if (joinedAttribute.Character01 === depAttrVal.ATTRIBUTE_VALUE)
-                                                attrFndVal.Display = true;
-                                            //console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
-                                            //console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
-                                        }
+
+                                        var joinedAttribute = bezl.data.Attributes.find(joinKey => joinKey.Key4 === depAttrVal.ATTRIBUTE_ID);
+                                        if (joinedAttribute.Character01 === depAttrVal.ATTRIBUTE_VALUE)
+                                            attrFndVal.Display = true;
+                                        //console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
+                                        //console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
                                     });
                                 }
                             });
