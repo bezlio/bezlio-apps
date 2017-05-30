@@ -83,9 +83,17 @@ define(function () {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
-                                        var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
-                                        if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE)
-                                            attrFndVal.Display = false;
+                                        // var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
+                                        // if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
+                                        //     attrFndVal.Display = false;
+                                        // }
+                                        bezl.data.Attributes.map(depAttrMapVal => {
+                                            if (depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID && depAttrMapVal.Character01 === depAttrVal.ATTRIBUTE_VALUE) {
+                                                attrFndVal.Display = true;
+                                            } else {
+                                                attrFndVal.Display = false;
+                                            }
+                                        });
                                     });
                                 }
                             });
@@ -94,8 +102,6 @@ define(function () {
                             if (subAttrFnd !== undefined) {
                                 if (subAttrFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
                                     var subAttrVal = bezl.data.Attributes.find(subAttrFndVal => subAttrFndVal.Key5 === attrFnd.ATTRIBUTE_ID);
-                                    console.log(subAttrFnd);
-                                    console.log(subAttrVal);
                                     subAttrFnd.SUB_ATTRIBUTE[0].SELECTED_VALUE = subAttrVal.Character01;
                                 }
                             }
