@@ -130,6 +130,10 @@ define(function () {
 
                         console.log("Sel Value: " + attr.SELECTED_VALUE);
                         console.log("Oth Value: " + otherValue);
+
+                        attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + " " : otherValue + " ";
+
+                        console.log("Description: " + attributeConcat);
                     }
 
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
