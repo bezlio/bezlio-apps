@@ -83,17 +83,21 @@ define(function () {
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
-                                        // var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
-                                        // if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
-                                        //     attrFndVal.Display = false;
-                                        // }
-                                        bezl.data.Attributes.map(depAttrMapVal => {
-                                            if (depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID && depAttrMapVal.Character01 === depAttrVal.ATTRIBUTE_VALUE) {
-                                                attrFndVal.Display = true;
-                                            } else {
-                                                attrFndVal.Display = false;
-                                            }
-                                        });
+                                        var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
+                                        if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
+                                            attrFndVal.Display = false;
+                                        }
+                                        if (attrFnd.ATTRIBUTE_ID === '110_MEASURE') {
+                                            bezl.data.Attributes.map(depAttrMapVal => {
+                                                console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
+                                                console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
+                                                if (depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID && depAttrMapVal.Character01 === depAttrVal.ATTRIBUTE_VALUE) {
+                                                    attrFndVal.Display = true;
+                                                } else {
+                                                    attrFndVal.Display = false;
+                                                }
+                                            });
+                                        }
                                     });
                                 }
                             });
