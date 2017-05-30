@@ -108,7 +108,7 @@ define(function () {
                     }
                 });
 
-                var attributeConcat = dtl.PartNum + ": ";
+                var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
                 dtl.Attributes.map(attr => {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
                     //standard one select property
@@ -199,6 +199,10 @@ define(function () {
 
                     attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
                 });
+            }
+
+            if (dtl.LineComment === '') { //set concatenated attribute values as description
+                bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.LineNum === dtl.QuoteLine).LineDesc = attributeConcat;
             }
         });
 
