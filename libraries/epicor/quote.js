@@ -75,7 +75,7 @@ define(function () {
         custNum = quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
-            console.log(dtl);
+            //console.log(dtl);
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
@@ -108,6 +108,7 @@ define(function () {
                     }
                 });
 
+                var attributeConcat = dtl.PartNum + ": ";
                 dtl.Attributes.map(attr => {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
                     //standard one select property
@@ -126,6 +127,9 @@ define(function () {
                                 { Key: "PartNum", Value: dtl.PartNum }
                             ]
                         }, 0)
+
+                        console.log("Sel Value: " + attr.SELECTED_VALUE);
+                        console.log("Oth Value: " + otherValue);
                     }
 
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
