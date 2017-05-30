@@ -128,9 +128,7 @@ define(function () {
                             ]
                         }, 0)
 
-                        attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + " " : otherValue + " ";
-
-                        console.log("Description: " + attributeConcat);
+                        attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
                     }
 
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
@@ -198,6 +196,8 @@ define(function () {
                             }, 0);
                         }
                     }
+
+                    attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
                 });
             }
         });
