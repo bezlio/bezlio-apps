@@ -85,14 +85,14 @@ define(function () {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     attrFndVal.Display = false; // set to false as default for dependendent attributes
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
-                                        var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
-                                        if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
-                                            attrFndVal.Display = false;
-                                        }
+                                        // var depAttrFndVal = bezl.data.Attributes.find(depAttrMapVal => depAttrMapVal.Key4 === depAttrVal.ATTRIBUTE_ID);
+                                        // if (depAttrFndVal.Character01 !== depAttrVal.ATTRIBUTE_VALUE) {
+                                        //     depAttrVal.Display = false;
+                                        // }
                                         if (attrFnd.ATTRIBUTE_ID === '110_MEASURE') {
                                             var joinedAttribute = bezl.data.Attributes.find(joinKey => joinKey.Key4 === depAttrVal.ATTRIBUTE_ID);
                                             if (joinedAttribute.Character01 === depAttrVal.ATTRIBUTE_VALUE)
-                                                depAttrVal.Display = true;
+                                                attrFndVal.Display = true;
                                             //console.log("Joining Key: " + depAttrVal.ATTRIBUTE_ID);
                                             //console.log("Joining Value: " + depAttrVal.ATTRIBUTE_VALUE);
                                         }
