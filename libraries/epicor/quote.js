@@ -202,8 +202,9 @@ define(function () {
             }
 
             if (dtl.ListItem === 1) { //set concatenated attribute values as description
-                console.log('Detail List = 1');
-                bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.LineNum === dtl.QuoteLine).LineDesc = attributeConcat;
+                console.log('Attr: ' + attributeConcat);
+                console.log('Dtl Loop: ' + dtl.QuoteLine);
+                bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
             }
         });
 
