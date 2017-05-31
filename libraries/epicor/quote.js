@@ -88,6 +88,7 @@ define(function () {
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
 
+            var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
             if (dtl.Attributes !== undefined) {
                 let cnt = 2;
 
@@ -108,7 +109,6 @@ define(function () {
                     }
                 });
 
-                var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
                 dtl.Attributes.map(attr => {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
                     //standard one select property
@@ -202,8 +202,6 @@ define(function () {
             }
 
             if (dtl.ListItem === 1) { //set concatenated attribute values as description
-                console.log('Attr: ' + attributeConcat);
-                console.log('Dtl Loop: ' + dtl.QuoteLine);
                 bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
             }
         });
