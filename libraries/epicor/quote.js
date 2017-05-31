@@ -202,6 +202,7 @@ define(function () {
             }
 
             if (dtl.ListItem === 1) { //set concatenated attribute values as description
+                console.log('Attr: ' + attributeConcat);
                 bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
             }
         });
