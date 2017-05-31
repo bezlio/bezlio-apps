@@ -201,7 +201,7 @@ define(function () {
                 });
             }
 
-            if (dtl.ListItem === '1') { //set concatenated attribute values as description
+            if (dtl.ListItem === 1) { //set concatenated attribute values as description
                 bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.LineNum === dtl.QuoteLine).LineDesc = attributeConcat;
             }
         });
