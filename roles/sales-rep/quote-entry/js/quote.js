@@ -101,6 +101,13 @@ define(function () {
                     SalesRepCode: 'NONE'
                 });
             });
+
+            bezl.data.Customers.sort(function (a, b) {
+                var nameA = a.Name.toLowerCase(), nameB = b.Name.toLowerCase();
+                if (nameA < nameB) return -1;
+                if (nameA > nameB) return 1;
+                return 0;
+            });
         } else {
             bezl.data.Customers = bezl.data.Customers.filter(cust => cust.CustomerType !== 'SUS');
         }
