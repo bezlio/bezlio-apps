@@ -16,7 +16,7 @@ SELECT
 	, LastContact = (SELECT TOP 1 Cast(cl.end_date As Date) FROM p21_view_call_log cl with(nolock) WHERE cl.customer_id = c.customer_id ORDER BY cl.end_date DESC)
 	  -- (Epicor offers a FiscalYear for an Invoice. Prophet 21 appears to require some additional qualifying for Fiscal - pending based on demand.)
 	, YTDSales = (SELECT SUM(ih.total_amount) FROM p21_view_invoice_hdr ih with(nolock) WHERE ih.company_no = c.company_id and ih.customer_id_number = c.customer_id and ih.year_for_period = YEAR(GETDATE()))
-	, LYTDSales = (SELECT SUM(ih.total_amount) FROM p21_view_invoice_hdr ih with(nolock) WHERE ih.company_no = c.company_id and ih.customer_id_number = c.customer_id and ih.year_for_period = YEAR(GETDATE())-1)
+	, LYTDSales = (SELECT SUM(ih.total_amount) FROM p21_view_invoice_hdr ih with(nolock) WHERE ih.company_no = c.company_id and ih.customer_id_number = c.customer_id and ih.year_for_period = YEAR(GETDATE())-1 And MONTH(ih.invoice_date) <= MONTH(GETDATE()) And DAY(ih.invoice_date) <= DAY(GETDATE()))
 	, sr.id AS SalesRep
 	, tm.terms_desc AS TermsDescription
 	, NextTaskDue = (SELECT TOP 1 Cast(tsk.target_complete_date As Date) FROM p21_view_activity_trans tsk with(nolock) 
