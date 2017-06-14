@@ -4,7 +4,7 @@ define(["./account.js"], function (account) {
         bezl.vars.filterString = "";
 
         //bezl.vars.Categories = new { 'All': 'All', 'Customer': 'Customer', 'Prospect': 'Prospect', 'Suspect': 'Suspect' }
-        bezl.vars.Categories = new ['All', 'Customer', 'Prospect', 'Suspect'];
+        bezl.vars.Categories = ['All', 'Customer', 'Prospect', 'Suspect'];
 
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
