@@ -41,7 +41,14 @@ define(function () {
                     ]
                 }, 0);
                 break;
-            default:
+            case "Categories":
+                bezl.dataService.add('Categories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetFilterCategories",
+                    "Parameters": [
+                        { "Key": "Column", "Value": "CustomerType" },
+                        { "Key": "Table", "Value": "Customer" }
+                    ]
+                }, 0);
                 break;
         }
     }
@@ -159,7 +166,6 @@ define(function () {
                 });
             }
         }
-
     }
 
     //Apply filter based on customer type. When all is selected, no filter is applied
@@ -167,7 +173,6 @@ define(function () {
         bezl.vars.custCategory = filterValue;
         console.log(filterValue);
         console.log(bezl.data.Accounts);
-        //console.log(bezl.var.CategoriesTest);
 
         if (filterValue !== "All") {
             bezl.data.Accounts.forEach(act => {

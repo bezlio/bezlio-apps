@@ -31,6 +31,7 @@ define(["./account.js"], function (account) {
         //account.runQuery(bezl, 'CRMCalls');
         account.runQuery(bezl, 'Tasks');
         account.runQuery(bezl, 'Attachments');
+        account.runQuery(bezl, 'Categories');
 
         // Determine the current position of the user
         if (navigator.geolocation) {
