@@ -166,9 +166,11 @@ define(function () {
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
 
-        bezl.data.Accounts.forEach(act => {
-            act.show = (act.Type == filterValue) ? false : true;
-        });
+        if (filterValue !== "All") {
+            bezl.data.Accounts.forEach(act => {
+                act.show = (act.Type === filterValue) ? true : false;
+            });
+        }
     }
 
     // Only display accounts that have data matching the data string in the
