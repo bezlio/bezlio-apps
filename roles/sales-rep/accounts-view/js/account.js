@@ -99,7 +99,6 @@ define(function () {
         // Store the sort column so the UI can reflect it
         bezl.vars.sortCol = sortColumn;
 
-
         // Test for numeric sort columns, otherwise sort alphabetic
         if (sortColumn == "Distance") {
             if (bezl.vars.sort == "asc") {

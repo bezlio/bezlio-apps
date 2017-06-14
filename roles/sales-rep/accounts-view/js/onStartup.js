@@ -3,6 +3,8 @@ define(["./account.js"], function (account) {
     function OnStartup(bezl) {
         bezl.vars.filterString = "";
 
+        bezl.vars.Categories = new { 'All': 'All', 'Customer': 'Customer', 'Prospect': 'Prospect', 'Suspect': 'Suspect' }
+
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
         account.runQuery(bezl, 'AccountContacts');
