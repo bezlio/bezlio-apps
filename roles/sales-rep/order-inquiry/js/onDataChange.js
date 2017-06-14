@@ -79,6 +79,7 @@ define(function () {
         if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
             bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
         }
+        bezl.vars.loading = false;
     }
 }
 

@@ -27,6 +27,7 @@ define(["./order.js"], function (order) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+                order.runQuery(bezl, 'Orders');
             }
 
             // Set up event handler for selection of customer on account view
