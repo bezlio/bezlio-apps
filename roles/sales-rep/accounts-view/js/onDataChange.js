@@ -4,8 +4,6 @@ define(["./account.js"], function (account) {
         if (bezl.data.Accounts) {
             bezl.vars.loading = false;
 
-            console.log(bezl.data.Accounts);
-
             // If there was a previously selected account in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedAccount = {};

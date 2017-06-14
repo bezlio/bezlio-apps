@@ -1,41 +1,45 @@
 define(function () {
- 
-    function RunQuery (bezl, queryName) {
+
+    function RunQuery(bezl, queryName) {
 
         switch (queryName) {
             case "Accounts":
-                bezl.vars.loading = true; 
+                bezl.vars.loading = true;
 
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('Accounts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccounts",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
+                    ]
+                }, 0);
                 break;
             case "AccountContacts":
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('AccountContacts','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('AccountContacts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccountsContacts",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
+                    ]
+                }, 0);
                 break;
             case "Tasks":
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Tasks','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('Tasks', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccountsTasks",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
+                    ]
+                }, 0);
                 break;
             case "Attachments":
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Attachments','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('Attachments', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccountsAttachments",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
+                    ]
+                }, 0);
                 break;
             default:
                 break;
@@ -55,15 +59,15 @@ define(function () {
                     localStorage.setItem('selectedAccount', '');
                     $('#bezlpanel').trigger('selectAccount', [{}]);
                 }
-                
+
             } else {
                 bezl.data.Accounts[i].Selected = false;
             }
         };
 
-	// In case there was a CRM interaction with the previously selected
-	// account we need to clear it out here when selecting a different
-	// one.
+        // In case there was a CRM interaction with the previously selected
+        // account we need to clear it out here when selecting a different
+        // one.
         var param = {
             "type": "",
             "shortSummary": "",
@@ -91,7 +95,7 @@ define(function () {
                 bezl.vars.sort = "asc";
             }
         }
-        
+
         // Store the sort column so the UI can reflect it
         bezl.vars.sortCol = sortColumn;
 
@@ -124,12 +128,12 @@ define(function () {
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
                 });
-            } 
+            }
         } else {
-            if (bezl.vars.sort == "asc") { 
-                bezl.data.Accounts.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+            if (bezl.vars.sort == "asc") {
+                bezl.data.Accounts.sort(function (a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
                         return -1;
                     }
@@ -141,9 +145,9 @@ define(function () {
                     return 0;
                 });
             } else {
-                bezl.data.Accounts.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                bezl.data.Accounts.sort(function (a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
                         return -1;
                     }
@@ -159,6 +163,11 @@ define(function () {
 
     }
 
+    //Apply filter based on customer type. When all is selected, no filter is applied
+    function ApplyCategory(bezl, filterValue) {
+        console.log(filterValue);
+    }
+
     // Only display accounts that have data matching the data string in the
     // filter input box. This function updates the "show" variable on the
     // account object.
@@ -167,9 +176,9 @@ define(function () {
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.vars.filterString) { // Make sure we have something to filter on
                     if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                    bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                    bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                    bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                        bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                        bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                        bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                         bezl.data.Accounts[i].show = true;
                     } else {
                         bezl.data.Accounts[i].show = false;
@@ -182,7 +191,7 @@ define(function () {
     }
 
     function ClickAddress(bezl, account) {
-        window.open('http://maps.google.com/maps?q=' + account.AddressURL,'_blank');
+        window.open('http://maps.google.com/maps?q=' + account.AddressURL, '_blank');
 
         var param = {
             "type": "navigate",
@@ -218,12 +227,13 @@ define(function () {
         // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
         localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
-  
+
     return {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
         applyFilter: ApplyFilter,
+        applyCategory: ApplyCategory,
         clickAddress: ClickAddress,
         clickEmail: ClickEmail,
         clickPhoneNum: ClickPhoneNum
