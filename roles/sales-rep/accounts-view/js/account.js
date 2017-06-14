@@ -165,6 +165,7 @@ define(function () {
     //Apply filter based on customer type. When all is selected, no filter is applied
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
+        console.log(bezl.data.Accounts);
 
         if (filterValue !== "All") {
             bezl.data.Accounts.forEach(act => {
