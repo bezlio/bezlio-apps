@@ -165,6 +165,7 @@ define(function () {
     //Apply filter based on customer type. When all is selected, no filter is applied
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
+        console.log(filterValue);
         console.log(bezl.data.Accounts);
         //console.log(bezl.var.CategoriesTest);
 
