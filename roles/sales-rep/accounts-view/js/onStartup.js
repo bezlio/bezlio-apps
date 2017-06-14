@@ -1,7 +1,9 @@
 define(["./account.js"], function (account) {
- 
-    function OnStartup (bezl) {        
-        bezl.vars.filterString = ""
+
+    function OnStartup(bezl) {
+        bezl.vars.filterString = "";
+
+        console.log('test test test');
 
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
@@ -12,15 +14,15 @@ define(["./account.js"], function (account) {
 
         // Determine the current position of the user
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) { 
-              bezl.vars.currentLat = position.coords.latitude;
-              bezl.vars.currentLng = position.coords.longitude;
+            navigator.geolocation.getCurrentPosition(function (position) {
+                bezl.vars.currentLat = position.coords.latitude;
+                bezl.vars.currentLng = position.coords.longitude;
             });
         }
 
         // Listen for new/updated tasks from the Task panel. The "Next Task
         // Due" value for an account might have possibly changed.
-        $("#bezlpanel").on("updateTask", function(event, param1) {
+        $("#bezlpanel").on("updateTask", function (event, param1) {
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.data.Accounts[i].ID == param1.ID) {
                     //bezl.data.Accounts[i].Tasks = param1.Tasks // Doesn't seem to be necessary
@@ -43,8 +45,8 @@ define(["./account.js"], function (account) {
             }
         });
     }
-  
-  return {
-    onStartup: OnStartup
-  }
+
+    return {
+        onStartup: OnStartup
+    }
 });
