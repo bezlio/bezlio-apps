@@ -21,7 +21,7 @@ define(["./account.js"], function (account) {
             Name: "Suspect"
         });
         bezl.vars.Categories.push({
-            Type: "CUS",
+            Type: "PRO",
             Name: "Prospect"
         });
 
