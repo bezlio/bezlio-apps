@@ -230,7 +230,7 @@ define(function () {
         }
     }
 
-    function custSelection(bezl, custId) {
+    function CustSelection(bezl, custId) {
 
         var cust = bezl.vars.custList.find(c => c.ID == parm);
         if(parm == "ALL_ACCOUNTS" ){
@@ -246,6 +246,7 @@ define(function () {
         select: Select,
         filter: Filter,
         sort: Sort,
-        innerSort: InnerSort
+        innerSort: InnerSort,
+        custSelection: CustSelection
     }
 });
