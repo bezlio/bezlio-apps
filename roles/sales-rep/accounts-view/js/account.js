@@ -166,7 +166,7 @@ define(function () {
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
         console.log(bezl.data.Accounts);
-        console.log(bezl.var.Categories);
+        console.log(bezl.var.CategoriesTest);
 
         if (filterValue !== "All") {
             bezl.data.Accounts.forEach(act => {
