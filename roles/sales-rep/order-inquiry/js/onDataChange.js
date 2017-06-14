@@ -73,6 +73,13 @@ define(function () {
             $("#Filter").show();
             bezl.vars.loading = false;
     }
+
+    if(bezl.data.Accounts) {
+        bezl.vars.custList = bezl.data.Accounts;
+        if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
+            bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
+        }
+    }
 }
 
 return {

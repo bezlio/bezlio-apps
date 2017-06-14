@@ -11,6 +11,10 @@ define(["./order.js"], function (order) {
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
         bezl.vars.filter = "All";
+        bezl.vars.custList = [];
+
+        // Get All Accounts for dropdown
+       order.runQuery(bezl, 'Accounts');
 
         // Set up filter Listener
         $("#Filter").change(function () {

@@ -16,6 +16,27 @@ define(function () {
                         { "Key": "Company", "Value": 'All' }
                     ] },0);
                 break;
+            case 'Accounts':
+                bezl.vars.loading = true;
+                // Get All Accounts associated with user
+                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccounts",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0); 
+                break; 
+            case 'GetAllOrders':
+                bezl.vars.loading = true;
+                // Get All Orders associated with user
+                bezl.dataService.add('Orders','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAllOrders",
+                    "Parameters": [
+                      	{ "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || "01/01/2100"},
+                        { "Key": "Company", "Value": 'All' }
+                    ] },0);
+                break;         
             default:
                 break;
         }
@@ -206,6 +227,17 @@ define(function () {
                     return 0;
                 });
             }
+        }
+    }
+
+    function custSelection(bezl, custId) {
+
+        var cust = bezl.vars.custList.find(c => c.ID == parm);
+        if(parm == "ALL_ACCOUNTS" ){
+            bezl.vars.selectedAccount = cust;
+            this.runQuery(bezl, 'GetAllOrders');
+        }else{  	
+            bezl.vars.selectedAccount = cust;
         }
     }
   
