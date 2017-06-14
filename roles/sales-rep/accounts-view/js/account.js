@@ -45,8 +45,7 @@ define(function () {
                 bezl.dataService.add('Categories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetFilterCategories",
                     "Parameters": [
-                        { "Key": "Column", "Value": "CustomerType" },
-                        { "Key": "Table", "Value": "Customer" }
+                        { "Key": "Query", "Value": bezl.vars.searchString }
                     ]
                 }, 0);
                 break;

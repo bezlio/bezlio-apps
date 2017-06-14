@@ -25,6 +25,9 @@ define(["./account.js"], function (account) {
             Name: "Prospect"
         });
 
+        //build our category search list
+        bezl.vars.searchString = 'select distinct' + bezl.vars.Column + ' from ' + bezl.vars.Table;
+
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
         account.runQuery(bezl, 'AccountContacts');
