@@ -6,6 +6,25 @@ define(["./account.js"], function (account) {
         //bezl.vars.Categories = new { 'All': 'All', 'Customer': 'Customer', 'Prospect': 'Prospect', 'Suspect': 'Suspect' }
         bezl.vars.Categories = ['All', 'Customer', 'Prospect', 'Suspect'];
 
+        bezl.vars.Categories = [];
+        bezl.vars.Categories.push({
+            Type: "All",
+            Name: "All"
+        });
+
+        bezl.vars.Categories.push({
+            Type: "CUS",
+            Name: "Customer"
+        });
+        bezl.vars.Categories.push({
+            Type: "SUS",
+            Name: "Suspect"
+        });
+        bezl.vars.Categories.push({
+            Type: "CUS",
+            Name: "Prospect"
+        });
+
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
         account.runQuery(bezl, 'AccountContacts');
