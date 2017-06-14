@@ -164,8 +164,11 @@ define(function () {
 
     //Apply filter based on customer type. When all is selected, no filter is applied
     function ApplyCategory(bezl, filterValue) {
-        console.log(filterValue);
-        console.log(bezl.vars.custCategory);
+        bezl.vars.custCategory = filterValue;
+
+        bezl.data.Accounts.forEach(act => {
+            act.show = (act.Type == filterValue) ? false : true;
+        });
     }
 
     // Only display accounts that have data matching the data string in the
