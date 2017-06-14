@@ -232,12 +232,10 @@ define(function () {
 
     function CustSelection(bezl, custId) {
 
-        var cust = bezl.vars.custList.find(c => c.ID == parm);
-        if(parm == "ALL_ACCOUNTS" ){
-            bezl.vars.selectedAccount = cust;
+        var cust = bezl.vars.custList.find(c => c.ID == custId);
+        bezl.vars.selectedAccount = cust;
+        if(custId == "ALL_ACCOUNTS" ){
             this.runQuery(bezl, 'GetAllOrders');
-        }else{  	
-            bezl.vars.selectedAccount = cust;
         }
     }
   
