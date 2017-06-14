@@ -173,6 +173,8 @@ define(function () {
             bezl.data.Accounts.forEach(act => {
                 act.show = (act.Type === filterValue) ? true : false;
             });
+        } else {
+            bezl.data.Accounts.forEach(act => act.show = true);
         }
     }
 
