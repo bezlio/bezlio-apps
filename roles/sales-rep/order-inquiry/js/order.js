@@ -229,13 +229,15 @@ define(function () {
             }
         }
     }
+   function CustSelection(bezl, custId) {
 
-    function CustSelection(bezl, custId) {
-
+        bezl.vars.Orders = [];
         var cust = bezl.vars.custList.find(c => c.ID == custId);
         bezl.vars.selectedAccount = cust;
         if(custId == "ALL_ACCOUNTS" ){
             this.runQuery(bezl, 'GetAllOrders');
+        } else {
+            this.runQuery(bezl, 'Orders');
         }
     }
   
