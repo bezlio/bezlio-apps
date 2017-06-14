@@ -6,14 +6,14 @@ Select
 	r.INVOICE_DATE As InvoiceDate,
 	r.TOTAL_AMOUNT As InvoiceAmt,
 	r.TOTAL_AMOUNT - r.PAID_AMOUNT As InvoiceBal,
-	o.ORDER_DATE As OrderDate,
-	o.CUSTOMER_PO_REF As PoNum,
+	isnull(o.ORDER_DATE,r.INVOICE_DATE) As OrderDate,
+	isnull(o.CUSTOMER_PO_REF,'Misc') As PoNum,
 	rl.LINE_NO As InvoiceLine,
 	isnull(cl.PART_ID,rl.REFERENCE) As PartNum,
-	cl.UNIT_PRICE As UnitPrice,
-	rl.AMOUNT/nullif(rl.QTY,0) As ExtPrice,
-	p.DESCRIPTION As PartDescription,
-	rl.QTY As Qty
+	isnull(cl.UNIT_PRICE * (1-cl.TRADE_DISC_PERCENT/100),rl.AMOUNT) As UnitPrice,
+	rl.AMOUNT As ExtPrice,
+	rl.REFERENCE As PartDescription,
+	isnull(rl.QTY,1) As Qty
 FROM
 	RECEIVABLE_LINE rl with (nolock)
 	left outer join CUST_ORDER_LINE cl with (nolock) on cl.CUST_ORDER_ID = rl.CUST_ORDER_ID and cl.LINE_NO = rl.CUST_ORDER_LINE_NO
@@ -22,8 +22,8 @@ FROM
 	LEFT OUTER JOIN CUSTOMER_ORDER o with (nolock) ON o.ID = rl.CUST_ORDER_ID
 WHERE 
 	r.INVOICE_DATE >= '{StartDate}' AND r.INVOICE_DATE <= '{EndDate}'
+	and o.CUSTOMER_ID = '{CustID}' 
 ORDER BY 
 	INVOICE_DATE Desc
-
 
 
