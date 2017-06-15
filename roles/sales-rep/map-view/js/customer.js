@@ -109,10 +109,11 @@ define([], function () {
 
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
+        console.log(filterValue);
 
         if (filterValue !== "All") {
             console.log(bezl.vars.customers);
-            bezl.vars.customers = bezl.vars.customers.filter(cust => cust.FilterValue === filterValue);
+            bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
             console.log(bezl.vars.customers);
         } else {
             // bezl.vars.customers = [];
