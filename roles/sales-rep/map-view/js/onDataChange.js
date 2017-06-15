@@ -17,7 +17,8 @@ define(["./customer.js",
                         title: bezl.data.CustList[i].Name,
                         custNum: bezl.data.CustList[i].CustNum,
                         shipToNum: bezl.data.CustList[i].ShipToNum,
-                        data: bezl.data.CustList[i]
+                        data: bezl.data.CustList[i],
+                        filterValue: bezl.data.CustList[i].FilterValue
                     });
                 }
 
