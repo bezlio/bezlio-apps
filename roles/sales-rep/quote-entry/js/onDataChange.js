@@ -1,6 +1,10 @@
 define(function () {
     function OnDataChange(bezl) {
-        if (bezl.data.Quotes && !bezl.vars.newQuote) {
+        if (bezl.data.FirstCustomer) {
+            bezl.vars.CustomerCustID = bezl.data.FirstCustomer[0].CustID;
+        }
+
+        if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
             bezl.vars.loading = false;
         }
 
