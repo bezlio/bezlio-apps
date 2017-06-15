@@ -5,6 +5,14 @@ define(function () {
             case "Quotes":
                 bezl.vars.loading = true;
 
+                bezl.dataService.add('FirstCustomer', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetFirstCustomerByRep",
+                    "Parameters": [
+                        { "Key": "SalesRep", "Value": bezl.vars.currentUser },
+                        { "Key": "Company", "Value": bezl.vars.Company }
+                    ]
+                }, 0);
+
                 bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetQuotesByRep",
                     "Parameters": [
