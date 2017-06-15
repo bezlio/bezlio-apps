@@ -1,4 +1,4 @@
-define(["./map.js"], function () {
+define(["./map.js"], function (map) {
 
     function Select(bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
