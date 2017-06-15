@@ -10,7 +10,8 @@ define(function () {
                 bezl.dataService.add('Accounts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccounts",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "Col", "Value": bezl.vars.Column }
                     ]
                 }, 0);
                 break;
@@ -173,7 +174,7 @@ define(function () {
 
         if (filterValue !== "All") {
             bezl.data.Accounts.forEach(act => {
-                act.show = (act.Type === filterValue) ? true : false;
+                act.show = (act.FilterValue === filterValue) ? true : false;
             });
         } else {
             bezl.data.Accounts.forEach(act => act.show = true);
