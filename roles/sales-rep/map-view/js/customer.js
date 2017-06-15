@@ -136,7 +136,7 @@ define([], function () {
         }
 
         //bezl.vars.jsgrid = $("#customerGrid");
-        bezlvars.jsgrid.jsGrid("refresh");
+        bezl.vars.jsgrid.jsGrid("refresh");
     }
 
 
