@@ -29,6 +29,8 @@ define(function () {
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
+            bezl.vars.quoteData.salespersonId = bezl.data.newQuote.QSalesRP[0].SalesRepCode;
+
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
                 Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
