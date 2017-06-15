@@ -2,9 +2,7 @@ define(function () {
 
     function RunQuery(bezl, queryName) {
         switch (queryName) {
-            case "Quotes":
-                bezl.vars.loading = true;
-
+            case "FirstCustomer":
                 bezl.dataService.add('FirstCustomer', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetFirstCustomerByRep",
                     "Parameters": [
@@ -12,6 +10,9 @@ define(function () {
                         { "Key": "Company", "Value": bezl.vars.Company }
                     ]
                 }, 0);
+                break;
+            case "Quotes":
+                bezl.vars.loading = true;
 
                 bezl.dataService.add('Quotes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetQuotesByRep",
