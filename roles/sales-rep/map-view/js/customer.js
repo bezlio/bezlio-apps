@@ -134,6 +134,9 @@ define([], function () {
             //     });
             // }
         }
+
+        //bezl.vars.jsgrid = $("#customerGrid");
+        bezlvars.jsgrid.jsGrid("refresh");
     }
 
 
