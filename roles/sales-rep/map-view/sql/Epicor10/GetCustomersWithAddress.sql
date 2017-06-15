@@ -27,6 +27,7 @@ SELECT
 	, TotalSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum)
 	, c.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
+	, {Col} as Type
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0 ORDER BY tsk.DueDate ASC)
 FROM
 	Erp.Customer c with(nolock)

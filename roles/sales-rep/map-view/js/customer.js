@@ -31,7 +31,9 @@ define([], function () {
                 bezl.dataService.add('CustList', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "/map-view/GetCustomersWithAddress",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "Col", "Value": bezl.vars.Column }
+
                     ]
                 }, 0);
                 break;
