@@ -6,7 +6,6 @@ define(function () {
             case "Invoices":
                 bezl.vars.loading = true; 
 
-
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Invoices','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "InvoiceInquiry",
@@ -14,6 +13,27 @@ define(function () {
                         { "Key": "StartDate", "Value": bezl.vars.startDate || '01/01/1900'},
                         { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'},
                         { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
+                    ] },0);
+                break;
+            case 'Accounts':
+                bezl.vars.loading = true;
+                // Get All Accounts associated with user
+                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccounts",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0); 
+                break; 
+            case 'GetAllInvoices':
+                bezl.vars.loading = true;
+                // Get All Orders associated with user
+                bezl.dataService.add('Invoices','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAllInvoices",
+                    "Parameters": [
+                      	{ "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || "01/01/2100"},
+                        { "Key": "Company", "Value": 'All' }
                     ] },0);
                 break;
             default:
@@ -218,12 +238,25 @@ define(function () {
             }
         }
     }
+
+    function CustSelection(bezl, custId) {
+
+        bezl.vars.Invoices = [];
+        var cust = bezl.vars.custList.find(c => c.ID == custId);
+        bezl.vars.selectedAccount = cust;
+        if(custId == "ALL_ACCOUNTS" ){
+            this.runQuery(bezl, 'GetAllInvoices');
+        } else {
+            this.runQuery(bezl, 'Invoices');
+        }
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
         filter: Filter,
         sort: Sort,
-        innerSort: InnerSort
+        innerSort: InnerSort,
+        custSelection: CustSelection
     }
 });
