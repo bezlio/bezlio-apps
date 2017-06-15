@@ -134,7 +134,7 @@ define([], function () {
 
         //bezl.vars.jsgrid = $("#customerGrid");
         //bezl.vars.jsgrid.jsGrid("refresh");
-        $("#customerGrid").jsGrid("refresh");
+        $("#customerGrid").jsGrid("loadData");
     }
 
 
