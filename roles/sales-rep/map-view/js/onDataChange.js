@@ -108,7 +108,7 @@ define(["./customer.js",
 
             //account filter types
             if (bezl.data.Categories) {
-                console.log(bezl.data.Categories);
+                //console.log(bezl.data.Categories);
             }
         }
 
