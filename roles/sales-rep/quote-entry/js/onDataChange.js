@@ -29,14 +29,11 @@ define(function () {
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
-            bezl.vars.quoteData.salespersonId = bezl.data.newQuote.QSalesRP[0].SalesRepCode;
-            console.log("Rep: " + bezl.data.newQuote.QSalesRP[0].SalesRepCode);
-
             let newQuote = {
                 QuoteNum: bezl.data.newQuote.QuoteHed[0].QuoteNum,
                 Name: bezl.data.newQuote.QuoteHed[0].CustomerName,
                 EntryDate: bezl.data.newQuote.QuoteHed[0].EntryDate,
-                SalesRepCode: bezl.data.newQuote.QSalesRP[0].SalesRepCode,
+                SalesRepCode: bezl.data.FirstCustomer[0].SalesRepCode,
                 CustID: bezl.data.newQuote.QuoteHed[0].CustomerCustID,
                 QuoteComment: bezl.data.newQuote.QuoteHed[0].QuoteComment,
                 QuoteClosed: bezl.data.newQuote.QuoteHed[0].QuoteClosed,
