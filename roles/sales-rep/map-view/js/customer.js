@@ -1,4 +1,4 @@
-define([], function () {
+define(["./map.js"], function () {
 
     function Select(bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
@@ -151,6 +151,7 @@ define([], function () {
             }
         }
 
+        map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
     }
 
