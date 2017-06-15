@@ -111,29 +111,46 @@ define([], function () {
         bezl.vars.custCategory = filterValue;
 
         if (filterValue !== "All") {
+            //rebuild customer grid before filtering
+            bezl.vars.customers = [];
+            for (var i = 0; i < bezl.data.CustList.length; i++) {
+                bezl.vars.customers.push({
+                    selected: false,
+                    key: bezl.data.CustList[i].CustNum,
+                    display: bezl.data.CustList[i].Name,
+                    lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
+                    nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
+                    distance: null,
+                    streetAddress: bezl.data.CustList[i].Address,
+                    title: bezl.data.CustList[i].Name,
+                    custNum: bezl.data.CustList[i].CustNum,
+                    shipToNum: bezl.data.CustList[i].ShipToNum,
+                    data: bezl.data.CustList[i],
+                    filterValue: bezl.data.CustList[i].FilterValue
+                });
+            }
+
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
         } else {
-            // bezl.vars.customers = [];
-            // for (var i = 0; i < bezl.data.CustList.length; i++) {
-            //     bezl.vars.customers.push({
-            //         selected: false,
-            //         key: bezl.data.CustList[i].CustNum,
-            //         display: bezl.data.CustList[i].Name,
-            //         lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
-            //         nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
-            //         distance: null,
-            //         streetAddress: bezl.data.CustList[i].Address,
-            //         title: bezl.data.CustList[i].Name,
-            //         custNum: bezl.data.CustList[i].CustNum,
-            //         shipToNum: bezl.data.CustList[i].ShipToNum,
-            //         data: bezl.data.CustList[i],
-            //         filterValue: bezl.data.CustList[i].FilterValue
-            //     });
-            // }
+            bezl.vars.customers = [];
+            for (var i = 0; i < bezl.data.CustList.length; i++) {
+                bezl.vars.customers.push({
+                    selected: false,
+                    key: bezl.data.CustList[i].CustNum,
+                    display: bezl.data.CustList[i].Name,
+                    lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
+                    nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
+                    distance: null,
+                    streetAddress: bezl.data.CustList[i].Address,
+                    title: bezl.data.CustList[i].Name,
+                    custNum: bezl.data.CustList[i].CustNum,
+                    shipToNum: bezl.data.CustList[i].ShipToNum,
+                    data: bezl.data.CustList[i],
+                    filterValue: bezl.data.CustList[i].FilterValue
+                });
+            }
         }
 
-        //bezl.vars.jsgrid = $("#customerGrid");
-        //bezl.vars.jsgrid.jsGrid("refresh");
         $("#customerGrid").jsGrid("loadData");
     }
 
