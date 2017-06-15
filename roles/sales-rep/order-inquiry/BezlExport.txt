@@ -1,8 +1,8 @@
 ﻿{
-  "id": "7ab4c1ce-3cec-4d2b-9a4a-1a937a84b219",
+  "id": "c9eeda74-a304-4a2e-a80b-afb0bc8a8f5e",
   "name": "Order Inquiry",
   "template": "custom",
-  "owner": "sremington@saberlogic.com",
+  "owner": "nowens@saberlogic.com",
   "shares": [],
   "vars": [],
   "dataSubscriptions": [],
@@ -26,8 +26,14 @@
     "",
     "<div id=\"topForm\">",
     "<form class=\"form-inline\">",
-    "    <h1 *ngIf=\"(bezl.vars.selectedAccount | json) != ({} | json)\" style=\"font-size:20px\"> Selected Customer: {{bezl.vars.selectedAccount?.ID}} </h1>",
-    "   <h1 *ngIf=\"(bezl.vars.selectedAccount | json) == ({} | json)\" style=\"font-size:20px\"> No Selected Customer</h1>",
+    "  <div>",
+    "  <label style=\"font-size:20px\">Selected Customer: </label>",
+    "   <select style=\"font-size:20px\" id=\"customers\" name=\"customers\" ",
+    "           [ngModel]=\"bezl.vars.selectedAccount?.ID\" (ngModelChange)=\"bezl.functions['custSelection']($event);\" > ",
+    "    <option  *ngFor=\"let c of bezl.vars['custList']\" [value]=\"c.ID\">{{c.Name}}</option>",
+    "  </select>",
+    "  </div>",
+    "  ",
     "  <label>Start Date</label>",
     "  <input type=\"date\" class=\"form-control mb-2 mr-sm-2 mb-sm-0\" style=\"height:32px\"  [(ngModel)]=\"bezl.vars['startDate']\" name=\"startDate\">",
     "",
@@ -39,10 +45,10 @@
     "  </form>",
     "</div>",
     "<div class=\"row\">",
-    "  <form class=\"form-inline\" style=\"margin-left:7px;\">",
+    "  <form class=\"form-inline\" id=\"filter\" style=\"margin-left:7px;\">",
     "  <label  style=\"margin-top:5px;\" *ngIf=\"bezl.vars.Orders\">Order Status</label>",
     "   <select style=\"width: 100px; height:32px; margin-top:5px;\" [(ngModel)]=\"bezl.vars['filter']\" id=\"Filter\" name=\"Filter\" >",
-    "    <option id=\"cbAll\">All</option>",
+    "    <option id=\"cbAll\" value=\"All\">All</option>",
     "    <option value=\"True\">Open</option>",
     "    <option value=\"False\">Closed</option>",
     "  </select>",
@@ -260,7 +266,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});\n",
       "declares": [
         "$",
         "parm",
@@ -272,7 +278,7 @@
     },
     {
       "method": "onDataChange",
-      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});",
+      "code": "bezl.data = dataResp;\n\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl)\n});\n",
       "declares": [
         "$",
         "parm",
@@ -280,7 +286,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+      "compiled": "bezl.data = dataResp;\r\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
     },
     {
       "method": "search",
@@ -353,6 +359,18 @@
         "require"
       ],
       "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/order-inquiry/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
+    },
+    {
+      "method": "custSelection",
+      "code": "require([bezl.vars.config.baseJsUrl + 'order.js'], function(functions) {\n\tfunctions.custSelection(bezl, parm)\n});\n",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'order.js'], function (functions) {\r\n    functions.custSelection(bezl, parm);\r\n});\r\n"
     }
   ],
   "data": ""
