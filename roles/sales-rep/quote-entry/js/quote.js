@@ -6,7 +6,7 @@ define(function () {
                 bezl.dataService.add('FirstCustomer', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetFirstCustomerByRep",
                     "Parameters": [
-                        { "Key": "SalesRep", "Value": bezl.vars.currentUser },
+                        { "Key": "SalesRep", "Value": bezl.env.currentUser },
                         { "Key": "Company", "Value": bezl.vars.Company }
                     ]
                 }, 0);
