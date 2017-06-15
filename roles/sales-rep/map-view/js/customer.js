@@ -105,10 +105,21 @@ define([], function () {
         }
     }
 
+    function ApplyCategory(bezl, filterValue) {
+        bezl.vars.custCategory = filterValue;
+
+        if (filterValue !== "All") {
+
+        } else {
+
+        }
+    }
+
 
     return {
         select: Select,
         sort: Sort,
+        applyCategory: ApplyCategory,
         runQuery: RunQuery
     }
 });
