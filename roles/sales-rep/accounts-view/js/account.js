@@ -175,7 +175,7 @@ define(function () {
 
         if (filterValue !== "All") {
             bezl.data.Accounts.forEach(act => {
-                act.show = (act.Type === filterValue) ? true : false;
+                act.show = (act[bezl.vars.Column] === filterValue) ? true : false;
             });
         } else {
             bezl.data.Accounts.forEach(act => act.show = true);
