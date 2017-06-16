@@ -132,7 +132,7 @@ define(["./map.js"], function (map) {
                 });
 
                 if (bezl.vars.markers[cust.CustNum] !== null) {
-                    bezl.vars.markers[cust.CustNum].setMap = null;
+                    bezl.vars.markers[cust.CustNum].setMap(null);
                 }
             });
 
