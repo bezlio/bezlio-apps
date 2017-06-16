@@ -113,22 +113,29 @@ define(["./map.js"], function (map) {
         if (filterValue !== "All") {
             //rebuild customer grid before filtering
             bezl.vars.customers = [];
-            for (var i = 0; i < bezl.data.CustList.length; i++) {
+            var t0 = performance.now();
+
+            bezl.data.CustList.forEach(cust => {
                 bezl.vars.customers.push({
                     selected: false,
-                    key: bezl.data.CustList[i].CustNum,
-                    display: bezl.data.CustList[i].Name,
-                    lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
-                    nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
+                    key: cust.CustNum,
+                    display: cust.Name,
+                    lastContact: (cust.LastContact || 'T').split('T')[0],
+                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
                     distance: null,
-                    streetAddress: bezl.data.CustList[i].Address,
-                    title: bezl.data.CustList[i].Name,
-                    custNum: bezl.data.CustList[i].CustNum,
-                    shipToNum: bezl.data.CustList[i].ShipToNum,
-                    data: bezl.data.CustList[i],
-                    filterValue: bezl.data.CustList[i].FilterValue
+                    streetAddress: cust.Address,
+                    title: cust.Name,
+                    custNum: cust.CustNum,
+                    shipToNum: cust.ShipToNum,
+                    data: cust,
+                    filterValue: cust.FilterValue,
+                    geocodeAddress: cust.Geocode_Location
                 });
-            }
+            });
+
+            var t1 = performance.now();
+
+            console.log("Loop took: " + (t1 - t0) + " milliseconds");
 
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
         } else {
@@ -155,6 +162,46 @@ define(["./map.js"], function (map) {
         $("#customerGrid").jsGrid("loadData");
     }
 
+    function PlotData() {
+        bezl.vars.customers.forEach(cust => {
+            if (cust.streetAddress != null) {
+                if (cust.streetAddress.length > 3) {
+
+                    // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
+                    if (bezl.data.CustList[i].Geocode_Location == "" || bezl.data.CustList[i].Geocode_Location == null) {
+                        map.geocodeAddress(
+                            bezl,
+                            {
+                                streetAddress: bezl.data.CustList[i].Address,
+                                title: bezl.data.CustList[i].Name,
+                                custNum: bezl.data.CustList[i].CustNum,
+                                shipToNum: bezl.data.CustList[i].ShipToNum,
+                                data: bezl.data.CustList[i]
+                            }
+                        );
+                    } else {
+                        var marker = new bezl.vars.client.Marker({
+                            position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
+                            map: bezl.vars.map,
+                            title: bezl.data.CustList[i].Name,
+                            data: bezl.data.CustList[i],
+                            lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
+                            lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
+                        });
+
+                        // Add a click handler
+                        marker.addListener('click', function () {
+                            customer.select(bezl, this.data.CustNum);
+                        });
+
+                        bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
+                    }
+                }
+            } else {
+                console.log('Customer\'s address does not exist, Customer: ' + bezl.data.CustList[i].Name);
+            }
+        });
+    }
 
     return {
         select: Select,

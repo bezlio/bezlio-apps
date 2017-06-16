@@ -92,7 +92,7 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                 } else {
                     console.log('Customer\'s address does not exist, Customer: ' + bezl.data.CustList[i].Name);
                 }
-            };
+            }
 
             // Calculate distances
             map.calculateDistances(bezl);
