@@ -168,7 +168,7 @@ define(["./map.js"], function (map) {
             mark.setMap(null);
         });
 
-        bezl.vars.markers = null;
+        bezl.vars.markers = []];
 
         // bezl.vars.customers.forEach(cust => {
         //     if (cust.streetAddress != null) {
