@@ -159,7 +159,7 @@ define(["./map.js"], function (map) {
                 });
             }
 
-            var t1 = perfomance.now();
+            var t1 = performance.now();
 
             console.log("for Loop took: " + (t1 - t0) + " milliseconds");
         }
