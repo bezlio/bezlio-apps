@@ -163,7 +163,7 @@ define(["./map.js"], function (map) {
 
     function PlotData(bezl) {
         bezl.vars.markers.forEach(mark => {
-            console.log(marker);
+            console.log(mark);
             mark.setMap(null);
         });
 
