@@ -158,10 +158,10 @@ define(["./map.js"], function (map) {
         map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
 
-        PlotData();
+        PlotData(bezl);
     }
 
-    function PlotData() {
+    function PlotData(bezl) {
         bezl.vars.customers.forEach(cust => {
             if (cust.streetAddress != null) {
                 if (cust.streetAddress.length > 3) {
