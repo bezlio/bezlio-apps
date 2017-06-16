@@ -133,6 +133,7 @@ define(["./map.js"], function (map) {
 
                 if (bezl.vars.markers[cust.CustNum] !== undefined) {
                     bezl.vars.markers[cust.CustNum].setMap(null);
+                    bezl.vars.markers[cust.CustNum] = null;
                 }
 
                 console.log(bezl.vars.markers);
