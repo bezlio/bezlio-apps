@@ -164,7 +164,7 @@ define(["./map.js"], function (map) {
     function PlotData(bezl) {
         bezl.vars.markers.forEach(mark => {
             console.log(mark);
-            mark.setMap(null);
+            mark.visible = false;
         });
 
         bezl.vars.markers = null;
