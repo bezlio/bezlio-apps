@@ -162,7 +162,9 @@ define(["./map.js"], function (map) {
     }
 
     function PlotData(bezl) {
-        bezl.vars.markers[0].setMap(null);
+        bezl.vars.markers.forEach(mark => {
+            mark.setMap(null);
+        });
 
         bezl.vars.customers.forEach(cust => {
             if (cust.streetAddress != null) {
