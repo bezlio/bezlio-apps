@@ -1,6 +1,8 @@
 define(["./customer.js", "./map.js"], function (customer, map) {
 
     function OnDataChange(bezl) {
+        console.log("test on data change");
+
         // Populate the 'customers' array if we got CustomerList back
         if (bezl.data.CustList) {
             bezl.vars.customers = [];
