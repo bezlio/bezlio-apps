@@ -110,50 +110,52 @@ define(["./map.js"], function (map) {
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
 
-        if (filterValue !== "All") {
-            //rebuild customer grid before filtering
-            bezl.vars.customers = [];
+        console.log(bezl.vars.markers);
 
-            bezl.data.CustList.forEach(cust => {
-                bezl.vars.customers.push({
-                    selected: false,
-                    key: cust.CustNum,
-                    display: cust.Name,
-                    lastContact: (cust.LastContact || 'T').split('T')[0],
-                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
-                    distance: null,
-                    streetAddress: cust.Address,
-                    title: cust.Name,
-                    custNum: cust.CustNum,
-                    shipToNum: cust.ShipToNum,
-                    data: cust,
-                    filterValue: cust.FilterValue,
-                    geocodeAddress: cust.Geocode_Location
-                });
-            });
+        // if (filterValue !== "All") {
+        //     //rebuild customer grid before filtering
+        //     bezl.vars.customers = [];
 
-            bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
-        } else {
-            bezl.vars.customers = [];
+        //     bezl.data.CustList.forEach(cust => {
+        //         bezl.vars.customers.push({
+        //             selected: false,
+        //             key: cust.CustNum,
+        //             display: cust.Name,
+        //             lastContact: (cust.LastContact || 'T').split('T')[0],
+        //             nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
+        //             distance: null,
+        //             streetAddress: cust.Address,
+        //             title: cust.Name,
+        //             custNum: cust.CustNum,
+        //             shipToNum: cust.ShipToNum,
+        //             data: cust,
+        //             filterValue: cust.FilterValue,
+        //             geocodeAddress: cust.Geocode_Location
+        //         });
+        //     });
 
-            bezl.data.CustList.forEach(cust => {
-                bezl.vars.customers.push({
-                    selected: false,
-                    key: bezl.data.CustList[i].CustNum,
-                    display: bezl.data.CustList[i].Name,
-                    lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
-                    nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
-                    distance: null,
-                    streetAddress: bezl.data.CustList[i].Address,
-                    title: bezl.data.CustList[i].Name,
-                    custNum: bezl.data.CustList[i].CustNum,
-                    shipToNum: bezl.data.CustList[i].ShipToNum,
-                    data: bezl.data.CustList[i],
-                    filterValue: bezl.data.CustList[i].FilterValue,
-                    geocodeAddress: cust.Geocode_Location
-                });
-            });
-        }
+        //     bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
+        // } else {
+        //     bezl.vars.customers = [];
+
+        //     bezl.data.CustList.forEach(cust => {
+        //         bezl.vars.customers.push({
+        //             selected: false,
+        //             key: bezl.data.CustList[i].CustNum,
+        //             display: bezl.data.CustList[i].Name,
+        //             lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
+        //             nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
+        //             distance: null,
+        //             streetAddress: bezl.data.CustList[i].Address,
+        //             title: bezl.data.CustList[i].Name,
+        //             custNum: bezl.data.CustList[i].CustNum,
+        //             shipToNum: bezl.data.CustList[i].ShipToNum,
+        //             data: bezl.data.CustList[i],
+        //             filterValue: bezl.data.CustList[i].FilterValue,
+        //             geocodeAddress: cust.Geocode_Location
+        //         });
+        //     });
+        // }
 
         map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
@@ -163,63 +165,68 @@ define(["./map.js"], function (map) {
 
     function PlotData(bezl) {
 
-        require(['async!https://maps.googleapis.com/maps/api/js?key=' + bezl.vars.config.GoogleAPIKey], function () {
-            // Google Maps API and all its dependencies will be loaded here.
-            bezl.vars.client = google.maps;
-            bezl.vars.geocoder = new google.maps.Geocoder();
-            bezl.vars.directionsService = new google.maps.DirectionsService;
-            bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    // First create the map
-                    //console.log($(bezl.container.nativeElement).find("div#map"));
-                    bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
-                        center: { lat: position.coords.latitude, lng: position.coords.longitude },
-                        scrollwheel: false,
-                        zoom: 10
-                    });
-                    bezl.vars.directionsDisplay.setMap(bezl.vars.map);
-                    bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
+        // require(['async!https://maps.googleapis.com/maps/api/js?key=' + bezl.vars.config.GoogleAPIKey], function () {
+        //     // Google Maps API and all its dependencies will be loaded here.
+        //     bezl.vars.client = google.maps;
+        //     bezl.vars.geocoder = new google.maps.Geocoder();
+        //     bezl.vars.directionsService = new google.maps.DirectionsService;
+        //     bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
 
-                    // Create an infowindow
-                    bezl.vars.infoWindow = new google.maps.InfoWindow;
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition(function (position) {
+        //             // First create the map
+        //             //console.log($(bezl.container.nativeElement).find("div#map"));
+        //             bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
+        //                 center: { lat: position.coords.latitude, lng: position.coords.longitude },
+        //                 scrollwheel: false,
+        //                 zoom: 10
+        //             });
+        //             bezl.vars.directionsDisplay.setMap(bezl.vars.map);
+        //             bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
 
-                    // Drop a marker for home
-                    var marker = new google.maps.Marker({
-                        position: { lat: position.coords.latitude, lng: position.coords.longitude },
-                        map: bezl.vars.map,
-                        label: 'A',
-                        title: 'You are here',
-                        data: '',
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    });
+        //             // Create an infowindow
+        //             bezl.vars.infoWindow = new google.maps.InfoWindow;
 
-                    // Store the currently detected address
-                    bezl.vars.geocoder.geocode({ 'location': marker.position }, function (results, status) {
-                        if (status === 'OK') {
-                            bezl.vars.currentAddress = results[0].formatted_address;
-                        } else {
-                            bezl.notificationService.showError('Geocoder failed due to: ' + status);
-                        }
-                    });
+        //             // Drop a marker for home
+        //             var marker = new google.maps.Marker({
+        //                 position: { lat: position.coords.latitude, lng: position.coords.longitude },
+        //                 map: bezl.vars.map,
+        //                 label: 'A',
+        //                 title: 'You are here',
+        //                 data: '',
+        //                 lat: position.coords.latitude,
+        //                 lng: position.coords.longitude
+        //             });
 
-                    marker.addListener('click', function () {
-                        bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
-                            bezl.vars.currentAddress,
-                            ''));
-                        bezl.vars.infoWindow.open(bezl.vars.map, marker);
-                    });
+        //             // Store the currently detected address
+        //             bezl.vars.geocoder.geocode({ 'location': marker.position }, function (results, status) {
+        //                 if (status === 'OK') {
+        //                     bezl.vars.currentAddress = results[0].formatted_address;
+        //                 } else {
+        //                     bezl.notificationService.showError('Geocoder failed due to: ' + status);
+        //                 }
+        //             });
 
-                    bezl.vars.markers[0] = (marker);
+        //             marker.addListener('click', function () {
+        //                 bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
+        //                     bezl.vars.currentAddress,
+        //                     ''));
+        //                 bezl.vars.infoWindow.open(bezl.vars.map, marker);
+        //             });
+
+        //             bezl.vars.markers[0] = (marker);
 
 
-                });
-            } else {
-                bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
-            }
-        });
+        //         });
+        //     } else {
+        //         bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
+        //     }
+        // });
+
+
+
+
         //console.log(bezl.vars.markers);
         // bezl.vars.markers.forEach(mark => {
         //     
