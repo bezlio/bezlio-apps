@@ -130,6 +130,8 @@ define(["./map.js"], function (map) {
                     filterValue: cust.FilterValue,
                     geocodeAddress: cust.Geocode_Location
                 });
+
+                bezl.vars.markers[cust.CustNum].setMap = null;
             });
 
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
@@ -162,9 +164,9 @@ define(["./map.js"], function (map) {
     }
 
     function PlotData(bezl) {
-        console.log(bezl.vars.markers);
+        //console.log(bezl.vars.markers);
         // bezl.vars.markers.forEach(mark => {
-        //     mark.data = null;
+        //     
         //     mark.setMap(null);
         // });
 
