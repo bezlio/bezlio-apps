@@ -130,13 +130,6 @@ define(["./map.js"], function (map) {
                     filterValue: cust.FilterValue,
                     geocodeAddress: cust.Geocode_Location
                 });
-
-                if (bezl.vars.markers[cust.CustNum] !== undefined && bezl.vars.markers[cust.CustNum] !== null) {
-                    bezl.vars.markers[cust.CustNum].setMap(null);
-                    bezl.vars.markers[cust.CustNum] = null;
-                }
-
-                console.log(bezl.vars.markers);
             });
 
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
@@ -169,6 +162,64 @@ define(["./map.js"], function (map) {
     }
 
     function PlotData(bezl) {
+
+        require(['async!https://maps.googleapis.com/maps/api/js?key=' + bezl.vars.config.GoogleAPIKey], function () {
+            // Google Maps API and all its dependencies will be loaded here.
+            bezl.vars.client = google.maps;
+            bezl.vars.geocoder = new google.maps.Geocoder();
+            bezl.vars.directionsService = new google.maps.DirectionsService;
+            bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    // First create the map
+                    //console.log($(bezl.container.nativeElement).find("div#map"));
+                    bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: position.coords.latitude, lng: position.coords.longitude },
+                        scrollwheel: false,
+                        zoom: 10
+                    });
+                    bezl.vars.directionsDisplay.setMap(bezl.vars.map);
+                    bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
+
+                    // Create an infowindow
+                    bezl.vars.infoWindow = new google.maps.InfoWindow;
+
+                    // Drop a marker for home
+                    var marker = new google.maps.Marker({
+                        position: { lat: position.coords.latitude, lng: position.coords.longitude },
+                        map: bezl.vars.map,
+                        label: 'A',
+                        title: 'You are here',
+                        data: '',
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    });
+
+                    // Store the currently detected address
+                    bezl.vars.geocoder.geocode({ 'location': marker.position }, function (results, status) {
+                        if (status === 'OK') {
+                            bezl.vars.currentAddress = results[0].formatted_address;
+                        } else {
+                            bezl.notificationService.showError('Geocoder failed due to: ' + status);
+                        }
+                    });
+
+                    marker.addListener('click', function () {
+                        bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
+                            bezl.vars.currentAddress,
+                            ''));
+                        bezl.vars.infoWindow.open(bezl.vars.map, marker);
+                    });
+
+                    bezl.vars.markers[0] = (marker);
+
+
+                });
+            } else {
+                bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
+            }
+        });
         //console.log(bezl.vars.markers);
         // bezl.vars.markers.forEach(mark => {
         //     
