@@ -163,43 +163,42 @@ define(["./map.js"], function (map) {
 
     function PlotData(bezl) {
         bezl.vars.customers.forEach(cust => {
-            console.log(cust);
-            // if (cust.streetAddress != null) {
-            //     if (cust.streetAddress.length > 3) {
+            if (cust.streetAddress != null) {
+                if (cust.streetAddress.length > 3) {
 
-            //         // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
-            //         if (cust.Geocode_Location == "" || cust.Geocode_Location == null) {
-            //             map.geocodeAddress(
-            //                 bezl,
-            //                 {
-            //                     streetAddress: cust.Address,
-            //                     title: cust.Name,
-            //                     custNum: cust.CustNum,
-            //                     shipToNum: cust.ShipToNum,
-            //                     data: cust
-            //                 }
-            //             );
-            //         } else {
-            //             var marker = new bezl.vars.client.Marker({
-            //                 position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
-            //                 map: bezl.vars.map,
-            //                 title: cust.Name,
-            //                 data: cust,
-            //                 lat: parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]),
-            //                 lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1])
-            //             });
+                    // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
+                    if (cust.geocodeAddress == "" || cust.geocodeAddress == null) {
+                        map.geocodeAddress(
+                            bezl,
+                            {
+                                streetAddress: cust.Address,
+                                title: cust.Name,
+                                custNum: cust.CustNum,
+                                shipToNum: cust.ShipToNum,
+                                data: cust
+                            }
+                        );
+                    } else {
+                        var marker = new bezl.vars.client.Marker({
+                            position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
+                            map: bezl.vars.map,
+                            title: cust.Name,
+                            data: cust,
+                            lat: parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]),
+                            lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1])
+                        });
 
-            //             // Add a click handler
-            //             marker.addListener('click', function () {
-            //                 customer.select(bezl, this.data.CustNum);
-            //             });
+                        // Add a click handler
+                        marker.addListener('click', function () {
+                            customer.select(bezl, this.data.CustNum);
+                        });
 
-            //             bezl.vars.markers[cust.CustNum] = marker;
-            //         }
-            //     }
-            // } else {
-            //     console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
-            // }
+                        bezl.vars.markers[cust.CustNum] = marker;
+                    }
+                }
+            } else {
+                console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
+            }
         });
     }
 
