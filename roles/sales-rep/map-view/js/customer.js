@@ -131,7 +131,9 @@ define(["./map.js"], function (map) {
                     geocodeAddress: cust.Geocode_Location
                 });
 
-                bezl.vars.markers[cust.CustNum].setMap = null;
+                if (bezl.vars.markers[cust.CustNum] !== null) {
+                    bezl.vars.markers[cust.CustNum].setMap = null;
+                }
             });
 
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
