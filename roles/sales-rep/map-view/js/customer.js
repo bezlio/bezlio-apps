@@ -135,11 +135,13 @@ define(["./map.js"], function (map) {
 
             var t1 = performance.now();
 
-            console.log("Loop took: " + (t1 - t0) + " milliseconds");
+            console.log("forEach Loop took: " + (t1 - t0) + " milliseconds");
 
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
         } else {
             bezl.vars.customers = [];
+            var t0 = performance.now();
+
             for (var i = 0; i < bezl.data.CustList.length; i++) {
                 bezl.vars.customers.push({
                     selected: false,
@@ -156,6 +158,10 @@ define(["./map.js"], function (map) {
                     filterValue: bezl.data.CustList[i].FilterValue
                 });
             }
+
+            var t1 = perfomance.now();
+
+            console.log("for Loop took: " + (t1 - t0) + " milliseconds");
         }
 
         map.calculateDistances(bezl);
