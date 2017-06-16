@@ -134,6 +134,8 @@ define(["./map.js"], function (map) {
                 if (bezl.vars.markers[cust.CustNum] !== undefined) {
                     bezl.vars.markers[cust.CustNum].setMap(null);
                 }
+
+                console.log(bezl.vars.markers);
             });
 
             bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
