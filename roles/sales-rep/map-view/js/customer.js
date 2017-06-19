@@ -144,17 +144,17 @@ define(["./map.js"], function (map) {
             bezl.data.CustList.forEach(cust => {
                 bezl.vars.customers.push({
                     selected: false,
-                    key: bezl.data.CustList[i].CustNum,
-                    display: bezl.data.CustList[i].Name,
-                    lastContact: (bezl.data.CustList[i].LastContact || 'T').split('T')[0],
-                    nextTaskDue: (bezl.data.CustList[i].NextTaskDue || 'T').split('T')[0],
+                    key: cust.CustNum,
+                    display: cust.Name,
+                    lastContact: (cust.LastContact || 'T').split('T')[0],
+                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
                     distance: null,
-                    streetAddress: bezl.data.CustList[i].Address,
-                    title: bezl.data.CustList[i].Name,
-                    custNum: bezl.data.CustList[i].CustNum,
-                    shipToNum: bezl.data.CustList[i].ShipToNum,
-                    data: bezl.data.CustList[i],
-                    filterValue: bezl.data.CustList[i].FilterValue,
+                    streetAddress: cust.Address,
+                    title: cust.Name,
+                    custNum: cust.CustNum,
+                    shipToNum: cust.ShipToNum,
+                    data: cust,
+                    filterValue: cust.FilterValue,
                     geocodeAddress: cust.Geocode_Location
                 });
             });
@@ -163,7 +163,7 @@ define(["./map.js"], function (map) {
         map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
 
-        //PlotData(bezl);
+        PlotData(bezl);
     }
 
     function PlotData(bezl) {
