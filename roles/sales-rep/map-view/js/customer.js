@@ -111,6 +111,9 @@ define(["./map.js"], function (map) {
         bezl.vars.custCategory = filterValue;
 
         console.log(bezl.vars.markers);
+        bezl.vars.markers.forEach(mark => {
+            console.log(mark);
+        });
 
         // if (filterValue !== "All") {
         //     //rebuild customer grid before filtering
