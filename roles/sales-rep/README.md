@@ -44,19 +44,52 @@ It is our aim to make role-based Bezls as easy as possible to load up.  Here are
 
 The IT administration will need to configure the plugin instances expected by this role only once (regardless of how many users will be connecting).  To do so, navigate to http://localhost:3600 on the server where you installed the Bezlio Remote Data Broker, go to Maintain, and select 'Plugin Instances'.  From here, you will want to use the 'Add Plugin Instance' button to configure each of the following:
 
-    Name: salesrep-queries
-    Description: Queries in support of the Sales Rep role
-    Plugin: ODBC or SQLServer (depending on backend datasource)
-    Method: ExecuteQuery
-    Context: SalesRep
-    Connection / DSN: SalesRep
-    QueryName: (leave blank)
-    Authorized Connections: (Check all connections for sales reps you authorize.)
+Name: salesrep-queries
+Description: Queries in support of the Sales Rep role
+Plugin: ODBC or SQLServer (depending on backend database)
+Method: ExecuteQuery
+Context: SalesRep
+Connection / DSN: SalesRep
+QueryName: <leave blank>
+Authorized Connections: Check all connections for sales reps you authorize
 
 * The value for Context here refers to where you will be placing the .SQL files and needs to be defined within your plugin .config file.  See https://github.com/bezlio/bezlio-plugins for documentation.
 * The value for Connection / DSN refers to a connection defined within your associated plugin config file.  If this is using the ODBC plugin, you will also need to configure a 32-bit ODBC driver.    See https://github.com/bezlio/bezlio-plugins for documentation.
 
 Also download all of the .SQL files from the appropriate subfolders and place them into the folder referred to by 'Context'.  The locations of these .SQL files are:
+* https://github.com/bezlio/bezlio-apps/tree/master/roles/sales-rep/main-view/sql
+
+### If using the Epicor 10 integration also add these:
+Name: salesrep-addNote
+Description: Add CRM note to Epicor
+Plugin: Epicor10
+Method: ExecuteBOMethod
+Connection: Epicor 10
+Company: <Your Epicor Company ID>
+BOName: CRMCall
+BOMethodName: UpdateExt
+Authorized Connections: Check all connections for sales reps you authorize
+
+* The value for Connection refers to a connection defined within your associated plugin config file.  See https://github.com/bezlio/bezlio-plugins for documentation.
+
+Name: salesrep-updateTasks
+Description: Update tasks in Epicor in support of sales rep role
+Plugin: Epicor10
+Method: ExecuteBOMethod
+Connection: Epicor 10
+Company: <Your Epicor Company ID>
+BOName: Task
+BOMethodName: UpdateExt
+Authorized Connections: Check all connections for sales reps you authorize
+
+### If you are using the Excel integration add this
+Name: salesrep-customerFiles
+Description: File system based files for a customer
+Plugin: FileSystem
+Method: GetFileList
+Context: CustomerFiles
+Authorized Connections: Check all connections for sales reps you authorize
+
 * [Accounts View](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/accounts-view/sql)
 * [CRM Calls View](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/crm-calls-view/sql)
 * [Customer Price List](https://github.com/bezlio/bezlio-apps/tree/development/roles/sales-rep/customer-price-list/sql)
