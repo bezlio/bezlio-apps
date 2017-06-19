@@ -226,6 +226,7 @@ define(["./map.js"], function (map) {
         bezl.vars.customers.forEach(cust => {
             if (cust.streetAddress != null) {
                 if (cust.streetAddress.length > 3) {
+                    console.log("Street Address length good");
 
                     // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
                     if (cust.geocodeAddress == "" || cust.geocodeAddress == null) {
@@ -240,6 +241,8 @@ define(["./map.js"], function (map) {
                             }
                         );
                     } else {
+                        console.log("Customer has geocode");
+                        console.log(cust);
                         var marker = new bezl.vars.client.Marker({
                             position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
                             map: bezl.vars.map,
