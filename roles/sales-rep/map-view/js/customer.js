@@ -251,10 +251,10 @@ define(["./map.js"], function (map) {
 
                         // Add a click handler
                         marker.addListener('click', function () {
-                            customer.select(bezl, cust.CustNum);
+                            customer.select(bezl, cust.custNum);
                         });
 
-                        bezl.vars.markers[cust.CustNum] = marker;
+                        bezl.vars.markers[cust.custNum] = marker;
                     }
                 }
             } else {
