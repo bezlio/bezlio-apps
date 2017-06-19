@@ -262,10 +262,9 @@ define(["./map.js"], function (map) {
             }
         });
 
-        //map.calculateDistances(bezl);
+        map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
-
-        console.log(bezl.vars.markers);
+        //google.maps.event.trigger(bezl.vars.map, 'resize');
     }
 
     return {
