@@ -167,6 +167,8 @@ define(["./map.js"], function (map) {
     }
 
     function PlotData(bezl) {
+        bezl.vars.markers = [];
+
         require(['async!https://maps.googleapis.com/maps/api/js?key=' + bezl.vars.config.GoogleAPIKey], function () {
             // Google Maps API and all its dependencies will be loaded here.
             bezl.vars.client = google.maps;
@@ -223,8 +225,7 @@ define(["./map.js"], function (map) {
                 }
             });
 
-        bezl.vars.markers = [];
-
+        
         bezl.vars.customers.forEach(cust => {
             if (cust.streetAddress != null) {
                 if (cust.streetAddress.length > 3) {
@@ -253,7 +254,7 @@ define(["./map.js"], function (map) {
 
                         // Add a click handler
                         marker.addListener('click', function () {
-                            customer.select(bezl, this.data.CustNum);
+                            customer.select(bezl, cust.CustNum);
                         });
 
                         bezl.vars.markers[cust.CustNum] = marker;
