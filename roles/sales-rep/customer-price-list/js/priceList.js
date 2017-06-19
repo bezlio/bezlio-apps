@@ -25,7 +25,7 @@ define(function () {
             case 'GetAllPriceList':
                 bezl.vars.loading = true;
                 // Get All Orders associated with user
-                bezl.dataService.add('Invoices','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('PriceList','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "CustomerPriceListAll",
                     "Parameters": [
                       	{ "Key": "EmailAddress", "Value": bezl.env.currentUser },
