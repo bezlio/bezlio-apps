@@ -30,6 +30,6 @@ FROM
 	AND cust.CustNum = t.Key1
 WHERE
 	t.RelatedToFile = 'Customer'
-	AND (sr.EMailAddress IS NULL OR sr.EMailAddress = '{EmailAddress}')
+	--AND (sr.EMailAddress IS NULL OR sr.EMailAddress = '{EmailAddress}')
 	AND t.Complete = 0
 	--AND t.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one

@@ -16,6 +16,11 @@ define(["./priceList.js"],function (priceList) {
         
             priceList.runQuery(bezl, 'PriceList');
 
+            $("#bezlpanel").on( "selectAccount", function(event, param1) {
+                bezl.vars.selectedAccount = param1
+                priceList.runQuery(bezl, 'PriceList');
+            });
+
     }
      return {
     onStartup: OnStartup

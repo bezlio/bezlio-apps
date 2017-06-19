@@ -1,7 +1,7 @@
-define(function () {
+define(["./account.js"], function (account) {
  
     function OnDataChange (bezl) {
-        if (bezl.data.Accounts && bezl.vars.loading) {
+        if (bezl.data.Accounts) {
             bezl.vars.loading = false;
 
             // If there was a previously selected account in localStorage, grab a reference
@@ -40,19 +40,20 @@ define(function () {
                 bezl.data.Accounts[i].Attachments = [];
                 
 
-                // Make all records visible to start off with
-                bezl.data.Accounts[i].show = true;
-
                 // Date pipe has rounding issue, truncate at "T" to get correct Date
                 bezl.data.Accounts[i].LastContact = (bezl.data.Accounts[i].LastContact || 'T').split("T")[0];
                 bezl.data.Accounts[i].NextTaskDue = (bezl.data.Accounts[i].NextTaskDue || 'T').split('T')[0]
             };
+
+            account.applyFilter(bezl);
+            // Apply the existing sort if there is one
+            if (bezl.vars.sortCol && bezl.vars.sort) {
+                account.sort(bezl, bezl.vars.sortCol, bezl.vars.sort);
+            }
         }
 
         // If we got the account contacts back, merge those in
-        if (bezl.data.Accounts && bezl.data.AccountContacts && bezl.vars.loadingContacts) {
-            bezl.vars.loadingContacts = false;
-
+        if (bezl.data.Accounts && bezl.data.AccountContacts) {
             for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
@@ -62,23 +63,8 @@ define(function () {
             }
         }
 
-        // If we got the account calls back, merge those in
-        if (bezl.data.Accounts && bezl.data.CRMCalls && bezl.vars.loadingCalls) {
-            bezl.vars.loadingCalls = false;
-
-            for (var x = 0; x < bezl.data.Accounts.length; x++) {
-                for (var i = 0; i < bezl.data.CRMCalls.length; i++) {
-                    if (bezl.data.CRMCalls[i].ID == bezl.data.Accounts[x].ID) {
-                        bezl.data.Accounts[x].CRMCalls.push(bezl.data.CRMCalls[i]);
-                    }
-                }
-            }
-        }
-
         // If we got the account tasks back, merge those in
-        if (bezl.data.Accounts && bezl.data.Tasks && bezl.vars.loadingTasks) {
-            bezl.vars.loadingTasks = false;
-
+        if (bezl.data.Accounts && bezl.data.Tasks) {
             for (var x = 0; x < bezl.data.Accounts.length; x++) {
                 for (var i = 0; i < bezl.data.Tasks.length; i++) {
                     if (bezl.data.Tasks[i].ID == bezl.data.Accounts[x].ID) {
@@ -94,9 +80,7 @@ define(function () {
         }
 
         // If we got the account attachments back, merge those in
-        if (bezl.data.Accounts && bezl.data.Attachments && bezl.vars.loadingAttachments) {
-            bezl.vars.loadingAttachments = false;
-
+        if (bezl.data.Accounts && bezl.data.Attachments) {
             for (var x = 0; x < bezl.data.Accounts.length; x++) {
                 for (var i = 0; i < bezl.data.Attachments.length; i++) {
                     if (bezl.data.Attachments[i].ID == bezl.data.Accounts[x].ID) {

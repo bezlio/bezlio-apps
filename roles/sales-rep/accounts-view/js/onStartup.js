@@ -1,6 +1,8 @@
 define(["./account.js"], function (account) {
  
     function OnStartup (bezl) {        
+        bezl.vars.filterString = ""
+
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
         account.runQuery(bezl, 'AccountContacts');
@@ -18,7 +20,7 @@ define(["./account.js"], function (account) {
 
         // Listen for new/updated tasks from the Task panel. The "Next Task
         // Due" value for an account might have possibly changed.
-        $(".panel").on("updateTask", function(event, param1) {
+        $("#bezlpanel").on("updateTask", function(event, param1) {
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.data.Accounts[i].ID == param1.ID) {
                     //bezl.data.Accounts[i].Tasks = param1.Tasks // Doesn't seem to be necessary

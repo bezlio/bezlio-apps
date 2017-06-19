@@ -15,11 +15,12 @@ SELECT
 	, c.EstDate
 	, LastContact = (SELECT TOP 1 cl.LastDate FROM Erp.CRMCall cl with(nolock) WHERE cl.Company = c.Company and cl.CallCustNum = c.CustNum ORDER BY cl.LastDate DESC)
 	, YTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE()))
-	, LYTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE())-1)
-	, sr.SalesRepCode AS SalesRep
+	, LYTDSales = (SELECT SUM(ih.InvoiceAmt) FROM Erp.InvcHead ih with(nolock) WHERE ih.Company = c.Company and ih.CustNum = c.CustNum and ih.FiscalYear = YEAR(GETDATE())-1 And MONTH(ih.InvoiceDate) <= MONTH(GETDATE()) And DAY(ih.InvoiceDate) <= DAY(GETDATE()))
+	, sra.SalesRepCode AS SalesRep
 	, tm.Description AS TermsDescription
 	, c.CustURL as WebSite
 	, ShipVia = (SELECT top 1 Description FROM erp.ShipVia sv with(nolock) WHERE sv.ShipViaCode = c.ShipViaCode)
+	, FreightTerms = (select top 1 Description from erp.FOB with(nolock) where FOB.FOB = c.DefaultFOB)
 	, '' as HoursOfOperation
 	, c.Comment as CustomerNotes
 	, NextTaskDue = (SELECT TOP 1 tsk.DueDate FROM Erp.Task tsk with(nolock) WHERE tsk.Company = c.Company and tsk.RelatedToFile = 'Customer' and tsk.Key1 = c.CustNum and tsk.Complete = 0 ORDER BY tsk.DueDate)
@@ -35,9 +36,13 @@ FROM
 	t.Company = c.Company
 	AND t.TerritoryID = c.TerritoryID
 	
-	INNER JOIN Erp.SalesRep sr with(nolock) ON
-	sr.Company = c.Company
-	AND sr.SalesRepCode = c.SalesRepCode
+	INNER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = c.Company
+	AND sra.SalesRepCode = c.SalesRepCode
+
+	INNER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
+	AND u.EMailAddress = '{EmailAddress}'
 
 	LEFT OUTER JOIN Erp.Terms tm with(nolock) ON
 	tm.Company = c.Company
@@ -59,10 +64,8 @@ FROM
 	   iAR.Company,iAR.CustNum) As ARAging 
 	   On  c.Company = ARAging.Company 
 	   AND c.CustNum = ArAging.CustNum
-
 WHERE
 	c.ZIP <> ''
-	AND sr.EMailAddress = '{EmailAddress}'
 	--AND c.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
 ORDER BY
 	c.Name asc

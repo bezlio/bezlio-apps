@@ -16,38 +16,13 @@ define(["./employees.js"], function (employees) {
         $("#jsGridTeam").jsGrid({
         width: "100%",
         height: "100%",
-        filtering: true,
         heading: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function(filter) {
-                return $.grep(bezl.vars.team, function (item) {
-                    var show = true;
-
-                    if (filter.display && item.display.toUpperCase().indexOf(filter.display.toUpperCase()) == -1) {
-                      show = false;
-                    }
-
-                    if (filter.currentActivity && item.currentActivity && item.currentActivity.toUpperCase().indexOf(filter.currentActivity.toUpperCase()) == -1) {
-                      show = false;
-                    }
-
-                    if (filter.currentActivity && !item.currentActivity) {
-                      show = false;
-                    }
-
-                    if (filter.shift && filter.shift != item.shift) {
-                      show = false;
-                    }
-
-                    if (filter.department && item.department.toUpperCase().indexOf(filter.department.toUpperCase()) == -1) {
-                      show = false;
-                    }
-
-                    return show;
-                });
+            loadData: function() {
+                return bezl.vars.team.filter(t => t.show == true);
             }
         },
         fields: [
@@ -75,16 +50,12 @@ define(["./employees.js"], function (employees) {
         width: "600",
         height: "400",
         heading: true,
-        filtering: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function(filter) {
-                return $.grep(bezl.vars.openJobs, function (item) {
-                    return (item.jobId.indexOf(filter.jobId) >= 0
-                            && item.jobDesc.indexOf(filter.jobDesc) >= 0);
-                });
+            loadData: function() {
+                return bezl.vars.openJobs.filter(j => j.show == true);
             }
         },
         fields: [

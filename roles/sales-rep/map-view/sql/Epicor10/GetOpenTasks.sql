@@ -20,9 +20,17 @@ FROM
 	LEFT OUTER JOIN Erp.TaskType tt with(nolock) ON
 	tt.Company = t.Company
 	AND tt.TypeCode = t.TypeCode
+
+	LEFT OUTER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = sr.Company
+	AND sra.SalesRepCode = sr.SalesRepCode
+
+	LEFT OUTER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
+	AND u.EMailAddress = '{EmailAddress}'
 WHERE
 	t.RelatedToFile = 'Customer'
 	AND t.Key1 = {CustNum}
-	AND (sr.EMailAddress IS NULL OR sr.EMailAddress = '{EmailAddress}')
+	AND (sr.EMailAddress IS NULL OR u.EMailAddress = '{EmailAddress}')
 	AND t.Complete = 0
 	--AND t.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
