@@ -220,10 +220,8 @@ define(["./map.js"], function (map) {
                 } else {
                     bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
                 }
-            });
 
-        
-        bezl.vars.customers.forEach(cust => {
+                bezl.vars.customers.forEach(cust => {
             if (cust.streetAddress != null) {
                 if (cust.streetAddress.length > 3) {
 
@@ -261,12 +259,13 @@ define(["./map.js"], function (map) {
                 console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
             }
         });
+            });
 
         //map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
 
         console.log(bezl.vars.markers);
-        google.maps.event.trigger(bezl.vars.map, 'resize');
+        //google.maps.event.trigger(bezl.vars.map, 'resize');
     }
 
     return {
