@@ -232,10 +232,10 @@ define(["./map.js"], function (map) {
                         map.geocodeAddress(
                             bezl,
                             {
-                                streetAddress: cust.Address,
+                                streetAddress: cust.streetAddress,
                                 title: cust.title,
-                                custNum: cust.CustNum,
-                                shipToNum: cust.ShipToNum,
+                                custNum: cust.custNum,
+                                shipToNum: cust.shipToNum,
                                 data: cust
                             }
                         );
