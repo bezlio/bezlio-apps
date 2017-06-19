@@ -221,7 +221,7 @@ define(["./map.js"], function (map) {
                     bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
                 }
 
-                setTimeout(setFilterMap, 5000);
+                setTimeout(setFilterMap, 2500);
             });
 
         function setFilterMap() {
