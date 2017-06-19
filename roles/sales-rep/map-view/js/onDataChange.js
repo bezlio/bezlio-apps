@@ -83,10 +83,12 @@ define(["./customer.js", "./map.js"], function (customer, map) {
 
                             // Add a click handler
                             marker.addListener('click', function () {
-                                customer.select(bezl, this.data.CustNum);
+                                //customer.select(bezl, this.data.CustNum);
+                                customer.select(bezl, i);
                             });
 
-                            bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
+                            //bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
+                            bezl.vars.markers[i] = marker;
                         }
                     }
                 } else {
