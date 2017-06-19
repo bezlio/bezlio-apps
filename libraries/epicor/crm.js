@@ -100,6 +100,7 @@ define(function () {
                     ,"TaskSeqNum"		:	tasks[i].TaskSeqNum
                     ,"Complete" 		:	((tasks[i].Complete) ? 1 : 0)
                     ,"PercentComplete"	:	tasks[i].PercentComplete
+                    ,"PriorityCode"	    :	tasks[i].PriorityCode
                     ,"TaskDescription"  :	tasks[i].TaskDescription
                     ,"StartDate"		:	tasks[i].StartDate
                     ,"DueDate"			:	tasks[i].DueDate
@@ -108,14 +109,30 @@ define(function () {
                     ,"RowMod"           : ((tasks[i].RowState == 'Added'), 'A', 'U')
                 }
                 );
+
+                // Because the Epicor business object cannot handle saving more
+                // than one *new* record at a time will will submit immediately
+                // if this is a new record to ensure we don't error
+                if (tasks[i].RowState == 'Added') {
+                    bezl.dataService.add('UpdateTasks', 'brdb', 'sales-rep-updateTasks', 'ExecuteBOMethod',
+                    {
+                        'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+                    }
+                    , 0);
+
+                    // Clear out the task array for any additional processing
+                    ds.Task.length = 0;
+                }
             }
         }
 
-        bezl.dataService.add('UpdateTasks', 'brdb', 'sales-rep-updateTasks', 'ExecuteBOMethod',
-        {
-            'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+        if (ds.Task.length != 0) {
+            bezl.dataService.add('UpdateTasks', 'brdb', 'sales-rep-updateTasks', 'ExecuteBOMethod',
+            {
+                'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+            }
+            , 0);
         }
-        , 0);
     }
 
     return {

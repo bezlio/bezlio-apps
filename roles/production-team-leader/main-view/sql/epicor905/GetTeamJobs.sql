@@ -4,6 +4,7 @@ SELECT
 	, op.AssemblySeq
 	, op.OprSeq
 	, jh.PartDescription + ' - ' + op.OpDesc AS JobDesc
+	, op.RunQty - op.QtyCompleted AS PendingQty
 FROM
 	JobOper op with(nolock)
 	

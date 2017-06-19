@@ -12,7 +12,8 @@ define(function () {
                     "QueryName": "InvoiceInquiry",
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate || '01/01/1900'},
-                        { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'}
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || '01/01/2100'},
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
                     ] },0);
                 break;
             default:
@@ -28,16 +29,35 @@ define(function () {
 
                 if (bezl.vars.Invoices[i].Selected) {
                     localStorage.setItem('selectedInvoice', JSON.stringify(bezl.vars.Invoices[i]));
-                    $('.panel').trigger('selectedInvoice', [bezl.vars.Invoices[i]]);
+                    $('#bezlpanel').trigger('selectedInvoice', [bezl.vars.Invoices[i]]);
                 } else {
                     localStorage.setItem('selectedInvoice', '');
-                    $('.panel').trigger('selectedInvoice', [{}]);
+                    $('#bezlpanel').trigger('selectedInvoice', [{}]);
                 }
                 
             } else {
                 bezl.vars.Invoices[i].Selected = false;
             }
         };
+    }
+
+    function Filter(bezl) {
+        // Filter, will hide the table rows that do not match filter
+        var tr, td;
+        tr = document.getElementById("priceList").getElementsByTagName("tr");
+
+        // Loop through all rows
+        for(var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if(td) {
+                if(td.innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
     }
 
     function Sort(bezl, sortColumn) {
@@ -202,6 +222,7 @@ define(function () {
     return {
         runQuery: RunQuery,
         select: Select,
+        filter: Filter,
         sort: Sort,
         innerSort: InnerSort
     }

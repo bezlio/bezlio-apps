@@ -5,6 +5,9 @@ define(function () {
             
             bezl.vars.Orders = new Array();
 
+            // Resets Filter, so displayed value is correct
+            $("#topForm select").val("All")
+
             // If there was a previously selected Order in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedOrder = {};
@@ -25,13 +28,13 @@ define(function () {
                 // If Order num already exist in new object, move Order lines over
                 if (bezl.vars.Orders.find(order => order.OrderNum == bezl.data.Orders[i].OrderNum)) {
                     // Line
-                    tempLine.OrderLine = bezl.data.Orders[i].OrderLine || "";
-                    tempLine.PartNum = bezl.data.Orders[i].PartNum || "";
-                    tempLine.PartDesc = bezl.data.Orders[i].PartDesc || "";
-                    tempLine.OrderQty = bezl.data.Orders[i].OrderQty || "";
-                    tempLine.UnitPrice = bezl.data.Orders[i].UnitPrice || "";
-                    tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice || "";
-                    tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty || "";
+                    tempLine.OrderLine = bezl.data.Orders[i].OrderLine;
+                    tempLine.PartNum = bezl.data.Orders[i].PartNum;
+                    tempLine.PartDesc = bezl.data.Orders[i].PartDesc;
+                    tempLine.OrderQty = bezl.data.Orders[i].OrderQty;
+                    tempLine.UnitPrice = bezl.data.Orders[i].UnitPrice;
+                    tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice;
+                    tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty;
                     // Push line into order
                     bezl.vars.Orders[bezl.vars.Orders.findIndex(ord => ord.OrderNum == bezl.data.Orders[i].OrderNum)].OrderLines.push(tempLine);
                 } else {
@@ -39,8 +42,9 @@ define(function () {
                     // Order
                     tempOrder.OrderNum = bezl.data.Orders[i].OrderNum || "";
                     tempOrder.PoNum = bezl.data.Orders[i].PoNum || "";
-                    tempOrder.OrderDate = bezl.data.Orders[i].OrderDate || "";
-                    tempOrder.OrderAmt = bezl.data.Orders[i].OrderAmt || "";
+                    tempOrder.OrderDate = bezl.data.Orders[i].OrderDate;
+                    tempOrder.OrderAmt = bezl.data.Orders[i].OrderAmt;
+                    tempOrder.OpenOrder = bezl.data.Orders[i].OpenOrder;
 
                     // Add a Selected property to the account record
                     if (bezl.data.Orders[i].OrderNum == bezl.vars.selectedOrder.OrderNum) {
@@ -50,13 +54,13 @@ define(function () {
                     }
 
                     // Line
-                    tempLine.OrderLine = bezl.data.Orders[i].OrderLine || "";
-                    tempLine.PartNum = bezl.data.Orders[i].PartNum || "";
-                    tempLine.PartDesc = bezl.data.Orders[i].PartDesc || "";
-                    tempLine.OrderQty = bezl.data.Orders[i].OrderQty || "";
-                    tempLine.UnitPrice = bezl.data.Orders[i].UnitPrice || "";
-                    tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice || "";
-                    tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty || "";
+                    tempLine.OrderLine = bezl.data.Orders[i].OrderLine;
+                    tempLine.PartNum = bezl.data.Orders[i].PartNum;
+                    tempLine.PartDesc = bezl.data.Orders[i].PartDesc;
+                    tempLine.OrderQty = bezl.data.Orders[i].OrderQty;
+                    tempLine.UnitPrice = bezl.data.Orders[i].UnitPrice;
+                    tempLine.ExtPrice = bezl.data.Orders[i].ExtPrice;
+                    tempLine.ShippedQty = bezl.data.Orders[i].ShippedQty;
                     // Push line into order
                     tempOrder.OrderLines = new Array();
                     tempOrder.OrderLines.push(tempLine); 
@@ -65,6 +69,8 @@ define(function () {
                     bezl.vars.Orders.push(tempOrder); 
                 }
             }
+            // Show filter for data
+            $("#Filter").show();
             bezl.vars.loading = false;
     }
 }

@@ -1,15 +1,15 @@
 define(["./employees.js"], function (employees) {
  
     function OnStartup (bezl) {
-        // Call setConfig which defines the handful of settings that you may wish to tweak
-        bezl.functions['setConfig']();
-
         // Default the number of selected employees on the team grid to 0
         bezl.vars.employeesSelected = 0;
+
+        // Default the openJobs object so we do not get any errors when the jsGrid loadData
+        // is run (which includes a filter)
+        bezl.vars.openJobs = [];
         
         // Initiate the queries to run up front
-        employees.runQuery(bezl, 'Team');
-        employees.runQuery(bezl, 'AllEmployees');
+        employees.runQuery(bezl, 'Employees');
         employees.runQuery(bezl, 'OpenJobs');
 
         // Configure the team members jsGrid
@@ -22,7 +22,7 @@ define(["./employees.js"], function (employees) {
         inserting: false,
         controller: {
             loadData: function() {
-            return bezl.vars.team;
+                return bezl.vars.team.filter(t => t.show == true);
             }
         },
         fields: [
@@ -36,7 +36,9 @@ define(["./employees.js"], function (employees) {
                     });
               }
             },
-            { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false }
+            { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false },
+            { name: "shift", title: "Shift", type: "text", visible: true, width: 10, editing: false },
+            { name: "department", title: "Department", type: "text", visible: true, width: 50, editing: false }
         ],
         rowClick: function(args) {
             employees.select(bezl, args.item);
@@ -48,21 +50,18 @@ define(["./employees.js"], function (employees) {
         width: "600",
         height: "400",
         heading: true,
-        filtering: true,
         sorting: true,
         autoload: true, 	
         inserting: false,
         controller: {
-            loadData: function(filter) {
-                return $.grep(bezl.vars.openJobs, function (item) {
-                    return (item.jobId.indexOf(filter.jobId) >= 0
-                            && item.jobDesc.indexOf(filter.jobDesc) >= 0);
-                });
+            loadData: function() {
+                return bezl.vars.openJobs.filter(j => j.show == true);
             }
         },
         fields: [
             { name: "jobId", title: "Job", type: "text", visible: true, width: 25, editing: false },
-            { name: "jobDesc", title: "Description", type: "text", visible: true, width: 50, editing: false }
+            { name: "jobDesc", title: "Description", type: "text", visible: true, width: 50, editing: false },
+            { name: "pendingQty", title: "Pending Qty", type: "number", visible: true, width: 50, editing: false }
         ],
         rowClick: function(args) {
             bezl.vars.selectedJob = args.item;

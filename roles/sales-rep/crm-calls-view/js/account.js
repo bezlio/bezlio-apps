@@ -6,11 +6,10 @@ define(function () {
             case "CRMCalls":
                 bezl.vars.loading = true; 
 
-                // Pull in the accounts list for the logged in user
+                // Pull in the call list for just the currently selected account
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountCallHistory",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
                 break;
@@ -24,7 +23,7 @@ define(function () {
         // query, detect the CRM platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            require(['https://cdn.rawgit.com/bezlio/bezlio-apps/1.3/libraries/epicor/crm.js'], function(functions) {
+            require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function(functions) {
                 functions.addNote(bezl
                                 , bezl.vars.selectedAccount.Company
                                 , bezl.vars.selectedAccount.CustNum
@@ -46,26 +45,53 @@ define(function () {
             }
         }
 
-        bezl.vars.selectedAccount.CRMCalls.push({
+        var newCallDict = {
             "ShortSummary"  : bezl.vars.shortSummary,
             "Details"       : bezl.vars.details,
             "CallDate"      : new  Date(),
             "SalesRepName"  : bezl.env.currentUser,
             "RelatedToFile" : "customer",
-            "CallTypeDesc"  : callTypeDesc
-        });
+            "CallTypeDesc"  : callTypeDesc,
+            "ID"            : bezl.vars.selectedAccount.ID,
+            "show"          : true
+        };
+
+        bezl.data.AllCRMCalls.push(newCallDict);
+        bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
+
+        SortCalls(bezl);
         
+        localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
+    }
+
+    // Only display CRM interactions that have data matching the data string in the
+    // filter input box. This function updates the "show" variable on the
+    // CRM call object.
+    function ApplyFilter(bezl) {
+        if (bezl.vars.selectedAccount.CRMCalls) { // Avoid throwing errors if the account data hasn't been returned yet
+            for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+                if (bezl.vars.selectedAccount.CRMCalls[i].ShortSummary.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                bezl.vars.selectedAccount.CRMCalls[i].Details.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = true;
+                } else {
+                    bezl.vars.selectedAccount.CRMCalls[i].show = false;
+                }
+            };
+        }
+    }
+
+    function SortCalls(bezl) {
         bezl.vars.selectedAccount.CRMCalls.sort(function (a, b) {
             var A = Date.parse(a["CallDate"]) || Number.MAX_SAFE_INTEGER;
             var B = Date.parse(b["CallDate"]) || Number.MAX_SAFE_INTEGER;
             return B - A;
         });
-
-        localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
   
     return {
         runQuery: RunQuery,
-        addNote: AddNote
+        addNote: AddNote,
+        applyFilter: ApplyFilter,
+        sortCalls: SortCalls
     }
 });

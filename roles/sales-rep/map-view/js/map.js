@@ -1,4 +1,4 @@
-define(["./customer.js"], function (customer) {
+define([], function () {
 
     function GetInfoWindowContent (Title, Address, Contacts) {
         // Develop the HTML for the customer contacts
@@ -89,7 +89,7 @@ define(["./customer.js"], function (customer) {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                customer.select(bezl, customerRecord.custNum);
+                bezl.vars.customerFile.select(bezl, customerRecord.custNum);
             });
 
             bezl.vars.markers[customerRecord.custNum] = marker;
@@ -101,7 +101,7 @@ define(["./customer.js"], function (customer) {
 
             // Update the database so we don't need to look this up next time
             bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
-                                { "QueryName": "SetGeocodeOnAddress",
+                                { "QueryName": "/map-view/SetGeocodeOnAddress",
                                     "Parameters": [
                                         { "Key": "Geocode_Location", "Value": g || '' },
                                         { "Key": "CustNum", "Value": customerRecord.custNum },
@@ -137,7 +137,7 @@ define(["./customer.js"], function (customer) {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                customer.select(bezl, parm.custNum);
+                bezl.vars.customerFile.select(bezl, parm.custNum);
             });
 
             bezl.vars.markers[0] = marker;

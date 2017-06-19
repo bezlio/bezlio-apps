@@ -14,6 +14,9 @@ define(["./map.js",
             invoiceHistory: false,
             attachment: []
         }
+
+        bezl.vars.customerFile = customer;
+        bezl.vars.mapFile = map;
         
         // Initiate the call to refresh the customer list
         customer.runQuery(bezl, 'CustList');
@@ -82,6 +85,37 @@ define(["./map.js",
                 bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
             }
         });
+
+        // Configure the jsGrid
+        bezl.vars.jsgrid = $("#customerGrid");
+        bezl.vars.jsgrid.jsGrid({
+            width: "100%",
+            height: "100%",
+            heading: true,
+            sorting: true,
+            autoload: true, 	
+            inserting: false,
+            controller: {
+                loadData: function() {
+                return bezl.vars.customers;
+                }
+            },
+            fields: [
+                { name: "display", title: "Name", type: "text", visible: true, width: 50, editing: false },
+                { name: "distance", title: "Distance", type: "number", visible: true, width: 25, editing: false },
+            ],
+            rowClick: function(args) {
+                customer.select(bezl, args.item.key);
+
+                // Highlight the selected row in jsGrid
+                if ( bezl.vars.selectedRow ) { bezl.vars.selectedRow.children('.jsgrid-cell').css('background-color', ''); }
+                var $row = this.rowByItem(args.item);
+                $row.children('.jsgrid-cell').css('background-color','#F7B64B');
+                bezl.vars.selectedRow = $row;
+            }
+        });
+
+
     }
   
  

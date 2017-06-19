@@ -12,6 +12,7 @@ define(function () {
                     "Parameters": [
                         { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
                         { "Key": "EndDate", "Value": bezl.vars.endDate || "01/01/2100"},
+                        { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""},
                         { "Key": "Company", "Value": 'All' }
                     ] },0);
                 break;
@@ -28,16 +29,40 @@ define(function () {
 
                 if (bezl.vars.Orders[i].Selected) {
                     localStorage.setItem('selectedOrder', JSON.stringify(bezl.vars.Orders[i]));
-                    $('.panel').trigger('selectedOrder', [bezl.vars.Orders[i]]);
+                    $('#bezlpanel').trigger('selectedOrder', [bezl.vars.Orders[i]]);
                 } else {
                     localStorage.setItem('selectedOrder', '');
-                    $('.panel').trigger('selectedOrder', [{}]);
+                    $('#bezlpanel').trigger('selectedOrder', [{}]);
                 }
                 
             } else {
                 bezl.vars.Orders[i].Selected = false;
             }
         };
+    }
+
+    function Filter(bezl) {
+        // Filter, will hide the table rows that do not match filter
+        var tr, td;
+        tr = document.getElementById("orderList").getElementsByTagName("tr");
+
+        // Loop through all rows
+        for(var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+
+            if(td) {
+                if(bezl.vars.filter.toUpperCase() == "ALL") 
+                {
+                    tr[i].style.display = "";
+                } else if(td.children[0].children[4].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1){
+                    tr[i].style.display = "";
+                }
+                else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
     }
 
     function Sort(bezl, sortColumn) {
@@ -58,17 +83,17 @@ define(function () {
 
 
         // Test for numeric sort columns, otherwise sort alphabetic
-        if ( sortColumn == "PoNum" || sortColumn == "OrderAmt" || sortColumn == "OrderNum") {
+        if (sortColumn == "OrderAmt" || sortColumn == "OrderNum") {
             if (bezl.vars.sort == "asc") {
                 bezl.vars.Orders.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return A - B;
                 });
             } else {
                 bezl.vars.Orders.sort(function (a, b) {
-                    var A = a[sortColumn] || Number.MAX_SAFE_INTEGER;
-                    var B = b[sortColumn] || Number.MAX_SAFE_INTEGER;
+                    var A = a[sortColumn];
+                    var B = b[sortColumn];
                     return B - A;
                 });
             }
@@ -187,6 +212,7 @@ define(function () {
     return {
         runQuery: RunQuery,
         select: Select,
+        filter: Filter,
         sort: Sort,
         innerSort: InnerSort
     }

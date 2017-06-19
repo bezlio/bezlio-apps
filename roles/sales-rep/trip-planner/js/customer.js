@@ -1,4 +1,4 @@
-define(["./map.js"], function (map) {
+define([], function () {
  
     function Add (bezl, customer) {
         // Add the selected customer to the list
@@ -18,20 +18,29 @@ define(["./map.js"], function (map) {
     function Select (bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
             // Locate this customer and navigate to them on the map
-            bezl.vars.infoWindow.setContent(map.getInfoWindowContent(bezl.vars.markers[custNum].title,
-                                                                        bezl.vars.markers[custNum].data.Address,
-                                                                        bezl.vars.markers[custNum].data.Contacts));
+            bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent(bezl.vars.markers[custNum].data));                                                          
 
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
             bezl.vars.map.panTo(center);
 
             bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
+
+              // After the info window is open, add a DOM listener for the add button
+            var addBtn = document.getElementById('addBtn');
+            google.maps.event.addDomListener(addBtn, "click", function() {
+                // Get the custNum from the button data
+                var custNum = $('#addBtn').attr('data-id');
+                // Find customer from custNum
+                var customer = bezl.vars.customers.find(c => c.custNum == custNum);
+                // Add Customer to trip
+                bezl.vars.customerFile.add(bezl, customer);
+            });
         } else {
             // If there is not a marker for the given address, geocode it now
             for (var i = 0; i < bezl.vars.customers.length; i++) {
                 if (bezl.vars.customers[i].custNum == custNum) {
-                    map.geocodeAddress(bezl, bezl.vars.customers[i]); 
+                    bezl.vars.mapFile.geocodeAddress(bezl, bezl.vars.customers[i]); 
                     break;
                 }
             };

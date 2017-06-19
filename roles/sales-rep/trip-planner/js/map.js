@@ -1,4 +1,4 @@
-define(["./customer.js"], function (customer) {
+define([], function () {
 
     function CalculateDistances(bezl) {
         var calcDistance = function distance(lat1, lon1, lat2, lon2, unit) {
@@ -44,7 +44,7 @@ define(["./customer.js"], function (customer) {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                customer.select(bezl, customerRecord.custNum);
+                bezl.vars.customerFile.select(bezl, customerRecord.custNum);
             });
 
             bezl.vars.markers[customerRecord.custNum] = marker;
@@ -74,10 +74,10 @@ define(["./customer.js"], function (customer) {
         }
     }
 
-    function GetInfoWindowContent (Title, Address, Contacts) {
+    function GetInfoWindowContent (Customer) {
         // Develop the HTML for the customer contacts
         var contactHtml = '<br><h4>Contacts</h4>';
-        var contacts = $.parseXML(Contacts);
+        var contacts = $.parseXML(Customer.Contacts);
         var contactsXml = $(contacts);
 
         contactsXml.find('Contact').each(function(index){
@@ -109,10 +109,11 @@ define(["./customer.js"], function (customer) {
             '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
-                '<h4 id="firstHeading" class="firstHeading">' + Title + '</h4>'+
+                '<h4 id="firstHeading" class="firstHeading">' + Customer.Name + '</h4>'+
                 '<div id="bodyContent">'+
-                    '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Address) + '\" target=\"_blank\">' + Address + '</a>' +
-                    ((contacts) ? contactHtml : '')
+                    '<a href=\"http://maps.google.com/maps?q=' + encodeURI(Customer.Address) + '\" target=\"_blank\">' + Customer.Address + '</a>' +
+                    `<div align="center" style="margin-top: 7px;"><button id="addBtn" data-id="` + Customer.CustNum + `" class="btn btn-sm btn-primary">+ Add to Route</button></div>` + 
+                    ((contacts) ? contactHtml : '') 
                 '</div>'+
             '</div>';
         
@@ -176,7 +177,7 @@ define(["./customer.js"], function (customer) {
                         
             // Add a click handler
             marker.addListener('click', function() {          
-                customer.select(bezl, parm.custNum);
+                bezl.vars.customerFile.select(bezl, parm.custNum);
             });
 
             bezl.vars.markers[0] = marker;

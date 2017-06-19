@@ -12,7 +12,7 @@ define(["./task.js"], function (task) {
       // types
       bezl.dataService.add('TaskTypes','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetTaskTypes" },0);
 
-      $(".panel").on("selectAccount", function(event, param1) {
+      $("#bezlpanel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
       });
 
