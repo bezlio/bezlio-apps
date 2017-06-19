@@ -1,8 +1,8 @@
 ﻿{
-  "id": "f16e5180-35b3-48ac-bef4-c47d2f3c5c44",
+  "id": "404848e4-eb33-4f7f-b410-df794b4231e6",
   "name": "Customer Price List",
   "template": "custom",
-  "owner": "sremington@saberlogic.com",
+  "owner": "nowens@saberlogic.com",
   "shares": [],
   "vars": [],
   "dataSubscriptions": [],
@@ -22,8 +22,13 @@
     "",
     "",
     "<form class=\"form-inline\">",
-    "    <h1 *ngIf=\"(bezl.vars.selectedAccount | json) != ({} | json)\" style=\"font-size:20px\"> Selected Customer: {{bezl.vars.selectedAccount?.ID}} </h1>",
-    "   <h1 *ngIf=\"(bezl.vars.selectedAccount | json) == ({} | json)\" style=\"font-size:20px\"> No Selected Customer</h1>",
+    "    <div>",
+    "    <label style=\"font-size:20px\">Selected Customer: </label>",
+    "    <select style=\"font-size:20px\" id=\"customers\" name=\"customers\" ",
+    "         [ngModel]=\"bezl.vars.selectedAccount?.ID\" (ngModelChange)=\"bezl.functions['custSelection']($event);\" > ",
+    "      <option  *ngFor=\"let c of bezl.vars['custList']\" [value]=\"c.ID\">{{c.Name}}</option>",
+    "    </select>",
+    "  </div>",
     "  <input type=\"text\" class=\"form-control mb-2 mr-sm-2 mb-sm-0\" (keyup)=\"bezl.functions['filter']()\"",
     "         [(ngModel)]=\"bezl.vars['filter']\" name=\"filter\" placeholder=\"Filter by...\">",
     "</form>",
@@ -301,7 +306,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/customer-price-list/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
+      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\n\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/customer-price-list/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
       "declares": [
         "$",
         "parm",
@@ -310,6 +315,18 @@
         "require"
       ],
       "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/customer-price-list/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
+    },
+    {
+      "method": "custSelection",
+      "code": "require([bezl.vars.config.baseJsUrl + 'priceList.js'], function(functions) {\n\tfunctions.custSelection(bezl, parm)\n});\n",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'priceList.js'], function (functions) {\r\n    functions.custSelection(bezl, parm);\r\n});\r\n"
     }
   ],
   "data": ""
