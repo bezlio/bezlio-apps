@@ -12,11 +12,16 @@ define(["./rma.js"], function (rma) {
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
         bezl.vars.filter = "";
+        bezl.vars.custList = [];
+
+        // Get All Accounts for dropdown
+       rma.runQuery(bezl, 'Accounts');
 
         // If there was a previously selected customer in localStorage, grab a reference
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+                order.runQuery(bezl, 'Orders');
             }
 
         // Set up event handler for selection of customer on account view

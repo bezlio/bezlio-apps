@@ -16,6 +16,27 @@ define(function () {
                         { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
                     ] },0);
                 break;
+            case 'Accounts':
+                bezl.vars.loading = true;
+                // Get All Accounts associated with user
+                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccounts",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0); 
+                break; 
+            case 'GetAllRMAs':
+                bezl.vars.loading = true;
+                // Get All Orders associated with user
+                bezl.dataService.add('RMAs','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "RMAInquiryAll",
+                    "Parameters": [
+                      	{ "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
+                        { "Key": "EndDate", "Value": bezl.vars.endDate || "01/01/2100"},
+                        { "Key": "Company", "Value": 'All' }
+                    ] },0);
+                break;         
             default:
                 break;
         }
@@ -218,12 +239,25 @@ define(function () {
             }
         }
     }
+
+     function CustSelection(bezl, custId) {
+
+        bezl.vars.RMAs = [];
+        var cust = bezl.vars.custList.find(c => c.ID == custId);
+        bezl.vars.selectedAccount = cust;
+        if(custId == "ALL_ACCOUNTS" ){
+            this.runQuery(bezl, 'GetAllRMAs');
+        } else {
+            this.runQuery(bezl, 'RMAs');
+        }
+    }
   
     return {
         runQuery: RunQuery,
         select: Select,
         filter: Filter,
         sort: Sort,
-        innerSort: InnerSort
+        innerSort: InnerSort,
+        custSelection: CustSelection
     }
 });
