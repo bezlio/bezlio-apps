@@ -1,4 +1,3 @@
-
 SELECT
 	c.CustID AS ID
 	, c.CustNum
