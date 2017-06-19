@@ -115,6 +115,8 @@ define(["./map.js"], function (map) {
             mark.setMap(null);
         });
 
+        console.log(bezl.vars.markers);
+
         // if (filterValue !== "All") {
         //     //rebuild customer grid before filtering
         //     bezl.vars.customers = [];
