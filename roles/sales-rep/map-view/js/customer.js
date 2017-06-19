@@ -160,9 +160,6 @@ define(["./map.js"], function (map) {
             });
         }
 
-        map.calculateDistances(bezl);
-        $("#customerGrid").jsGrid("loadData");
-
         PlotData(bezl);
     }
 
@@ -264,6 +261,9 @@ define(["./map.js"], function (map) {
                 console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
             }
         });
+
+        map.calculateDistances(bezl);
+        $("#customerGrid").jsGrid("loadData");
     }
 
     return {
