@@ -28,7 +28,7 @@ define(function () {
                 bezl.vars.loading = true;
                 // Get All Orders associated with user
                 bezl.dataService.add('Invoices','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetAllInvoices",
+                    "QueryName": "InvoiceInquiryAll",
                     "Parameters": [
                       	{ "Key": "EmailAddress", "Value": bezl.env.currentUser },
                         { "Key": "StartDate", "Value": bezl.vars.startDate || "01/01/1900"},
