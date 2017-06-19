@@ -73,7 +73,7 @@ define([], function () {
         };
     }
 
-    function GeocodeAddress(bezl, customerRecord) {
+    function GeocodeAddress(bezl, customerRecord, cnt) {
         try {
             bezl.vars.geocoder.geocode({ address: `${customerRecord.streetAddress}` }, function (results, status) {
                 if (results != null && results.length > 0) {
@@ -91,7 +91,7 @@ define([], function () {
                         bezl.vars.customerFile.select(bezl, customerRecord.custNum);
                     });
 
-                    bezl.vars.markers[customerRecord.custNum] = marker;
+                    bezl.vars.markers[cnt] = marker;
 
                     var g = JSON.stringify(results[0].geometry.location)
                         .replace(/"/g, '')
