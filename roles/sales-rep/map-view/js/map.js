@@ -91,7 +91,7 @@ define([], function () {
                         bezl.vars.customerFile.select(bezl, customerRecord.custNum);
                     });
 
-                    bezl.vars.markers[cnt] = marker;
+                    bezl.vars.markers[customerRecord.custNum] = marker;
 
                     var g = JSON.stringify(results[0].geometry.location)
                         .replace(/"/g, '')
