@@ -110,9 +110,9 @@ define(["./map.js"], function (map) {
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
 
-        console.log(bezl.vars.markers);
+        //console.log(bezl.vars.markers);
         bezl.vars.markers.forEach(mark => {
-            console.log(mark);
+            mark.setMap(null);
         });
 
         // if (filterValue !== "All") {
@@ -163,7 +163,7 @@ define(["./map.js"], function (map) {
         map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
 
-        PlotData(bezl);
+        //PlotData(bezl);
     }
 
     function PlotData(bezl) {
