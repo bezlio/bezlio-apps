@@ -21,7 +21,7 @@ define(["./rma.js"], function (rma) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
-                order.runQuery(bezl, 'Orders');
+                order.runQuery(bezl, 'RMAs');
             }
 
         // Set up event handler for selection of customer on account view
