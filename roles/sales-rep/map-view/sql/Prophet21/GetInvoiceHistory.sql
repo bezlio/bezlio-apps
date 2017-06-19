@@ -1,4 +1,4 @@
-SELECT TOP 100
+SELECT
 	  ih.invoice_no As InvoiceNum
 	, ih.invoice_date As InvoiceDate
 	, ih.total_amount As InvoiceAmt

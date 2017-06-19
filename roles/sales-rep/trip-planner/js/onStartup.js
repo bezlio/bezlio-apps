@@ -10,9 +10,18 @@ define(["./map.js",
         bezl.vars.loading = { 
             customerList: true
         }
+
+        bezl.vars.mapFile = map;
+        bezl.vars.customerFile = customer;
         
         // Initiate the call to refresh the customer list
-        customer.runQuery(bezl, 'CustList');
+        bezl.vars.customerFile.runQuery(bezl, 'CustList');
+
+        // Info Pin add customer event handler
+        $("#bezlpanel").on("addCust_Pin", function(event) {
+            console.log('in');
+            console.log(event);
+        });
 
         // Google Maps requires async so pull it in.
         require.config({
@@ -64,14 +73,26 @@ define(["./map.js",
                 });
                 
                 marker.addListener('click', function() {
-                        bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
-                                                                                    bezl.vars.currentAddress,
-                                                                                    ''));
+                        bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent({Name:'Current Location',
+                                                                                    Address:bezl.vars.currentAddress,
+                                                                                    Contacts:''}));
                         bezl.vars.infoWindow.open(bezl.vars.map, marker);
+
+                        // After the info window is open, add a DOM listener for the add button
+                        var addBtn = document.getElementById('addBtn');
+                        google.maps.event.addDomListener(addBtn, "click", function() {
+                            // Get the custNum from the button data
+                            var custNum = $('#addBtn').attr('data-id');
+                            // Find customer from custNum
+                            var customer = bezl.vars.customers.find(c => c.custNum == custNum);
+                            // Add Customer to trip
+                            bezl.vars.customerFile.add(bezl, customer);
+                        });
                 });
                 
                 bezl.vars.markers[0] = (marker);
 
+                
                 
                 });
             } else {
