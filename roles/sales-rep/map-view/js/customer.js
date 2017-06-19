@@ -233,7 +233,7 @@ define(["./map.js"], function (map) {
                             bezl,
                             {
                                 streetAddress: cust.Address,
-                                title: cust.Name,
+                                title: cust.title,
                                 custNum: cust.CustNum,
                                 shipToNum: cust.ShipToNum,
                                 data: cust
@@ -243,7 +243,7 @@ define(["./map.js"], function (map) {
                         var marker = new bezl.vars.client.Marker({
                             position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
                             map: bezl.vars.map,
-                            title: cust.Name,
+                            title: cust.title,
                             data: cust,
                             lat: parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]),
                             lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1])
