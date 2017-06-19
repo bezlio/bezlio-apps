@@ -221,45 +221,49 @@ define(["./map.js"], function (map) {
                     bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
                 }
 
-                bezl.vars.customers.forEach(cust => {
-            if (cust.streetAddress != null) {
-                if (cust.streetAddress.length > 3) {
-
-                    // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
-                    if (cust.geocodeAddress == "" || cust.geocodeAddress == null) {
-                        map.geocodeAddress(
-                            bezl,
-                            {
-                                streetAddress: cust.streetAddress,
-                                title: cust.title,
-                                custNum: cust.custNum,
-                                shipToNum: cust.shipToNum,
-                                data: cust
-                            }
-                        );
-                    } else {
-                        var marker = new bezl.vars.client.Marker({
-                            position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
-                            map: bezl.vars.map,
-                            title: cust.title,
-                            data: cust,
-                            lat: parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]),
-                            lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1])
-                        });
-
-                        // Add a click handler
-                        marker.addListener('click', function () {
-                            customer.select(bezl, cust.custNum);
-                        });
-
-                        bezl.vars.markers[cust.custNum] = marker;
-                    }
-                }
-            } else {
-                console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
-            }
-        });
+                setTimeout(setFilterMap, 5000);
             });
+
+        function setFilterMap() {
+            bezl.vars.customers.forEach(cust => {
+                if (cust.streetAddress != null) {
+                    if (cust.streetAddress.length > 3) {
+
+                        // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
+                        if (cust.geocodeAddress == "" || cust.geocodeAddress == null) {
+                            map.geocodeAddress(
+                                bezl,
+                                {
+                                    streetAddress: cust.streetAddress,
+                                    title: cust.title,
+                                    custNum: cust.custNum,
+                                    shipToNum: cust.shipToNum,
+                                    data: cust
+                                }
+                            );
+                        } else {
+                            var marker = new bezl.vars.client.Marker({
+                                position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
+                                map: bezl.vars.map,
+                                title: cust.title,
+                                data: cust,
+                                lat: parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]),
+                                lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1])
+                            });
+
+                            // Add a click handler
+                            marker.addListener('click', function () {
+                                customer.select(bezl, cust.custNum);
+                            });
+
+                            bezl.vars.markers[cust.custNum] = marker;
+                        }
+                    }
+                } else {
+                    console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
+                }
+            });
+        }
 
         //map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
