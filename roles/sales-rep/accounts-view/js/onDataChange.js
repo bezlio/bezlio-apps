@@ -52,11 +52,6 @@ define(["./account.js"], function (account) {
             }
         }
 
-        //account filter types
-        if (bezl.data.Accounts && bezl.data.Categories) {
-            console.log(bezl.data.Categories);
-        }
-
         // If we got the account contacts back, merge those in
         if (bezl.data.Accounts && bezl.data.AccountContacts) {
             for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
