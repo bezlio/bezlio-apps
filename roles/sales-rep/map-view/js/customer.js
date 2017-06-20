@@ -260,9 +260,11 @@ define(["./map.js"], function (map) {
                 }
             });
 
+            map.calculateDistances(bezl)
+
             setTimeout(function() {
-                map.calculateDistances(bezl)}
-                , 5000);   
+                }
+                , 1000);   
         }
     }
 
