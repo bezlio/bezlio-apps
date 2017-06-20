@@ -605,7 +605,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\nif(bezl.vars.config.baseUrl == \"\") {\n  \tif(window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n     \tbezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n     \tbezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\"; \n    }\n}\n\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/Sales-Rep-Accounts-View-Add-Category-Selectors\";\n\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/accounts-view/js/\";\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";",
+      "code": "bezl.vars.config = {};\n\nbezl.vars.config.baseUrl = \"\";\nif(bezl.vars.config.baseUrl == \"\") {\n  \tif(window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n     \tbezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n     \tbezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\"; \n    }\n}\n\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/accounts-view/js/\";\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";",
       "declares": [
         "$",
         "parm",
