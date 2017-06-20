@@ -259,9 +259,10 @@ define(["./map.js"], function (map) {
                     console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
                 }
             });
+
+            map.calculateDistances(bezl);
         }
 
-        map.calculateDistances(bezl);
         $("#customerGrid").jsGrid("loadData");
     }
 
