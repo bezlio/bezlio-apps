@@ -62,6 +62,10 @@ define([], function () {
 
         bezl.vars.markers = bezl.vars.markers.filter(mark => mark !== undefined);
 
+        bezl.vars.markers.forEach(mark => {
+            console.log(mark);
+        });
+
         for (var i = 0; i < bezl.vars.customers.length; i++) {
             var custNum = bezl.vars.customers[i].key;
             if (bezl.vars.markers[custNum]) {
