@@ -1,6 +1,7 @@
 define(["./map.js"], function (map) {
 
     function Select(bezl, custNum) {
+        console.log(bezl.vars.markers[custNum].data);
         if (bezl.vars.markers[custNum]) {
             // Locate this customer and navigate to them on the map
             bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent(bezl.vars.markers[custNum].title,
