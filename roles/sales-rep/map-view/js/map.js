@@ -65,6 +65,7 @@ define([], function () {
         for (var i = 0; i < bezl.vars.customers.length; i++) {
             var custNum = bezl.vars.customers[i].key;
             console.log(bezl.vars.customers[i]);
+            console.log(bezl.vars.markers);
             if (bezl.vars.markers[custNum]) {
                 console.log(bezl.vars.customers[i]);
                 bezl.vars.customers[i].distance = Math.round(calcDistance(bezl.vars.markers[0].lat,
