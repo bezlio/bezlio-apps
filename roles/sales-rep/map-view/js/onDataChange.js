@@ -3,7 +3,6 @@ define(["./customer.js", "./map.js"], function (customer, map) {
     function OnDataChange(bezl) {
         // Populate the 'customers' array if we got CustomerList back
         if (bezl.data.CustList) {
-            console.log('test change');
             bezl.vars.customers = [];
             for (var i = 0; i < bezl.data.CustList.length; i++) {
                 bezl.vars.customers.push({
