@@ -60,7 +60,7 @@ define([], function () {
             return dist
         };
 
-        bezl.vars.markers = bezl.vars.markers.filter(mark => mark !== undefined);
+        bezl.vars.markers = bezl.vars.markers.filter(mark => mark === undefined);
 
         for (var i = 0; i < bezl.vars.customers.length; i++) {
             var custNum = bezl.vars.customers[i].key;
