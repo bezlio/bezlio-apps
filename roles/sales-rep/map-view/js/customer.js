@@ -159,6 +159,7 @@ define(["./map.js"], function (map) {
             });
         }
 
+        $("#customerGrid").jsGrid("loadData");
         PlotData(bezl);
     }
 
@@ -221,8 +222,6 @@ define(["./map.js"], function (map) {
             setTimeout(setFilterMap, 2500);
             
         function setFilterMap() {
-            $("#customerGrid").jsGrid("loadData");
-            
             bezl.vars.customers.forEach(cust => {
                 if (cust.streetAddress != null) {
                     if (cust.streetAddress.length > 3) {
@@ -262,11 +261,7 @@ define(["./map.js"], function (map) {
                 }
             });
 
-            map.calculateDistances(bezl)
-
-            setTimeout(function() {
-                }
-                , 1000);   
+            map.calculateDistances(bezl);
         }
     }
 
