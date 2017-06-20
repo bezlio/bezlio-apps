@@ -20,6 +20,7 @@ define(["./map.js",
 
             // Initiate the call to refresh the customer list
             customer.runQuery(bezl, 'CustList');
+            bezl.data.Categories = ['All', 'Sus', 'Pro'];
             //customer.runQuery(bezl, 'Categories');
 
             // Google Maps requires async so pull it in.
