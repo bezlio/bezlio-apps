@@ -5,6 +5,7 @@ The Sales Rep Role is currently comprised of the following:
 * Accounts View - Allow a sales rep to see all of their assigned customers account information.
 * Map View - See all assigned customers location and distance from a sales rep current location.
 * Trip Planner - Map View with the ability to add and navigate multiple locations.
+* Generic Queries - This folder contains generic queries organized by ERP or system that can be used within a variety of templates to visualize data.  See the section README for more details: https://github.com/bezlio/bezlio-apps/tree/master/roles/sales-rep/_generic-queries
   ##### The following work with the selected account from the Accounts View:
 * Attachments View - See associated doc, pdf and txt files.
 * CRM Calls View - See and record CRM calls.
