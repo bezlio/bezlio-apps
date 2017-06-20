@@ -264,8 +264,6 @@ define(["./map.js"], function (map) {
                 map.calculateDistances(bezl)}
                 , 5000);   
         }
-
-        $("#customerGrid").jsGrid("loadData");
     }
 
     return {
