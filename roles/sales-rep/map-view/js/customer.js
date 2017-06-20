@@ -133,7 +133,9 @@ define(["./map.js"], function (map) {
                     shipToNum: cust.ShipToNum,
                     data: cust,
                     filterValue: cust.FilterValue,
-                    geocodeAddress: cust.Geocode_Location
+                    geocodeAddress: cust.Geocode_Location,
+                    Address: cust.Address,
+                    Contacts: cust.Contacts
                 });
             });
 
@@ -155,7 +157,9 @@ define(["./map.js"], function (map) {
                     shipToNum: cust.ShipToNum,
                     data: cust,
                     filterValue: cust.FilterValue,
-                    geocodeAddress: cust.Geocode_Location
+                    geocodeAddress: cust.Geocode_Location,
+                    Address: cust.Address,
+                    Contacts: cust.Contacts
                 });
             });
         }
