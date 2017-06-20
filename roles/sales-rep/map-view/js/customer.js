@@ -260,7 +260,9 @@ define(["./map.js"], function (map) {
                 }
             });
 
-            setTimeout(map.calculateDistances(bezl), 5000);   
+            setTimeout(function() {
+                map.calculateDistances(bezl)}
+                , 5000);   
         }
 
         $("#customerGrid").jsGrid("loadData");
