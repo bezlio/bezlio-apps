@@ -60,18 +60,14 @@ define([], function () {
             return dist
         };
 
-        bezl.vars.markers = bezl.vars.markers.filter(mark => mark !== undefined);
-
-        bezl.vars.markers.forEach(mark => {
-            console.log(mark);
-        });
-
+        var homeMark = bezl.vars.markers.find(mark => mark !== undefined);
+        
         for (var i = 0; i < bezl.vars.customers.length; i++) {
             var custNum = bezl.vars.customers[i].key;
             if (bezl.vars.markers[custNum]) {
                 console.log(bezl.vars.customers[i]);
-                bezl.vars.customers[i].distance = Math.round(calcDistance(bezl.vars.markers[0].lat,
-                    bezl.vars.markers[0].lng,
+                bezl.vars.customers[i].distance = Math.round(calcDistance(homeMark.lat,
+                    homeMark.lng,
                     bezl.vars.markers[custNum].lat,
                     bezl.vars.markers[custNum].lng,
                     'M'));
