@@ -61,10 +61,13 @@ define([], function () {
         };
 
         var homeMark = bezl.vars.markers.find(mark => mark !== undefined);
+        console.log("Lat: " + homeMark.lat);
+        console.log("Lng: " + homeMark.lng);
         
         for (var i = 0; i < bezl.vars.customers.length; i++) {
             var custNum = bezl.vars.customers[i].key;
             if (bezl.vars.markers[custNum]) {
+                console.log(bezl.vars.customers[i]);
                 bezl.vars.customers[i].distance = Math.round(calcDistance(homeMark.lat,
                     homeMark.lng,
                     bezl.vars.markers[custNum].lat,
