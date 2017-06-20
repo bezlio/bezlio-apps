@@ -221,6 +221,8 @@ define(["./map.js"], function (map) {
             setTimeout(setFilterMap, 2500);
             
         function setFilterMap() {
+            $("#customerGrid").jsGrid("loadData");
+            
             bezl.vars.customers.forEach(cust => {
                 if (cust.streetAddress != null) {
                     if (cust.streetAddress.length > 3) {
