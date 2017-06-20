@@ -108,60 +108,58 @@ define(["./map.js"], function (map) {
     }
 
     function ApplyCategory(bezl, filterValue) {
-        console.log(bezl.vars.markers);
+        bezl.vars.custCategory = filterValue;
 
-        // bezl.vars.custCategory = filterValue;
+        bezl.vars.markers.forEach(mark => {
+            mark.setMap(null);
+        });
 
-        // bezl.vars.markers.forEach(mark => {
-        //     mark.setMap(null);
-        // });
+        if (filterValue !== "All") {
+            //rebuild customer grid before filtering
+            bezl.vars.customers = [];
 
-        // if (filterValue !== "All") {
-        //     //rebuild customer grid before filtering
-        //     bezl.vars.customers = [];
+            bezl.data.CustList.forEach(cust => {
+                bezl.vars.customers.push({
+                    selected: false,
+                    key: cust.CustNum,
+                    display: cust.Name,
+                    lastContact: (cust.LastContact || 'T').split('T')[0],
+                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
+                    distance: null,
+                    streetAddress: cust.Address,
+                    title: cust.Name,
+                    custNum: cust.CustNum,
+                    shipToNum: cust.ShipToNum,
+                    data: cust,
+                    filterValue: cust.FilterValue,
+                    geocodeAddress: cust.Geocode_Location
+                });
+            });
 
-        //     bezl.data.CustList.forEach(cust => {
-        //         bezl.vars.customers.push({
-        //             selected: false,
-        //             key: cust.CustNum,
-        //             display: cust.Name,
-        //             lastContact: (cust.LastContact || 'T').split('T')[0],
-        //             nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
-        //             distance: null,
-        //             streetAddress: cust.Address,
-        //             title: cust.Name,
-        //             custNum: cust.CustNum,
-        //             shipToNum: cust.ShipToNum,
-        //             data: cust,
-        //             filterValue: cust.FilterValue,
-        //             geocodeAddress: cust.Geocode_Location
-        //         });
-        //     });
+            bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
+        } else {
+            bezl.vars.customers = [];
 
-        //     bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
-        // } else {
-        //     bezl.vars.customers = [];
+            bezl.data.CustList.forEach(cust => {
+                bezl.vars.customers.push({
+                    selected: false,
+                    key: cust.CustNum,
+                    display: cust.Name,
+                    lastContact: (cust.LastContact || 'T').split('T')[0],
+                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
+                    distance: null,
+                    streetAddress: cust.Address,
+                    title: cust.Name,
+                    custNum: cust.CustNum,
+                    shipToNum: cust.ShipToNum,
+                    data: cust,
+                    filterValue: cust.FilterValue,
+                    geocodeAddress: cust.Geocode_Location
+                });
+            });
+        }
 
-        //     bezl.data.CustList.forEach(cust => {
-        //         bezl.vars.customers.push({
-        //             selected: false,
-        //             key: cust.CustNum,
-        //             display: cust.Name,
-        //             lastContact: (cust.LastContact || 'T').split('T')[0],
-        //             nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
-        //             distance: null,
-        //             streetAddress: cust.Address,
-        //             title: cust.Name,
-        //             custNum: cust.CustNum,
-        //             shipToNum: cust.ShipToNum,
-        //             data: cust,
-        //             filterValue: cust.FilterValue,
-        //             geocodeAddress: cust.Geocode_Location
-        //         });
-        //     });
-        // }
-
-        // PlotData(bezl);
+        PlotData(bezl);
     }
 
     function PlotData(bezl) {
