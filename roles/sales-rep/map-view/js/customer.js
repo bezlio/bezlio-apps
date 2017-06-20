@@ -37,14 +37,14 @@ define(["./map.js"], function (map) {
                     ]
                 }, 0);
                 break;
-            case "Categories":
-                bezl.dataService.add('Categories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "/map-view/GetFilterCategories",
-                    "Parameters": [
-                        { "Key": "Col", "Value": bezl.vars.Column }
-                    ]
-                }, 0);
-                break;
+            // case "Categories":
+            //     bezl.dataService.add('Categories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+            //         "QueryName": "/map-view/GetFilterCategories",
+            //         "Parameters": [
+            //             { "Key": "Col", "Value": bezl.vars.Column }
+            //         ]
+            //     }, 0);
+            //     break;
         }
     }
 
