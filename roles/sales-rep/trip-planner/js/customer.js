@@ -114,6 +114,7 @@ define([], function () {
         });
 
         if (filterValue !== "All") {
+            console.log(bezl.data.CustList);
             //rebuild customer grid before filtering
             bezl.vars.customers = [];
 

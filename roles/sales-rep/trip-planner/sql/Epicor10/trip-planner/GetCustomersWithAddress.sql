@@ -6,6 +6,7 @@ SELECT
 	, c.ServRef5 AS Geocode_Location
 	, (CASE WHEN c.CustomerType = 'CUS' THEN 'Customer' ELSE (CASE WHEN c.CustomerType = 'SUS' THEN 'Suspect' ELSE (CASE WHEN c.CustomerType = 'PRO' THEN 'Prospect' ELSE c.CustomerType END) END) END) as CustomerType
 	, t.TerritoryDesc AS Territory
+	, {Col} as FilterValue
 	, c.EstDate
 	, Contacts = '<Contacts>' +
 				(select (
