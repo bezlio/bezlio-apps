@@ -106,6 +106,10 @@ define([], function () {
         }
     }
 
+    function ApplyCategory(bezl, filterValue) {
+        console.log(filterValue);
+    }
+
     function Remove(bezl, index) {
         // Remove the selected customer
         bezl.vars.selectedCustomers.splice(index, 1);
@@ -139,6 +143,7 @@ define([], function () {
         move: Move,
         select: Select,
         sort: Sort,
+        applyCategory: ApplyCategory,
         remove: Remove,
         runQuery: RunQuery
     }
