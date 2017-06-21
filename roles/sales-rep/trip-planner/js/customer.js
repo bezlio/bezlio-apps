@@ -109,7 +109,7 @@ define(["./map.js"], function (map) {
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.selectedCustomers = [];
         bezl.vars.markers = [];
-        bezl.vars.directionsDisplay.setMap(null);
+
         bezl.vars.directionsDisplay = null;
 
         bezl.vars.custCategory = filterValue;
