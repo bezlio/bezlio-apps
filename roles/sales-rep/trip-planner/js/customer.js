@@ -171,6 +171,8 @@ define(["./map.js"], function (map) {
 
     function PlotData(bezl) {
         bezl.vars.markers = [];
+        bezl.vars.directionsDisplay.setMap(null);
+        bezl.vars.directionsDisplay = null;
 
         bezl.vars.client = google.maps;
         bezl.vars.geocoder = new google.maps.Geocoder();
@@ -188,7 +190,6 @@ define(["./map.js"], function (map) {
                 });
                 bezl.vars.directionsDisplay.setMap(bezl.vars.map);
                 bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
-                bezl.vars.directionsDisplay.setDirections(null);
 
                 // Create an infowindow
                 bezl.vars.infoWindow = new google.maps.InfoWindow;
