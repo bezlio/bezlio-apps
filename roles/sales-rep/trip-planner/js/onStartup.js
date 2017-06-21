@@ -41,7 +41,6 @@ define(["./map.js",
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         // First create the map
-                        //console.log($(bezl.container.nativeElement).find("div#map"));
                         bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
                             center: { lat: position.coords.latitude, lng: position.coords.longitude },
                             scrollwheel: false,
