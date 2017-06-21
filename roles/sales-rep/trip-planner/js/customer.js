@@ -1,24 +1,24 @@
 define([], function () {
- 
-    function Add (bezl, customer) {
+
+    function Add(bezl, customer) {
         // Add the selected customer to the list
-        bezl.vars.selectedCustomers.push({key: customer.key, display: customer.display, address: customer.streetAddress});
+        bezl.vars.selectedCustomers.push({ key: customer.key, display: customer.display, address: customer.streetAddress });
     }
 
-    function Move (bezl, index, direction) {
+    function Move(bezl, index, direction) {
         // Direction positive moves it down, negative moves it up (does it go before or after)
         // First get a copy of which one we are moving
-        var copy = bezl.vars.selectedCustomers.slice(index, index+1);
+        var copy = bezl.vars.selectedCustomers.slice(index, index + 1);
         // Now remove it from the array
         bezl.vars.selectedCustomers.splice(index, 1);
         // Now we splice it back in
         bezl.vars.selectedCustomers.splice(index + direction, 0, copy[0]);
     }
 
-    function Select (bezl, custNum) {
+    function Select(bezl, custNum) {
         if (bezl.vars.markers[custNum]) {
             // Locate this customer and navigate to them on the map
-            bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent(bezl.vars.markers[custNum].data));                                                          
+            bezl.vars.infoWindow.setContent(bezl.vars.mapFile.getInfoWindowContent(bezl.vars.markers[custNum].data));
 
             bezl.vars.selectedCustomer = bezl.vars.markers[custNum].data;
             var center = new bezl.vars.client.LatLng(bezl.vars.markers[custNum].lat, bezl.vars.markers[custNum].lng);
@@ -26,9 +26,9 @@ define([], function () {
 
             bezl.vars.infoWindow.open(bezl.vars.map, bezl.vars.markers[custNum]);
 
-              // After the info window is open, add a DOM listener for the add button
+            // After the info window is open, add a DOM listener for the add button
             var addBtn = document.getElementById('addBtn');
-            google.maps.event.addDomListener(addBtn, "click", function() {
+            google.maps.event.addDomListener(addBtn, "click", function () {
                 // Get the custNum from the button data
                 var custNum = $('#addBtn').attr('data-id');
                 // Find customer from custNum
@@ -40,14 +40,14 @@ define([], function () {
             // If there is not a marker for the given address, geocode it now
             for (var i = 0; i < bezl.vars.customers.length; i++) {
                 if (bezl.vars.customers[i].custNum == custNum) {
-                    bezl.vars.mapFile.geocodeAddress(bezl, bezl.vars.customers[i]); 
+                    bezl.vars.mapFile.geocodeAddress(bezl, bezl.vars.customers[i]);
                     break;
                 }
             };
         }
     }
 
-    function Sort (bezl, column) {
+    function Sort(bezl, column) {
         if (column == bezl.vars.sortCol) {
             // We clicked on the same column so make the sort opposite
             if (bezl.vars.sort == 'asc') {
@@ -63,70 +63,69 @@ define([], function () {
 
         if (bezl.vars.sortCol == 'Name') {
             if (bezl.vars.sort == 'asc') {
-            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
-                var A = a.display.toUpperCase(); // ignore upper and lowercase
-                var B = b.display.toUpperCase(); // ignore upper and lowercase
-                if (A < B) {
-                    return -1;
-                }
-                if (A > B) {
-                    return 1;
-                }
-                // names must be equal
-                return 0;
-            });
+                bezl.vars.customer = bezl.vars.customers.sort(function (a, b) {
+                    var A = a.display.toUpperCase(); // ignore upper and lowercase
+                    var B = b.display.toUpperCase(); // ignore upper and lowercase
+                    if (A < B) {
+                        return -1;
+                    }
+                    if (A > B) {
+                        return 1;
+                    }
+                    // names must be equal
+                    return 0;
+                });
             } else {
-            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
-                var A = a.display.toUpperCase(); // ignore upper and lowercase
-                var B = b.display.toUpperCase(); // ignore upper and lowercase
-                if (A > B) {
-                    return -1;
-                }
-                if (A < B) {
-                    return 1;
-                }
-                // names must be equal
-                return 0;
-            });
+                bezl.vars.customer = bezl.vars.customers.sort(function (a, b) {
+                    var A = a.display.toUpperCase(); // ignore upper and lowercase
+                    var B = b.display.toUpperCase(); // ignore upper and lowercase
+                    if (A > B) {
+                        return -1;
+                    }
+                    if (A < B) {
+                        return 1;
+                    }
+                    // names must be equal
+                    return 0;
+                });
             }
         } else {
             if (bezl.vars.sort == 'asc') {
-            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
-                var A = a.distance || Number.MAX_SAFE_INTEGER;
-                var B = b.distance || Number.MAX_SAFE_INTEGER;
-                return A - B;
-            });
+                bezl.vars.customer = bezl.vars.customers.sort(function (a, b) {
+                    var A = a.distance || Number.MAX_SAFE_INTEGER;
+                    var B = b.distance || Number.MAX_SAFE_INTEGER;
+                    return A - B;
+                });
             } else {
-            bezl.vars.customer = bezl.vars.customers.sort(function (a,b) {                    
-                var A = a.distance || Number.MAX_SAFE_INTEGER;
-                var B = b.distance || Number.MAX_SAFE_INTEGER;
-                return B - A;
-            });
+                bezl.vars.customer = bezl.vars.customers.sort(function (a, b) {
+                    var A = a.distance || Number.MAX_SAFE_INTEGER;
+                    var B = b.distance || Number.MAX_SAFE_INTEGER;
+                    return B - A;
+                });
             }
         }
     }
 
-    function Remove (bezl, index) {
+    function Remove(bezl, index) {
         // Remove the selected customer
         bezl.vars.selectedCustomers.splice(index, 1);
     }
 
-    function RunQuery (bezl, queryName) {
+    function RunQuery(bezl, queryName) {
 
         switch (queryName) {
             case "CustList":
                 // Pull in the customer list for the logged in user
-                bezl.dataService.add('CustList','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('CustList', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "/trip-planner/GetCustomersWithAddress",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
-                break;
-            default:
+                    ]
+                }, 0);
                 break;
         }
     }
-  
+
     return {
         add: Add,
         move: Move,
