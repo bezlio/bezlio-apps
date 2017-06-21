@@ -1,4 +1,4 @@
-define(["./map.js"], function () {
+define(["./map.js"], function (map) {
 
     function Add(bezl, customer) {
         // Add the selected customer to the list
