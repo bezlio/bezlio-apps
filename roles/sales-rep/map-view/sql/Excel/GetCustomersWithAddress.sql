@@ -14,6 +14,7 @@ SELECT
 	, c.TotalSales
 	, c.SalesRep
 	, c.TermsDescription
+	, {Col} as FilterValue
 	, c.NextTaskDue
 FROM
 	[Customers$] c

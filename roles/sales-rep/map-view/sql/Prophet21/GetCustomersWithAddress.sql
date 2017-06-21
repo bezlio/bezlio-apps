@@ -27,6 +27,7 @@ SELECT
 	, TotalSales = (SELECT SUM(ih.total_amount) FROM p21_view_invoice_hdr ih with(nolock) WHERE ih.company_no = c.company_id and ih.customer_id_number = c.customer_id)
 	, sr.id AS SalesRep --(or sr.descending_combined_name)
 	, tm.terms_desc AS TermsDescription
+	, {Col} as FilterValue
 	, NextTaskDue = (SELECT TOP 1 Cast(tsk.target_complete_date As Date) FROM p21_view_activity_trans tsk with(nolock) 
 					 WHERE tsk.company_id = c.company_id 
 						And tsk.contact_id In (Select id FROM p21_view_contacts with(nolock) WHERE address_id = a.id ) 
