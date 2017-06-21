@@ -1,7 +1,6 @@
 define([], function () {
 
     function OnDataChange(bezl) {
-        console.log("change");
         // Populate the 'customers' array if we got CustomerList back
         if (bezl.data.CustList) {
             bezl.vars.customers = [];
