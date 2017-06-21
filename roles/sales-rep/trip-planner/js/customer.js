@@ -2,6 +2,7 @@ define(["./map.js"], function (map) {
 
     function Add(bezl, customer) {
         // Add the selected customer to the list
+        console.log(customer);
         bezl.vars.selectedCustomers.push({ key: customer.key, display: customer.display, address: customer.streetAddress });
     }
 
