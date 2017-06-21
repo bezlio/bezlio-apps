@@ -107,12 +107,12 @@ define(["./map.js"], function (map) {
     }
 
     function ApplyCategory(bezl, filterValue) {
-        bezl.vars.custCategory = filterValue;
         bezl.vars.selectedCustomers = [];
+        bezl.vars.markers = [];
+        bezl.vars.directionsDisplay.setMap(null);
+        bezl.vars.directionsDisplay = null;
 
-        bezl.vars.markers.forEach(mark => {
-            mark.setMap(null);
-        });
+        bezl.vars.custCategory = filterValue;
 
         if (filterValue !== "All") {
             //rebuild customer grid before filtering
@@ -170,10 +170,6 @@ define(["./map.js"], function (map) {
     }
 
     function PlotData(bezl) {
-        bezl.vars.markers = [];
-        bezl.vars.directionsDisplay.setMap(null);
-        bezl.vars.directionsDisplay = null;
-
         bezl.vars.client = google.maps;
         bezl.vars.geocoder = new google.maps.Geocoder();
         bezl.vars.directionsService = new google.maps.DirectionsService;
