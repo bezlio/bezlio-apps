@@ -94,9 +94,6 @@ define(["./map.js",
                         });
 
                         bezl.vars.markers[0] = (marker);
-
-
-
                     });
                 } else {
                     bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
