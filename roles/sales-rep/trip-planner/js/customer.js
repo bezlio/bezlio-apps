@@ -107,7 +107,62 @@ define([], function () {
     }
 
     function ApplyCategory(bezl, filterValue) {
-        console.log(filterValue);
+        bezl.vars.custCategory = filterValue;
+
+        bezl.vars.markers.forEach(mark => {
+            mark.setMap(null);
+        });
+
+        if (filterValue !== "All") {
+            //rebuild customer grid before filtering
+            bezl.vars.customers = [];
+
+            bezl.data.CustList.forEach(cust => {
+                bezl.vars.customers.push({
+                    selected: false,
+                    key: cust.CustNum,
+                    display: cust.Name,
+                    lastContact: (cust.LastContact || 'T').split('T')[0],
+                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
+                    distance: null,
+                    streetAddress: cust.Address,
+                    title: cust.Name,
+                    custNum: cust.CustNum,
+                    shipToNum: cust.ShipToNum,
+                    data: cust,
+                    filterValue: cust.FilterValue,
+                    geocodeAddress: cust.Geocode_Location,
+                    Address: cust.Address,
+                    Contacts: cust.Contacts
+                });
+            });
+
+            bezl.vars.customers = bezl.vars.customers.filter(cust => cust.filterValue === filterValue);
+        } else {
+            bezl.vars.customers = [];
+
+            bezl.data.CustList.forEach(cust => {
+                bezl.vars.customers.push({
+                    selected: false,
+                    key: cust.CustNum,
+                    display: cust.Name,
+                    lastContact: (cust.LastContact || 'T').split('T')[0],
+                    nextTaskDue: (cust.NextTaskDue || 'T').split('T')[0],
+                    distance: null,
+                    streetAddress: cust.Address,
+                    title: cust.Name,
+                    custNum: cust.CustNum,
+                    shipToNum: cust.ShipToNum,
+                    data: cust,
+                    filterValue: cust.FilterValue,
+                    geocodeAddress: cust.Geocode_Location,
+                    Address: cust.Address,
+                    Contacts: cust.Contacts
+                });
+            });
+        }
+
+        $("#customerGrid").jsGrid("loadData");
     }
 
     function Remove(bezl, index) {
