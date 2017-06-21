@@ -1,8 +1,8 @@
 ﻿{
-  "id": "f10b5c52-9c03-4b99-a949-5a8e82f86634",
+  "id": "5d335b54-0e30-4239-8ebd-ebdcc0b4da3d",
   "name": "Map View",
   "template": "custom",
-  "owner": "sremington@saberlogic.com",
+  "owner": "rschnable@saberlogic.com",
   "shares": [],
   "vars": [],
   "dataSubscriptions": [],
@@ -71,9 +71,14 @@
     "          <div class=\"tab-content\" id=\"tab-content-primary\">",
     "              <div id=\"mapView\" class=\"tab-pane fade in active\">",
     "                <div class=\"row\">",
-    "                  <div class=\"col-sm-5\">",
+    "                  <div class=\"col-sm-2\">",
     "                    <button (click)=\"bezl.functions['refresh']('CustList')\" class=\"btn btn-md btn-primary\">Refresh</button>",
     "                  </div>",
+    "                  <div class=\"col-sm-3\">",
+    "                      <select class=\"form-control\" [ngModel]=\"bezl.vars.custCategory\" (ngModelChange)=\"bezl.functions.onCategoryChange($event)\">",
+    "                        <option *ngFor=\"let cat of bezl.data.Categories\" [ngValue]=cat.Type>{{cat.Type}}</option>",
+    "                      </select>",
+    "                  </div>     ",
     "                  <div class=\"col-sm-7\">",
     "                    <div class=\"col-sm-2\">",
     "                      Location:",
@@ -129,7 +134,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.loading = { \n  customerList: true,\n  inquiry: false,\n  crmHistory: false,\n  invoiceHistory: false,\n  attachment: []\n}\nbezl.vars.newNote = {};\nbezl.vars.config = {};\nbezl.functions['setConfig']();\n\nbezl.vars.config.CRMPlatform = \"Epicor10\";\nbezl.functions['saveSettings']();\n\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n  \n    // Prompt for the CRM platform if it has not been previously specified\n    if (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n    } else {\n        setTimeout(function(){ \n          bezl.vars.config.CRMPlatform = \"Excel\";\n          bezl.vars.showSettingsDialog = true; \n        }, 3000);\n    }\n});",
+      "code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.custCategory = 'All';\nbezl.vars.Column = 'CustomerType';\nbezl.vars.loading = { \n  customerList: true,\n  inquiry: false,\n  crmHistory: false,\n  invoiceHistory: false,\n  attachment: []\n}\nbezl.vars.newNote = {};\nbezl.vars.config = {};\nbezl.functions['setConfig']();\n\nbezl.vars.config.CRMPlatform = \"Epicor10\";\nbezl.functions['saveSettings']();\n\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n  \n    // Prompt for the CRM platform if it has not been previously specified\n    if (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\n    } else {\n        setTimeout(function(){ \n          bezl.vars.config.CRMPlatform = \"Excel\";\n          bezl.vars.showSettingsDialog = true; \n        }, 3000);\n    }\n});",
       "declares": [
         "$",
         "parm",
@@ -137,7 +142,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.loading = {\r\n    customerList: true,\r\n    inquiry: false,\r\n    crmHistory: false,\r\n    invoiceHistory: false,\r\n    attachment: []\r\n};\r\nbezl.vars.newNote = {};\r\nbezl.vars.config = {};\r\nbezl.functions['setConfig']();\r\nbezl.vars.config.CRMPlatform = \"Epicor10\";\r\nbezl.functions['saveSettings']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n    // Prompt for the CRM platform if it has not been previously specified\r\n    if (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\r\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    }\r\n    else {\r\n        setTimeout(function () {\r\n            bezl.vars.config.CRMPlatform = \"Excel\";\r\n            bezl.vars.showSettingsDialog = true;\r\n        }, 3000);\r\n    }\r\n});\r\n"
+      "compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.custCategory = 'All';\r\nbezl.vars.Column = 'CustomerType';\r\nbezl.vars.loading = {\r\n    customerList: true,\r\n    inquiry: false,\r\n    crmHistory: false,\r\n    invoiceHistory: false,\r\n    attachment: []\r\n};\r\nbezl.vars.newNote = {};\r\nbezl.vars.config = {};\r\nbezl.functions['setConfig']();\r\nbezl.vars.config.CRMPlatform = \"Epicor10\";\r\nbezl.functions['saveSettings']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n    // Prompt for the CRM platform if it has not been previously specified\r\n    if (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"CRMPlatform\")) {\r\n        bezl.vars.config.CRMPlatform = localStorage.getItem(\"CRMPlatform\");\r\n    }\r\n    else {\r\n        setTimeout(function () {\r\n            bezl.vars.config.CRMPlatform = \"Excel\";\r\n            bezl.vars.showSettingsDialog = true;\r\n        }, 3000);\r\n    }\r\n});\r\n"
     },
     {
       "method": "onDataChange",
@@ -165,7 +170,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {\n GoogleAPIKey: \"AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI\",\n CustomerInquiries: [\n   {\n     Name: \"Open Quotes\",\n     QueryName: \"/map-view/OpenQuotes\",\n     Fields: [\n        { name: \"QuoteNum\", title: \"Quote #\", type: \"text\", visible: true, width: 50, editing: false },\n       \t{ name: \"QuoteAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\n     ]\n   },\n   {\n     Name: \"Invoice History\",\n     QueryName: \"/map-view/GetInvoiceHistory\",\n     Fields: [\n        { name: \"InvoiceNum\", title: \"Invoice #\", type: \"text\", visible: true, width: 50, editing: false },\n        { name: \"InvoiceDate\", title: \"Invoice Date\", type: \"text\", visible: true, width: 50, editing: false },\n       \t{ name: \"InvoiceAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\n     ]\n   }\n ]\n}\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/map-view/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
+      "code": "bezl.vars.config = {\n GoogleAPIKey: \"AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI\",\n CustomerInquiries: [\n   {\n     Name: \"Open Quotes\",\n     QueryName: \"/map-view/OpenQuotes\",\n     Fields: [\n        { name: \"QuoteNum\", title: \"Quote #\", type: \"text\", visible: true, width: 50, editing: false },\n       \t{ name: \"QuoteAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\n     ]\n   },\n   {\n     Name: \"Invoice History\",\n     QueryName: \"/map-view/GetInvoiceHistory\",\n     Fields: [\n        { name: \"InvoiceNum\", title: \"Invoice #\", type: \"text\", visible: true, width: 50, editing: false },\n        { name: \"InvoiceDate\", title: \"Invoice Date\", type: \"text\", visible: true, width: 50, editing: false },\n       \t{ name: \"InvoiceAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\n     ]\n   }\n ]\n}\n\nbezl.vars.config.baseUrl = \"\";\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\n    }\n}\n\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/Sales-Rep-Map-View-Add-customer-category-selectors\";\n\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/map-view/js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\"",
       "declares": [
         "$",
         "parm",
@@ -173,7 +178,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.config = {\r\n    GoogleAPIKey: \"AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI\",\r\n    CustomerInquiries: [\r\n        {\r\n            Name: \"Open Quotes\",\r\n            QueryName: \"/map-view/OpenQuotes\",\r\n            Fields: [\r\n                { name: \"QuoteNum\", title: \"Quote #\", type: \"text\", visible: true, width: 50, editing: false },\r\n                { name: \"QuoteAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\r\n            ]\r\n        },\r\n        {\r\n            Name: \"Invoice History\",\r\n            QueryName: \"/map-view/GetInvoiceHistory\",\r\n            Fields: [\r\n                { name: \"InvoiceNum\", title: \"Invoice #\", type: \"text\", visible: true, width: 50, editing: false },\r\n                { name: \"InvoiceDate\", title: \"Invoice Date\", type: \"text\", visible: true, width: 50, editing: false },\r\n                { name: \"InvoiceAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\r\n            ]\r\n        }\r\n    ]\r\n};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/map-view/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
+      "compiled": "bezl.vars.config = {\r\n    GoogleAPIKey: \"AIzaSyDdandbc5e5BYufNbdp8q8f4QKY_Dvw6xI\",\r\n    CustomerInquiries: [\r\n        {\r\n            Name: \"Open Quotes\",\r\n            QueryName: \"/map-view/OpenQuotes\",\r\n            Fields: [\r\n                { name: \"QuoteNum\", title: \"Quote #\", type: \"text\", visible: true, width: 50, editing: false },\r\n                { name: \"QuoteAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\r\n            ]\r\n        },\r\n        {\r\n            Name: \"Invoice History\",\r\n            QueryName: \"/map-view/GetInvoiceHistory\",\r\n            Fields: [\r\n                { name: \"InvoiceNum\", title: \"Invoice #\", type: \"text\", visible: true, width: 50, editing: false },\r\n                { name: \"InvoiceDate\", title: \"Invoice Date\", type: \"text\", visible: true, width: 50, editing: false },\r\n                { name: \"InvoiceAmt\", title: \"Amount\", type: \"number\", visible: true, width: 50, editing: false },\r\n            ]\r\n        }\r\n    ]\r\n};\r\nbezl.vars.config.baseUrl = \"\";\r\n// If the baseURL is not set in the line above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://bezlio-apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/Sales-Rep-Map-View-Add-customer-category-selectors\";\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/map-view/js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\";\r\n"
     },
     {
       "method": "addNote",
@@ -270,6 +275,18 @@
         "require"
       ],
       "compiled": "if (parm.RowState != 'Added') {\r\n    parm.RowState = 'Updated';\r\n}\r\n"
+    },
+    {
+      "method": "onCategoryChange",
+      "code": "require([bezl.vars.config.baseJsUrl + 'customer.js'], function(functions) {\n\tfunctions.applyCategory(bezl, parm)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'customer.js'], function (functions) {\r\n    functions.applyCategory(bezl, parm);\r\n});\r\n"
     }
   ],
   "data": ""
