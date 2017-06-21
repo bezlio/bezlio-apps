@@ -111,8 +111,6 @@ define(["./map.js"], function (map) {
         bezl.vars.markers = [];
         bezl.vars.directionsDisplay.setPanel(null);
 
-        //bezl.vars.directionsDisplay = null;
-
         bezl.vars.custCategory = filterValue;
 
         if (filterValue !== "All") {
