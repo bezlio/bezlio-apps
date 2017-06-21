@@ -163,7 +163,7 @@ define([], function () {
         }
 
         $("#customerGrid").jsGrid("loadData");
-        PlotData();
+        PlotData(bezl);
     }
 
     function PlotData(bezl) {
