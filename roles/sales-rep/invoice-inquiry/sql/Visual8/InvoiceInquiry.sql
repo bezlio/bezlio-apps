@@ -22,7 +22,7 @@ FROM
 	LEFT OUTER JOIN CUSTOMER_ORDER o with (nolock) ON o.ID = rl.CUST_ORDER_ID
 WHERE 
 	r.INVOICE_DATE >= '{StartDate}' AND r.INVOICE_DATE <= '{EndDate}'
-	and o.CUSTOMER_ID = '{CustID}' 
+	and r.CUSTOMER_ID = '{CustID}' 
 ORDER BY 
 	INVOICE_DATE Desc
 
