@@ -2,8 +2,7 @@ define(["./map.js"], function (map) {
 
     function Add(bezl, customer) {
         // Add the selected customer to the list
-        console.log(customer);
-        bezl.vars.selectedCustomers.push({ key: customer.key, display: "terst", address: customer.streetAddress });
+        bezl.vars.selectedCustomers.push({ key: customer.key, display: customer.display, address: customer.streetAddress });
     }
 
     function Move(bezl, index, direction) {
@@ -133,6 +132,7 @@ define(["./map.js"], function (map) {
                     data: cust,
                     filterValue: cust.FilterValue,
                     geocodeAddress: cust.Geocode_Location,
+                    Name: cust.Name,
                     Address: cust.Address,
                     Contacts: cust.Contacts
                 });
@@ -157,6 +157,7 @@ define(["./map.js"], function (map) {
                     data: cust,
                     filterValue: cust.FilterValue,
                     geocodeAddress: cust.Geocode_Location,
+                    Name: cust.Name,
                     Address: cust.Address,
                     Contacts: cust.Contacts
                 });
