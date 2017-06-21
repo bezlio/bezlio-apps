@@ -123,6 +123,14 @@ define([], function () {
                     ]
                 }, 0);
                 break;
+            case "Categories":
+                bezl.dataService.add('Categories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "/trip-planner/GetFilterCategories",
+                    "Parameters": [
+                        { "Key": "Col", "Value": bezl.vars.Column }
+                    ]
+                }, 0);
+                break;
         }
     }
 
