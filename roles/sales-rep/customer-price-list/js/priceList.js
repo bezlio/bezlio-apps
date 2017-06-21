@@ -13,6 +13,25 @@ define(function () {
                         { "Key": "CustID", "Value": bezl.vars.selectedAccount.ID || ""}
                     ] },0);
                 break;
+                case 'Accounts':
+                bezl.vars.loading = true;
+                // Get All Accounts associated with user
+                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccounts",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0); 
+                break; 
+            case 'GetAllPriceList':
+                bezl.vars.loading = true;
+                // Get All Orders associated with user
+                bezl.dataService.add('PriceList','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "CustomerPriceListAll",
+                    "Parameters": [
+                      	{ "Key": "EmailAddress", "Value": bezl.env.currentUser },
+                        { "Key": "Company", "Value": 'All' }
+                    ] },0);
+                break;
             default:
                 break;
         }
@@ -215,12 +234,25 @@ define(function () {
             }
         }
     }
+
+     function CustSelection(bezl, custId) {
+
+        bezl.vars.PriceList = [];
+        var cust = bezl.vars.custList.find(c => c.ID == custId);
+        bezl.vars.selectedAccount = cust;
+        if(custId == "ALL_ACCOUNTS" ){
+            this.runQuery(bezl, 'GetAllPriceList');
+        } else {
+            this.runQuery(bezl, 'PriceList');
+        }
+    }
   
     return {
         runQuery: RunQuery,
         filter: Filter,
         select: Select,
         sort: Sort,
-        innerSort: InnerSort
+        innerSort: InnerSort,
+        custSelection: CustSelection
     }
 });

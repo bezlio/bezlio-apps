@@ -74,10 +74,20 @@ define(function () {
                 }
             }
             bezl.vars.loading = false;
-    }
-}
+        }
 
-return {
+        if(bezl.data.Accounts) {
+            bezl.vars.custList = bezl.data.Accounts;
+            if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
+                bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
+            }
+            bezl.vars.loading = false;
+            bezl.dataService.Accounts = null;
+            bezl.dataService.remove('Accounts');
+        }
+    }
+
+    return {
         onDataChange: OnDataChange
     }
 });

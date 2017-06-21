@@ -6,12 +6,17 @@ define(["./priceList.js"],function (priceList) {
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
         bezl.vars.filter = "";
+        bezl.vars.custList = [];
+
+        // Get All Accounts for dropdown
+        priceList.runQuery(bezl, 'Accounts');
 
         // If there was a previously selected customer in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+                priceList.runQuery(bezl, 'Accounts');
             }
         
             priceList.runQuery(bezl, 'PriceList');

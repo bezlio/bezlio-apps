@@ -11,6 +11,10 @@ define(["./order.js"], function (order) {
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
         bezl.vars.filter = "All";
+        bezl.vars.custList = [];
+
+        // Get All Accounts for dropdown
+       order.runQuery(bezl, 'Accounts');
 
         // Set up filter Listener
         $("#Filter").change(function () {
@@ -23,6 +27,7 @@ define(["./order.js"], function (order) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+                order.runQuery(bezl, 'Orders');
             }
 
             // Set up event handler for selection of customer on account view

@@ -6,7 +6,7 @@ define(function () {
             bezl.vars.Orders = new Array();
 
             // Resets Filter, so displayed value is correct
-            $("#topForm select").val("All")
+            $("#Filter").val("All");
 
             // If there was a previously selected Order in localStorage, grab a reference
             // so we can know whether to mark them as selected
@@ -72,6 +72,16 @@ define(function () {
             // Show filter for data
             $("#Filter").show();
             bezl.vars.loading = false;
+    }
+
+    if(bezl.data.Accounts) {
+        bezl.vars.custList = bezl.data.Accounts;
+        if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
+            bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
+        }
+        bezl.vars.loading = false;
+        bezl.dataService.Accounts = null;
+        bezl.dataService.remove('Accounts');
     }
 }
 

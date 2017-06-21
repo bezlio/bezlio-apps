@@ -13,11 +13,16 @@ define(["./invoice.js"], function (invoice) {
         bezl.vars.sortInner = "";
         bezl.vars.sortColInner = "";
         bezl.vars.filter = "";
+        bezl.vars.custList = [];
+
+        // Get All Accounts for dropdown
+       invoice.runQuery(bezl, 'Accounts');
 
         // If there was a previously selected customer in localStorage, grab a reference
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
+                invoice.runQuery(bezl, 'Accounts');
             }
 
         // Set up event handler for selection of customer on account view
