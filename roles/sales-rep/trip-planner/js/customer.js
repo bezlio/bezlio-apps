@@ -33,7 +33,7 @@ define(["./map.js"], function (map) {
                 // Get the custNum from the button data
                 var custNum = $('#addBtn').attr('data-id');
                 // Find customer from custNum
-                var customer = bezl.vars.customers.find(c => c.custNum == custNum);
+                var customer = bezl.vars.customers.find(c => c.custNum === custNum);
                 // Add Customer to trip
                 bezl.vars.customerFile.add(bezl, customer);
             });
