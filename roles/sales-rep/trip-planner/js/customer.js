@@ -114,7 +114,6 @@ define([], function () {
         });
 
         if (filterValue !== "All") {
-            console.log(bezl.data.CustList);
             //rebuild customer grid before filtering
             bezl.vars.customers = [];
 
@@ -164,6 +163,109 @@ define([], function () {
         }
 
         $("#customerGrid").jsGrid("loadData");
+        PlotData();
+    }
+
+    function PlotData(bezl) {
+        bezl.vars.markers = [];
+
+        bezl.vars.client = google.maps;
+        bezl.vars.geocoder = new google.maps.Geocoder();
+        bezl.vars.directionsService = new google.maps.DirectionsService;
+        bezl.vars.directionsDisplay = new google.maps.DirectionsRenderer();
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // First create the map
+                //console.log($(bezl.container.nativeElement).find("div#map"));
+                bezl.vars.map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: position.coords.latitude, lng: position.coords.longitude },
+                    scrollwheel: false,
+                    zoom: 10
+                });
+                bezl.vars.directionsDisplay.setMap(bezl.vars.map);
+                bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
+
+                // Create an infowindow
+                bezl.vars.infoWindow = new google.maps.InfoWindow;
+
+                // Drop a marker for home
+                var marker = new google.maps.Marker({
+                    position: { lat: position.coords.latitude, lng: position.coords.longitude },
+                    map: bezl.vars.map,
+                    label: 'A',
+                    title: 'You are here',
+                    data: '',
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                });
+
+                // Store the currently detected address
+                bezl.vars.geocoder.geocode({ 'location': marker.position }, function (results, status) {
+                    if (status === 'OK') {
+                        bezl.vars.currentAddress = results[0].formatted_address;
+                    } else {
+                        bezl.notificationService.showError('Geocoder failed due to: ' + status);
+                    }
+                });
+
+                marker.addListener('click', function () {
+                    bezl.vars.infoWindow.setContent(map.getInfoWindowContent('Current Location',
+                        bezl.vars.currentAddress,
+                        ''));
+                    bezl.vars.infoWindow.open(bezl.vars.map, marker);
+                });
+
+                bezl.vars.markers[0] = (marker);
+            });
+        } else {
+            bezl.notificationService.showError('MESSAGE: ' + "Geolocation is not supported by this browser.");
+        }
+
+        setTimeout(setFilterMap, 2500);
+
+        function setFilterMap() {
+            bezl.vars.customers.forEach(cust => {
+                if (cust.streetAddress != null) {
+                    if (cust.streetAddress.length > 3) {
+
+                        // Test to see whether we already saved the geocode.  If not, use the API to calculate it and save it
+                        if (cust.geocodeAddress == "" || cust.geocodeAddress == null) {
+                            map.geocodeAddress(
+                                bezl,
+                                {
+                                    streetAddress: cust.streetAddress,
+                                    title: cust.title,
+                                    custNum: cust.custNum,
+                                    shipToNum: cust.shipToNum,
+                                    data: cust
+                                }
+                            );
+                        } else {
+                            var marker = new bezl.vars.client.Marker({
+                                position: { lat: + parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]), lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1]) },
+                                map: bezl.vars.map,
+                                title: cust.title,
+                                data: cust,
+                                lat: parseFloat(cust.geocodeAddress.split(',')[0].split(':')[1]),
+                                lng: parseFloat(cust.geocodeAddress.split(',')[1].split(':')[1])
+                            });
+
+                            // Add a click handler
+                            marker.addListener('click', function () {
+                                customer.select(bezl, cust.custNum);
+                            });
+
+                            bezl.vars.markers[cust.custNum] = marker;
+                        }
+                    }
+                } else {
+                    console.log('Customer\'s address does not exist, Customer: ' + cust.Name);
+                }
+            });
+
+            map.calculateDistances(bezl);
+        }
     }
 
     function Remove(bezl, index) {
