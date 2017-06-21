@@ -109,7 +109,6 @@ define(["./map.js"], function (map) {
     function ApplyCategory(bezl, filterValue) {
         bezl.vars.custCategory = filterValue;
         bezl.vars.selectedCustomers = [];
-        bezl.vars.directionsDisplay.setDirections(null)
 
         bezl.vars.markers.forEach(mark => {
             mark.setMap(null);
@@ -189,6 +188,7 @@ define(["./map.js"], function (map) {
                 });
                 bezl.vars.directionsDisplay.setMap(bezl.vars.map);
                 bezl.vars.directionsDisplay.setPanel(document.getElementById('directions'));
+                bezl.vars.directionsDisplay.setDirections(null);
 
                 // Create an infowindow
                 bezl.vars.infoWindow = new google.maps.InfoWindow;
