@@ -1,0 +1,118 @@
+{  
+   "Roles": [
+        {  
+            "Path":"common",
+            "Name":"Common",
+            "Apps": [  
+                {  
+                    "Path" :"crystal-reports-viewer",
+                    "Name":"Crystal Reports Viewer",
+                    "icon":"fa-file-text-o",
+                    "shortDescription":"Refresh and view Crystal Reports",
+                    "description": [
+                        "This app allows you to view Crystal Reports within Bezlio.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Report data is refreshed and current automatically.</li>",
+                        "<li>If report requires parameters, the user will be prompted for them.</li>",
+                        "<li>Rendered as a PDF so viewable on all devices including smart phones.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
+        {
+            "Path":"production-team-leader",
+            "Name":"Production Team Leader",
+            "Apps": [  
+                {  
+                    "Path":"main-view",
+                    "Name":"Main View",
+                    "icon":"fa-users",
+                    "shortDescription":"Monitor and perform labor transactions for all members of your team",
+                    "description": [
+                        "This app allows a user to monitor and direct the current activities of each of the employees on their team.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Clock in / clock out multiple employees at once.</li>",
+                        "<li>Assign multiple employees to a specific task, selected from a searchable list.</li>",
+                        "<li>Easily add employees to a team from employee master records.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
+        {  
+            "Path":"sales-rep",
+            "Name":"Sales Rep",
+            "Apps": [  
+                {  
+                    "Path":"accounts-view",
+                    "Name":"Accounts View",
+                    "icon":"fa-addressbook",
+                    "shortDescription":"Listing of all accounts assigned to a sales rep with drill-down for details",
+                    "description": [
+                        "This app is the primary interface the sales rep role will interact with to view / select accounts.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Accounts list limited to those assigned to the logged in user.</li>",
+                        "<li>Instant searching by account name or ID.</li>",
+                        "<li>Drill down to view address and contact info with click to dial, click to navigate, click to e-mail.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "Path":"attachments-view",
+                    "Name":"Attachments View",
+                    "icon":"fa-paperclip",
+                    "shortDescription":"File attachments for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and shows the file attachments associated with a given account. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>File attachments can be loaded from either a database or network location.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "Path":"crm-calls-view",
+                    "Name":"CRM Calls View",
+                    "icon":"fa-phone",
+                    "shortDescription":"CRM calls for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view and add CRM calls. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Call history listed in a descending chronological order that is fully searchable.</li>",
+                        "<li>Call logs can instantly be added for a given account to be stored in the backend system.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "Path":"customer-price-list",
+                    "Name":"Customer Price List",
+                    "icon":"fa-usd",
+                    "shortDescription":"Price list for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view the price list."
+                    ]
+                },
+                {  
+                    "Path":"invoice-inquiry",
+                    "Name":"Invoice Inquiry",
+                    "icon":"fa-question",
+                    "shortDescription":"Invoice history for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view invoice history with drill-down. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Invoices can be searched by date range.</li>",
+                        "<li>Invoices can be instantly sorted by any column.</li>",
+                        "<li>Drill-down to view invoice line details.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        }
+    ]
+}
