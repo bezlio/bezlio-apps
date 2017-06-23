@@ -22,21 +22,447 @@ define(function () {
                 }
             }
         }      
+
+        //Make buttons visible/invisible.
+        if (bezl.vars.filterEdiStatus == 'H'){
+            var div = document.getElementById('btnDelete');
+            div.style.display = '';
+            var div = document.getElementById('btnApprove');
+            div.style.display = '';
+        }     
+        else if (bezl.vars.filterEdiStatus == 'A' || bezl.vars.filterEdiStatus == 'D'){
+            var div = document.getElementById('btnDelete');
+            div.style.display = 'none';
+            var div = document.getElementById('btnApprove');
+            div.style.display = 'none';  
+        }
+
+        //Loop through user for user rights.
+        for (var key in bezl.vars.user.USER_DOCS){
+            var obj = bezl.vars.user.USER_DOCS[key];
+
+            if (obj["DOCUMENT_TYPE"] == '850'){
+                for (var prop in obj) {
+                    switch (prop.toString()){
+                        case "MODIFY_DOC":
+                            if (obj[prop] == false){
+                                    //Make buttons visible/invisible.
+                                    var div = document.getElementById('btnApprove');
+                                    div.style.display = 'none';
+                                    var div = document.getElementById('btnDelete');
+                                    div.style.display = 'none';  
+                            }
+                    }
+                }
+            }
+        }
     }
-  
+    
+    function SelectAll(bezl) {
+        for (var key in bezl.vars.datasub){
+            var obj = bezl.vars.datasub[key];
+
+            if (obj['EDI_STATUS'] == bezl.vars.filterEdiStatus){
+                obj['APPROVE'] = true;
+            }
+        }
+    }
+
+    function SelectNone(bezl) {
+        for (var key in bezl.vars.datasub){
+            var obj = bezl.vars.datasub[key];
+
+            if (obj['EDI_STATUS'] == bezl.vars.filterEdiStatus){
+                obj['APPROVE'] = false;
+            }
+        }
+    }
+
     function RunQuery (bezl, queryName) {
         switch (queryName) {
+            case "GetUserSettings":
+                var user;
+                
+                //Get the current login user.
+                user = bezl.env.currentUser;
+
+                bezl.dataService.add('user','brdb','EDI','GetUserSettings', { 
+                    "QueryName": "GetUserSettings",
+                    "Connection": "SQLConnection",
+                    "Parameters": [
+                        { "Key": "@EMAIL", "Value": user },
+                    ] },0);
+
+                break;
+
             case "GetDashHeaderData":
                 // Pull in the header data for the logged in user
+                var parameters = [], parameterCount = 0;
+                
+                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '850' };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SEARCHVALUE", "Value": bezl.vars.search };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SITE_ID", "Value": bezl.vars.siteId };
+                parameterCount = parameterCount + 1;
+
+                //Get User ID.
+                for (var key in bezl.vars.user.USERS){
+                    var obj = bezl.vars.user.USERS[key];
+
+                    for (var prop in obj){
+                        switch (prop.toString()){
+                            case "EDI_SL_USER_ID":
+                                parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ENABLED":
+                                parameters[parameterCount] = { "Key": "@USER_ENABLED", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+
+                //Loop through user for user rights.
+                for (var key in bezl.vars.user.USER_DOCS){
+                    var obj = bezl.vars.user.USER_DOCS[key];
+                    
+                    if (obj["DOCUMENT_TYPE"] == '850'){
+                        for (var prop in obj) {
+                            switch (prop.toString()){
+                                case "DELETE_DATE":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_DELETE_DATE", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "IS_ENABLED":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_IS_ENABLED", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "MODIFY_DOC":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_MODIFY_DOC", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+
+                                    if (obj[prop] == false){
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnApprove');
+                                            div.style.display = 'none';
+                                            var div = document.getElementById('btnDelete');
+                                            div.style.display = 'none';  
+                                    }
+                                    else {
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnApprove');
+                                            div.style.display = '';
+                                            var div = document.getElementById('btnDelete');
+                                            div.style.display = '';  
+                                    }                                   
+                                    break;
+                                case "VIEW_DOC":
+                                    parameters[parameterCount] = { "Key": "@USER_DOCS_VIEW_DOC", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                            }
+                        }
+                    }
+                }
+
                 bezl.dataService.add('datasub','brdb','EDI','GetDashHeaderData', { 
                     "QueryName": "GetDashHeaderData",
-                    "Connection": "DEV-EDI01",
+                    "Connection": "SQLConnection",
+                    "Parameters": parameters },0);
+
+                break;
+
+            case "GetViewDetails":
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','GetViewDetails', { 
+                    "QueryName": "GetViewDetails",
+                    "Connection": "SQLConnection",
                     "Parameters": [
-                        { "Key": "@SITE_ID", "Value": ' ' },
-                        { "Key": "@USER_ID", "Value": '1' },
-                        { "Key": "@DOC_TYPE", "Value": '850' },
-                        { "Key": "@SEARCHVALUE", "Value": bezl.vars.search }
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
                     ] },0);
+
+                //Make buttons visible/invisible.
+                if (bezl.vars.filterEdiStatus == 'H'){
+                    var div = document.getElementById('btnRevalidate');
+                    div.style.display = '';
+                    var div = document.getElementById('btnSave');
+                    div.style.display = '';
+                }     
+                else if (bezl.vars.filterEdiStatus == 'A' || bezl.vars.filterEdiStatus == 'D'){
+                    var div = document.getElementById('btnRevalidate');
+                    div.style.display = 'none';
+                    var div = document.getElementById('btnSave');
+                    div.style.display = 'none';  
+                }
+
+                //Loop through user for user rights.
+                for (var key in bezl.vars.user.USER_DOCS){
+                    var obj = bezl.vars.user.USER_DOCS[key];
+
+                    if (obj["DOCUMENT_TYPE"] == '850'){
+                        for (var prop in obj) {
+                            switch (prop.toString()){
+                                case "MODIFY_DOC":
+                                    if (obj[prop] == false){
+                                            //Make buttons visible/invisible.
+                                            var div = document.getElementById('btnRevalidate');
+                                            div.style.display = 'none';
+                                            var div = document.getElementById('btnSave');
+                                            div.style.display = 'none';  
+                                    }                               
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                break;
+
+            case "GetViewFile":
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewfile','brdb','EDI','GetViewFile', { 
+                    "QueryName": "GetViewFile",
+                    "Connection": "SQLConnection",
+                    "Parameters": [
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
+                    ] },0);
+
+                break;
+
+            case "Revalidate":
+                var parameters = [], parameterCount = 0
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.viewdetails.HEADER){
+                    var obj = bezl.vars.viewdetails.HEADER[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "DESIRED_SHIP_DATE":
+                                parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "DOCUMENT_TYPE":
+                                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ORDER_STATUS":
+                                parameters[parameterCount] = { "Key": "@ORDER_STATUS", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIP_VIA":
+                                parameters[parameterCount] = { "Key": "@SHIP_VIA", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIPTO_ID":
+                                parameters[parameterCount] = { "Key": "@SHIPTO_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+                
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.OVERRIDES){
+                    var obj = bezl.vars.viewdetails.OVERRIDES[key];
+
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.ITEMS){
+                    var obj = bezl.vars.viewdetails.ITEMS[key];
+                    
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','Revalidate', { 
+                    "QueryName": "Revalidate",
+                    "Connection": "SQLConnection",
+                    "Parameters": parameters },0);
+
+                break;
+            case "Save":
+                var parameters = [], parameterCount = 0
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.viewdetails.HEADER){
+                    var obj = bezl.vars.viewdetails.HEADER[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "DESIRED_SHIP_DATE":
+                                parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "DOCUMENT_TYPE":
+                                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ORDER_STATUS":
+                                parameters[parameterCount] = { "Key": "@ORDER_STATUS", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIP_VIA":
+                                parameters[parameterCount] = { "Key": "@SHIP_VIA", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "SHIPTO_ID":
+                                parameters[parameterCount] = { "Key": "@SHIPTO_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+                
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.OVERRIDES){
+                    var obj = bezl.vars.viewdetails.OVERRIDES[key];
+
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@OVERRIDES_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                //Loop through overrides for override information.
+                for (var key in bezl.vars.viewdetails.ITEMS){
+                    var obj = bezl.vars.viewdetails.ITEMS[key];
+                    
+                    for (var prop in obj) {
+                        parameters[parameterCount] = { "Key": "@ITEMS_" + prop.toString(), "Value": obj[prop] };
+                        parameterCount = parameterCount + 1;
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('viewdetails','brdb','EDI','SaveDetails', { 
+                    "QueryName": "SaveDetails",
+                    "Connection": "SQLConnection",
+                    "Parameters": parameters },0);
+
+                break;
+
+            case "Delete":
+                var parameters = [], parameterCount = 0
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.datasub){
+                    var obj = bezl.vars.datasub[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "APPROVE":
+                                parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+                
+                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '850' };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SEARCHVALUE", "Value": bezl.vars.search };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@SITE_ID", "Value": bezl.vars.siteId };
+                parameterCount = parameterCount + 1;
+
+                //Get User ID.
+                for (var key in bezl.vars.user.USERS){
+                    var obj = bezl.vars.user.USERS[key];
+
+                    for (var prop in obj){
+                        switch (prop.toString()){
+                            case "EDI_SL_USER_ID":
+                                parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "ENABLED":
+                                parameters[parameterCount] = { "Key": "@USER_ENABLED", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('datasub','brdb','EDI','Delete', { 
+                    "QueryName": "Delete",
+                    "Connection": "SQLConnection",
+                    "Parameters": parameters },0);
+
+                break;
+
+            case "Approve":
+                var parameters = [], parameterCount = 0
+
+                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '850' };
+                parameterCount = parameterCount + 1;
+
+                //Loop through header for header information.
+                for (var key in bezl.vars.datasub){
+                    var obj = bezl.vars.datasub[key];
+
+                    for (var prop in obj) {
+                        switch (prop.toString()){
+                            case "APPROVE":
+                                parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_DASH_HEADER_ID":
+                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_SL_FILE_ID":
+                                parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "CUSTOMER_PO_REF":
+                                parameters[parameterCount] = { "Key": "@CUSTOMER_PO_REF", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                        }
+                    }
+                }
+
+                // Pull in the header data for the logged in user
+                bezl.dataService.add('approve','brdb','EDI','Approve', { 
+                    "QueryName": "Approve",
+                    "Connection": "SQLConnection",
+                    "Parameters": parameters },0);
 
                 break;
         }
@@ -172,6 +598,8 @@ define(function () {
 
     return {
         filterEdiStatus: FilterEdiStatus,
+        selectAll: SelectAll,
+        selectNone: SelectNone,
         runQuery: RunQuery,
         filterBy: FilterBy,
         sort: Sort
