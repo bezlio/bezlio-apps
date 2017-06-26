@@ -119,6 +119,83 @@
                         "<li>Drill-down to view invoice line details.</li>",
                         "</ul>"
                     ]
+                },
+                {  
+                    "path":"map-view",
+                    "name":"Map View",
+                    "icon":"fa-map",
+                    "class":"",
+                    "shortDescription":"A CRM and mapping bezl for sales reps",
+                    "description": [
+                        "The sales rep role is currently comprised of a single Bezl that does the following: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Allow a sales rep to see all of their assigned customers both in a grid and map view with searching.</li>",
+                        "<li>Reorient the map center point to any address and the customer listing will be updated to reflect appropriate distances.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"order-inquiry",
+                    "name":"Order Inquiry",
+                    "icon":"fa-question",
+                    "class":"",
+                    "shortDescription":"Order history for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view order history with drill-down. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Orders can be searched by date range.</li>",
+                        "<li>Orders can be instantly sorted by any column.</li>",
+                        "<li>Drill-down to view order line details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"rma-inquiry",
+                    "name":"RMA Inquiry",
+                    "icon":"fa-question",
+                    "class":"",
+                    "shortDescription":"RMA history for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view RMA history with drill-down. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>RMAs can be searched by date range.</li>",
+                        "<li>RMSa can be instantly sorted by any column.</li>",
+                        "<li>Drill-down to view RMA line details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"tasks-view",
+                    "name":"Tasks View",
+                    "icon":"fa-check-square-o",
+                    "class":"",
+                    "shortDescription":"Tasks for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view and add account-specific tasks. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Tasks can be added and updated.</li>",
+                        "<li>Drill-down to view further task details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"trip-planner",
+                    "name":"Trip Planner",
+                    "icon":"fa-map-pin",
+                    "class":"",
+                    "shortDescription":"Plan an optimized route to visit accounts",
+                    "description": [
+                        "This app pulls your account list and allows you to plan an optimized trip using Google Maps. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Route is optimized for selected accounts.</li>",
+                        "<li>GPS navigation integration with Google Maps.</li>",
+                        "</ul>"
+                    ]
                 }
             ]
         }
