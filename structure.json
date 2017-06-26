@@ -1,14 +1,15 @@
 
 {  
-   "Roles": [
+   "roles": [
         {  
-            "Path":"common",
-            "Name":"Common",
-            "Apps": [  
+            "path":"roles/common",
+            "name":"Common",
+            "apps": [  
                 {  
-                    "Path" :"crystal-reports-viewer",
-                    "Name":"Crystal Reports Viewer",
+                    "path" :"crystal-reports-viewer",
+                    "name":"Crystal Reports Viewer",
                     "icon":"fa-file-text-o",
+                    "class":"",
                     "shortDescription":"Refresh and view Crystal Reports",
                     "description": [
                         "This app allows you to view Crystal Reports within Bezlio.  Key features include: <br />",
@@ -23,13 +24,14 @@
             ]
         },
         {
-            "Path":"production-team-leader",
-            "Name":"Production Team Leader",
-            "Apps": [  
+            "path":"roles/production-team-leader",
+            "name":"Production Team Leader",
+            "apps": [  
                 {  
-                    "Path":"main-view",
-                    "Name":"Main View",
+                    "path":"main-view",
+                    "name":"Main View",
                     "icon":"fa-users",
+                    "class":"",
                     "shortDescription":"Monitor and perform labor transactions for all members of your team",
                     "description": [
                         "This app allows a user to monitor and direct the current activities of each of the employees on their team.  Key features include: <br />",
@@ -44,13 +46,14 @@
             ]
         },
         {  
-            "Path":"sales-rep",
-            "Name":"Sales Rep",
-            "Apps": [  
+            "path":"roles/sales-rep",
+            "name":"Sales Rep",
+            "apps": [  
                 {  
-                    "Path":"accounts-view",
-                    "Name":"Accounts View",
+                    "path":"accounts-view",
+                    "name":"Accounts View",
                     "icon":"fa-addressbook",
+                    "class":"",
                     "shortDescription":"Listing of all accounts assigned to a sales rep with drill-down for details",
                     "description": [
                         "This app is the primary interface the sales rep role will interact with to view / select accounts.  Key features include: <br />",
@@ -63,9 +66,10 @@
                     ]
                 },
                 {  
-                    "Path":"attachments-view",
-                    "Name":"Attachments View",
+                    "path":"attachments-view",
+                    "name":"Attachments View",
                     "icon":"fa-paperclip",
+                    "class":"",
                     "shortDescription":"File attachments for the selected account",
                     "description": [
                         "This app works in conjunction with Sales Rep - Accounts View and shows the file attachments associated with a given account. Key features include: <br />",
@@ -76,9 +80,10 @@
                     ]
                 },
                 {  
-                    "Path":"crm-calls-view",
-                    "Name":"CRM Calls View",
+                    "path":"crm-calls-view",
+                    "name":"CRM Calls View",
                     "icon":"fa-phone",
+                    "class":"",
                     "shortDescription":"CRM calls for the selected account",
                     "description": [
                         "This app works in conjunction with Sales Rep - Accounts View and allows the user to view and add CRM calls. Key features include: <br />",
@@ -90,18 +95,20 @@
                     ]
                 },
                 {  
-                    "Path":"customer-price-list",
-                    "Name":"Customer Price List",
+                    "path":"customer-price-list",
+                    "name":"Customer Price List",
                     "icon":"fa-usd",
+                    "class":"",
                     "shortDescription":"Price list for the selected account",
                     "description": [
                         "This app works in conjunction with Sales Rep - Accounts View and allows the user to view the price list."
                     ]
                 },
                 {  
-                    "Path":"invoice-inquiry",
-                    "Name":"Invoice Inquiry",
+                    "path":"invoice-inquiry",
+                    "name":"Invoice Inquiry",
                     "icon":"fa-question",
+                    "class":"",
                     "shortDescription":"Invoice history for the selected account",
                     "description": [
                         "This app works in conjunction with Sales Rep - Accounts View and allows the user to view invoice history with drill-down. Key features include: <br />",
