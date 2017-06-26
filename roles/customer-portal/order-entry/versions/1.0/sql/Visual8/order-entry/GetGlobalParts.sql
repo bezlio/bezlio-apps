@@ -1,0 +1,15 @@
+SELECT 
+	p.ID AS PartNum, 
+	p.DESCRIPTION AS PartDescription, 
+	p.PRODUCT_CODE AS ProdCode, 
+	p.STOCK_UM as UOM, 
+	ps.UNIT_PRICE as UnitPrice, 
+	p.QTY_ON_HAND as QOH
+FROM 
+	PART p WITH (NOLOCK) 
+
+	INNER JOIN PART_SITE ps WITH (NOLOCK) ON
+	ps.PART_ID = p.ID 
+
+WHERE
+	ps.SITE_ID='TFI'
