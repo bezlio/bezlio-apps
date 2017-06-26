@@ -1,8 +1,8 @@
 ﻿{
-  "id": "88bf0b7f-3382-4269-8256-957a7aad15cc",
+  "id": "4a82fc1f-4ca0-4434-a3be-e27f07c774f5",
   "name": "Trip Planner",
   "template": "custom",
-  "owner": "sremington@saberlogic.com",
+  "owner": "rschnable@saberlogic.com",
   "shares": [],
   "vars": [],
   "dataSubscriptions": [],
@@ -102,9 +102,9 @@
     "              <div id=\"directions\"></div>",
     "            </div>",
     "          </div>",
-    "          <div class=\"col-sm-5\">",
+    "          <div class=\"col-sm-3\">",
     "            <div class=\"row\">",
-    "              <div class=\"col-sm-12 form-horizontal\">",
+    "              <div class=\"col-sm-8 form-horizontal\">",
     "                <div class=\"control-group row-fluid form-inline\">",
     "                  <label for=\"js-typeahead-customers\" class=\"control-label\">Search</label>",
     "                  <div class=\"controls\">",
@@ -118,6 +118,12 @@
     "                  </div>",
     "                </div>",
     "              </div>",
+    "              <div class=\"col-sm-4 form-horizontal\">",
+    "                <label for=\"customerFilter\" class=\"control-label\">Filter</label>",
+    "    \t\t\t<select class=\"form-control\" name=\"customerFilter\" [ngModel]=\"bezl.vars.custCategory\" (ngModelChange)=\"bezl.functions.onCategoryChange($event)\">",
+    "    \t\t\t\t<option *ngFor=\"let cat of bezl.data.Categories\" [ngValue]=cat.Type>{{cat.Type}}</option>",
+    "    \t\t\t</select>",
+    "   \t\t\t  </div>",
     "            </div>",
     "            ",
     "            <!-- Normal View -->",
@@ -154,7 +160,7 @@
     "                  <tr class=\"read\" *ngFor=\"let item of bezl.vars.customers\" (click)=\"bezl.functions['customerSelect'](item.key)\">",
     "                   \t<div class=\"row col-md-12\">",
     "                      <br>",
-    "                      <div class=\"col-md-2\"><button (click)=\"bezl.functions['customerAdd'](item)\" class=\"btn btn-sm btn-primary\">+</button></div>",
+    "                      <div class=\"col-md-2\"><button (click)=\"bezl.functions.customerAdd(item)\" class=\"btn btn-sm btn-primary\">+</button></div>",
     "                      <div class=\"col-md-6\">{{item.display}}</div>",
     "                      <div class=\"col-md-4\" align=\"right\">{{item.distance}}</div>",
     "                    </div>",
@@ -213,7 +219,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.selectedCustomers = [];\nbezl.vars.loading = { \n  customerList: true\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(onStartup) {\n  onStartup.onStartup(bezl);\n});",
+      "code": "bezl.vars.currentAddress = \"\";\nbezl.vars.markers = [];\nbezl.vars.customers = [];\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\nbezl.vars.selectedCustomers = [];\nbezl.vars.custCategory = 'All';\nbezl.vars.Column = 'CustomerType';\nbezl.vars.loading = { \n  customerList: true\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(onStartup) {\n  onStartup.onStartup(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -221,7 +227,7 @@
         "dataResp",
         "require"
       ],
-      "compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.selectedCustomers = [];\r\nbezl.vars.loading = {\r\n    customerList: true\r\n};\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (onStartup) {\r\n    onStartup.onStartup(bezl);\r\n});\r\n"
+      "compiled": "bezl.vars.currentAddress = \"\";\r\nbezl.vars.markers = [];\r\nbezl.vars.customers = [];\r\nbezl.vars.selectedCustomer = { \"CustNum\": 0 };\r\nbezl.vars.selectedCustomers = [];\r\nbezl.vars.custCategory = 'All';\r\nbezl.vars.Column = 'CustomerType';\r\nbezl.vars.loading = {\r\n    customerList: true\r\n};\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (onStartup) {\r\n    onStartup.onStartup(bezl);\r\n});\r\n"
     },
     {
       "method": "onDataChange",
@@ -366,6 +372,18 @@
         "require"
       ],
       "compiled": "require([bezl.vars.config.baseJsUrl + 'map.js'], function (map) {\r\n    map.openMap(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "onCategoryChange",
+      "code": "require([bezl.vars.config.baseJsUrl + 'customer.js'], function(functions) {\n\tfunctions.applyCategory(bezl, parm)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'customer.js'], function (functions) {\r\n    functions.applyCategory(bezl, parm);\r\n});\r\n"
     }
   ],
   "data": ""
