@@ -154,13 +154,6 @@ define(function () {
 
             bezl.data.Quotes.splice(bezl.data.Quotes.indexOf(hed => hed.QuoteNum === quoteNum), 1);
 
-            // for (var x = 0; x < bezl.data.Quotes.length; x++) {
-            //     //console.log(bezl.data.Quotes[x].QuoteNum);
-            //     if (bezl.data.Quotes[x].QuoteNum === quoteNum) {
-            //         console.log("slicing");
-            //         bezl.data.Quotes.splice(x, 1);
-            //     }
-            // }
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
             });
