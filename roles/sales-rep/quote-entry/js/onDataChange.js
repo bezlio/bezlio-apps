@@ -159,9 +159,12 @@ define(function () {
             for (var x = 0; x < bezl.data.Quotes.length; x++) {
                 //console.log(bezl.data.Quotes[x].QuoteNum);
                 if (bezl.data.Quotes[x].QuoteNum === quoteNum) {
+                    console.log("slicing");
                     bezl.data.Quotes.slice(x);
                 }
             }
+
+            console.log(bezl.data.Quotes);
 
             // console.log(bezl.data.Quotes.indexOf(hed => hed.QuoteNum.toString() === quoteNum.toString()));
 
