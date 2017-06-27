@@ -74,10 +74,59 @@ define(function () {
         }
     }
 
+    function Sort(bezl, sortColumn) {
+
+        // If the previous sort column was picked, make it the opposite sort
+        if (bezl.vars.sortCol == sortColumn) {
+            if (bezl.vars.sort == "desc") {
+                bezl.vars.sort = "asc";
+            } else {
+                bezl.vars.sort = "desc";
+            }
+        } else {
+            bezl.vars.sort = "asc";
+        }
+        
+        // Store the sort column so the UI can reflect it
+        bezl.vars.sortCol = sortColumn;
+
+        // Sort alphabetic
+        if (bezl.vars.sort == "asc") { 
+            bezl.vars.ReportListing.sort(function(a, b) {
+                var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                if (A < B) {
+                    return -1;
+                }
+                if (A > B) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
+            });
+        } else {
+            bezl.vars.ReportListing.sort(function(a, b) {
+                var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                if (A > B) {
+                    return -1;
+                }
+                if (A < B) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
+            });
+        }
+    }
+
     return {
         runQuery: RunQuery,
         runReport: RunReport,
         addParameterValue: AddParameterValue,
-        back: Back
+        back: Back,
+        sort: Sort
     }
 });
