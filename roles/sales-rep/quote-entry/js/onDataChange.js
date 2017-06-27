@@ -159,7 +159,7 @@ define(function () {
             for (var x = 0; x < bezl.data.Quotes.length; x++) {
                 //console.log(bezl.data.Quotes[x].QuoteNum);
                 if (bezl.data.Quotes[x].QuoteNum === quoteNum) {
-                    bezl.data.Quotes.slice(x, x + 1);
+                    bezl.data.Quotes.slice(x);
                 }
             }
 
