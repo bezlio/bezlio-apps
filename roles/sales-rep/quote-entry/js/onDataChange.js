@@ -157,9 +157,9 @@ define(function () {
             //bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
 
             for (var x = 0; x < bezl.data.Quotes.length; x++) {
-                console.log(bezl.data.Quotes[x].QuoteNum);
+                //console.log(bezl.data.Quotes[x].QuoteNum);
                 if (bezl.data.Quotes[x].QuoteNum === quoteNum) {
-                    console.log(bezl.data.Quotes[x]);
+                    bezl.data.Quotes.slice(x, x + 1);
                 }
             }
 
