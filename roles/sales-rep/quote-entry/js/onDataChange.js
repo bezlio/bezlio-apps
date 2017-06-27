@@ -152,17 +152,18 @@ define(function () {
 
             bezl.vars.deleting = false;
 
-            console.log(quoteNum);
-            console.log(bezl.data.Quotes);
+            // console.log(quoteNum);
+            // console.log(bezl.data.Quotes);
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
 
             for (var x = 0; x < bezl.data.Quotes.length; x++) {
+                console.log(bezl.data.Quotes[x].QuoteNum);
                 if (bezl.data.Quotes[x].QuoteNum === quoteNum) {
                     console.log(bezl.data.Quotes[x]);
                 }
             }
 
-            console.log(bezl.data.Quotes.indexOf(hed => hed.QuoteNum.toString() === quoteNum.toString()));
+            // console.log(bezl.data.Quotes.indexOf(hed => hed.QuoteNum.toString() === quoteNum.toString()));
 
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
