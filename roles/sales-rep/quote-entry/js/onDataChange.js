@@ -160,6 +160,8 @@ define(function () {
             console.log(bezl.data.Quotes);
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
 
+            console.log(bezl.data.Quotes.indexOf(hed => hed.QuoteNum === quoteNum));
+
             bezl.dataService.remove('deleteQuote');
         }
     }
