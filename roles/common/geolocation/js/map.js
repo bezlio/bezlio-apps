@@ -174,7 +174,7 @@ define([], function () {
 
     function updateGeo(bezl, customerRecord, g) {
          // Update the database so we don't need to look this up next time
-            bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum,'brdb','sales-rep-queries','ExecuteNonQuery',
+            bezl.dataService.add('SetGeocodeOnAddress_' + customerRecord.custNum.slice(0,25),'brdb','sales-rep-queries','ExecuteNonQuery',
                                 { "QueryName": "/Geocoder/SetGeocodeOnAddress",
                                     "Parameters": [
                                         { "Key": "Geocode_Location", "Value": g || '' },
