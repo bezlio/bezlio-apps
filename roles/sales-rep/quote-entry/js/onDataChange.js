@@ -155,9 +155,12 @@ define(function () {
             });
 
             bezl.vars.deleting = false;
-            bezl.dataService.remove('deleteQuote');
 
+            console.log(quoteNum);
+            console.log(bezl.data.Quotes);
             bezl.data.Quotes = bezl.data.Quotes.filter(hed => hed.QuoteNum !== quoteNum);
+
+            bezl.dataService.remove('deleteQuote');
         }
     }
 
