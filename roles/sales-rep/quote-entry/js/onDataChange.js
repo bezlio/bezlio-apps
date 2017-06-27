@@ -160,7 +160,7 @@ define(function () {
                 //console.log(bezl.data.Quotes[x].QuoteNum);
                 if (bezl.data.Quotes[x].QuoteNum === quoteNum) {
                     console.log("slicing");
-                    bezl.data.Quotes = JSON.parse(JSON.stringify(bezl.data.Quotes.slice(x)));
+                    bezl.data.Quotes.splice(x, 1);
                 }
             }
 
