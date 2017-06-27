@@ -92,7 +92,7 @@ define(function () {
 
         // Sort alphabetic
         if (bezl.vars.sort == "asc") { 
-            bezl.vars.ReportListing.sort(function(a, b) {
+            bezl.data.ReportListing.sort(function(a, b) {
                 var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
                 var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                 if (A < B) {
@@ -106,7 +106,7 @@ define(function () {
                 return 0;
             });
         } else {
-            bezl.vars.ReportListing.sort(function(a, b) {
+            bezl.data.ReportListing.sort(function(a, b) {
                 var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
                 var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                 if (A > B) {
