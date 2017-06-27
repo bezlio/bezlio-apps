@@ -1,5 +1,5 @@
 ﻿{
-  "id": "f9f28b38-f069-46ef-8d9c-9ecf981d4f3d",
+  "id": "82623859-9cd6-4ceb-9e80-3c8ea7cca50b",
   "name": "Crystal Reports Viewer",
   "template": "custom",
   "owner": "sremington@saberlogic.com",
@@ -37,15 +37,15 @@
     "                        class=\"btn btn-default\">",
     "                  <span class=\"pull-left\">Report Name</span>",
     "                  <i class=\"fa fa-sort-alpha-asc pull-right\" aria-hidden=\"true\" ",
-    "                     *ngIf=\"bezl.vars.sortCol == 'ID' && bezl.vars.sort == 'asc'\"></i>",
+    "                     *ngIf=\"bezl.vars.sortCol == 'BaseName' && bezl.vars.sort == 'asc'\"></i>",
     "                  <i class=\"fa fa-sort-alpha-desc pull-right\" aria-hidden=\"true\" ",
-    "                     *ngIf=\"bezl.vars.sortCol == 'ID' && bezl.vars.sort == 'desc'\"></i>",
+    "                     *ngIf=\"bezl.vars.sortCol == 'BaseName' && bezl.vars.sort == 'desc'\"></i>",
     "                </button>",
     "                </div>",
     "                    <div class=\"btn-group\">",
     "                    <button class=\"btn btn-default\" ",
     "                        *ngIf=\"!bezl.vars.reportListingLoading\"",
-    "                        (click)=\"bezl.vars.reportListingLoading = true; bezl.dataService.process('ReportListing')\">",
+    "                        (click)=\"bezl.functions['refresh']()\">",
     "             \t\t\t <i class=\"fa fa-refresh\" aria-hidden=\"true\"></i> Refresh",
     "                    </button>",
     "              </div>",
@@ -529,7 +529,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: The version number of this app. Setting this vill use the javascript\n//          include files in the corresponding \"versions\" subfolder. An empty string\n//          will use the \"development\" javascript files in the root directory.\n// libVersion: The version number of the library javascript include files to use.\n// baseUrl: The base URL of the javascript include files. Generally this should be an\n//          empty string and the correct path will be automatically determined.\n//          However, for development you may wish to point this to a RawGit URL of\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\nbezl.vars.config.version = \"1.0\";\nbezl.vars.config.libVersion = \"1.0\";\nbezl.vars.config.baseUrl = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/roles/common/crystal-reports-viewer/\"\n  \t\t\t\t\t\t\t+ (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t\t+ \"js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/libraries/\"\n\t\t\t\t\t\t\t+ (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\")",
+      "code": "bezl.vars.config = {};\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: The version number of this app. Setting this vill use the javascript\n//          include files in the corresponding \"versions\" subfolder. An empty string\n//          will use the \"development\" javascript files in the root directory.\n// libVersion: The version number of the library javascript include files to use.\n// baseUrl: The base URL of the javascript include files. Generally this should be an\n//          empty string and the correct path will be automatically determined.\n//          However, for development you may wish to point this to a RawGit URL of\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\nbezl.vars.config.version = \"1.1\";\nbezl.vars.config.libVersion = \"1.0\";\nbezl.vars.config.baseUrl = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/roles/common/crystal-reports-viewer/\"\n  \t\t\t\t\t\t\t+ (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t\t+ \"js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/libraries/\"\n\t\t\t\t\t\t\t+ (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\")",
       "declares": [
         "$",
         "parm",
@@ -538,7 +538,33 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "bezl.vars.config = {};\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: The version number of this app. Setting this vill use the javascript\r\n//          include files in the corresponding \"versions\" subfolder. An empty string\r\n//          will use the \"development\" javascript files in the root directory.\r\n// libVersion: The version number of the library javascript include files to use.\r\n// baseUrl: The base URL of the javascript include files. Generally this should be an\r\n//          empty string and the correct path will be automatically determined.\r\n//          However, for development you may wish to point this to a RawGit URL of\r\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\nbezl.vars.config.version = \"1.0\";\r\nbezl.vars.config.libVersion = \"1.0\";\r\nbezl.vars.config.baseUrl = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/common/crystal-reports-viewer/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\" + (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\");\r\n"
+      "compiled": "bezl.vars.config = {};\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: The version number of this app. Setting this vill use the javascript\r\n//          include files in the corresponding \"versions\" subfolder. An empty string\r\n//          will use the \"development\" javascript files in the root directory.\r\n// libVersion: The version number of the library javascript include files to use.\r\n// baseUrl: The base URL of the javascript include files. Generally this should be an\r\n//          empty string and the correct path will be automatically determined.\r\n//          However, for development you may wish to point this to a RawGit URL of\r\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\nbezl.vars.config.version = \"1.1\";\r\nbezl.vars.config.libVersion = \"1.0\";\r\nbezl.vars.config.baseUrl = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/common/crystal-reports-viewer/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\" + (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\");\r\n"
+    },
+    {
+      "method": "sort",
+      "code": "require([bezl.vars.config.baseJsUrl + 'report.js'], function(functions) {\n\tfunctions.sort(bezl, parm)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'report.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
+    },
+    {
+      "method": "refresh",
+      "code": "bezl.vars.reportListingLoading = true;\nbezl.vars.sort = \"\";\nbezl.vars.sortCol = \"\";\nbezl.dataService.process('ReportListing')",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.vars.reportListingLoading = true;\r\nbezl.vars.sort = \"\";\r\nbezl.vars.sortCol = \"\";\r\nbezl.dataService.process('ReportListing');\r\n"
     }
   ],
   "data": ""
