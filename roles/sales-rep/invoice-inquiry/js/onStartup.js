@@ -22,7 +22,7 @@ define(["./invoice.js"], function (invoice) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
-                invoice.runQuery(bezl, 'Accounts');
+                invoice.runQuery(bezl, 'Invoices');
             }
 
         // Set up event handler for selection of customer on account view
