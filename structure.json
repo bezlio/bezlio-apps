@@ -20,6 +20,22 @@
                         "<li>Rendered as a PDF so viewable on all devices including smart phones.</li>",
                         "</ul>"
                     ]
+                },
+                {  
+                    "path" :"geolocation",
+                    "name":"Geocoder",
+                    "icon":"fa-globe",
+                    "class":"",
+                    "shortDescription":"Geocode your customer's addresses",
+                    "description": [
+                        "This app allows you to geocode your customer's addresses.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Geocodes customer addresses.</li>",
+                        "<li>Stores coordinates for other apps to use.</li>",
+                        "<li>Easy to use.</li>",
+                        "</ul>"
+                    ]
                 }
             ]
         },
