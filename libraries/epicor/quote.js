@@ -128,6 +128,8 @@ define(function () {
                             ]
                         }, 0)
 
+                        console.log((attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ');
+
                         attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
                     }
 
