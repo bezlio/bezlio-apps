@@ -26,6 +26,10 @@ define(function () {
             var viewer = $(bezl.container.nativeElement).find('#viewer')[0];
             viewer.src = fileURL;  
             bezl.vars.reportLoading = false;
+
+            // Clean up data subscription as we no longer need it
+            bezl.dataService.remove('Report');
+            bezl.data.Report = null;
         }
 
         if (bezl.data.SaveReport) {
