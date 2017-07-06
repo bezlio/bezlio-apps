@@ -34,7 +34,7 @@ define(function () {
 
         if (bezl.data.SaveReport) {
             var sliceSize = 1024;
-            var byteCharacters = atob(bezl.data.Report);
+            var byteCharacters = atob(bezl.data.SaveReport);
             var bytesLength = byteCharacters.length;
             var slicesCount = Math.ceil(bytesLength / sliceSize);
             var byteArrays = new Array(slicesCount);
