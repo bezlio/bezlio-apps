@@ -46,7 +46,15 @@ define(function () {
 
             var file = new Blob(byteArrays, {type: 'application/pdf'});
             var fileURL = URL.createObjectURL(file);
-            window.open(fileURL);
+
+            //window.open(fileURL);
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+            a.href = fileURL;
+            a.download = bezl.vars.selectedReport.BaseName;
+            a.click();
+            window.URL.revokeObjectURL(fileURL);
 
             bezl.vars.reportLoading = false;
 
