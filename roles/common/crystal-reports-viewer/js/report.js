@@ -47,7 +47,7 @@ define(function () {
         }
     }
 
-    function SaveReport (bezl, parm, saveAsType) {
+    function SaveReport (bezl, parm, getAsType) {
         bezl.vars.reportLoading = true;
         bezl.vars.reportSelected = true;
         bezl.vars.selectedReport = parm;
@@ -86,8 +86,8 @@ define(function () {
             bezl.vars.promptForParameters = true;
         } else {
             bezl.vars.promptForParameters = false;
-            bezl.dataService.add('SaveReport','brdb','CrystalReports','ReturnAsPDF',
-                { "FolderName": parm.FolderName, "Connection": "Workflow", "ReportName": parm.Name,
+            bezl.dataService.add('SaveReport','brdb','CrystalReports','ReturnReportDataAs',
+                { "FolderName": parm.FolderName, "Connection": "Workflow", "ReportName": parm.Name, "GetAsType": getAsType,
                 "Parameters": [
                 { "Key": "ReportDetails", "Value": JSON.stringify(parm.ReportDetails) }
                 ] },0);
