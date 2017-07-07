@@ -88,7 +88,7 @@ define(function () {
             bezl.vars.promptForParameters = false;
 
             // Determine file extension
-            var fileExtension = getAsType.substring(str.lastIndexOf("(")+1,str.lastIndexOf(")"));
+            var fileExtension = getAsType.substring(getAsType.lastIndexOf("(")+1, getAsType.lastIndexOf(")"));
             if (!fileExtension.startsWith(".")) {
                 fileExtension = "." + fileExtension;
             }
