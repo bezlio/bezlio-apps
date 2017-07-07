@@ -71,9 +71,11 @@ define(function () {
             case ".text": return "text/plain"; break;
             default:
                 return "application/octet-stream";
-    }
+        }
+     }
 
     return {
         getMimeTypeFromExtension: GetMimeTypeFromExtension,
     }
+
 });
