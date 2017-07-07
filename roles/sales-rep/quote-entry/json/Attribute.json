@@ -972,6 +972,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -983,6 +984,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -994,6 +996,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LITER.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -1013,6 +1016,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/ML.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
