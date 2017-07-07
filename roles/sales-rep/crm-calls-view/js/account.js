@@ -30,7 +30,7 @@ define(function () {
                                 , bezl.vars.shortSummary
                                 , bezl.vars.details
                                 , bezl.vars.type
-                                , bezl.vars.selectedAccount.SalesRep);
+                                , ((bezl.data.SalesRep.length > 0) ? bezl.data.SalesRep[0].SalesRepCode : bezl.vars.selectedAccount.SalesRep));
 
                 bezl.vars.shortSummary = '';
                 bezl.vars.details = '';
