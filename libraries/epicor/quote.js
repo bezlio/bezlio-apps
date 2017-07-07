@@ -131,6 +131,7 @@ define(function () {
                         switch (attr.ATTRIBUTE_ID) {
 
                             case "110_CATEGORY":
+                                console.log(attr);
                                 attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
                                 break;
                             case "110_STYLE":
