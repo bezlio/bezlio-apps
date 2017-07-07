@@ -114,8 +114,7 @@ define(function () {
 
                     //set measurement value
                     if (attr.ATTRIBUTE_ID.indexOf('MEASURE') > -1) {
-                        var measureValue = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).SELECTED_VALUE;
-                        console.log(measureValue);
+                        otherValue = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).SELECTED_VALUE;
                     }
 
                     //standard one select property
@@ -129,7 +128,7 @@ define(function () {
                                 { Key: "PartID", Value: dtl.PartNum },
                                 { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
                                 { Key: "ParentID", Value: '' },
-                                { Key: "AttributeValue", Value: (attr.SELECTED_VALUE === 'OTHER') ? 'OTHER' : attr.SELECTED_VALUE },
+                                { Key: "AttributeValue", Value: (attr.SELECTED_VALUE === 'OTHER' || attr.ATTRIBUTE_ID.indexOf('MEASURE') > 0) ? 'OTHER' : attr.SELECTED_VALUE },
                                 { Key: "OtherAttributeValue", Value: (otherValue !== undefined && attr.SELECTED_VALUE === 'OTHER') ? otherValue : '' },
                                 { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                 { Key: "PartNum", Value: dtl.PartNum }
