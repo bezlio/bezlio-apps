@@ -148,6 +148,9 @@ define(function () {
                             case "110_PACK_OUT":
                                 attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
+                            case "110_MEASURE":
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
+                                break;
                             default:
                                 break;
                         }
