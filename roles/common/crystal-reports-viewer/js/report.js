@@ -86,6 +86,14 @@ define(function () {
             bezl.vars.promptForParameters = true;
         } else {
             bezl.vars.promptForParameters = false;
+
+            // Determine file extension
+            var fileExtension = getAsType.substring(str.lastIndexOf("(")+1,str.lastIndexOf(")"));
+            if (!fileExtension.startsWith(".")) {
+                fileExtension = "." + fileExtension;
+            }
+            bezl.vars.saveAsFileExtension = fileExtension.toLowerCase();
+
             bezl.dataService.add('SaveReport','brdb','CrystalReports','ReturnReportDataAs',
                 { "FolderName": parm.FolderName, "Connection": "Workflow", "ReportName": parm.Name, "GetAsType": getAsType,
                 "Parameters": [

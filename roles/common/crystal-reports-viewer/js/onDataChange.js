@@ -1,4 +1,4 @@
-define(["./report.js"], function (report) {
+define(["./report.js", [bezl.vars.config.baseLibraryUrl + 'mimeTypes.js'], function (report, mime) {
  
     function OnDataChange (bezl) {
         if (bezl.data.ReportListing) {
@@ -55,8 +55,8 @@ define(["./report.js"], function (report) {
                 byteArrays[sliceIndex] = new Uint8Array(bytes);
             }
 
-            var file = new Blob(byteArrays, {type: 'application/pdf'});
-            saveAs(file, bezl.vars.selectedReport.BaseName);
+            var file = new Blob(byteArrays, {type: mime.getMimeTypeFromExtension(bezl.vars.saveAsFileExtension)});
+            saveAs(file, bezl.vars.selectedReport.BaseName + bezl.vars.saveAsFileExtension);
 
             bezl.vars.reportLoading = false;
 
