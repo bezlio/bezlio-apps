@@ -147,7 +147,7 @@ define(function () {
                                 break;
                         }
 
-                        //console.log((attr.SELECTED_VALUE != 'OTHER') ? attr.ATTRIBUTE_ID + ' ' + attr.SELECTED_VALUE + ' ' : attr.ATTRIBUTE_ID + ' ' + otherValue + ' ');
+                        console.log((attr.SELECTED_VALUE != 'OTHER') ? attr.ATTRIBUTE_ID + ' ' + attr.SELECTED_VALUE + ' ' : attr.ATTRIBUTE_ID + ' ' + otherValue + ' ');
 
                         //attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
                     }
