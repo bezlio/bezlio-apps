@@ -24,11 +24,9 @@ define(["./report.js"], function (report) {
             var file = new Blob(byteArrays, {type: 'application/pdf'});
 
             if (screen.width <= 480) {
-                alert('small');
-                saveAs(file);
                 report.back(bezl);
+                saveAs(file);
             } else {
-                alert('large');
                 var fileURL = URL.createObjectURL(file);
                 var viewer = $(bezl.container.nativeElement).find('#viewer')[0];
                 viewer.src = fileURL;  
