@@ -126,22 +126,21 @@ define(function () {
                                 { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
                                 { Key: "PartNum", Value: dtl.PartNum }
                             ]
-                        }, 0)
+                        }, 0);
 
+                        var labelValue = attr.ATTRIBUTE_VALUES.find(labelVal => labelVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).ATTRIBUTE_VALUE_LABEL;
                         switch (attr.ATTRIBUTE_ID) {
-
                             case "110_CATEGORY":
-                                var labelValue = attr.ATTRIBUTE_VALUES.find(labelVal => labelVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).ATTRIBUTE_VALUE_LABEL;
                                 attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
                             case "110_STYLE":
-                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
                             case "000_FURTHERDESC":
-                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
                             case "110_COLOR":
-                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
 
                             default:
