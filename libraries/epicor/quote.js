@@ -128,6 +128,11 @@ define(function () {
                             ]
                         }, 0)
 
+                        switch (attr.ATTRIBUTE_ID) {
+                            default:
+                                break;
+                        }
+
                         console.log((attr.SELECTED_VALUE != 'OTHER') ? attr.ATTRIBUTE_ID + ' ' + attr.SELECTED_VALUE + ' ' : attr.ATTRIBUTE_ID + ' ' + otherValue + ' ');
 
                         attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
