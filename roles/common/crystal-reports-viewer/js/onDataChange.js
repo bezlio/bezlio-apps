@@ -1,4 +1,4 @@
-define(function () {
+define(["./report.js"], function (report) {
  
     function OnDataChange (bezl) {
         if (bezl.data.ReportListing) {
@@ -21,10 +21,17 @@ define(function () {
             byteArrays[sliceIndex] = new Uint8Array(bytes);
             }
 
-            var file = new Blob(byteArrays, {type: 'application/pdf'});     
-            var fileURL = URL.createObjectURL(file);
-            var viewer = $(bezl.container.nativeElement).find('#viewer')[0];
-            viewer.src = fileURL;  
+            var file = new Blob(byteArrays, {type: 'application/pdf'});
+
+            if (screen.width <= 480) {
+                report.back(bezl);
+                saveAs(file);
+            } else {
+                var fileURL = URL.createObjectURL(file);
+                var viewer = $(bezl.container.nativeElement).find('#viewer')[0];
+                viewer.src = fileURL;  
+            }   
+
             bezl.vars.reportLoading = false;
         }
     }
