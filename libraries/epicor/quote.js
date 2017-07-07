@@ -129,13 +129,27 @@ define(function () {
                         }, 0)
 
                         switch (attr.ATTRIBUTE_ID) {
+
+                            case "110_CATEGORY":
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                break;
+                            case "110_STYLE":
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                break;
+                            case "000_FURTHERDESC":
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                break;
+                            case "110_COLOR":
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                                break;
+
                             default:
                                 break;
                         }
 
                         console.log((attr.SELECTED_VALUE != 'OTHER') ? attr.ATTRIBUTE_ID + ' ' + attr.SELECTED_VALUE + ' ' : attr.ATTRIBUTE_ID + ' ' + otherValue + ' ');
 
-                        attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
+                        //attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? attr.SELECTED_VALUE + ' ' : otherValue + ' ';
                     }
 
                     // fix these by declaring an object that is equal to the filter, vs. filtering then if-fing
