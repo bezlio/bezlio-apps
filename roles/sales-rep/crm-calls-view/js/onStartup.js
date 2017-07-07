@@ -27,7 +27,11 @@ define(["./account.js"], function (account) {
       bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetCallTypes" },0);
 
       // Query for the sales rep associated with the logged in Bezlio user
-      bezl.dataService.add('SalesRep','brdb','sales-rep-queries','ExecuteQuery', { "QueryName": "GetSalesRep" },0);
+      bezl.dataService.add('SalesRep','brdb','sales-rep-queries','ExecuteQuery'
+                            , { "QueryName": "GetSalesRep"
+                            , "Parameters": [
+                                { "EmailAddress": bezl.env.currentUser }
+                            ] },0);
 
       $("#bezlpanel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
