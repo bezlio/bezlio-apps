@@ -68,7 +68,7 @@
                 {  
                     "path":"accounts-view",
                     "name":"Accounts View",
-                    "icon":"fa-addressbook",
+                    "icon":"fa-address-book",
                     "class":"",
                     "shortDescription":"Listing of all accounts assigned to a sales rep with drill-down for details",
                     "description": [
