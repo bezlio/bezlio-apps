@@ -113,7 +113,7 @@ define(function () {
                     var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
 
                     //set measurement value
-                    if (attr.ATTRIBUTE_ID.contains('MEASURE')) {
+                    if (attr.ATTRIBUTE_ID.indexOf('MEASURE') > -1) {
                         var measureValue = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).SELECTED_VALUE;
                         console.log(measureValue);
                     }
