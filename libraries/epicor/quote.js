@@ -145,6 +145,9 @@ define(function () {
                             case "110_MATERIAL":
                                 attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
+                            case "110_PACK_OUT":
+                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
+                                break;
                             default:
                                 break;
                         }
