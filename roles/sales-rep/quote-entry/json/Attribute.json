@@ -1036,6 +1036,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
                 "ATTRIBUTE_VALUE": "OTHER",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
