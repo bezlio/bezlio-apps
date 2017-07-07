@@ -57,7 +57,7 @@ define(["./report.js"], function (report) {
 
             require([bezl.vars.config.baseLibraryUrl + 'mimeTypes.js'], function(mime) {
                 var mimeType = mime.getMimeTypeFromExtension(bezl.vars.saveAsFileExtension);
-            }
+            });
             var file = new Blob(byteArrays, {type: mimeType});
             saveAs(file, bezl.vars.selectedReport.BaseName + bezl.vars.saveAsFileExtension);
 
