@@ -193,6 +193,7 @@ define(function () {
                             }, 0);
 
                             attributeConcat += (val.hasOwnProperty('SELECTED_VALUE')) ? val.SELECTED_VALUE + ' ' : '';
+                            console.log((val.hasOwnProperty('SELECTED_VALUE')) ? attr.ATTRIBUTE_ID + ' ' + val.SELECTED_VALUE + ' ' : '');
                         });
                     }
 
