@@ -114,7 +114,7 @@ define(function () {
 
                     //set measurement value
                     if (attr.ATTRIBUTE_ID.indexOf('MEASURE') > -1) {
-                        otherValue = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).SELECTED_VALUE;
+                        //otherValue = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).SELECTED_VALUE;
                     }
 
                     //standard one select property
