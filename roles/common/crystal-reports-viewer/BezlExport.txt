@@ -102,6 +102,32 @@
     "            <li><h4>  {{bezl.vars.selectedReport.BaseName}}</h4></li>",
     "          </ul>",
     "          <ul class=\"nav navbar-nav navbar-right\">",
+    "            <li>",
+    "              <div class=\"btn-group\"",
+    "                   *ngIf=\"!bezl.vars.reportLoading && bezl.vars.selectedReport.BaseName\"",
+    "                   style=\"margin-top:8px\">",
+    "                <button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">",
+    "                  Save As...<i class=\"dropdown-caret\"></i>",
+    "                </button>",
+    "                <ul class=\"dropdown-menu dropdown-menu-right\">",
+    "                  <li class=\"dropdown-header\">PDF</li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Adobe Acrobat (PDF)'})\">Adobe Acrobat (PDF)</a></li>",
+    "                  <li class=\"divider\"></li>",
+    "                  <li class=\"dropdown-header\">Excel</li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Microsoft Excel 97-2000 (XLS)'})\">Microsoft Excel 97-2000 (XLS)</a></li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Microsoft Excel 97-2000 - Data Only (XLS)'})\">Microsoft Excel 97-2000 - Data Only (XLS)</a></li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Microsoft Excel Workbook Data-Only (XLSX)'})\">Microsoft Excel Workbook Data-Only (XLSX)</a></li>",
+    "                  <li class=\"divider\"></li>",
+    "                  <li class=\"dropdown-header\">Word</li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Microsoft Word (DOC)'})\">Microsoft Word (DOC)</a></li>",
+    "                  <li class=\"divider\"></li>",
+    "                  <li class=\"dropdown-header\">Other</li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Rich Text Format (RTF)'})\">Rich Text Format (RTF)</a></li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Separated Values (CSV)'})\">Separated Values (CSV)</a></li>",
+    "                  <li><a (click)=\"bezl.functions['saveReport']({selectedReport:bezl.vars.selectedReport, saveAs:'Extensible Markup Language (XML)'})\">Extensible Markup Language (XML)</a></li>",
+    "                </ul>",
+    "              </div>",
+    "            </li>",
     "            <li><button class=\"btn btn-default\" style=\"margin-top:8px\"",
     "                        *ngIf=\"!bezl.vars.reportLoading && bezl.vars.selectedReport.BaseName\"",
     "                        (click)=\"bezl.functions['runReport'](bezl.vars.selectedReport)\">",
@@ -565,6 +591,19 @@
         "FusionCharts"
       ],
       "compiled": "bezl.vars.reportListingLoading = true;\r\nbezl.vars.sort = \"\";\r\nbezl.vars.sortCol = \"\";\r\nbezl.dataService.process('ReportListing');\r\n"
+    },
+    {
+      "method": "saveReport",
+      "code": "require([bezl.vars.config.baseJsUrl + 'report.js'], function(functions) {\n\tfunctions.saveReport(bezl, parm.selectedReport, parm.saveAs)\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "require([bezl.vars.config.baseJsUrl + 'report.js'], function (functions) {\r\n    functions.saveReport(bezl, parm.selectedReport, parm.saveAs);\r\n});\r\n"
     }
   ],
   "data": ""
