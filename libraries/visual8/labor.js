@@ -14,8 +14,6 @@ define(function () {
             "Parameters": [
                 { "Key": "EmployeeID", "Value": employee }
             ] },0);
-            
-        bezl.vars.clockingIn = false;
     }
  
     return {

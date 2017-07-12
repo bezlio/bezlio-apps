@@ -144,9 +144,11 @@ define(function () {
                     if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
                         labor.clockIn(bezl, bezl.vars.team[i].key);                                              
                         bezl.vars.team[i].clockedIn = 1;
-                        bezl.vars.clockingIn = true;  
                     }
                 }
+
+                $("#jsGridTeam").jsGrid("loadData");
+                employees.highlightSelected(bezl);
             });
         }
     }
