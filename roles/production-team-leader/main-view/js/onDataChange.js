@@ -199,25 +199,42 @@ define(["./employees.js"], function (employees) {
             employees.highlightSelected(bezl);
         }
 
-        if (bezl.data.StartJob) {
-            bezl.vars.startingJob = false;
+        bezl.dataService.getSubscriptionList().forEach(ds => {
+            if (ds.startsWith("StartJob")) {
 
-            if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-                for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
-                    for (var x = 0; x < bezl.vars.team.length; x++) {
-                        if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
-                            bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
-                            bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
-                            bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
+                if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                    for (var i = 0; i < bezl.data[ds].LaborHed.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data[ds].LaborHed[i].EmployeeNum) {
+                                bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
+                                bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
+                                bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
+                            }
+                        }
+                    }
+                } else if (bezl.vars.config.Platform == "Visual8") {
+                    for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
+                        for (var x = 0; x < bezl.vars.team.length; x++) {
+                            if (bezl.vars.team[x].key == bezl.data[ds].LaborHed[i].EMPLOYEE_ID) {
+                                bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
+                                bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
+                                bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
+                            }
                         }
                     }
                 }
-            }
 
-            bezl.dataService.remove('StartJob');
-            bezl.data.StartJob = null;
-            $("#jsGridTeam").jsGrid("loadData");
-            employees.highlightSelected(bezl);
+                bezl.dataService.remove(ds);
+                bezl.data[ds] = null;
+                $("#jsGridTeam").jsGrid("loadData");
+                employees.highlightSelected(bezl);
+
+            }
+        });
+
+        var pendingStartJobs = bezl.dataService.getSubscriptionList().find(ds => ds.startsWith("StartJob"));
+        if (!pendingStartJobs) {
+            bezl.vars.startingJob = false;
         }
 
         if (bezl.data.EndActivities) {

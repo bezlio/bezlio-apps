@@ -142,7 +142,7 @@ define(function () {
                 // attendance status
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
-                        labor.clockIn(bezl, bezl.vars.team[i].key);                                              
+                        labor.clockIn(bezl, bezl.vars.team[i].key, bezl.vars.config.pluginInstance);                                              
                         bezl.vars.team[i].clockedIn = 1;
                     }
                 }
@@ -163,7 +163,7 @@ define(function () {
                 var clockOutEmployees = [];
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                        clockOutEmployees.push(bezl.vars.team[i].key);
+                        clockOutEmployees.push(bezl.vars.team[i].key, bezl.vars.config.pluginInstance);
                     }
                 }
 
@@ -226,6 +226,10 @@ define(function () {
 
                     bezl.vars.endingActivities = true;
                 });
+        } else if (bezl.vars.config.Platform == "Visual8") {
+            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
+
+            });
         }
 
         bezl.vars.endActivitiesPrompt = false;
@@ -285,34 +289,33 @@ define(function () {
             });
         } else if (bezl.vars.config.Platform == "Visual8") {
             require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
-                // Do a direct write to the custom BEZLIO_LABOR_DETAILS table we use to keep track of in progress jobs
-                for (var i = 0; i < bezl.vars.team.length; i++) {
-                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                var clockedIn = bezl.vars.team.find(t => t.clockedIn);
 
-                        // Update the selected job variable to note whether they are doing a setup or production
-                        if (setup) {
-                            bezl.vars.selectedJob.laborType = 'S';
-                        } else {
-                            bezl.vars.selectedJob.laborType = 'P';
+                if (clockedIn) {
+                    for (var i = 0; i < bezl.vars.team.length; i++) {
+                        if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                            // Update the selected job variable to note whether they are doing a setup or production
+                            if (setup) {
+                                bezl.vars.selectedJob.laborType = 'S';
+                            } else {
+                                bezl.vars.selectedJob.laborType = 'P';
+                            }
+
+                            labor.startJob(bezl
+                                        , bezl.vars.team[i].key
+                                        , job.data.BaseId
+                                        , job.data.LotId
+                                        , job.data.SplitId
+                                        , job.data.SubId
+                                        , job.data.OprSeq
+                                        , setup);
                         }
-
-                        labor.startJob(bezl
-                                    , bezl.vars.team[i].key
-                                    , job.data.BaseId
-                                    , job.data.LotId
-                                    , job.data.SplitId
-                                    , job.data.SubId
-                                    , job.data.OprSeq
-                                    , setup);
-
-                        bezl.vars.team[i].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
-                        bezl.vars.team[i].laborType = bezl.vars.selectedJob.laborType;
-                        bezl.vars.team[i].pendingQty = bezl.vars.selectedJob.pendingQty;
                     }
-                }
 
-                $("#jsGridTeam").jsGrid("loadData");
-                HighlightSelected(bezl);
+                    bezl.vars.startingJob = true;
+                } else {
+                    bezl.notificationService.showCriticalError('No selected clocked in employees available to start this job.');
+                }
             });
         }
 
