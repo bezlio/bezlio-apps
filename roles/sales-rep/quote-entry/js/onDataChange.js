@@ -78,7 +78,7 @@ define(function () {
                             if (attrVal.Character01 === 'OTHER') {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             } else if (attrVal.Key4.indexOf('MEASURE') > 0){
-                                attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
+                                attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === attrVal.Character01).SELECTED_VALUE = attrVal.Character04;
                             }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
