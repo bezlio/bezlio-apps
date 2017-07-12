@@ -79,6 +79,7 @@ define(function () {
                             }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
+                                console.log(attrFndVal);
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     attrFndVal.Display = false; // set to false as default for dependendent attributes
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
