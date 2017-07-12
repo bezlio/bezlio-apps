@@ -1,53 +1,19 @@
 define(function () {
  
     /**
-     * Clocks in one or many employees into VISUAL.  Function simply creates BRDB call so monitor
-     * for return in onDataChange.  
+     * Clocks in one or many employees into VISUAL. This function expect the custom table BEZLIO_LABOR_HEAD
+     * which is used to keep track of the overall attendance status of employees.
      * @param {Object[]} bezl - A reference to the calling Bezl
-     * @param {string} plugin - The plugin name (Visual8)
-     * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
-     * @param {string} site - The site ID within Visual
-     * @param {Object[]} employees - An array of employee IDs
-     * @param {string} defaultIndirect - Default indirect code to clock employees onto
+     * @param {string} employee - Employee ID to clock in
      */
     function ClockIn (bezl
-                    , plugin
-                    , connection
-                    , site
-                    , employees
-                    , defaultIndirect) {
+                    , employee) {
 
-        var ds = { LABOR: [] };
-        employees.forEach(e => {
-            ds.LABOR.push({
-                TRANSACTION_TYPE: "INDIRECT",
-                TRANSACTION_DATE: new Date(new Date().setHours(0, 0, 0, 0)),
-                EMPLOYEE_ID: e,
-                CLOCK_IN: new Date(),
-                CLOCK_OUT: new Date(),
-                SITE_ID: site,
-                INDIRECT_ID: defaultIndirect,
-                HOURS_WORKED: null,
-                START_IN_PROCESS_TICKET: true,
-                DESCRIPTION: "CLOCK IN"
-            });
-        });
-                        
-        bezl.dataService.add(
-            'ClockIn'
-            ,'brdb'
-            ,plugin
-            ,'ExecuteBOMethod'
-            , { 
-                "Connection"    : connection,
-                "BOName"       :  "Lsa.Vmfg.ShopFloor.LaborTicket",
-                "Parameters"   : [
-                    { "Key": "Prepare", "Value": JSON.stringify({}) },
-                    { "Key": "NewIndirectLaborRow", "Value": JSON.stringify({ entryNo: 1}) },
-                    { "Key": "MergeDataSet", "Value": JSON.stringify(ds) },
-                    { "Key": "Save", "Value": JSON.stringify({}) }
-                ]
-            },0);
+        bezl.dataService.add('ClockInStatus_' + employee,'brdb', bezl.vars.config.pluginInstance,'ExecuteNonQuery', { 
+            "QueryName": "InsertClockInStatus",
+            "Parameters": [
+                { "Key": "EmployeeID", "Value": employee }
+            ] },0);
     }
  
     return {

@@ -166,16 +166,7 @@ define(["./employees.js"], function (employees) {
                         }
                     }
                 }
-            } else if (bezl.vars.config.Platform == "Visual8") {
-                for (var i = 0; i < bezl.data.ClockIn.LABOR.length; i++) {
-                    for (var x = 0; x < bezl.vars.team.length; x++) {
-                        if (bezl.vars.team[x].key == bezl.data.ClockIn.LABOR[i].EMPLOYEE_ID) {
-                            bezl.vars.team[x].LaborHed = bezl.data.ClockIn.LABOR[i];
-                            bezl.vars.team[x].clockedIn = 1;
-                        }
-                    }
-                }
-            }
+            } 
 
             bezl.dataService.remove('ClockIn');
             bezl.data.ClockIn = null;

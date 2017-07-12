@@ -138,24 +138,15 @@ define(function () {
         } else if (bezl.vars.config.Platform == "Visual8") {
             require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
 
-                var clockInEmployees = [];
+                // Do a direct write to the custom BEZLIO_LABOR_HEAD table we use to keep track of employee
+                // attendance status
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
-                        clockInEmployees.push(bezl.vars.team[i].key);
+                        labor.clockIn(bezl, bezl.vars.team[i].key);                                              
+                        bezl.vars.team[i].clockedIn = 1;
+                        bezl.vars.clockingIn = true;  
                     }
                 }
-
-                if (clockInEmployees.length > 0) {
-                    labor.clockIn(bezl
-                                , bezl.vars.config.Platform
-                                , bezl.vars.config.Connection
-                                , bezl.vars.config.site
-                                , clockInEmployees
-                                , bezl.vars.config.defaultIndirect);
-                    bezl.vars.clockingIn = true;  
-                } else {
-                    bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
-                } 
             });
         }
     }
