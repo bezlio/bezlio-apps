@@ -283,6 +283,33 @@ define(function () {
                     bezl.notificationService.showCriticalError('No selected clocked in employees available to start this job.');
                 }
             });
+        } else if (bezl.vars.config.Platform == "Visual8") {
+            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
+                // Do a direct write to the custom BEZLIO_LABOR_DETAILS table we use to keep track of in progress jobs
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+
+                        // Update the selected job variable to note whether they are doing a setup or production
+                        if (setup) {
+                            bezl.vars.selectedJob.laborType = 'S';
+                        } else {
+                            bezl.vars.selectedJob.laborType = 'P';
+                        }
+
+                        labor.startJob(bezl
+                                    , bezl.vars.team[i].key
+                                    , job.data.BaseId
+                                    , job.data.LotId
+                                    , job.data.SplitId
+                                    , job.data.SubId
+                                    , job.data.OprSeq
+                                    , setup);
+                    }
+                }
+
+                $("#jsGridTeam").jsGrid("loadData");
+                HighlightSelected(bezl);
+            });
         }
 
         bezl.vars.showJobDialog = false;
