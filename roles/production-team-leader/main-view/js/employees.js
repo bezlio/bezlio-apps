@@ -237,7 +237,7 @@ define(function () {
                         labor.updateLaborTicket(bezl
                                     , bezl.vars.config.Connection
                                     , bezl.vars.config.site
-                                    , bezl.vars.team[i].transactionId
+                                    , bezl.vars.team[i].laborId
                                     , bezl.vars.team[i].clockIn
                                     , clockIn.toLocaleString()
                                     , Math.abs(clockOut - clockIn) / 36e5

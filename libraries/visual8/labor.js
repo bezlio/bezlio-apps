@@ -99,7 +99,7 @@ define(function () {
      * @param {Object[]} bezl - A reference to the calling Bezl
      * @param {string} connection - The connection name as defined in your Visual8.dll.config
      * @param {string} siteId - VISUAL site ID
-     * @param {Number} transactionId - Labor ticket transaction ID
+     * @param {Number} laborId - Labor ticket transaction ID
      * @param {datetime} clockIn - The clock in time
      * @param {datetime} clockOut - The clock out time
      * @param {Number} hoursWorked - The total hours worked on this labor ticket
@@ -108,7 +108,7 @@ define(function () {
     function UpdateLaborTicket (bezl
                             , connection
                             , siteId
-                            , transactionId
+                            , laborId
                             , clockIn
                             , clockOut
                             , hoursWorked
@@ -133,7 +133,7 @@ define(function () {
                 "BOName"       :  "Lsa.Vmfg.ShopFloor.LaborTicket",
                 "Parameters"   : [
                     { "Key": "Prepare", "Value": JSON.stringify({}) },
-                    { "Key": "NewEditLaborRow", "Value": JSON.stringify({ transactionId: transactionId}) },
+                    { "Key": "NewEditLaborRow", "Value": JSON.stringify({ transactionId: laborId}) },
                     { "Key": "MergeDataSet", "Value": JSON.stringify(ds) },
                     { "Key": "Save", "Value": JSON.stringify({}) }
                 ]
