@@ -10,7 +10,7 @@ define(function () {
                     , employee) {
 
         bezl.dataService.add('ClockInStatus_' + employee,'brdb', bezl.vars.config.pluginInstance,'ExecuteNonQuery', { 
-            "QueryName": "InsertClockInStatus",
+            "QueryName": "InsertClockIn",
             "Parameters": [
                 { "Key": "EmployeeID", "Value": employee }
             ] },0);
