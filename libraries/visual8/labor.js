@@ -56,10 +56,8 @@ define(function () {
                     , oprSeq
                     , setup) {
 
-        var ds = { LABOR: [] };
-
-        employees.forEach(e => {
-            ds.LABOR.push({
+        var ds = { LABOR: [
+            {
                 TRANSACTION_TYPE: ((setup) ? "SETUP" : "RUN"),
                 TRANSACTION_DATE: new Date(new Date().setHours(0, 0, 0, 0)),
                 EMPLOYEE_ID: e,
@@ -72,8 +70,8 @@ define(function () {
                 SUB_ID: subId,
                 SEQ_NO: oprSeq,
                 START_IN_PROCESS_TICKET: true
-            });
-        });
+            }
+        ] };
         
         bezl.dataService.add(
             'StartJob_' + employee
