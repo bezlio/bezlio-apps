@@ -149,9 +149,9 @@ define(function () {
                     labor.clockIn(bezl
                                 , bezl.vars.config.Platform
                                 , bezl.vars.config.Connection
-                                , bezl.vars.config.Company
+                                , bezl.vars.config.site
                                 , clockInEmployees
-                                , bezl.vars.shift);
+                                , bezl.vars.config.defaultIndirect);
                     bezl.vars.clockingIn = true;  
                 } else {
                     bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');

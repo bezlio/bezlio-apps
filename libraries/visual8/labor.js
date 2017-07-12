@@ -6,15 +6,16 @@ define(function () {
      * @param {Object[]} bezl - A reference to the calling Bezl
      * @param {string} plugin - The plugin name (Visual8)
      * @param {string} connection - The nammed connection as specified in Epicor905.dll.config
+     * @param {string} site - The site ID within Visual
      * @param {Object[]} employees - An array of employee IDs
      * @param {string} defaultIndirect - Default indirect code to clock employees onto
      */
     function ClockIn (bezl
                     , plugin
                     , connection
-                    , company
+                    , site
                     , employees
-                    , shift) {
+                    , defaultIndirect) {
 
         var ds = { LABOR: [] };
         employees.forEach(e => {
@@ -24,8 +25,8 @@ define(function () {
                 EMPLOYEE_ID: e,
                 CLOCK_IN: new Date(),
                 CLOCK_OUT: new Date(),
-                SITE_ID: bezl.vars.config.site,
-                INDIRECT_ID: bezl.vars.config.defaultIndirect
+                SITE_ID: site,
+                INDIRECT_ID: defaultIndirect
             });
         });
                         
