@@ -28,6 +28,7 @@ define(function () {
                 SITE_ID: site,
                 INDIRECT_ID: defaultIndirect,
                 HOURS_WORKED: 0,
+                START_IN_PROCESS_TICKET: true,
                 DESCRIPTION: "CLOCK IN"
             });
         });
