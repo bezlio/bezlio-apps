@@ -73,13 +73,13 @@ define(function () {
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
                         if (attrVal !== undefined) {
+                            //child attribute value setting
                             attrFnd.SELECTED_VALUE = attrVal.Character01;
                             if (attrVal.Character01 === 'OTHER') {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             } else if (attrVal.Key4.indexOf('MEASURE') > 0){
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             }
-                            console.log(attrVal);
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
