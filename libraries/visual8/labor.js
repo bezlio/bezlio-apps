@@ -48,6 +48,7 @@ define(function () {
      * @param {Boolean} setup - Indicates this activity should be started for Setup
      */
     function StartJob (bezl
+                    , siteId
                     , employee
                     , baseId
                     , lotId
@@ -60,10 +61,10 @@ define(function () {
             {
                 TRANSACTION_TYPE: ((setup) ? "SETUP" : "RUN"),
                 TRANSACTION_DATE: new Date(new Date().setHours(0, 0, 0, 0)),
-                EMPLOYEE_ID: e,
+                EMPLOYEE_ID: employee,
                 CLOCK_IN: new Date(),
                 CLOCK_OUT: new Date(),
-                SITE_ID: site,
+                SITE_ID: siteId,
                 BASE_ID: baseId,
                 LOT_ID: lotId,
                 SPLIT_ID: splitId,

@@ -302,6 +302,7 @@ define(function () {
                             }
 
                             labor.startJob(bezl
+                                        , bezl.vars.config.site
                                         , bezl.vars.team[i].key
                                         , job.data.BaseId
                                         , job.data.LotId
