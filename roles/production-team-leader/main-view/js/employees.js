@@ -231,15 +231,15 @@ define(function () {
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
 
-                        var clockIn = new Date(bezl.vars.team[i].clockIn);
+                        var clockIn = new Date(bezl.vars.team[i].currentActivityClockIn);
                         var clockOut = new Date();
 
                         labor.updateLaborTicket(bezl
                                     , bezl.vars.config.Connection
                                     , bezl.vars.config.site
                                     , bezl.vars.team[i].laborId
-                                    , bezl.vars.team[i].clockIn
-                                    , clockIn.toLocaleString()
+                                    , clockIn
+                                    , clockOut.toLocaleString()
                                     , Math.abs(clockOut - clockIn) / 36e5
                                     , bezl.vars.team[i].completedQty);
 

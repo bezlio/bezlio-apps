@@ -124,7 +124,7 @@ define(function () {
         ] };
         
         bezl.dataService.add(
-            'EditLabor_' + employee
+            'EditLabor_' + laborId
             ,'brdb'
             ,'Visual8'
             ,'ExecuteBOMethod'
