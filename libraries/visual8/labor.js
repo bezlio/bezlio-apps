@@ -143,6 +143,7 @@ define(function () {
     return {
         clockIn: ClockIn,
         clockOut: ClockOut,
-        startJob: StartJob
+        startJob: StartJob,
+        updateLaborTicket: UpdateLaborTicket
     }
 });
