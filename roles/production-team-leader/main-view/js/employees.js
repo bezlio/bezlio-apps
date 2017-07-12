@@ -301,7 +301,7 @@ define(function () {
                                 bezl.vars.selectedJob.laborType = 'P';
                             }
 
-                            labor.writeWorkOrderLaborTicket(bezl
+                            labor.startJob(bezl
                                         , bezl.vars.team[i].key
                                         , job.data.BaseId
                                         , job.data.LotId
