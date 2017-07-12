@@ -304,6 +304,10 @@ define(function () {
                                     , job.data.SubId
                                     , job.data.OprSeq
                                     , setup);
+
+                        bezl.vars.team[i].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
+                        bezl.vars.team[i].laborType = bezl.vars.selectedJob.laborType;
+                        bezl.vars.team[i].pendingQty = bezl.vars.selectedJob.pendingQty;
                     }
                 }
 
