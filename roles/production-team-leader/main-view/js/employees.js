@@ -175,6 +175,20 @@ define(function () {
 
                 bezl.vars.clockingOut = true;  
             });
+        } else if (bezl.vars.config.Platform == "Visual8") {
+            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
+                // Do a direct write to the custom BEZLIO_LABOR_HEAD table we use to keep track of employee
+                // attendance status
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                        labor.clockOut(bezl, bezl.vars.team[i].key);                                              
+                        bezl.vars.team[i].clockedIn = 0;
+                    }
+                }
+
+                $("#jsGridTeam").jsGrid("loadData");
+                employees.highlightSelected(bezl);
+            });
         }
     }
 
