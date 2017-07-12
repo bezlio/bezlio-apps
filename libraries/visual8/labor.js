@@ -27,8 +27,8 @@ define(function () {
                 CLOCK_OUT: new Date(),
                 SITE_ID: site,
                 INDIRECT_ID: defaultIndirect,
-                START_IN_PROCESS_TICKET: true,
-                HOURS_WORKED: 0
+                HOURS_WORKED: 0,
+                DESCRIPTION: "CLOCK IN"
             });
         });
                         
