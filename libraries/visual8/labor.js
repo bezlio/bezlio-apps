@@ -48,6 +48,7 @@ define(function () {
      * @param {Boolean} setup - Indicates this activity should be started for Setup
      */
     function StartJob (bezl
+                    , connection
                     , siteId
                     , employee
                     , baseId
@@ -77,7 +78,7 @@ define(function () {
         bezl.dataService.add(
             'StartJob_' + employee
             ,'brdb'
-            ,plugin
+            ,'Visual8'
             ,'ExecuteBOMethod'
             , { 
                 "Connection"    : connection,
