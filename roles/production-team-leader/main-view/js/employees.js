@@ -135,6 +135,28 @@ define(function () {
                     bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
                 } 
             });
+        } else if (bezl.vars.config.Platform == "Visual80" || bezl.vars.config.Platform == "Visual90") {
+            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
+
+                var clockInEmployees = [];
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
+                        clockInEmployees.push(bezl.vars.team[i].key);
+                    }
+                }
+
+                if (clockInEmployees.length > 0) {
+                    labor.clockIn(bezl
+                                , bezl.vars.config.Platform
+                                , bezl.vars.config.Connection
+                                , bezl.vars.config.Company
+                                , clockInEmployees
+                                , bezl.vars.shift);
+                    bezl.vars.clockingIn = true;  
+                } else {
+                    bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
+                } 
+            });
         }
     }
 
