@@ -26,7 +26,9 @@ define(function () {
                 CLOCK_IN: new Date(),
                 CLOCK_OUT: new Date(),
                 SITE_ID: site,
-                INDIRECT_ID: defaultIndirect
+                INDIRECT_ID: defaultIndirect,
+                START_IN_PROCESS_TICKET: true,
+                HOURS_WORKED: 0
             });
         });
                         
