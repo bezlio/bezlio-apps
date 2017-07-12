@@ -212,6 +212,11 @@ define(["./employees.js"], function (employees) {
                             }
                         }
                     }
+
+                    bezl.dataService.remove(ds);
+                    bezl.data[ds] = null;
+                    $("#jsGridTeam").jsGrid("loadData");
+                    employees.highlightSelected(bezl);
                 } else if (bezl.vars.config.Platform == "Visual8") {
                     if (bezl.data[ds]) {
                         for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
@@ -223,14 +228,13 @@ define(["./employees.js"], function (employees) {
                                 }
                             }
                         }
+
+                        bezl.dataService.remove(ds);
+                        bezl.data[ds] = null;
+                        $("#jsGridTeam").jsGrid("loadData");
+                        employees.highlightSelected(bezl);
                     }
                 }
-
-                bezl.dataService.remove(ds);
-                bezl.data[ds] = null;
-                $("#jsGridTeam").jsGrid("loadData");
-                employees.highlightSelected(bezl);
-
             }
         });
 
