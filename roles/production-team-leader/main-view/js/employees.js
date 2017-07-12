@@ -298,7 +298,7 @@ define(function () {
                             if (setup) {
                                 bezl.vars.selectedJob.laborType = 'S';
                             } else {
-                                bezl.vars.selectedJob.laborType = 'P';
+                                bezl.vars.selectedJob.laborType = 'R';
                             }
 
                             labor.startJob(bezl

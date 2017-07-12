@@ -221,7 +221,7 @@ define(["./employees.js"], function (employees) {
                     if (bezl.data[ds]) {
                         for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
                             for (var x = 0; x < bezl.vars.team.length; x++) {
-                                if (bezl.vars.team[x].key == bezl.data[ds].LaborHed[i].EMPLOYEE_ID) {
+                                if (bezl.vars.team[x].key == bezl.data[ds].LABOR[i].EMPLOYEE_ID) {
                                     bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
                                     bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
                                     bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
