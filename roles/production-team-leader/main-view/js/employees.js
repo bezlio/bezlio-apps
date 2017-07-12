@@ -148,7 +148,7 @@ define(function () {
                 }
 
                 $("#jsGridTeam").jsGrid("loadData");
-                employees.highlightSelected(bezl);
+                HighlightSelected(bezl);
             });
         }
     }
@@ -187,7 +187,7 @@ define(function () {
                 }
 
                 $("#jsGridTeam").jsGrid("loadData");
-                employees.highlightSelected(bezl);
+                HighlightSelected(bezl);
             });
         }
     }
