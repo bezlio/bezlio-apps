@@ -135,7 +135,7 @@ define(function () {
                     bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
                 } 
             });
-        } else if (bezl.vars.config.Platform == "Visual80" || bezl.vars.config.Platform == "Visual90") {
+        } else if (bezl.vars.config.Platform == "Visual8") {
             require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
 
                 var clockInEmployees = [];
