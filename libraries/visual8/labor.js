@@ -119,7 +119,7 @@ define(function () {
                 CLOCK_IN_TIME: clockIn,
                 CLOCK_OUT_time: clockOut,
                 HOURS_WORKED: hoursWorked,
-                GOOD_QTY: goodQty,
+                GOOD_QTY: goodQty
             }
         ] };
         
@@ -130,7 +130,7 @@ define(function () {
             ,'ExecuteBOMethod'
             , { 
                 "Connection"    : connection,
-                "BOName"       :  "Lsa.Vmfg.ShopFloor.LaborTicket",
+                "BOName"       :  "Lsa.Vmfg.ShopFloor.EditLaborTicket",
                 "Parameters"   : [
                     { "Key": "Prepare", "Value": JSON.stringify({}) },
                     { "Key": "NewEditLaborRow", "Value": JSON.stringify({ transactionId: laborId}) },
