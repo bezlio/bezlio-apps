@@ -87,7 +87,7 @@ define(function () {
         switch (queryName) {
             case "Employees":
                 // Pull in all of the employees for the search box
-                bezl.dataService.add('Employees','brdb','production-team-leader-queries','ExecuteQuery', { 
+                bezl.dataService.add('Employees','brdb', bezl.vars.config.pluginInstance,'ExecuteQuery', { 
                     "QueryName": "GetEmployees",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
@@ -96,7 +96,7 @@ define(function () {
                 break;
             case "OpenJobs":
                 // Pull in all of the employees for the search box
-                bezl.dataService.add('OpenJobs','brdb','production-team-leader-queries','ExecuteQuery', { 
+                bezl.dataService.add('OpenJobs','brdb', bezl.vars.config.pluginInstance,'ExecuteQuery', { 
                     "QueryName": "GetTeamJobs",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
