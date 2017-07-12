@@ -70,6 +70,7 @@ define(function () {
                     openLine.Attributes.push(attrFnd);
 
                     var attrValList = bezl.data.Attributes.filter(attrVal => attrVal.Key4 === attrFnd.ATTRIBUTE_ID);
+                    console.log(attrValList);
                     if (attrValList !== undefined) {
                         var attrVal = attrValList.find(attrValue => attrValue.Key4 === attrFnd.ATTRIBUTE_ID);
                         if (attrVal !== undefined) {
@@ -79,7 +80,7 @@ define(function () {
                             }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
-                                console.log(attrFndVal);
+                                //console.log(attrFndVal);
                                 if (attrFndVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                                     attrFndVal.Display = false; // set to false as default for dependendent attributes
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
