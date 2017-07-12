@@ -228,7 +228,29 @@ define(function () {
                 });
         } else if (bezl.vars.config.Platform == "Visual8") {
             require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
+                for (var i = 0; i < bezl.vars.team.length; i++) {
+                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
 
+                        var clockIn = new Date(bezl.vars.team[i].clockIn);
+                        var clockOut = new Date();
+
+                        labor.updateLaborTicket(bezl
+                                    , bezl.vars.config.Connection
+                                    , bezl.vars.config.site
+                                    , bezl.vars.team[i].transactionId
+                                    , bezl.vars.team[i].clockIn
+                                    , clockIn.toLocaleString()
+                                    , Math.abs(clockOut - clockIn) / 36e5
+                                    , bezl.vars.team[i].completedQty);
+
+                        // Clear out the completed qty
+                        bezl.vars.team[i].completedQty = 0;
+                        bezl.vars.team[i].pendingQtyTemp = 0;
+                        bezl.vars.team[i].setupPctComplete = 0;
+                    }
+                }                   
+
+                bezl.vars.endingActivities = true;
             });
         }
 

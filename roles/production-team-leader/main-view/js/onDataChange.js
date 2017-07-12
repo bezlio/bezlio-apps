@@ -225,6 +225,8 @@ define(["./employees.js"], function (employees) {
                                     bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
                                     bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
                                     bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
+                                    bezl.vars.team[x].transactionId = bezl.data[ds].LABOR[i].TRANSACTION_ID;
+                                    bezl.vars.team[x].clockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
                                 }
                             }
                         }

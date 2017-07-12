@@ -38,6 +38,7 @@ define(function () {
     /**
      * Starts the provided job on the specified employee by creating a real labor ticket within VISUAL using the .Net objects
      * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} connection - The connection name as defined in your Visual8.dll.config
      * @param {string} siteId - VISUAL site ID
      * @param {string} employee - Employee ID
      * @param {string} baseId - The work order base ID to clock onto
@@ -58,13 +59,14 @@ define(function () {
                     , oprSeq
                     , setup) {
 
+        var d = new Date();
         var ds = { LABOR: [
             {
                 TRANSACTION_TYPE: ((setup) ? "SETUP" : "RUN"),
                 TRANSACTION_DATE: new Date(new Date().setHours(0, 0, 0, 0)),
                 EMPLOYEE_ID: employee,
-                CLOCK_IN: new Date(),
-                CLOCK_OUT: new Date(),
+                CLOCK_IN: d.toLocaleString(),
+                CLOCK_OUT: d.toLocaleString(),
                 SITE_ID: siteId,
                 BASE_ID: baseId,
                 LOT_ID: lotId,
@@ -90,52 +92,57 @@ define(function () {
                     { "Key": "Save", "Value": JSON.stringify({}) }
                 ]
             },0);
-    }
+    } 
 
     /**
-     * Write a work order labor ticket to VISUAL.
+     * Updates an existing labor ticket using the Infor .Net opbjects
      * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} connection - The connection name as defined in your Visual8.dll.config
      * @param {string} siteId - VISUAL site ID
-     * @param {string} employee - Employee ID
-     * @param {string} baseId - The work order base ID to clock onto
-     * @param {string} lotId - The work order lot ID to clock onto
-     * @param {string} splitId - The work order split ID to clock onto
-     * @param {string} subId - The work order sub ID to clock onto
-     * @param {Number} oprSeq - The operation sequence to clock onto
-     * @param {Boolean} setup - Indicates this activity should be started for Setup
-     * @param {datetime} clockIn - Activity clock in time
-     * @param {datetime} clockOut - Activity clock out time
-     * @param {decimal} hoursWorked - Hours Worked
-     * @param {decimal} hoursBreak - Break hours
-     * @param {decimal} deviatedQty - Scrap
+     * @param {Number} transactionId - Labor ticket transaction ID
+     * @param {datetime} clockIn - The clock in time
+     * @param {datetime} clockOut - The clock out time
+     * @param {Number} hoursWorked - The total hours worked on this labor ticket
+     * @param {Number} goodQty - The quantity completed
      */
-    function WriteWorkOrderLaborTicket (bezl
-                    , employee
-                    , baseId
-                    , lotId
-                    , splitId
-                    , subId
-                    , oprSeq
-                    , setup) {
+    function UpdateLaborTicket (bezl
+                            , connection
+                            , siteId
+                            , transactionId
+                            , clockIn
+                            , clockOut
+                            , hoursWorked
+                            , goodQty) {
 
-        bezl.dataService.add('StartJob_' + employee,'brdb', bezl.vars.config.pluginInstance,'ExecuteNonQuery', { 
-            "QueryName": "InsertLaborDetail",
-            "Parameters": [
-                { "Key": "EmployeeID", "Value": employee },
-                { "Key": "TransactionType", "Value": (setup) ? 'SETUP' : 'RUN' },
-                { "Key": "BaseId", "Value": baseId },
-                { "Key": "LotId", "Value": lotId },
-                { "Key": "SplitId", "Value": splitId },
-                { "Key": "SubId", "Value": subId },
-                { "Key": "SeqNo", "Value": oprSeq }
-            ] },0);
-
-    }    
+        var ds = { EDIT_LABOR: [
+            {
+                CLOCK_IN_TIME: clockIn,
+                CLOCK_OUT_time: clockOut,
+                HOURS_WORKED: hoursWorked,
+                GOOD_QTY: goodQty,
+            }
+        ] };
+        
+        bezl.dataService.add(
+            'EditLabor_' + employee
+            ,'brdb'
+            ,'Visual8'
+            ,'ExecuteBOMethod'
+            , { 
+                "Connection"    : connection,
+                "BOName"       :  "Lsa.Vmfg.ShopFloor.LaborTicket",
+                "Parameters"   : [
+                    { "Key": "Prepare", "Value": JSON.stringify({}) },
+                    { "Key": "NewEditLaborRow", "Value": JSON.stringify({ transactionId: transactionId}) },
+                    { "Key": "MergeDataSet", "Value": JSON.stringify(ds) },
+                    { "Key": "Save", "Value": JSON.stringify({}) }
+                ]
+            },0);
+    } 
  
     return {
         clockIn: ClockIn,
         clockOut: ClockOut,
-        startJob: StartJob,
-        writeWorkOrderLaborTicket: WriteWorkOrderLaborTicket
+        startJob: StartJob
     }
 });
