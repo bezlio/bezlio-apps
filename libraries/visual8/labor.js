@@ -136,6 +136,6 @@ define(function () {
         clockIn: ClockIn,
         clockOut: ClockOut,
         startJob: StartJob,
-        endActivity: EndActivity
+        writeWorkOrderLaborTicket: WriteWorkOrderLaborTicket
     }
 });
