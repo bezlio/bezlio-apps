@@ -37,3 +37,5 @@ Also download all of the .SQL files from the appropriate subfolders and place th
 * [Main View](https://github.com/bezlio/bezlio-apps/tree/master/roles/production-team-leader/main-view/sql)
 
 Place downloaded .SQL files into your production-team-leader queries location.
+
+At this point you can now install this app from the 'Apps' screen within Bezlio.  Simply select 'Production Team Leader - Main View' from that screen to add to your My Bezls list.  When added you will need to load this Bezl into the custom designer and edit the setConfig function as per the inline comments to match your environment.
