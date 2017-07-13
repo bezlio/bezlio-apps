@@ -238,7 +238,7 @@ define(function () {
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn && bezl.vars.team[i].currentActivity != '') {
 
-                        var clockIn = new Date(bezl.vars.team[i].data.currentActivityClockIn);
+                        var clockIn = new Date(bezl.vars.team[i].data.CurrentActivityClockIn);
                         var clockOut = new Date();
 
                         labor.updateLaborTicket(bezl
