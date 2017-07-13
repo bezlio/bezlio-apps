@@ -251,9 +251,9 @@ define(["./employees.js"], function (employees) {
             if (ds.startsWith("EditLabor")) {
                 if (bezl.vars.config.Platform == "Visual8") {
                     if (bezl.data[ds]) {
-                        for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
+                        for (var i = 0; i < bezl.data[ds].EDIT_LABOR.length; i++) {
                             for (var x = 0; x < bezl.vars.team.length; x++) {
-                                if (bezl.vars.team[x].key == bezl.data[ds].LABOR[i].EMPLOYEE_ID) {
+                                if (bezl.vars.team[x].key == bezl.data[ds].EDIT_LABOR[i].EMPLOYEE_ID) {
                                     bezl.vars.team[x].currentActivity = ''
                                 }
                             }
