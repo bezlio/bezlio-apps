@@ -202,7 +202,11 @@ define(["./employees.js"], function (employees) {
             employees.highlightSelected(bezl);
         }
 
+        // Some of our data subscriptions have a unique identifier as part of the name.  To deal with this
+        // loop through the data subscription list and use startsWith
         bezl.dataService.getSubscriptionList().forEach(ds => {
+
+            // Starting a job
             if (ds.startsWith("StartJob")) {
 
                 if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
@@ -231,6 +235,26 @@ define(["./employees.js"], function (employees) {
                                     bezl.vars.team[x].laborId = bezl.data[ds].LABOR[i].TRANSACTION_ID;
                                     bezl.vars.team[x].clockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
                                     bezl.vars.team[x].currentActivityClockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
+                                }
+                            }
+                        }
+
+                        bezl.dataService.remove(ds);
+                        bezl.data[ds] = null;
+                        $("#jsGridTeam").jsGrid("loadData");
+                        employees.highlightSelected(bezl);
+                    }
+                }
+            }
+
+            // Editing a labor record (VISUAL ERP only at this point - used when ending activity)
+            if (ds.startsWith("EditLabor")) {
+                if (bezl.vars.config.Platform == "Visual8") {
+                    if (bezl.data[ds]) {
+                        for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
+                            for (var x = 0; x < bezl.vars.team.length; x++) {
+                                if (bezl.vars.team[x].key == bezl.data[ds].LABOR[i].EMPLOYEE_ID) {
+                                    bezl.vars.team[x].currentActivity = ''
                                 }
                             }
                         }
