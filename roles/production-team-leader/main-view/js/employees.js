@@ -187,7 +187,25 @@ define(function () {
                 // attendance status
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                        EndActivities(bezl);
+
+                        // If the employee is currently clocked onto a job, clock them off
+                        if (bezl.vars.team[i].currentActivity != '') {
+                            var clockIn = new Date(bezl.vars.team[i].data.CurrentActivityClockIn);
+                            var clockOut = new Date();
+
+                            labor.updateLaborTicket(bezl
+                                        , bezl.vars.config.Connection
+                                        , bezl.vars.config.site
+                                        , bezl.vars.team[i].laborId
+                                        , clockIn.toLocaleString()
+                                        , clockOut.toLocaleString()
+                                        , Math.abs(clockOut - clockIn) / 36e5
+                                        , 0
+                                        , false
+                                        , ''
+                            )
+                        };
+
                         labor.clockOut(bezl, bezl.vars.team[i].key, bezl.vars.config.pluginInstance);                                              
                         bezl.vars.team[i].clockedIn = 0;
                     }
