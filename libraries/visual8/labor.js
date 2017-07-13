@@ -66,7 +66,6 @@ define(function () {
                 TRANSACTION_DATE: new Date(new Date().setHours(0, 0, 0, 0)),
                 EMPLOYEE_ID: employee,
                 CLOCK_IN: d.toLocaleString(),
-                CLOCK_OUT: d.toLocaleString(),
                 SITE_ID: siteId,
                 BASE_ID: baseId,
                 LOT_ID: lotId,
