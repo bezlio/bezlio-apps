@@ -48,6 +48,10 @@ define(function () {
                 "QuoteNum": quoteData.quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
+
+        bezl.data.Quotes.forEach(quote => {
+            console.log(quote);
+        });
     }
 
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
