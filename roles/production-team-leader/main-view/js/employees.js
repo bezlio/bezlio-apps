@@ -169,7 +169,7 @@ define(function () {
                 var clockOutEmployees = [];
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                        clockOutEmployees.push(bezl.vars.team[i].key, bezl.vars.config.pluginInstance);
+                        clockOutEmployees.push(bezl.vars.team[i].key);
                     }
                 }
 
