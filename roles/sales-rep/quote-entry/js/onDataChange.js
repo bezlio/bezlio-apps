@@ -77,7 +77,7 @@ define(function () {
                             attrFnd.SELECTED_VALUE = attrVal.Character01;
                             if (attrVal.Character01 === 'OTHER') {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
-                            } else if (attrVal.Key4.indexOf('MEASURE') > 0){
+                            } else if (attrVal.Key4.indexOf('MEASURE') > 0) {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === attrVal.Character01).SELECTED_VALUE = attrVal.Character04;
                             }
                             //dependent attribute display setting
@@ -152,6 +152,8 @@ define(function () {
             bezl.vars.deleting = false;
 
             bezl.data.Quotes.splice(bezl.data.Quotes.indexOf(hed => hed.QuoteNum === quoteNum), 1);
+            console.log("QuoteNum: " + quoteNum);
+            console.log("Quote Index: " + bezl.data.Quotes.indexOf(hed => hed.QuoteNum === quoteNum));
 
             require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
