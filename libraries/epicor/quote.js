@@ -50,7 +50,9 @@ define(function () {
             }, 0);
 
         bezl.data.Quotes.forEach(quote => {
-            console.log(quote);
+            if (quote.QuoteNum === bezl.vars.quoteData.quoteNum) {
+                console.log(quote);
+            }
         });
     }
 
