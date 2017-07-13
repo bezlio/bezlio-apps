@@ -104,6 +104,8 @@ define(function () {
      * @param {datetime} clockOut - The clock out time
      * @param {Number} hoursWorked - The total hours worked on this labor ticket
      * @param {Number} goodQty - The quantity completed
+     * @param {Boolean} setupCompleted - Setup complete?
+     * @param {string} description - Description
      */
     function UpdateLaborTicket (bezl
                             , connection
@@ -112,14 +114,18 @@ define(function () {
                             , clockIn
                             , clockOut
                             , hoursWorked
-                            , goodQty) {
+                            , goodQty
+                            , setupCompleted
+                            , description) {
 
         var ds = { EDIT_LABOR: [
             {
                 CLOCK_IN_TIME: clockIn,
                 CLOCK_OUT_time: clockOut,
                 HOURS_WORKED: hoursWorked,
-                GOOD_QTY: goodQty
+                GOOD_QTY: goodQty,
+                SETUP_COMPLETED: setupCompleted,
+                DESCRIPTION: description
             }
         ] };
         

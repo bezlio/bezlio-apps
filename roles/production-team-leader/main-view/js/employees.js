@@ -241,7 +241,12 @@ define(function () {
                                     , clockIn.toLocaleString()
                                     , clockOut.toLocaleString()
                                     , Math.abs(clockOut - clockIn) / 36e5
-                                    , bezl.vars.team[i].completedQty);
+                                    , bezl.vars.team[i].completedQty
+                                    , ((bezl.vars.team[i].setupPctComplete || 0) == 100) ? true : false
+                                    , ((bezl.vars.team[i].setupPctComplete || 0) > 0 
+                                        && (bezl.vars.team[i].setupPctComplete || 0) != 100) ? 
+                                            'SETUP %' + bezl.vars.team[i].setupPctComplete : ''
+                        )
 
                         // Clear out the completed qty
                         bezl.vars.team[i].completedQty = 0;
