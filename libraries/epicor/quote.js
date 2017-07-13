@@ -115,7 +115,7 @@ define(function () {
                     //set measurement value
                     if (attr.ATTRIBUTE_ID.indexOf('MEASURE') > -1) {
                         measureAttr = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
-                        if(measureAttr != undefined) {
+                        if (measureAttr != undefined) {
                             otherValue = measureAttr.SELECTED_VALUE;
                         }
                     }
@@ -125,6 +125,7 @@ define(function () {
                         bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                             "QueryName": "InsertAttributes",
                             "Parameters": [
+                                { Key: "Company", Value: company },
                                 { Key: "QuoteNum", Value: quoteNum },
                                 { Key: "QuoteLine", Value: dtl.QuoteLine },
                                 { Key: "PartID", Value: dtl.PartNum },
@@ -180,6 +181,7 @@ define(function () {
                             bezl.dataService.add('QuoteAttrs_' + name, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
+                                    { Key: "Company", Value: company },
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
                                     { Key: "PartID", Value: dtl.PartNum },
@@ -198,6 +200,7 @@ define(function () {
                             bezl.dataService.add('QuoteMulti_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
+                                    { Key: "Company", Value: company },
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
                                     { Key: "PartID", Value: dtl.PartNum },
@@ -228,6 +231,7 @@ define(function () {
                             bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
+                                    { Key: "Company", Value: company },
                                     { Key: "QuoteNum", Value: quoteNum },
                                     { Key: "QuoteLine", Value: dtl.QuoteLine },
                                     { Key: "PartID", Value: dtl.PartNum },
@@ -247,7 +251,7 @@ define(function () {
             }
 
             if (dtl.ListItem === 1) { //set concatenated attribute values as description
-                console.log('Attr: ' + attributeConcat);
+                //console.log('Attr: ' + attributeConcat);
                 bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
             }
         });
@@ -256,6 +260,15 @@ define(function () {
         for (var x of bezl.data.QuoteDtls) {
             if (x.Deleted === 1) {
                 removeLines.push(x.QuoteLine);
+
+                bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                    "QueryName": "DeleteAttributes",
+                    "Parameters": [
+                        { Key: "Company", Value: company },
+                        { Key: "QuoteNum", Value: x.QuoteNum },
+                        { Key: "QuoteLine", Value: x.QuoteLine }
+                    ]
+                }, 0);
             }
         }
 
