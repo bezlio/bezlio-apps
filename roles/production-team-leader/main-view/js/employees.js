@@ -181,7 +181,7 @@ define(function () {
                 // attendance status
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                        labor.clockOut(bezl, bezl.vars.team[i].key);                                              
+                        labor.clockOut(bezl, bezl.vars.team[i].key, bezl.vars.config.pluginInstance);                                              
                         bezl.vars.team[i].clockedIn = 0;
                     }
                 }
