@@ -232,7 +232,7 @@ define(function () {
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn && bezl.vars.team[i].currentActivity != '') {
 
-                        var clockIn = new Date(bezl.vars.team[i].currentActivityClockIn);
+                        var clockIn = new Date(bezl.vars.team[i].data.currentActivityClockIn);
                         var clockOut = new Date();
 
                         labor.updateLaborTicket(bezl
@@ -338,7 +338,9 @@ define(function () {
                                         , job.data.SplitId
                                         , job.data.SubId
                                         , job.data.OprSeq
-                                        , setup);
+                                        , setup
+                                        , bezl.vars.team[i].key
+                                        , bezl.vars.team[i].data.LaborHeadRowId);
                         }
                     }
 

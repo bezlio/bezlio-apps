@@ -5,16 +5,19 @@ define(function () {
      * which is used to keep track of the overall attendance status of employees.
      * @param {Object[]} bezl - A reference to the calling Bezl
      * @param {string} employee - Employee ID to clock in
+     * @param {string} laborHeadRowId - A unique labor head row ID to associate labor detail records with.  
      * @param {string} pluginInstance - BRDB plugin instance to use for write transaction
      */
     function ClockIn (bezl
                     , employee
+                    , laborHeadRowId
                     , pluginInstance) {
 
         bezl.dataService.add('ClockIn_' + employee,'brdb', pluginInstance,'ExecuteNonQuery', { 
             "QueryName": "InsertLaborHead",
             "Parameters": [
-                { "Key": "EmployeeID", "Value": employee }
+                { "Key": "EmployeeID", "Value": employee },
+                { "Key": "LaborHeadRowId", "Value": laborHeadRowId }
             ] },0);
     }
 
@@ -48,6 +51,7 @@ define(function () {
      * @param {string} subId - The work order sub ID to clock onto
      * @param {Number} oprSeq - The operation sequence to clock onto
      * @param {Boolean} setup - Indicates this activity should be started for Setup
+     * @param {string} description - Description
      */
     function StartJob (bezl
                     , connection
@@ -58,7 +62,8 @@ define(function () {
                     , splitId
                     , subId
                     , oprSeq
-                    , setup) {
+                    , setup
+                    , description) {
 
         var d = new Date();
         var ds = { LABOR: [
@@ -73,7 +78,8 @@ define(function () {
                 SPLIT_ID: splitId,
                 SUB_ID: subId,
                 SEQ_NO: oprSeq,
-                START_IN_PROCESS_TICKET: true
+                START_IN_PROCESS_TICKET: true,
+                DESCRIPTION: description
             }
         ] };
         
