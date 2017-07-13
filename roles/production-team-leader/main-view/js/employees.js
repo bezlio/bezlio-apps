@@ -335,6 +335,8 @@ define(function () {
                                 bezl.vars.selectedJob.laborType = 'R';
                             }
 
+                            var d = new Date();
+
                             labor.startJob(bezl
                                         , bezl.vars.config.Connection
                                         , bezl.vars.config.site
@@ -345,7 +347,10 @@ define(function () {
                                         , job.data.SubId
                                         , job.data.OprSeq
                                         , setup
-                                        , bezl.vars.team[i].data.LaborHeadRowId);
+                                        , bezl.vars.team[i].data.LaborHeadRowId
+                                        , d.toLocaleString());
+
+                            bezl.vars.team[i].data.CurrentActivityClockIn = d.toLocaleString();
                         }
                     }
 

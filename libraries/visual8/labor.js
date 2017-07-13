@@ -52,6 +52,7 @@ define(function () {
      * @param {Number} oprSeq - The operation sequence to clock onto
      * @param {Boolean} setup - Indicates this activity should be started for Setup
      * @param {string} description - Description
+     * @param {datetime} clockIn - The clock in time to apply to the labor record
      */
     function StartJob (bezl
                     , connection
@@ -63,15 +64,15 @@ define(function () {
                     , subId
                     , oprSeq
                     , setup
-                    , description) {
-
-        var d = new Date();
+                    , description
+                    , clockIn) {
+        
         var ds = { LABOR: [
             {
                 TRANSACTION_TYPE: ((setup) ? "SETUP" : "RUN"),
                 TRANSACTION_DATE: new Date(new Date().setHours(0, 0, 0, 0)),
                 EMPLOYEE_ID: employee,
-                CLOCK_IN: d.toLocaleString(),
+                CLOCK_IN: clockIn,
                 SITE_ID: siteId,
                 BASE_ID: baseId,
                 LOT_ID: lotId,
