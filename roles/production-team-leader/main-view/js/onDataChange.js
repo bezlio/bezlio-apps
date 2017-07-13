@@ -258,7 +258,7 @@ define(["./employees.js"], function (employees) {
                                 }
                             }
                         }
-
+                        bezl.vars.endingActivities = false;
                         bezl.dataService.remove(ds);
                         bezl.data[ds] = null;
                         $("#jsGridTeam").jsGrid("loadData");
