@@ -238,7 +238,7 @@ define(function () {
                                     , bezl.vars.config.Connection
                                     , bezl.vars.config.site
                                     , bezl.vars.team[i].laborId
-                                    , clockIn
+                                    , clockIn.toLocaleString()
                                     , clockOut.toLocaleString()
                                     , Math.abs(clockOut - clockIn) / 36e5
                                     , bezl.vars.team[i].completedQty);
