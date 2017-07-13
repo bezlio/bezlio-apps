@@ -253,7 +253,7 @@ define(["./employees.js"], function (employees) {
                     if (bezl.data[ds]) {
                         for (var i = 0; i < bezl.data[ds].EDIT_LABOR.length; i++) {
                             for (var x = 0; x < bezl.vars.team.length; x++) {
-                                if (bezl.vars.team[x].key == bezl.data[ds].EDIT_LABOR[i].EMPLOYEE_ID) {
+                                if (bezl.vars.team[x].laborId == bezl.data[ds].EDIT_LABOR[i].TRANSACTION_ID) {
                                     bezl.vars.team[x].currentActivity = ''
                                 }
                             }
