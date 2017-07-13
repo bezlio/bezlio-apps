@@ -142,8 +142,14 @@ define(function () {
                 // attendance status
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
-                        labor.clockIn(bezl, bezl.vars.team[i].key, bezl.vars.config.pluginInstance);                                              
+                        var laborHeadRowId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                                                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                                                return v.toString(16);
+                                            });
+
+                        labor.clockIn(bezl, bezl.vars.team[i].key, laborHeadRowId, bezl.vars.config.pluginInstance);                                              
                         bezl.vars.team[i].clockedIn = 1;
+                        bezl.vars.team[i].data.LaborHeadRowId = laborHeadRowId;
                     }
                 }
 
