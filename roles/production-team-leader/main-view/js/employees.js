@@ -230,7 +230,7 @@ define(function () {
         } else if (bezl.vars.config.Platform == "Visual8") {
             require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
                 for (var i = 0; i < bezl.vars.team.length; i++) {
-                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
+                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn && bezl.vars.team[i].currentActivity != '') {
 
                         var clockIn = new Date(bezl.vars.team[i].currentActivityClockIn);
                         var clockOut = new Date();
@@ -248,6 +248,8 @@ define(function () {
                                         && (bezl.vars.team[i].setupPctComplete || 0) != 100) ? 
                                             'SETUP %' + bezl.vars.team[i].setupPctComplete : ''
                         )
+                        
+                        bezl.vars.endingActivities = true;
 
                         // Clear out the completed qty
                         bezl.vars.team[i].completedQty = 0;
@@ -255,8 +257,6 @@ define(function () {
                         bezl.vars.team[i].setupPctComplete = 0;
                     }
                 }                   
-
-                bezl.vars.endingActivities = true;
             });
         }
 
