@@ -26,7 +26,8 @@ define(function () {
      * @param {string} pluginInstance - BRDB plugin instance to use for write transaction
      */
     function ClockOut (bezl
-                    , employee) {
+                    , employee
+                    , pluginInstance) {
 
         bezl.dataService.add('ClockOut_' + employee,'brdb', pluginInstance,'ExecuteNonQuery', { 
             "QueryName": "UpdateLaborHead",
