@@ -345,7 +345,6 @@ define(function () {
                                         , job.data.SubId
                                         , job.data.OprSeq
                                         , setup
-                                        , bezl.vars.team[i].key
                                         , bezl.vars.team[i].data.LaborHeadRowId);
                         }
                     }
