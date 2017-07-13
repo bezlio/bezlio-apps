@@ -208,33 +208,14 @@ define(["./employees.js"], function (employees) {
 
             // Starting a job
             if (ds.startsWith("StartJob")) {
-
-                if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-                    for (var i = 0; i < bezl.data[ds].LaborHed.length; i++) {
-                        for (var x = 0; x < bezl.vars.team.length; x++) {
-                            if (bezl.vars.team[x].key == bezl.data[ds].LaborHed[i].EmployeeNum) {
-                                bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
-                                bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
-                                bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
-                            }
-                        }
-                    }
-
-                    bezl.dataService.remove(ds);
-                    bezl.data[ds] = null;
-                    $("#jsGridTeam").jsGrid("loadData");
-                    employees.highlightSelected(bezl);
-                } else if (bezl.vars.config.Platform == "Visual8") {
-                    if (bezl.data[ds]) {
-                        for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
+                if (bezl.data[ds]) {
+                    if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                        for (var i = 0; i < bezl.data[ds].LaborHed.length; i++) {
                             for (var x = 0; x < bezl.vars.team.length; x++) {
-                                if (bezl.vars.team[x].key == bezl.data[ds].LABOR[i].EMPLOYEE_ID) {
+                                if (bezl.vars.team[x].key == bezl.data[ds].LaborHed[i].EmployeeNum) {
                                     bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
                                     bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
                                     bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
-                                    bezl.vars.team[x].laborId = bezl.data[ds].LABOR[i].TRANSACTION_ID;
-                                    bezl.vars.team[x].clockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
-                                    bezl.vars.team[x].data.currentActivityClockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
                                 }
                             }
                         }
@@ -243,6 +224,25 @@ define(["./employees.js"], function (employees) {
                         bezl.data[ds] = null;
                         $("#jsGridTeam").jsGrid("loadData");
                         employees.highlightSelected(bezl);
+                    } else if (bezl.vars.config.Platform == "Visual8") {
+                        
+                            for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
+                                for (var x = 0; x < bezl.vars.team.length; x++) {
+                                    if (bezl.vars.team[x].key == bezl.data[ds].LABOR[i].EMPLOYEE_ID) {
+                                        bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
+                                        bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
+                                        bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
+                                        bezl.vars.team[x].laborId = bezl.data[ds].LABOR[i].TRANSACTION_ID;
+                                        bezl.vars.team[x].clockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
+                                        bezl.vars.team[x].data.currentActivityClockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
+                                    }
+                                }
+                            }
+
+                            bezl.dataService.remove(ds);
+                            bezl.data[ds] = null;
+                            $("#jsGridTeam").jsGrid("loadData");
+                            employees.highlightSelected(bezl);
                     }
                 }
             }
