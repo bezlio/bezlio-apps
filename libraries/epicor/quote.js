@@ -165,8 +165,7 @@ define(function () {
                                 attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
                                 break;
                             case "110_MEASURE":
-                                attributeConcat += (attr.SELECTED_VALUE != 'OTHER') ? labelValue + ' ' : otherValue + ' ';
-                                console.log(otherValue);
+                                attributeConcat += otherValue + ' ';
                                 break;
                             default:
                                 break;
