@@ -2549,27 +2549,33 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Gallon",
                 "ATTRIBUTE_VALUE": "GAL",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Half-Gallon",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "HALF-GALLON"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "ML"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "OZ",
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pint",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "PINT"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Quart",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "QUART"
             },
             {
