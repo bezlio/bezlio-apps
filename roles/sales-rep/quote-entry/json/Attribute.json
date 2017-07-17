@@ -554,60 +554,70 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "CC",
                 "ATTRIBUTE_VALUE": "CC",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 10,
                 "ImagePath": "/Assets/UOM/CC.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "DRAM",
                 "ATTRIBUTE_VALUE": "DRAM",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 20,
                 "ImagePath": "/Assets/UOM/DRAM.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 30,
                 "ImagePath": "/Assets/UOM/GAL.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "GRAM",
                 "ATTRIBUTE_VALUE": "GRAM",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 40,
                 "ImagePath": "/Assets/UOM/GRAM.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LB",
                 "ATTRIBUTE_VALUE": "LB",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 50,
                 "ImagePath": "/Assets/UOM/LB.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 60,
                 "ImagePath": "/Assets/UOM/LITER.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 70,
                 "ImagePath": "/Assets/UOM/ML.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "MM",
                 "ATTRIBUTE_VALUE": "MM",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 80,
                 "ImagePath": "/Assets/UOM/LOAD.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 90,
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "QUART",
                 "ATTRIBUTE_VALUE": "QUART",
+                "EDITABLE": true,
                 "DISPLAY_SEQUENCE": 100,
                 "ImagePath": "/Assets/UOM/QUART.jpg"
             },
@@ -1523,31 +1533,37 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/ML.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "CC",
                 "ATTRIBUTE_VALUE": "CC",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/CC.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LITER.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
                 "ATTRIBUTE_VALUE": "OTHER",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
             }
         ]
@@ -2039,36 +2055,43 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "CC",
                 "ATTRIBUTE_VALUE": "CC",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/CC.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "GRAM",
                 "ATTRIBUTE_VALUE": "GRAM",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GRAM.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LB",
                 "ATTRIBUTE_VALUE": "LB",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LB.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LITER.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LOAD",
                 "ATTRIBUTE_VALUE": "LOAD",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LOAD.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ML",
                 "ATTRIBUTE_VALUE": "ML",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/ML.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
@@ -2311,21 +2334,25 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LITER",
                 "ATTRIBUTE_VALUE": "LITER",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LITER.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LB",
                 "ATTRIBUTE_VALUE": "LB",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/LB.jpg"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "OZ",
                 "ATTRIBUTE_VALUE": "OZ",
+                "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
@@ -5058,18 +5085,22 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Inches",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "Inch"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ml",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "ML"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "oz",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "OZ"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
+                "EDITABLE": true,
                 "ATTRIBUTE_VALUE": "OTHER"
             }
         ]
