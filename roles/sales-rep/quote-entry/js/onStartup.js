@@ -6,6 +6,8 @@ define(["./quote.js"], function (quote) {
         quote.runQuery(bezl, 'Parts');
         quote.runQuery(bezl, 'Customers');
         quote.runQuery(bezl, 'Suspects');
+        quote.runQuery(bezl, 'Territories');
+        quote.runQuery(bezl, 'Terms');
 
         bezl.vars.ds = {};
         bezl.vars.attrs = [];

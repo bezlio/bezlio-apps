@@ -77,7 +77,7 @@ define(function () {
                 }, 0);
                 break;
             case "Territories":
-                bezl.dataService.add('Territories', 'brdb', 'sales=rep-queries', 'ExecuteQuery', {
+                bezl.dataService.add('Territories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetSalesTer",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.company }
