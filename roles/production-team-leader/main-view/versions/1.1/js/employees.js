@@ -135,27 +135,6 @@ define(function () {
                     bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
                 } 
             });
-        } else if (bezl.vars.config.Platform == "Visual8") {
-            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
-
-                // Do a direct write to the custom BEZLIO_LABOR_HEAD table we use to keep track of employee
-                // attendance status
-                for (var i = 0; i < bezl.vars.team.length; i++) {
-                    if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
-                        var laborHeadRowId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                                                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-                                                return v.toString(16);
-                                            });
-
-                        labor.clockIn(bezl, bezl.vars.team[i].key, laborHeadRowId, bezl.vars.config.pluginInstance);                                              
-                        bezl.vars.team[i].clockedIn = 1;
-                        bezl.vars.team[i].data.LaborHeadRowId = laborHeadRowId;
-                    }
-                }
-
-                $("#jsGridTeam").jsGrid("loadData");
-                HighlightSelected(bezl);
-            });
         }
     }
 
@@ -180,39 +159,6 @@ define(function () {
                             , clockOutEmployees);
 
                 bezl.vars.clockingOut = true;  
-            });
-        } else if (bezl.vars.config.Platform == "Visual8") {
-            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
-                // Do a direct write to the custom BEZLIO_LABOR_HEAD table we use to keep track of employee
-                // attendance status
-                for (var i = 0; i < bezl.vars.team.length; i++) {
-                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-
-                        // If the employee is currently clocked onto a job, clock them off
-                        if (bezl.vars.team[i].currentActivity != '') {
-                            var clockIn = new Date(bezl.vars.team[i].data.CurrentActivityClockIn);
-                            var clockOut = new Date();
-
-                            labor.updateLaborTicket(bezl
-                                        , bezl.vars.config.Connection
-                                        , bezl.vars.config.site
-                                        , bezl.vars.team[i].laborId
-                                        , clockIn.toLocaleString()
-                                        , clockOut.toLocaleString()
-                                        , Math.abs(clockOut - clockIn) / 36e5
-                                        , 0
-                                        , false
-                                        , ''
-                            )
-                        };
-
-                        labor.clockOut(bezl, bezl.vars.team[i].key, bezl.vars.config.pluginInstance);                                              
-                        bezl.vars.team[i].clockedIn = 0;
-                    }
-                }
-
-                $("#jsGridTeam").jsGrid("loadData");
-                HighlightSelected(bezl);
             });
         }
     }
@@ -251,37 +197,6 @@ define(function () {
 
                     bezl.vars.endingActivities = true;
                 });
-        } else if (bezl.vars.config.Platform == "Visual8") {
-            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
-                for (var i = 0; i < bezl.vars.team.length; i++) {
-                    if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn && bezl.vars.team[i].currentActivity != '') {
-
-                        var clockIn = new Date(bezl.vars.team[i].data.CurrentActivityClockIn);
-                        var clockOut = new Date();
-
-                        labor.updateLaborTicket(bezl
-                                    , bezl.vars.config.Connection
-                                    , bezl.vars.config.site
-                                    , bezl.vars.team[i].laborId
-                                    , clockIn.toLocaleString()
-                                    , clockOut.toLocaleString()
-                                    , Math.abs(clockOut - clockIn) / 36e5
-                                    , bezl.vars.team[i].completedQty
-                                    , ((bezl.vars.team[i].setupPctComplete || 0) == 100) ? true : false
-                                    , ((bezl.vars.team[i].setupPctComplete || 0) > 0 
-                                        && (bezl.vars.team[i].setupPctComplete || 0) != 100) ? 
-                                            'SETUP %' + bezl.vars.team[i].setupPctComplete : ''
-                        )
-                        
-                        bezl.vars.endingActivities = true;
-
-                        // Clear out the completed qty
-                        bezl.vars.team[i].completedQty = 0;
-                        bezl.vars.team[i].pendingQtyTemp = 0;
-                        bezl.vars.team[i].setupPctComplete = 0;
-                    }
-                }                   
-            });
         }
 
         bezl.vars.endActivitiesPrompt = false;
@@ -333,44 +248,6 @@ define(function () {
                                 , job.data.AssemblySeq
                                 , job.data.OprSeq
                                 , setup);
-
-                    bezl.vars.startingJob = true;
-                } else {
-                    bezl.notificationService.showCriticalError('No selected clocked in employees available to start this job.');
-                }
-            });
-        } else if (bezl.vars.config.Platform == "Visual8") {
-            require([bezl.vars.config.baseLibraryUrl + 'visual8/labor.js'], function(labor) {
-                var clockedIn = bezl.vars.team.find(t => t.clockedIn);
-
-                if (clockedIn) {
-                    for (var i = 0; i < bezl.vars.team.length; i++) {
-                        if (bezl.vars.team[i].selected && bezl.vars.team[i].clockedIn) {
-                            // Update the selected job variable to note whether they are doing a setup or production
-                            if (setup) {
-                                bezl.vars.selectedJob.laborType = 'S';
-                            } else {
-                                bezl.vars.selectedJob.laborType = 'R';
-                            }
-
-                            var d = new Date();
-
-                            labor.startJob(bezl
-                                        , bezl.vars.config.Connection
-                                        , bezl.vars.config.site
-                                        , bezl.vars.team[i].key
-                                        , job.data.BaseId
-                                        , job.data.LotId
-                                        , job.data.SplitId
-                                        , job.data.SubId
-                                        , job.data.OprSeq
-                                        , setup
-                                        , bezl.vars.team[i].data.LaborHeadRowId
-                                        , d.toLocaleString());
-
-                            bezl.vars.team[i].data.CurrentActivityClockIn = d.toLocaleString();
-                        }
-                    }
 
                     bezl.vars.startingJob = true;
                 } else {

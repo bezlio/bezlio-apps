@@ -20,7 +20,6 @@ define(["./employees.js"], function (employees) {
                                             pendingQty: bezl.data.Employees[i].PendingQty,
                                             shift: bezl.data.Employees[i].Shift,
                                             department: bezl.data.Employees[i].Department,
-                                            data: bezl.data.Employees[i],
                                             show: true
                                         });
                                         
@@ -38,7 +37,6 @@ define(["./employees.js"], function (employees) {
                             bezl.vars.team[x].currentActivity = bezl.data.Employees[i].CurrentActivity;
                             bezl.vars.team[x].laborType = bezl.data.Employees[i].LaborType;
                             bezl.vars.team[x].pendingQty = bezl.data.Employees[i].PendingQty;
-                            bezl.vars.team[x].data = bezl.data.Employees[i];
                         }
                     }
 
@@ -54,7 +52,6 @@ define(["./employees.js"], function (employees) {
                                 employeeEmail: bezl.data.Employees[i].EmployeeEmail,
                                 shift: bezl.data.Employees[i].Shift,
                                 department: bezl.data.Employees[i].Department,
-                                data: bezl.data.Employees[i],
                                 show: true
                                 });
                     }
@@ -169,7 +166,7 @@ define(["./employees.js"], function (employees) {
                         }
                     }
                 }
-            } 
+            }
 
             bezl.dataService.remove('ClockIn');
             bezl.data.ClockIn = null;
@@ -202,75 +199,25 @@ define(["./employees.js"], function (employees) {
             employees.highlightSelected(bezl);
         }
 
-        // Some of our data subscriptions have a unique identifier as part of the name.  To deal with this
-        // loop through the data subscription list and use startsWith
-        bezl.dataService.getSubscriptionList().forEach(ds => {
-
-            // Starting a job
-            if (ds.startsWith("StartJob")) {
-                if (bezl.data[ds]) {
-                    if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
-                        for (var i = 0; i < bezl.data[ds].LaborHed.length; i++) {
-                            for (var x = 0; x < bezl.vars.team.length; x++) {
-                                if (bezl.vars.team[x].key == bezl.data[ds].LaborHed[i].EmployeeNum) {
-                                    bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
-                                    bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
-                                    bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
-                                }
-                            }
-                        }
-
-                        bezl.dataService.remove(ds);
-                        bezl.data[ds] = null;
-                        $("#jsGridTeam").jsGrid("loadData");
-                        employees.highlightSelected(bezl);
-                    } else if (bezl.vars.config.Platform == "Visual8") {
-                        
-                            for (var i = 0; i < bezl.data[ds].LABOR.length; i++) {
-                                for (var x = 0; x < bezl.vars.team.length; x++) {
-                                    if (bezl.vars.team[x].key == bezl.data[ds].LABOR[i].EMPLOYEE_ID) {
-                                        bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
-                                        bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
-                                        bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
-                                        bezl.vars.team[x].laborId = bezl.data[ds].LABOR[i].TRANSACTION_ID;
-                                        bezl.vars.team[x].clockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
-                                        bezl.vars.team[x].data.currentActivityClockIn = bezl.data[ds].LABOR[i].CLOCK_IN;
-                                    }
-                                }
-                            }
-
-                            bezl.dataService.remove(ds);
-                            bezl.data[ds] = null;
-                            $("#jsGridTeam").jsGrid("loadData");
-                            employees.highlightSelected(bezl);
-                    }
-                }
-            }
-
-            // Editing a labor record (VISUAL ERP only at this point - used when ending activity)
-            if (ds.startsWith("EditLabor")) {
-                if (bezl.vars.config.Platform == "Visual8") {
-                    if (bezl.data[ds]) {
-                        for (var i = 0; i < bezl.data[ds].EDIT_LABOR.length; i++) {
-                            for (var x = 0; x < bezl.vars.team.length; x++) {
-                                if (bezl.vars.team[x].laborId == bezl.data[ds].EDIT_LABOR[i].TRANSACTION_ID) {
-                                    bezl.vars.team[x].currentActivity = ''
-                                }
-                            }
-                        }
-                        bezl.vars.endingActivities = false;
-                        bezl.dataService.remove(ds);
-                        bezl.data[ds] = null;
-                        $("#jsGridTeam").jsGrid("loadData");
-                        employees.highlightSelected(bezl);
-                    }
-                }
-            }
-        });
-
-        var pendingStartJobs = bezl.dataService.getSubscriptionList().find(ds => ds.startsWith("StartJob"));
-        if (!pendingStartJobs) {
+        if (bezl.data.StartJob) {
             bezl.vars.startingJob = false;
+
+            if (bezl.vars.config.Platform == "Epicor905" || bezl.vars.config.Platform == "Epicor10") {
+                for (var i = 0; i < bezl.data.StartJob.LaborHed.length; i++) {
+                    for (var x = 0; x < bezl.vars.team.length; x++) {
+                        if (bezl.vars.team[x].key == bezl.data.StartJob.LaborHed[i].EmployeeNum) {
+                            bezl.vars.team[x].currentActivity = bezl.vars.selectedJob.jobId + ' (' + bezl.vars.selectedJob.laborType + ')';
+                            bezl.vars.team[x].laborType = bezl.vars.selectedJob.laborType;
+                            bezl.vars.team[x].pendingQty = bezl.vars.selectedJob.pendingQty;
+                        }
+                    }
+                }
+            }
+
+            bezl.dataService.remove('StartJob');
+            bezl.data.StartJob = null;
+            $("#jsGridTeam").jsGrid("loadData");
+            employees.highlightSelected(bezl);
         }
 
         if (bezl.data.EndActivities) {
