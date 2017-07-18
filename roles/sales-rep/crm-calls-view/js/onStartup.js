@@ -12,10 +12,12 @@ define(["./account.js"], function (account) {
       if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
           bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
 
-          // Perform additional processing on the returned data
-          for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
-            bezl.vars.selectedAccount.CRMCalls[i].show = true;
-          }
+        // Perform additional processing on the returned data
+        if(bezl.vars.selectedAccount.CRMCalls) {
+            for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
+                bezl.vars.selectedAccount.CRMCalls[i].show = true;
+            }
+        }
       }
 
       // Refresh all call data at regular interval
