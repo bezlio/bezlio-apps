@@ -2,6 +2,10 @@ define(["./account.js"], function (account) {
  
   function OnStartup (bezl) {        
       bezl.vars.filterString = "";
+      bezl.vars.custList = [];
+
+      // Get All Accounts for dropdown
+       account.runQuery(bezl, 'Accounts');
 
       // Load the object for the selected customer from local storage into
       // a variable we can work with

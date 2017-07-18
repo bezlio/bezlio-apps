@@ -18,7 +18,10 @@ define(["./account.js"], function (account) {
             //bezl.vars.loadingAllCalls = false;
 
             // Set the currently selected accounts call data
-            if (bezl.vars.selectedAccount) {
+            if (bezl.vars.selectedAccount.ID == "ALL_ACCOUNTS") {
+                bezl.vars.selectedAccount.CRMCalls = [];
+                bezl.vars.selectedAccount.CRMCalls = bezl.data.AllCRMCalls;
+            } else if (bezl.vars.selectedAccount) {
                 bezl.vars.selectedAccount.CRMCalls = [];
                 for (var i = 0; i < bezl.data.AllCRMCalls.length; i++) {
                     if (bezl.data.AllCRMCalls[i].ID == bezl.vars.selectedAccount.ID) {
@@ -39,6 +42,16 @@ define(["./account.js"], function (account) {
 
             bezl.data.AddCRMCall = null;
             bezl.dataService.remove('AddCRMCall');
+        }
+
+        if(bezl.data.Accounts) {
+            bezl.vars.custList = bezl.data.Accounts;
+            if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
+                bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
+            }
+            bezl.vars.loading = false;
+            bezl.dataService.Accounts = null;
+            bezl.dataService.remove('Accounts');
         }
     }
   

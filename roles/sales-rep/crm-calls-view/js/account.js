@@ -5,7 +5,6 @@ define(function () {
         switch (queryName) {
             case "CRMCalls":
                 bezl.vars.loading = true; 
-
                 // Pull in the call list for just the currently selected account
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountCallHistory",
@@ -13,6 +12,24 @@ define(function () {
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
                 break;
+            case "AllCRMCalls":
+                bezl.vars.loading = true; 
+                // Pull in the call list 
+                 bezl.dataService.add('AllCRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountsCallHistory",
+                    "Parameters": [
+                    { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] }, 1);
+                break;
+            case 'Accounts':
+                bezl.vars.loading = true;
+                // Get All Accounts associated with user
+                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccounts",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ] },0); 
+                break; 
             default:
                 break;
         }
@@ -87,11 +104,24 @@ define(function () {
             return B - A;
         });
     }
+
+     function CustSelection(bezl, custId) {
+
+        //bezl.vars.Invoices = [];
+        var cust = bezl.vars.custList.find(c => c.ID == custId);
+        bezl.vars.selectedAccount = cust;
+        if(custId == "ALL_ACCOUNTS" ){
+            this.runQuery(bezl, 'AllCRMCalls');
+        } else {
+            this.runQuery(bezl, 'CRMCalls');
+        }
+    }
   
     return {
         runQuery: RunQuery,
         addNote: AddNote,
         applyFilter: ApplyFilter,
-        sortCalls: SortCalls
+        sortCalls: SortCalls,
+        custSelection: CustSelection
     }
 });
