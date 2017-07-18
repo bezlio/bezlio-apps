@@ -27,6 +27,8 @@ define(function () {
         if (bezl.data.NewCustomer) {
             bezl.vars.newCustomerLoading = false;
             bezl.dataService.remove('NewCustomer');
+
+            bezl.notificationService.showSuccess('Customer created successfully!');
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
