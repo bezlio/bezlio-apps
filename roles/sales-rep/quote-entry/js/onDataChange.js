@@ -4,20 +4,8 @@ define(function () {
             bezl.vars.CustomerCustID = bezl.data.FirstCustomer[0].CustID;
         }
 
-        if (bezl.data.Terms) {
-            console.log(bezl.data.Terms);
-        }
-
-        if (bezl.data.Territories) {
-            console.log(bezl.data.Territories);
-        }
-
         if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
             bezl.vars.loading = false;
-        }
-
-        if (bezl.data.Customers && bezl.vars.editingQuote) {
-            //console.log(bezl.data);
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
@@ -34,6 +22,11 @@ define(function () {
             setTimeout(() => {
 
             }, 3000);
+        }
+
+        if (bezl.data.NewCustomer) {
+            bezl.vars.newCustomerLoading = false;
+            bezl.dataService.remove('NewCustomer');
         }
 
         if (bezl.data.newQuote && bezl.data.Quotes && !bezl.vars.editingQuote) {
