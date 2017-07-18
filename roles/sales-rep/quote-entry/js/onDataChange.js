@@ -4,6 +4,14 @@ define(function () {
             bezl.vars.CustomerCustID = bezl.data.FirstCustomer[0].CustID;
         }
 
+        if (bezl.data.Terms) {
+            console.log(bezl.data.Terms);
+        }
+
+        if (bezl.data.Territories) {
+            console.log(bezl.data.Territories);
+        }
+
         if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
             bezl.vars.loading = false;
         }
