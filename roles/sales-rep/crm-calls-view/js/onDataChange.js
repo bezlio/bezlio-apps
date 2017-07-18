@@ -36,6 +36,7 @@ define(["./account.js"], function (account) {
 
             bezl.data.AllCRMCalls = null;
             bezl.dataService.remove('AllCRMCalls');
+            bezl.vars.loading = false;
         }
 
         if (bezl.data.AddCRMCall) {
