@@ -33,6 +33,9 @@ define(["./account.js"], function (account) {
             // Perform additional processing on the returned data
             account.applyFilter(bezl);
             account.sortCalls(bezl);
+
+            bezl.data.AllCRMCalls = null;
+            bezl.dataService.remove('AllCRMCalls');
         }
 
         if (bezl.data.AddCRMCall) {
