@@ -80,18 +80,17 @@ define(function () {
                 bezl.dataService.add('Territories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetSalesTer",
                     "Parameters": [
-                        { Key: "Company", Value: bezl.vars.company }
+                        { Key: "Company", Value: bezl.vars.Company }
                     ]
                 }, 0);
                 break;
             case "Terms":
-                console.log("this is a test");
-                // bezl.dataService.add('Terms', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                //     "QueryName": "GetTerms",
-                //     "Parameters": [
-                //         { Key: "Company", Value: bezl.vars.company }
-                //     ]
-                // }, 0);
+                bezl.dataService.add('Terms', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetTerms",
+                    "Parameters": [
+                        { Key: "Company", Value: bezl.vars.Company }
+                    ]
+                }, 0);
                 break;
         }
     }
