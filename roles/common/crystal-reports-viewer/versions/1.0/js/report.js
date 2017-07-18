@@ -17,7 +17,7 @@ define(function () {
             for (var i = 0; i < parm.ReportDetails.ParameterFields.length; i++) {
                 if (parm.ReportDetails.ParameterFields[i].ReportName == ''
                         && parm.ReportDetails.ParameterFields[i].IsOptionalPrompt == false
-                        && (!parm.ReportDetails.ParameterFields[i].Value)) {
+                        && (parm.ReportDetails.ParameterFields[i].Value == null)) {
                     parametersRequired = true;
                 
                     // Also take this time to structure the Value object according to the parameter
