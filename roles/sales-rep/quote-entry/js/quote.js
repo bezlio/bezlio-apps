@@ -85,12 +85,13 @@ define(function () {
                 }, 0);
                 break;
             case "Terms":
-                bezl.dataService.add('Terms', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetTerms",
-                    "Parameters": [
-                        { Key: "Company", Value: bezl.vars.company }
-                    ]
-                }, 0);
+                console.log("this is a test");
+                // bezl.dataService.add('Terms', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                //     "QueryName": "GetTerms",
+                //     "Parameters": [
+                //         { Key: "Company", Value: bezl.vars.company }
+                //     ]
+                // }, 0);
                 break;
         }
     }
