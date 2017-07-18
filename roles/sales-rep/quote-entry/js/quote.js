@@ -74,7 +74,23 @@ define(function () {
                         { Key: "QuoteLine", Value: bezl.vars.quoteAttributeLine },
                         { Key: "PartNum", Value: bezl.vars.quotePart }
                     ]
-                })
+                }, 0);
+                break;
+            case "Territories":
+                bezl.dataService.add('Territories', 'brdb', 'sales=rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetSalesTer",
+                    "Parameters": [
+                        { Key: "Company", Value: bezl.vars.company }
+                    ]
+                }, 0);
+                break;
+            case "Terms":
+                bezl.dataService.add('Terms', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetTerms",
+                    "Parameters": [
+                        { Key: "Company", Value: bezl.vars.company }
+                    ]
+                }, 0);
                 break;
         }
     }
