@@ -148,6 +148,7 @@ define(function () {
         bezl.vars.ds = {};
 
         bezl.vars.ds.Customer = [];
+        bezl.vars.ds.Customer_UD = [];
 
         bezl.vars.ds.Customer.push({
             Company: bezl.vars.company,
@@ -160,8 +161,11 @@ define(function () {
             Country: bezl.vars.newCustomerCountry,
             TerritoryID: bezl.vars.newCustomerTer,
             TermsCode: bezl.vars.newCustomerTerms,
-            Industry_c: 'TBD',
             RowMod: 'A'
+        });
+
+        bezl.vars.ds.Customer_UD.push({
+            Industry_c: 'TBD'
         });
 
         bezl.dataService.add(
