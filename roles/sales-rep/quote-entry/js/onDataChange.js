@@ -25,8 +25,6 @@ define(function () {
         }
 
         if (bezl.data.NewCustomer) {
-            console.log(bezl.data.NewCustomer);
-
             bezl.vars.newCustomerLoading = false;
             bezl.dataService.remove('NewCustomer');
 

@@ -160,6 +160,7 @@ define(function () {
             Country: bezl.vars.newCustomerCountry,
             TerritoryID: bezl.vars.newCustomerTer,
             TermsCode: bezl.vars.newCustomerTerms,
+            Industry_c: 'TBD',
             RowMod: 'A'
         });
 
