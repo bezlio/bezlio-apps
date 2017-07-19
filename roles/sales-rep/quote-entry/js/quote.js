@@ -234,7 +234,7 @@ define(function () {
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
-        newCustomerForm: newCustomerForm,
+        newCustomerForm: NewCustomerForm,
         newCustomer: NewCustomer,
         includeSuspects: IncludeSuspects,
         addLine: AddLine,
