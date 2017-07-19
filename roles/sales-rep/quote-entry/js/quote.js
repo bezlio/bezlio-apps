@@ -169,8 +169,8 @@ define(function () {
             'Epicor10',
             'ExecuteBOMethod',
             {
-                'Connection': 'Epicor 10 RS',
-                'Company': 'EPIC03',
+                'Connection': bezl.vars.connection,
+                'Company': bezl.vars.company,
                 'BOName': 'Customer',
                 'BOMethodName': 'UpdateExt',
                 'Parameters': [
