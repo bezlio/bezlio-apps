@@ -138,6 +138,50 @@ define(function () {
         }
     }
 
+    function newCustomerForm(bezl) {
+        bezl.vars.dialogVisible = !bezl.vars.dialogVisible;
+    }
+
+    function newCustomer(bezl) {
+        bezl.vars.newCustomerLoading = true;
+
+        bezl.vars.ds = {};
+
+        bezl.vars.ds.Customer = [];
+
+        bezl.vars.ds.Customer.push({
+            Company: bezl.vars.company,
+            CustID: bezl.vars.newCustomerID,
+            Name: bezl.vars.newCustomerName,
+            Address1: bezl.vars.newCustomerAddress,
+            City: bezl.vars.newCustomerCity,
+            State: bezl.vars.newCustomerState,
+            ZIP: bezl.vars.newCustomerZip,
+            Country: bezl.vars.newCustomerCountry,
+            TerritoryID: bezl.vars.newCustomerTer,
+            TermsCode: bezl.vars.newCustomerTerms,
+            RowMod: 'A'
+        });
+
+        bezl.dataService.add(
+            'NewCustomer',
+            'brdb',
+            'Epicor10',
+            'ExecuteBOMethod',
+            {
+                'Connection': 'Epicor 10 RS',
+                'Company': 'EPIC03',
+                'BOName': 'Customer',
+                'BOMethodName': 'UpdateExt',
+                'Parameters': [
+                    { 'Key': 'ds', 'Value': JSON.stringify(bezl.vars.ds) }
+                ]
+            }
+            , 0);
+
+        bezl.vars.dialogVisible = false;
+    }
+
     function AddLine(bezl) {
 
         var lineNum = Math.max.apply(Math, bezl.data.QuoteDtls.map(function (dtl) { return dtl.QuoteLine; }));
