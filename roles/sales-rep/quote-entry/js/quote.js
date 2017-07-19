@@ -139,6 +139,16 @@ define(function () {
     }
 
     function NewCustomerForm(bezl) {
+        bezl.vars.newCustomerID = '';
+        bezl.vars.newCustomerName = '';
+        bezl.vars.newCustomerAddress = '';
+        bezl.vars.newCustomerCity = '';
+        bezl.vars.newCustomerState = '';
+        bezl.vars.newCustomerZip = '';
+        bezl.vars.newCustomerCountry = '';
+        bezl.vars.newCustomerTer = '';
+        bezl.vars.newCustomerTerms = '';
+
         bezl.vars.dialogVisible = !bezl.vars.dialogVisible;
     }
 
