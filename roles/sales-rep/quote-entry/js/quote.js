@@ -138,11 +138,11 @@ define(function () {
         }
     }
 
-    function newCustomerForm(bezl) {
+    function NewCustomerForm(bezl) {
         bezl.vars.dialogVisible = !bezl.vars.dialogVisible;
     }
 
-    function newCustomer(bezl) {
+    function NewCustomer(bezl) {
         bezl.vars.newCustomerLoading = true;
 
         bezl.vars.ds = {};
@@ -234,6 +234,8 @@ define(function () {
     return {
         runQuery: RunQuery,
         returnToSummary: ReturnToSummary,
+        newCustomerForm: newCustomerForm,
+        newCustomer: NewCustomer,
         includeSuspects: IncludeSuspects,
         addLine: AddLine,
         deleteLine: DeleteLine,
