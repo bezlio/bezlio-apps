@@ -164,10 +164,6 @@ define(function () {
             RowMod: 'A'
         });
 
-        bezl.vars.ds.Customer_UD.push({
-            Industry_c: 'TBD'
-        });
-
         bezl.dataService.add(
             'NewCustomer',
             'brdb',
