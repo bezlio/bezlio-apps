@@ -38,30 +38,12 @@ define(["./account.js"], function (account) {
                                 "Parameters": [
                                     { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                                 ] 
-                            },0);
+                            },0); 
 
       $("#bezlpanel").on("selectAccount", function(event, param1) {
         bezl.vars.selectedAccount = param1;
         bezl.vars.loadedMore = false;
-
-        // Load up the CRM calls for this newly selected account
-        if (bezl.data.AllCRMCalls) {
-            bezl.vars.selectedAccount.CRMCalls = [];
-            for (var i = 0; i < bezl.data.AllCRMCalls.length; i++) {
-                if (bezl.data.AllCRMCalls[i].ID == bezl.vars.selectedAccount.ID) {
-                    bezl.vars.selectedAccount.CRMCalls.push(bezl.data.AllCRMCalls[i])
-                }
-            }
-        }
-
-        // Perform additional processing on the returned data
-        for (var i = 0; i < bezl.vars.selectedAccount.CRMCalls.length; i++) {
-          bezl.vars.selectedAccount.CRMCalls[i].show = true;
-        }
-
-        $(bezl.container.nativeElement).find('#filterString')[0].value = ""; // Clear out the search filter box
-        bezl.vars.filterString = "";
-
+        account.custSelection(bezl, bezl.vars.selectedAccount.ID);
       });
 
       // Prepopulate the CRM new interaction form for click to call/email/navigate
