@@ -129,7 +129,7 @@ define(function () {
                                 , bezl.vars.config.Connection
                                 , bezl.vars.config.Company
                                 , clockInEmployees
-                                , bezl.vars.shift);
+                                , bezl.vars.team[i].shift);
                     bezl.vars.clockingIn = true;  
                 } else {
                     bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
