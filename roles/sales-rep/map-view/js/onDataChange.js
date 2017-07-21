@@ -72,18 +72,14 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                                 }
                             );
                         } else {
-                            // Forces DOM update
-                           // setTimeout(function(){ 
                                 var marker = new bezl.vars.client.Marker({
                                             position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
                                             map: bezl.vars.map,
                                             title: bezl.data.CustList[i].Name,
                                             data: bezl.data.CustList[i],
-                                            size: new google.maps.Size(100, 100),
                                             lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
                                             lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
                                 });
-                             //}, 1000);
                             
 
                             // Add a click handler
@@ -92,6 +88,9 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                             });
 
                             bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
+
+                            // add marker to map
+                            marker.setMap(bezl.vars.map);
                         }
                     }
                 } else {
