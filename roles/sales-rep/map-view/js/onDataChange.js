@@ -72,14 +72,18 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                                 }
                             );
                         } else {
-                            var marker = new bezl.vars.client.Marker({
-                                position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
-                                map: bezl.vars.map,
-                                title: bezl.data.CustList[i].Name,
-                                data: bezl.data.CustList[i],
-                                lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
-                                lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
-                            });
+                            // Forces DOM update
+                            setTimeout(function(){ 
+                                var marker = new bezl.vars.client.Marker({
+                                            position: { lat: + parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]), lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1]) },
+                                            map: bezl.vars.map,
+                                            title: bezl.data.CustList[i].Name,
+                                            data: bezl.data.CustList[i],
+                                            lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
+                                            lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
+                                });
+                             }, 200);
+                            
 
                             // Add a click handler
                             marker.addListener('click', function () {
