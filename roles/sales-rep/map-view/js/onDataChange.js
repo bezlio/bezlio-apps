@@ -90,6 +90,7 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                             bezl.vars.markers[bezl.data.CustList[i].CustNum] = marker;
 
                             // add marker to map
+                            marker.setMap(null);
                             marker.setMap(bezl.vars.map);
                         }
                     }
