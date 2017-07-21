@@ -82,7 +82,7 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                                             lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
                                             lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
                                 });
-                             }, 200);
+                             }, 1000);
                             
 
                             // Add a click handler
