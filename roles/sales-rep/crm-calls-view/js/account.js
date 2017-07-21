@@ -107,9 +107,9 @@ define(function () {
 
      function CustSelection(bezl, custId) {
 
-        //bezl.vars.Invoices = [];
         var cust = bezl.vars.custList.find(c => c.ID == custId);
         bezl.vars.selectedAccount = cust;
+        bezl.vars.loadedMore = false;
         if(custId == "ALL_ACCOUNTS" ){
             this.runQuery(bezl, 'AllCRMCalls');
         } else {
