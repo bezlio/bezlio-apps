@@ -79,6 +79,7 @@ define(["./customer.js", "./map.js"], function (customer, map) {
                                             map: bezl.vars.map,
                                             title: bezl.data.CustList[i].Name,
                                             data: bezl.data.CustList[i],
+                                            size: new google.maps.Size(100, 100),
                                             lat: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[0].split(':')[1]),
                                             lng: parseFloat(bezl.data.CustList[i].Geocode_Location.split(',')[1].split(':')[1])
                                 });
@@ -100,8 +101,6 @@ define(["./customer.js", "./map.js"], function (customer, map) {
 
             // Calculate distances
             map.calculateDistances(bezl);
-
-            google.maps.event.trigger(map, 'resize');
 
             // Tell the jsGrid to load up, refreshes
             bezl.vars.jsgrid.jsGrid("loadData");
