@@ -117,9 +117,11 @@ define(function () {
             require([bezl.vars.config.baseLibraryUrl + 'epicor/labor.js'], function(labor) {
 
                 var clockInEmployees = [];
+                var shift = '';
                 for (var i = 0; i < bezl.vars.team.length; i++) {
                     if (bezl.vars.team[i].selected && !bezl.vars.team[i].clockedIn) {
                         clockInEmployees.push(bezl.vars.team[i].key);
+                        bezl.vars.shift = bezl.vars.team[i].shift;
                     }
                 }
 
@@ -129,7 +131,7 @@ define(function () {
                                 , bezl.vars.config.Connection
                                 , bezl.vars.config.Company
                                 , clockInEmployees
-                                , bezl.vars.team[i].shift);
+                                , bezl.vars.shift);
                     bezl.vars.clockingIn = true;  
                 } else {
                     bezl.notificationService.showCriticalError('No employees selected for clock in that were not already clocked in.');
