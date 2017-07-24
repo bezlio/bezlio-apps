@@ -95,6 +95,27 @@ define(function () {
         }
     }
 
+    function LoadQuote(bezl, quote) {
+        bezl.vars.editingQuote = true;
+        bezl.vars.linesloading = true;
+
+        // Push the current quote header info into the quoteData object
+        bezl.vars.quoteData = {
+            newQuote: false,
+            quoteNum: quote.QuoteNum,
+            quoteDate: new Date(quote.EntryDate),
+            salespersonId: quote.SalesRepCode,
+            customerId: quote.CustID,
+            custNum: quote.CustNum,
+            customerName: quote.Name,
+            comments: quote.QuoteComment,
+            status: quote.QuoteClosed,
+            result: quote.Result,
+            sales: quote.Sales,
+            quoteLines: []
+        };
+    }
+
     function ReturnToSummary(bezl) {
         bezl.vars.editingQuote = false;
         bezl.vars.newQuote = false;
@@ -244,6 +265,7 @@ define(function () {
 
     return {
         runQuery: RunQuery,
+        loadQuote: LoadQuote,
         returnToSummary: ReturnToSummary,
         newCustomerForm: NewCustomerForm,
         newCustomer: NewCustomer,
