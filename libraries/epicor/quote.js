@@ -38,6 +38,7 @@ define(function () {
             MktgEvntSeq: 1,
             Company: bezl.vars.Company,
             ForToPMDate_c: null,
+            QuoteHed_c: bezl.vars.quoteData.sales,
             RowMod: 'U'
         });
 
