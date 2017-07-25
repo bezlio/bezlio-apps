@@ -176,6 +176,7 @@ define(function () {
         }
 
         if (bezl.data.EpicorParts) {
+            console.log(bezl.data.EpicorParts);
             bezl.vars.epicorParts = bezl.data.EpicorParts;
             $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partNum").typeahead({
