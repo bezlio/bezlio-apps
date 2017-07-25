@@ -194,16 +194,6 @@ define(function () {
         }
     }
 
-    //<input *ngIf="!line.ListItem" class="form-control" type="text" name="partNum" [(ngModel)]="line.PartNum">
-
-    // <div *ngIf="!line.ListItem" class="typeahead__container">
-    //               <div class="typeahead__field">
-    //                 <span class="typeahead__query">
-    //                   <input class="partNum" name="partNum" type="search" autocomplete="off" [(ngModel)]="line.PartNum">
-    //                 </span>
-    //               </div>
-    //         </div>
-
     return {
         onDataChange: OnDataChange
     }
