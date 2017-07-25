@@ -174,7 +174,27 @@ define(function () {
 
             bezl.dataService.remove('deleteQuote');
         }
+
+        if (bezl.data.EpicorParts) {
+            bezl.vars.parts = bezl.data.EpicorParts;
+            $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
+            $(bezl.container.nativeElement).find(".partList").typeahead({
+                order: "asc",
+                maxItem: 8,
+                display: ['PartNum', 'PartDescription'],
+                source: {
+                    data: function () { return bezl.vars.parts; }
+                },
+                callback: {
+                    onClick: function (node, a, item, event) {
+                        //bezl.vars.selectedPart = item;
+                    }
+                }
+            });
+        }
     }
+
+    //<input  class="form-control" type="text" name="partNum" [(ngModel)]="line.PartNum">
 
     return {
         onDataChange: OnDataChange

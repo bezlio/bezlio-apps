@@ -92,6 +92,11 @@ define(function () {
                     ]
                 }, 0);
                 break;
+            case "EpicorParts";
+                bezl.dataService.add('EpicorParts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetEpicorParts"
+                }, 0);
+                break;
         }
     }
 
