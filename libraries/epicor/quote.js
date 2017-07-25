@@ -59,7 +59,7 @@ define(function () {
     function UpdateSales(bezl, quoteNum, salesVal) {
         bezl.vars.saving = true;
 
-        bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery'{
+        bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
             "QueryName": "UpdateSales",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
