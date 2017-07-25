@@ -136,11 +136,17 @@ define(function () {
         }
 
         if (bezl.data.saveQuote) {
-            console.log(bezl.data.saveQuote);
             bezl.dataService.remove('saveQuote');
             setTimeout(() => {
                 bezl.vars.saving = false;
                 bezl.vars.savingQuote = false;
+            }, 5000);
+        }
+
+        if (bezl.data.updateSales) {
+            bezl.dataService.remove('updateSales');
+            setTimeout(() => {
+                bezl.vars.saving = false;
             }, 5000);
         }
 

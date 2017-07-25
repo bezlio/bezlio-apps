@@ -56,7 +56,22 @@ define(function () {
         });
     }
 
+    function UpdateSales(bezl, quoteNum, salesVal) {
+        bezl.vars.saving = true;
+
+        bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery'{
+            "QueryName": "UpdateSales",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: quoteNum },
+                { Key: "Sales_c", Value: salesVal }
+            ]
+        }, 0);
+    }
+
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
+        bezl.vars.saving = true;
+
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteQty = [];
@@ -74,8 +89,6 @@ define(function () {
             MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: company,
-            Sales_c: true,
-            QuoteComment: "this is a secondary test",
             RowMod: 'U'
         });
 
@@ -320,6 +333,7 @@ define(function () {
         newQuote: NewQuote,
         saveQuote: SaveQuote,
         deleteQuote: DeleteQuote,
-        updateCustomer: UpdateCustomer
+        updateCustomer: UpdateCustomer,
+        updateSales: UpdateSales
     }
 });
