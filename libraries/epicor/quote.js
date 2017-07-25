@@ -74,7 +74,7 @@ define(function () {
             MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: company,
-            Sales_c: quoteData.sales,
+            Sales_c: 1,
             RowMod: 'U'
         });
 
