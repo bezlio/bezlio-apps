@@ -136,6 +136,7 @@ define(function () {
         }
 
         if (bezl.data.saveQuote) {
+            console.log(bezl.data.saveQuote);
             bezl.dataService.remove('saveQuote');
             setTimeout(() => {
                 bezl.vars.saving = false;
