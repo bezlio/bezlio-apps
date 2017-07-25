@@ -75,6 +75,7 @@ define(function () {
             MktgEvntSeq: 1,
             Company: company,
             Sales_c: true,
+            QuoteComment: "this is a test",
             RowMod: 'U'
         });
 
