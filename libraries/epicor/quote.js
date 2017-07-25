@@ -78,13 +78,10 @@ define(function () {
             RowMod: 'U'
         });
 
-        console.log(bezl.vars.ds);
-
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
-            //console.log(dtl);
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
