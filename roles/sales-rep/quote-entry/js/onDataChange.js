@@ -176,21 +176,21 @@ define(function () {
         }
 
         if (bezl.data.EpicorParts) {
-            //bezl.vars.parts = bezl.data.EpicorParts;
-            // $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
-            // $(bezl.container.nativeElement).find(".partNum").typeahead({
-            //     order: "asc",
-            //     maxItem: 8,
-            //     display: ['PartNum', 'PartDescription'],
-            //     source: {
-            //         data: function () { return bezl.vars.parts; }
-            //     },
-            //     callback: {
-            //         onClick: function (node, a, item, event) {
-            //             //bezl.vars.selectedPart = item;
-            //         }
-            //     }
-            // });
+            bezl.vars.epicorParts = bezl.data.EpicorParts;
+            $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
+            $(bezl.container.nativeElement).find(".partNum").typeahead({
+                order: "asc",
+                maxItem: 8,
+                display: ['PartNum', 'PartDescription'],
+                source: {
+                    data: function () { return bezl.vars.epicorParts; }
+                },
+                callback: {
+                    onClick: function (node, a, item, event) {
+                        //bezl.vars.selectedPart = item;
+                    }
+                }
+            });
         }
     }
 
