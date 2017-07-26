@@ -36,7 +36,7 @@ define(function () {
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        console.log(node.selector.remove('partNum'));
+                        console.log(node.selector);
                     }
                 }
             });
