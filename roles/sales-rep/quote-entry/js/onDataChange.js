@@ -16,24 +16,26 @@ define(function () {
                     dtl.ListItem = 1;
                 } else {
                     dtl.ListItem = 0;
+                    console.log(dtl);
+                    $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
+                    $(bezl.container.nativeElement).find(".partNum").typeahead({
+                        order: "asc",
+                        maxItem: 8,
+                        display: ['PartNum'],
+                        source: {
+                            data: function () { return JSON.parse(JSON.stringify(bezl.vars.epicorParts)); }
+                        },
+                        callback: {
+                            onClick: function (node, a, item, event) {
+                                //bezl.vars.selectedPart = item;
+                            }
+                        }
+                    });
                 }
             });
 
             setTimeout(() => {
-                $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
-                $(bezl.container.nativeElement).find(".partNum").typeahead({
-                    order: "asc",
-                    maxItem: 8,
-                    display: ['PartNum'],
-                    source: {
-                        data: function () { return JSON.parse(JSON.stringify(bezl.vars.epicorParts)); }
-                    },
-                    callback: {
-                        onClick: function (node, a, item, event) {
-                            //bezl.vars.selectedPart = item;
-                        }
-                    }
-                });
+
             }, 3000);
         }
 
