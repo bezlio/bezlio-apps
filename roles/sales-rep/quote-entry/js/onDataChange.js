@@ -187,7 +187,7 @@ define(function () {
                 maxItem: 8,
                 display: ['PartNum'],
                 source: {
-                    data: function () { return JSON.stringify(bezl.vars.epicorParts); }
+                    data: function () { return JSON.parse(JSON.stringify(bezl.vars.epicorParts)); }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
