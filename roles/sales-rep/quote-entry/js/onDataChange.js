@@ -195,6 +195,28 @@ define(function () {
                     }
                 }
             });
+
+            // var typeAhead = function (lineNum) {
+            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
+            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
+            //         order: "asc",
+            //         maxItem: 8,
+            //         display: ['PART_DESCRIPTION'],
+            //         source: {
+            //             data: function () { return bezl.vars.parts; }
+            //         },
+            //         callback: {
+            //             onClick: function (node, a, item, event) {
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
+            //             },
+            //             onNavigateBefore: function (node, query, event) {
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
+            //             }
+            //         }
+            //     });
+            // }
         }
     }
 
