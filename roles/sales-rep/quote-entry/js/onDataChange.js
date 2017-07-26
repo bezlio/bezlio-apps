@@ -25,7 +25,6 @@ define(function () {
         }
 
         var typeAheadPart = function (lineNum) {
-            console.log(lineNum);
             $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead('destroy');
             $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead({
                 order: "asc",
@@ -36,7 +35,7 @@ define(function () {
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        console.log(node.selector);
+                        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
                     }
                 }
             });
