@@ -232,6 +232,10 @@ define(function () {
         }, 1500);
     }
 
+    function ChangeStdPart(bezl) {
+
+    }
+
     var typeAheadPart = function (lineNum, bezl) {
         $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead('destroy');
         $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead({
@@ -297,6 +301,7 @@ define(function () {
         newCustomer: NewCustomer,
         includeSuspects: IncludeSuspects,
         addLine: AddLine,
+        changeStdPart: ChangeStdPart,
         deleteLine: DeleteLine,
         configureLine: ConfigureLine,
         changePart: ChangePart,
