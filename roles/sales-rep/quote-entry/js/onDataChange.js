@@ -176,8 +176,8 @@ define(function () {
         }
 
         if (bezl.data.EpicorParts) {
-            bezl.dataService.remove('EpicorParts');
             console.log(bezl.data.EpicorParts);
+            bezl.dataService.remove('EpicorParts');
             bezl.vars.epicorParts = bezl.data.EpicorParts;
             $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partNum").typeahead({
