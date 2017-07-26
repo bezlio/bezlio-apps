@@ -229,6 +229,8 @@ define(function () {
     }
 
     function ChangeStdPart(bezl, lineNum) {
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ListItem = false;
+
         setTimeout(() => {
             typeAheadPart(bezl, lineNum);
         }, 1500);
