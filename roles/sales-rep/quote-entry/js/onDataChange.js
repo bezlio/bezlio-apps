@@ -25,6 +25,7 @@ define(function () {
         }
 
         var typeAheadPart = function (lineNum) {
+            console.log(lineNum);
             $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead('destroy');
             $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead({
                 order: "asc",
