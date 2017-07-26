@@ -181,13 +181,13 @@ define(function () {
 
             console.log(bezl.vars.epicorParts);
 
-            $(bezl.container.nativeElement).find("#partNum").typeahead('destroy');
-            $(bezl.container.nativeElement).find("#partNum").typeahead({
+            $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
+            $(bezl.container.nativeElement).find(".partNum").typeahead({
                 order: "asc",
                 maxItem: 8,
                 display: ['PartNum'],
                 source: {
-                    data: function () { return bezl.vars.epicorParts; }
+                    data: function () { return JSON.stringify(bezl.vars.epicorParts); }
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
