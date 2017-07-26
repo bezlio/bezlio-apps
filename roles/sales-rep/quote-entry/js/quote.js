@@ -229,11 +229,9 @@ define(function () {
     }
 
     function ChangeStdPart(bezl, lineNum) {
-        console.log(bezl);
-        console.log(lineNum);
-        // setTimeout(() => {
-        //     typeAheadPart(bezl, lineNum);
-        // }, 1500);
+        setTimeout(() => {
+            typeAheadPart(bezl, lineNum);
+        }, 1500);
     }
 
     var typeAheadPart = function (bezl, lineNum) {
