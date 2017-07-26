@@ -36,7 +36,10 @@ define(function () {
                 },
                 callback: {
                     onClick: function (node, a, item, event) {
-                        //bezl.vars.selectedPart = item;
+                        console.log(node);
+                        console.log(a);
+                        console.log(item);
+                        console.log(event);
                     }
                 }
             });
