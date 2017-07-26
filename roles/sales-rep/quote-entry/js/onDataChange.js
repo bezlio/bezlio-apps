@@ -193,6 +193,8 @@ define(function () {
                 }
             });
         }
+
+        bezl.dataService.remove('EpicorParts');
     }
 
     return {
