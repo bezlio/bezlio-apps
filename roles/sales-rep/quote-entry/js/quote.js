@@ -226,6 +226,27 @@ define(function () {
         lineNum = (lineNum === -Infinity) ? 0 : lineNum;
 
         bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', ListItem: true, Deleted: 0 });
+
+        setTimeout(() => {
+            typeAheadPart(lineNum);
+        }, 1500);
+    }
+
+    var typeAheadPart = function (lineNum) {
+        $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead('destroy');
+        $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead({
+            order: "asc",
+            maxItem: 8,
+            display: ['PartNum'],
+            source: {
+                data: function () { return JSON.parse(JSON.stringify(bezl.vars.epicorParts)); }
+            },
+            callback: {
+                onClick: function (node, a, item, event) {
+                    bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PartNum;
+                }
+            }
+        });
     }
 
     function DeleteLine(bezl, lineNum) {
