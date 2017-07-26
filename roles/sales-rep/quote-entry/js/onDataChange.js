@@ -179,8 +179,8 @@ define(function () {
             bezl.vars.epicorParts = bezl.data.EpicorParts;
             bezl.dataService.remove('EpicorParts');
 
-            $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
-            $(bezl.container.nativeElement).find(".partNum").typeahead({
+            $(bezl.container.nativeElement).find("partNum").typeahead('destroy');
+            $(bezl.container.nativeElement).find("partNum").typeahead({
                 order: "asc",
                 maxItem: 8,
                 display: ['PartNum'],
