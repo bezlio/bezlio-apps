@@ -25,8 +25,8 @@ define(function () {
         }
 
         var typeAheadPart = function (lineNum) {
-            $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead('destroy');
-            $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead({
+            $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
+            $(bezl.container.nativeElement).find(".partNum").typeahead({
                 order: "asc",
                 maxItem: 8,
                 display: ['PartNum'],
