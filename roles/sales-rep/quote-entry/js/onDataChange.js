@@ -176,14 +176,14 @@ define(function () {
         }
 
         if (bezl.data.EpicorParts) {
-            console.log(bezl.data.EpicorParts);
-            bezl.dataService.remove('EpicorParts');
             bezl.vars.epicorParts = bezl.data.EpicorParts;
+            bezl.dataService.remove('EpicorParts');
+
             $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partNum").typeahead({
                 order: "asc",
                 maxItem: 8,
-                display: ['PartNum', 'PartDescription'],
+                display: ['PartNum'],
                 source: {
                     data: function () { return bezl.vars.epicorParts; }
                 },
