@@ -20,7 +20,20 @@ define(function () {
             });
 
             setTimeout(() => {
-
+                $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
+                $(bezl.container.nativeElement).find(".partNum").typeahead({
+                    order: "asc",
+                    maxItem: 8,
+                    display: ['PartNum'],
+                    source: {
+                        data: function () { return JSON.parse(JSON.stringify(bezl.vars.epicorParts)); }
+                    },
+                    callback: {
+                        onClick: function (node, a, item, event) {
+                            //bezl.vars.selectedPart = item;
+                        }
+                    }
+                });
             }, 3000);
         }
 
@@ -180,21 +193,6 @@ define(function () {
             bezl.dataService.remove('EpicorParts');
 
             console.log(JSON.parse(JSON.stringify(bezl.vars.epicorParts)));
-
-            $(bezl.container.nativeElement).find(".partNum").typeahead('destroy');
-            $(bezl.container.nativeElement).find(".partNum").typeahead({
-                order: "asc",
-                maxItem: 8,
-                display: ['PartNum'],
-                source: {
-                    data: function () { return JSON.parse(JSON.stringify(bezl.vars.epicorParts)); }
-                },
-                callback: {
-                    onClick: function (node, a, item, event) {
-                        //bezl.vars.selectedPart = item;
-                    }
-                }
-            });
 
             // var typeAhead = function (lineNum) {
             //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
