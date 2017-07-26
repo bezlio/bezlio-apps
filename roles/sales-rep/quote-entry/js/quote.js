@@ -226,17 +226,17 @@ define(function () {
         lineNum = (lineNum === -Infinity) ? 0 : lineNum;
 
         bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', ListItem: true, Deleted: 0 });
-
-        setTimeout(() => {
-            typeAheadPart(lineNum, bezl);
-        }, 1500);
     }
 
-    function ChangeStdPart(bezl) {
-
+    function ChangeStdPart(bezl, lineNum) {
+        console.log(bezl);
+        console.log(lineNum);
+        // setTimeout(() => {
+        //     typeAheadPart(bezl, lineNum);
+        // }, 1500);
     }
 
-    var typeAheadPart = function (lineNum, bezl) {
+    var typeAheadPart = function (bezl, lineNum) {
         $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead('destroy');
         $(bezl.container.nativeElement).find(".partNum" + lineNum).typeahead({
             order: "asc",
