@@ -161,6 +161,10 @@ define(function () {
         //bezl.dataService.remove('QuoteDtls');
     }
 
+    function ChangeMktgCamp(bezl) {
+        this.runQuery(bezl, 'MktgEvnt');
+    }
+
     function IncludeSuspects(bezl, parm) {
         if (parm.srcElement.checked === true) {
             //console.log(bezl.data.Customers);
@@ -318,6 +322,7 @@ define(function () {
         runQuery: RunQuery,
         loadQuote: LoadQuote,
         returnToSummary: ReturnToSummary,
+        changeMktgCamp: ChangeMktgCamp,
         newCustomerForm: NewCustomerForm,
         newCustomer: NewCustomer,
         includeSuspects: IncludeSuspects,
