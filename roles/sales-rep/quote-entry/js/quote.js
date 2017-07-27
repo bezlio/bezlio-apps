@@ -140,6 +140,8 @@ define(function () {
             quoteLines: []
         };
 
+        console.log(bezl.vars.quoteData.mktgCamp);
+        //if(bezl.vars.quoteData.mktgCamp)
         //this.runQuery(bezl, 'MktgEvnt');
     }
 
