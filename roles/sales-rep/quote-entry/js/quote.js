@@ -140,7 +140,7 @@ define(function () {
             quoteLines: []
         };
 
-        this.runQuery('MktgEvnt');
+        this.runQuery(bezl, 'MktgEvnt');
     }
 
     function ReturnToSummary(bezl) {
