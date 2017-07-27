@@ -79,7 +79,7 @@ define(function () {
         }
 
         if (bezl.data.MktgEvnt) {
-            console.log(bezl.data.MktgEvnt);
+            //console.log(bezl.data.MktgEvnt);
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
