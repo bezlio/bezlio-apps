@@ -162,9 +162,7 @@ define(function () {
     }
 
     function ChangeMktgCamp(bezl, campID) {
-        console.log("Campaign: " + bezl.vars.quoteData.mktgCamp);
-        console.log(campID);
-        //bezl.vars.quoteData.mktgCamp = campID;
+        bezl.vars.quoteData.mktgCamp = campID;
         this.runQuery(bezl, 'MktgEvnt');
     }
 
