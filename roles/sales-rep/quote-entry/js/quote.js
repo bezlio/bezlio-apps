@@ -188,7 +188,7 @@ define(function () {
 
         bezl.vars.ds.Customer.push({
             Company: bezl.vars.company,
-            CustID: bezl.vars.newCustomerID,
+            //CustID: bezl.vars.newCustomerID,
             Name: bezl.vars.newCustomerName,
             Address1: bezl.vars.newCustomerAddress,
             City: bezl.vars.newCustomerCity,
