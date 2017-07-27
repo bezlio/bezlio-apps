@@ -78,6 +78,10 @@ define(function () {
             //console.log(bezl.data.Mktg);
         }
 
+        if (bezl.data.mktgEvnt) {
+            console.log(bezl.data.mktgEvnt);
+        }
+
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
             var openLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine);
 
