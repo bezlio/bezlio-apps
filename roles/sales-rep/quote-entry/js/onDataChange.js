@@ -75,7 +75,7 @@ define(function () {
         }
 
         if (bezl.data.MktgCamp) {
-            console.log(bezl.data.Mktg);
+            //console.log(bezl.data.Mktg);
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
