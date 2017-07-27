@@ -60,7 +60,9 @@ define(function () {
                 QuoteComment: bezl.data.newQuote.QuoteHed[0].QuoteComment,
                 QuoteClosed: bezl.data.newQuote.QuoteHed[0].QuoteClosed,
                 Company: bezl.data.newQuote.QuoteHed[0].Company,
-                CustNum: bezl.data.newQuote.QuoteHed[0].CustNum
+                CustNum: bezl.data.newQuote.QuoteHed[0].CustNum,
+                MktgCampaignID: bezl.data.newQuote.QuoteHed[0].MktgCampaignID,
+                MktgEvntSeq: bezl.data.newQuote.QuoteHed[0].MktgEvntSeq
             }
 
             var quoteExists = bezl.data.Quotes.find(qte => qte.QuoteNum === newQuote.QuoteNum);
