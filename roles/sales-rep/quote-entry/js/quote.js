@@ -121,6 +121,7 @@ define(function () {
     function LoadQuote(bezl, quote) {
         bezl.vars.editingQuote = true;
         bezl.vars.linesloading = true;
+        console.log(quote);
 
         // Push the current quote header info into the quoteData object
         bezl.vars.quoteData = {
@@ -135,6 +136,8 @@ define(function () {
             status: quote.QuoteClosed,
             result: quote.Result,
             sales: quote.Sales,
+            mktgCamp: '',
+            mktgEvnt: '',
             quoteLines: []
         };
     }
