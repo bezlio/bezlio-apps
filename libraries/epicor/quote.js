@@ -86,8 +86,8 @@ define(function () {
             BTCustNum: quoteData.custNum,
             Name: quoteData.customerName,
             CustomerCustID: quoteData.customerId,
-            MktgCampaignID: mktgEvnt,
-            MktgEvntSeq: 1,
+            MktgCampaignID: quoteData.mktgCamp,
+            MktgEvntSeq: quoteData.mktgEvnt,
             Company: company,
             RowMod: 'U'
         });
