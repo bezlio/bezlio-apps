@@ -111,7 +111,7 @@ define(function () {
                     "QueryName": "GetMktgEvnt",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company },
-                        { Key: "CampID", Value: bezl.vars.CampID }
+                        { Key: "CampID", Value: bezl.vars.quoteData.mktgCamp }
                     ]
                 }, 0);
                 break;
@@ -121,7 +121,6 @@ define(function () {
     function LoadQuote(bezl, quote) {
         bezl.vars.editingQuote = true;
         bezl.vars.linesloading = true;
-        console.log(quote);
 
         // Push the current quote header info into the quoteData object
         bezl.vars.quoteData = {
@@ -141,7 +140,7 @@ define(function () {
             quoteLines: []
         };
 
-        console.log(bezl.vars.quoteData.mktgCamp);
+        RunQuery('MktgEvnt');
     }
 
     function ReturnToSummary(bezl) {
