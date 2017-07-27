@@ -136,8 +136,8 @@ define(function () {
             status: quote.QuoteClosed,
             result: quote.Result,
             sales: quote.Sales,
-            mktgCamp: '',
-            mktgEvnt: '',
+            mktgCamp: quote.MktgCampaignID,
+            mktgEvnt: quote.MktgEvntSeq,
             quoteLines: []
         };
     }
