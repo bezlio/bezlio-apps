@@ -74,6 +74,10 @@ define(function () {
             bezl.dataService.remove('newQuote');
         }
 
+        if (bezl.data.MktgCamp) {
+            console.log(bezl.data.Mktg);
+        }
+
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
             var openLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine);
 

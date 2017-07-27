@@ -110,7 +110,8 @@ define(function () {
                 bezl.dataService.add('MktgEvnt', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetMktgEvnt",
                     "Parameters": [
-                        { Key: "Company", Value: bezl.vars.Company }
+                        { Key: "Company", Value: bezl.vars.Company },
+                        { Key: "CampID", Value: bezl.vars.CampID }
                     ]
                 }, 0);
                 break;
