@@ -97,6 +97,23 @@ define(function () {
                     "QueryName": "GetEpicorParts"
                 }, 0);
                 break;
+            case "MktgCamp":
+                bezl.dataService.add('MktgCamp', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetMktgCamp",
+                    "Parameters": [
+                        { Key: "Company", Value: bezl.vars.Company }
+                    ]
+                }, 0);
+
+                break;
+            case "MktgEvnt":
+                bezl.dataService.add('MktgEvnt', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetMktgEvnt",
+                    "Parameters": [
+                        { Key: "Company", Value: bezl.vars.Company }
+                    ]
+                }, 0);
+                break;
         }
     }
 
@@ -188,7 +205,6 @@ define(function () {
 
         bezl.vars.ds.Customer.push({
             Company: bezl.vars.company,
-            //CustID: bezl.vars.newCustomerID,
             Name: bezl.vars.newCustomerName,
             Address1: bezl.vars.newCustomerAddress,
             City: bezl.vars.newCustomerCity,
