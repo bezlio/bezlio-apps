@@ -140,6 +140,8 @@ define(function () {
             mktgEvnt: quote.MktgEvntSeq,
             quoteLines: []
         };
+
+        console.log(bezl.vars.quoteData.mktgCamp);
     }
 
     function ReturnToSummary(bezl) {
