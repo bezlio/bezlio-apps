@@ -78,8 +78,8 @@ define(function () {
             //console.log(bezl.data.Mktg);
         }
 
-        if (bezl.data.mktgEvnt) {
-            console.log(bezl.data.mktgEvnt);
+        if (bezl.data.MktgEvnt) {
+            console.log(bezl.data.MktgEvnt);
         }
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
