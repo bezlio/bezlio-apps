@@ -30,9 +30,9 @@ define([], function () {
             var addBtn = document.getElementById('addBtn');
             google.maps.event.addDomListener(addBtn, "click", function() {
                 // Get the custNum from the button data
-                var custNum = $('#addBtn').attr('data-id');
+                var custKey = $('#addBtn').attr('data-id');
                 // Find customer from custNum
-                var customer = bezl.vars.customers.find(c => c.custNum == custNum);
+                var customer = bezl.vars.customers.find(c => c.custNum == custKey);
                 // Add Customer to trip
                 bezl.vars.customerFile.add(bezl, customer);
             });

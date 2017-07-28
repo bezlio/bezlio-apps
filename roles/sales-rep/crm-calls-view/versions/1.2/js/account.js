@@ -5,16 +5,12 @@ define(function () {
         switch (queryName) {
             case "CRMCalls":
                 bezl.vars.loading = true; 
-                if(bezl.vars.selectedAccount) {
                 // Pull in the call list for just the currently selected account
                 bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccountCallHistory",
                     "Parameters": [
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
                     ] },0);
-                } else {
-                    bezl.vars.loading = false;
-                }
                 break;
             case "AllCRMCalls":
                 bezl.vars.loading = true; 
