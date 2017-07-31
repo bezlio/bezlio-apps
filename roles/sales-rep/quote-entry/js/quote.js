@@ -170,8 +170,6 @@ define(function () {
 
     function IncludeSuspects(bezl, parm) {
         if (parm.srcElement.checked === true) {
-            //console.log(bezl.data.Customers);
-            //console.log(bezl.data.Suspects);
             bezl.data.Suspects.map(sus => {
                 bezl.data.Customers.push({
                     CustID: sus.CustID,
@@ -223,6 +221,7 @@ define(function () {
             State: bezl.vars.newCustomerState,
             ZIP: bezl.vars.newCustomerZip,
             Country: bezl.vars.newCustomerCountry,
+            SalesRepCode: bezl.vars.SalesRepCode,
             TerritoryID: bezl.vars.newCustomerTer,
             TermsCode: 'TBD',
             CustomerType: 'PRO',
