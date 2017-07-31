@@ -224,7 +224,8 @@ define(function () {
             ZIP: bezl.vars.newCustomerZip,
             Country: bezl.vars.newCustomerCountry,
             TerritoryID: bezl.vars.newCustomerTer,
-            TermsCode: bezl.vars.newCustomerTerms,
+            TermsCode: 'TBD',
+            CustomerType: 'PRO',
             RowMod: 'A'
         });
 
