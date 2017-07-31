@@ -7,7 +7,7 @@ define(["./employees.js"], function (employees) {
             bezl.vars.employees = [];
 
             // Grab a reference to the logged in employee
-            var currentEmployee = bezl.data.Employees.find(e => e.EmployeeEmail.toUpper() == bezl.env.currentUser.toUpper());
+            var currentEmployee = bezl.data.Employees.find(e => e.EmployeeEmail.toUpperCase() == bezl.env.currentUser.toUpperCase());
 
             for (var i = 0; i < bezl.data.Employees.length; i++) {
                 bezl.vars.employees.push({
@@ -25,9 +25,9 @@ define(["./employees.js"], function (employees) {
                     show: true
                 });
 
-                if ((bezl.vars.config.AssociateTeamBy == 'SupervisorEmail' && bezl.data.Employees[i].SupervisorEmail.toUpper() == bezl.env.currentUser.toUpper())
+                if ((bezl.vars.config.AssociateTeamBy == 'SupervisorEmail' && bezl.data.Employees[i].SupervisorEmail.toUpperCase() == bezl.env.currentUser.toUpperCase())
                     || (bezl.vars.config.AssociateTeamBy == 'DepartmentShift' && bezl.data.Employees[i].Department == currentEmployee.Department)
-                    || bezl.data.Employees[i].EmployeeEmail.toUpper() == bezl.env.currentUser.toUpper()
+                    || bezl.data.Employees[i].EmployeeEmail.toUpperCase() == bezl.env.currentUser.toUpperCase()
                 ) {
                     var teamMemberFound = false;
 
@@ -62,7 +62,7 @@ define(["./employees.js"], function (employees) {
                     }
 
                     // Pull the shift from the database into bezl.vars.config.Shift
-                    if (bezl.data.Employees[i].EmployeeEmail.toUpper() == bezl.env.currentUser.toUpper()) {
+                    if (bezl.data.Employees[i].EmployeeEmail.toUpperCase() == bezl.env.currentUser.toUpperCase()) {
                         bezl.vars.shift = bezl.data.Employees[i].Shift;
                     }
                 }
@@ -70,24 +70,24 @@ define(["./employees.js"], function (employees) {
 
             // Custom sorting.  Supervisor always first, then by shift, then by department.
             bezl.vars.team.sort(function (a, b) {
-                var ae = a['employeeEmail'].toUpper();
-                var be = b['employeeEmail'].toUpper();
+                var ae = a['employeeEmail'].toUpperCase();
+                var be = b['employeeEmail'].toUpperCase();
 
-                if (ae == bezl.env.currentUser.toUpper()) {
+                if (ae == bezl.env.currentUser.toUpperCase()) {
                     return -1;
                 } else {
                     // Now by shift
                     var as = a['shift'] || Number.MAX_SAFE_INTEGER;
                     var bs = b['shift'] || Number.MAX_SAFE_INTEGER;
 
-                    if (be != bezl.env.currentUser.toUpper() && bs > as) {
+                    if (be != bezl.env.currentUser.toUpperCase() && bs > as) {
                         return -1
                     } else {
                         // Lastly by department
                         var ad = a['department'];
                         var bd = b['department'];
 
-                        if (be != bezl.env.currentUser.toUpper() && bs == as && bd > ad) {
+                        if (be != bezl.env.currentUser.toUpperCase() && bs == as && bd > ad) {
                             return -1;
                         } else {
                             return 1;
