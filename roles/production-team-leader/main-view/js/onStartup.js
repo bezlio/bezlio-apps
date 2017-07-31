@@ -31,9 +31,6 @@ define(["./employees.js"], function (employees) {
             	itemTemplate: function(value, item) {
               	return $("<input>").attr("type", "checkbox")
                 		.attr("checked", value || item.Checked)
-                    .on("change", function() {
-                    	item.Checked = $(this).is(":checked");
-                    });
               }
             },
             { name: "currentActivity", title: "Current Activity", type: "text", visible: true, width: 50, editing: false },
