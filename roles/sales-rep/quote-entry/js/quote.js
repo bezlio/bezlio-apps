@@ -209,9 +209,7 @@ define(function () {
         bezl.vars.newCustomerLoading = true;
 
         bezl.vars.ds = {};
-
         bezl.vars.ds.Customer = [];
-        bezl.vars.ds.Customer_UD = [];
 
         bezl.vars.ds.Customer.push({
             Company: bezl.vars.company,
