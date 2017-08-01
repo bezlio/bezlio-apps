@@ -25,9 +25,18 @@ From
 
 	Inner Join p21_view_oe_line with (nolock) On
 	p21_view_oe_hdr.order_no = p21_view_oe_line.order_no
+
+	LEFT JOIN p21_view_oe_hdr_salesrep oe_sr with (nolock) ON
+	oe_sr.order_number = p21_view_oe_hdr.order_no and
+	oe_sr.primary_salesrep = 'Y'
+
+	LEFT OUTER JOIN p21_view_contacts sr with(nolock) ON
+	oe_sr.salesrep_id = sr.id
+
 Where 
-	p21_view_oe_hdr.order_date >= '{StartDate}' And p21_view_oe_hdr.order_date <= '{EndDate}' + ' 23:59:59' and
-	(p21_view_oe_hdr.customer_id = '{CustID}')
+	(p21_view_oe_hdr.order_date >= '{StartDate}' And p21_view_oe_hdr.order_date <= '{EndDate}' + ' 23:59:59') and
+	sr.email_address = '{EmailAddress}'
+	--(p21_view_oe_hdr.customer_id = '{CustID}')
 	--And p21_view_oe_hdr.company_id = CASE WHEN '{Company}' <> 'ALL' THEN '{Company}' ELSE p21_view_oe_hdr.company_id END
 Order By 
 	p21_view_oe_hdr.order_date Desc

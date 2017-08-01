@@ -14,8 +14,13 @@ Select
 FROM
 	p21_view_invoice_line with (nolock)
 	INNER JOIN p21_view_invoice_hdr with (nolock) ON p21_view_invoice_line.company_id = p21_view_invoice_hdr.company_no  AND p21_view_invoice_line.invoice_no = p21_view_invoice_hdr.invoice_no
+
+	LEFT OUTER JOIN p21_view_contacts sr with(nolock) ON
+	p21_view_invoice_hdr.salesrep_id = sr.id
+
 WHERE 
-	(p21_view_invoice_hdr.invoice_date >= '{StartDate}' AND p21_view_invoice_hdr.invoice_date <= '{EndDate}' + ' 23:59:59') and
-	(p21_view_invoice_hdr.customer_id = '{CustID}')
+	(p21_view_invoice_hdr.invoice_date >= '{StartDate}' AND p21_view_invoice_hdr.invoice_date <= '{EndDate}' + ' 23:59:59') 
+	AND sr.email_address = '{EmailAddress}'
+	--AND (p21_view_invoice_hdr.customer_id = '{CustID}')
 ORDER BY 
 	p21_view_invoice_hdr.invoice_date Desc
