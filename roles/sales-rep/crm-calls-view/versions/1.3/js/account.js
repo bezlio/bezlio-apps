@@ -77,7 +77,6 @@ define(function () {
             "show"          : true
         };
 
-        bezl.data.AllCRMCalls.push(newCallDict);
         bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
 
         SortCalls(bezl);
