@@ -87,9 +87,11 @@ define(function () {
     /**
      * Updates the dataset of tasks in Epicor using UpdateExt
      * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {Object[]} tasks - An array of tasks
      */
     function UpdateTasks(bezl
+                        , plugin
                         , tasks) {
 
         var ds = { "Task": [] };
