@@ -11,6 +11,7 @@ define(["./edi856O.js"], function (edi856O) {
         bezl.vars.showViewFile = false;
         bezl.vars.loading = true;
         bezl.vars.showApproval = false;
+        bezl.vars.showDelete = false;
 
         //Reset bezl data.
         bezl.vars.datasub = "";

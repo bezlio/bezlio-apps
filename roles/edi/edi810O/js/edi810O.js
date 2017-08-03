@@ -493,42 +493,63 @@ define(function () {
                 break;
 
             case "Approve":
-                var parameters = [], parameterCount = 0
+                var parameters = [], parameterCount = 0, approve = false;
 
                 parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '810' };
+                parameterCount = parameterCount + 1;
+
+                parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": 'O' };
                 parameterCount = parameterCount + 1;
 
                 //Loop through header for header information.
                 for (var key in bezl.vars.datasub){
                     var obj = bezl.vars.datasub[key];
-
+                        
                     for (var prop in obj) {
-                        switch (prop.toString()){
-                            case "APPROVE":
-                                parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
-                                parameterCount = parameterCount + 1;
-                                break;
-                            case "EDI_SL_DASH_HEADER_ID":
-                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
-                                parameterCount = parameterCount + 1;
-                                break;
-                            case "EDI_SL_FILE_ID":
-                                parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
-                                parameterCount = parameterCount + 1;
-                                break;
-                            case "CUSTOMER_PO_REF":
-                                parameters[parameterCount] = { "Key": "@CUSTOMER_PO_REF", "Value": obj[prop] };
-                                parameterCount = parameterCount + 1;
-                                break;
+                        if (prop.toString() == "APPROVE"){
+                                approve = obj[prop];
+                        } 
+                    }
+                    
+                    if (approve == true){
+                        for (var prop in obj) {
+                            switch (prop.toString()){
+                                case "APPROVE":
+                                    parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "EDI_SL_DASH_HEADER_ID":
+                                    parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "EDI_SL_FILE_ID":
+                                    parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                                case "CUSTOMER_PO_REF":
+                                    parameters[parameterCount] = { "Key": "@CUSTOMER_PO_REF", "Value": obj[prop] };
+                                    parameterCount = parameterCount + 1;
+                                    break;
+                            }
                         }
+
+                        // Pull in the header data for the logged in user
+                        bezl.dataService.add('approve','brdb','EDI','Approve', { 
+                            "QueryName": "Approve",
+                            "Connection": "SQLConnection",
+                            "Parameters": parameters },0);                    
+
+                        for (var key in parameters){
+                            var parameterobj = parameters[key];
+                                                          
+                            if (parameterobj.Key == "@APPROVE"){
+                                    parameterobj.Value = "Completed";
+                            }
+                        }
+
+                        approve = false;
                     }
                 }
-
-                // Pull in the header data for the logged in user
-                bezl.dataService.add('approve','brdb','EDI','Approve', { 
-                    "QueryName": "Approve",
-                    "Connection": "SQLConnection",
-                    "Parameters": parameters },0);
 
                 break;
         }
