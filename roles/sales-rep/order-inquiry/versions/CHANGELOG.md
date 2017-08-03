@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Improved GUI
 - Updated Visual GetAccounts query
 
+### Added
+- New Prophet 21 SQL queries
+
 ## [1.0] - 2017-06-22
 ### Added
 - Added versioning
