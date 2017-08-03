@@ -2,6 +2,7 @@ define(["./edi810O.js"], function (edi810O) {
     function OnStartup(bezl) {
         //Reset Bezl variables.
         bezl.vars.filterEdiStatus = "H";
+
         bezl.vars.filter = "";
         bezl.vars.search = "";
         bezl.vars.sort = "";
