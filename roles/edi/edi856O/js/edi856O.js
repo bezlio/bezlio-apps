@@ -94,7 +94,7 @@ define(function () {
 
                 bezl.dataService.add('user','brdb','EDI','GetUserSettings', { 
                     "QueryName": "GetUserSettings",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": [
                         { "Key": "@EMAIL", "Value": user },
                     ] },0);
@@ -181,7 +181,7 @@ define(function () {
 
                 bezl.dataService.add('datasub','brdb','EDI','GetDashHeaderData', { 
                     "QueryName": "GetDashHeaderData",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": parameters },0);
 
                 break;
@@ -190,7 +190,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewdetails','brdb','EDI','GetViewDetails', { 
                     "QueryName": "GetViewDetails",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": [
                         { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
                     ] },0);
@@ -236,7 +236,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewfile','brdb','EDI','GetViewFile', { 
                     "QueryName": "GetViewFile",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": [
                         { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
                     ] },0);
@@ -309,7 +309,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewdetails','brdb','EDI','Revalidate', { 
                     "QueryName": "Revalidate",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": parameters },0);
 
                 break;
@@ -377,7 +377,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('viewdetails','brdb','EDI','SaveDetails', { 
                     "QueryName": "SaveDetails",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": parameters },0);
 
                 break;
@@ -433,7 +433,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('datasub','brdb','EDI','Delete', { 
                     "QueryName": "Delete",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": parameters },0);
 
                 break;
@@ -489,7 +489,7 @@ define(function () {
                 // Pull in the header data for the logged in user
                 bezl.dataService.add('datasub','brdb','EDI','Reprocess', { 
                     "QueryName": "Reprocess",
-                    "Connection": "SQLConnection",
+                    "Connection": bezl.vars.SQLConnection,
                     "Parameters": parameters },0);
 
                 break;
@@ -538,7 +538,7 @@ define(function () {
                         // Pull in the header data for the logged in user
                         bezl.dataService.add('approve','brdb','EDI','Approve', { 
                             "QueryName": "Approve",
-                            "Connection": "SQLConnection",
+                            "Connection": bezl.vars.SQLConnection,
                             "Parameters": parameters },0);                    
 
                         for (var key in parameters){
