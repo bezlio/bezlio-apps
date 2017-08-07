@@ -20,7 +20,9 @@ define(["announcement.js"], function (announcement) {
     bezl.vars.timer = setInterval(function(){ 
       try {
         if (bezl.vars.announcements != []) {
-          announcement.navigateRight();
+          require(['announcement.js'], function(announcement) {
+            announcement.navigateRight();
+          });   
         }
       }
       catch(err) {
