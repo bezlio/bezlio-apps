@@ -19,7 +19,17 @@ define(["./announcement.js"], function (announcement) {
             bezl.vars.announcements = [];
             bezl.data.announcements.forEach(announcement => {
                 if (announcement.Active == 'X' && (announcement.Group == '' || bezl.vars.groups.indexOf(announcement.Group))) {
-                    bezl.vars.announcements.push({ text: announcement.Text, image: announcement.Image, Url: {}, Obj: {}, Loaded: false, Loading: false, Selected: false });
+                    bezl.vars.announcements.push({ id: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                                                            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                                                            return v.toString(16);
+                                                        }),
+                                                   text: announcement.Text, 
+                                                   image: announcement.Image, 
+                                                   Url: {}, 
+                                                   Obj: {}, 
+                                                   Loaded: false, 
+                                                   Loading: false, 
+                                                   Selected: false });
                 }
             });
 
@@ -41,18 +51,18 @@ define(["./announcement.js"], function (announcement) {
                 if (announcement.image != null && !announcement.Loaded  && !announcement.Loading) {
                     announcement.Loading = true;
                     // Perform the BRDB call to actually download the file
-                    bezl.dataService.add(announcement.image,'brdb','FileSystem','GetFile',
+                    bezl.dataService.add(announcement.id,'brdb','FileSystem','GetFile',
                                     { "Context": "Content"
                                         , "FileName": "img\\" + announcement.image
                                         , "Parameters": [] },0);
                 // If it isn't loaded, we are loading, and we got it back
-                } else if (announcement.image != '' && !announcement.Loaded  && announcement.Loading && bezl.data[announcement.image]) {
+                } else if (announcement.image != '' && !announcement.Loaded  && announcement.Loading && bezl.data[announcement.id]) {
                     announcement.Loaded = true;
                     announcement.Loading = false;
                     
                     // Convert the byte array that came back on GetFile into a blob object we can use in HTML
                     var sliceSize = 1024;
-                    var byteCharacters = atob(bezl.data[announcement.image]);
+                    var byteCharacters = atob(bezl.data[announcement.id]);
                     var bytesLength = byteCharacters.length;
                     var slicesCount = Math.ceil(bytesLength / sliceSize);
                     var byteArrays = new Array(slicesCount);
@@ -75,8 +85,8 @@ define(["./announcement.js"], function (announcement) {
                     }
                     
                     // Remove the data subscription for this file since we have it stored now
-                    bezl.data[announcement.image] = null;
-                    bezl.dataService.remove(announcement.image);
+                    bezl.data[announcement.id] = null;
+                    bezl.dataService.remove(announcement.id);
                 }
             });
         }
