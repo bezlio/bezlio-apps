@@ -26,12 +26,14 @@ define(function () {
                 $(this).removeClass();
             });
         
-            img.src = bezl.vars.announcements[currentIndex].Url; 
-        
-            // Animate transition to the left on screen
-            ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $(this).removeClass();
-            });
+            if (bezl.vars.announcements[currentIndex].Loaded) {
+                img.src = bezl.vars.announcements[currentIndex].Url; 
+            
+                // Animate transition to the left on screen
+                ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $(this).removeClass();
+                });
+            }
         }
     }
 
@@ -60,12 +62,14 @@ define(function () {
                 $(this).removeClass();
             });
         
-            img.src = bezl.vars.announcements[currentIndex].Url; 
-        
-            // Animate transition to the right on screen
-            ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $(this).removeClass();
-            });
+            if (bezl.vars.announcements[currentIndex].Loaded) {
+                img.src = bezl.vars.announcements[currentIndex].Url; 
+            
+                // Animate transition to the right on screen
+                ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $(this).removeClass();
+                });
+            }
         }
     }
 
@@ -77,8 +81,12 @@ define(function () {
         };
 
         bezl.vars.announcements[parm].Selected = true;
-        var img = $(bezl.container.nativeElement).find('#viewer')[0];
-        img.src = bezl.vars.announcements[parm].Url;
+
+        if (bezl.vars.announcements[currentIndex].Loaded) {
+            var img = $(bezl.container.nativeElement).find('#viewer')[0];
+            img.src = bezl.vars.announcements[parm].Url;
+        }
+
     }
 
     return {
