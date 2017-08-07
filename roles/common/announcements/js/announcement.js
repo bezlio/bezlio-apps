@@ -19,6 +19,7 @@ define(function () {
 
         if (bezl.vars.announcements[currentIndex]) {  
             bezl.vars.announcements[currentIndex].Selected = true;
+            bezl.vars.showImage = bezl.vars.announcements[currentIndex].Loaded;
             var img = $(bezl.container.nativeElement).find('#viewer')[0];
 
             // Animate transition to the right off screen
@@ -53,6 +54,7 @@ define(function () {
 
         if (bezl.vars.announcements[currentIndex]) {
             bezl.vars.announcements[currentIndex].Selected = true;
+            bezl.vars.showImage = bezl.vars.announcements[currentIndex].Loaded;
             var img = $(bezl.container.nativeElement).find('#viewer')[0];
 
             // Animate transition to the left off screen
@@ -77,6 +79,7 @@ define(function () {
         };
 
         bezl.vars.announcements[parm].Selected = true;
+        bezl.vars.showImage = bezl.vars.announcements[parm].Loaded;
         var img = $(bezl.container.nativeElement).find('#viewer')[0];
         img.src = bezl.vars.announcements[parm].Url;
     }
