@@ -20,7 +20,7 @@ define(["./announcement.js"], function (announcement) {
     bezl.vars.timer = setInterval(function(){ 
       try {
         if (bezl.vars.announcements != []) {
-          announcement.navigateRight();
+          announcement.navigateRight(bezl);
         }
       }
       catch(err) {
