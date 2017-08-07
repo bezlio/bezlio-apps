@@ -1,0 +1,140 @@
+﻿{
+  "id": "ebd96a46-df2e-40bc-a928-1595d82ee0c5",
+  "name": "Announcements",
+  "template": "custom",
+  "owner": "demo17@bezl.io",
+  "shares": [],
+  "vars": [
+    {
+      "name": "announcements",
+      "value": "[]"
+    }
+  ],
+  "dataSubscriptions": [],
+  "markup": [
+    "<div id=\"announcementsCarousel\" class=\"carousel slide\" data-ride=\"carousel\" style=\"width: 97%;\">",
+    "  <!-- Indicators -->",
+    "  <ol class=\"carousel-indicators\">",
+    "    <li *ngFor=\"let announcement of bezl.vars.announcements;let i=index\" ",
+    "        (click)=\"bezl.functions['navigateDirect'](i)\"",
+    "        [ngClass]=\"{'active' : announcement.Selected}\"></li>",
+    "  </ol>",
+    "",
+    "  <!-- Wrapper for slides -->",
+    "  <div class=\"carousel-inner\" role=\"listbox\">    ",
+    "    <div class=\"item active\" style=\"position: relative; width: 100%; text-align: center;\">",
+    "      ",
+    "      <img id=\"viewer\" src=\"\" type=\"image/png\" alt=\"\" ",
+    "           style=\"display: block;",
+    "                  margin: auto;",
+    "                  width: 100%;\">",
+    "      ",
+    "      <div *ngFor=\"let a of bezl.vars.announcements\">",
+    "       \t<div *ngIf=\"a.Selected && a.text != null\">",
+    "          <span style=\"position: absolute; top: calc(20%); left: calc(10%); width: calc(80%);",
+    "                       color: white; ",
+    "                       font-size: 200%; font: bold 24px/45px Helvetica, Sans-Serif; ",
+    "                       letter-spacing: -1px;  ",
+    "                       background: rgb(0, 0, 0); /* fallback color */",
+    "                       background: rgba(0, 0, 0, 0.7);",
+    "                       padding: 10px\"",
+    "                [innerHTML]=\"a.text\"></span>",
+    "        </div>",
+    "      </div>",
+    "      ",
+    "    </div>",
+    "  </div>",
+    "",
+    "  <!-- Left and right controls -->",
+    "  <a class=\"left carousel-control\" href=\"#announcementsCarousel\" role=\"button\" data-slide=\"prev\" (click)=\"bezl.functions['navigateLeft']()\">",
+    "    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>",
+    "    <span class=\"sr-only\">Previous</span>",
+    "  </a>",
+    "  <a class=\"right carousel-control\" href=\"#announcementsCarousel\" role=\"button\" data-slide=\"next\" (click)=\"bezl.functions['navigateRight']()\">",
+    "    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>",
+    "    <span class=\"sr-only\">Next</span>",
+    "  </a>",
+    "</div>"
+  ],
+  "functions": [
+    {
+      "method": "ngOnInit",
+      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "onDataChange",
+      "code": "bezl.data = dataResp;\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function(functions) {\n\tfunctions.onDataChange(bezl);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.data = dataResp;\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onDataChange.js'], function (functions) {\r\n    functions.onDataChange(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "setConfig",
+      "code": "bezl.vars.config = {};\nbezl.vars.config.announcementsPlugin = \"ExcelPlugin\"; // The plugin used to download the listing of announcements\nbezl.vars.config.announcementsMethod = \"GetData\"; // The method for the above plugin to download the listing of announcements\n\n// The args below are what we pass to the specified plugin to get the actual announcement listing.\nbezl.vars.config.announcementsArgs = { FileName: \"C:\\\\Program Files (x86)\\\\Bezlio Remote Data Broker\\\\Data\\\\announcements.xlsx\",\n                                       SheetName: \"Announcements\",\n                                       FirstRowColumnNames: \"Yes\" };\n\n// The args here are what we pass to the specified plugin to get group membership details that determine\n// which users see which announcements\nbezl.vars.config.groupMembershipArgs = { FileName: \"C:\\\\Program Files (x86)\\\\Bezlio Remote Data Broker\\\\Data\\\\announcements.xlsx\",\n                                       SheetName: \"UserGroups\",\n                                       FirstRowColumnNames: \"Yes\" };\n\n\n\nbezl.vars.config.slideInterval = 5000; // Frequence in milliseconds for slides to auto-advance\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: The version number of this app. Setting this vill use the javascript\n//          include files in the corresponding \"versions\" subfolder. An empty string\n//          will use the \"development\" javascript files in the root directory.\n// libVersion: The version number of the library javascript include files to use.\n// baseUrl: The base URL of the javascript include files. Generally this should be an\n//          empty string and the correct path will be automatically determined.\n//          However, for development you may wish to point this to a RawGit URL of\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\nbezl.vars.config.version = \"\";\nbezl.vars.config.libVersion = \"\";\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/Add-Announcements-App-for-use-in-default-installation-%23347\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/roles/common/announcements/\"\n  \t\t\t\t\t\t\t+ (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t\t+ \"js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/libraries/\"\n\t\t\t\t\t\t\t+ (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\")",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.vars.config = {};\r\nbezl.vars.config.announcementsPlugin = \"ExcelPlugin\"; // The plugin used to download the listing of announcements\r\nbezl.vars.config.announcementsMethod = \"GetData\"; // The method for the above plugin to download the listing of announcements\r\n// The args below are what we pass to the specified plugin to get the actual announcement listing.\r\nbezl.vars.config.announcementsArgs = { FileName: \"C:\\\\Program Files (x86)\\\\Bezlio Remote Data Broker\\\\Data\\\\announcements.xlsx\", SheetName: \"Announcements\", FirstRowColumnNames: \"Yes\" };\r\n// The args here are what we pass to the specified plugin to get group membership details that determine\r\n// which users see which announcements\r\nbezl.vars.config.groupMembershipArgs = { FileName: \"C:\\\\Program Files (x86)\\\\Bezlio Remote Data Broker\\\\Data\\\\announcements.xlsx\", SheetName: \"UserGroups\", FirstRowColumnNames: \"Yes\" };\r\nbezl.vars.config.slideInterval = 5000; // Frequence in milliseconds for slides to auto-advance\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: The version number of this app. Setting this vill use the javascript\r\n//          include files in the corresponding \"versions\" subfolder. An empty string\r\n//          will use the \"development\" javascript files in the root directory.\r\n// libVersion: The version number of the library javascript include files to use.\r\n// baseUrl: The base URL of the javascript include files. Generally this should be an\r\n//          empty string and the correct path will be automatically determined.\r\n//          However, for development you may wish to point this to a RawGit URL of\r\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\nbezl.vars.config.version = \"\";\r\nbezl.vars.config.libVersion = \"\";\r\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/Add-Announcements-App-for-use-in-default-installation-%23347\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/common/announcements/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\" + (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\");\r\n"
+    },
+    {
+      "method": "navigateDirect",
+      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'announcement.js'], function(functions) {\n\tfunctions.navigateDirect(bezl, parm);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'announcement.js'], function (functions) {\r\n    functions.navigateDirect(bezl, parm);\r\n});\r\n"
+    },
+    {
+      "method": "navigateLeft",
+      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'announcement.js'], function(functions) {\n\tfunctions.navigateLeft(bezl);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'announcement.js'], function (functions) {\r\n    functions.navigateLeft(bezl);\r\n});\r\n"
+    },
+    {
+      "method": "navigateRight",
+      "code": "bezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'announcement.js'], function(functions) {\n\tfunctions.navigateRight(bezl);\n});",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "bezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'announcement.js'], function (functions) {\r\n    functions.navigateRight(bezl);\r\n});\r\n"
+    }
+  ],
+  "data": ""
+}
