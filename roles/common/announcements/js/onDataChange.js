@@ -39,7 +39,7 @@ define(["./announcement.js"], function (announcement) {
             bezl.vars.announcements.forEach(announcement => {
                 // First check to see if the announcement has not been loading and is not loading - in that case we
                 // need to fire off a call to download it
-                if (announcement.image != '' && !announcement.Loaded  && !announcement.Loading) {
+                if (announcement.image != null && !announcement.Loaded  && !announcement.Loading) {
                     announcement.Loading = true;
                     // Perform the BRDB call to actually download the file
                     bezl.dataService.add(announcement.image,'brdb','FileSystem','GetFile',
