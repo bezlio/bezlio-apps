@@ -34,8 +34,7 @@ define(["./announcement.js"], function (announcement) {
         }
 
         // If we are done pulling in the announcements, fire off another process to download any images specified
-        if (!bezl.data.announcements && !bezl.data.userGroups) {
-            
+        if (bezl.vars.announcements.length > 0) {
             bezl.vars.announcements.forEach(announcement => {
                 // First check to see if the announcement has not been loading and is not loading - in that case we
                 // need to fire off a call to download it
@@ -53,7 +52,7 @@ define(["./announcement.js"], function (announcement) {
                     
                     // Convert the byte array that came back on GetFile into a blob object we can use in HTML
                     var sliceSize = 1024;
-                    var byteCharacters = atob(bezl.data[announcement.FileInfo.Name]);
+                    var byteCharacters = atob(bezl.data[announcement.image]);
                     var bytesLength = byteCharacters.length;
                     var slicesCount = Math.ceil(bytesLength / sliceSize);
                     var byteArrays = new Array(slicesCount);
@@ -76,8 +75,8 @@ define(["./announcement.js"], function (announcement) {
                     }
                     
                     // Remove the data subscription for this file since we have it stored now
-                    bezl.data[announcement.FileInfo.Name] = null;
-                    bezl.dataService.remove(announcement.FileInfo.Name);
+                    bezl.data[announcement.image] = null;
+                    bezl.dataService.remove(announcement.image);
                 }
             });
         }
