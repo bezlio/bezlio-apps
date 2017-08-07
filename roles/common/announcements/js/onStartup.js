@@ -1,4 +1,4 @@
-define(["announcement.js"], function (announcement) {
+define(["./announcement.js"], function (announcement) {
  
   function OnStartup (bezl) {
 
@@ -20,9 +20,7 @@ define(["announcement.js"], function (announcement) {
     bezl.vars.timer = setInterval(function(){ 
       try {
         if (bezl.vars.announcements != []) {
-          require(['announcement.js'], function(announcement) {
-            announcement.navigateRight();
-          });   
+          announcement.navigateRight();
         }
       }
       catch(err) {
