@@ -18,7 +18,7 @@ define(["./announcement.js"], function (announcement) {
             // Loop through each announcement and add to our announcements array if this user should see it
             bezl.vars.announcements = [];
             bezl.data.announcements.forEach(announcement => {
-                if (announcement.Active == 'X' && (announcement.Group == '' || bezl.vars.groups.indexOf(announcement.Group))) {
+                if (announcement.Active == 'X' && (announcement.Group == null || bezl.vars.groups.indexOf(announcement.Group) != -1)) {
                     bezl.vars.announcements.push({ id: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                                                             var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
                                                             return v.toString(16);
