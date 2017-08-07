@@ -43,8 +43,8 @@ define(["./announcement.js"], function (announcement) {
                     announcement.Loading = true;
                     // Perform the BRDB call to actually download the file
                     bezl.dataService.add(announcement.image,'brdb','FileSystem','GetFile',
-                                    { "Context": "Announcements"
-                                        , "FileName": announcement.image
+                                    { "Context": "Content"
+                                        , "FileName": "img\\" + announcement.image
                                         , "Parameters": [] },0);
                 // If it isn't loaded, we are loading, and we got it back
                 } else if (announcement.image != '' && !announcement.Loaded  && announcement.Loading && bezl.data[announcement.image]) {
