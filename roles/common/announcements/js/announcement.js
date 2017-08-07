@@ -33,6 +33,9 @@ define(function () {
                 ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                     $(this).removeClass();
                 });
+            } else {
+                // This is just a dummy image of nothing
+                img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
             }
         }
     }
@@ -69,11 +72,14 @@ define(function () {
                 ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                     $(this).removeClass();
                 });
+            } else {
+                // This is just a dummy image of nothing
+                img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
             }
         }
     }
 
-    function NavigateDirect(bezl) {
+    function NavigateDirect(bezl, parm) {
         clearInterval(bezl.vars.timer);
 
         for (var i = 0; i < bezl.vars.announcements.length; i++) {
@@ -85,6 +91,9 @@ define(function () {
         if (bezl.vars.announcements[currentIndex].Loaded) {
             var img = $(bezl.container.nativeElement).find('#viewer')[0];
             img.src = bezl.vars.announcements[parm].Url;
+        } else {
+            // This is just a dummy image of nothing
+            img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
         }
 
     }
