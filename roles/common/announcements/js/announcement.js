@@ -95,8 +95,8 @@ define(function () {
         bezl.vars.announcements[parm].Selected = true;
         bezl.vars.announcementText = bezl.vars.announcements[parm].text;
 
+        var img = $(bezl.container.nativeElement).find('#viewer')[0];
         if (bezl.vars.announcements[parm].Loaded) {
-            var img = $(bezl.container.nativeElement).find('#viewer')[0];
             img.src = bezl.vars.announcements[parm].Url;
             bezl.vars.showImage = true;
         } else {
