@@ -83,6 +83,7 @@ define(["./announcement.js"], function (announcement) {
                     if (announcement.Selected) {
                         var img = $(bezl.container.nativeElement).find('#viewer')[0];
                         img.src = announcement.Url;  
+                        bezl.vars.imageLoaded = true;
                     }
                     
                     // Remove the data subscription for this file since we have it stored now

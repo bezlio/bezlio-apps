@@ -29,6 +29,7 @@ define(function () {
         
             if (bezl.vars.announcements[currentIndex].Loaded) {
                 img.src = bezl.vars.announcements[currentIndex].Url; 
+                bezl.vars.imageLoaded = true;
             
                 // Animate transition to the left on screen
                 ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -37,6 +38,7 @@ define(function () {
             } else {
                 // This is just a dummy image of nothing
                 img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+                bezl.vars.imageLoaded = false;
             }
         }
     }
@@ -69,6 +71,7 @@ define(function () {
         
             if (bezl.vars.announcements[currentIndex].Loaded) {
                 img.src = bezl.vars.announcements[currentIndex].Url; 
+                bezl.vars.imageLoaded = true;
             
                 // Animate transition to the right on screen
                 ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -77,6 +80,7 @@ define(function () {
             } else {
                 // This is just a dummy image of nothing
                 img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+                bezl.vars.imageLoaded = false;
             }
         }
     }
@@ -94,9 +98,11 @@ define(function () {
         var img = $(bezl.container.nativeElement).find('#viewer')[0];
         if (bezl.vars.announcements[parm].Loaded) {
             img.src = bezl.vars.announcements[parm].Url;
+            bezl.vars.imageLoaded = true;
         } else {
             // This is just a dummy image of nothing
             img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+            bezl.vars.imageLoaded = false;
         }
 
     }
