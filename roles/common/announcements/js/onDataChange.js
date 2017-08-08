@@ -36,6 +36,7 @@ define(["./announcement.js"], function (announcement) {
             // Mark the first annoucement as Selected
             bezl.vars.announcements[0].Selected = true;
             bezl.vars.announcementText = bezl.vars.announcements[0].text;
+            bezl.vars.imageLoaded = false;
 
             // Lastly clear out bezl.data.announcements and bezl.data.userGroups so we don't repeat this process
             bezl.data.announcements = null;
