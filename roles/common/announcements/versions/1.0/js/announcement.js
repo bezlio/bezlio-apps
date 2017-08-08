@@ -19,6 +19,7 @@ define(function () {
 
         if (bezl.vars.announcements[currentIndex]) {  
             bezl.vars.announcements[currentIndex].Selected = true;
+            bezl.vars.announcementText = bezl.vars.announcements[currentIndex].text;
             var img = $(bezl.container.nativeElement).find('#viewer')[0];
 
             // Animate transition to the right off screen
@@ -28,6 +29,7 @@ define(function () {
         
             if (bezl.vars.announcements[currentIndex].Loaded) {
                 img.src = bezl.vars.announcements[currentIndex].Url; 
+                bezl.vars.imageLoaded = true;
             
                 // Animate transition to the left on screen
                 ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInLeft').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -36,6 +38,7 @@ define(function () {
             } else {
                 // This is just a dummy image of nothing
                 img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+                bezl.vars.imageLoaded = false;
             }
         }
     }
@@ -58,6 +61,7 @@ define(function () {
 
         if (bezl.vars.announcements[currentIndex]) {
             bezl.vars.announcements[currentIndex].Selected = true;
+            bezl.vars.announcementText = bezl.vars.announcements[currentIndex].text;
             var img = $(bezl.container.nativeElement).find('#viewer')[0];
 
             // Animate transition to the left off screen
@@ -67,6 +71,7 @@ define(function () {
         
             if (bezl.vars.announcements[currentIndex].Loaded) {
                 img.src = bezl.vars.announcements[currentIndex].Url; 
+                bezl.vars.imageLoaded = true;
             
                 // Animate transition to the right on screen
                 ($(bezl.container.nativeElement).find('#viewer')).removeClass().addClass('animated slideInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -75,6 +80,7 @@ define(function () {
             } else {
                 // This is just a dummy image of nothing
                 img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+                bezl.vars.imageLoaded = false;
             }
         }
     }
@@ -87,13 +93,16 @@ define(function () {
         };
 
         bezl.vars.announcements[parm].Selected = true;
+        bezl.vars.announcementText = bezl.vars.announcements[parm].text;
 
+        var img = $(bezl.container.nativeElement).find('#viewer')[0];
         if (bezl.vars.announcements[parm].Loaded) {
-            var img = $(bezl.container.nativeElement).find('#viewer')[0];
             img.src = bezl.vars.announcements[parm].Url;
+            bezl.vars.imageLoaded = true;
         } else {
             // This is just a dummy image of nothing
             img.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+            bezl.vars.imageLoaded = false;
         }
 
     }
