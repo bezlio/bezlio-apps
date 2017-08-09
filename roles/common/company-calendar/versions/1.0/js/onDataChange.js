@@ -18,21 +18,7 @@ define(["./calendar.js"], function (calendar) {
             });
 
             require(['node_modules/dist/fullcalendar.min.js'], function(calendar) {
-                $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                defaultView: bezl.vars.config.defaultView,
-                events: bezl.vars.events,
-                eventClick: function(event) {
-                    if (event.url) {
-                        window.open(event.url);
-                        return false;
-                    }
-                }
-                });
+                $('#calendar').fullCalendar(bezl.vars.config.calendarOptions);
             });
         }
     }
