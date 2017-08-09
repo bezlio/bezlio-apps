@@ -6,13 +6,23 @@ define(["./calendar.js"], function (calendar) {
 
             bezl.data.companyCalendar.forEach(event => {
                 if (event.Active == 'X') {
+                    if (event.End) {
+                        bezl.vars.events.push({
+                            title: event.Title,
+                            id: event.ID,
+                            start: event.Start,
+                            end: event.End,
+                            url: event.URL
+                        });
+                    } else {
                     bezl.vars.events.push({
                         title: event.Title,
                         id: event.ID,
                         start: event.Start,
-                        end: event.End,
                         url: event.URL
                     });
+                    }
+
                 }
 
             });
