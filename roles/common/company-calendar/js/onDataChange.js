@@ -13,8 +13,6 @@ define(["./calendar.js"], function (calendar) {
                         end: event.End,
                         url: event.URL
                     });
-                    }
-
                 }
 
             });
