@@ -2,11 +2,11 @@ define(["./calendar.js"], function (calendar) {
  
     function OnDataChange (bezl) {
         if (bezl.data.companyCalendar) {
-            bezl.vars.events = [];
+            bezl.vars.config.calendarOptions.events = [];
 
             bezl.data.companyCalendar.forEach(event => {
                 if (event.Active == 'X') {
-                    bezl.vars.events.push({
+                    bezl.vars.config.calendarOptions.events.push({
                         title: event.Title,
                         id: event.ID,
                         start: ((!event.Start.endsWith("T00:00:00")) ? event.Start : event.Start.split('T')[0]),
