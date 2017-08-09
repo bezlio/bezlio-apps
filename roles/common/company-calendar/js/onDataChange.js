@@ -24,7 +24,7 @@ define(["./calendar.js"], function (calendar) {
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
-                defaultView: 'agendaDay',
+                defaultView: bezl.vars.config.defaultView,
                 events: bezl.vars.events,
                 eventClick: function(event) {
                     if (event.url) {
