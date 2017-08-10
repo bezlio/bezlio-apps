@@ -30,7 +30,7 @@ define(["./report.js"], function (report) {
                     document.getElementById('page_num').textContent = bezl.vars.pageNum;
 
                     // Initial/first page rendering
-                    bezl.vars.renderPage(pageNum);    
+                    bezl.vars.renderPage(bezl.vars.pageNum);    
                     
                     // Wire up controls to functions for PDF viewer
                     document.getElementById('next').addEventListener('click', bezl.vars.onNextPage);
