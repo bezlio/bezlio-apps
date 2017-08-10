@@ -144,11 +144,26 @@ define(function () {
             };
         }
     }
+
+    function ClickAddress(bezl, account) {
+        window.open('http://maps.google.com/maps?q=' + account.AddressURL, '_blank');
+    }
   
+    function ClickEmail(bezl, contact) {
+
+    }
+
+    function ClickPhoneNum(bezl, contact) {
+
+    }
+
     return {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
-        applyFilter: ApplyFilter
+        applyFilter: ApplyFilter,
+        clickAddress: ClickAddress,
+        clickEmail: ClickEmail,
+        clickPhoneNum: ClickPhoneNum
     }
 });
