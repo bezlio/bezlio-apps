@@ -12,7 +12,11 @@ define(function () {
             bezl.vars.canvas.style.width='100%';
             bezl.vars.canvas.width  = bezl.vars.canvas.offsetWidth;
 
-            var viewport = page.getViewport(bezl.vars.canvas.width / page.getViewport(bezl.vars.scale).width);
+            var viewport = page.getViewport(bezl.vars.scale);
+            if (bezl.vars.scale == "auto") {
+                viewport = page.getViewport(bezl.vars.canvas.width / page.getViewport(1.0).width);
+            }
+            
             bezl.vars.canvas.height = viewport.height;
             bezl.vars.canvas.width = viewport.width;
 
