@@ -17,7 +17,7 @@ define(["./calendar.js"], function (calendar) {
 
             });
 
-            require(['node_modules/dist/fullcalendar.min.js'], function(calendar) {
+            require(['node_modules/fullcalendar/dist/fullcalendar.min.js'], function(calendar) {
                 $('#calendar').fullCalendar(bezl.vars.config.calendarOptions);
             });
         }
