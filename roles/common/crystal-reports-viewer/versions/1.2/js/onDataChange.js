@@ -8,15 +8,15 @@ define(["./report.js"], function (report) {
         if (bezl.data.Report) { 
             var pdfData = atob(bezl.data.Report);
 
-            require.config({paths: {'//mozilla.github.io/pdf.js/build/pdf': 'pdf'}});
-            require(['pdfjs-dist/build/pdf'], function(pdf) {
-
-                pdf.PDFJS.disableWorker = true;
-                console.log('PDFJS Module: ' + pdf + '<br>');
-                console.log('PDFJS Global: ' + window.PDFJS);
+            require.config({
+              paths: {'pdfjs-dist': 'https://npmcdn.com/pdfjs-dist'}
+            });
+            require(['pdfjs-dist/build/pdf'], function (PDFJS) {
+                alert(PDFJS);
+                alert(window.PDFJS);
 
                 // Using DocumentInitParameters object to load binary data.
-                var loadingTask = pdf.PDFJS.getDocument({data: pdfData});
+                var loadingTask = PDFJS.getDocument({data: pdfData});
                 loadingTask.promise.then(function(pdf) {
                     console.log('PDF loaded');
                     
@@ -48,7 +48,6 @@ define(["./report.js"], function (report) {
                     // PDF loading error
                     console.error(reason);
                 });
-                
             });
 
             /*var bytesLength = byteCharacters.length;
