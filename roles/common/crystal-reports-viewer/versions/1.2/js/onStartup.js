@@ -24,7 +24,7 @@ define(function () {
             bezl.vars.pageRendering = false;
             if (bezl.vars.pageNumPending !== null) {
                 // New page rendering is pending
-                renderPage(bezl.vars.pageNumPending);
+                bezl.vars.renderPage(bezl.vars.pageNumPending);
                 bezl.vars.pageNumPending = null;
             }
             });

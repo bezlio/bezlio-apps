@@ -24,7 +24,7 @@ define(["./report.js"], function (report) {
                     bezl.vars.pageNum = 1;
                     bezl.vars.pageRendering = false;
                     bezl.vars.pageNumPending = false;
-                    bezl.vars.scale = 0.8;
+                    bezl.vars.scale = 1.5;
                     bezl.vars.canvas = document.getElementById('viewer');
                     bezl.vars.ctx = bezl.vars.canvas.getContext('2d');
                     document.getElementById('page_num').textContent = bezl.vars.pageNum;
