@@ -14,7 +14,7 @@ define(function () {
 
             // Render PDF page into canvas context
             var renderContext = {
-                canvasContext: bezl.vars.ctxctx,
+                canvasContext: bezl.vars.ctx,
                 viewport: viewport
             };
             var renderTask = page.render(renderContext);
