@@ -8,7 +8,17 @@ define(function () {
         bezl.vars.pageRendering = true;
         // Using promise to fetch the page
         bezl.vars.pdfDoc.getPage(num).then(function(page) {
+
             var viewport = page.getViewport(bezl.vars.scale);
+
+            if (bezl.vars.scale == "auto") {
+                bezl.vars.canvas.style.width='100%';
+                bezl.vars.canvas.width  = bezl.vars.canvas.offsetWidth;
+                viewport = page.getViewport(bezl.vars.canvas.width / page.getViewport(1.0).width);
+            } else {
+                bezl.vars.canvas.style.width=null;
+            }
+            
             bezl.vars.canvas.height = viewport.height;
             bezl.vars.canvas.width = viewport.width;
 
@@ -21,12 +31,12 @@ define(function () {
 
             // Wait for rendering to finish
             renderTask.promise.then(function() {
-            bezl.vars.pageRendering = false;
-            if (bezl.vars.pageNumPending !== null) {
-                // New page rendering is pending
-                bezl.vars.renderPage(bezl.vars.pageNumPending);
-                bezl.vars.pageNumPending = null;
-            }
+                bezl.vars.pageRendering = false;
+                if (bezl.vars.pageNumPending !== null) {
+                    // New page rendering is pending
+                    bezl.vars.renderPage(bezl.vars.pageNumPending);
+                    bezl.vars.pageNumPending = null;
+                }
             });
         });                        
     }
