@@ -8,7 +8,7 @@ define(function () {
         bezl.vars.pageRendering = true;
         // Using promise to fetch the page
         bezl.vars.pdfDoc.getPage(num).then(function(page) {
-            var viewport = page.getViewport(bezl.vars.scale);
+            var viewport = page.getViewport(canvas.width / page.getViewport(bezl.vars.scale).width);
             bezl.vars.canvas.height = viewport.height;
             bezl.vars.canvas.width = viewport.width;
 
@@ -21,12 +21,12 @@ define(function () {
 
             // Wait for rendering to finish
             renderTask.promise.then(function() {
-            bezl.vars.pageRendering = false;
-            if (bezl.vars.pageNumPending !== null) {
-                // New page rendering is pending
-                bezl.vars.renderPage(bezl.vars.pageNumPending);
-                bezl.vars.pageNumPending = null;
-            }
+                bezl.vars.pageRendering = false;
+                if (bezl.vars.pageNumPending !== null) {
+                    // New page rendering is pending
+                    bezl.vars.renderPage(bezl.vars.pageNumPending);
+                    bezl.vars.pageNumPending = null;
+                }
             });
         });                        
     }

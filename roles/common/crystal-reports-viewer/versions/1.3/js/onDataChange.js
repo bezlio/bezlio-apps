@@ -24,7 +24,7 @@ define(["./report.js"], function (report) {
                     bezl.vars.pageNum = 1;
                     bezl.vars.pageRendering = false;
                     bezl.vars.pageNumPending = null;
-                    bezl.vars.scale = 1.5;
+                    bezl.vars.scale = 1.0;
                     bezl.vars.canvas = document.getElementById('viewer');
                     bezl.vars.ctx = bezl.vars.canvas.getContext('2d');
                     bezl.vars.totalPages = bezl.vars.pdfDoc.numPages;
