@@ -46,6 +46,14 @@ define(function () {
         bezl.vars.pageNum++;
         bezl.vars.queueRenderPage(bezl.vars.pageNum);
     };
+
+    bezl.vars.onPrevPage = function() {
+        if (bezl.vars.pageNum <= 1) {
+            return;
+        }
+        bezl.vars.pageNum--;
+        bezl.vars.queueRenderPage(bezl.vars.pageNum);
+    }
   }
   
   return {

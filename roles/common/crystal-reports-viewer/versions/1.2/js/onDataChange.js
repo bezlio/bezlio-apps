@@ -27,13 +27,13 @@ define(["./report.js"], function (report) {
                     bezl.vars.scale = 1.5;
                     bezl.vars.canvas = document.getElementById('viewer');
                     bezl.vars.ctx = bezl.vars.canvas.getContext('2d');
-                    document.getElementById('page_num').textContent = bezl.vars.pageNum;
 
                     // Initial/first page rendering
                     bezl.vars.renderPage(bezl.vars.pageNum);    
                     
                     // Wire up controls to functions for PDF viewer
                     document.getElementById('next').addEventListener('click', bezl.vars.onNextPage);
+                    document.getElementById('previous').addEventListener('click', bezl.vars.onPrevPage);
 
                 }, function (reason) {
                     // PDF loading error
