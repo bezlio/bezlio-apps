@@ -46,10 +46,6 @@ define(function () {
         bezl.vars.pageNum++;
         bezl.vars.queueRenderPage(bezl.vars.pageNum);
     };
-
-    // Wire up controls to functions for PDF viewer
-    document.getElementById('next').addEventListener('click', bezl.vars.onNextPage);
-
   }
   
   return {
