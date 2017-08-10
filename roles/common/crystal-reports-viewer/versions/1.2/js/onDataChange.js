@@ -26,7 +26,7 @@ define(["./report.js"], function (report) {
                     bezl.vars.pageNumPending = false;
                     bezl.vars.scale = 0.8;
                     bezl.vars.canvas = document.getElementById('viewer');
-                    bezl.vars.ctx = canvas.getContext('2d');
+                    bezl.vars.ctx = bezl.vars.canvas.getContext('2d');
                     document.getElementById('page_num').textContent = bezl.vars.pageNum;
 
                     // Initial/first page rendering
