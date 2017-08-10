@@ -7,6 +7,9 @@ define(["./report.js"], function (report) {
 
         if (bezl.data.Report) { 
             var pdfData = atob(bezl.data.Report);
+            // Clean up data subscription as we no longer need it
+            bezl.dataService.remove('Report');
+            bezl.data.Report = null;
 
             require.config({
               paths: {'pdfjs-dist': 'https://npmcdn.com/pdfjs-dist'}
@@ -15,44 +18,28 @@ define(["./report.js"], function (report) {
 
                 // Using DocumentInitParameters object to load binary data.
                 var loadingTask = PDFJS.getDocument({data: pdfData});
-                loadingTask.promise.then(function(pdf) {
-                    console.log('PDF loaded');
-                    
-                    // Fetch the first page
-                    var pageNumber = 1;
-                    pdf.getPage(pageNumber).then(function(page) {
-                        console.log('Page loaded');
-                        
-                        var scale = 1.5;
-                        var viewport = page.getViewport(scale);
+                loadingTask.promise.then(function(pdfDoc_) {
 
-                        // Prepare canvas using PDF page dimensions
-                        var canvas = document.getElementById('viewer');
-                        var context = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
+                    bezl.vars.pdfDoc = pdfDoc_;
+                    bezl.vars.pageNum = 1;
+                    bezl.vars.pageRendering = false;
+                    bezl.vars.pageNumPending = false;
+                    bezl.vars.scale = 0.8;
+                    bezl.vars.canvas = document.getElementById('viewer');
+                    bezl.vars.ctx = canvas.getContext('2d');
+                    document.getElementById('page_num').textContent = bezl.vars.pageNum;
 
-                        // Render PDF page into canvas context
-                        var renderContext = {
-                        canvasContext: context,
-                        viewport: viewport
-                        };
-                        var renderTask = page.render(renderContext);
-                        renderTask.then(function () {
-                        console.log('Page rendered');
-                        });
-                    });
+                    // Initial/first page rendering
+                    bezl.vars.renderPage(pageNum);                   
+
                 }, function (reason) {
                     // PDF loading error
                     console.error(reason);
                 });
+
             });
 
             bezl.vars.reportLoading = false;
-
-            // Clean up data subscription as we no longer need it
-            bezl.dataService.remove('Report');
-            bezl.data.Report = null;
         }
 
         if (bezl.data.SaveReport) {
