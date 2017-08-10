@@ -8,6 +8,10 @@ define(function () {
         bezl.vars.pageRendering = true;
         // Using promise to fetch the page
         bezl.vars.pdfDoc.getPage(num).then(function(page) {
+
+            bezl.vars.canvas.style.width='100%';
+            bezl.vars.canvas.width  = bezl.vars.canvas.offsetWidth;
+
             var viewport = page.getViewport(bezl.vars.canvas.width / page.getViewport(bezl.vars.scale).width);
             bezl.vars.canvas.height = viewport.height;
             bezl.vars.canvas.width = viewport.width;
