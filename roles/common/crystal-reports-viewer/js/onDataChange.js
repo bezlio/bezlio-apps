@@ -58,15 +58,16 @@ define(["./report.js"], function (report) {
             var mimeType = "application/octet-stream"; // Sane default
             require([bezl.vars.config.baseLibraryUrl + 'mimeTypes.js'], function(mime) {
                 mimeType = mime.getMimeTypeFromExtension(bezl.vars.saveAsFileExtension);
+
+                var file = new Blob(byteArrays, {type: mimeType});
+                saveAs(file, bezl.vars.selectedReport.BaseName + bezl.vars.saveAsFileExtension);
+
+                bezl.vars.reportLoading = false;
+
+                // Clean up data subscription as we no longer need it
+                bezl.dataService.remove('SaveReport');
+                bezl.data.SaveReport = null;
             });
-            var file = new Blob(byteArrays, {type: mimeType});
-            saveAs(file, bezl.vars.selectedReport.BaseName + bezl.vars.saveAsFileExtension);
-
-            bezl.vars.reportLoading = false;
-
-            // Clean up data subscription as we no longer need it
-            bezl.dataService.remove('SaveReport');
-            bezl.data.SaveReport = null;
         }
     }
   
