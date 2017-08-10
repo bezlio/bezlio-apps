@@ -23,10 +23,11 @@ define(["./report.js"], function (report) {
                     bezl.vars.pdfDoc = pdfDoc_;
                     bezl.vars.pageNum = 1;
                     bezl.vars.pageRendering = false;
-                    bezl.vars.pageNumPending = false;
+                    bezl.vars.pageNumPending = null;
                     bezl.vars.scale = 1.5;
                     bezl.vars.canvas = document.getElementById('viewer');
                     bezl.vars.ctx = bezl.vars.canvas.getContext('2d');
+                    bezl.vars.totalPages = bezl.vars.pdfDoc.numPages;
 
                     // Initial/first page rendering
                     bezl.vars.renderPage(bezl.vars.pageNum);    
