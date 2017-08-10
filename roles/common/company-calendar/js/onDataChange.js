@@ -17,12 +17,7 @@ define(["./calendar.js"], function (calendar) {
 
             });
 
-            require(['node_modules/fullcalendar/dist/fullcalendar.min.js'], function(calendar) {
-                setTimeout(function(){
-                    $('#calendar').fullCalendar(bezl.vars.config.calendarOptions);
-                }, 100);
-                
-            });
+            $('#calendar').fullCalendar(bezl.vars.config.calendarOptions);
         }
     }
   
