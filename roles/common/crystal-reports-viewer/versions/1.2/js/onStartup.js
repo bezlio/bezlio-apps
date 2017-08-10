@@ -8,13 +8,13 @@ define(function () {
         bezl.vars.pageRendering = true;
         // Using promise to fetch the page
         bezl.vars.pdfDoc.getPage(num).then(function(page) {
-            var viewport = page.getViewport(scale);
+            var viewport = page.getViewport(bezl.vars.scalescale);
             canvas.height = viewport.height;
             canvas.width = viewport.width;
 
             // Render PDF page into canvas context
             var renderContext = {
-                canvasContext: ctx,
+                canvasContext: bezl.vars.ctxctx,
                 viewport: viewport
             };
             var renderTask = page.render(renderContext);
