@@ -5,7 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 ### Fixed
+
+### Added
+
+
+## [1.3] - 2017-08-10
+### Fixed
 - [Hotfix] Parameters should correctly check for null values
+
+### Added
+- Embedded pdf viewer (pdf.js) for better compatibility with mobile devices.
 
 ## [1.2] - 2017-07-10
 ### Added
