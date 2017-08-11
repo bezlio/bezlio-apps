@@ -59,7 +59,7 @@ define(["./account.js"], function (account) {
 
                     if (bezl.data[n.id]) {
                         platform.onAddNoteResponse(bezl, n);
-                    } else if (!n.processed && now - n.lastAttempt > bezl.vars.config.retryInterval && n.retryCount <= bezl.vars.config.maxRetryCount) {
+                    } else if (!n.processed && (now - n.lastAttempt > bezl.vars.config.retryInterval / 1000) && n.retryCount <= bezl.vars.config.maxRetryCount) {
                         platform.submitNote(bezl, n);
                     }
 
