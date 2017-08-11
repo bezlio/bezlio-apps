@@ -32,6 +32,7 @@ define(function () {
                 (now - n.lastAttempt > (bezl.vars.config.retryInterval * 1000) && n.retryCount <= bezl.vars.config.maxRetryCount)) {
                 
                 SubmitNote(bezl, n);
+                n.lastAttempt = Date.now();
             }
         });
 
@@ -53,9 +54,8 @@ define(function () {
                             , n.details
                             , n.type
                             , n.salesRep)
-            
-            n.lastAttempt = Date.now();
 
+            n.lastAttempt = Date.now();
             if (n.processed) {
                 n.retryCount++;
             }
