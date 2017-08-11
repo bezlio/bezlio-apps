@@ -214,7 +214,7 @@ define(function () {
         clickPhoneNum: ClickPhoneNum,
         clickCallLog: ClickCallLog,
         addNote: AddNote,
-        deleteFaieldNote: DeleteFailedNote,
+        deleteFailedNote: DeleteFailedNote,
         retryFailedNote: RetryFailedNote
     }
 });
