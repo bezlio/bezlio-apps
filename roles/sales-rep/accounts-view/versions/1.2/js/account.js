@@ -195,6 +195,9 @@ define(function () {
         console.log(pendingNotes);
         localStorage.setItem('pendingNotes', JSON.stringify(pendingNotes));
 
+        bezl.vars.shortSummary = '';
+        bezl.vars.details = '';
+        bezl.vars.type = '';
     }
 
     return {
