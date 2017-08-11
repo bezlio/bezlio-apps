@@ -58,7 +58,6 @@ define(function () {
 
             if (n.processed) {
                 n.retryCount++;
-                n.lastAttempt = now;
             }
         }); 
     }
