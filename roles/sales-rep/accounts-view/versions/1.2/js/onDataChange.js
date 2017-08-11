@@ -1,7 +1,7 @@
 define(["./account.js"], function (account) {
  
     function OnDataChange (bezl) {
-        if (bezl.data.Accounts) {
+        if (bezl.data.Accounts && !bezl.vars.accountsProcessed) {
             bezl.vars.loading = false;
 
             // If there was a previously selected account in localStorage, grab a reference
@@ -42,6 +42,8 @@ define(["./account.js"], function (account) {
             if (bezl.vars.sortCol && bezl.vars.sort) {
                 account.sort(bezl, bezl.vars.sortCol, bezl.vars.sort);
             }
+
+            bezl.vars.accountsProcessed = true;
         }
 
         if (bezl.data.CRMCalls) {

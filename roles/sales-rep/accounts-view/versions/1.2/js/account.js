@@ -5,7 +5,7 @@ define(function () {
         switch (queryName) {
             case "Accounts":
                 bezl.vars.loading = true; 
-
+                bezl.vars.accountsProcessed = false;
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccounts",
@@ -13,6 +13,10 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "CallTypes":
+                bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetCallTypes" 
+                },0);
             case "CRMCalls":
                 bezl.vars.loadingCallLog = true; 
                 // Pull in the call list for just the currently selected account
@@ -167,7 +171,6 @@ define(function () {
     }
 
     function ClickCallLog(bezl, account) {
-        bezl.vars.showCallLog = true;
         bezl.vars.selectedCustomerName = account.Name;
         bezl.vars.selectedCustId = account.ID;
         bezl.vars.loadingCallLog = true;
