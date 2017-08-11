@@ -179,19 +179,22 @@ define(function () {
     }
 
     function AddNote(bezl) {
-      if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
-        var pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
+        var pendingNotes = [];
+        if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
+            pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
+        }
+
         pendingNotes.push({
             id: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                  var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-                  return v.toString(16);
-              }),
+                    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                    return v.toString(16);
+                }),
             shortSummary: bezl.vars.shortSummary,
             result: ''
         });
         console.log(pendingNotes);
         localStorage.setItem('pendingNotes', JSON.stringify(pendingNotes));
-      }
+
     }
 
     return {
