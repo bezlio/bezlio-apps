@@ -196,6 +196,7 @@ define(function () {
 
     function DeleteFailedNote(bezl, note) {
         bezl.vars.pendingNotes.splice(bezl.vars.pendingNotes.indexOf(note), 1);
+        localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
     }
 
     function RetryFailedNote(bezl, note) {
