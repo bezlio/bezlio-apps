@@ -45,7 +45,7 @@ define(["./account.js"], function (account) {
         }
 
         if (bezl.data.CRMCalls) {
-            bezl.vars.loadingCallLog = fasle; 
+            bezl.vars.loadingCallLog = false; 
         }
     }
 
