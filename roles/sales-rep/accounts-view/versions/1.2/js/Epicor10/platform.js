@@ -71,6 +71,8 @@ define(function () {
             note.success = true;
         }
 
+        bezl.data[note.id] = null;
+        bezl.dataService.remove(note.id);
         note.processed = true;
         localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
     }
