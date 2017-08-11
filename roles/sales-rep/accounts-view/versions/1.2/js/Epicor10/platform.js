@@ -51,6 +51,10 @@ define(function () {
         });
 
         localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
+
+        bezl.vars.shortSummary = '';
+        bezl.vars.details = '';
+        bezl.vars.type = '';
     }
 
     function OnAddNoteResponse(bezl, note) {

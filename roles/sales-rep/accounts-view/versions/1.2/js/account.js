@@ -188,14 +188,9 @@ define(function () {
     }
 
     function AddNote(bezl) {
-
         require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
             platform.addNote(bezl);
         });
-
-        bezl.vars.shortSummary = '';
-        bezl.vars.details = '';
-        bezl.vars.type = '';
     }
 
     return {
