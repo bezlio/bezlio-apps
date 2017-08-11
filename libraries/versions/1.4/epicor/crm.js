@@ -48,8 +48,8 @@ define(function () {
         , 'ExecuteBOMethod'
         ,
         {
-            'Connection': bezl.vars.Connection
-            , 'Company': bezl.vars.Company
+            'Connection': bezl.vars.config.Connection
+            , 'Company': bezl.vars.config.Company
             , 'BOName': 'CRMCall'
             , 'BOMethodName': 'UpdateExt'
             , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
