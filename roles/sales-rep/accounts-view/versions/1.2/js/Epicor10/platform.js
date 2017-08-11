@@ -72,6 +72,7 @@ define(function () {
         }
 
         note.processed = true;
+        localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
     }
 
     return {
