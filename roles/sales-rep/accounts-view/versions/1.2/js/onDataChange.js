@@ -49,6 +49,24 @@ define(["./account.js"], function (account) {
         if (bezl.data.CRMCalls) {
             bezl.vars.loadingCallLog = false; 
         }
+
+        if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
+            pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
+
+            pendingNotes.forEach(n => {
+                if (bezl.data[n.id]) {
+                    require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+                        platform.onAddNoteResponse(bezl, n);
+                    });
+                }
+
+                if (n.success) {
+                    pendingNotes.splice(pendingNotes.indexOf(n), 1);
+                }
+            });
+
+            localStorage.setItem('pendingNotes', JSON.stringify(pendingNotes));
+        }
     }
 
     function CalcDistance(lat1, lon1, lat2, lon2, unit) {

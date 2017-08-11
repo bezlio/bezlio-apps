@@ -21,6 +21,7 @@ define(function () {
             type: bezl.vars.type = '',
             salesRep: ((bezl.data.SalesRep.length > 0) ? bezl.data.SalesRep[0].SalesRepCode : bezl.vars.selectedAccount.SalesRep),
             processed: false,
+            success: false,
             lastAttempt: now,
             retryCount: 0,
             result: ''
@@ -52,7 +53,19 @@ define(function () {
         localStorage.setItem('pendingNotes', JSON.stringify(pendingNotes));
     }
 
+    function OnAddNoteResponse(bezl, note) {
+        if (bezl.data[note.id].BOUpdError && bezl.data[note.id].BOUpdError.length > 0) {
+            bezl.notificationService.showCriticalError(JSON.stringify(bezl.data[note.id].BOUpdError));
+            note.result = JSON.stringify(bezl.data[note.id].BOUpdError);
+        } else {
+            note.success = true;
+        }
+
+        note.processed = true;
+    }
+
     return {
-        addNote: AddNote
+        addNote: AddNote,
+        onAddNoteResponse: OnAddNoteResponse
     }
 });
