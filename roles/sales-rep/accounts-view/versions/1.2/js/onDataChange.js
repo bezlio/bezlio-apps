@@ -32,6 +32,8 @@ define(["./account.js"], function (account) {
                                                                 , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
                 }             
 
+                bezl.data.Accounts[i].Contacts = [];
+
                 // Date pipe has rounding issue, truncate at "T" to get correct Date
                 bezl.data.Accounts[i].LastContact = (bezl.data.Accounts[i].LastContact || 'T').split("T")[0];
                 bezl.data.Accounts[i].NextTaskDue = (bezl.data.Accounts[i].NextTaskDue || 'T').split('T')[0]
@@ -44,6 +46,17 @@ define(["./account.js"], function (account) {
             }
 
             bezl.vars.accountsProcessed = true;
+        }
+
+        // If we got the account contacts back, merge those in
+        if (bezl.data.Accounts && bezl.data.AccountContacts) {
+            for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
+                for (var x = 0; x < bezl.data.Accounts.length; x++) {
+                    if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
+                        bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
+                    }
+                }
+            }
         }
 
         if (bezl.data.CRMCalls) {
