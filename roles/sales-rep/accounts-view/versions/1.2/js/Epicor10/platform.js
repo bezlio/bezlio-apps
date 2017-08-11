@@ -42,7 +42,7 @@ define(function () {
                                     , n.type
                                     , n.salesRep)
                     
-                    if (processed) {
+                    if (n.processed) {
                         n.retryCount++;
                         n.lastAttempt = now;
                     }
