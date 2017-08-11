@@ -193,6 +193,17 @@ define(function () {
         });
     }
 
+
+    function DeleteFailedNote(bezl, note) {
+        bezl.vars.pendingNotes.splice(bezl.vars.pendingNotes.indexOf(note), 1);
+    }
+
+    function RetryFailedNote(bezl, note) {
+        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+            platform.submitNote(bezl, note);
+        });
+    }    
+
     return {
         runQuery: RunQuery,
         select: Select,
@@ -202,6 +213,8 @@ define(function () {
         clickEmail: ClickEmail,
         clickPhoneNum: ClickPhoneNum,
         clickCallLog: ClickCallLog,
-        addNote: AddNote
+        addNote: AddNote,
+        deleteFaieldNote: DeleteFailedNote,
+        retryFailedNote: RetryFailedNote
     }
 });
