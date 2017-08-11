@@ -189,7 +189,7 @@ define(function () {
 
     function AddNote(bezl) {
 
-        require([bezl.vars.config.Platform + '/platform.js'], function(platform) {
+        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
             platform.addNote(bezl);
         });
 
