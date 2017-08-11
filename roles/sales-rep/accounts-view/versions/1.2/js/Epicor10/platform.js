@@ -2,14 +2,14 @@ define(function () {
 
     // This is all of the platform specific logic for this Bezl (Epicor 10 in this case)
     function AddNote(bezl) {
-        var pendingNotes = [];
+        bezl.vars.pendingNotes = [];
         if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
-            pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
+            bezl.vars.pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
         }
 
         var now = Date.now();
 
-        pendingNotes.push({
+        bezl.vars.pendingNotes.push({
             id: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                     var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
                     return v.toString(16);
@@ -27,7 +27,7 @@ define(function () {
             result: ''
         });
 
-        pendingNotes.forEach(n => {
+        bezl.vars.pendingNotes.forEach(n => {
             if (!n.processed || 
                 (now - n.lastAttempt > bezl.vars.config.retryInterval && n.retryCount <= bezl.vars.config.maxRetryCount)) {
                 
@@ -50,7 +50,7 @@ define(function () {
             }
         });
 
-        localStorage.setItem('pendingNotes', JSON.stringify(pendingNotes));
+        localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
     }
 
     function OnAddNoteResponse(bezl, note) {
