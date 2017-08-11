@@ -48,7 +48,7 @@ define(function () {
                             , n.id
                             , bezl.vars.config.Platform
                             , bezl.vars.config.Company
-                            , n.CustNum
+                            , n.custNum
                             , n.shortSummary
                             , n.details
                             , n.type
