@@ -29,10 +29,8 @@ define(function () {
 
         bezl.vars.pendingNotes.forEach(n => {
             if (!n.processed || 
-                (now - n.lastAttempt > (bezl.vars.config.retryInterval * 1000) && n.retryCount <= bezl.vars.config.maxRetryCount)) {
-                
+                (now - n.lastAttempt > (bezl.vars.config.retryInterval * 1000) && n.retryCount <= bezl.vars.config.maxRetryCount)) {     
                 SubmitNote(bezl, n);
-                n.lastAttempt = Date.now();
             }
         });
 
@@ -56,9 +54,12 @@ define(function () {
                             , n.salesRep)
 
             n.lastAttempt = Date.now();
+
             if (n.processed) {
                 n.retryCount++;
             }
+
+            localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
         }); 
     }
 
