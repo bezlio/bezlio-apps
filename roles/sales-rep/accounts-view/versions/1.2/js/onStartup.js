@@ -6,6 +6,7 @@ define(["./account.js"], function (account) {
         // Initiate the call to refresh the customer list
         account.runQuery(bezl, 'Accounts');
         account.runQuery(bezl, 'CallTypes');
+        account.runQuery(bezl, 'SalesRep');
 
         // Determine the current position of the user
         if (navigator.geolocation) {

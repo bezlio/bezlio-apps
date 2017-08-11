@@ -27,6 +27,14 @@ define(function () {
                         { "Key": "ID", "Value": bezl.vars.selectedCustId }
                     ] },0);
                 break;
+            case "SalesRep":
+                bezl.dataService.add('SalesRep','brdb','sales-rep-queries','ExecuteQuery', { 
+                                            "QueryName": "GetSalesRep", 
+                                            "Parameters": [
+                                                { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                                            ] 
+                                        },0); 
+                break;
             default:
                 break;
         }
@@ -41,6 +49,7 @@ define(function () {
                 if (bezl.data.Accounts[i].Selected) {
                     localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
                     $('#bezlpanel').trigger('selectAccount', [bezl.data.Accounts[i]]);
+                    bezl.vars.selectedAccount = bezl.data.Accounts[i];
                 } else {
                     localStorage.setItem('selectedAccount', '');
                     $('#bezlpanel').trigger('selectAccount', [{}]);
@@ -179,21 +188,10 @@ define(function () {
     }
 
     function AddNote(bezl) {
-        var pendingNotes = [];
-        if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
-            pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
-        }
 
-        pendingNotes.push({
-            id: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-                    return v.toString(16);
-                }),
-            shortSummary: bezl.vars.shortSummary,
-            result: ''
+        require([bezl.vars.config.Platform + '/platform.js'], function(platform) {
+            platform.addNote(bezl);
         });
-        console.log(pendingNotes);
-        localStorage.setItem('pendingNotes', JSON.stringify(pendingNotes));
 
         bezl.vars.shortSummary = '';
         bezl.vars.details = '';
