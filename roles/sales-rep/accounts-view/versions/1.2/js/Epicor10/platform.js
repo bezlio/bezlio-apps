@@ -31,22 +31,7 @@ define(function () {
             if (!n.processed || 
                 (now - n.lastAttempt > bezl.vars.config.retryInterval && n.retryCount <= bezl.vars.config.maxRetryCount)) {
                 
-                require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function(functions) {
-                    functions.addNote(bezl
-                                    , n.id
-                                    , bezl.vars.config.Platform
-                                    , bezl.vars.config.Company
-                                    , n.CustNum
-                                    , n.shortSummary
-                                    , n.details
-                                    , n.type
-                                    , n.salesRep)
-                    
-                    if (n.processed) {
-                        n.retryCount++;
-                        n.lastAttempt = now;
-                    }
-                }); 
+                SubmitNote(bezl, n);
             }
         });
 
@@ -55,6 +40,25 @@ define(function () {
         bezl.vars.shortSummary = '';
         bezl.vars.details = '';
         bezl.vars.type = '';
+    }
+
+    function SubmitNote(bezl, n) {
+        require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function(functions) {
+            functions.addNote(bezl
+                            , n.id
+                            , bezl.vars.config.Platform
+                            , bezl.vars.config.Company
+                            , n.CustNum
+                            , n.shortSummary
+                            , n.details
+                            , n.type
+                            , n.salesRep)
+            
+            if (n.processed) {
+                n.retryCount++;
+                n.lastAttempt = now;
+            }
+        }); 
     }
 
     function OnAddNoteResponse(bezl, note) {
@@ -70,6 +74,7 @@ define(function () {
 
     return {
         addNote: AddNote,
+        submitNote: SubmitNote,
         onAddNoteResponse: OnAddNoteResponse
     }
 });

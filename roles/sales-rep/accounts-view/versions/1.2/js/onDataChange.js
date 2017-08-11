@@ -52,13 +52,18 @@ define(["./account.js"], function (account) {
 
         if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
             bezl.vars.pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
+            var now = Date.now();
 
             bezl.vars.pendingNotes.forEach(n => {
-                if (bezl.data[n.id]) {
-                    require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+                require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+
+                    if (bezl.data[n.id]) {
                         platform.onAddNoteResponse(bezl, n);
-                    });
-                }
+                    } else if (!n.processed && now - n.lastAttempt > bezl.vars.config.retryInterval && n.retryCount <= bezl.vars.config.maxRetryCount) {
+                        platform.submitNote(bezl, n);
+                    }
+
+                });
 
                 if (n.success) {
                     bezl.vars.pendingNotes.splice(bezl.vars.pendingNotes.indexOf(n), 1);
