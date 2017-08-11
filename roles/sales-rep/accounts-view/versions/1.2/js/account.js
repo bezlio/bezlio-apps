@@ -168,8 +168,8 @@ define(function () {
 
     function ClickCallLog(bezl, account) {
         bezl.vars.showCallLog = true;
-        bezl.vars.selectedCustomerName = acct.Name;
-        bezl.vars.selectedCustId = acct.ID;
+        bezl.vars.selectedCustomerName = account.Name;
+        bezl.vars.selectedCustId = account.ID;
         bezl.vars.loadingCallLog = true;
         RunQuery(bezl, 'CRMCalls');
     }
