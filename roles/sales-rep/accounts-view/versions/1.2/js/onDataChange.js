@@ -43,6 +43,10 @@ define(["./account.js"], function (account) {
                 account.sort(bezl, bezl.vars.sortCol, bezl.vars.sort);
             }
         }
+
+        if (bezl.data.CRMCalls) {
+            bezl.vars.loadingCallLog = fasle; 
+        }
     }
 
     function CalcDistance(lat1, lon1, lat2, lon2, unit) {

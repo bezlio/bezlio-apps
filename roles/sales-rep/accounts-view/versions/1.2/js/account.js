@@ -13,6 +13,15 @@ define(function () {
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ] },0);
                 break;
+            case "CRMCalls":
+                bezl.vars.loadingCallLog = true; 
+                // Pull in the call list for just the currently selected account
+                bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountCallHistory",
+                    "Parameters": [
+                        { "Key": "ID", "Value": bezl.vars.selectedCustId }
+                    ] },0);
+                break;
             default:
                 break;
         }
@@ -157,6 +166,14 @@ define(function () {
 
     }
 
+    function ClickCallLog(bezl, account) {
+        bezl.vars.showCallLog = true;
+        bezl.vars.selectedCustomerName = acct.Name;
+        bezl.vars.selectedCustId = acct.ID;
+        bezl.vars.loadingCallLog = true;
+        RunQuery(bezl, 'CRMCalls');
+    }
+
     return {
         runQuery: RunQuery,
         select: Select,
@@ -164,6 +181,7 @@ define(function () {
         applyFilter: ApplyFilter,
         clickAddress: ClickAddress,
         clickEmail: ClickEmail,
-        clickPhoneNum: ClickPhoneNum
+        clickPhoneNum: ClickPhoneNum,
+        clickCallLog: ClickCallLog
     }
 });
