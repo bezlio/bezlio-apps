@@ -17,6 +17,7 @@ define(function () {
                 bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetCallTypes" 
                 },0);
+                break;
             case "CRMCalls":
                 bezl.vars.loadingCallLog = true; 
                 // Pull in the call list for just the currently selected account
