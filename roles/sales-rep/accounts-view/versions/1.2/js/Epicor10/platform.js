@@ -54,6 +54,8 @@ define(function () {
                             , n.type
                             , n.salesRep)
             
+            n.lastAttempt = Date.now();
+
             if (n.processed) {
                 n.retryCount++;
                 n.lastAttempt = now;
