@@ -1,54 +1,41 @@
 define(function () {
-
-    function RunQuery(bezl, queryName) {
+ 
+    function RunQuery (bezl, queryName) {
 
         switch (queryName) {
             case "Accounts":
-                bezl.vars.loading = true;
-
+                bezl.vars.loading = true; 
+                bezl.vars.accountsProcessed = false;
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Accounts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
                     "QueryName": "GetAccounts",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser },
-                        { "Key": "Col", "Value": bezl.vars.Column }
-                    ]
-                }, 0);
-                break;
-            case "AccountContacts":
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('AccountContacts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetAccountsContacts",
-                    "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ]
-                }, 0);
+                    ] },0);
                 break;
-            case "Tasks":
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Tasks', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetAccountsTasks",
-                    "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ]
-                }, 0);
+            case "CallTypes":
+                bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetCallTypes" 
+                },0);
                 break;
-            case "Attachments":
-                // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Attachments', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetAccountsAttachments",
+            case "CRMCalls":
+                bezl.vars.loadingCallLog = true; 
+                // Pull in the call list for just the currently selected account
+                bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+                    "QueryName": "GetAccountCallHistory",
                     "Parameters": [
-                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ]
-                }, 0);
+                        { "Key": "ID", "Value": bezl.vars.selectedCustId }
+                    ] },0);
                 break;
-            case "Categories":
-                bezl.dataService.add('Categories', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetFilterCategories",
-                    "Parameters": [
-                        { "Key": "Col", "Value": bezl.vars.Column }
-                    ]
-                }, 0);
+            case "SalesRep":
+                bezl.dataService.add('SalesRep','brdb','sales-rep-queries','ExecuteQuery', { 
+                                            "QueryName": "GetSalesRep", 
+                                            "Parameters": [
+                                                { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                                            ] 
+                                        },0); 
+                break;
+            default:
                 break;
         }
     }
@@ -62,27 +49,16 @@ define(function () {
                 if (bezl.data.Accounts[i].Selected) {
                     localStorage.setItem('selectedAccount', JSON.stringify(bezl.data.Accounts[i]));
                     $('#bezlpanel').trigger('selectAccount', [bezl.data.Accounts[i]]);
+                    bezl.vars.selectedAccount = bezl.data.Accounts[i];
                 } else {
                     localStorage.setItem('selectedAccount', '');
                     $('#bezlpanel').trigger('selectAccount', [{}]);
                 }
-
+                
             } else {
                 bezl.data.Accounts[i].Selected = false;
             }
         };
-
-        // In case there was a CRM interaction with the previously selected
-        // account we need to clear it out here when selecting a different
-        // one.
-        var param = {
-            "type": "",
-            "shortSummary": "",
-            "details": ""
-        };
-
-        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
-        localStorage.setItem("CRMNewInteraction", "");
     }
 
     function Sort(bezl, sortColumn, sortDirection = null) {
@@ -102,9 +78,10 @@ define(function () {
                 bezl.vars.sort = "asc";
             }
         }
-
+        
         // Store the sort column so the UI can reflect it
         bezl.vars.sortCol = sortColumn;
+
 
         // Test for numeric sort columns, otherwise sort alphabetic
         if (sortColumn == "Distance") {
@@ -134,12 +111,12 @@ define(function () {
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
                 });
-            }
+            } 
         } else {
-            if (bezl.vars.sort == "asc") {
-                bezl.data.Accounts.sort(function (a, b) {
-                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
+            if (bezl.vars.sort == "asc") { 
+                bezl.data.Accounts.sort(function(a, b) {
+                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
                         return -1;
                     }
@@ -151,9 +128,9 @@ define(function () {
                     return 0;
                 });
             } else {
-                bezl.data.Accounts.sort(function (a, b) {
-                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
+                bezl.data.Accounts.sort(function(a, b) {
+                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
                         return -1;
                     }
@@ -166,19 +143,7 @@ define(function () {
                 });
             }
         }
-    }
 
-    //Apply filter based on customer type. When all is selected, no filter is applied
-    function ApplyCategory(bezl, filterValue) {
-        bezl.vars.custCategory = filterValue;
-
-        if (filterValue !== "All") {
-            bezl.data.Accounts.forEach(act => {
-                act.show = (act.FilterValue === filterValue) ? true : false;
-            });
-        } else {
-            bezl.data.Accounts.forEach(act => act.show = true);
-        }
     }
 
     // Only display accounts that have data matching the data string in the
@@ -189,9 +154,9 @@ define(function () {
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.vars.filterString) { // Make sure we have something to filter on
                     if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                        bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                        bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                        bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                    bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                    bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                    bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                         bezl.data.Accounts[i].show = true;
                     } else {
                         bezl.data.Accounts[i].show = false;
@@ -205,50 +170,52 @@ define(function () {
 
     function ClickAddress(bezl, account) {
         window.open('http://maps.google.com/maps?q=' + account.AddressURL, '_blank');
-
-        var param = {
-            "type": "navigate",
-            "shortSummary": "Customer Visit",
-            "details": "Site visit to " + account.Name + "."
-        };
-
-        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
-        // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
-        localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
-
+  
     function ClickEmail(bezl, contact) {
-        var param = {
-            "type": "email",
-            "shortSummary": "Email to " + contact.ContactName,
-            "details": "Email sent to " + contact.EMailAddress + "."
-        };
 
-        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
-        // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
-        localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
 
     function ClickPhoneNum(bezl, contact) {
-        var param = {
-            "type": "phone",
-            "shortSummary": "Call to " + contact.ContactName,
-            "details": "Phone call to " + contact.PhoneNum + "."
-        };
 
-        $('#bezlpanel').trigger('CRMNewInteraction', [param]);
-        // If case the bezls are on separate panels we will also save the new CRM interaction to local storage
-        localStorage.setItem('CRMNewInteraction', JSON.stringify(param));
     }
+
+    function ClickCallLog(bezl, account) {
+        bezl.vars.selectedCustomerName = account.Name;
+        bezl.vars.selectedCustId = account.ID;
+        bezl.vars.loadingCallLog = true;
+        RunQuery(bezl, 'CRMCalls');
+    }
+
+    function AddNote(bezl) {
+        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+            platform.addNote(bezl);
+        });
+    }
+
+
+    function DeleteFailedNote(bezl, note) {
+        bezl.vars.pendingNotes.splice(bezl.vars.pendingNotes.indexOf(note), 1);
+        localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
+    }
+
+    function RetryFailedNote(bezl, note) {
+        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+            platform.submitNote(bezl, note);
+        });
+    }    
 
     return {
         runQuery: RunQuery,
         select: Select,
         sort: Sort,
         applyFilter: ApplyFilter,
-        applyCategory: ApplyCategory,
         clickAddress: ClickAddress,
         clickEmail: ClickEmail,
-        clickPhoneNum: ClickPhoneNum
+        clickPhoneNum: ClickPhoneNum,
+        clickCallLog: ClickCallLog,
+        addNote: AddNote,
+        deleteFailedNote: DeleteFailedNote,
+        retryFailedNote: RetryFailedNote
     }
 });
