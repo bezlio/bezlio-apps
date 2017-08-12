@@ -4,7 +4,7 @@ define(function () {
         bezl.dataService.process('directory');
     }
 
-    function RegenerateOutut (bezl) {
+    function RegenerateOutput (bezl) {
         eval(bezl.vars.config.outputFormula);
         
         // This function will be used to "flatten" out the values when multiple levels of grouping were
