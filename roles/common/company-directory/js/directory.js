@@ -113,7 +113,7 @@ define(function () {
         bezl.vars.config.structure.forEach(s => {
           s.columns.forEach(c => {
             if (c.sort != '') {
-              Sort( { section: s, column: c, sequence: s.sequence, initial: true });
+              Sort(bezl, { section: s, column: c, sequence: s.sequence, initial: true });
             }
           });
         });
