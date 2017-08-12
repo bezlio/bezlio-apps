@@ -128,7 +128,7 @@ define(function () {
         
         
         // Set the column sort direction unless this is the initial sorting
-        if (initial != false) {
+        if (!initial) {
           if (!column.sort && (column.formatter.type == 'currency' || column.formatter.type == 'number' || column.formatter.type == 'percent')) {
             column.sort = 'descending';
           } else if (!column.sort || column.sort == 'descending') {
