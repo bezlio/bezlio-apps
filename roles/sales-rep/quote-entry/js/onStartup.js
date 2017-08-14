@@ -1,15 +1,15 @@
 define(["./quote.js"], function (quote) {
     function OnStartup(bezl) {
         quote.runQuery(bezl, 'FirstCustomer');
-        //quote.runQuery(bezl, 'Quotes');
-        //quote.runQuery(bezl, 'SalesReps');
-        //quote.runQuery(bezl, 'Parts');
-        //quote.runQuery(bezl, 'Customers');
-        //quote.runQuery(bezl, 'Suspects');
-        //quote.runQuery(bezl, 'Territories');
-        //quote.runQuery(bezl, 'Terms');
+        quote.runQuery(bezl, 'Quotes');
+        quote.runQuery(bezl, 'SalesReps');
+        quote.runQuery(bezl, 'Parts');
+        quote.runQuery(bezl, 'Customers');
+        quote.runQuery(bezl, 'Suspects');
+        quote.runQuery(bezl, 'Territories');
+        quote.runQuery(bezl, 'Terms');
         quote.runQuery(bezl, 'EpicorParts');
-        //quote.runQuery(bezl, 'MktgCamp');
+        quote.runQuery(bezl, 'MktgCamp');
 
         bezl.vars.ds = {};
         bezl.vars.attrs = [];
