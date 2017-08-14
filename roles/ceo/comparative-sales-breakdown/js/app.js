@@ -5,11 +5,11 @@ define(function () {
         switch (queryName) {
             case "SummaryData":
                 bezl.vars.loadingSummaryData = true;
-                bezl.dataService.add('SalesData',
+                bezl.dataService.add('SummaryData',
                     'brdb',
-                    bezl.vars.config.salesDataPlugin,
-                    bezl.vars.config.salesDataMethod, 
-                    bezl.vars.config.salesDataArgs, 0);  
+                    bezl.vars.config.summaryDataPlugin,
+                    bezl.vars.config.summaryDataMethod, 
+                    bezl.vars.config.summaryDataArgs, 0);  
 
                 break;
         }
