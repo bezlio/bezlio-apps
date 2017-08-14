@@ -1,6 +1,7 @@
 define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.FirstCustomer) {
+            console.log("TEST");
             bezl.vars.CustomerCustID = bezl.data.FirstCustomer[0].CustID;
             bezl.vars.SalesRepCode = bezl.data.FirstCustomer[0].SalesRepCode;
         }
