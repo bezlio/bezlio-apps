@@ -3,8 +3,6 @@ define(function () {
     function RunQuery(bezl, queryName) {
         switch (queryName) {
             case "FirstCustomer":
-                console.log("User: " + bezl.env.currentUser);
-                console.log("Company: " + bezl.vars.Company);
                 bezl.dataService.add('FirstCustomer', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetFirstCustomerByRep",
                     "Parameters": [
