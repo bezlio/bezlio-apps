@@ -4,6 +4,8 @@ All notable changes to the CRM Calls View app will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
+### Deprecated
+- The CRM Calls View fuctionality has been moved into the Accounts View app. This CRM Calls View app has been deprecated.
 
 ## [1.4] - 2017-08-01
 ### Fixed
