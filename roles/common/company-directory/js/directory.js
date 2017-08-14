@@ -163,7 +163,7 @@ define(function () {
         // Store the unsorted elements before and after our sequence level
         var pre = tempData.slice(0, start);
         pre.sort(function(a, b) { return a.index - b.index; });
-        var post = tempData.slice(end, tempData.length);
+        var post = tempData.slice(start, tempData.length).slice(end, tempData.length);
         post.sort(function(a, b) { return a.index - b.index; });
         
         // Now sort the sequence level
