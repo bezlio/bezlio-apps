@@ -4,6 +4,10 @@ define(["./app.js"], function (app) {
         if (bezl.data.SummaryData) {
             bezl.vars.loadingSummaryData = false;
         }
+
+        if (bezl.data.ByProduct) {
+            bezl.vars.loadingByProduct = false;
+        }
     }
      
     return {
