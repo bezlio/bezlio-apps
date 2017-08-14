@@ -1,6 +1,6 @@
 define(["./quote.js"], function (quote) {
     function OnStartup(bezl) {
-        //quote.runQuery(bezl, 'FirstCustomer');
+        quote.runQuery(bezl, 'FirstCustomer');
         //quote.runQuery(bezl, 'Quotes');
         //quote.runQuery(bezl, 'SalesReps');
         //quote.runQuery(bezl, 'Parts');
@@ -8,7 +8,7 @@ define(["./quote.js"], function (quote) {
         //quote.runQuery(bezl, 'Suspects');
         //quote.runQuery(bezl, 'Territories');
         //quote.runQuery(bezl, 'Terms');
-        //quote.runQuery(bezl, 'EpicorParts');
+        quote.runQuery(bezl, 'EpicorParts');
         //quote.runQuery(bezl, 'MktgCamp');
 
         bezl.vars.ds = {};
