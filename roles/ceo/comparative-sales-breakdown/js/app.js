@@ -33,9 +33,11 @@ define(function () {
     }
 
     function HideDetails(bezl) {
-        $(function () {
-            $('#ytdSalesDetails').modal('hide')
-        })
+        setTimeout(function() {
+            $(function () {
+                $('#ytdSalesDetails').modal('hide')
+            })
+        }, 1000);
     }
 
     return {
