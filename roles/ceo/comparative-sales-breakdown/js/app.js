@@ -26,6 +26,7 @@ define(function () {
 
     function ShowDetails(bezl) {
         $('#ytdSalesDetails').modal('show');
+        $("#ytdSalesDetails").appendTo('body');
     }
 
     function HideDetails(bezl) {
