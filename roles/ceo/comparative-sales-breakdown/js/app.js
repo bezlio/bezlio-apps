@@ -26,18 +26,11 @@ define(function () {
 
     function ShowDetails(bezl) {
         bezl.functions['refresh']('ByProduct');
-        
-        $(function () {
-          $('#ytdSalesDetails').modal('show')
-        })
+        $('#ytdSalesDetails').modal('show');
     }
 
     function HideDetails(bezl) {
-        setTimeout(function() {
-            $(function () {
-                $('#ytdSalesDetails').modal('hide')
-            })
-        }, 1000);
+        $('#ytdSalesDetails').modal('hide');
     }
 
     return {
