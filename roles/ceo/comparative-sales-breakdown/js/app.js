@@ -24,19 +24,8 @@ define(function () {
         }
     }
 
-    function ShowDetails(bezl) {
-        $('#ytdSalesDetails').modal('show');
-        $("#ytdSalesDetails").appendTo('body');
-    }
-
-    function HideDetails(bezl) {
-        $('#ytdSalesDetails').modal('hide');
-    }
-
     return {
-        getData: GetData,
-        showDetails: ShowDetails,
-        hideDetails: HideDetails
+        getData: GetData
     }
 });
     
