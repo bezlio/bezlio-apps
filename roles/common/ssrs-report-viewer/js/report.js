@@ -5,7 +5,8 @@ define(function () {
         bezl.vars.selectedReport = parm;
 
         bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
-
+            "FolderName": "bleh",
+            "ReportName": "blehbleh"
         }, 0);
     }
 
