@@ -1,6 +1,8 @@
 define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.Report) {
+            console.log(bezl.data.Report);
+
             var sliceSize = 1024;
             var byteCharacters = atob(bezl.data.Report);
             var bytesLength = byteCharacters.length;
