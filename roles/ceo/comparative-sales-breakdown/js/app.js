@@ -24,8 +24,24 @@ define(function () {
         }
     }
 
+    function ShowDetails(bezl) {
+        bezl.functions['refresh']('ByProduct');
+        
+        $(function () {
+          $('#ytdSalesDetails').modal('show')
+        })
+    }
+
+    function HideDetails(bezl) {
+        $(function () {
+            $('#ytdSalesDetails').modal('hide')
+        })
+    }
+
     return {
-        getData: GetData
+        getData: GetData,
+        showDetails: ShowDetails,
+        hideDetails: HideDetails
     }
 });
     
