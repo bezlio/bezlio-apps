@@ -25,7 +25,6 @@ define(function () {
     }
 
     function ShowDetails(bezl) {
-        bezl.functions['refresh']('ByProduct');
         $('#ytdSalesDetails').modal('show');
     }
 
