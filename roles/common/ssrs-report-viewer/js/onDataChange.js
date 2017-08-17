@@ -15,7 +15,7 @@ define(function () {
             var byteCharacters = atob(bezl.data.Report);
             console.log(byteCharacters);
 
-            $(bezl.container.nativeElement).find('#viewer').html(byteCharacters);
+            $(bezl.container.nativeElement).find('#viewer').html('<div>test</div>');
 
             // var bytesLength = byteCharacters.length;
             // var sliceCount = Math.ceil(bytesLength / sliceSize);
