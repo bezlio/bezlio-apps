@@ -13,6 +13,8 @@ define(function () {
 
             var sliceSize = 1024;
             var byteCharacters = atob(bezl.data.Report);
+            console.log(byteCharacters);
+
             var bytesLength = byteCharacters.length;
             var sliceCount = Math.ceil(bytesLength / sliceSize);
             var byteArrays = new Array(sliceCount);
