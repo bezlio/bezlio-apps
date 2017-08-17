@@ -12,7 +12,7 @@ define(function () {
         //     "ReportName": "blehbleh"
         // }, 0);
 
-        bezl.dataService.add('RunReport', 'brdb', 'SSRS', 'ReturnAsPDF', {
+        bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
             "FolderName": "bleh",
             "ReportName": "blehbleh"
         }, 0);

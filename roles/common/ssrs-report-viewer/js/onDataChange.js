@@ -6,11 +6,13 @@ define(function () {
             bezl.vars.reportListingLoading = false;
         }
 
-        if (bezl.data.RunReport) {
-            console.log(bezl.data.RunReport);
+        if (bezl.data.Report) {
+            console.log(bezl.data.Report);
+
+            var data = btoa(bezl.data.Report);
 
             var sliceSize = 1024;
-            var byteCharacters = atob(bezl.data.Report);
+            var byteCharacters = atob(data);
             var bytesLength = byteCharacters.length;
             var slicesCount = Math.ceil(bytesLength / slicesSize);
             var byteArrays = new Array(sliceCount);
