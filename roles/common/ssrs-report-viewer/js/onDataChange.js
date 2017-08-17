@@ -22,7 +22,7 @@ define(function () {
                 var end = Math.min(begin + sliceSize, bytesLength);
                 var bytes = new Array(end - begin);
 
-                for (var offset = begin, i = 0; offset < end; i++ , ++ofset) {
+                for (var offset = begin, i = 0; offset < end; i++ , ++offset) {
                     bytes[i] = byteCharacters[offset].charCodeAt(0);
                 }
                 byteArrays[sliceIndex] = new Uint8Array(bytes);
