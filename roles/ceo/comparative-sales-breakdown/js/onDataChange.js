@@ -10,6 +10,10 @@ define(["./app.js"], function (app) {
         if (bezl.data.ByProduct) {
             bezl.vars.loadingByProduct = false;
         }
+
+        if (bezl.data.ByMonth) {
+            bezl.vars.loadingByMonth = false;
+        }
     }
      
     return {
