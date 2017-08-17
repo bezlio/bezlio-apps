@@ -15,7 +15,7 @@ define(function () {
             var byteCharacters = atob(bezl.data.Report);
             console.log(byteCharacters);
 
-            $(bezl.container.nativeElement).find('#viewer').html('<div>test</div>');
+            $(bezl.container.nativeElement).find('#viewer').innerHtml = byteCharacters;
 
             // var bytesLength = byteCharacters.length;
             // var sliceCount = Math.ceil(bytesLength / sliceSize);
@@ -44,3 +44,5 @@ define(function () {
         onDataChange: OnDataChange
     }
 });
+
+<iframe id="viewer" src="" type="application/pdf" height=800 style="overflow: auto; width: 100%;"></iframe>
