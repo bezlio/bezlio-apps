@@ -5,8 +5,9 @@ define(["./app.js"], function (app) {
        // Load up the sales data from the data source
        app.getData(bezl, 'SummaryData');
 
-       // Also start loading up the product level data
+       // Also start loading up the details data
        app.getData(bezl, 'ByProduct');
+       app.getData(bezl, 'ByMonth');
      }
      
      return {
