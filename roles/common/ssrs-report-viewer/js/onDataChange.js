@@ -6,7 +6,7 @@ define(function () {
             bezl.vars.reportListingLoading = false;
         }
 
-        if (bezl.data.Report) {
+        if (bezl.data.RunReport) {
             console.log(bezl.data.Report);
 
             var sliceSize = 1024;
