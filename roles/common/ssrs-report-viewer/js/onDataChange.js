@@ -17,6 +17,13 @@ define(function () {
 
             $(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
 
+            // var iframe = document.getElementById('iframeID');
+            // iframe = iframe.contentWindow || ( iframe.contentDocument.document || iframe.contentDocument);
+
+            // iframe.document.open();
+            // iframe.document.write('Hello World!');
+            // iframe.document.close();
+
             // var bytesLength = byteCharacters.length;
             // var sliceCount = Math.ceil(bytesLength / sliceSize);
             // var byteArrays = new Array(sliceCount);
