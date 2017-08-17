@@ -9,10 +9,10 @@ define(function () {
         if (bezl.data.Report) {
             console.log(bezl.data.Report);
 
-            var data = btoa(bezl.data.Report);
+            //var data = btoa(bezl.data.Report);
 
             var sliceSize = 1024;
-            var byteCharacters = atob(data);
+            var byteCharacters = atob(bezl.data.Report);
             var bytesLength = byteCharacters.length;
             var sliceCount = Math.ceil(bytesLength / sliceSize);
             var byteArrays = new Array(sliceCount);
