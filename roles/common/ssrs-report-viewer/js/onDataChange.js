@@ -14,10 +14,10 @@ define(function () {
             var sliceSize = 1024;
             var byteCharacters = atob(data);
             var bytesLength = byteCharacters.length;
-            var slicesCount = Math.ceil(bytesLength / sliceSize);
+            var sliceCount = Math.ceil(bytesLength / sliceSize);
             var byteArrays = new Array(sliceCount);
 
-            for (var sliceIndex = 0; sliceIndex < slicesCount; sliceIndex++) {
+            for (var sliceIndex = 0; sliceIndex < sliceCount; sliceIndex++) {
                 var begin = sliceIndex * sliceSize;
                 var end = Math.min(begin + sliceSize, bytesLength);
                 var bytes = new Array(end - begin);
