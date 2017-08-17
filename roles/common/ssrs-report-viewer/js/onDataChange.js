@@ -1,6 +1,10 @@
 define(function () {
 
     function OnDataChange(bezl) {
+        if (bezl.data.ReportListing) {
+            bezl.vars.reportListingLoading = false;
+        }
+
         if (bezl.data.Report) {
             console.log(bezl.data.Report);
 

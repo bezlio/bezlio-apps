@@ -7,10 +7,15 @@ define(function () {
         bezl.vars.reportSelected = true;
         bezl.vars.selectedReport = parm;
 
-        bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
+        bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
             "FolderName": "bleh",
             "ReportName": "blehbleh"
         }, 0);
+
+        // bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
+        //     "FolderName": "bleh",
+        //     "ReportName": "blehbleh"
+        // }, 0);
     }
 
     return {
