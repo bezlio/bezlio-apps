@@ -44,5 +44,3 @@ define(function () {
         onDataChange: OnDataChange
     }
 });
-
-<iframe id="viewer" src="" type="application/pdf" height=800 style="overflow: auto; width: 100%;"></iframe>
