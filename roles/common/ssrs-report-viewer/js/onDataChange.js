@@ -1,4 +1,5 @@
 define(function () {
+
     function OnDataChange(bezl) {
         if (bezl.data.Report) {
             console.log(bezl.data.Report);

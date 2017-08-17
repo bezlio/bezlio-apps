@@ -1,5 +1,8 @@
 define(function () {
     function RunReport(bezl, parm) {
+
+        console.log("true");
+
         bezl.vars.reportLoading = true;
         bezl.vars.reportSelected = true;
         bezl.vars.selectedReport = parm;
