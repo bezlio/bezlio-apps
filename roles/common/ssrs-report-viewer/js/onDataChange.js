@@ -18,11 +18,14 @@ define(function () {
             //$(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
 
             var iFrame = $(bezl.container.nativeElement).find('#viewer')[0];
-            iFrame = iFrame.contentWindow || (iFrame.contentDocument.document || iFrame.contentDocument);
+            iFrame.src = 'data:text/html:charset=utf-8,' + encodeURI(byteCharacters);
 
-            iFrame.document.open();
-            iFrame.document.write(byteCharacters);
-            iFrame.close();
+
+            // iFrame = iFrame.contentWindow || (iFrame.contentDocument.document || iFrame.contentDocument);
+
+            // iFrame.document.open();
+            // iFrame.document.write(byteCharacters);
+            // iFrame.close();
 
             // var iframe = document.getElementById('iframeID');
             // iframe = iframe.contentWindow || ( iframe.contentDocument.document || iframe.contentDocument);
