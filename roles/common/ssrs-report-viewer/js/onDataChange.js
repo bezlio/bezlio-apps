@@ -18,7 +18,7 @@ define(function () {
             //$(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
 
             var iFrame = $(bezl.container.nativeElement).find('#viewer')[0];
-            iFrame.src = 'data:text/html:charset=utf-8,' + encodeURI(byteCharacters);
+            iFrame.src = byteCharacters;
 
 
             // iFrame = iFrame.contentWindow || (iFrame.contentDocument.document || iFrame.contentDocument);
