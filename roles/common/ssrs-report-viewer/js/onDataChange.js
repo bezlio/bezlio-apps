@@ -17,7 +17,7 @@ define(function () {
 
             //$(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
 
-            var iFrame = $(bezl.container.nativeElement).find('#viewer');
+            var iFrame = $(bezl.container.nativeElement).find('#viewer')[0];
             iFrame = iFrame.contentWindow || (iFrame.contentDocument.document || iFrame.contentDocument);
 
             iFrame.document.open();
