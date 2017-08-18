@@ -15,7 +15,14 @@ define(function () {
             var byteCharacters = atob(bezl.data.Report);
             console.log(byteCharacters);
 
-            $(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
+            //$(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
+
+            var iFrame = $(bezl.container.nativeElement).find('#viewer');
+            iFrame = iFrame.contentWindow || (iFrame.contendDocument.document || iFrame.contendDocument);
+
+            iFrame.document.open();
+            iFrame.document.write(byteCharacters);
+            iFrame.close();
 
             // var iframe = document.getElementById('iframeID');
             // iframe = iframe.contentWindow || ( iframe.contentDocument.document || iframe.contentDocument);
