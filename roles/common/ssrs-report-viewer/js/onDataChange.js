@@ -18,11 +18,12 @@ define(function () {
             //$(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
 
             var iFrame = $(bezl.container.nativeElement).find('#viewer')[0];
-            iFrame = iFrame.contentWindow || (iFrame.contentDocument.document || iFrame.contentDocument);
+            iFrame.data = byteCharacters;
+            // iFrame = iFrame.contentWindow || (iFrame.contentDocument.document || iFrame.contentDocument);
 
-            iFrame.document.open();
-            iFrame.document.write(byteCharacters);
-            iFrame.close();
+            // iFrame.document.open();
+            // iFrame.document.write(byteCharacters);
+            // iFrame.close();
 
             // var iframe = document.getElementById('iframeID');
             // iframe = iframe.contentWindow || ( iframe.contentDocument.document || iframe.contentDocument);
