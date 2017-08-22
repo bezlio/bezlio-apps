@@ -17,7 +17,7 @@ define(["./app.js"], function (app) {
                         l.warningCount++;
                     }
                 });
-                l.selected = warningCount > 0;
+                l.selected = l.warningCount > 0;
             });
 
             // Now dispose of bezl.data.SummaryData since we no longer need it
