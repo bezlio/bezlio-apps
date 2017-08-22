@@ -249,17 +249,29 @@ define(function () {
         var keepGoing = true;
         var i = bezl.vars['dataIterator'].indexOf(row) + 1;
         while (keepGoing) {
-          if (i < bezl.vars['dataIterator'].length) {
+          if (bezl.vars['dataIterator'][i]) {
+        
+            // If the row is a child, flip the show flag based on whether
+            // the parent row is selected
             if (bezl.vars['dataIterator'][i].sequence == row.sequence + 1) {
+              bezl.vars['dataIterator'][i].show = selected;
+        
+              // If the parent is unselected, also unselect this child row
+              if (!selected) {
+                bezl.vars['dataIterator'][i].selected = selected;
+              }
+        
+            // For deeper children, unselect and hide only when the parent flips to
+            // selected
+            } else if (bezl.vars['dataIterator'][i].sequence >= row.sequence + 1 && !selected) {
+              bezl.vars['dataIterator'][i].selected = selected;
               bezl.vars['dataIterator'][i].show = selected;
             } else if (bezl.vars['dataIterator'][i].sequence <= row.sequence + 1) {
               keepGoing = false;
             }
-          }
-          if (i < bezl.vars['dataIterator'].length - 1) {
             i++;
           } else {
-            keepGoing = false;  
+            keepGoing = false;
           }
           
         }
