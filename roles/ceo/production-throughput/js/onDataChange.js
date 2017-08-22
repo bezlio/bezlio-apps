@@ -8,6 +8,18 @@ define(["./app.js"], function (app) {
             // variable named summaryData
             bezl.vars.summaryData = d3.nest().key(function(d) { return d.Location; }).entries(bezl.data.SummaryData);
 
+            // Maintain an alert flag at the location level if any work centers are not operating
+            // at or above target percentage
+            bezl.vars.summaryData.forEach(l => {
+                var warningCount = 0;
+                l.values.forEach(wc => {
+                    if (wc['Current Percentage'] < wc['Target Percentage']) {
+                        warningCount++;
+                    }
+                });
+                l.warning = warningCount > 0;
+            });
+
             // Now dispose of bezl.data.SummaryData since we no longer need it
             bezl.data.SummaryData = null;
             bezl.dataService.remove('SummaryData');
