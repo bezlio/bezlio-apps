@@ -2,12 +2,9 @@ define(["./app.js"], function (app) {
  
   function OnStartup (bezl) {
 
-    // Load up the inventory data
-    bezl.dataService.add('inventory',
-                         'brdb',
-                         bezl.vars.config.summaryDataPlugin,
-                         bezl.vars.config.summaryDataMethod, 
-                         bezl.vars.config.summaryDataArgs, 0);
+    // Load up the inventory data from the data source
+    app.getData(bezl, 'SummaryData');
+
   }
   
   return {
