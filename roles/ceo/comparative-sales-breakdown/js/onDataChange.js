@@ -20,6 +20,13 @@ define(["./app.js"], function (app) {
 
         if (bezl.data.ByMonth) {
             bezl.vars.loadingByMonth = false;
+
+            // Fix up the column headers since they cannot come through on the pivor table
+            bezl.data.ByMonth.forEach(m => {
+                m.Month = m.Column1 || m['Column 1'];
+                m.Sales = m.Column3 || m['Column 3'];
+                m.PriorYear = m.Column2 || m['Column 2'];
+            });
         }
     }
      
