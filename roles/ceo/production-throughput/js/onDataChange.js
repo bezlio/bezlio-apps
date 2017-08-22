@@ -11,13 +11,12 @@ define(["./app.js"], function (app) {
             // Maintain an alert flag at the location level if any work centers are not operating
             // at or above target percentage
             bezl.vars.summaryData.forEach(l => {
-                var warningCount = 0;
+                l.warningCount = 0;
                 l.values.forEach(wc => {
                     if (wc['Current Percentage'] < wc['Target Percentage']) {
-                        warningCount++;
+                        l.warningCount++;
                     }
                 });
-                l.warning = warningCount > 0;
                 l.selected = warningCount > 0;
             });
 
