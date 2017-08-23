@@ -28,7 +28,7 @@ define(["./app.js"], function (app) {
             chart: {
                 animation: 0,
                 hideTitle: 1,
-                plotToolText: '<div><b>$label</b><br/> <b>Cost: </b>$$value<br/><b>Age: </b>$svalue days</div>',
+                plotToolText: '<div><b>$label</b><br/> <b>Cost: </b>$$dataValue<br/><b>Age: </b>$svalue days</div>',
                 spacex: 0,
                 spacey: 0,
                 horizontalPadding: 1,
@@ -68,7 +68,7 @@ define(["./app.js"], function (app) {
                 {
                 label: 'Total',
                 fillcolor: "8c8c8c",
-                value: Math.round(totalCost).toString().replace(/B(?=(d{3})+(?!d))/g, ","),
+                value: totalCost,
                 data: []
                 }
             ]
@@ -78,7 +78,7 @@ define(["./app.js"], function (app) {
             locations.forEach(l => {
             bezl.vars.dataSource.data[0].data.push({
                 label: l.name,
-                value: Math.round(l.totalCost).toString().replace(/B(?=(d{3})+(?!d))/g, ","),
+                value: l.totalCost,
                 data: l.data
             });
             }); 
