@@ -68,7 +68,7 @@ define(["./app.js"], function (app) {
                 {
                 label: 'Total',
                 fillcolor: "8c8c8c",
-                value: totalCost.toString().replace(/B(?=(d{3})+(?!d))/g, ","),
+                value: Math.round(totalCost).toString().replace(/B(?=(d{3})+(?!d))/g, ","),
                 data: []
                 }
             ]
@@ -78,7 +78,7 @@ define(["./app.js"], function (app) {
             locations.forEach(l => {
             bezl.vars.dataSource.data[0].data.push({
                 label: l.name,
-                value: l.totalCost.toString().replace(/B(?=(d{3})+(?!d))/g, ","),
+                value: Math.round(l.totalCost).toString().replace(/B(?=(d{3})+(?!d))/g, ","),
                 data: l.data
             });
             }); 
