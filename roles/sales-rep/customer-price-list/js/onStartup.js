@@ -17,13 +17,16 @@ define(["./priceList.js"],function (priceList) {
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
                 priceList.runQuery(bezl, 'Accounts');
+                if (bezl.vars.config.autoLoad) {
+                    priceList.runQuery(bezl, 'PriceList');
+                }
             }
-        
-            priceList.runQuery(bezl, 'PriceList');
 
             $("#bezlpanel").on( "selectAccount", function(event, param1) {
                 bezl.vars.selectedAccount = param1
-                priceList.runQuery(bezl, 'PriceList');
+                if (bezl.vars.config.autoLoadOnSelection) {
+                    priceList.runQuery(bezl, 'PriceList');
+                }
             });
 
     }

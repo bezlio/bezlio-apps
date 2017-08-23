@@ -35,7 +35,9 @@ define(["./order.js"], function (order) {
             // Set up event handler for selection of customer on account view
        $("#bezlpanel").on( "selectAccount", function(event, param1) {
                 bezl.vars.selectedAccount = param1
-                order.runQuery(bezl, 'Orders');
+                if (bezl.vars.config.autoLoadOnSelection) {
+                    order.runQuery(bezl, 'Orders');
+                }
             });
 
     }

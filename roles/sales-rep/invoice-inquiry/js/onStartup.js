@@ -22,13 +22,17 @@ define(["./invoice.js"], function (invoice) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
-                invoice.runQuery(bezl, 'Invoices');
+                if (bezl.vars.config.autoLoad) {
+                    invoice.runQuery(bezl, 'Invoices');
+                }
             }
 
         // Set up event handler for selection of customer on account view
         $("#bezlpanel").on( "selectAccount", function(event, param1) {
                 bezl.vars.selectedAccount = param1
-                invoice.runQuery(bezl, 'Invoices');
+                if (bezl.vars.config.autoLoadOnSelection) {
+                    invoice.runQuery(bezl, 'Invoices');
+                }
             });
 
     }

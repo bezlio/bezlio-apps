@@ -21,13 +21,17 @@ define(["./rma.js"], function (rma) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
-                rma.runQuery(bezl, 'RMAs');
+                if (bezl.vars.config.autoLoad) {
+                    rma.runQuery(bezl, 'RMAs');
+                }
             }
 
         // Set up event handler for selection of customer on account view
         $("#bezlpanel").on( "selectAccount", function(event, param1) {
                 bezl.vars.selectedAccount = param1
-                rma.runQuery(bezl, 'RMAs');
+                if (bezl.vars.config.autoLoadOnSelection) {
+                    rma.runQuery(bezl, 'RMAs');
+                }
             });
     }
      return {
