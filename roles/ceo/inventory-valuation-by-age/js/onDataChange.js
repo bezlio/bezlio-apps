@@ -2,9 +2,7 @@ define(["./app.js"], function (app) {
  
     function OnDataChange (bezl) {
         if (bezl.data.SummaryData != null && bezl.data.SummaryData.length > 0) {
-            
-            bezl.vars.dataSource.data = [];
-        
+                   
             // First loop through the data to come up with a few of the summary items we need to build the chart
             var maxAge = 0;
             var totalCost = 0;
@@ -70,7 +68,7 @@ define(["./app.js"], function (app) {
                 {
                 label: 'Total',
                 fillcolor: "8c8c8c",
-                value: totalCost,
+                value: Math.round(totalCost),
                 data: []
                 }
             ]
@@ -80,7 +78,7 @@ define(["./app.js"], function (app) {
             locations.forEach(l => {
             bezl.vars.dataSource.data[0].data.push({
                 label: l.name,
-                value: l.totalCost,
+                value: Math.round(l.totalCost),
                 data: l.data
             });
             }); 
