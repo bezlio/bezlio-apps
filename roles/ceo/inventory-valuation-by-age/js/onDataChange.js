@@ -99,6 +99,12 @@ define(["./app.js"], function (app) {
                     dataFormat:'json',
                     dataSource: bezl.vars.dataSource
                 }).render();
+
+                // Prevent the drill-down logic as it is too taxing on mobile devices
+                bezl.vars.chart.addEventListener("beforeDrillDown", function(eventObj, dataObj) {
+                    eventObj.preventDefault();
+                    eventObj.stopPropagation();
+                });
             }
             catch(err) {
                 console.log(err);
