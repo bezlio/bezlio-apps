@@ -8,7 +8,7 @@
   "dataSubscriptions": [],
   "markup": [
     "<div class=\"row\">",
-    "  <div id=\"ytdSales\" class=\"col-sm-6 panel\" style=\"min-height: 100px\">",
+    "  <div id=\"ytdSales\" class=\"panel\" style=\"min-height: 100px\">",
     "",
     "    <div class=\"pad-all\">",
     "      <div class=\"col-sm-8 text-lg text-semibold\">",
@@ -38,7 +38,7 @@
     "    </div>",
     "  </div>",
     "",
-    "  <div id=\"mtdSales\" class=\"col-sm-6 panel\" style=\"min-height: 100px\">",
+    "  <div id=\"mtdSales\" class=\"panel\" style=\"min-height: 100px\">",
     "",
     "    <div class=\"pad-all\">",
     "      <div class=\"col-sm-8 text-lg text-semibold\">",
