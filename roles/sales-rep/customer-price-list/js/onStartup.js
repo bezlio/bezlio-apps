@@ -16,7 +16,6 @@ define(["./priceList.js"],function (priceList) {
             bezl.vars.selectedAccount  = {};
             if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount  = JSON.parse(localStorage.getItem("selectedAccount"));
-                priceList.runQuery(bezl, 'Accounts');
                 if (bezl.vars.config.autoLoad) {
                     priceList.runQuery(bezl, 'PriceList');
                 }
