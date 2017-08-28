@@ -41,7 +41,7 @@
     "         <div class=\"col-sm-10\">",
     "           <select id=\"customers\" name=\"customers\" class=\"form-control\"",
     "               [ngModel]=\"bezl.vars.selectedAccount?.ID\" (ngModelChange)=\"bezl.functions['custSelection']($event);\" > ",
-    "             <option  *ngFor=\"let c of bezl.vars['custList']\" [value]=\"c.ID\">{{c.Name}}</option>",
+    "             <option  *ngFor=\"let c of bezl.vars['custList']\" [value]=\"c.ID\">{{c.Name}}: {{c.ID}} ({{c.City}}, {{c.State}})</option>",
     "           </select>",
     "         </div>",
     "       </div>",
