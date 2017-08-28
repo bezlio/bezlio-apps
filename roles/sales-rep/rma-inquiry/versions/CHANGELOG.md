@@ -4,6 +4,11 @@ All notable changes to the RMA Inquiry app will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
+
+## [1.1] - 2017-08-24
+### Fixed
+- Run correct query when "All Accounts" selected and the "Search" button is clicked.
+
 ### Added
 - Added Visual specific SQL queries
 - New Prophet 21 SQL queries

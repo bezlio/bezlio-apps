@@ -54,6 +54,45 @@
                 }
             ]
         },
+        {  
+            "path":"roles/ceo",
+            "name":"CEO",
+            "apps": [  
+                {  
+                    "path" :"comparative-sales-breakdown",
+                    "name":"Comparative Sales Breakdown",
+                    "icon":"fa-heartbeat",
+                    "class":"",
+                    "shortDescription":"Display year-to-date and month-to-date sales",
+                    "description": [
+                        "This app allows you to view year-to-date and month-to-date sales summary values.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Quickly and easily view important sales metrics</li>",
+                        "<li>View year-to-date and month-to-date summary values</li>",
+                        "<li>Percent +/- over previous year and month</li>",
+                        "<li>Click on the summary value to view the details by product and by month</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"production-throughput",
+                    "name":"Production Throughput",
+                    "icon":"fa-cube",
+                    "class":"",
+                    "shortDescription":"Visual summary of shop floor performance",
+                    "description": [
+                        "This app presents a visual summary of the shop floor production throughput.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Group by site/location</li>",
+                        "<li>Group by task/work center</li>",
+                        "<li>Visual warnings provide feedback to help focus on underperforming areas</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
         {
             "path":"roles/production-team-leader",
             "name":"Production Team Leader",
