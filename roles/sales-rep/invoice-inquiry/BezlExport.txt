@@ -352,7 +352,7 @@
     },
     {
       "method": "search",
-      "code": "if (bezl.vars.selectedAccount.ID == 'ALL_ACCOUNTS') {\n  require([bezl.vars.config.baseJsUrl + 'invoice.js'], function(functions) {\n    functions.runQuery(bezl, 'InvoiceInquiryAll')\n  });\n} else {\n  require([bezl.vars.config.baseJsUrl + 'invoice.js'], function(functions) {\n    functions.runQuery(bezl, 'Invoices')\n  });\n}\n\n",
+      "code": "if (bezl.vars.selectedAccount.ID == 'ALL_ACCOUNTS') {\n  require([bezl.vars.config.baseJsUrl + 'invoice.js'], function(functions) {\n    functions.runQuery(bezl, 'GetAllInvoices')\n  });\n} else {\n  require([bezl.vars.config.baseJsUrl + 'invoice.js'], function(functions) {\n    functions.runQuery(bezl, 'Invoices')\n  });\n}\n\n",
       "declares": [
         "$",
         "parm",
@@ -361,7 +361,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars.selectedAccount.ID == 'ALL_ACCOUNTS') {\r\n    require([bezl.vars.config.baseJsUrl + 'invoice.js'], function (functions) {\r\n        functions.runQuery(bezl, 'InvoiceInquiryAll');\r\n    });\r\n}\r\nelse {\r\n    require([bezl.vars.config.baseJsUrl + 'invoice.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Invoices');\r\n    });\r\n}\r\n"
+      "compiled": "if (bezl.vars.selectedAccount.ID == 'ALL_ACCOUNTS') {\r\n    require([bezl.vars.config.baseJsUrl + 'invoice.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetAllInvoices');\r\n    });\r\n}\r\nelse {\r\n    require([bezl.vars.config.baseJsUrl + 'invoice.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Invoices');\r\n    });\r\n}\r\n"
     },
     {
       "method": "selectRow",
