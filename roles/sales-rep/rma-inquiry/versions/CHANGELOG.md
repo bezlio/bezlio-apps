@@ -4,6 +4,8 @@ All notable changes to the RMA Inquiry app will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
+### Added
+- Added additional customer information (ID, city, state) to the customer select drop down list
 
 ## [1.2] - 2017-08-28
 ### Added
