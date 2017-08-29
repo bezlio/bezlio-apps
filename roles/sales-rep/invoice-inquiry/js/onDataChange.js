@@ -73,6 +73,13 @@ define(function () {
             if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
                 bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
             }
+
+            // set default All accounts as default
+            if(bezl.vars.selectedAccount.ID == undefined ){
+                var cust = bezl.vars.custList.find(c => c.ID == "ALL_ACCOUNTS");
+                   bezl.vars.selectedAccount = cust;
+             }
+
             bezl.vars.loading = false;
             bezl.dataService.Accounts = null;
             bezl.dataService.remove('Accounts');
