@@ -325,15 +325,16 @@
     },
     {
       "method": "search",
-      "code": "require([bezl.vars.config.baseJsUrl + 'order.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Orders')\n});\n\n",
+      "code": "if (bezl.vars.selectedAccount.ID == 'ALL_ACCOUNTS') {\n\trequire([bezl.vars.config.baseJsUrl + 'rma.js'], function(functions) {\n    functions.runQuery(bezl, 'GetAllOrders')\n  });\n} else {\n  require([bezl.vars.config.baseJsUrl + 'rma.js'], function(functions) {\n    functions.runQuery(bezl, 'OrderInquiry')\n  });\n}",
       "declares": [
         "$",
         "parm",
         "bezl",
         "dataResp",
-        "require"
+        "require",
+        "FusionCharts"
       ],
-      "compiled": "require([bezl.vars.config.baseJsUrl + 'order.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Orders');\r\n});\r\n"
+      "compiled": "if (bezl.vars.selectedAccount.ID == 'ALL_ACCOUNTS') {\r\n    require([bezl.vars.config.baseJsUrl + 'rma.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetAllOrders');\r\n    });\r\n}\r\nelse {\r\n    require([bezl.vars.config.baseJsUrl + 'rma.js'], function (functions) {\r\n        functions.runQuery(bezl, 'OrderInquiry');\r\n    });\r\n}\r\n"
     },
     {
       "method": "selectRow",
