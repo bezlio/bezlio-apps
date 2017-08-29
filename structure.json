@@ -90,6 +90,22 @@
                         "<li>Visual warnings provide feedback to help focus on underperforming areas</li>",
                         "</ul>"
                     ]
+                },
+                {  
+                    "path" :"inventory-valuation-by-age",
+                    "name":"Inventory Valuation by Age",
+                    "icon":"fa-cubes",
+                    "class":"",
+                    "shortDescription":"High level visualization of inventory value and age",
+                    "description": [
+                        "This app presents a powerful visual summary of the status of your inventory giving you a quick health check of inventory age and cost. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Each box represents a parcel of inventory and the number of days old it is</li>",
+                        "<li>The older the age the redder it gets</li>",
+                        "<li>The size of the box represents the value of that parcel of inventory</li>",
+                        "</ul>"
+                    ]
                 }
             ]
         },
