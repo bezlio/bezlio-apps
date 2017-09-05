@@ -22,6 +22,21 @@
                     ]
                 },
                 {  
+                    "path" :"company-directory",
+                    "name":"Company Directory",
+                    "icon":"fa-address-book",
+                    "class":"",
+                    "shortDescription":"Display a company directory",
+                    "description": [
+                        "This app reads company directory information from a data source and presents the results in a grid. This was generated using the standard advanced grid template with the addition of the following features: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Click to dial</li>",
+                        "<li>Click to email</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
                     "path" :"geolocation",
                     "name":"Geocoder",
                     "icon":"fa-globe",
@@ -34,6 +49,61 @@
                         "<li>Geocodes customer addresses.</li>",
                         "<li>Stores coordinates for other apps to use.</li>",
                         "<li>Easy to use.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
+        {  
+            "path":"roles/ceo",
+            "name":"CEO",
+            "apps": [  
+                {  
+                    "path" :"comparative-sales-breakdown",
+                    "name":"Comparative Sales Breakdown",
+                    "icon":"fa-heartbeat",
+                    "class":"",
+                    "shortDescription":"Display year-to-date and month-to-date sales",
+                    "description": [
+                        "This app allows you to view year-to-date and month-to-date sales summary values.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Quickly and easily view important sales metrics</li>",
+                        "<li>View year-to-date and month-to-date summary values</li>",
+                        "<li>Percent +/- over previous year and month</li>",
+                        "<li>Click on the summary value to view the details by product and by month</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"production-throughput",
+                    "name":"Production Throughput",
+                    "icon":"fa-cube",
+                    "class":"",
+                    "shortDescription":"Visual summary of shop floor performance",
+                    "description": [
+                        "This app presents a visual summary of the shop floor production throughput.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Group by site/location</li>",
+                        "<li>Group by task/work center</li>",
+                        "<li>Visual warnings provide feedback to help focus on underperforming areas</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"inventory-valuation-by-age",
+                    "name":"Inventory Valuation by Age",
+                    "icon":"fa-cubes",
+                    "class":"",
+                    "shortDescription":"High level visualization of inventory value and age",
+                    "description": [
+                        "This app presents a powerful visual summary of the status of your inventory giving you a quick health check of inventory age and cost. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Each box represents a parcel of inventory and the number of days old it is</li>",
+                        "<li>The older the age the redder it gets</li>",
+                        "<li>The size of the box represents the value of that parcel of inventory</li>",
                         "</ul>"
                     ]
                 }
