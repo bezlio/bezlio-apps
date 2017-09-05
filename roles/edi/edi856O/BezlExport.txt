@@ -4,20 +4,7 @@
   "template": "custom",
   "owner": "gvanriper@saberlogic.com",
   "shares": [],
-  "vars": [
-    {
-      "name": "debug",
-      "value": "\"Y\""
-    },
-    {
-      "name": "siteId",
-      "value": "\"\""
-    },
-    {
-      "name": "SQLConnection",
-      "value": "\"SQLConnection\""
-    }
-  ],
+  "vars": [],
   "dataSubscriptions": [],
   "markup": [
     "<!-- Approve button settings -->",
@@ -805,7 +792,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "if (bezl.vars['debug'] == \"Y\"){  \n  require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/onStartup.js'], function(functions) {\n      functions.onStartup(bezl)\n  });\n} else {\n  require(['https://apps.bezl.io/roles/edi/edi856O/js/onStartup.js'], function(functions) {\n      functions.onStartup(bezl)\n  });\n}\n",
+      "code": "//Set the config.\nbezl.functions.setConfig();\n\n//Call onStartup.js.\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
       "declares": [
         "$",
         "parm",
@@ -814,11 +801,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['debug'] == \"Y\") {\r\n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/onStartup.js'], function (functions) {\r\n        functions.onStartup(bezl);\r\n    });\r\n}\r\nelse {\r\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/onStartup.js'], function (functions) {\r\n        functions.onStartup(bezl);\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //Set the config.\r\nbezl.functions.setConfig();\r\n//Call onStartup.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
     },
     {
       "method": "onDataChange",
-      "code": "bezl.data = dataResp; \nbezl.vars['datasub'] = bezl.data.datasub;\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\nbezl.vars['viewfile'] = bezl.data.viewfile;\nbezl.vars['user'] = bezl.data.user;\nbezl.vars['approve'] = bezl.data.approve;\n\nif (bezl.vars['user'] && bezl.vars['loading'] == true){\n  //Set to false so it doesn't keep running.\n  bezl.vars['loading'] = false;\n  \n  $('#txtFilter').val('');\n  $('#txtSearch').val('');\n  bezl.vars['filter'] = '';\n  bezl.vars['search'] = '';\n\n  //Call filter JS function.\n  if (bezl.vars['debug'] == \"Y\"){  \n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n        functions.runQuery(bezl, 'GetDashHeaderData');\n    });\n  } else {\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n        functions.runQuery(bezl, 'GetDashHeaderData');\n    });\n  }\n}\n\nif (bezl.vars['user']){\n    //Get EDI Status filter.\n  if ($('input[id=radioOnHold]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'H';\n  }\n  else if ($('input[id=radioApproved]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'A';\n  }\n  else if ($('input[id=radioDeleted]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'D';\n  }\n\n  //Call filter JS function.\n  if (bezl.vars['debug'] == \"Y\"){  \n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n        functions.filterEdiStatus(bezl);\n    });\n  } else {\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n        functions.filterEdiStatus(bezl);\n    });\n  }\n}\n\n\n",
+      "code": "//data objects.\nbezl.data = dataResp; \nbezl.vars['main'] = bezl.data.main;\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\nbezl.vars['viewfile'] = bezl.data.viewfile;\nbezl.vars['user'] = bezl.data.user;\n\nif (bezl.vars.approvalData){\n\tbezl.vars.approvalData.forEach(n =>{\n\t\tif (bezl.data[n.id]){\n      \t\tif (bezl.vars['approve']){\n              \tfor (var key in bezl.data[n.id]){\n        \t\t\tbezl.vars['approve'].push(bezl.data[n.id][key]);\n                }\n      \t\t}\n      \t\telse{\n        \t\tbezl.vars['approve'] = bezl.data[n.id]\n      \t\t}\n          \n          \tbezl.data[n.id] = null;\n          \tbezl.dataService.remove(n.id);\n          \tbezl.vars.approvalData.splice(n, 1);\n    \t}\n\t});\n  \n  if (bezl.vars.approvalData.length <= 0){\n    bezl.vars.approvalCompleted = true;\n  }\n}\n\nif (bezl.vars['user'] && bezl.vars['loading'] == true){\n  //Set to false so it doesn't keep running.\n  bezl.vars['loading'] = false;\n  \n  $('#txtFilter').val('');\n  $('#txtSearch').val('');\n  bezl.vars['filter'] = '';\n  bezl.vars['search'] = '';\n\n  //Call filter JS function.\n  require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n    functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n}\n\nif (bezl.vars['user']){\n    //Get EDI Status filter.\n  if ($('input[id=radioOnHold]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'H';\n  }\n  else if ($('input[id=radioApproved]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'A';\n  }\n  else if ($('input[id=radioDeleted]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'D';\n  }\n\n  //Call filter JS function.\n  require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n    functions.filterEdiStatus(bezl);\n  });\n}\n\n\n",
       "declares": [
         "$",
         "parm",
@@ -827,11 +814,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "bezl.data = dataResp;\r\nbezl.vars['datasub'] = bezl.data.datasub;\r\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\r\nbezl.vars['viewfile'] = bezl.data.viewfile;\r\nbezl.vars['user'] = bezl.data.user;\r\nbezl.vars['approve'] = bezl.data.approve;\r\nif (bezl.vars['user'] && bezl.vars['loading'] == true) {\r\n    //Set to false so it doesn't keep running.\r\n    bezl.vars['loading'] = false;\r\n    $('#txtFilter').val('');\r\n    $('#txtSearch').val('');\r\n    bezl.vars['filter'] = '';\r\n    bezl.vars['search'] = '';\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetDashHeaderData');\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetDashHeaderData');\r\n        });\r\n    }\r\n}\r\nif (bezl.vars['user']) {\r\n    //Get EDI Status filter.\r\n    if ($('input[id=radioOnHold]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'H';\r\n    }\r\n    else if ($('input[id=radioApproved]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'A';\r\n    }\r\n    else if ($('input[id=radioDeleted]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'D';\r\n    }\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.filterEdiStatus(bezl);\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.filterEdiStatus(bezl);\r\n        });\r\n    }\r\n}\r\n"
+      "compiled": "var FusionCharts; //data objects.\r\nbezl.data = dataResp;\r\nbezl.vars['main'] = bezl.data.main;\r\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\r\nbezl.vars['viewfile'] = bezl.data.viewfile;\r\nbezl.vars['user'] = bezl.data.user;\r\nif (bezl.vars.approvalData) {\r\n    bezl.vars.approvalData.forEach(function (n) {\r\n        if (bezl.data[n.id]) {\r\n            if (bezl.vars['approve']) {\r\n                for (var key in bezl.data[n.id]) {\r\n                    bezl.vars['approve'].push(bezl.data[n.id][key]);\r\n                }\r\n            }\r\n            else {\r\n                bezl.vars['approve'] = bezl.data[n.id];\r\n            }\r\n            bezl.data[n.id] = null;\r\n            bezl.dataService.remove(n.id);\r\n            bezl.vars.approvalData.splice(n, 1);\r\n        }\r\n    });\r\n    if (bezl.vars.approvalData.length <= 0) {\r\n        bezl.vars.approvalCompleted = true;\r\n    }\r\n}\r\nif (bezl.vars['user'] && bezl.vars['loading'] == true) {\r\n    //Set to false so it doesn't keep running.\r\n    bezl.vars['loading'] = false;\r\n    $('#txtFilter').val('');\r\n    $('#txtSearch').val('');\r\n    bezl.vars['filter'] = '';\r\n    bezl.vars['search'] = '';\r\n    //Call filter JS function.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\nif (bezl.vars['user']) {\r\n    //Get EDI Status filter.\r\n    if ($('input[id=radioOnHold]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'H';\r\n    }\r\n    else if ($('input[id=radioApproved]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'A';\r\n    }\r\n    else if ($('input[id=radioDeleted]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'D';\r\n    }\r\n    //Call filter JS function.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.filterEdiStatus(bezl);\r\n    });\r\n}\r\n"
     },
     {
       "method": "refreshClick",
-      "code": "$('#txtFilter').val('');\n$('#txtSearch').val('');\nbezl.vars['filter'] = '';\nbezl.vars['search'] = '';\n\n//Call filter JS function.\nif (bezl.vars['debug'] == \"Y\"){  \n  require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n  \t  functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n} else {\n  require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n}",
+      "code": "$('#txtFilter').val('');\n$('#txtSearch').val('');\nbezl.vars['filter'] = '';\nbezl.vars['search'] = '';\n\n//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.runQuery(bezl, 'GetDashHeaderData');\n});",
       "declares": [
         "$",
         "parm",
@@ -840,11 +827,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\nbezl.vars['filter'] = '';\r\nbezl.vars['search'] = '';\r\n//Call filter JS function.\r\nif (bezl.vars['debug'] == \"Y\") {\r\n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\nelse {\r\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\n"
+      "compiled": "$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\nbezl.vars['filter'] = '';\r\nbezl.vars['search'] = '';\r\n//Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.runQuery(bezl, 'GetDashHeaderData');\r\n});\r\n"
     },
     {
       "method": "selectAllClick",
-      "code": "if (bezl.vars['debug'] == \"Y\"){  \n  require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.selectAll(bezl)\n  });\n} else {\n  require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.selectAll(bezl)\n  });\n}",
+      "code": "//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.selectAll(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -853,23 +840,24 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['debug'] == \"Y\") {\r\n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.selectAll(bezl);\r\n    });\r\n}\r\nelse {\r\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.selectAll(bezl);\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.selectAll(bezl);\r\n});\r\n"
     },
     {
       "method": "selectNoneClick",
-      "code": "$('#mainTable tr').each(function(){\n    $(this).find('#APPROVE').each(function(){\n       $(this).prop('checked', false);\n    })\n})",
+      "code": "//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.selectNone(bezl);\n});",
       "declares": [
         "$",
         "parm",
         "bezl",
         "dataResp",
-        "require"
+        "require",
+        "FusionCharts"
       ],
-      "compiled": "$('#mainTable tr').each(function () {\r\n    $(this).find('#APPROVE').each(function () {\r\n        $(this).prop('checked', false);\r\n    });\r\n});\r\n"
+      "compiled": "var FusionCharts; //Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.selectNone(bezl);\r\n});\r\n"
     },
     {
       "method": "radioButtonClick",
-      "code": "if ($('input[id=radioOnHold]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'H';\n}\nelse if ($('input[id=radioApproved]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'A';\n}\nelse if ($('input[id=radioDeleted]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'D';\n}\n\n//Call filter JS function.\nif (bezl.vars['debug'] == \"Y\"){  \n  require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.filterEdiStatus(bezl)\n  });\n} else {\n  require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.filterEdiStatus(bezl)\n  });\n}\n$('#txtFilter').val('');\n$('#txtSearch').val('');\n\n\n\n\n\n",
+      "code": "if ($('input[id=radioOnHold]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'H';\n}\nelse if ($('input[id=radioApproved]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'A';\n}\nelse if ($('input[id=radioDeleted]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'D';\n}\n\n//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.filterEdiStatus(bezl);\n});\n\n//reset search/filter variables.\n$('#txtFilter').val('');\n$('#txtSearch').val('');\n\n\n\n\n\n",
       "declares": [
         "$",
         "parm",
@@ -878,11 +866,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if ($('input[id=radioOnHold]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'H';\r\n}\r\nelse if ($('input[id=radioApproved]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'A';\r\n}\r\nelse if ($('input[id=radioDeleted]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'D';\r\n}\r\n//Call filter JS function.\r\nif (bezl.vars['debug'] == \"Y\") {\r\n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.filterEdiStatus(bezl);\r\n    });\r\n}\r\nelse {\r\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.filterEdiStatus(bezl);\r\n    });\r\n}\r\n$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\n"
+      "compiled": "if ($('input[id=radioOnHold]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'H';\r\n}\r\nelse if ($('input[id=radioApproved]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'A';\r\n}\r\nelse if ($('input[id=radioDeleted]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'D';\r\n}\r\n//Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.filterEdiStatus(bezl);\r\n});\r\n//reset search/filter variables.\r\n$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\n"
     },
     {
       "method": "filter",
-      "code": "if (bezl.vars['debug'] == \"Y\"){  \n  require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.filterBy(bezl)\n  });\n} else {\n  require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.filterBy(bezl)\n  });\n}",
+      "code": "//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.filterBy(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -891,11 +879,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['debug'] == \"Y\") {\r\n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.filterBy(bezl);\r\n    });\r\n}\r\nelse {\r\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.filterBy(bezl);\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.filterBy(bezl);\r\n});\r\n"
     },
     {
       "method": "searchClick",
-      "code": "if ((bezl.vars['search'].length == 0)) {\n  bezl.notificationService.showWarning('You must enter something to search by.');\n} else {\n  \t//Call filter JS function.\n\tif (bezl.vars['debug'] == \"Y\"){  \n      require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n          functions.runQuery(bezl, 'GetDashHeaderData');\n      });\n    } else {\n      require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n          functions.runQuery(bezl, 'GetDashHeaderData');\n      });\n    }\n}\n",
+      "code": "if ((bezl.vars['search'].length == 0)) {\n  bezl.notificationService.showWarning('You must enter something to search by.');\n} else {\n  \t//Call edi856O.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetDashHeaderData');\n\t});\n}\n",
       "declares": [
         "$",
         "parm",
@@ -904,11 +892,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if ((bezl.vars['search'].length == 0)) {\r\n    bezl.notificationService.showWarning('You must enter something to search by.');\r\n}\r\nelse {\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetDashHeaderData');\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetDashHeaderData');\r\n        });\r\n    }\r\n}\r\n"
+      "compiled": "if ((bezl.vars['search'].length == 0)) {\r\n    bezl.notificationService.showWarning('You must enter something to search by.');\r\n}\r\nelse {\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\n"
     },
     {
       "method": "sort",
-      "code": "if (bezl.vars['debug'] == \"Y\"){  \n  require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.sort(bezl, parm)\n  });\n} else {\n  require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      functions.sort(bezl, parm)\n  });\n}",
+      "code": "//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.sort(bezl, parm);\n});",
       "declares": [
         "$",
         "parm",
@@ -917,11 +905,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['debug'] == \"Y\") {\r\n    require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.sort(bezl, parm);\r\n    });\r\n}\r\nelse {\r\n    require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n        functions.sort(bezl, parm);\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.sort(bezl, parm);\r\n});\r\n"
     },
     {
       "method": "viewDetails",
-      "code": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n  \t//Call filter JS function.\n\tif (bezl.vars['debug'] == \"Y\"){  \n  \t\trequire(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n  \t  \t\tfunctions.runQuery(bezl, 'GetViewDetails');\n  \t\t});\n\t} else {\n  \t\trequire(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      \t\tfunctions.runQuery(bezl, 'GetViewDetails');\n  \t});\n}\n  \n\tbezl.vars['showViewDetails'] = true;\n} else {\n  \tbezl.notificationService.showWarning('You must select a record to view details.');\n\tbezl.vars['showViewDetails'] = false;\n}",
+      "code": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n    //Call edi856O.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetViewDetails');\n\t});\n  \n  \t//Show view details.\n\tbezl.vars['showViewDetails'] = true;\n}\nelse {\n  \t//Row not selected. Return.\n  \tbezl.notificationService.showWarning('You must select a record to view details.');\n\tbezl.vars['showViewDetails'] = false;\n}",
       "declares": [
         "$",
         "parm",
@@ -930,7 +918,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetViewDetails');\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetViewDetails');\r\n        });\r\n    }\r\n    bezl.vars['showViewDetails'] = true;\r\n}\r\nelse {\r\n    bezl.notificationService.showWarning('You must select a record to view details.');\r\n    bezl.vars['showViewDetails'] = false;\r\n}\r\n"
+      "compiled": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetViewDetails');\r\n    });\r\n    //Show view details.\r\n    bezl.vars['showViewDetails'] = true;\r\n}\r\nelse {\r\n    //Row not selected. Return.\r\n    bezl.notificationService.showWarning('You must select a record to view details.');\r\n    bezl.vars['showViewDetails'] = false;\r\n}\r\n"
     },
     {
       "method": "tableClick",
@@ -946,19 +934,20 @@
     },
     {
       "method": "exitViewDetails",
-      "code": "bezl.vars['showViewDetails'] = false;",
+      "code": "//Hide view details screen.\nbezl.vars['showViewDetails'] = false;",
       "declares": [
         "$",
         "parm",
         "bezl",
         "dataResp",
-        "require"
+        "require",
+        "FusionCharts"
       ],
-      "compiled": "bezl.vars['showViewDetails'] = false;\r\n"
+      "compiled": "var FusionCharts; //Hide view details screen.\r\nbezl.vars['showViewDetails'] = false;\r\n"
     },
     {
       "method": "viewFile",
-      "code": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n  \t//Call filter JS function.\n\tif (bezl.vars['debug'] == \"Y\"){  \n  \t\trequire(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n  \t  \t\tfunctions.runQuery(bezl, 'GetViewFile');\n  \t\t});\n\t} else {\n  \t\trequire(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      \t\tfunctions.runQuery(bezl, 'GetViewFile');\n  \t});\n}\n  \n\tbezl.vars['showViewFile'] = true;\n}\n\n",
+      "code": "//Check if row ID is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){  \n    //Call edi856O.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetViewFile');\n\t});\n  \n  \t//Show view file.\n  \tbezl.vars['showViewFile'] = true;\n}\n\n",
       "declares": [
         "$",
         "parm",
@@ -967,23 +956,24 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetViewFile');\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'GetViewFile');\r\n        });\r\n    }\r\n    bezl.vars['showViewFile'] = true;\r\n}\r\n"
+      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetViewFile');\r\n    });\r\n    //Show view file.\r\n    bezl.vars['showViewFile'] = true;\r\n}\r\n"
     },
     {
       "method": "exitViewFile",
-      "code": "bezl.vars['showViewFile'] = false;",
+      "code": "//Hide view file screen.\nbezl.vars['showViewFile'] = false;",
       "declares": [
         "$",
         "parm",
         "bezl",
         "dataResp",
-        "require"
+        "require",
+        "FusionCharts"
       ],
-      "compiled": "bezl.vars['showViewFile'] = false;\r\n"
+      "compiled": "var FusionCharts; //Hide view file screen.\r\nbezl.vars['showViewFile'] = false;\r\n"
     },
     {
       "method": "revalidate",
-      "code": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n  \t//Call filter JS function.\n\tif (bezl.vars['debug'] == \"Y\"){  \n  \t\trequire(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n  \t  \t\tfunctions.runQuery(bezl, 'Revalidate');\n  \t\t});\n\t} else {\n  \t\trequire(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      \t\tfunctions.runQuery(bezl, 'Revalidate');\n  \t\t});\n\t}\n}",
+      "code": "//Check if row ID is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n    //Call edi856O.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'Revalidate');\n\t});\n}",
       "declares": [
         "$",
         "parm",
@@ -992,11 +982,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'Revalidate');\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'Revalidate');\r\n        });\r\n    }\r\n}\r\n"
+      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Revalidate');\r\n    });\r\n}\r\n"
     },
     {
       "method": "saveViewDetails",
-      "code": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n  \t//Call filter JS function.\n\tif (bezl.vars['debug'] == \"Y\"){  \n  \t\trequire(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n  \t  \t\tfunctions.runQuery(bezl, 'Save');\n  \t\t});\n\t} else {\n  \t\trequire(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function(functions) {\n      \t\tfunctions.runQuery(bezl, 'Save');\n  \t\t});\n\t}\n}\n\nbezl.vars['showViewDetails'] = false;",
+      "code": "//Check if row ID is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n    //Call edi856O.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'Save');\n\t});\n}\n\n//Hide view details screen.\nbezl.vars['showViewDetails'] = false;",
       "declares": [
         "$",
         "parm",
@@ -1005,7 +995,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call filter JS function.\r\n    if (bezl.vars['debug'] == \"Y\") {\r\n        require(['https://apps-dev.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'Save');\r\n        });\r\n    }\r\n    else {\r\n        require(['https://apps.bezl.io/roles/edi/edi856O/js/edi856O.js'], function (functions) {\r\n            functions.runQuery(bezl, 'Save');\r\n        });\r\n    }\r\n}\r\nbezl.vars['showViewDetails'] = false;\r\n"
+      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Save');\r\n    });\r\n}\r\n//Hide view details screen.\r\nbezl.vars['showViewDetails'] = false;\r\n"
     },
     {
       "method": "deleteClick",
@@ -1022,7 +1012,7 @@
     },
     {
       "method": "approveClick",
-      "code": "//reset approve data object/show approval screen.\nbezl.vars['approve'] = \"\";\nbezl.vars['showApproval'] = true;\n\n//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.runQuery(bezl, 'Approve');\n});",
+      "code": "//reset approve data object/show approval screen.\nbezl.vars['approve'] = \"\";\nbezl.vars['showApproval'] = true;\nbezl.vars['approvalCompleted'] = false;\n\n//Call edi856O.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n  functions.runQuery(bezl, 'Approve');\n});",
       "declares": [
         "$",
         "parm",
@@ -1031,11 +1021,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //reset approve data object/show approval screen.\r\nbezl.vars['approve'] = \"\";\r\nbezl.vars['showApproval'] = true;\r\n//Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Approve');\r\n});\r\n"
+      "compiled": "var FusionCharts; //reset approve data object/show approval screen.\r\nbezl.vars['approve'] = \"\";\r\nbezl.vars['showApproval'] = true;\r\nbezl.vars['approvalCompleted'] = false;\r\n//Call edi856O.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Approve');\r\n});\r\n"
     },
     {
       "method": "exitApproval",
-      "code": "//Check to make sure approval is complete.\nif (bezl.vars['approve'] == false){\n    bezl.notificationService.showWarning('Please wait until EDI has completed processing.');\n}\nelse{\n  //Hide approval screen.\n  bezl.vars['showApproval'] = false;\n  \n  //Reset filter/search.\n  $('#txtFilter').val('');\n  $('#txtSearch').val('');\n  bezl.vars['filter'] = '';\n  bezl.vars['search'] = '';\n\n  //Call edi856O.js.\n  require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n      functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n}\n",
+      "code": "//Check to make sure approval is complete.\nif (bezl.vars['approve'] == false){\n    bezl.notificationService.showWarning('Please wait until EDI has completed processing.');\n}\nelse{\n  //Hide approval screen.\n  bezl.vars['showApproval'] = false;\n  \n  //Reset filter/search.\n  $('#txtFilter').val('');\n  $('#txtSearch').val('');\n  bezl.vars['filter'] = '';\n  bezl.vars['search'] = '';\n  bezl.vars['approvalData'] = [];\n\n  //Call edi856O.js.\n  require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function(functions) {\n      functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n}\n",
       "declares": [
         "$",
         "parm",
@@ -1044,7 +1034,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Check to make sure approval is complete.\r\nif (bezl.vars['approve'] == false) {\r\n    bezl.notificationService.showWarning('Please wait until EDI has completed processing.');\r\n}\r\nelse {\r\n    //Hide approval screen.\r\n    bezl.vars['showApproval'] = false;\r\n    //Reset filter/search.\r\n    $('#txtFilter').val('');\r\n    $('#txtSearch').val('');\r\n    bezl.vars['filter'] = '';\r\n    bezl.vars['search'] = '';\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //Check to make sure approval is complete.\r\nif (bezl.vars['approve'] == false) {\r\n    bezl.notificationService.showWarning('Please wait until EDI has completed processing.');\r\n}\r\nelse {\r\n    //Hide approval screen.\r\n    bezl.vars['showApproval'] = false;\r\n    //Reset filter/search.\r\n    $('#txtFilter').val('');\r\n    $('#txtSearch').val('');\r\n    bezl.vars['filter'] = '';\r\n    bezl.vars['search'] = '';\r\n    bezl.vars['approvalData'] = [];\r\n    //Call edi856O.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi856O.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\n"
     },
     {
       "method": "reprocessClick",
