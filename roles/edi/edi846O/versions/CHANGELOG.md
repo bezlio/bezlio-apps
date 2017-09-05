@@ -9,3 +9,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Added
 - Added versioning
 - Renamed datasub to main for clarity.
+
+## [3.4.4] - 2017-09-05
+### Added
+- Improved asynchronous approval.
+- Approval counter to prevent exiting until complete.

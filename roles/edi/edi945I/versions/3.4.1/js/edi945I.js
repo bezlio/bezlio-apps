@@ -427,13 +427,7 @@ define(function () {
                 break;
 
             case "Approve":
-                var parameters = [], parameterCount = 0, approve = false;
-
-                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '945' };
-                parameterCount = parameterCount + 1;
-
-                parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": 'I' };
-                parameterCount = parameterCount + 1;
+                var parameters = [], parameterCount = 0, approve = false, approvalGUID = '';
 
                 //Loop through header for header information.
                 for (var key in bezl.vars.main){
@@ -446,6 +440,12 @@ define(function () {
                     }
                     
                     if (approve == true){
+                        parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '945' };
+                        parameterCount = parameterCount + 1;
+        
+                        parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": 'I' };
+                        parameterCount = parameterCount + 1;
+
                         for (var prop in obj) {
                             switch (prop.toString()){
                                 case "APPROVE":
@@ -467,20 +467,25 @@ define(function () {
                             }
                         }
 
+                        //Make unique GUID for dataservice to return to Bezlio.
+                        approvalGUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                            return v.toString(16);
+                        })
+
+                        bezl.vars.approvalData.push({
+                            id: approvalGUID
+                        })
+
                         // Pull in the header data for the logged in user
-                        bezl.dataService.add('approve','brdb','EDI','Approve', { 
+                        bezl.dataService.add(approvalGUID,'brdb','EDI','Approve', { 
                             "QueryName": "Approve",
                             "Connection": bezl.vars.config.sqlConnection,
                             "Parameters": parameters },0);                    
 
-                        for (var key in parameters){
-                            var parameterobj = parameters[key];
-                                                          
-                            if (parameterobj.Key == "@APPROVE"){
-                                    parameterobj.Value = "Completed";
-                            }
-                        }
-
+                        //Reset variables.
+                        parameterCount = 0;
+                        parameters = [];
                         approve = false;
                     }
                 }
