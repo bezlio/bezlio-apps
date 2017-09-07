@@ -787,7 +787,7 @@
     "\t\t</div>",
     "\t</form>",
     "  \t<footer>",
-    "        <div class=\"row\">",
+    "        <div class=\"btn-toolbar\">",
     "          <button (click)=\"bezl.functions['deleteNoClick']()\" class=\"btn btn-sm btn-primary col-md-1 pull-right\">No</button> ",
     "          <button (click)=\"bezl.functions['deleteYesClick']()\" class=\"btn btn-sm btn-primary col-md-1 pull-right\">Yes</button>    ",
     "        </div>",
