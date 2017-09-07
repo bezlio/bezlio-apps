@@ -260,6 +260,10 @@ define(function () {
                                 parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
+                            case "EDI_DIRECTION":
+                                parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
                             case "EDI_SL_FILE_ID":
                                 parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
