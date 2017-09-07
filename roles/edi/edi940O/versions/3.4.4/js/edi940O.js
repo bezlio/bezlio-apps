@@ -246,12 +246,6 @@ define(function () {
             case "Revalidate":
                 var parameters = [], parameterCount = 0
 
-                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": '940' };
-                parameterCount = parameterCount + 1;
-
-                parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": 'O' };
-                parameterCount = parameterCount + 1;
-
                 //Loop through header for header information.
                 for (var key in bezl.vars.viewdetails.HEADER){
                     var obj = bezl.vars.viewdetails.HEADER[key];
@@ -260,6 +254,14 @@ define(function () {
                         switch (prop.toString()){
                             case "DESIRED_SHIP_DATE":
                                 parameters[parameterCount] = { "Key": "@DESIRED_SHIP_DATE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "DOCUMENT_TYPE":
+                                parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
+                                parameterCount = parameterCount + 1;
+                                break;
+                            case "EDI_DIRECTION":
+                                parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
                             case "EDI_SL_FILE_ID":
