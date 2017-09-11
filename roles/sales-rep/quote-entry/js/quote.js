@@ -137,6 +137,7 @@ define(function () {
             sales: quote.Sales,
             mktgCamp: quote.MktgCampaignID,
             mktgEvnt: quote.MktgEvntSeq,
+            quoteDesc: quote.QuoteDesc,
             quoteLines: []
         };
 
