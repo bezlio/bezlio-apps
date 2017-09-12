@@ -1,0 +1,80 @@
+{
+    "roles": [
+        { "roleName": "Accounting",
+            "icon": "fa-balance-scale",
+            "roles": [
+                { "roleName": "Accounts Payable",
+                    "icon": ""
+                },
+                { "roleName": "Accounts Receivable",
+                    "icon": ""
+                }
+            ]
+        },
+        { "roleName": "Common",
+            "icon": "fa-users"
+        },
+        { "roleName": "Customer Service",
+            "icon": "fa-keyboard-o"
+        },
+        { "roleName": "Engineering",
+            "icon": "fa-crop"
+        },
+        { "roleName": "Executive",
+            "icon": "fa-bullhorn",
+            "roles": [
+                { "roleName": "CEO",
+                    "icon": ""
+                },
+                { "roleName": "CFO",
+                    "icon": ""
+                }
+            ]
+        },
+        { "roleName": "Purchasing",
+            "icon": "fa-shopping-cart"
+        },
+        { "roleName": "Production",
+            "icon": "fa-cogs",
+            "roles": [
+                { "roleName": "Plant Manager",
+                    "icon": ""
+                },
+                { "roleName": "QA",
+                    "icon": ""
+                },
+                { "roleName": "Scheduler",
+                    "icon": ""
+                },
+                { "roleName": "Production Team Leader",
+                    "icon": ""
+                },
+                { "roleName": "Production Worker",
+                    "icon": ""
+                }
+            ]
+        },
+        { "roleName": "Sales",
+            "icon": "fa-money",
+            "roles": [
+                { "roleName": "Sales Rep",
+                    "icon": ""
+                },
+                { "roleName": "Sales Manager",
+                    "icon": ""
+                }
+            ]
+        },
+        { "roleName": "Shipping",
+            "icon": "fa-truck",
+            "roles": [
+                { "roleName": "Shipping Worker",
+                    "icon": ""
+                },
+                { "roleName": "Shipping Manager",
+                    "icon": ""
+                }
+            ]
+        }
+    ]
+}
