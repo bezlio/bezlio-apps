@@ -1,79 +1,40 @@
 {
     "roles": [
         { "roleName": "Accounting",
-            "icon": "fa-balance-scale",
             "roles": [
-                { "roleName": "Accounts Payable",
-                    "icon": ""
-                },
-                { "roleName": "Accounts Receivable",
-                    "icon": ""
-                }
+                { "roleName": "Accounts Payable" },
+                { "roleName": "Accounts Receivable" }
             ]
         },
-        { "roleName": "Common",
-            "icon": "fa-users"
-        },
-        { "roleName": "Customer Service",
-            "icon": "fa-keyboard-o"
-        },
-        { "roleName": "Engineering",
-            "icon": "fa-crop"
-        },
+        { "roleName": "Common" },
+        { "roleName": "Customer Service" },
+        { "roleName": "Engineering" },
         { "roleName": "Executive",
-            "icon": "fa-bullhorn",
             "roles": [
-                { "roleName": "CEO",
-                    "icon": ""
-                },
-                { "roleName": "CFO",
-                    "icon": ""
-                }
+                { "roleName": "CEO" },
+                { "roleName": "CFO" }
             ]
         },
-        { "roleName": "Purchasing",
-            "icon": "fa-shopping-cart"
-        },
+        { "roleName": "Purchasing" },
         { "roleName": "Production",
-            "icon": "fa-cogs",
             "roles": [
-                { "roleName": "Plant Manager",
-                    "icon": ""
-                },
-                { "roleName": "QA",
-                    "icon": ""
-                },
-                { "roleName": "Scheduler",
-                    "icon": ""
-                },
-                { "roleName": "Production Team Leader",
-                    "icon": ""
-                },
-                { "roleName": "Production Worker",
-                    "icon": ""
-                }
+                { "roleName": "Plant Manager" },
+                { "roleName": "QA" },
+                { "roleName": "Scheduler" },
+                { "roleName": "Production Team Leader" },
+                { "roleName": "Production Worker" }
             ]
         },
         { "roleName": "Sales",
-            "icon": "fa-money",
             "roles": [
-                { "roleName": "Sales Rep",
-                    "icon": ""
-                },
-                { "roleName": "Sales Manager",
-                    "icon": ""
-                }
+                { "roleName": "Sales Rep" },
+                { "roleName": "Sales Manager" }
             ]
         },
         { "roleName": "Shipping",
-            "icon": "fa-truck",
             "roles": [
-                { "roleName": "Shipping Worker",
-                    "icon": ""
-                },
-                { "roleName": "Shipping Manager",
-                    "icon": ""
-                }
+                { "roleName": "Shipping Worker" },
+                { "roleName": "Shipping Manager" }
             ]
         }
     ]
