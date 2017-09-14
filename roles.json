@@ -1,40 +1,40 @@
 {
     "roles": [
-        { "roleName": "Accounting",
+        { "roleId": "accounting", "roleName": "Accounting",
             "roles": [
-                { "roleName": "Accounts Payable" },
-                { "roleName": "Accounts Receivable" }
+                { "roleId": "accounting-accounts-payable", "roleName": "Accounts Payable" },
+                { "roleId": "accounting-accounts-receivable", "roleName": "Accounts Receivable" }
             ]
         },
-        { "roleName": "Common" },
-        { "roleName": "Customer Service" },
-        { "roleName": "Engineering" },
-        { "roleName": "Executive",
+        { "roleId": "common", "roleName": "Common" },
+        { "roleId": "customer-service", "roleName": "Customer Service" },
+        { "roleId": "engineering", "roleName": "Engineering" },
+        { "roleId": "executive", "roleName": "Executive",
             "roles": [
-                { "roleName": "CEO" },
-                { "roleName": "CFO" }
+                { "roleId": "executive-ceo", "roleName": "CEO" },
+                { "roleId": "executive-cfo", "roleName": "CFO" }
             ]
         },
-        { "roleName": "Purchasing" },
-        { "roleName": "Production",
+        { "roleId": "purchasing", "roleName": "Purchasing" },
+        { "roleId": "production", "roleName": "Production",
             "roles": [
-                { "roleName": "Plant Manager" },
-                { "roleName": "QA" },
-                { "roleName": "Scheduler" },
-                { "roleName": "Production Team Leader" },
-                { "roleName": "Production Worker" }
+                { "roleId": "production-plant-manager", "roleName": "Plant Manager" },
+                { "roleId": "production-qa", "roleName": "QA" },
+                { "roleId": "production-scheduler", "roleName": "Scheduler" },
+                { "roleId": "production-team-leader", "roleName": "Production Team Leader" },
+                { "roleId": "production-worker", "roleName": "Production Worker" }
             ]
         },
-        { "roleName": "Sales",
+        { "roleId": "sales", "roleName": "Sales",
             "roles": [
-                { "roleName": "Sales Rep" },
-                { "roleName": "Sales Manager" }
+                { "roleId": "sales-rep", "roleName": "Sales Rep" },
+                { "roleId": "sales-manager", "roleName": "Sales Manager" }
             ]
         },
-        { "roleName": "Shipping",
+        { "roleId": "shipping", "roleName": "Shipping",
             "roles": [
-                { "roleName": "Shipping Worker" },
-                { "roleName": "Shipping Manager" }
+                { "roleId": "shipping-worker", "roleName": "Shipping Worker" },
+                { "roleId": "shipping-manager", "roleName": "Shipping Manager" }
             ]
         }
     ]
