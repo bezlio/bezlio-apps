@@ -14,7 +14,7 @@
             ],
             "itemVideos": [],
             "roles": ["executive", "executive-ceo", "executive-cfo", "purchasing", "production", "production-plant-manager", "sales", "sales-manager"],
-            "platforms": ["universal","excel","epicor905","epicor10","inforVisual70","inforVisual80"],
+            "platforms": ["excel","epicor905","epicor10","inforVisual70","inforVisual80"],
             "path": "gallery/inventory-valuation-by-age",
             "additionalFiles": [
                 {
