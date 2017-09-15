@@ -7,13 +7,20 @@
             "itemImages": [
                 {
                     "imagePath": "https://rawgit.com/bezlio/bezlio-apps/Bezlio-Gallery-Implementation-%23387/gallery/inventory-valuation-by-age/images/main.png",
-                    "imageAltText": "Screenshot showing inventory valuation over 4 fictional warehouses"
+                    "imageAltText": "Screenshot showing inventory valuation over 4 fictional warehouses",
+                    "isThumbnail": true
+                },
+                {
+                    "imagePath": "https://rawgit.com/bezlio/bezlio-apps/Bezlio-Gallery-Implementation-%23387/gallery/inventory-valuation-by-age/images/main.png",
+                    "imageAltText": "Screenshot showing inventory valuation over 4 fictional warehouses",
+                    "isThumbnail": false
                 }
             ],
             "itemVideos": [
                 {
                     "videoPath": "",
-                    "videoAltText": ""
+                    "videoAltText": "",
+                    "isHeader": false
                 }
             ],
             "roles": ["executive", "executive-ceo", "executive-cfo", "purchasing", "production", "production-plant-manager", "sales", "sales-manager"],
