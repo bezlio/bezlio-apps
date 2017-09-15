@@ -37,6 +37,7 @@ define(function () {
             MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: bezl.vars.Company,
+            ProjectName_c: bezl.vars.quoteData.QuoteDesc,
             ForToPMDate_c: null,
             RowMod: 'U'
         });
@@ -88,6 +89,7 @@ define(function () {
             CustomerCustID: quoteData.customerId,
             MktgCampaignID: quoteData.mktgCamp,
             MktgEvntSeq: quoteData.mktgEvnt,
+            ProjectName_c: bezl.vars.quoteData.QuoteDesc,
             Company: company,
             RowMod: 'U'
         });
