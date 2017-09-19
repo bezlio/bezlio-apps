@@ -57,6 +57,7 @@ define(function () {
         });
     }
 
+    // left in for older versions
     function UpdateSales(bezl, quoteNum, salesVal) {
         bezl.vars.saving = true;
 
@@ -66,6 +67,29 @@ define(function () {
                 { Key: "Company", Value: bezl.vars.Company },
                 { Key: "QuoteNum", Value: quoteNum },
                 { Key: "Sales_c", Value: salesVal }
+            ]
+        }, 0);
+    }
+
+    function UpdateCustomField(bezl, quoteNum, salesVal, columnName) {
+        bezl.vars.saving = true;
+        var dataSubName = "";
+
+        if(columnName == 'Sales_c') {
+            dataSubName = "updateSales";
+        } else if(columnName == 'ProjectName_c') {
+            dataSubName = "updateDesc";
+        } else {
+            dataSubName = "updateCustomField";
+        }
+
+         bezl.dataService.add(dataSubName, 'brdb', 'SQLServer', 'ExecuteStoredProcedure', {
+            "Context": "sales-rep", "Connection": "Epicor Production", "QueryName": "erp.updateCustomField",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: quoteNum },
+                { Key: "ColumnValue", Value: salesVal },
+                { Key: "ColumnName", Value: columnName }
             ]
         }, 0);
     }
@@ -336,6 +360,7 @@ define(function () {
         saveQuote: SaveQuote,
         deleteQuote: DeleteQuote,
         updateCustomer: UpdateCustomer,
-        updateSales: UpdateSales
+        updateSales: UpdateSales,
+        updateCustomField: UpdateCustomField
     }
 });
