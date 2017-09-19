@@ -71,7 +71,7 @@ define(function () {
         }, 0);
     }
 
-    function UpdateCustomField(bezl, quoteNum, salesVal, columnName) {
+    function UpdateCustomField(bezl, quoteNum, val, columnName) {
         bezl.vars.saving = true;
         var dataSubName = "";
 
@@ -88,7 +88,7 @@ define(function () {
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
                 { Key: "QuoteNum", Value: quoteNum },
-                { Key: "ColumnValue", Value: salesVal },
+                { Key: "ColumnValue", Value: val },
                 { Key: "ColumnName", Value: columnName }
             ]
         }, 0);
@@ -113,10 +113,12 @@ define(function () {
             CustomerCustID: quoteData.customerId,
             MktgCampaignID: quoteData.mktgCamp,
             MktgEvntSeq: quoteData.mktgEvnt,
-            ProjectName_c: bezl.vars.quoteData.quoteDesc,
+            ProjectName_c: quoteData.quoteDesc,
             Company: company,
             RowMod: 'U'
         });
+
+        UpdateCustomField(bezl, quoteData.quoteNum, quoteData.quoteDesc, 'ProjectName_c');
 
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
