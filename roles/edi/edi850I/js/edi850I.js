@@ -182,12 +182,20 @@ define(function () {
                                             div.style.display = 'none';
                                             var div = document.getElementById('btnDelete');
                                             div.style.display = 'none';  
+                                            var div = document.getElementById('btnApproveMobile');
+                                            div.style.display = 'none';
+                                            var div = document.getElementById('btnDeleteMobile');
+                                            div.style.display = 'none';  
                                     }
                                     else {
                                             //Make buttons visible/invisible.
                                             var div = document.getElementById('btnApprove');
                                             div.style.display = '';
                                             var div = document.getElementById('btnDelete');
+                                            div.style.display = '';  
+                                            var div = document.getElementById('btnApproveMobile');
+                                            div.style.display = '';
+                                            var div = document.getElementById('btnDeleteMobile');
                                             div.style.display = '';  
                                     }                                   
                                     break;
