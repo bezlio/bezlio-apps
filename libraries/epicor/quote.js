@@ -75,6 +75,11 @@ define(function () {
         bezl.vars.saving = true;
         var dataSubName = "";
 
+        //Check for nulls
+        if(!val) {
+            val = "";
+        }
+
         if(columnName == 'Sales_c') {
             dataSubName = "updateSales";
         } else if(columnName == 'ProjectName_c') {
