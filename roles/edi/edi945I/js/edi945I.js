@@ -23,11 +23,34 @@ define(function () {
             }
         }      
 
+        //Get bezl rows in mainTableMobile.
+        tr = $(bezl.container.nativeElement).find("#mainTableMobile tr")
+        
+        // Loop through all rows
+        for(var i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            
+            if(td.length > 0) {
+                ediStatus = td[6].innerHTML;
+                
+                //If not the correct edi status, hide the row.
+                if(ediStatus.toUpperCase().indexOf(bezl.vars.filterEdiStatus.toUpperCase()) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        } 
+
         //Make buttons visible/invisible.
         if (bezl.vars.filterEdiStatus == 'H'){
             var div = document.getElementById('btnDelete');
             div.style.display = '';
             var div = document.getElementById('btnApprove');
+            div.style.display = '';
+            var div = document.getElementById('btnDeleteMobile');
+            div.style.display = '';
+            var div = document.getElementById('btnApproveMobile');
             div.style.display = '';
         }     
         else if (bezl.vars.filterEdiStatus == 'A' || bezl.vars.filterEdiStatus == 'D'){
@@ -35,6 +58,10 @@ define(function () {
             div.style.display = 'none';
             var div = document.getElementById('btnApprove');
             div.style.display = 'none';  
+            var div = document.getElementById('btnDeleteMobile');
+            div.style.display = 'none';
+            var div = document.getElementById('btnApproveMobile');
+            div.style.display = 'none';
         }
 
         //Loop through user for user rights.
@@ -50,6 +77,10 @@ define(function () {
                                     var div = document.getElementById('btnApprove');
                                     div.style.display = 'none';
                                     var div = document.getElementById('btnDelete');
+                                    div.style.display = 'none';  
+                                    var div = document.getElementById('btnApproveMobile');
+                                    div.style.display = 'none';
+                                    var div = document.getElementById('btnDeleteMobile');
                                     div.style.display = 'none';  
                             }
                     }
@@ -151,12 +182,20 @@ define(function () {
                                             div.style.display = 'none';
                                             var div = document.getElementById('btnDelete');
                                             div.style.display = 'none';  
+                                            var div = document.getElementById('btnApproveMobile');
+                                            div.style.display = 'none';
+                                            var div = document.getElementById('btnDeleteMobile');
+                                            div.style.display = 'none';  
                                     }
                                     else {
                                             //Make buttons visible/invisible.
                                             var div = document.getElementById('btnApprove');
                                             div.style.display = '';
                                             var div = document.getElementById('btnDelete');
+                                            div.style.display = '';  
+                                            var div = document.getElementById('btnApproveMobile');
+                                            div.style.display = '';
+                                            var div = document.getElementById('btnDeleteMobile');
                                             div.style.display = '';  
                                     }                                   
                                     break;
@@ -523,7 +562,34 @@ define(function () {
             } else {
                 tr[i].style.display = "none";
             }
-        }      
+        }     
+        
+        //Get bezl rows in mainTableMobile.
+        tr = $(bezl.container.nativeElement).find("#mainTableMobile tr")
+        
+        // Loop through all rows
+        for(var i = 0; i < tr.length; i++) {
+            found = false;
+
+            td = tr[i].getElementsByTagName("td");
+
+            if(td.length > 0) {
+                ediStatus = td[6].innerHTML;
+
+                for(var k = 0; k < td.length; k++){
+                    //If not the correct edi status, hide the row.
+                    if(td[k].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1 && ediStatus.toUpperCase().indexOf(bezl.vars.filterEdiStatus.toUpperCase()) > -1) {
+                        found = true;
+                    }
+                }
+            }
+            
+            if (found || i == 0) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
     }
 
     function Sort(bezl, sortColumn) {

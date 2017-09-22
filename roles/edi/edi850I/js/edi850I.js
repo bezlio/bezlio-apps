@@ -23,7 +23,7 @@ define(function () {
             }
         }      
 
-        //Get bezl rows in mainTable.
+        //Get bezl rows in mainTableMobile.
         tr = $(bezl.container.nativeElement).find("#mainTableMobile tr")
 
         // Loop through all rows
@@ -570,7 +570,7 @@ define(function () {
         }      
 
         //Get bezl rows in mainTableMobile.
-       tr = $(bezl.container.nativeElement).find("#mainTableMobile tr")
+        tr = $(bezl.container.nativeElement).find("#mainTableMobile tr")
         
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {
