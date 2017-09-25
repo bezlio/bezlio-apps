@@ -866,27 +866,27 @@
     "\t\t\t<!-- Main buttons -->     ",
     "\t\t\t<br>",
     "\t\t\t<div class=\"form-group\">",
-    "\t\t\t\t\t<button class=\"btn btn-lg btn-primary\" (click)=\"bezl.functions['refreshClick']()\">Refresh</button>",
-    "\t\t\t\t\t<button class=\"btn btn-lg btn-primary\" (click)=\"bezl.functions['selectAllClick']()\">Select All</button>",
-    "\t\t\t\t\t<button class=\"btn btn-lg btn-primary\" (click)=\"bezl.functions['selectNoneClick']()\">Select None</button>",
+    "\t\t\t\t\t<button class=\"btn btn-md btn-primary\" (click)=\"bezl.functions['refreshClick']()\">Refresh</button>",
+    "\t\t\t\t\t<button class=\"btn btn-md btn-primary\" (click)=\"bezl.functions['selectAllClick']()\">Select All</button>",
+    "\t\t\t\t\t<button class=\"btn btn-md btn-primary\" (click)=\"bezl.functions['selectNoneClick']()\">Select None</button>",
     "\t\t\t</div>",
     "\t\t\t<br>",
     "\t\t\t<div class=\"form-group\">",
-    "\t\t\t\t\t<button class=\"btn btn-lg btn-primary btn-viewDetails\" (click)=\"bezl.functions['viewDetails']()\">View Details</button>",
-    "\t\t\t\t\t<button class=\"btn btn-lg btn-primary btn-approve\" (click)=\"bezl.functions['approveClick']()\" id=\"btnApproveMobile\">Approve</button>",
-    "\t\t\t\t\t<button class=\"btn btn-lg btn-primary btn-delete\" (click)=\"bezl.functions['deleteClick']()\" id=\"btnDeleteMobile\">Delete</button>",
+    "\t\t\t\t\t<button class=\"btn btn-md btn-primary btn-viewDetails\" (click)=\"bezl.functions['viewDetails']()\">View Details</button>",
+    "\t\t\t\t\t<button class=\"btn btn-md btn-primary btn-approve\" (click)=\"bezl.functions['approveClick']()\" id=\"btnApproveMobile\">Approve</button>",
+    "\t\t\t\t\t<button class=\"btn btn-md btn-primary btn-delete\" (click)=\"bezl.functions['deleteClick']()\" id=\"btnDeleteMobile\">Delete</button>",
     "\t\t\t</div>",
     "\t\t\t<!-- Radio Buttons -->",
     "\t\t\t<br>",
     "\t\t\t<div class=\"radio-toolbar\">",
     "\t\t\t\t<div>",
-    "\t\t\t\t\t<input type=\"radio\" id=\"radioOnHoldMobile\" name=\"FILTERMOBILE\" value=\"H\" (click)=\"bezl.functions['radioButtonClick']()\" checked>",
+    "\t\t\t\t\t<input type=\"radio\" id=\"radioOnHoldMobile\" name=\"FILTERMOBILE\" value=\"H\" (click)=\"bezl.functions['radioButtonClickMobile']()\" checked>",
     "\t\t\t\t\t\t<label for=\"radioOnHoldMobile\">On Hold</label>",
     "",
-    "\t\t\t\t\t<input type=\"radio\" id=\"radioApprovedMobile\" name=\"FILTERMOBILE\" value=\"A\" (click)=\"bezl.functions['radioButtonClick']()\">",
+    "\t\t\t\t\t<input type=\"radio\" id=\"radioApprovedMobile\" name=\"FILTERMOBILE\" value=\"A\" (click)=\"bezl.functions['radioButtonClickMobile']()\">",
     "\t\t\t\t\t\t<label for=\"radioApprovedMobile\">Approved</label>",
     "",
-    "\t\t\t\t\t<input type=\"radio\" id=\"radioDeletedMobile\" name=\"FILTERMOBILE\" value=\"D\" (click)=\"bezl.functions['radioButtonClick']()\">",
+    "\t\t\t\t\t<input type=\"radio\" id=\"radioDeletedMobile\" name=\"FILTERMOBILE\" value=\"D\" (click)=\"bezl.functions['radioButtonClickMobile']()\">",
     "\t\t\t\t\t\t<label for=\"radioDeletedMobile\">Deleted</label>",
     "\t\t\t\t</div>",
     "\t\t\t</div>",
@@ -1127,29 +1127,14 @@
     "\t\t\t</div>\t",
     "\t\t\t<!-- View Details Buttons -->",
     "\t\t\t<div class=\"row pull-right\" [hidden]=\"!bezl.vars.viewdetails\">",
-    "\t\t\t\t<button (click)=\"bezl.functions['revalidate']()\" class=\"btn btn-lg btn-primary btn-viewDetails display-inline\" id=\"btnRevalidate\">Re-Validate</button>",
-    "\t\t\t\t<button (click)=\"bezl.functions['saveViewDetails']()\" class=\"btn btn-lg btn-primary\" id=\"btnSave\">Save</button>",
+    "\t\t\t\t<button (click)=\"bezl.functions['revalidate']()\" class=\"btn btn-lg btn-primary btn-viewDetails display-inline\" id=\"btnRevalidateMobile\">Re-Validate</button>",
+    "\t\t\t\t<button (click)=\"bezl.functions['saveViewDetails']()\" class=\"btn btn-lg btn-primary\" id=\"btnSaveMobile\">Save</button>",
     "\t\t\t\t<button (click)=\"bezl.functions['exitViewDetails']()\" class=\"btn btn-lg btn-primary btn-delete\" id=\"btnExit\">Exit</button>     \t   \t",
     "\t\t\t</div>",
     "\t\t\t<br><br><br>",
     "\t\t\t<div class=\"panel-footer\"></div>",
     "\t\t</div>",
     "\t</div>",
-    "",
-    "\t<!-- View File ",
-    "\t<p-dialog header=\"View File\" [resizable]=\"false\" [(visible)]=\"bezl.vars['showViewFile']\" [modal]=\"true\" appendTo=\"body\" [closable]=\"false\" [closeOnEscape]=\"false\" width=\"400\">",
-    "      \t<form>",
-    "        \t<div class=\"read\" *ngFor=\"let item of bezl.vars['viewfile']\">",
-    "            \t<textarea class=\"form-control\" rows=\"10\" id=\"txtComment\" value={{item.EDI_FILE_DATA}}></textarea>",
-    "            </div>",
-    "      \t</form>",
-    "\t\t<footer>",
-    "\t\t\t<br><br>",
-    "\t\t\t<button (click)=\"bezl.functions['exitViewFile']()\" class=\"btn btn-lg btn-primary btn-delete pull-right\">Exit</button>     \t   \t",
-    "\t\t\t<br><br>",
-    "\t\t\t<div class=\"panel-footer\"></div>",
-    "\t\t</footer>",
-    "\t</p-dialog> -->",
     "  ",
     "    <!-- View File -->",
     "    <div id=\"ViewFileModal\" class=\"modal fade\" role=\"dialog\">",
@@ -1177,7 +1162,7 @@
     "\t\t\t<!-- Panel header -->",
     "\t\t\t<div class=\"panel-heading\">",
     "\t\t\t\t<div class=\"panel-header\">",
-    "\t\t\t\t\t<div class=\"row hidden-xs\">",
+    "\t\t\t\t\t<div class=\"row\">",
     "\t\t\t\t\t\t<div class=\"col-sm-4 mar-all\">",
     "\t\t\t\t\t\t\t<!-- Show Loading wheel if not loaded -->",
     "\t\t\t\t\t\t\t<div [hidden]=\"bezl.vars.approvalCompleted\">",
@@ -1253,7 +1238,7 @@
     },
     {
       "method": "onDataChange",
-      "code": "//data objects.\nbezl.data = dataResp; \nbezl.vars['main'] = bezl.data.main;\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\nbezl.vars['viewfile'] = bezl.data.viewfile;\nbezl.vars['user'] = bezl.data.user;\n\nif (bezl.vars.approvalData){\n\tbezl.vars.approvalData.forEach(n =>{\n\t\tif (bezl.data[n.id]){\n      \t\tif (bezl.vars['approve']){\n              \tfor (var key in bezl.data[n.id]){\n        \t\t\tbezl.vars['approve'].push(bezl.data[n.id][key]);\n                }\n      \t\t}\n      \t\telse{\n        \t\tbezl.vars['approve'] = bezl.data[n.id]\n      \t\t}\n          \n          \tbezl.data[n.id] = null;\n          \tbezl.dataService.remove(n.id);          \n          \tbezl.vars.approvalData.splice(n, 1);\n    \t}\n\t});\n\n  if (bezl.vars.approvalData.length <= 0){\n    bezl.vars.approvalCompleted = true;\n  }\n}\n\nif (bezl.vars['user'] && bezl.vars['loading'] == true){\n  //Set to false so it doesn't keep running.\n  bezl.vars['loading'] = false;\n  \n  $('#txtFilter').val('');\n  $('#txtSearch').val('');\n  bezl.vars['filter'] = '';\n  bezl.vars['search'] = '';\n\n  //Call filter JS function.\n  require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n    functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n}\n\nif (bezl.vars['user']){\n    //Get EDI Status filter.\n  if ($('input[id=radioOnHold]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'H';\n  }\n  else if ($('input[id=radioApproved]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'A';\n  }\n  else if ($('input[id=radioDeleted]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'D';\n  }\n\n  //Call filter JS function.\n  require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n    functions.filterEdiStatus(bezl);\n  });\n}\n\n\n\n\n\n\n\n\n\n\n",
+      "code": "//data objects.\nbezl.data = dataResp; \nbezl.vars['main'] = bezl.data.main;\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\nbezl.vars['viewfile'] = bezl.data.viewfile;\nbezl.vars['user'] = bezl.data.user;\n\nif (bezl.vars.approvalData){\n\tbezl.vars.approvalData.forEach(n =>{\n\t\tif (bezl.data[n.id]){\n      \t\tif (bezl.vars['approve']){\n              \tfor (var key in bezl.data[n.id]){\n        \t\t\tbezl.vars['approve'].push(bezl.data[n.id][key]);\n                }\n      \t\t}\n      \t\telse{\n        \t\tbezl.vars['approve'] = bezl.data[n.id]\n      \t\t}\n          \n          \tbezl.data[n.id] = null;\n          \tbezl.dataService.remove(n.id);          \n          \tbezl.vars.approvalData.splice(n, 1);\n    \t}\n\t});\n\n  if (bezl.vars.approvalData.length <= 0){\n    bezl.vars.approvalCompleted = true;\n  }\n}\n\nif (bezl.vars['user'] && bezl.vars['loading'] == true){\n  //Set to false so it doesn't keep running.\n  bezl.vars['loading'] = false;\n  \n  $('#txtFilter').val('');\n  $('#txtSearch').val('');\n  bezl.vars['filter'] = '';\n  bezl.vars['search'] = '';\n\n  //Call filter JS function.\n  require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n    functions.runQuery(bezl, 'GetDashHeaderData');\n  });\n}\n\nif (bezl.vars['user']){\n  //Get EDI Status filter.\n  if ($('input[id=radioOnHold]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'H';\n  }\n  else if ($('input[id=radioApproved]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'A';\n  }\n  else if ($('input[id=radioDeleted]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'D';\n  }\n\n  //Check if assigned by mobile.\n  if (bezl.vars['filterEdiStatus'] == 'H'){\n    if ($('input[id=radioOnHoldMobile]:checked').length > 0) {\n      bezl.vars['filterEdiStatus'] = 'H';\n    }\n    else if ($('input[id=radioApprovedMobile]:checked').length > 0) {\n        bezl.vars['filterEdiStatus'] = 'A';\n    }\n    else if ($('input[id=radioDeletedMobile]:checked').length > 0) {\n        bezl.vars['filterEdiStatus'] = 'D';\n    }\n  }\n  \n  //Call filter JS function.\n  require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n    functions.filterEdiStatus(bezl);\n  });\n}\n\n\n\n\n\n\n\n\n\n\n",
       "declares": [
         "$",
         "parm",
@@ -1262,7 +1247,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //data objects.\r\nbezl.data = dataResp;\r\nbezl.vars['main'] = bezl.data.main;\r\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\r\nbezl.vars['viewfile'] = bezl.data.viewfile;\r\nbezl.vars['user'] = bezl.data.user;\r\nif (bezl.vars.approvalData) {\r\n    bezl.vars.approvalData.forEach(function (n) {\r\n        if (bezl.data[n.id]) {\r\n            if (bezl.vars['approve']) {\r\n                for (var key in bezl.data[n.id]) {\r\n                    bezl.vars['approve'].push(bezl.data[n.id][key]);\r\n                }\r\n            }\r\n            else {\r\n                bezl.vars['approve'] = bezl.data[n.id];\r\n            }\r\n            bezl.data[n.id] = null;\r\n            bezl.dataService.remove(n.id);\r\n            bezl.vars.approvalData.splice(n, 1);\r\n        }\r\n    });\r\n    if (bezl.vars.approvalData.length <= 0) {\r\n        bezl.vars.approvalCompleted = true;\r\n    }\r\n}\r\nif (bezl.vars['user'] && bezl.vars['loading'] == true) {\r\n    //Set to false so it doesn't keep running.\r\n    bezl.vars['loading'] = false;\r\n    $('#txtFilter').val('');\r\n    $('#txtSearch').val('');\r\n    bezl.vars['filter'] = '';\r\n    bezl.vars['search'] = '';\r\n    //Call filter JS function.\r\n    require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\nif (bezl.vars['user']) {\r\n    //Get EDI Status filter.\r\n    if ($('input[id=radioOnHold]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'H';\r\n    }\r\n    else if ($('input[id=radioApproved]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'A';\r\n    }\r\n    else if ($('input[id=radioDeleted]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'D';\r\n    }\r\n    //Call filter JS function.\r\n    require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n        functions.filterEdiStatus(bezl);\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //data objects.\r\nbezl.data = dataResp;\r\nbezl.vars['main'] = bezl.data.main;\r\nbezl.vars['viewdetails'] = bezl.data.viewdetails;\r\nbezl.vars['viewfile'] = bezl.data.viewfile;\r\nbezl.vars['user'] = bezl.data.user;\r\nif (bezl.vars.approvalData) {\r\n    bezl.vars.approvalData.forEach(function (n) {\r\n        if (bezl.data[n.id]) {\r\n            if (bezl.vars['approve']) {\r\n                for (var key in bezl.data[n.id]) {\r\n                    bezl.vars['approve'].push(bezl.data[n.id][key]);\r\n                }\r\n            }\r\n            else {\r\n                bezl.vars['approve'] = bezl.data[n.id];\r\n            }\r\n            bezl.data[n.id] = null;\r\n            bezl.dataService.remove(n.id);\r\n            bezl.vars.approvalData.splice(n, 1);\r\n        }\r\n    });\r\n    if (bezl.vars.approvalData.length <= 0) {\r\n        bezl.vars.approvalCompleted = true;\r\n    }\r\n}\r\nif (bezl.vars['user'] && bezl.vars['loading'] == true) {\r\n    //Set to false so it doesn't keep running.\r\n    bezl.vars['loading'] = false;\r\n    $('#txtFilter').val('');\r\n    $('#txtSearch').val('');\r\n    bezl.vars['filter'] = '';\r\n    bezl.vars['search'] = '';\r\n    //Call filter JS function.\r\n    require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetDashHeaderData');\r\n    });\r\n}\r\nif (bezl.vars['user']) {\r\n    //Get EDI Status filter.\r\n    if ($('input[id=radioOnHold]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'H';\r\n    }\r\n    else if ($('input[id=radioApproved]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'A';\r\n    }\r\n    else if ($('input[id=radioDeleted]:checked').length > 0) {\r\n        bezl.vars['filterEdiStatus'] = 'D';\r\n    }\r\n    //Check if assigned by mobile.\r\n    if (bezl.vars['filterEdiStatus'] == 'H') {\r\n        if ($('input[id=radioOnHoldMobile]:checked').length > 0) {\r\n            bezl.vars['filterEdiStatus'] = 'H';\r\n        }\r\n        else if ($('input[id=radioApprovedMobile]:checked').length > 0) {\r\n            bezl.vars['filterEdiStatus'] = 'A';\r\n        }\r\n        else if ($('input[id=radioDeletedMobile]:checked').length > 0) {\r\n            bezl.vars['filterEdiStatus'] = 'D';\r\n        }\r\n    }\r\n    //Call filter JS function.\r\n    require([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n        functions.filterEdiStatus(bezl);\r\n    });\r\n}\r\n"
     },
     {
       "method": "refreshClick",
@@ -1318,7 +1303,7 @@
     },
     {
       "method": "filter",
-      "code": "//Call edi850I.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n  functions.filterBy(bezl);\n});",
+      "code": "//Call edi850I.js.\nconsole.log('HERE');\n\nrequire([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n  functions.filterBy(bezl);\n});",
       "declares": [
         "$",
         "parm",
@@ -1327,7 +1312,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Call edi850I.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n    functions.filterBy(bezl);\r\n});\r\n"
+      "compiled": "var FusionCharts; //Call edi850I.js.\r\nconsole.log('HERE');\r\nrequire([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n    functions.filterBy(bezl);\r\n});\r\n"
     },
     {
       "method": "searchClick",
@@ -1513,7 +1498,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: \t\tThe version number of this app. Setting this will use the javascript\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\n//          \t\twill use the \"development\" javascript files in the root directory.\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\n//          \t\tempty string and the correct path will be automatically determined.\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \n//\t\t\t\t\tand goes by the config SQL connection name.\n// siteId:\t\t\tThis is the site used if ERP is split per site. \n\nbezl.vars.config.version = \"3.4.5\";\nbezl.vars.config.baseUrl = \"\";\nbezl.vars.config.sqlConnection = \"SQLConnection\";\nbezl.vars.siteId = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t   + \"/roles/edi/edi850I/\"\n  \t\t\t\t\t\t   + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t   + \"js/\"",
+      "code": "bezl.vars.config = {};\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: \t\tThe version number of this app. Setting this will use the javascript\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\n//          \t\twill use the \"development\" javascript files in the root directory.\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\n//          \t\tempty string and the correct path will be automatically determined.\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \n//\t\t\t\t\tand goes by the config SQL connection name.\n// siteId:\t\t\tThis is the site used if ERP is split per site. \n\nbezl.vars.config.version = \"3.4.6\";\nbezl.vars.config.baseUrl = \"\";\nbezl.vars.config.sqlConnection = \"SQLConnection\";\nbezl.vars.siteId = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t   + \"/roles/edi/edi850I/\"\n  \t\t\t\t\t\t   + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t   + \"js/\"",
       "declares": [
         "$",
         "parm",
@@ -1522,11 +1507,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "bezl.vars.config = {};\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: \t\tThe version number of this app. Setting this will use the javascript\r\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\r\n//          \t\twill use the \"development\" javascript files in the root directory.\r\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\r\n//          \t\tempty string and the correct path will be automatically determined.\r\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\r\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \r\n//\t\t\t\t\tand goes by the config SQL connection name.\r\n// siteId:\t\t\tThis is the site used if ERP is split per site. \r\nbezl.vars.config.version = \"3.4.5\";\r\nbezl.vars.config.baseUrl = \"\";\r\nbezl.vars.config.sqlConnection = \"SQLConnection\";\r\nbezl.vars.siteId = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/edi/edi850I/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\n"
+      "compiled": "bezl.vars.config = {};\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: \t\tThe version number of this app. Setting this will use the javascript\r\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\r\n//          \t\twill use the \"development\" javascript files in the root directory.\r\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\r\n//          \t\tempty string and the correct path will be automatically determined.\r\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\r\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \r\n//\t\t\t\t\tand goes by the config SQL connection name.\r\n// siteId:\t\t\tThis is the site used if ERP is split per site. \r\nbezl.vars.config.version = \"3.4.6\";\r\nbezl.vars.config.baseUrl = \"\";\r\nbezl.vars.config.sqlConnection = \"SQLConnection\";\r\nbezl.vars.siteId = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/edi/edi850I/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\n"
     },
     {
       "method": "tableClickMobile",
-      "code": "//Set ID to selected row.\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\n\n//timeout variable.\nvar touchtimeout = 0;\n\n//Highlight row/rows.\n$('#mainTableMobile tr').click(function(){\n      if(touchtimeout == 0) {\n        //set first click\n        touchtimeout = new Date().getTime();\n      } else {\n        //compare first click to this click and see if they occurred within double click threshold\n        if(((new Date().getTime()) - touchtimeout) < 300) {\n            //double click occurred\n            touchtimeout = 0;\n          \t\n          \t//call view details function.\n          \tbezl.functions['viewDetails'](bezl.vars['EDI_SL_DASH_HEADER_ID'])\n        } else {\n            //not a double click so set as a new first click\n            touchtimeout = new Date().getTime();\n        }\n    } \n  \n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\n    $(this).addClass(\"highlight\"); \n})",
+      "code": "//Set ID to selected row.\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\n\n//timeout variable.\nvar touchtimeout = 0;\n\n//Highlight row/rows.\n$('#mainTableMobile tr').click(function(){\n      if(touchtimeout == 0) {\n        //set first click\n        touchtimeout = new Date().getTime();\n      } else {\n        //compare first click to this click and see if they occurred within double click threshold\n        if(((new Date().getTime()) - touchtimeout) < 800) {\n            //double click occurred\n            touchtimeout = 0;\n          \t\n          \t//call view details function.\n          \tbezl.functions['viewDetails'](bezl.vars['EDI_SL_DASH_HEADER_ID'])\n        } else {\n            //not a double click so set as a new first click\n            touchtimeout = new Date().getTime();\n        }\n    } \n  \n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\n    $(this).addClass(\"highlight\"); \n})",
       "declares": [
         "$",
         "parm",
@@ -1535,7 +1520,20 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Set ID to selected row.\r\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\r\n//timeout variable.\r\nvar touchtimeout = 0;\r\n//Highlight row/rows.\r\n$('#mainTableMobile tr').click(function () {\r\n    if (touchtimeout == 0) {\r\n        //set first click\r\n        touchtimeout = new Date().getTime();\r\n    }\r\n    else {\r\n        //compare first click to this click and see if they occurred within double click threshold\r\n        if (((new Date().getTime()) - touchtimeout) < 300) {\r\n            //double click occurred\r\n            touchtimeout = 0;\r\n            //call view details function.\r\n            bezl.functions['viewDetails'](bezl.vars['EDI_SL_DASH_HEADER_ID']);\r\n        }\r\n        else {\r\n            //not a double click so set as a new first click\r\n            touchtimeout = new Date().getTime();\r\n        }\r\n    }\r\n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\r\n    $(this).addClass(\"highlight\");\r\n});\r\n"
+      "compiled": "var FusionCharts; //Set ID to selected row.\r\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\r\n//timeout variable.\r\nvar touchtimeout = 0;\r\n//Highlight row/rows.\r\n$('#mainTableMobile tr').click(function () {\r\n    if (touchtimeout == 0) {\r\n        //set first click\r\n        touchtimeout = new Date().getTime();\r\n    }\r\n    else {\r\n        //compare first click to this click and see if they occurred within double click threshold\r\n        if (((new Date().getTime()) - touchtimeout) < 800) {\r\n            //double click occurred\r\n            touchtimeout = 0;\r\n            //call view details function.\r\n            bezl.functions['viewDetails'](bezl.vars['EDI_SL_DASH_HEADER_ID']);\r\n        }\r\n        else {\r\n            //not a double click so set as a new first click\r\n            touchtimeout = new Date().getTime();\r\n        }\r\n    }\r\n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\r\n    $(this).addClass(\"highlight\");\r\n});\r\n"
+    },
+    {
+      "method": "radioButtonClickMobile",
+      "code": "//Get filter by radio button selection.\nif ($('input[id=radioOnHoldMobile]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'H';\n}\nelse if ($('input[id=radioApprovedMobile]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'A';\n}\nelse if ($('input[id=radioDeletedMobile]:checked').length > 0) {\n  \tbezl.vars['filterEdiStatus'] = 'D';\n}\n\n//Call edi850I.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi850I.js'], function(functions) {\n  functions.filterEdiStatus(bezl);\n});\n\n//reset search/filter variables.\n$('#txtFilter').val('');\n$('#txtSearch').val('');\n",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": "var FusionCharts; //Get filter by radio button selection.\r\nif ($('input[id=radioOnHoldMobile]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'H';\r\n}\r\nelse if ($('input[id=radioApprovedMobile]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'A';\r\n}\r\nelse if ($('input[id=radioDeletedMobile]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'D';\r\n}\r\n//Call edi850I.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi850I.js'], function (functions) {\r\n    functions.filterEdiStatus(bezl);\r\n});\r\n//reset search/filter variables.\r\n$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\n"
     }
   ],
   "data": ""

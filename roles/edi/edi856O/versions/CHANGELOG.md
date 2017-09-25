@@ -19,3 +19,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Added
 - Certified 3.4.5.
 - Added programming to prevent SQL parameteres from not being passed.
+
+## [3.4.6] - 2017-09-25
+### Added
+- Certified 3.4.6.
+- Completed mobile functionality.
