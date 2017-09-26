@@ -1,39 +1,41 @@
 define(function () {
- 
-    function RunQuery (bezl, queryName) {
+
+    function RunQuery(bezl, queryName) {
 
         switch (queryName) {
             case "Accounts":
-                bezl.vars.loading = true; 
+                bezl.vars.loading = true;
                 bezl.vars.accountsProcessed = false;
                 // Pull in the accounts list for the logged in user
-                bezl.dataService.add('Accounts','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('Accounts', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccounts",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                    ] },0);
+                    ]
+                }, 0);
                 break;
             case "CallTypes":
-                bezl.dataService.add('CallTypes','brdb','sales-rep-queries','ExecuteQuery', { 
-                    "QueryName": "GetCallTypes" 
-                },0);
+                bezl.dataService.add('CallTypes', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetCallTypes"
+                }, 0);
                 break;
             case "CRMCalls":
-                bezl.vars.loadingCallLog = true; 
+                bezl.vars.loadingCallLog = true;
                 // Pull in the call list for just the currently selected account
-                bezl.dataService.add('CRMCalls','brdb','sales-rep-queries','ExecuteQuery', { 
+                bezl.dataService.add('CRMCalls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccountCallHistory",
                     "Parameters": [
                         { "Key": "ID", "Value": bezl.vars.selectedCustId }
-                    ] },0);
+                    ]
+                }, 0);
                 break;
             case "SalesRep":
-                bezl.dataService.add('SalesRep','brdb','sales-rep-queries','ExecuteQuery', { 
-                                            "QueryName": "GetSalesRep", 
-                                            "Parameters": [
-                                                { "Key": "EmailAddress", "Value": bezl.env.currentUser }
-                                            ] 
-                                        },0); 
+                bezl.dataService.add('SalesRep', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
+                    "QueryName": "GetSalesRep",
+                    "Parameters": [
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
+                    ]
+                }, 0);
                 break;
             default:
                 break;
@@ -54,7 +56,7 @@ define(function () {
                     localStorage.setItem('selectedAccount', '');
                     $('#bezlpanel').trigger('selectAccount', [{}]);
                 }
-                
+
             } else {
                 bezl.data.Accounts[i].Selected = false;
             }
@@ -78,7 +80,7 @@ define(function () {
                 bezl.vars.sort = "asc";
             }
         }
-        
+
         // Store the sort column so the UI can reflect it
         bezl.vars.sortCol = sortColumn;
 
@@ -111,12 +113,12 @@ define(function () {
                     var B = Date.parse(b[sortColumn]) || Number.MAX_SAFE_INTEGER * -1;
                     return B - A;
                 });
-            } 
+            }
         } else {
-            if (bezl.vars.sort == "asc") { 
-                bezl.data.Accounts.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+            if (bezl.vars.sort == "asc") {
+                bezl.data.Accounts.sort(function (a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A < B) {
                         return -1;
                     }
@@ -128,9 +130,9 @@ define(function () {
                     return 0;
                 });
             } else {
-                bezl.data.Accounts.sort(function(a, b) {
-                    var A = a[sortColumn] .toUpperCase(); // ignore upper and lowercase
-                    var B = b[sortColumn] .toUpperCase(); // ignore upper and lowercase
+                bezl.data.Accounts.sort(function (a, b) {
+                    var A = a[sortColumn].toUpperCase(); // ignore upper and lowercase
+                    var B = b[sortColumn].toUpperCase(); // ignore upper and lowercase
                     if (A > B) {
                         return -1;
                     }
@@ -154,9 +156,9 @@ define(function () {
             for (var i = 0; i < bezl.data.Accounts.length; i++) {
                 if (bezl.vars.filterString) { // Make sure we have something to filter on
                     if (bezl.data.Accounts[i].ID.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                    bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                    bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
-                    bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
+                        bezl.data.Accounts[i].Name.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                        bezl.data.Accounts[i].Territory.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1 ||
+                        bezl.data.Accounts[i].Address.toUpperCase().indexOf(bezl.vars.filterString.toUpperCase()) !== -1) {
                         bezl.data.Accounts[i].show = true;
                     } else {
                         bezl.data.Accounts[i].show = false;
@@ -171,7 +173,7 @@ define(function () {
     function ClickAddress(bezl, account) {
         window.open('http://maps.google.com/maps?q=' + account.AddressURL, '_blank');
     }
-  
+
     function ClickEmail(bezl, contact) {
 
     }
@@ -188,7 +190,7 @@ define(function () {
     }
 
     function AddNote(bezl) {
-        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function (platform) {
             platform.addNote(bezl);
         });
     }
@@ -200,10 +202,10 @@ define(function () {
     }
 
     function RetryFailedNote(bezl, note) {
-        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+        require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function (platform) {
             platform.submitNote(bezl, note);
         });
-    }    
+    }
 
     return {
         runQuery: RunQuery,
