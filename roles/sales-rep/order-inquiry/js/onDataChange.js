@@ -4,6 +4,7 @@ define(function () {
         if (bezl.data.Orders) {
             
             bezl.vars.Orders = new Array();
+            bezl.vars.OrdersTotalAmount = 0.0;
 
             // Resets Filter, so displayed value is correct
             $("#Filter").val("All");
@@ -45,6 +46,9 @@ define(function () {
                     tempOrder.OrderDate = bezl.data.Orders[i].OrderDate;
                     tempOrder.OrderAmt = bezl.data.Orders[i].OrderAmt;
                     tempOrder.OpenOrder = bezl.data.Orders[i].OpenOrder | 0;
+
+                    // Sum the total amount of all orders
+                    bezl.vars.OrdersTotalAmount += bezl.data.Orders[i].OrderAmt;
 
                     // Add a Selected property to the account record
                     if (bezl.data.Orders[i].OrderNum == bezl.vars.selectedOrder.OrderNum) {
