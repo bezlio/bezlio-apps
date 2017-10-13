@@ -67,6 +67,9 @@ define(function () {
         var tr, td;
         tr = document.getElementById("orderList").getElementsByTagName("tr");
 
+        // We need to re-calculate the sum of the total amount of filtered orders as well
+        bezl.vars.OrdersTotalAmount = 0.0;
+
         // Loop through all rows
         for(var i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
@@ -75,8 +78,10 @@ define(function () {
                 if(bezl.vars.filter.toUpperCase() == "ALL") 
                 {
                     tr[i].style.display = "";
+                    bezl.vars.OrdersTotalAmount += Number(td.children[0].children[3].innerHTML.replace(/[^0-9\.-]+/g,""));
                 } else if(td.children[0].children[4].innerHTML.toUpperCase().indexOf(bezl.vars.filter.toUpperCase()) > -1){
                     tr[i].style.display = "";
+                    bezl.vars.OrdersTotalAmount += Number(td.children[0].children[3].innerHTML.replace(/[^0-9\.-]+/g,""));
                 }
                 else {
                     tr[i].style.display = "none";
