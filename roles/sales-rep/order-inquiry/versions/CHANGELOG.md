@@ -5,10 +5,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
-## [1.3] - 2017-10-13
-### Added
-- Display the sum of the total amount of all orders in the footer
-
 ## [1.2] - 2017-09-05
 ### Added
 - Added additional customer information (ID, city, state) to the customer select drop down list
