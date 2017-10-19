@@ -7,9 +7,8 @@ define(function () {
     }
 
     function RunReport(bezl, parm) {
-        bezl.vars.selectedReport = parm;
-
         if (parm.Type === "Report") {
+            bezl.vars.selectedReport = parm;
             bezl.vars.reportLoading = true;
             bezl.vars.reportSelected = true;
 
@@ -18,7 +17,8 @@ define(function () {
                 "ReportName": "blehbleh"
             }, 0);
         } else {
-            //this.reportListing(bezl, )
+            console.log(parm);
+            //this.reportListing(bezl)
         }
     }
 
