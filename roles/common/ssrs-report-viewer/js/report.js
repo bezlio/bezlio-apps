@@ -22,9 +22,19 @@ define(function () {
         }
     }
 
+    function Back(bezl) {
+        bezl.vars.reportSelected = false;
+        bezl.vars.selectedReport = { "ReportDetails": { "ParameterFields": [] } };
+        bezl.vars.promptForParameters = false;
+        bezl.vars.reportLoading = false;
+        var viewer = $(bezl.container.nativeElement).find('#viewer')[0];
+        viewer.src = 'about:blank';
+    }
+
     return {
         reportListing: ReportListing,
-        runReport: RunReport
+        runReport: RunReport,
+        back: Back
     }
 });
 
