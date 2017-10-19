@@ -32,9 +32,12 @@ define(function () {
     }
 
     function DirectoryUp(bezl) {
-        console.log(bezl.vars.currentPath.match(/[\/]/g).length);
-        bezl.vars.currentPath = bezl.vars.currentPath.substring(0, bezl.vars.currentPath.lastIndexOf('/'));
-        this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath, 'ReportName': '' });
+        if (bezl.vars.currentPath.match(/[\/]/g).length > 1) {
+            bezl.vars.currentPath = bezl.vars.currentPath.substring(0, bezl.vars.currentPath.lastIndexOf('/'));
+            this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath, 'ReportName': '' });
+        } else {
+            //no more places to go up
+        }
     }
 
     return {
