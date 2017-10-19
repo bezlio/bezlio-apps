@@ -1,8 +1,12 @@
 define(function () {
+    function ReportListing(bezl, parm) {
+        bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
+            "FolderName": "/reports/customreports",
+            "ReportName": ""
+        });
+    }
+
     function RunReport(bezl, parm) {
-
-        console.log("true");
-
         bezl.vars.reportLoading = true;
         bezl.vars.reportSelected = true;
         bezl.vars.selectedReport = parm;
@@ -19,6 +23,7 @@ define(function () {
     }
 
     return {
+        reportListing: ReportListing,
         runReport: RunReport
     }
 });
