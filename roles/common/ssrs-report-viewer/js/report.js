@@ -17,8 +17,7 @@ define(function () {
                 "ReportName": "blehbleh"
             }, 0);
         } else {
-            console.log(parm);
-            //this.reportListing(bezl)
+            this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath + '/' + parm.Name, 'ReportName': '' });
         }
     }
 
