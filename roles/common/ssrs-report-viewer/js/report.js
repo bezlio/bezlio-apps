@@ -1,10 +1,9 @@
 define(function () {
     function ReportListing(bezl, parm) {
-        console.log(parm);
-        // bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
-        //     "FolderName": folderName,
-        //     "ReportName": reportName
-        // });
+        bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
+            "FolderName": parm.FolderName,
+            "ReportName": parm.ReportName
+        });
     }
 
     function RunReport(bezl, parm) {
