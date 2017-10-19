@@ -7,7 +7,7 @@ define(function () {
     }
 
     function RunReport(bezl, parm) {
-        //bezl.vars.selectedReport = parm;
+        bezl.vars.selectedReport = parm;
 
         if (parm.Type === "Report") {
             bezl.vars.reportLoading = true;
