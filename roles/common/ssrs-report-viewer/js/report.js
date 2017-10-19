@@ -11,12 +11,14 @@ define(function () {
         bezl.vars.reportSelected = true;
         bezl.vars.selectedReport = parm;
 
-        console.log(parm);
-
-        bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
-            "FolderName": "bleh",
-            "ReportName": "blehbleh"
-        }, 0);
+        if (parm.Type === "Report") {
+            bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
+                "FolderName": "bleh",
+                "ReportName": "blehbleh"
+            }, 0);
+        } else {
+            console.log('navigate directory');
+        }
     }
 
     return {
