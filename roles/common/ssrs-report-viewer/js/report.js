@@ -18,6 +18,7 @@ define(function () {
             }, 0);
         } else {
             this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath + '/' + parm.Name, 'ReportName': '' });
+            bezl.vars.currentPath += '/' + parm.Name;
         }
     }
 
@@ -30,10 +31,15 @@ define(function () {
         viewer.src = 'about:blank';
     }
 
+    function DirectoryUp(bezl) {
+        console.log(bezl.vars.currentPath);
+    }
+
     return {
         reportListing: ReportListing,
         runReport: RunReport,
-        back: Back
+        back: Back,
+        directoryUp: DirectoryUp
     }
 });
 
