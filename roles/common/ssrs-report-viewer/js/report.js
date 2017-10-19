@@ -1,5 +1,5 @@
 define(function () {
-    function ReportListing(bezl, folderName, reportName) {
+    function ReportListing(bezl, parm) {
         bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
             "FolderName": folderName,
             "ReportName": reportName
