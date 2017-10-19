@@ -3,7 +3,7 @@ define(function () {
     function OnStartup(bezl) {
         bezl.vars.reportListingLoading = true;
         bezl.vars.reportSelected = false;
-        bezl.functions.reportListing();
+        bezl.functions.reportListing(bezl, '/reports/customreports', 'test');
     }
 
     return {

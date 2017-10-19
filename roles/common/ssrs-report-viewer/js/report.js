@@ -1,8 +1,8 @@
 define(function () {
-    function ReportListing(bezl, parm) {
+    function ReportListing(bezl, folderName, reportName) {
         bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
-            "FolderName": "/reports/customreports",
-            "ReportName": ""
+            "FolderName": folderName,
+            "ReportName": reportName
         });
     }
 
@@ -18,7 +18,7 @@ define(function () {
                 "ReportName": "blehbleh"
             }, 0);
         } else {
-            console.log('navigate directory');
+            //this.reportListing(bezl, )
         }
     }
 
@@ -27,3 +27,8 @@ define(function () {
         runReport: RunReport
     }
 });
+
+require([bezl.vars.config.baseJsUrl + 'report.js'], function (functions) {
+    functions.back(bezl)
+});
+
