@@ -32,7 +32,7 @@ define(function () {
     }
 
     function DirectoryUp(bezl) {
-        console.log(bezl.vars.currentPath.find('/').count());
+        console.log(bezl.vars.currentPath.match(/[\/]/g).length);
         bezl.vars.currentPath = bezl.vars.currentPath.substring(0, bezl.vars.currentPath.lastIndexOf('/'));
         this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath, 'ReportName': '' });
     }
