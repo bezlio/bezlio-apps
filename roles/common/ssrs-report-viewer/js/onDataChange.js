@@ -7,13 +7,13 @@ define(function () {
         }
 
         if (bezl.data.Report) {
-            console.log(bezl.data.Report);
+            //console.log(bezl.data.Report);
 
             //var data = btoa(bezl.data.Report);
 
             var sliceSize = 1024;
             var byteCharacters = atob(bezl.data.Report);
-            console.log(byteCharacters);
+            //console.log(byteCharacters);
 
             //$(bezl.container.nativeElement).find('#viewer')[0].innerHtml = byteCharacters;
 
