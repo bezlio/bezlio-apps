@@ -38,7 +38,3 @@ define(function () {
     }
 });
 
-require([bezl.vars.config.baseJsUrl + 'report.js'], function (functions) {
-    functions.back(bezl)
-});
-
