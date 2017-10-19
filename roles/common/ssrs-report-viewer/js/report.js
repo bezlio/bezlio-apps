@@ -34,7 +34,6 @@ define(function () {
     function DirectoryUp(bezl) {
         bezl.vars.currentPath = bezl.vars.currentPath.substring(0, bezl.vars.currentPath.lastIndexOf('/'));
         this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath, 'ReportName': '' });
-
     }
 
     return {
@@ -44,5 +43,3 @@ define(function () {
         directoryUp: DirectoryUp
     }
 });
-
-/reports/customreports / SalesOrderAcknowledgement_TenPoint
