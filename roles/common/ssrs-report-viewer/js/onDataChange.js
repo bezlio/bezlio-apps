@@ -6,6 +6,7 @@ define(function () {
         }
 
         if (bezl.data.Report) {
+            bezl.vars.reportLoading = false;
             //console.log(bezl.data.Report);
 
             //var data = btoa(bezl.data.Report);
