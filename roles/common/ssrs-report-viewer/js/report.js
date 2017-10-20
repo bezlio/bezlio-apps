@@ -13,8 +13,8 @@ define(function () {
             bezl.vars.reportSelected = true;
 
             bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
-                "FolderName": "bleh",
-                "ReportName": "blehbleh"
+                "FolderName": bezl.vars.currentPath,
+                "ReportName": bezl.Name
             }, 0);
         } else {
             this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath + '/' + parm.Name, 'ReportName': '' });
