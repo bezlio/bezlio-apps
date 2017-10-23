@@ -8,6 +8,9 @@ define(function () {
         if (bezl.data.Parameters) {
             console.log(bezl.data.Parameters);
             console.log("Length: " + bezl.data.Parameters.length);
+            if (bezl.data.Parameters.length === 0) {
+                bezl.functions.runReport(bezl, { "FolderName": bezl.vars.currentPath, "ReportName": bezl.vars.nonParameterReportName });
+            }
         }
 
         if (bezl.data.Report) {
