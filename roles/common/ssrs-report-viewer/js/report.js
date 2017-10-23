@@ -7,7 +7,7 @@ define(function () {
     }
 
     function CheckParameters(bezl, parm) {
-        bezl.dataService.add('Parameters', 'brdb', 'SSRS', 'GetParameters', {
+        bezl.dataService.add('Parameters', 'brdb', 'SSRS', 'GetReportParameters', {
             "FolderName": bezl.vars.currentPath,
             "ReportName": parm.Name
         });
