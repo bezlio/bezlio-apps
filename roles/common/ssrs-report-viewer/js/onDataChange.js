@@ -5,6 +5,10 @@ define(function () {
             bezl.vars.reportListingLoading = false;
         }
 
+        if (bezl.data.Parameters) {
+            console.log(bezl.data.Parameters);
+        }
+
         if (bezl.data.Report) {
             bezl.vars.reportLoading = false;
             //console.log(bezl.data.Report);

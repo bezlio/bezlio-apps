@@ -6,6 +6,13 @@ define(function () {
         });
     }
 
+    function CheckParameters(bezl, parm) {
+        bezl.dataService.add('Parameters', 'brdb', 'SSRS', 'GetParameters', {
+            "FolderName": bezl.vars.currentPath,
+            "ReportName": parm.Name
+        });
+    }
+
     function RunReport(bezl, parm) {
         if (parm.Type === "Report") {
             bezl.vars.selectedReport = parm;
@@ -42,6 +49,7 @@ define(function () {
 
     return {
         reportListing: ReportListing,
+        checkParameters: CheckParameters,
         runReport: RunReport,
         back: Back,
         directoryUp: DirectoryUp
