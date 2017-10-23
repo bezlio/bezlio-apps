@@ -7,6 +7,7 @@ define(function () {
 
         if (bezl.data.Parameters) {
             console.log(bezl.data.Parameters);
+            console.log("Length: " + bezl.data.Parameters.Length);
         }
 
         if (bezl.data.Report) {
