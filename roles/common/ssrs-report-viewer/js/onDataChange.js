@@ -10,7 +10,7 @@ define(function () {
             console.log("Report Name:" + bezl.vars.nonParameterReportName);
 
             if (bezl.data.Parameters.length === 0) {
-                bezl.functions.runReport(bezl, { "Type": "Report", "Name": bezl.vars.nonParameterReportName });
+                bezl.functions.runReport({ "Type": "Report", "Name": bezl.vars.nonParameterReportName });
             } else {
 
             }
