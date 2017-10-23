@@ -13,6 +13,8 @@ define(function () {
             } else {
 
             }
+
+            bezl.dataService.remove("Parameters");
         }
 
         if (bezl.data.Report) {
