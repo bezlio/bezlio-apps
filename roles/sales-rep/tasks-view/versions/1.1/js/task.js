@@ -43,6 +43,7 @@ define(function () {
                     taskType = bezl.data.TaskTypes[0].TaskType;
                 }
 
+                //instances when the Tasks array does not yet exist
                 if (!bezl.vars.selectedAccount.Tasks) {
                     bezl.vars.selectedAccount.Tasks = [];
                 }
