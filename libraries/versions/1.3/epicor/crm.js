@@ -11,48 +11,48 @@ define(function () {
      * @param {string} type - The CRM call type
      * @param {string} salesRep - The sales rep code to associate with this call
      */
-    function AddNote (bezl,
-                      plugin,
-                      company,
-                      custNum,
-                      shortSummary,
-                      details,
-                      type,
-                      salesRep) {
-        var ds = 
-        {
-            'CRMCall':
-            [
+    function AddNote(bezl,
+        plugin,
+        company,
+        custNum,
+        shortSummary,
+        details,
+        type,
+        salesRep) {
+        var ds =
+            {
+                'CRMCall':
+                [
                     {
-                    'Company'			: 	company
-                    ,'RelatedToFile'	:	'customer'
-                    ,'Key1'			    :	custNum
-                    ,'Key2'			    :	''
-                    ,'Key3'			    :	''
-                    ,'CallDesc'		    :	shortSummary
-                    ,'CallText'		    :	details
-                    ,'CallContactType'	:	'Customer'
-                    ,'CallCustNum'		:	custNum
-                    ,'CallTypeCode'	    :	type
-                    ,'SalesRepCode'	    :	salesRep
+                        'Company': company
+                        , 'RelatedToFile': 'customer'
+                        , 'Key1': custNum
+                        , 'Key2': ''
+                        , 'Key3': ''
+                        , 'CallDesc': shortSummary
+                        , 'CallText': details
+                        , 'CallContactType': 'Customer'
+                        , 'CallCustNum': custNum
+                        , 'CallTypeCode': type
+                        , 'SalesRepCode': salesRep
                     }
-            ]
-        };
+                ]
+            };
 
         bezl.dataService.add(
-        'AddCRMCall'
-        , 'brdb'
-        , plugin
-        , 'ExecuteBOMethod'
-        ,
-        {
-            'Connection': bezl.vars.Connection
-            , 'Company': bezl.vars.Company
-            , 'BOName': 'CRMCall'
-            , 'BOMethodName': 'UpdateExt'
-            , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
-        }
-        , 0);
+            'AddCRMCall'
+            , 'brdb'
+            , plugin
+            , 'ExecuteBOMethod'
+            ,
+            {
+                'Connection': bezl.vars.Connection
+                , 'Company': bezl.vars.Company
+                , 'BOName': 'CRMCall'
+                , 'BOMethodName': 'UpdateExt'
+                , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+            }
+            , 0);
 
         bezl.vars.addingHistory = true;
 
@@ -68,20 +68,20 @@ define(function () {
      * @param {string} taskType - The task type code for this new task
      */
     function GetNewTask(custNum,
-                        salesRepCode,
-                        taskType) {
-        return {       
-                "CustNum"			:	custNum
-                ,"TaskID"			:	""
-                ,"TaskSeqNum"		:	0
-                ,"TaskDescription"  :	""
-                ,"SalesRepCode"	    :	salesRepCode
-                ,"StartDate"		:	new Date()
-                ,"DueDate"			:	new Date()
-                ,"PercentComplete"	:	0
-                ,"RowState"			: 	"Added"
-                ,"TaskType"		    :	taskType
-            };
+        salesRepCode,
+        taskType) {
+        return {
+            "CustNum": custNum
+            , "TaskID": ""
+            , "TaskSeqNum": 0
+            , "TaskDescription": ""
+            , "SalesRepCode": salesRepCode
+            , "StartDate": new Date()
+            , "DueDate": new Date()
+            , "PercentComplete": 0
+            , "RowState": "Added"
+            , "TaskType": taskType
+        };
     }
 
     /**
@@ -91,31 +91,32 @@ define(function () {
      * @param {Object[]} tasks - An array of tasks
      */
     function UpdateTasks(bezl
-                        , plugin
-                        , tasks) {
+        , plugin
+        , tasks) {
 
         var ds = { "Task": [] };
         for (var i = 0; i < tasks.length; i++) {
+            console.log(tasks[i]);
             if (tasks[i].RowState == 'Added' || tasks[i].RowState == 'Updated') {
                 ds.Task.push(
-                {
-                    "Company"			: 	tasks[i].Company
-                    ,"RelatedToFile"	:	"Customer"
-                    ,"Key1"			    :	tasks[i].CustNum
-                    ,"Key2"			    :	""
-                    ,"Key3"			    :	""
-                    ,"TaskID"			:	tasks[i].TaskID
-                    ,"TaskSeqNum"		:	tasks[i].TaskSeqNum
-                    ,"Complete" 		:	((tasks[i].Complete) ? 1 : 0)
-                    ,"PercentComplete"	:	tasks[i].PercentComplete
-                    ,"PriorityCode"	    :	tasks[i].PriorityCode
-                    ,"TaskDescription"  :	tasks[i].TaskDescription
-                    ,"StartDate"		:	tasks[i].StartDate
-                    ,"DueDate"			:	tasks[i].DueDate
-                    ,"TypeCode"		    :	tasks[i].TaskType
-                    ,"SalesRepCode"	    :	tasks[i].SalesRepCode
-                    ,"RowMod"           : ((tasks[i].RowState == 'Added'), 'A', 'U')
-                }
+                    {
+                        "Company": tasks[i].Company
+                        , "RelatedToFile": "Customer"
+                        , "Key1": tasks[i].CustNum
+                        , "Key2": ""
+                        , "Key3": ""
+                        , "TaskID": tasks[i].TaskID
+                        , "TaskSeqNum": tasks[i].TaskSeqNum
+                        , "Complete": ((tasks[i].Complete) ? 1 : 0)
+                        , "PercentComplete": tasks[i].PercentComplete
+                        , "PriorityCode": tasks[i].PriorityCode
+                        , "TaskDescription": tasks[i].TaskDescription
+                        , "StartDate": tasks[i].StartDate
+                        , "DueDate": tasks[i].DueDate
+                        , "TypeCode": tasks[i].TaskType
+                        , "SalesRepCode": tasks[i].SalesRepCode
+                        , "RowMod": ((tasks[i].RowState == 'Added'), 'A', 'U')
+                    }
                 );
 
                 // Because the Epicor business object cannot handle saving more
@@ -124,19 +125,19 @@ define(function () {
                 if (tasks[i].RowState == 'Added') {
 
                     bezl.dataService.add(
-                    'UpdateTasks'
-                    , 'brdb'
-                    , plugin
-                    , 'ExecuteBOMethod'
-                    ,
-                    {
-                        'Connection': bezl.vars.Connection
-                        , 'Company': bezl.vars.Company
-                        , 'BOName': 'Task'
-                        , 'BOMethodName': 'UpdateExt'
-                        , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
-                    }
-                    , 0);
+                        'UpdateTasks'
+                        , 'brdb'
+                        , plugin
+                        , 'ExecuteBOMethod'
+                        ,
+                        {
+                            'Connection': bezl.vars.Connection
+                            , 'Company': bezl.vars.Company
+                            , 'BOName': 'Task'
+                            , 'BOMethodName': 'UpdateExt'
+                            , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+                        }
+                        , 0);
 
                     // Clear out the task array for any additional processing
                     ds.Task.length = 0;
@@ -146,19 +147,19 @@ define(function () {
 
         if (ds.Task.length != 0) {
             bezl.dataService.add(
-            'UpdateTasks'
-            , 'brdb'
-            , plugin
-            , 'ExecuteBOMethod'
-            ,
-            {
-                'Connection': bezl.vars.Connection
-                , 'Company': bezl.vars.Company
-                , 'BOName': 'Task'
-                , 'BOMethodName': 'UpdateExt'
-                , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
-            }
-            , 0);
+                'UpdateTasks'
+                , 'brdb'
+                , plugin
+                , 'ExecuteBOMethod'
+                ,
+                {
+                    'Connection': bezl.vars.Connection
+                    , 'Company': bezl.vars.Company
+                    , 'BOName': 'Task'
+                    , 'BOMethodName': 'UpdateExt'
+                    , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
+                }
+                , 0);
         }
     }
 
