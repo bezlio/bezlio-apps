@@ -77,14 +77,24 @@ define(function () {
         }
     }
 
-    function UpdateTasks(bezl) {
+    function UpdateTasks(bezl, task) {
         // Since alternate systems may require different columns for newly added tasks, direct to
         // the libraries folder
-        if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
+        if ((bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") && task === '') {
             require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
                 functions.updateTasks(bezl,
                     bezl.vars.Platform,
                     bezl.vars.selectedAccount.Tasks);
+
+                bezl.notificationService.showSuccess('Task changes are being saved.  You will be notified if any errors occurs.');
+            });
+        } else if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
+            var tasks = [];
+            tasks.push(task);
+            require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
+                functions.updateTasks(bezl,
+                    bezl.vars.Platform,
+                    tasks);
 
                 bezl.notificationService.showSuccess('Task changes are being saved.  You will be notified if any errors occurs.');
             });
