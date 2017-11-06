@@ -15,10 +15,10 @@ define(function () {
             if (bezl.data.UpdateTasks.BOUpdError && bezl.data.UpdateTasks.BOUpdError.length > 0) {
                 bezl.notificationService.showCriticalError(JSON.stringify(bezl.data.UpdateTasks.BOUpdError));
             } else {
-                // commented out for new functionality based on saving individual tasks
-                // for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
-                //     bezl.vars.selectedAccount.Tasks[i].RowState = 'Updated';
-                // }
+                // changed to be updated so all new tasks will be ready for individual saving
+                for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
+                    bezl.vars.selectedAccount.Tasks[i].RowState = 'Updated';
+                }
                 // Trigger the "updateTask" event for any bezls that need to know about the new/updated task
                 $('#bezlpanel').trigger('updateTask', [bezl.vars.selectedAccount]);
             }
