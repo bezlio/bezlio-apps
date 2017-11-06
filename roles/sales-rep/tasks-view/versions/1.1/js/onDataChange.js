@@ -16,7 +16,7 @@ define(function () {
                 bezl.notificationService.showCriticalError(JSON.stringify(bezl.data.UpdateTasks.BOUpdError));
             } else {
                 for (var i = 0; i < bezl.vars.selectedAccount.Tasks.length; i++) {
-                    bezl.vars.selectedAccount.Tasks[i].RowState = '';
+                    bezl.vars.selectedAccount.Tasks[i].RowState = 'Updated';
                 }
                 // Trigger the "updateTask" event for any bezls that need to know about the new/updated task
                 $('#bezlpanel').trigger('updateTask', [bezl.vars.selectedAccount]);
