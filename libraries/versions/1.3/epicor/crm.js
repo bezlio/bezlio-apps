@@ -114,7 +114,7 @@ define(function () {
                         , "DueDate": tasks[i].DueDate
                         , "TypeCode": tasks[i].TaskType
                         , "SalesRepCode": tasks[i].SalesRepCode
-                        , "RowMod": ((tasks[i].RowState == 'Added'), 'A', 'U')
+                        , "RowMod": ((tasks[i].RowState == 'Added') ? 'A' : 'U')
                     }
                 );
 
