@@ -30,6 +30,7 @@ define(function () {
         if (bezl.data.Tasks) {
             bezl.vars.selectedAccount.Tasks = [];
             bezl.data.Tasks.forEach(task => {
+                task.RowState = "Updated";
                 bezl.vars.selectedAccount.Tasks.push(task);
             });
 
