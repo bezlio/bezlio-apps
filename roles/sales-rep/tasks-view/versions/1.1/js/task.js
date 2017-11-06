@@ -90,8 +90,8 @@ define(function () {
             });
         } else if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
             var tasks = [];
+            task.RowState = "Updated";
             tasks.push(task);
-            console.log(tasks);
             require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
                 functions.updateTasks(bezl,
                     bezl.vars.Platform,

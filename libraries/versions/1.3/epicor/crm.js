@@ -96,7 +96,6 @@ define(function () {
 
         var ds = { "Task": [] };
         for (var i = 0; i < tasks.length; i++) {
-            console.log(tasks[i]);
             if (tasks[i].RowState == 'Added' || tasks[i].RowState == 'Updated') {
                 ds.Task.push(
                     {
