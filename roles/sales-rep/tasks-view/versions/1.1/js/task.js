@@ -17,7 +17,7 @@ define(function () {
 
                 // Pull in the accounts list for the logged in user
                 bezl.dataService.add('Tasks', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetAccountTasks",
+                    "QueryName": "GetAccountsTasks",
                     "Parameters": [
                         { "Key": "EmailAddress", "Value": bezl.env.currentUser },
                         { "Key": "ID", "Value": bezl.vars.selectedAccount.ID }
