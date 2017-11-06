@@ -32,6 +32,8 @@ define(function () {
             bezl.data.Tasks.forEach(task => {
                 bezl.vars.selectedAccount.Tasks.push(task);
             });
+
+            bezl.dataService.remove('Tasks');
         }
     }
 
