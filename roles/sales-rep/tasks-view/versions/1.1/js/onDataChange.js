@@ -34,6 +34,8 @@ define(function () {
                 bezl.vars.selectedAccount.Tasks.push(task);
             });
 
+            localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
+
             bezl.dataService.remove('Tasks');
         }
     }
