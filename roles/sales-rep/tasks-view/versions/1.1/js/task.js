@@ -93,13 +93,13 @@ define(function () {
             task.RowState = "Updated";
             tasks.push(task);
             console.log(tasks);
-            require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
-                functions.updateTasks(bezl,
-                    bezl.vars.Platform,
-                    tasks);
+            // require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
+            //     functions.updateTasks(bezl,
+            //         bezl.vars.Platform,
+            //         tasks);
 
-                bezl.notificationService.showSuccess('Task changes are being saved.  You will be notified if any errors occurs.');
-            });
+            //     bezl.notificationService.showSuccess('Task changes are being saved.  You will be notified if any errors occurs.');
+            // });
         }
 
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
