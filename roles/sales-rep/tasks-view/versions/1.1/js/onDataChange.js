@@ -1,6 +1,6 @@
 define(function () {
- 
-    function OnDataChange (bezl) {
+
+    function OnDataChange(bezl) {
         if (bezl.data.TaskTypes && bezl.vars.selectedAccount.Tasks) {
             // Check to see if any tasks that were added before the task TaskTypes
             // came back need one filled in
@@ -25,8 +25,15 @@ define(function () {
             bezl.data.UpdateTasks = null;
             bezl.dataService.remove('UpdateTasks');
         }
+
+        if (bezl.data.Tasks) {
+            bezl.vars.selectedAccount.Tasks = [];
+            bezl.data.Tasks.forEach(task => {
+                bezl.vars.selectedAccount.Tasks.push(task);
+            });
+        }
     }
-  
+
     return {
         onDataChange: OnDataChange
     }
