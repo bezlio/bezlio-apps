@@ -21,6 +21,8 @@ define(function () {
                 }
                 // Trigger the "updateTask" event for any bezls that need to know about the new/updated task
                 $('#bezlpanel').trigger('updateTask', [bezl.vars.selectedAccount]);
+
+                localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
             }
 
             bezl.data.UpdateTasks = null;
