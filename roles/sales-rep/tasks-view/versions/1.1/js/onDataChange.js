@@ -26,6 +26,7 @@ define(function () {
             bezl.dataService.remove('UpdateTasks');
         }
 
+        //added ability to refresh tasks from Epicor side
         if (bezl.data.Tasks) {
             bezl.vars.selectedAccount.Tasks = [];
             bezl.data.Tasks.forEach(task => {
