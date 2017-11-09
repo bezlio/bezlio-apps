@@ -36,8 +36,8 @@ define(["./task.js"], function (task) {
             bezl.vars.selectedAccount.Tasks = [];
             bezl.data.Tasks.forEach(task => {
                 task.RowState = "Updated";
-                console.log(task);
                 task.StartDate = task.StartDate.split('T')[0];
+                task.DueDate = task.DueDate.split('T')[0];
                 bezl.vars.selectedAccount.Tasks.push(task);
             });
 
