@@ -28,7 +28,7 @@ define(["./task.js"], function (task) {
             bezl.data.UpdateTasks = null;
             bezl.dataService.remove('UpdateTasks');
 
-            task.runQuery('Tasks');
+            task.runQuery(bezl, 'Tasks');
         }
 
         //added ability to refresh tasks from Epicor side
