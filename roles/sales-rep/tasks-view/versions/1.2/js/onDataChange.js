@@ -1,4 +1,4 @@
-define(function () {
+define(["./task.js"], function (task) {
 
     function OnDataChange(bezl) {
         if (bezl.data.TaskTypes && bezl.vars.selectedAccount.Tasks) {
@@ -27,6 +27,8 @@ define(function () {
 
             bezl.data.UpdateTasks = null;
             bezl.dataService.remove('UpdateTasks');
+
+            task.runQuery('Tasks');
         }
 
         //added ability to refresh tasks from Epicor side
