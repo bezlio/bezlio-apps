@@ -42,6 +42,7 @@ define(["./task.js"], function (task) {
             localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
 
             bezl.dataService.remove('Tasks');
+            bezl.vars.saving = false;
         }
     }
 
