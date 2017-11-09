@@ -102,7 +102,6 @@ define(function () {
             });
         }
 
-        bezl.vars.saving = false;
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
 
