@@ -3,6 +3,7 @@ SELECT
 	, t.StartDate
 	, t.DueDate
 	, tt.TypeDescription
+	, t.TaskComment
 	, t.PercentComplete
 	, t.PriorityCode
 	, t.TaskID
@@ -15,21 +16,27 @@ SELECT
 	, t.Company
 	, sr.SalesRepCode
 FROM
-	Task t with(nolock)
+	Erp.Task t with(nolock)
 
-	LEFT OUTER JOIN SalesRep sr with(nolock) ON
+	LEFT OUTER JOIN Erp.SalesRep sr with(nolock) ON
 	sr.Company = t.Company
 	AND sr.SalesRepCode = t.SalesRepCode
 
-	LEFT OUTER JOIN TaskType tt with(nolock) ON
+	LEFT OUTER JOIN Erp.TaskType tt with(nolock) ON
 	tt.Company = t.Company
 	AND tt.TypeCode = t.TypeCode
 	
-	INNER JOIN Customer cust with(nolock) ON
+	INNER JOIN Erp.Customer cust with(nolock) ON
 	cust.Company = t.Company
 	AND cust.CustNum = t.Key1
+
+	LEFT OUTER JOIN Erp.SaleAuth sra with(nolock) ON
+	sra.Company = sr.Company
+	AND sra.SalesRepCode = sr.SalesRepCode
+
+	LEFT OUTER JOIN Erp.UserFile u with(nolock) ON
+	u.DcdUserID = sra.DcdUserID
 WHERE
 	t.RelatedToFile = 'Customer'
-	--AND (sr.EMailAddress IS NULL OR sr.EMailAddress = '{EmailAddress}')
+	AND (sr.EMailAddress IS NULL OR u.EMailAddress = '{EmailAddress}')
 	AND t.Complete = 0
-	--AND t.Company = 'YourCompanyID'  -- Set this to a specific company ID if you have more than one
