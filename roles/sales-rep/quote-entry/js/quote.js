@@ -247,6 +247,9 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function AddLine(bezl) {
+        if (bezl.data.QuoteDtls === undefined) {
+            bezl.data.QuoteDtls = [];
+        }
 
         var lineNum = Math.max.apply(Math, bezl.data.QuoteDtls.map(function (dtl) { return dtl.QuoteLine; }));
 
