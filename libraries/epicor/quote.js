@@ -144,6 +144,59 @@ define(function () {
                 CustNum: custNum,
                 RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
             });
+        });
+
+
+        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+            {
+                "Connection": connection,
+                "Company": company,
+                "QuoteNum": quoteNum,
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
+    }
+
+    function SaveAttributes(bezl, connection, company, mktgEvnt, quoteData) {
+        bezl.vars.saving = true;
+
+        bezl.vars.ds.QuoteHed = [];
+        bezl.vars.ds.QuoteDtl = [];
+        bezl.vars.ds.QuoteQty = [];
+        bezl.vars.savingQuote = true;
+        var quoteNum;
+        var custNum;
+
+        bezl.vars.ds.QuoteHed.push({
+            QuoteNum: quoteData.quoteNum,
+            CustNum: quoteData.custNum,
+            CustID: quoteData.customerId,
+            BTCustNum: quoteData.custNum,
+            Name: quoteData.customerName,
+            CustomerCustID: quoteData.customerId,
+            MktgCampaignID: quoteData.mktgCamp,
+            MktgEvntSeq: quoteData.mktgEvnt,
+            ProjectName_c: quoteData.quoteDesc,
+            Company: company,
+            RowMod: 'U'
+        });
+
+        UpdateCustomField(bezl, quoteData.quoteNum, quoteData.quoteDesc, 'ProjectName_c');
+
+        quoteNum = quoteData.quoteNum;
+        custNum = quoteData.custNum;
+
+        bezl.data.QuoteDtls.forEach(dtl => {
+            bezl.vars.ds.QuoteDtl.push({
+                QuoteNum: quoteNum,
+                QuoteLine: dtl.QuoteLine,
+                PartNum: dtl.PartNum,
+                LineDesc: (dtl.LineComment === '') ? dtl.PartNum : dtl.LineComment,
+                OrderQty: dtl.OrderQty,
+                SellingExpectedUM: dtl.SellingExpectedUM,
+                Company: company,
+                CustNum: custNum,
+                RowMod: (dtl.Deleted === 1) ? 'D' : 'U'
+            });
 
             var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
             if (dtl.Attributes !== undefined) {

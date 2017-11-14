@@ -154,13 +154,12 @@ define(function () {
             bezl.vars.savingQuote = false;
         }
 
-        if (bezl.data.saveQuote && bezl.data.updateDesc) {
+        if (bezl.data.saveQuote) {
             bezl.dataService.remove('saveQuote');
-            bezl.dataService.remove('updateDesc');
             setTimeout(() => {
                 bezl.vars.saving = false;
                 bezl.vars.savingQuote = false;
-            }, 5000);
+            }, 500);
         }
 
         if (bezl.data.updateSales) {
