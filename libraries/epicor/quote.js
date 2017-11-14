@@ -184,7 +184,21 @@ define(function () {
             ]
         }, 0);
 
+        bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
+        bezl.vars.ds.QuoteHed.push({
+            QuoteNum: quoteData.quoteNum,
+            CustNum: quoteData.custNum,
+            CustID: quoteData.customerId,
+            BTCustNum: quoteData.custNum,
+            Name: quoteData.customerName,
+            CustomerCustID: quoteData.customerId,
+            MktgCampaignID: quoteData.mktgCamp,
+            MktgEvntSeq: quoteData.mktgEvnt,
+            ProjectName_c: quoteData.quoteDesc,
+            Company: bezl.vars.Company,
+            RowMod: 'U'
+        });
         var deletingQuote = bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine);
         bezl.vars.ds.QuoteDtl.push({
             QuoteNum: bezl.vars.quoteData.quoteNum,
