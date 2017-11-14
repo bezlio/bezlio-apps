@@ -175,38 +175,35 @@ define(function () {
     }
 
     function DeleteLine(bezl, quoteLine) {
-        console.log("Quote: " + bezl.vars.quoteData.quoteNum);
-        console.log("Cust: " + bezl.vars.quoteData.custNum);
-        console.log("Company: " + bezl.vars.Company);
-        // bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-        //     "QueryName": "DeleteAttributes",
-        //     "Parameters": [
-        //         { Key: "Company", Value: bezl.vars.Company },
-        //         { Key: "QuoteNum", Value: quoteNum },
-        //         { Key: "QuoteLine", Value: quoteLine }
-        //     ]
-        // }, 0);
+        bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+            "QueryName": "DeleteAttributes",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
+                { Key: "QuoteLine", Value: bezl.vars.quoteData.quoteLine }
+            ]
+        }, 0);
 
-        // bezl.vars.ds.QuoteDtl = [];
-        // var deletingQuote = bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine);
-        // bezl.vars.ds.QuoteDtl.push({
-        //     QuoteNum: quoteNum,
-        //     QuoteLine: deletingQuote.QuoteLine,
-        //     PartNum: deletingQuote.PartNum,
-        //     Company: company,
-        //     CustNum: custNum,
-        //     RowMod: 'D'
-        // });
+        bezl.vars.ds.QuoteDtl = [];
+        var deletingQuote = bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine);
+        bezl.vars.ds.QuoteDtl.push({
+            QuoteNum: bezl.vars.quoteData.quoteNum,
+            QuoteLine: deletingQuote.QuoteLine,
+            PartNum: deletingQuote.PartNum,
+            Company: bezl.vars.Company,
+            CustNum: bezl.vars.quoteData.custNum,
+            RowMod: 'D'
+        });
 
-        // var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
-        // bezl.data.QuoteDtls.splice(index, 1);
-        // bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
-        //     {
-        //         "Connection": connection,
-        //         "Company": company,
-        //         "QuoteNum": quoteNum,
-        //         "ds": JSON.stringify(bezl.vars.ds)
-        //     }, 0);
+        var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
+        bezl.data.QuoteDtls.splice(index, 1);
+        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+            {
+                "Connection": bezl.vars.Connection,
+                "Company": bezl.vars.Company,
+                "QuoteNum": bezl.vars.quoteData.quoteNum,
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
     }
 
     function SaveAttributes(connection, company, quoteNum, dtl) {
