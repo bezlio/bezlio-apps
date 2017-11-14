@@ -254,7 +254,7 @@ define(['../../../libraries/epicor/quote.js'], function (quote_lib) {
 
         bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', ListItem: true, Deleted: 0 });
 
-
+        quote_lib.testQuote();
     }
 
     function ChangeStdPart(bezl, lineNum) {
