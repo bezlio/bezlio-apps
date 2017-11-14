@@ -186,31 +186,30 @@ define(function () {
 
 
         var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
-        bezl.data.QuoteDtls.splice(index, 1);
 
         bezl.vars.ds.QuoteDtl = [];
-        console.log(bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine === quoteLine));
-        // bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine).forEach(dtl => {
-        //     bezl.vars.ds.QuoteDtl.push({
-        //         QuoteNum: quoteNum,
-        //         QuoteLine: dtl.QuoteLine,
-        //         PartNum: dtl.PartNum,
-        //         LineDesc: (dtl.LineComment === '' || dtl.LineComment === undefined) ? dtl.PartNum : dtl.LineComment,
-        //         OrderQty: dtl.OrderQty,
-        //         SellingExpectedUM: dtl.SellingExpectedUM,
-        //         Company: company,
-        //         CustNum: custNum,
-        //         RowMod: 'D'
-        //     });
-        // });
+        bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine).forEach(dtl => {
+            bezl.vars.ds.QuoteDtl.push({
+                QuoteNum: quoteNum,
+                QuoteLine: dtl.QuoteLine,
+                PartNum: dtl.PartNum,
+                LineDesc: (dtl.LineComment === '' || dtl.LineComment === undefined) ? dtl.PartNum : dtl.LineComment,
+                OrderQty: dtl.OrderQty,
+                SellingExpectedUM: dtl.SellingExpectedUM,
+                Company: company,
+                CustNum: custNum,
+                RowMod: 'D'
+            });
+        });
 
-        // bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
-        //     {
-        //         "Connection": connection,
-        //         "Company": company,
-        //         "QuoteNum": quoteNum,
-        //         "ds": JSON.stringify(bezl.vars.ds)
-        //     }, 0);
+        bezl.data.QuoteDtls.splice(index, 1);
+        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+            {
+                "Connection": connection,
+                "Company": company,
+                "QuoteNum": quoteNum,
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
     }
 
     function SaveAttributes(connection, company, quoteNum, dtl) {
