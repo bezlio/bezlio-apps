@@ -37,6 +37,7 @@ define(function () {
             MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: bezl.vars.Company,
+            ProjectName_c: bezl.vars.quoteData.quoteDesc,
             ForToPMDate_c: null,
             RowMod: 'U'
         });
@@ -56,6 +57,7 @@ define(function () {
         });
     }
 
+    // left in for older versions
     function UpdateSales(bezl, quoteNum, salesVal) {
         bezl.vars.saving = true;
 
@@ -69,8 +71,37 @@ define(function () {
         }, 0);
     }
 
+<<<<<<< HEAD
     function TestQuote() {
         console.log('test successful!');
+=======
+    function UpdateCustomField(bezl, quoteNum, val, columnName) {
+        bezl.vars.saving = true;
+        var dataSubName = "";
+
+        //Check for nulls
+        if(!val) {
+            val = "";
+        }
+
+        if(columnName == 'Sales_c') {
+            dataSubName = "updateSales";
+        } else if(columnName == 'ProjectName_c') {
+            dataSubName = "updateDesc";
+        } else {
+            dataSubName = "updateCustomField";
+        }
+
+         bezl.dataService.add(dataSubName, 'brdb', 'SQLServer', 'ExecuteStoredProcedure', {
+            "Context": "sales-rep", "Connection": "Epicor Production", "QueryName": "erp.updateCustomField",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: quoteNum },
+                { Key: "ColumnValue", Value: val },
+                { Key: "ColumnName", Value: columnName }
+            ]
+        }, 0);
+>>>>>>> 7df25994f6dde5f3cdd490d7824099e4d6970389
     }
 
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
@@ -92,9 +123,12 @@ define(function () {
             CustomerCustID: quoteData.customerId,
             MktgCampaignID: quoteData.mktgCamp,
             MktgEvntSeq: quoteData.mktgEvnt,
+            ProjectName_c: quoteData.quoteDesc,
             Company: company,
             RowMod: 'U'
         });
+
+        UpdateCustomField(bezl, quoteData.quoteNum, quoteData.quoteDesc, 'ProjectName_c');
 
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
@@ -339,6 +373,10 @@ define(function () {
         deleteQuote: DeleteQuote,
         updateCustomer: UpdateCustomer,
         updateSales: UpdateSales,
+<<<<<<< HEAD
         testQuote: TestQuote
+=======
+        updateCustomField: UpdateCustomField
+>>>>>>> 7df25994f6dde5f3cdd490d7824099e4d6970389
     }
 });

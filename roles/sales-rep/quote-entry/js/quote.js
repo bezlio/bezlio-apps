@@ -137,6 +137,7 @@ define(['../../../libraries/epicor/quote.js'], function (quote_lib) {
             sales: quote.Sales,
             mktgCamp: quote.MktgCampaignID,
             mktgEvnt: quote.MktgEvntSeq,
+            quoteDesc: quote.ProjectName_c,
             quoteLines: []
         };
 

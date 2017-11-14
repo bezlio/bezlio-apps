@@ -61,7 +61,8 @@ define(function () {
                 Company: bezl.data.newQuote.QuoteHed[0].Company,
                 CustNum: bezl.data.newQuote.QuoteHed[0].CustNum,
                 MktgCampaignID: bezl.data.newQuote.QuoteHed[0].MktgCampaignID,
-                MktgEvntSeq: bezl.data.newQuote.QuoteHed[0].MktgEvntSeq
+                MktgEvntSeq: bezl.data.newQuote.QuoteHed[0].MktgEvntSeq,
+                QuoteDesc: bezl.data.newQuote.QuoteHed[0].ProjectName_c
             }
 
             var quoteExists = bezl.data.Quotes.find(qte => qte.QuoteNum === newQuote.QuoteNum);
@@ -153,8 +154,9 @@ define(function () {
             bezl.vars.savingQuote = false;
         }
 
-        if (bezl.data.saveQuote) {
+        if (bezl.data.saveQuote && bezl.data.updateDesc) {
             bezl.dataService.remove('saveQuote');
+            bezl.dataService.remove('updateDesc');
             setTimeout(() => {
                 bezl.vars.saving = false;
                 bezl.vars.savingQuote = false;
@@ -197,7 +199,7 @@ define(function () {
             bezl.vars.epicorParts = bezl.data.EpicorParts;
             bezl.dataService.remove('EpicorParts');
 
-            console.log(JSON.parse(JSON.stringify(bezl.vars.epicorParts)));
+            //console.log(JSON.parse(JSON.stringify(bezl.vars.epicorParts)));
 
             // var typeAhead = function (lineNum) {
             //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
