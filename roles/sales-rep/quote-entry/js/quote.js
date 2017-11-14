@@ -163,7 +163,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         };
 
         bezl.dataService.remove('Attributes');
-        //bezl.dataService.remove('QuoteDtls');
     }
 
     function ChangeMktgCamp(bezl, campID) {
