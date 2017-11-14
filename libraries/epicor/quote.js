@@ -180,7 +180,7 @@ define(function () {
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
                 { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
-                { Key: "QuoteLine", Value: bezl.vars.quoteData.quoteLine }
+                { Key: "QuoteLine", Value: quoteLine }
             ]
         }, 0);
 
