@@ -132,14 +132,12 @@ define(function () {
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
 
-        console.log(bezl.data.QuoteDtls);
-
         bezl.data.QuoteDtls.forEach(dtl => {
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
                 PartNum: dtl.PartNum,
-                LineDesc: (dtl.LineComment === '') ? dtl.PartNum : dtl.LineComment,
+                LineDesc: (dtl.LineComment === '' || dtl.LineComment === undefined) ? dtl.PartNum : dtl.LineComment,
                 OrderQty: dtl.OrderQty,
                 SellingExpectedUM: dtl.SellingExpectedUM,
                 Company: company,
@@ -149,7 +147,6 @@ define(function () {
         });
 
         console.log(bezl.vars.ds);
-
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
