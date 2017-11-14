@@ -197,13 +197,13 @@ define(function () {
 
         var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
         bezl.data.QuoteDtls.splice(index, 1);
-        // bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
-        //     {
-        //         "Connection": bezl.vars.Connection,
-        //         "Company": bezl.vars.Company,
-        //         "QuoteNum": bezl.vars.quoteData.quoteNum,
-        //         "ds": JSON.stringify(bezl.vars.ds)
-        //     }, 0);
+        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+            {
+                "Connection": bezl.vars.Connection,
+                "Company": bezl.vars.Company,
+                "QuoteNum": bezl.vars.quoteData.quoteNum,
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
     }
 
     function SaveAttributes(connection, company, quoteNum, dtl) {
