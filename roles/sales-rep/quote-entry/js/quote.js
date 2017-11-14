@@ -289,7 +289,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function DeleteLine(bezl, lineNum) {
-        quote_lib.deleteLine(bezl, bezl.vars.quoteData.QuoteNum, lineNum);
+        quote_lib.deleteLine(bezl, lineNum);
     }
 
     function ConfigureLine(bezl, partNum, quoteLine, listItem) {

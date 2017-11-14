@@ -174,7 +174,10 @@ define(function () {
             }, 0);
     }
 
-    function DeleteLine(bezl, quoteNum, quoteLine) {
+    function DeleteLine(bezl, quoteLine) {
+        console.log("Quote: " + bezl.vars.quoteData.QuoteNum);
+        console.log("Cust: " + bezl.vars.quoteData.CustNum);
+        console.log("Company: " + bezl.vars.Company);
         // bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
         //     "QueryName": "DeleteAttributes",
         //     "Parameters": [
@@ -184,30 +187,26 @@ define(function () {
         //     ]
         // }, 0);
 
-        bezl.vars.ds.QuoteDtl = [];
-        bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine).forEach(dtl => {
-            bezl.vars.ds.QuoteDtl.push({
-                QuoteNum: quoteNum,
-                QuoteLine: dtl.QuoteLine,
-                PartNum: dtl.PartNum,
-                LineDesc: (dtl.LineComment === '' || dtl.LineComment === undefined) ? dtl.PartNum : dtl.LineComment,
-                OrderQty: dtl.OrderQty,
-                SellingExpectedUM: dtl.SellingExpectedUM,
-                Company: company,
-                CustNum: custNum,
-                RowMod: 'D'
-            });
-        });
+        // bezl.vars.ds.QuoteDtl = [];
+        // var deletingQuote = bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine);
+        // bezl.vars.ds.QuoteDtl.push({
+        //     QuoteNum: quoteNum,
+        //     QuoteLine: deletingQuote.QuoteLine,
+        //     PartNum: deletingQuote.PartNum,
+        //     Company: company,
+        //     CustNum: custNum,
+        //     RowMod: 'D'
+        // });
 
-        var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
-        bezl.data.QuoteDtls.splice(index, 1);
-        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
-            {
-                "Connection": connection,
-                "Company": company,
-                "QuoteNum": quoteNum,
-                "ds": JSON.stringify(bezl.vars.ds)
-            }, 0);
+        // var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
+        // bezl.data.QuoteDtls.splice(index, 1);
+        // bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+        //     {
+        //         "Connection": connection,
+        //         "Company": company,
+        //         "QuoteNum": quoteNum,
+        //         "ds": JSON.stringify(bezl.vars.ds)
+        //     }, 0);
     }
 
     function SaveAttributes(connection, company, quoteNum, dtl) {
