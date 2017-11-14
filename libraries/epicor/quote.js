@@ -127,7 +127,7 @@ define(function () {
             RowMod: 'U'
         });
 
-        UpdateCustomField(bezl, quoteData.quoteNum, quoteData.quoteDesc, 'ProjectName_c');
+        //UpdateCustomField(bezl, quoteData.quoteNum, quoteData.quoteDesc, 'ProjectName_c');
 
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
