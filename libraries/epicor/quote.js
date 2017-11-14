@@ -175,8 +175,8 @@ define(function () {
     }
 
     function DeleteLine(bezl, quoteLine) {
-        console.log("Quote: " + bezl.vars.quoteData.QuoteNum);
-        console.log("Cust: " + bezl.vars.quoteData.CustNum);
+        console.log("Quote: " + bezl.vars.quoteData.quoteNum);
+        console.log("Cust: " + bezl.vars.quoteData.custNum);
         console.log("Company: " + bezl.vars.Company);
         // bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
         //     "QueryName": "DeleteAttributes",
