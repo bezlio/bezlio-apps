@@ -1,4 +1,4 @@
-define(['../../../libraries/epicor/quote.js'], function (quote_lib) {
+define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
     function RunQuery(bezl, queryName) {
         switch (queryName) {
