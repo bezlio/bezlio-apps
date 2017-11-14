@@ -69,6 +69,10 @@ define(function () {
         }, 0);
     }
 
+    function TestQuote() {
+        console.log('test successful!');
+    }
+
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
         bezl.vars.saving = true;
 
@@ -334,6 +338,7 @@ define(function () {
         saveQuote: SaveQuote,
         deleteQuote: DeleteQuote,
         updateCustomer: UpdateCustomer,
-        updateSales: UpdateSales
+        updateSales: UpdateSales,
+        testQuote: TestQuote
     }
 });

@@ -1,4 +1,4 @@
-define(function () {
+define(['../../../libraries/epicor/quote.js'], function (quote_lib) {
 
     function RunQuery(bezl, queryName) {
         switch (queryName) {
@@ -252,6 +252,8 @@ define(function () {
         lineNum = (lineNum === -Infinity) ? 0 : lineNum;
 
         bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', ListItem: true, Deleted: 0 });
+
+
     }
 
     function ChangeStdPart(bezl, lineNum) {
