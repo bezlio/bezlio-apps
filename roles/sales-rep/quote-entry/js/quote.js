@@ -261,11 +261,13 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function ChangeStdPart(bezl, lineNum) {
-        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ListItem = false;
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ListItem = !bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ListItem;
 
-        setTimeout(() => {
-            typeAheadPart(bezl, lineNum);
-        }, 1500);
+        if (bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).ListItem == false) {
+            setTimeout(() => {
+                typeAheadPart(bezl, lineNum);
+            }, 1500);
+        }
     }
 
     var typeAheadPart = function (bezl, lineNum) {
