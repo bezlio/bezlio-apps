@@ -289,7 +289,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function DeleteLine(bezl, lineNum) {
-        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Deleted = 1;
+        quote_lib.deleteLine(bezl.vars.quoteData.QuoteNum, lineNum);
     }
 
     function ConfigureLine(bezl, partNum, quoteLine, listItem) {
