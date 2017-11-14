@@ -174,7 +174,7 @@ define(function () {
             }, 0);
     }
 
-    function DeleteLine(quoteNum, quoteLine) {
+    function DeleteLine(bezl, quoteNum, quoteLine) {
         bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
             "QueryName": "DeleteAttributes",
             "Parameters": [
