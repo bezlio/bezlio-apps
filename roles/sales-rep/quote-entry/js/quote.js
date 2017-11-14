@@ -293,7 +293,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function ConfigureLine(bezl, partNum, quoteLine) {
-        var line = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === parm.QuoteLine);
+        var line = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
         if (line.Display === true) {
             bezl.vars.updatingAttributes = false;
             console.log('show or not');
