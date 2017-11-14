@@ -132,6 +132,8 @@ define(function () {
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
 
+        console.log(bezl.data.QuoteDtls);
+
         bezl.data.QuoteDtls.forEach(dtl => {
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
