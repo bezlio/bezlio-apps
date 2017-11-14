@@ -187,15 +187,14 @@ define(function () {
         bezl.vars.ds.QuoteHed = [];
         bezl.vars.ds.QuoteDtl = [];
         bezl.vars.ds.QuoteHed.push({
-            QuoteNum: quoteData.quoteNum,
-            CustNum: quoteData.custNum,
-            CustID: quoteData.customerId,
-            BTCustNum: quoteData.custNum,
-            Name: quoteData.customerName,
-            CustomerCustID: quoteData.customerId,
-            MktgCampaignID: quoteData.mktgCamp,
-            MktgEvntSeq: quoteData.mktgEvnt,
-            ProjectName_c: quoteData.quoteDesc,
+            QuoteNum: bezl.vars.quoteData.quoteNum,
+            CustNum: bezl.vars.quoteData.custNum,
+            CustID: bezl.vars.quoteData.customerId,
+            BTCustNum: bezl.vars.quoteData.custNum,
+            Name: bezl.vars.quoteData.customerName,
+            CustomerCustID: bezl.vars.quoteData.customerId,
+            MktgCampaignID: bezl.vars.quoteData.mktgCamp,
+            MktgEvntSeq: bezl.vars.quoteData.mktgEvnt,
             Company: bezl.vars.Company,
             RowMod: 'U'
         });
