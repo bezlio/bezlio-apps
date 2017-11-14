@@ -175,17 +175,14 @@ define(function () {
     }
 
     function DeleteLine(bezl, quoteNum, quoteLine) {
-        bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-            "QueryName": "DeleteAttributes",
-            "Parameters": [
-                { Key: "Company", Value: bezl.vars.Company },
-                { Key: "QuoteNum", Value: quoteNum },
-                { Key: "QuoteLine", Value: quoteLine }
-            ]
-        }, 0);
-
-
-        var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
+        // bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+        //     "QueryName": "DeleteAttributes",
+        //     "Parameters": [
+        //         { Key: "Company", Value: bezl.vars.Company },
+        //         { Key: "QuoteNum", Value: quoteNum },
+        //         { Key: "QuoteLine", Value: quoteLine }
+        //     ]
+        // }, 0);
 
         bezl.vars.ds.QuoteDtl = [];
         bezl.data.QuoteDtls.find(quoteDtl => quoteDtl.QuoteLine == quoteLine).forEach(dtl => {
@@ -202,6 +199,7 @@ define(function () {
             });
         });
 
+        var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
         bezl.data.QuoteDtls.splice(index, 1);
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
