@@ -71,28 +71,28 @@ define(function () {
         }, 0);
     }
 
-<<<<<<< HEAD
     function TestQuote() {
         console.log('test successful!');
-=======
+    }
+
     function UpdateCustomField(bezl, quoteNum, val, columnName) {
         bezl.vars.saving = true;
         var dataSubName = "";
 
         //Check for nulls
-        if(!val) {
+        if (!val) {
             val = "";
         }
 
-        if(columnName == 'Sales_c') {
+        if (columnName == 'Sales_c') {
             dataSubName = "updateSales";
-        } else if(columnName == 'ProjectName_c') {
+        } else if (columnName == 'ProjectName_c') {
             dataSubName = "updateDesc";
         } else {
             dataSubName = "updateCustomField";
         }
 
-         bezl.dataService.add(dataSubName, 'brdb', 'SQLServer', 'ExecuteStoredProcedure', {
+        bezl.dataService.add(dataSubName, 'brdb', 'SQLServer', 'ExecuteStoredProcedure', {
             "Context": "sales-rep", "Connection": "Epicor Production", "QueryName": "erp.updateCustomField",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
@@ -101,7 +101,6 @@ define(function () {
                 { Key: "ColumnName", Value: columnName }
             ]
         }, 0);
->>>>>>> 7df25994f6dde5f3cdd490d7824099e4d6970389
     }
 
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
@@ -373,10 +372,6 @@ define(function () {
         deleteQuote: DeleteQuote,
         updateCustomer: UpdateCustomer,
         updateSales: UpdateSales,
-<<<<<<< HEAD
         testQuote: TestQuote
-=======
-        updateCustomField: UpdateCustomField
->>>>>>> 7df25994f6dde5f3cdd490d7824099e4d6970389
     }
 });
