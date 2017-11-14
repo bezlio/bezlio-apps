@@ -10,7 +10,6 @@ define(function () {
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
-            console.log(bezl.data.QuoteDtls);
             bezl.vars.linesloading = false;
 
             bezl.data.QuoteDtls.map(dtl => {

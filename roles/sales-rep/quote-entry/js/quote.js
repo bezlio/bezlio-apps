@@ -305,6 +305,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function ChangePart(bezl, lineNum, partNum) {
+        console.log("Line: " + lineNum + " | Part: " + partNum);
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).PartNum = partNum;
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
     }
