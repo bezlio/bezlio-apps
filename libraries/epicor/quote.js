@@ -390,6 +390,6 @@ define(function () {
         deleteQuote: DeleteQuote,
         updateCustomer: UpdateCustomer,
         updateSales: UpdateSales,
-        testQuote: TestQuote
+        deleteLine: DeleteLine
     }
 });
