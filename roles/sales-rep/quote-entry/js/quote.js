@@ -255,7 +255,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
         lineNum = (lineNum === -Infinity) ? 0 : lineNum;
 
-        bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: '', OrderQty: 1, SellingExpectedUM: 'EA', ListItem: true, Deleted: 0 });
+        bezl.data.QuoteDtls.push({ QuoteNum: bezl.vars.quoteData.quoteNum, QuoteLine: lineNum + 1, PartNum: 'Glass', OrderQty: 1, SellingExpectedUM: 'EA', ListItem: true, Deleted: 0 });
 
         //quote_lib.saveQuote(bezl, bezl.vars.Connection, bezl.vars.Company, bezl.vars.MktgEvent, bezl.vars.quoteData);
     }
