@@ -292,7 +292,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         quote_lib.deleteLine(bezl, lineNum);
     }
 
-    function ConfigureLine(bezl, partNum, quoteLine, listItem) {
+    function ConfigureLine(bezl, partNum, quoteLine) {
+        var line = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === parm.QuoteLine);
         if (line.Display === true) {
             bezl.vars.updatingAttributes = false;
             console.log('show or not');
