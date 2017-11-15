@@ -24,21 +24,21 @@ define(function () {
         var ds =
             {
                 'CRMCall':
-                [
-                    {
-                        'Company': company
-                        , 'RelatedToFile': 'customer'
-                        , 'Key1': custNum
-                        , 'Key2': ''
-                        , 'Key3': ''
-                        , 'CallDesc': shortSummary
-                        , 'CallText': details
-                        , 'CallContactType': 'Customer'
-                        , 'CallCustNum': custNum
-                        , 'CallTypeCode': type
-                        , 'SalesRepCode': salesRep
-                    }
-                ]
+                    [
+                        {
+                            'Company': company
+                            , 'RelatedToFile': 'customer'
+                            , 'Key1': custNum
+                            , 'Key2': ''
+                            , 'Key3': ''
+                            , 'CallDesc': shortSummary
+                            , 'CallText': details
+                            , 'CallContactType': 'Customer'
+                            , 'CallCustNum': custNum
+                            , 'CallTypeCode': type
+                            , 'SalesRepCode': salesRep
+                        }
+                    ]
             };
 
         bezl.dataService.add(
@@ -112,6 +112,7 @@ define(function () {
                         , "PercentComplete": tasks[i].PercentComplete
                         , "PriorityCode": tasks[i].PriorityCode
                         , "TaskDescription": tasks[i].TaskDescription
+                        , "TaskComment": tasks[i].TaskComment
                         , "StartDate": tasks[i].StartDate
                         , "DueDate": tasks[i].DueDate
                         , "TypeCode": tasks[i].TaskType

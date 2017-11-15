@@ -1,4 +1,4 @@
-define(function () {
+define(["./task.js"], function (task) {
 
     function OnDataChange(bezl) {
         if (bezl.data.TaskTypes && bezl.vars.selectedAccount.Tasks) {
@@ -27,6 +27,8 @@ define(function () {
 
             bezl.data.UpdateTasks = null;
             bezl.dataService.remove('UpdateTasks');
+
+            task.runQuery(bezl, 'Tasks');
         }
 
         //added ability to refresh tasks from Epicor side
@@ -34,12 +36,15 @@ define(function () {
             bezl.vars.selectedAccount.Tasks = [];
             bezl.data.Tasks.forEach(task => {
                 task.RowState = "Updated";
+                task.StartDate = task.StartDate.split('T')[0];
+                task.DueDate = task.DueDate.split('T')[0];
                 bezl.vars.selectedAccount.Tasks.push(task);
             });
 
             localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
 
             bezl.dataService.remove('Tasks');
+            bezl.vars.saving = false;
         }
     }
 

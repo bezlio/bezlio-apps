@@ -49,9 +49,9 @@
     "<div class=\"row\" *ngIf=\"bezl.vars.selectedAccount.ID != null\">",
     "  <div class=\"col-sm-6\"><h3>{{bezl.vars.selectedAccount.Name}}</h3></div>",
     "  <div class=\"col-sm-6 pull-right\">",
-    "    <button (click)=\"bezl.vars.showSettingsDialog=true\" class=\"btn btn-md btn-default pull-right\">Settings</button>",
-    "    <button (click)=\"bezl.functions.refresh()\" class=\"btn btn-md btn-default pull-right\">Refresh</button>",
-    "    <button (click)=\"bezl.functions.addTask()\" class=\"btn btn-md btn-default pull-right\">Add Task</button>",
+    "    <button [disabled]=\"bezl.vars.saving\" (click)=\"bezl.vars.showSettingsDialog=true\" class=\"btn btn-md btn-default pull-right\">Settings</button>",
+    "    <button [disabled]=\"bezl.vars.saving\" (click)=\"bezl.functions.refresh()\" class=\"btn btn-md btn-default pull-right\">Refresh</button>",
+    "    <button [disabled]=\"bezl.vars.saving\" (click)=\"bezl.functions.addTask()\" class=\"btn btn-md btn-default pull-right\">Add Task</button>",
     "  </div>",
     "</div>",
     "",
@@ -87,13 +87,13 @@
     "                 (keyup)=\"bezl.functions['taskChange'](task)\">",
     "        </div>",
     "        <div class=\"col-sm-3 hidden-xs\">",
-    "\t\t\t<button (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>",
-    "          \t<button *ngIf=\"task.RowState == 'Updated'\" type=\"button\" class=\"btn btn-md btn-default pull-right\" (click)=\"bezl.functions.updateTasks(task)\">Update</button>",
+    "\t\t\t<button [disabled]=\"bezl.vars.saving\" (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>",
+    "          \t<button [disabled]=\"bezl.vars.saving\" *ngIf=\"task.RowState == 'Updated'\" type=\"button\" class=\"btn btn-md btn-default pull-right\" (click)=\"bezl.functions.updateTasks(task)\">Update</button>",
     "        </div>",
     "      </div>",
     "      <div class=\"col-sm-3 row pull-left visible-xs\">",
-    "\t\t\t<button (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>",
-    "        \t<button *ngIf=\"task.RowState == 'Updated'\" type=\"button\" class=\"btn btn-md btn-default pull-right\" (click)=\"bezl.functions.updateTasks()\">Update</button>",
+    "\t\t\t<button [disabled]=\"bezl.vars.saving\" (click)=\"bezl.functions['selectRow'](task)\" class=\"btn btn-md btn-default pull-right\">Details</button>",
+    "        \t<button [disabled]=\"bezl.vars.saving\" *ngIf=\"task.RowState == 'Updated'\" type=\"button\" class=\"btn btn-md btn-default pull-right\" (click)=\"bezl.functions.updateTasks()\">Update</button>",
     "        </div>",
     "      <!-- END: Main row per task -->",
     "      ",
@@ -149,6 +149,13 @@
     "                         (change)=\"bezl.functions['taskChange'](task)\">",
     "                </div>",
     "              </div>",
+    "              <div class=\"row\">",
+    "                <div class=\"col-sm-2\">Comments:</div>",
+    "                <div class=\"col-sm-10\">    ",
+    "                  <input class=\"form-control\" type=\"text\" ",
+    "                         [(ngModel)]=\"task.TaskComment\">",
+    "                </div>",
+    "              </div>",
     "            </div>",
     "          </div>",
     "        </div>",
@@ -175,7 +182,7 @@
   "functions": [
     {
       "method": "ngOnInit",
-      "code": "bezl.vars.loading = true;\nbezl.vars.selectedAccount = {};\n\n// Prompt for the Platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
+      "code": "bezl.vars.loading = true;\nbezl.vars.saving = false;\nbezl.vars.selectedAccount = {};\n\n// Prompt for the Platform if it has not been previously specified\nif (typeof(Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\n\tbezl.vars.Company = localStorage.getItem(\"Company\");\n  \tbezl.vars.Connection = localStorage.getItem(\"Connection\");\n} else {\n    setTimeout(function(){ bezl.vars.showSettingsDialog = true; }, 3000);\n}\n\nbezl.functions['setConfig']();\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function(functions) {\n\tfunctions.onStartup(bezl)\n});",
       "declares": [
         "$",
         "parm",
@@ -184,7 +191,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "bezl.vars.loading = true;\r\nbezl.vars.selectedAccount = {};\r\n// Prompt for the Platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
+      "compiled": "bezl.vars.loading = true;\r\nbezl.vars.saving = false;\r\nbezl.vars.selectedAccount = {};\r\n// Prompt for the Platform if it has not been previously specified\r\nif (typeof (Storage) !== \"undefined\" && localStorage.getItem(\"Platform\")) {\r\n    bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n    bezl.vars.Company = localStorage.getItem(\"Company\");\r\n    bezl.vars.Connection = localStorage.getItem(\"Connection\");\r\n}\r\nelse {\r\n    setTimeout(function () {\r\n        bezl.vars.showSettingsDialog = true;\r\n    }, 3000);\r\n}\r\nbezl.functions['setConfig']();\r\nrequire([bezl.vars.config.baseJsUrl + 'onStartup.js'], function (functions) {\r\n    functions.onStartup(bezl);\r\n});\r\n"
     },
     {
       "method": "onDataChange",
@@ -239,7 +246,7 @@
     },
     {
       "method": "updateTasks",
-      "code": "if(parm) {\n\trequire([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n \t\tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\t\tfunctions.updateTasks(bezl, parm);\n\t});\t  \n} else { \n\trequire([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n  \t\tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\t\tfunctions.updateTasks(bezl, '');\n\t});\n}",
+      "code": "bezl.vars.saving = true;\n\nif(parm) {\n\trequire([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n \t\tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\t\tfunctions.updateTasks(bezl, parm);\n\t});\t  \n} else { \n\trequire([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n  \t\tbezl.vars.Platform = localStorage.getItem(\"Platform\");\n\t\tfunctions.updateTasks(bezl, '');\n\t});\n}",
       "declares": [
         "$",
         "parm",
@@ -248,19 +255,20 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (parm) {\r\n    require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n        bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n        functions.updateTasks(bezl, parm);\r\n    });\r\n}\r\nelse {\r\n    require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n        bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n        functions.updateTasks(bezl, '');\r\n    });\r\n}\r\n"
+      "compiled": "bezl.vars.saving = true;\r\nif (parm) {\r\n    require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n        bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n        functions.updateTasks(bezl, parm);\r\n    });\r\n}\r\nelse {\r\n    require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n        bezl.vars.Platform = localStorage.getItem(\"Platform\");\r\n        functions.updateTasks(bezl, '');\r\n    });\r\n}\r\n"
     },
     {
       "method": "refresh",
-      "code": "require([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Tasks')\n});",
+      "code": "bezl.vars.saving = true;\n\nrequire([bezl.vars.config.baseJsUrl + 'task.js'], function(functions) {\n\tfunctions.runQuery(bezl, 'Tasks')\n});",
       "declares": [
         "$",
         "parm",
         "bezl",
         "dataResp",
-        "require"
+        "require",
+        "FusionCharts"
       ],
-      "compiled": "require([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Tasks');\r\n});\r\n"
+      "compiled": "bezl.vars.saving = true;\r\nrequire([bezl.vars.config.baseJsUrl + 'task.js'], function (functions) {\r\n    functions.runQuery(bezl, 'Tasks');\r\n});\r\n"
     },
     {
       "method": "selectRow",
@@ -300,7 +308,7 @@
     },
     {
       "method": "setConfig",
-      "code": "bezl.vars.config = {};\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: The version number of this app. Setting this vill use the javascript\n//          include files in the corresponding \"versions\" subfolder. An empty string\n//          will use the \"development\" javascript files in the root directory.\n// libVersion: The version number of the library javascript include files to use.\n// baseUrl: The base URL of the javascript include files. Generally this should be an\n//          empty string and the correct path will be automatically determined.\n//          However, for development you may wish to point this to a RawGit URL of\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\nbezl.vars.config.version = \"1.2\";\nbezl.vars.config.libVersion = \"1.3\";\nbezl.vars.config.baseUrl = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/task-view-updates\";\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/roles/sales-rep/tasks-view/\"\n  \t\t\t\t\t\t\t+ (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t\t+ \"js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/libraries/\"\n\t\t\t\t\t\t\t+ (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\")",
+      "code": "bezl.vars.config = {};\n\n// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: The version number of this app. Setting this vill use the javascript\n//          include files in the corresponding \"versions\" subfolder. An empty string\n//          will use the \"development\" javascript files in the root directory.\n// libVersion: The version number of the library javascript include files to use.\n// baseUrl: The base URL of the javascript include files. Generally this should be an\n//          empty string and the correct path will be automatically determined.\n//          However, for development you may wish to point this to a RawGit URL of\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\nbezl.vars.config.version = \"1.2\";\nbezl.vars.config.libVersion = \"1.4\";\nbezl.vars.config.baseUrl = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/task-view-updates-rev2\";\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/roles/sales-rep/tasks-view/\"\n  \t\t\t\t\t\t\t+ (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t\t+ \"js/\"\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t\t+ \"/libraries/\"\n\t\t\t\t\t\t\t+ (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\")",
       "declares": [
         "$",
         "parm",
@@ -309,7 +317,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "bezl.vars.config = {};\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: The version number of this app. Setting this vill use the javascript\r\n//          include files in the corresponding \"versions\" subfolder. An empty string\r\n//          will use the \"development\" javascript files in the root directory.\r\n// libVersion: The version number of the library javascript include files to use.\r\n// baseUrl: The base URL of the javascript include files. Generally this should be an\r\n//          empty string and the correct path will be automatically determined.\r\n//          However, for development you may wish to point this to a RawGit URL of\r\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\nbezl.vars.config.version = \"1.2\";\r\nbezl.vars.config.libVersion = \"1.3\";\r\nbezl.vars.config.baseUrl = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/task-view-updates\";\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/tasks-view/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\" + (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\");\r\n"
+      "compiled": "bezl.vars.config = {};\r\n// *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: The version number of this app. Setting this vill use the javascript\r\n//          include files in the corresponding \"versions\" subfolder. An empty string\r\n//          will use the \"development\" javascript files in the root directory.\r\n// libVersion: The version number of the library javascript include files to use.\r\n// baseUrl: The base URL of the javascript include files. Generally this should be an\r\n//          empty string and the correct path will be automatically determined.\r\n//          However, for development you may wish to point this to a RawGit URL of\r\n//          a specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\nbezl.vars.config.version = \"1.2\";\r\nbezl.vars.config.libVersion = \"1.4\";\r\nbezl.vars.config.baseUrl = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\nbezl.vars.config.baseUrl = \"https://rawgit.com/bezlio/bezlio-apps/task-view-updates-rev2\";\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/sales-rep/tasks-view/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\nbezl.vars.config.baseLibraryUrl = bezl.vars.config.baseUrl + \"/libraries/\" + (bezl.vars.config.libVersion ? \"versions/\" + bezl.vars.config.libVersion + \"/\" : \"\");\r\n"
     }
   ],
   "data": ""
