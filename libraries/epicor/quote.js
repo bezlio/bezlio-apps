@@ -371,17 +371,17 @@ define(function () {
         //bezl.vars.ds = {};
         bezl.vars.ds.QuoteHed = [];
 
-        bezl.vars.ds.QuoteHed.push({
-            QuoteNum: quoteData.quoteNum,
-            CustNum: quoteData.custNum,
-            CustID: quoteData.customerId,
-            BTCustNum: quoteData.custNum,
-            Name: quoteData.customerName,
-            CustomerCustID: quoteData.customerId,
-            MktgEvntSeq: 1,
-            Company: company,
-            RowMod: 'D'
-        });
+        // bezl.vars.ds.QuoteHed.push({
+        //     QuoteNum: quoteData.quoteNum,
+        //     CustNum: quoteData.custNum,
+        //     CustID: quoteData.customerId,
+        //     BTCustNum: quoteData.custNum,
+        //     Name: quoteData.customerName,
+        //     CustomerCustID: quoteData.customerId,
+        //     MktgEvntSeq: 1,
+        //     Company: company,
+        //     RowMod: 'D'
+        // });
 
         console.log(bezl.vars.ds);
 
