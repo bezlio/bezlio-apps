@@ -178,8 +178,6 @@ define(function () {
         }
 
         if (bezl.data.deleteQuote) {
-            var quoteNum = bezl.vars.quoteData.quoteNum;
-
             bezl.vars.deleting = false;
 
             setTimeout(() => {
