@@ -179,6 +179,7 @@ define(function () {
 
         if (bezl.data.deleteQuote) {
             bezl.vars.deleting = false;
+            bezl.vars.quoteData = null;
 
             setTimeout(() => {
                 require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
