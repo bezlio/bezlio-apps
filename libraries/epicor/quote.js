@@ -219,7 +219,7 @@ define(function () {
             }, 0);
     }
 
-    function SaveAttributes(connection, company, quoteNum, dtl) {
+    function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
         dtl.Attributes.map(attr => {

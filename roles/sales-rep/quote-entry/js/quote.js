@@ -311,7 +311,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 this.runQuery(bezl, "Attributes");
             }
         } else {
-            quote_lib.saveAttributes(bezl.vars.Connection, bezl.vars.Company, line.quoteNum, line);
+            quote_lib.saveAttributes(bezl, bezl.vars.Connection, bezl.vars.Company, line.quoteNum, line);
         }
     }
 
