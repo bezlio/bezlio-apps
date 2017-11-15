@@ -370,6 +370,8 @@ define(function () {
     function DeleteQuote(bezl, connection, company, quoteData) {
         //bezl.vars.ds = {};
         bezl.vars.ds.QuoteHed = [];
+        bezl.vars.ds.QuoteDtl = [];
+        bezl.vars.ds.QuoteQty = [];
 
         // bezl.vars.ds.QuoteHed.push({
         //     QuoteNum: quoteData.quoteNum,
