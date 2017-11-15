@@ -3,6 +3,7 @@ define(function () {
      * Adds a CRM Call for the specified customer.  Function simply creates BRDB call so monitor
      * for return in onDataChange.  
      * @param {Object[]} bezl - A reference to the calling Bezl
+     * @param {string} reference - A reference to be used for the bezl data subscription name
      * @param {string} plugin - The plugin name (Epicor10, Epicor905)
      * @param {string} company - Company ID for the call
      * @param {Number} custNum - The customer number to add this call for
@@ -12,6 +13,7 @@ define(function () {
      * @param {string} salesRep - The sales rep code to associate with this call
      */
     function AddNote(bezl,
+        reference,
         plugin,
         company,
         custNum,
@@ -22,32 +24,32 @@ define(function () {
         var ds =
             {
                 'CRMCall':
-                [
-                    {
-                        'Company': company
-                        , 'RelatedToFile': 'customer'
-                        , 'Key1': custNum
-                        , 'Key2': ''
-                        , 'Key3': ''
-                        , 'CallDesc': shortSummary
-                        , 'CallText': details
-                        , 'CallContactType': 'Customer'
-                        , 'CallCustNum': custNum
-                        , 'CallTypeCode': type
-                        , 'SalesRepCode': salesRep
-                    }
-                ]
+                    [
+                        {
+                            'Company': company
+                            , 'RelatedToFile': 'customer'
+                            , 'Key1': custNum
+                            , 'Key2': ''
+                            , 'Key3': ''
+                            , 'CallDesc': shortSummary
+                            , 'CallText': details
+                            , 'CallContactType': 'Customer'
+                            , 'CallCustNum': custNum
+                            , 'CallTypeCode': type
+                            , 'SalesRepCode': salesRep
+                        }
+                    ]
             };
 
         bezl.dataService.add(
-            'AddCRMCall'
+            reference
             , 'brdb'
             , plugin
             , 'ExecuteBOMethod'
             ,
             {
-                'Connection': bezl.vars.Connection
-                , 'Company': bezl.vars.Company
+                'Connection': bezl.vars.config.Connection
+                , 'Company': bezl.vars.config.Company
                 , 'BOName': 'CRMCall'
                 , 'BOMethodName': 'UpdateExt'
                 , 'Parameters': [{ 'Key': 'ds', 'Value': JSON.stringify(ds) }]
@@ -110,6 +112,7 @@ define(function () {
                         , "PercentComplete": tasks[i].PercentComplete
                         , "PriorityCode": tasks[i].PriorityCode
                         , "TaskDescription": tasks[i].TaskDescription
+                        , "TaskComment": tasks[i].TaskComment
                         , "StartDate": tasks[i].StartDate
                         , "DueDate": tasks[i].DueDate
                         , "TypeCode": tasks[i].TaskType
