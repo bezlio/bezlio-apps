@@ -297,21 +297,19 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         line.Display = !line.Display;
         if (line.Display === true) {
             bezl.vars.updatingAttributes = false;
-            console.log('show or not');
+            console.log('show');
+
+            if (listItem) {
+                bezl.vars.attrLoading = true;
+
+                var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
+                bezl.vars.quoteAttributeLine = quoteLine;
+                bezl.vars.quotePart = curLine.PartNum;
+
+                this.runQuery(bezl, "QuoteQty");
+                this.runQuery(bezl, "Attributes");
+            }
         }
-
-
-
-        // if (listItem) {
-        //     bezl.vars.attrLoading = true;
-
-        //     var curLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === quoteLine);
-        //     bezl.vars.quoteAttributeLine = quoteLine;
-        //     bezl.vars.quotePart = curLine.PartNum;
-
-        //     this.runQuery(bezl, "QuoteQty");
-        //     this.runQuery(bezl, "Attributes");
-        // }
     }
 
     function ChangePart(bezl, lineNum, partNum) {
