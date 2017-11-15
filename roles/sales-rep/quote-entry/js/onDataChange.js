@@ -189,13 +189,11 @@ define(function () {
                 quoteLines: []
             };
 
-            setTimeout(() => {
-                require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
-                    functions.returnToSummary(bezl);
-                    functions.runQuery(bezl, 'Quotes');
-                });
-                bezl.dataService.remove('deleteQuote');
-            }, 1000);
+            require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+                functions.returnToSummary(bezl);
+                functions.runQuery(bezl, 'Quotes');
+            });
+            bezl.dataService.remove('deleteQuote');
         }
 
         if (bezl.data.EpicorParts) {
