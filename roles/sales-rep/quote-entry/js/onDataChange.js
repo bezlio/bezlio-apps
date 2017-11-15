@@ -179,49 +179,48 @@ define(function () {
 
         if (bezl.data.deleteQuote) {
             bezl.vars.deleting = false;
-            bezl.vars.quoteData = {}
-        };
+            bezl.vars.quoteData = {};
 
-        setTimeout(() => {
-            require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
-                functions.returnToSummary(bezl);
-                functions.runQuery(bezl, 'Quotes');
-            });
-            bezl.dataService.remove('deleteQuote');
-        }, 1000);
+            setTimeout(() => {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+                    functions.returnToSummary(bezl);
+                    functions.runQuery(bezl, 'Quotes');
+                });
+                bezl.dataService.remove('deleteQuote');
+            }, 1000);
+        }
+
+        if (bezl.data.EpicorParts) {
+            bezl.vars.epicorParts = bezl.data.EpicorParts;
+            bezl.dataService.remove('EpicorParts');
+
+            //console.log(JSON.parse(JSON.stringify(bezl.vars.epicorParts)));
+
+            // var typeAhead = function (lineNum) {
+            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
+            //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
+            //         order: "asc",
+            //         maxItem: 8,
+            //         display: ['PART_DESCRIPTION'],
+            //         source: {
+            //             data: function () { return bezl.vars.parts; }
+            //         },
+            //         callback: {
+            //             onClick: function (node, a, item, event) {
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
+            //             },
+            //             onNavigateBefore: function (node, query, event) {
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
+            //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
+            //             }
+            //         }
+            //     });
+            // }
+        }
     }
-
-    if (bezl.data.EpicorParts) {
-        bezl.vars.epicorParts = bezl.data.EpicorParts;
-        bezl.dataService.remove('EpicorParts');
-
-        //console.log(JSON.parse(JSON.stringify(bezl.vars.epicorParts)));
-
-        // var typeAhead = function (lineNum) {
-        //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead('destroy');
-        //     $(bezl.container.nativeElement).find(".js-typeahead-parts" + lineNum).typeahead({
-        //         order: "asc",
-        //         maxItem: 8,
-        //         display: ['PART_DESCRIPTION'],
-        //         source: {
-        //             data: function () { return bezl.vars.parts; }
-        //         },
-        //         callback: {
-        //             onClick: function (node, a, item, event) {
-        //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = item.PART_DESCRIPTION;
-        //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = true;
-        //             },
-        //             onNavigateBefore: function (node, query, event) {
-        //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).PartNum = query;
-        //                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === (lineNum)).ListItem = false;
-        //             }
-        //         }
-        //     });
-        // }
-    }
-}
 
     return {
-    onDataChange: OnDataChange
-}
+        onDataChange: OnDataChange
+    }
 });
