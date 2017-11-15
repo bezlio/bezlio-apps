@@ -147,7 +147,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function ReturnToSummary(bezl) {
-        if (bezl.vars.quoteData != null) {
+        if (bezl.vars.quoteData.quoteNum) {
             quote_lib.saveQuote(bezl, bezl.vars.Connection, bezl.vars.Company, bezl.vars.MktgEvent, bezl.vars.quoteData);
         }
 
