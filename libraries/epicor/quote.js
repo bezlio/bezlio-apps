@@ -221,6 +221,7 @@ define(function () {
 
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
+        console.log(dtl);
 
         dtl.Attributes.map(attr => {
             var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
@@ -363,7 +364,7 @@ define(function () {
 
         if (dtl.ListItem === 1) { //set concatenated attribute values as description
             //console.log('Attr: ' + attributeConcat);
-            bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
+            //bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
         }
     }
 
