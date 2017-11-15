@@ -178,21 +178,17 @@ define(function () {
         }
 
         if (bezl.data.deleteQuote) {
-            console.log(bezl.data.deleteQuote);
             var quoteNum = bezl.vars.quoteData.quoteNum;
 
             bezl.vars.deleting = false;
 
-            // bezl.data.Quotes.splice(bezl.data.Quotes.indexOf(hed => hed.QuoteNum === quoteNum), 1);
-            // console.log("QuoteNum: " + quoteNum);
-            // console.log("Quote Index: " + bezl.data.Quotes.indexOf(hed => hed.QuoteNum === quoteNum));
-
-            // require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
-            //     functions.returnToSummary(bezl);
-            //     functions.runQuery(bezl, 'Quotes');
-            // });
-
-            bezl.dataService.remove('deleteQuote');
+            setTime(() => {
+                require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+                    functions.returnToSummary(bezl);
+                    functions.runQuery(bezl, 'Quotes');
+                });
+                bezl.dataService.remove('deleteQuote');
+            }, 1000);
         }
 
         if (bezl.data.EpicorParts) {

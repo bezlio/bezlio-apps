@@ -385,8 +385,6 @@ define(function () {
             RowMod: 'D'
         });
 
-        console.log(bezl.vars.ds);
-
         bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
             {
                 "Connection": connection,
