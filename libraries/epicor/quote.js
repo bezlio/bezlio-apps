@@ -394,6 +394,7 @@ define(function () {
     return {
         newQuote: NewQuote,
         saveQuote: SaveQuote,
+        saveAttributes: SaveAttributes,
         deleteQuote: DeleteQuote,
         updateCustomer: UpdateCustomer,
         updateSales: UpdateSales,

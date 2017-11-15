@@ -297,7 +297,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         line.Display = !line.Display;
         if (line.Display === true) {
             bezl.vars.updatingAttributes = false;
-            console.log('show');
 
             if (line.ListItem) {
                 bezl.vars.attrLoading = true;
@@ -309,6 +308,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 this.runQuery(bezl, "QuoteQty");
                 this.runQuery(bezl, "Attributes");
             }
+        } else {
+            quote_lib.SaveAttributes(bezl.vars.Connection, bezl.vars.Company, line.quoteNum, line);
         }
     }
 
