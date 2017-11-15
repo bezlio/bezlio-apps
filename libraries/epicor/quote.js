@@ -221,7 +221,6 @@ define(function () {
 
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
-        console.log(dtl);
 
         dtl.Attributes.map(attr => {
             var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
@@ -291,40 +290,40 @@ define(function () {
                 var attrValsE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                 attrValsE.map(val => {
                     let name = val.ATTRIBUTE_VALUE_LABEL.substring(0, 5).replace(" ", "");
-                    // bezl.dataService.add('QuoteAttrs_' + name, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                    //     "QueryName": "InsertAttributes",
-                    //     "Parameters": [
-                    //         { Key: "Company", Value: company },
-                    //         { Key: "QuoteNum", Value: quoteNum },
-                    //         { Key: "QuoteLine", Value: dtl.QuoteLine },
-                    //         { Key: "PartID", Value: dtl.PartNum },
-                    //         { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
-                    //         { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                    //         { Key: "AttributeValue", Value: val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE : false },
-                    //         { Key: "OtherAttributeValue", Value: '' },
-                    //         { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
-                    //         { Key: "PartNum", Value: dtl.PartNum }
-                    //     ]
-                    // }, 0);
+                    bezl.dataService.add('QuoteAttrs_' + name, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                        "QueryName": "InsertAttributes",
+                        "Parameters": [
+                            { Key: "Company", Value: company },
+                            { Key: "QuoteNum", Value: quoteNum },
+                            { Key: "QuoteLine", Value: dtl.QuoteLine },
+                            { Key: "PartID", Value: dtl.PartNum },
+                            { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                            { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
+                            { Key: "AttributeValue", Value: val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE : false },
+                            { Key: "OtherAttributeValue", Value: '' },
+                            { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
+                            { Key: "PartNum", Value: dtl.PartNum }
+                        ]
+                    }, 0);
                 });
 
                 var attrValsNE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === true)));
                 attrValsNE.map(val => {
-                    // bezl.dataService.add('QuoteMulti_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                    //     "QueryName": "InsertAttributes",
-                    //     "Parameters": [
-                    //         { Key: "Company", Value: company },
-                    //         { Key: "QuoteNum", Value: quoteNum },
-                    //         { Key: "QuoteLine", Value: dtl.QuoteLine },
-                    //         { Key: "PartID", Value: dtl.PartNum },
-                    //         { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
-                    //         { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
-                    //         { Key: "AttributeValue", Value: val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE : '' },
-                    //         { Key: "OtherAttributeValue", Value: '' },
-                    //         { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
-                    //         { Key: "PartNum", Value: dtl.PartNum }
-                    //     ]
-                    // }, 0);
+                    bezl.dataService.add('QuoteMulti_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                        "QueryName": "InsertAttributes",
+                        "Parameters": [
+                            { Key: "Company", Value: company },
+                            { Key: "QuoteNum", Value: quoteNum },
+                            { Key: "QuoteLine", Value: dtl.QuoteLine },
+                            { Key: "PartID", Value: dtl.PartNum },
+                            { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
+                            { Key: "ParentID", Value: val.ATTRIBUTE_VALUE_LABEL },
+                            { Key: "AttributeValue", Value: val.hasOwnProperty('SELECTED_VALUE') ? val.SELECTED_VALUE : '' },
+                            { Key: "OtherAttributeValue", Value: '' },
+                            { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
+                            { Key: "PartNum", Value: dtl.PartNum }
+                        ]
+                    }, 0);
 
                     switch (attr.ATTRIBUTE_ID) {
                         default:
@@ -341,21 +340,21 @@ define(function () {
             if (selSubAttr !== undefined) {
                 if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
                     var selSubAttrVal = selSubAttr.SUB_ATTRIBUTE[0];
-                    // bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                    //     "QueryName": "InsertAttributes",
-                    //     "Parameters": [
-                    //         { Key: "Company", Value: company },
-                    //         { Key: "QuoteNum", Value: quoteNum },
-                    //         { Key: "QuoteLine", Value: dtl.QuoteLine },
-                    //         { Key: "PartID", Value: dtl.PartNum },
-                    //         { Key: "AttributeID", Value: selSubAttrVal.ATTRIBUTE_ID },
-                    //         { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                    //         { Key: "AttributeValue", Value: selSubAttrVal.SELECTED_VALUE },
-                    //         { Key: "OtherAttributeValue", Value: '' },
-                    //         { Key: "AttributeDesc", Value: selSubAttrVal.ATTRIBUTE_DESCRIPTION },
-                    //         { Key: "PartNum", Value: dtl.PartNum }
-                    //     ]
-                    // }, 0);
+                    bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                        "QueryName": "InsertAttributes",
+                        "Parameters": [
+                            { Key: "Company", Value: company },
+                            { Key: "QuoteNum", Value: quoteNum },
+                            { Key: "QuoteLine", Value: dtl.QuoteLine },
+                            { Key: "PartID", Value: dtl.PartNum },
+                            { Key: "AttributeID", Value: selSubAttrVal.ATTRIBUTE_ID },
+                            { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
+                            { Key: "AttributeValue", Value: selSubAttrVal.SELECTED_VALUE },
+                            { Key: "OtherAttributeValue", Value: '' },
+                            { Key: "AttributeDesc", Value: selSubAttrVal.ATTRIBUTE_DESCRIPTION },
+                            { Key: "PartNum", Value: dtl.PartNum }
+                        ]
+                    }, 0);
 
                     attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
                 }
