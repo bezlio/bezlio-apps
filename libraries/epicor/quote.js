@@ -385,10 +385,8 @@ define(function () {
             RowMod: 'D'
         });
 
-        console.log(bezl.data);
-
-        //var index = bezl.data.QuoteHed.indexOf(bezl.data.QuoteHed.find(subHed => subHed.QuoteNum === quoteData.quoteNum));
-        //bezl.data.QuoteHed.splice(index, 1);
+        var index = bezl.data.Quotes.indexOf(bezl.data.Quotes.find(subHed => subHed.QuoteNum === quoteData.quoteNum));
+        bezl.data.Quotes.splice(index, 1);
 
         bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
             {
