@@ -368,6 +368,7 @@ define(function () {
     }
 
     function DeleteQuote(bezl, connection, company, quoteData) {
+        //bezl.vars.ds = {};
         bezl.vars.ds.QuoteHed = [];
 
         bezl.vars.ds.QuoteHed.push({
@@ -381,6 +382,8 @@ define(function () {
             Company: company,
             RowMod: 'D'
         });
+
+        console.log(bezl.vars.ds);
 
         bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
             {
