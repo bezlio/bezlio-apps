@@ -336,6 +336,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 });
             });
         }
+
+        console.log(bezl.data.QuoteDtls);
     }
 
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue) {
@@ -343,7 +345,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         // console.log("AttrID: " + attributeID);
         // console.log("SelectedAttribute: " + selectedAttribute);
         // console.log("Attr Value: " + attributeValue);
-        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine == lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = "OTHER";
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = "OTHER";
     }
 
     return {
