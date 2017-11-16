@@ -323,7 +323,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
         //normal ngModelChange functionality
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
-        console.log(bezl.data.QuoteDtls);
 
         //driving/dependent attribute functionality
         if (bezl.vars.attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
@@ -340,10 +339,15 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue) {
-        console.log("LineNum: " + lineNum);
-        console.log("AttrID: " + attributeID);
-        console.log("SelectedAttribute: " + selectedAttribute);
-        console.log("Attr Value: " + attributeValue);
+        // console.log("LineNum: " + lineNum);
+        // console.log("AttrID: " + attributeID);
+        // console.log("SelectedAttribute: " + selectedAttribute);
+        // console.log("Attr Value: " + attributeValue);
+        var x = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine == lineNum)
+            .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+            .ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute);
+
+        console.log(x);
     }
 
     return {
