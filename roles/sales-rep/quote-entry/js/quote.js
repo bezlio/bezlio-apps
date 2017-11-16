@@ -347,6 +347,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
             .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
             .ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute);
 
+        console.log(bezl.data.QuoteDtls);
         console.log(x);
     }
 
