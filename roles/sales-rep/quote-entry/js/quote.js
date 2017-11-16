@@ -352,7 +352,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 if (attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute) {
                     attrVal.SELECTED_VALUE = attributeValue;
                 } else {
-                    attrVal.SELECTED_VALUE = 0;
+                    attrVal.SELECTED_VALUE = '';
                 }
             });
         }
