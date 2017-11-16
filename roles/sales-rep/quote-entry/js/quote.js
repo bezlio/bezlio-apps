@@ -339,6 +339,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         }
     }
 
+    function ChangeTypedAttribute(bezl, lineNum, attributeID, attributeValue) {
+        console.log("LineNum: " + lineNum);
+        console.log("AttrID: " + attributeID);
+        console.log("Attr Value: " + attributeValue);
+    }
+
     return {
         runQuery: RunQuery,
         loadQuote: LoadQuote,
@@ -352,6 +358,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         deleteLine: DeleteLine,
         configureLine: ConfigureLine,
         changePart: ChangePart,
-        changeAttribute: ChangeAttribute
+        changeAttribute: ChangeAttribute,
+        changeTypedAttribute: ChangeTypedAttribute
     }
 });
