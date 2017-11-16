@@ -339,9 +339,10 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         }
     }
 
-    function ChangeTypedAttribute(bezl, lineNum, attributeID, attributeValue) {
+    function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue) {
         console.log("LineNum: " + lineNum);
         console.log("AttrID: " + attributeID);
+        console.log("SelectedAttribute: " + selectedAttribute);
         console.log("Attr Value: " + attributeValue);
     }
 
