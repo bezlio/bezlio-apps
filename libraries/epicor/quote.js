@@ -219,7 +219,7 @@ define(function () {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
         if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
-            this.SaveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
+            this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
 
         dtl.Attributes.map(attr => {
