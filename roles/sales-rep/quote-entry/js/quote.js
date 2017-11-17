@@ -356,7 +356,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }
             });
         }
-
     }
 
     return {
