@@ -222,7 +222,9 @@ define(function () {
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
-        console.log(dtl.Attributes);
+        if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
+            console.log('quantities')
+        }
 
         dtl.Attributes.map(attr => {
             var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
