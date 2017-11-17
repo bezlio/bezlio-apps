@@ -71,10 +71,6 @@ define(function () {
         }, 0);
     }
 
-    function TestQuote() {
-        console.log('test successful!');
-    }
-
     function UpdateCustomField(bezl, quoteNum, val, columnName) {
         bezl.vars.saving = true;
         var dataSubName = "";
@@ -223,7 +219,7 @@ define(function () {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
         if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
-            console.log('quantities')
+            this.SaveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
 
         dtl.Attributes.map(attr => {
