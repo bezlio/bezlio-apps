@@ -72,18 +72,33 @@ define(function () {
     }
 
     function UpdateCustomField(bezl, quoteData) {
-        console.log(quoteData);
+        //console.log(quoteData);
 
+        //sales flag
+        if (quoteData.sales !== undefined) {
+            bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+                "QueryName": "erp.updateCustomField",
+                "Parameters": [
+                    { Key: "Company", Value: bezl.vars.Company },
+                    { Key: "QuoteNum", Value: quoteData.quoteNum },
+                    { Key: "ColumnValue", Value: quoteData.sales },
+                    { Key: "ColumnName", Value: 'Sales_c' }
+                ]
+            }, 0);
+        }
 
-        // bezl.dataService.add(dataSubName, 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
-        //     "QueryName": "erp.updateCustomField",
-        //     "Parameters": [
-        //         { Key: "Company", Value: bezl.vars.Company },
-        //         { Key: "QuoteNum", Value: quoteNum },
-        //         { Key: "ColumnValue", Value: val },
-        //         { Key: "ColumnName", Value: columnName }
-        //     ]
-        // }, 0);
+        //project_name
+        if (quoteData.quoteDesc !== undefined) {
+            bezl.dataService.add(dataSubName, 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+                "QueryName": "erp.updateCustomField",
+                "Parameters": [
+                    { Key: "Company", Value: bezl.vars.Company },
+                    { Key: "QuoteNum", Value: quoteData.quoteNum },
+                    { Key: "ColumnValue", Value: quoteData.quoteDesc },
+                    { Key: "ColumnName", Value: 'ProjectName_c' }
+                ]
+            }, 0);
+        }
     }
 
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
