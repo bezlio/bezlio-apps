@@ -89,7 +89,7 @@ define(function () {
 
         //project_name
         if (quoteData.quoteDesc !== undefined) {
-            bezl.dataService.add(dataSubName, 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateQuoteDesc', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },

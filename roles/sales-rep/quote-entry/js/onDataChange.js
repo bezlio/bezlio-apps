@@ -162,13 +162,6 @@ define(function () {
             }, 500);
         }
 
-        if (bezl.data.updateSales) {
-            bezl.dataService.remove('updateSales');
-            setTimeout(() => {
-                bezl.vars.saving = false;
-            }, 5000);
-        }
-
         if (bezl.data.changeCustomer) {
             setTimeout(() => {
                 bezl.vars.saving = false;
@@ -223,6 +216,14 @@ define(function () {
             //         }
             //     });
             // }
+        }
+
+        if (bezl.data.updateSales) {
+            bezl.dataService.remove('updateSales');
+        }
+
+        if (bezl.data.updateQuoteDesc) {
+            bezl.dataService.remove('updateQuoteDesc');
         }
     }
 
