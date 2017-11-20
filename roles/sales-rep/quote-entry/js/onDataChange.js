@@ -1,12 +1,12 @@
 define(function () {
     function OnDataChange(bezl) {
         if (bezl.data.FirstCustomer) {
+            console.log(bezl.data.FirstCustomer);
             bezl.vars.CustomerCustID = bezl.data.FirstCustomer[0].CustID;
             bezl.vars.SalesRepCode = bezl.data.FirstCustomer[0].SalesRepCode;
         }
 
         if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
-            console.log(bezl.data.Quotes);
             bezl.vars.loading = false;
         }
 
