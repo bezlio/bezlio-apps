@@ -37,7 +37,6 @@ define(function () {
             MktgCampaignID: mktgEvnt,
             MktgEvntSeq: 1,
             Company: bezl.vars.Company,
-            ProjectName_c: bezl.vars.quoteData.quoteDesc,
             ForToPMDate_c: null,
             RowMod: 'U'
         });

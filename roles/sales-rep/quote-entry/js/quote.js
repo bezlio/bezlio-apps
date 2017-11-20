@@ -122,6 +122,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.vars.editingQuote = true;
         bezl.vars.linesloading = true;
 
+        console.log(quote);
+
         // Push the current quote header info into the quoteData object
         bezl.vars.quoteData = {
             newQuote: false,
