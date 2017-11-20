@@ -71,32 +71,19 @@ define(function () {
         }, 0);
     }
 
-    function UpdateCustomField(bezl, quoteNum, val, columnName) {
-        bezl.vars.saving = true;
-        var dataSubName = "";
+    function UpdateCustomField(bezl, quoteData) {
+        console.log(quoteData);
 
-        //Check for nulls
-        if (!val) {
-            val = "";
-        }
 
-        if (columnName == 'Sales_c') {
-            dataSubName = "updateSales";
-        } else if (columnName == 'ProjectName_c') {
-            dataSubName = "updateDesc";
-        } else {
-            dataSubName = "updateCustomField";
-        }
-
-        bezl.dataService.add(dataSubName, 'brdb', 'SQLServer', 'ExecuteStoredProcedure', {
-            "Context": "sales-rep", "Connection": "Epicor Production", "QueryName": "erp.updateCustomField",
-            "Parameters": [
-                { Key: "Company", Value: bezl.vars.Company },
-                { Key: "QuoteNum", Value: quoteNum },
-                { Key: "ColumnValue", Value: val },
-                { Key: "ColumnName", Value: columnName }
-            ]
-        }, 0);
+        // bezl.dataService.add(dataSubName, 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+        //     "QueryName": "erp.updateCustomField",
+        //     "Parameters": [
+        //         { Key: "Company", Value: bezl.vars.Company },
+        //         { Key: "QuoteNum", Value: quoteNum },
+        //         { Key: "ColumnValue", Value: val },
+        //         { Key: "ColumnName", Value: columnName }
+        //     ]
+        // }, 0);
     }
 
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
@@ -119,11 +106,12 @@ define(function () {
             MktgCampaignID: quoteData.mktgCamp,
             MktgEvntSeq: quoteData.mktgEvnt,
             ProjectName_c: quoteData.quoteDesc,
+            Sales_c: quoteData.sales,
             Company: company,
             RowMod: 'U'
         });
 
-        //UpdateCustomField(bezl, quoteData.quoteNum, quoteData.quoteDesc, 'ProjectName_c');
+        UpdateCustomField(bezl, quoteData);
 
         quoteNum = quoteData.quoteNum;
         custNum = quoteData.custNum;
