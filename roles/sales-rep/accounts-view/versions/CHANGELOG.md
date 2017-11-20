@@ -4,6 +4,8 @@ All notable changes to the Accounts View app will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
+### Fixed
+- Added account contacts data query back in.
 
 ## [1.2] - 2017-08-23
 ### Changed
