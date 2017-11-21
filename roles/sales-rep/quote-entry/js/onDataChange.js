@@ -20,7 +20,6 @@ define(function () {
                     setTimeout(() => {
                         typeAheadPart(dtl.QuoteLine);
                     }, 1500);
-
                 }
             });
         }
