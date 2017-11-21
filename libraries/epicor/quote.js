@@ -6,9 +6,6 @@ define(function () {
     */
 
     function NewQuote(bezl, connection, company, custID) {
-        console.log(connection);
-        console.log(company);
-        console.log(custID);
         bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
                 "Connection": connection,
