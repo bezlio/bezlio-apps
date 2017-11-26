@@ -7,11 +7,16 @@ define(function () {
     }
 
     function CheckParameters(bezl, parm) {
-        bezl.vars.nonParameterReportName = parm.Name;
-        bezl.dataService.add('Parameters', 'brdb', 'SSRS', 'GetReportParameters', {
-            "FolderName": bezl.vars.currentPath,
-            "ReportName": parm.Name
-        });
+        if (parm.Type === "Report") {
+            bezl.vars.nonParameterReportName = parm.Name;
+            bezl.dataService.add('Parameters', 'brdb', 'SSRS', 'GetReportParameters', {
+                "FolderName": bezl.vars.currentPath,
+                "ReportName": parm.Name
+            });
+        } else {
+            this.reportListing(bezl, { 'FolderName': bezl.vars.currentPath + '/' + parm.Name, 'ReportName': '' });
+            bezl.vars.currentPath += '/' + parm.Name;
+        }
     }
 
     function RunReport(bezl, parm) {
