@@ -26,8 +26,6 @@ define(function () {
             bezl.vars.reportLoading = true;
             bezl.vars.reportSelected = true;
 
-            console.log('TEST TEST');
-
             bezl.dataService.add('Report', 'brdb', 'SSRS', 'ReturnAsPDF', {
                 "FolderName": bezl.vars.currentPath,
                 "ReportName": parm.Name
