@@ -1,5 +1,6 @@
 define(function () {
     function ReportListing(bezl, parm) {
+        bezl.vars.reportListingLoading = true;
         bezl.dataService.add('ReportListing', 'brdb', 'SSRS', 'GetReportList', {
             "FolderName": parm.FolderName,
             "ReportName": parm.ReportName
