@@ -109,6 +109,7 @@ define(function () {
                                     attrFndVal.Display = false; // set to false as default for dependendent attributes
                                     attrFndVal.DEPENDENT_ATTRIBUTE.map(depAttrVal => {
                                         var joinedAttribute = bezl.data.Attributes.find(joinKey => joinKey.Key4 === depAttrVal.ATTRIBUTE_ID);
+                                        console.log(joinedAttribute);
                                         if (joinedAttribute.Character01 === depAttrVal.ATTRIBUTE_VALUE)
                                             attrFndVal.Display = true;
                                     });
