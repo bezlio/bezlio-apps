@@ -77,6 +77,8 @@ define(function () {
 
         if (bezl.data.Attributes && bezl.data.QuoteDtls && !bezl.vars.savingQuote) {
             var openLine = bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === bezl.vars.quoteAttributeLine);
+            console.log("Attr Line: " + bezl.vars.quoteAttributeLine);
+            console.log(openLine);
 
             if (openLine.Attributes === undefined) {
                 openLine.Attributes = [];
