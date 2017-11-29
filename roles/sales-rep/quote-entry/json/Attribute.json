@@ -2574,7 +2574,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Gallon",
+                "ATTRIBUTE_VALUE_LABEL": "GAL",
                 "ATTRIBUTE_VALUE": "GAL",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/GAL.jpg"
