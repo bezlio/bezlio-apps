@@ -229,8 +229,10 @@ define(function () {
 
             //set measurement value
             if (attr.ATTRIBUTE_ID.indexOf('MEASURE') > -1) {
+                console.log(attr.ATTRIBUTE_ID);
                 measureAttr = attr.ATTRIBUTE_VALUES.find(measureValue => measureValue.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
                 if (measureAttr != undefined) {
+                    console.log(measureAttr);
                     otherValue = measureAttr.SELECTED_VALUE;
                 }
             }
