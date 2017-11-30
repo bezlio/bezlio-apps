@@ -102,6 +102,9 @@ define(function () {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             } else if (attrVal.Key4.indexOf('MEASURE') > 0) {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === attrVal.Character01).SELECTED_VALUE = attrVal.Character04;
+                            } else if (attrVal.Character04 !== undefined) {
+                                console.log(attrFnd);
+                                console.log(attrVal);
                             }
                             //dependent attribute display setting
                             attrFnd.ATTRIBUTE_VALUES.map(attrFndVal => {
