@@ -1688,7 +1688,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Boston Round",
-                "ATTRIBUTE_VALUE": "BOSTON_ROUND",
+                "ATTRIBUTE_VALUE": "BOSTON ROUND",
                 "ImagePath": "/Assets/STYLE/BOSTONROUNDS.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -1771,7 +1771,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "F-Style",
-                "ATTRIBUTE_VALUE": "F_STYLE",
+                "ATTRIBUTE_VALUE": "F-STYLE",
                 "ImagePath": "/Assets/STYLE/FSTYLE.jpg"
             },
             {
@@ -1835,7 +1835,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Modern Round",
-                "ATTRIBUTE_VALUE": "MODERN_ROUND",
+                "ATTRIBUTE_VALUE": "MODERN ROUND",
                 "ImagePath": "/Assets/STYLE/MODERNROUND.jpg",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -1846,7 +1846,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Nasa Ez Grip",
-                "ATTRIBUTE_VALUE": "NASA_EZ_GRIP",
+                "ATTRIBUTE_VALUE": "NASA EZ GRIP",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "SHAPE",
@@ -1866,7 +1866,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Plastic Liquor",
-                "ATTRIBUTE_VALUE": "PLASTIC_LIQUOR",
+                "ATTRIBUTE_VALUE": "PLASTIC LIQUOR",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1890,7 +1890,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Ringed Carafe",
-                "ATTRIBUTE_VALUE": "RINGED_CARAFE",
+                "ATTRIBUTE_VALUE": "RINGED CARAFE",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1900,7 +1900,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Roll On Cylinder",
-                "ATTRIBUTE_VALUE": "ROLL_ON",
+                "ATTRIBUTE_VALUE": "ROLL ON CYLINDER",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1918,7 +1918,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Special Oval",
-                "ATTRIBUTE_VALUE": "SPECIAL_OVAL",
+                "ATTRIBUTE_VALUE": "SPECIAL OVAL",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1928,7 +1928,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Sprayer Oval",
-                "ATTRIBUTE_VALUE": "200_SPRAYER_OVAL",
+                "ATTRIBUTE_VALUE": "SPRAYER OVAL",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1938,7 +1938,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Styeline Cylinder",
-                "ATTRIBUTE_VALUE": "SYTELINE_CYLINDER",
+                "ATTRIBUTE_VALUE": "SYTELINE CYLINDER",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1972,7 +1972,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Wide Mouth",
-                "ATTRIBUTE_VALUE": "WIDE_MOUTH",
+                "ATTRIBUTE_VALUE": "WIDE MOUTH",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "200_SHAPE",
@@ -1986,7 +1986,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Window Stripe",
-                "ATTRIBUTE_VALUE": "WINDOW_STRIPE"
+                "ATTRIBUTE_VALUE": "WINDOW STRIPE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other:",
