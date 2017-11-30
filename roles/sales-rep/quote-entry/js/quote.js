@@ -342,19 +342,18 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue, valueID) {
         if (attributeID.indexOf("MEASURE") === -1) {
-            //if (selectedAttribute === "Other:") {
-            console.log("Attribute.json needs updated:");
-            console.log('ValueID: ' + valueID);
-            console.log("Attr ID: " + attributeID);
-            console.log("Sel Attr: " + selectedAttribute);
-            console.log("Attr Val: " + attributeValue);
-            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = "OTHER";
-            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)
-                .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
-                .ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attributeValue;
-            // } else {
-
-            // }
+            if (valueID === "OTHER") {
+                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = "OTHER";
+                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)
+                    .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+                    .ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attributeValue;
+            } else {
+                console.log("Attribute.json needs updated:");
+                console.log('ValueID: ' + valueID);
+                console.log("Attr ID: " + attributeID);
+                console.log("Sel Attr: " + selectedAttribute);
+                console.log("Attr Val: " + attributeValue);
+            }
         } else {
             bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = selectedAttribute.toUpperCase();
             bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.map(attrVal => {
