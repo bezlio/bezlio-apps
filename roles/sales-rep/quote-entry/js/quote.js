@@ -122,8 +122,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.vars.editingQuote = true;
         bezl.vars.linesloading = true;
 
-        console.log(quote);
-
         // Push the current quote header info into the quoteData object
         bezl.vars.quoteData = {
             newQuote: false,
@@ -348,11 +346,15 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                     .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
                     .ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attributeValue;
             } else {
-                console.log("Attribute.json needs updated:");
-                console.log('ValueID: ' + valueID);
-                console.log("Attr ID: " + attributeID);
-                console.log("Sel Attr: " + selectedAttribute);
-                console.log("Attr Val: " + attributeValue);
+                // console.log("Attribute.json needs updated:");
+                // console.log('ValueID: ' + valueID);
+                // console.log("Attr ID: " + attributeID);
+                // console.log("Sel Attr: " + selectedAttribute);
+                // console.log("Attr Val: " + attributeValue);
+                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = valueID;
+                bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)
+                    .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+                    .ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === valueID).SELECTED_VALUE = attributeValue;
             }
         } else {
             bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = selectedAttribute.toUpperCase();
