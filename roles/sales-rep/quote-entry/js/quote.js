@@ -340,10 +340,11 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         }
     }
 
-    function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue) {
+    function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue, valueID) {
         if (attributeID.indexOf("MEASURE") === -1) {
             //if (selectedAttribute === "Other:") {
             console.log("Attribute.json needs updated:");
+            console.log('ValueID: ' + valueID);
             console.log("Attr ID: " + attributeID);
             console.log("Sel Attr: " + selectedAttribute);
             console.log("Attr Val: " + attributeValue);
