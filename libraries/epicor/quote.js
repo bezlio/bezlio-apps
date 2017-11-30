@@ -227,6 +227,11 @@ define(function () {
         console.log(dtl);
         dtl.Attributes.map(attr => {
             var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
+            if (otherValue === '') {
+                if (dtl.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === dtl.SELECTED_VALUE).hasOwnProperty('SELECTED_VALUE')) {
+                    console.log(dtl);
+                }
+            }
 
             //set measurement value
             if (attr.ATTRIBUTE_ID.indexOf('MEASURE') > -1) {
