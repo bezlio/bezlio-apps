@@ -231,7 +231,7 @@ define(function () {
                 var nonOtherEditable = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
                 if (nonOtherEditable !== undefined) {
                     if (nonOtherEditable.hasOwnProperty('SELECTED_VALUE')) {
-                        console.log(nonOtherEditable);
+                        otherValue = nonOtherEditable.SELECTED_VALUE;
                     }
                 }
             }
