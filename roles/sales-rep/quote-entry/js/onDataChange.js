@@ -102,7 +102,7 @@ define(function () {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attrVal.Character04;
                             } else if (attrVal.Key4.indexOf('MEASURE') > 0) {
                                 attrFnd.ATTRIBUTE_VALUES.find(othAtr => othAtr.ATTRIBUTE_VALUE === attrVal.Character01).SELECTED_VALUE = attrVal.Character04;
-                            } else if (attrVal.Character04 !== undefined) {
+                            } else if (attrVal.Character04 !== "") {
                                 console.log(attrFnd);
                                 console.log(attrVal);
                             }
