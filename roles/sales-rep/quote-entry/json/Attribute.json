@@ -2909,12 +2909,12 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "PSI",
-                "ATTRIBUTE_VALUE": "PSI",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Bar",
-                "ATTRIBUTE_VALUE": "BAR",
+                "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
         ]
