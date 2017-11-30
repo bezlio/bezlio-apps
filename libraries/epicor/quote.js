@@ -224,7 +224,7 @@ define(function () {
             this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
 
-        console.log(dtl);
+        //console.log(dtl);
         dtl.Attributes.map(attr => {
             var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
             if (otherValue === '') {
