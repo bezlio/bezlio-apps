@@ -233,7 +233,7 @@ define(function () {
                 if (nonOtherEditable !== undefined) {
                     if (nonOtherEditable.hasOwnProperty('SELECTED_VALUE')) {
                         otherValue = nonOtherEditable.SELECTED_VALUE;
-                        nonOtherEditable = true;
+                        nonOtherEditable_bool = true;
                     }
                 }
             }
