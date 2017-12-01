@@ -3063,6 +3063,7 @@
     {
         "ATTRIBUTE_ID": "400_CATEGORY",
         "ATTRIBUTE_DESCRIPTION": "Category",
+        "DRIVING_ATTRIBUTE": true,
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
@@ -3075,7 +3076,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Phenolic/Urea",
-                "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
             }
         ]
     },
@@ -3096,7 +3097,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tin Plate Steel",
-                "ATTRIBUTE_VALUE": "TIN_PLATE_STEEL",
+                "ATTRIBUTE_VALUE": "TIN PLATE STEEL",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
@@ -3159,6 +3160,7 @@
     {
         "ATTRIBUTE_ID": "400_TYPE",
         "ATTRIBUTE_DESCRIPTION": "Type",
+        "DRIVING_ATTRIBUTE": true,
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE": "DISPENSING",
@@ -3171,7 +3173,7 @@
                 ]
             },
             {
-                "ATTRIBUTE_VALUE": "NON_DISPENSING",
+                "ATTRIBUTE_VALUE": "NON-DISPENSING",
                 "ATTRIBUTE_VALUE_LABEL": "Non-Dispensing",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -3181,7 +3183,7 @@
                 ]
             },
             {
-                "ATTRIBUTE_VALUE": "TE_CRC",
+                "ATTRIBUTE_VALUE": "TE/CRC",
                 "ATTRIBUTE_VALUE_LABEL": "TE/CRC",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -3200,7 +3202,7 @@
                     },
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             }
@@ -3221,11 +3223,11 @@
                     },
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     },
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
@@ -3251,7 +3253,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pry Off",
-                "ATTRIBUTE_VALUE": "PRY_OFF",
+                "ATTRIBUTE_VALUE": "PRY OFF",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
@@ -3261,7 +3263,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Snap Top",
-                "ATTRIBUTE_VALUE": "SNAP_TOP",
+                "ATTRIBUTE_VALUE": "SNAP TOP",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
@@ -3271,7 +3273,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Disc Top",
-                "ATTRIBUTE_VALUE": "DISC_TOP",
+                "ATTRIBUTE_VALUE": "DISC TOP",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
@@ -3291,7 +3293,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Twist Open/Close",
-                "ATTRIBUTE_VALUE": "TWIST_OPEN_CLOSE",
+                "ATTRIBUTE_VALUE": "TWIST OPEN/CLOSE",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
@@ -3301,7 +3303,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Push/Pull",
-                "ATTRIBUTE_VALUE": "PUSH_PULL",
+                "ATTRIBUTE_VALUE": "PUSH/PULL",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
@@ -3331,7 +3333,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Snip Tip",
-                "ATTRIBUTE_VALUE": "SNIP_TIP",
+                "ATTRIBUTE_VALUE": "SNIP TIP",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
@@ -3351,7 +3353,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Rod & Brush",
-                "ATTRIBUTE_VALUE": "ROD_BRUSH",
+                "ATTRIBUTE_VALUE": "ROD & BRUSH",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
@@ -3421,21 +3423,21 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Snap On",
-                "ATTRIBUTE_VALUE": "SNAP_ON",
+                "ATTRIBUTE_VALUE": "SNAP ON",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Friction Fit",
-                "ATTRIBUTE_VALUE": "FRICTION_FIT",
+                "ATTRIBUTE_VALUE": "FRICTION FIT",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
@@ -3445,17 +3447,17 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Roll On",
-                "ATTRIBUTE_VALUE": "ROLL_ON",
+                "ATTRIBUTE_VALUE": "ROLL ON",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
@@ -3465,17 +3467,17 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Non-Removable",
-                "ATTRIBUTE_VALUE": "NON_REMOVABLE",
+                "ATTRIBUTE_VALUE": "NON-REMOVABLE",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
@@ -3485,37 +3487,37 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Anti-Back Off",
-                "ATTRIBUTE_VALUE": "ANTI_BACK_OFF",
+                "ATTRIBUTE_VALUE": "ANTI-BACK OFF",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "NON_DISPENSING"
+                        "ATTRIBUTE_VALUE": "NON-DISPENSING"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Clic Loc",
-                "ATTRIBUTE_VALUE": "CLIC_LOC",
+                "ATTRIBUTE_VALUE": "CLIC LOC",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Argus Loc",
-                "ATTRIBUTE_VALUE": "ARGUS_LOC",
+                "ATTRIBUTE_VALUE": "ARGUS LOC",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
@@ -3525,47 +3527,47 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tab Top",
-                "ATTRIBUTE_VALUE": "TAB_TOP",
+                "ATTRIBUTE_VALUE": "TAB TOP",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Squeeze and Turn",
-                "ATTRIBUTE_VALUE": "SQUEEZE_AND_TURN",
+                "ATTRIBUTE_VALUE": "SQUEEZE AND TURN",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Snap Loc",
-                "ATTRIBUTE_VALUE": "SNAP_LOC",
+                "ATTRIBUTE_VALUE": "SNAP LOC",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tear Away",
-                "ATTRIBUTE_VALUE": "TEAR_AWAY",
+                "ATTRIBUTE_VALUE": "TEAR AWAY",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
@@ -3575,7 +3577,7 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_TYPE",
-                        "ATTRIBUTE_VALUE": "TE_CRC"
+                        "ATTRIBUTE_VALUE": "TE/CRC"
                     }
                 ]
             },
@@ -3621,13 +3623,13 @@
                     },
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Fine Ribbed",
-                "ATTRIBUTE_VALUE": "FINE_RIBBED",
+                "ATTRIBUTE_VALUE": "FINE RIBBED",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
@@ -3645,13 +3647,13 @@
                     },
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Ribbed Smooth",
-                "ATTRIBUTE_VALUE": "RIBBED_SMOOTH",
+                "ATTRIBUTE_VALUE": "RIBBED SMOOTH",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
@@ -3661,7 +3663,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Ribbed Matte",
-                "ATTRIBUTE_VALUE": "RIBBED_MATTE",
+                "ATTRIBUTE_VALUE": "RIBBED MATTE",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
@@ -3681,7 +3683,7 @@
                 ]
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Not Applicable",
+                "ATTRIBUTE_VALUE_LABEL": "NA",
                 "ATTRIBUTE_VALUE": "NA",
                 "DEPENDENT_ATTRIBUTE": [
                     {
@@ -3706,7 +3708,7 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             },
@@ -3744,7 +3746,7 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             }
@@ -3789,7 +3791,7 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             },
