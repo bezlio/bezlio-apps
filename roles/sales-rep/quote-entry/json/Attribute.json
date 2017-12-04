@@ -4556,7 +4556,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Aluminum Barrier Laminate",
-                "ATTRIBUTE_VALUE": "ABL",
+                "ATTRIBUTE_VALUE": "ALUMINUM BARRIER LAMINATE",
                 "EDITABLE": true
             },
             {
@@ -4587,7 +4587,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Plastic Barrier Laminate",
-                "ATTRIBUTE_VALUE": "ABL",
+                "ATTRIBUTE_VALUE": "PLASTIC BARRIER LAMINATE",
                 "EDITABLE": true
             },
             {
@@ -4595,7 +4595,7 @@
                 "ATTRIBUTE_VALUE": "PP"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -4613,7 +4613,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Dual Chamber",
-                "ATTRIBUTE_VALUE": "DUAL_CHAMBER"
+                "ATTRIBUTE_VALUE": "DUAL CHAMBER"
             }
         ]
     },
@@ -4628,7 +4628,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Co-Ex",
-                "ATTRIBUTE_VALUE": "CO_EX"
+                "ATTRIBUTE_VALUE": "CO-EX"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Monolayer",
@@ -4636,11 +4636,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Soft Touch",
-                "ATTRIBUTE_VALUE": "SOFT_TOUCH"
+                "ATTRIBUTE_VALUE": "SOFT TOUCH"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "View Stripe",
-                "ATTRIBUTE_VALUE": "VIEW_STRIPE"
+                "ATTRIBUTE_VALUE": "VIEW STRIPE"
             }
         ]
     },
@@ -4664,7 +4664,7 @@
         "ATTRIBUTE_DESCRIPTION": "Tube Orifice",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Tube Orifice",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4675,7 +4675,7 @@
         "ATTRIBUTE_DESCRIPTION": "Diameter (in mm)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Diameter",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4686,7 +4686,7 @@
         "ATTRIBUTE_DESCRIPTION": "Length (in mm)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Length",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4721,7 +4721,7 @@
         "ATTRIBUTE_DESCRIPTION": "Head Style",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Head Style",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4742,7 +4742,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "HDPE EVOH",
-                "ATTRIBUTE_VALUE": "HDPE_EVOH"
+                "ATTRIBUTE_VALUE": "HDPE EVOH"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LDPE",
@@ -4750,7 +4750,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "LDPE EVOH",
-                "ATTRIBUTE_VALUE": "LDPE_EVOH"
+                "ATTRIBUTE_VALUE": "LDPE EVOH"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "MDPE",
@@ -4758,10 +4758,10 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "MDPE EVOH",
-                "ATTRIBUTE_VALUE": "MDPE_EVOH"
+                "ATTRIBUTE_VALUE": "MDPE EVOH"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -4796,7 +4796,7 @@
         "ATTRIBUTE_DESCRIPTION": "Closure Style",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Closure Style",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4830,7 +4830,7 @@
                 "ATTRIBUTE_VALUE": "NONE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "None",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4879,13 +4879,13 @@
         "ATTRIBUTE_DESCRIPTION": "Cap Liner",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "None",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Induction Seal",
-                "ATTRIBUTE_VALUE": "INDUCTION_SEAL"
+                "ATTRIBUTE_VALUE": "INDUCTION SEAL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Unlined",
@@ -4899,7 +4899,7 @@
         "ATTRIBUTE_DESCRIPTION": "Corona/Flame Treat",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Yes (specify how far from open end)",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "EDITABLE": true
@@ -4913,23 +4913,23 @@
     },
     {
         "ATTRIBUTE_ID": "500_OVERCOATING",
-        "ATTRIBUTE_DESCRIPTION": "Over Coating",
+        "ATTRIBUTE_DESCRIPTION": "Over Coating (specify distance from open end)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Matte (specify distance from open end)",
-                "ATTRIBUTE_VALUE": "OTHER",
+                "ATTRIBUTE_VALUE_LABEL": "Matte",
+                "ATTRIBUTE_VALUE": "MATTE",
                 "WIDTH": 900,
                 "EDITABLE": true
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Gloss (specify distance from open end)",
-                "ATTRIBUTE_VALUE": "NULL1",
+                "ATTRIBUTE_VALUE_LABEL": "Gloss",
+                "ATTRIBUTE_VALUE": "GLOSS",
                 "WIDTH": 900,
                 "EDITABLE": true
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Special (specify distance from open end)",
-                "ATTRIBUTE_VALUE": "NULL2",
+                "ATTRIBUTE_VALUE_LABEL": "Special",
+                "ATTRIBUTE_VALUE": "SPECIAL",
                 "WIDTH": 900,
                 "EDITABLE": true
             }
@@ -4940,8 +4940,8 @@
         "ATTRIBUTE_DESCRIPTION": "Sealant (alum)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Yes (Darex Cold Seal)",
-                "ATTRIBUTE_VALUE": "YES_DAREX_COLD_SEAL"
+                "ATTRIBUTE_VALUE_LABEL": "Yes - Darex Cold Seal",
+                "ATTRIBUTE_VALUE": "YES - DAREX COLD SEAL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "No",
@@ -4954,12 +4954,12 @@
         "ATTRIBUTE_DESCRIPTION": "Internal Lining (alum)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Yes (Epoxy Phenolic)",
-                "ATTRIBUTE_VALUE": "YES_EPOXY_PHENOLIC"
+                "ATTRIBUTE_VALUE_LABEL": "Yes - Epoxy Phenolic",
+                "ATTRIBUTE_VALUE": "YES - EPOXY PHENOLIC"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "No (Unlined)",
-                "ATTRIBUTE_VALUE": "NO_UNLINED"
+                "ATTRIBUTE_VALUE_LABEL": "No - Unlined",
+                "ATTRIBUTE_VALUE": "NO - UNLINED"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
