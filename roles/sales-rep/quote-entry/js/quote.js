@@ -324,7 +324,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === attributeID).Display = !curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === attributeID).Display;
 
         //driving / dependent attribute functionality
-        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === curLine.lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.map(attrVal => {
+        curLine.Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.map(attrVal => {
             console.log(attrVal);
         });
         // if (!attr.hasOwnProperty('SELECTED_VALUE')) {
