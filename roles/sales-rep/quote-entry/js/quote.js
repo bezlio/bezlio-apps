@@ -320,28 +320,27 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
     }
 
-    function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
-        //console.log("AttrID: " + attributeID); //400_type
-        //console.log("AttrVal: " + attributeValue); //NA
+    function ShowAttributeVales(bezl, lineNum, attributeID) {
+        curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === parm.AttributeID).Display = !curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === parm.AttributeID).Display;
 
+        //driving / dependent attribute functionality
+        bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.map(attrVal => {
+            console.log(attrVal);
+        });
+        // if (!attr.hasOwnProperty('SELECTED_VALUE')) {
+        //     attr.ATTRIBUTE_VALUES.map(attrVal => {
+        //         attrVal.Display = true;
+        //         if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
+        //             if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
+        //                 attrVal.Display = false;
+        //         }
+        //     });
+        // }
+    }
+
+    function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
         //normal ngModelChange functionality
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
-
-        //driving/dependent attribute functionality
-        if (bezl.vars.attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).hasOwnProperty('DRIVING_ATTRIBUTE')) {
-            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.map(attr => {
-                if (!attr.hasOwnProperty('SELECTED_VALUE')) {
-                    attr.ATTRIBUTE_VALUES.map(attrVal => {
-                        attrVal.Display = true;
-                        if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
-                            console.log(attrVal);
-                            if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
-                                attrVal.Display = false;
-                        }
-                    });
-                }
-            });
-        }
     }
 
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue, valueID) {
