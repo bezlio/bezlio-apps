@@ -333,8 +333,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 if (!attr.hasOwnProperty('SELECTED_VALUE')) {
                     attr.ATTRIBUTE_VALUES.map(attrVal => {
                         attrVal.Display = true;
-                        console.log(attrVal);
                         if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
+                            console.log(attrVal);
                             if (attrVal.DEPENDENT_ATTRIBUTE.filter(depAttr => depAttr.ATTRIBUTE_ID === attributeID && depAttr.ATTRIBUTE_VALUE === attributeValue).length === 0)
                                 attrVal.Display = false;
                         }
