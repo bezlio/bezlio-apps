@@ -4516,7 +4516,6 @@
         "ATTRIBUTE_ID": "500_MEASURE",
         "ATTRIBUTE_DESCRIPTION": "Measure",
         "DISPLAY_IN_TITLE": true,
-        "SELECTION_MODE": "Multiple",
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "oz",
