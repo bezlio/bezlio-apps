@@ -329,8 +329,9 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                     attrVal.Display = false;
                     attrVal.DEPENDENT_ATTRIBUTE.map(depAttr => {
-                        console.log(attrVal);
-                        console.log(curLine.Attributes);
+                        if (curLine.Attributes.find(curAttrs => curAttrs.ATTRIBUTE_ID === depAttr.ATTRIBUTE_ID).SELECTED_VALUE === depAttr.ATTRIBUTE_VALUE) {
+                            attrVal.Display = true;
+                        }
                     });
                 } else {
                     attrVal.Display = true;
