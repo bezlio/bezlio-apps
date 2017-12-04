@@ -320,7 +320,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes = undefined;
     }
 
-    function ShowAttributeVales(bezl, lineNum, attributeID) {
+    function ShowAttributeValues(bezl, lineNum, attributeID) {
         curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === parm.AttributeID).Display = !curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === parm.AttributeID).Display;
 
         //driving / dependent attribute functionality
@@ -381,6 +381,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         deleteLine: DeleteLine,
         configureLine: ConfigureLine,
         changePart: ChangePart,
+        showAttributeValues: ShowAttributeValues,
         changeAttribute: ChangeAttribute,
         changeTypedAttribute: ChangeTypedAttribute
     }
