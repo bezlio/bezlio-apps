@@ -3849,7 +3849,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Fine Ribbed",
-                "ATTRIBUTE_VALUE": "FINE_RIBBED"
+                "ATTRIBUTE_VALUE": "FINE RIBBED"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Smooth",
@@ -3896,7 +3896,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "System D1",
-                "ATTRIBUTE_VALUE": "SYSTEM_D1"
+                "ATTRIBUTE_VALUE": "SYSTEM D1"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Cardinal",
@@ -3944,7 +3944,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "High Viscosity",
-                "ATTRIBUTE_VALUE": "CRIMP"
+                "ATTRIBUTE_VALUE": "HIGH VISCOSITY"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -4027,11 +4027,11 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Lock Up",
-                "ATTRIBUTE_VALUE": "LOCK_UP"
+                "ATTRIBUTE_VALUE": "LOCK UP"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Lock Down",
-                "ATTRIBUTE_VALUE": "LOCK_DOWN"
+                "ATTRIBUTE_VALUE": "LOCK DOWN"
             }
         ]
     },
@@ -4067,7 +4067,7 @@
         "ATTRIBUTE_DESCRIPTION": "Output per Stroke",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Output per stroke",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -4163,7 +4163,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Trigger Sprayer",
-                "ATTRIBUTE_VALUE": "TRIGGER_SPRAYER",
+                "ATTRIBUTE_VALUE": "TRIGGER SPRAYER",
                 "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "420_NOZZLE_CONFIGURATION",
@@ -4171,15 +4171,15 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "On/Off",
-                                "ATTRIBUTE_VALUE": "ON_OFF"
+                                "ATTRIBUTE_VALUE": "ON/OFF"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Spray/Stream/Off",
-                                "ATTRIBUTE_VALUE": "SPRAY_STREAM_OFF"
+                                "ATTRIBUTE_VALUE": "SPRAY/STREAM/OFF"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Spray/Foam/Off",
-                                "ATTRIBUTE_VALUE": "SPRAY_FOAM_OFF"
+                                "ATTRIBUTE_VALUE": "SPRAY/FOAM/OFF"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -4219,19 +4219,19 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Fine Mist Sprayer",
-                "ATTRIBUTE_VALUE": "FINE_MIST_SPRAYER"
+                "ATTRIBUTE_VALUE": "FINE MIST SPRAYER"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Perfume Sprayer",
-                "ATTRIBUTE_VALUE": "PERFURME_SPRAYER"
+                "ATTRIBUTE_VALUE": "PERFURME SPRAYER"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Regular Mist Sprayer",
-                "ATTRIBUTE_VALUE": "REGULAR_MIST_SPRAYER"
+                "ATTRIBUTE_VALUE": "REGULAR MIST SPRAYER"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "High Viscosity",
-                "ATTRIBUTE_VALUE": "HIGH_VISCOSITY"
+                "ATTRIBUTE_VALUE": "HIGH VISCOSITY"
             }
         ]
     },
