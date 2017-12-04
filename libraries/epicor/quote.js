@@ -231,7 +231,8 @@ define(function () {
             if (otherValue === '') {
                 var nonOtherEditable = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
                 console.log("Sel Val: " + attr.SELECTED_VALUE);
-                console.log(nonOtherEditable);
+                console.log(attr);
+                //console.log(nonOtherEditable);
                 if (nonOtherEditable !== undefined) {
                     if (nonOtherEditable.hasOwnProperty('SELECTED_VALUE')) {
                         otherValue = nonOtherEditable.SELECTED_VALUE;
