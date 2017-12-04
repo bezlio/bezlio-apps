@@ -327,16 +327,15 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         if (curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === attributeID).Display) {
             curLine.Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.map(attrVal => {
                 if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
+                    attrVal.Display = false;
                     attrVal.DEPENDENT_ATTRIBUTE.map(depAttr => {
-
-                        console.log(curLine.Attributes);
+                        //console.log(curLine.Attributes);
                     });
+                } else {
+                    attrVal.Display = true;
                 }
-
             });
         }
-
-
 
         // if (!attr.hasOwnProperty('SELECTED_VALUE')) {
         //     attr.ATTRIBUTE_VALUES.map(attrVal => {
