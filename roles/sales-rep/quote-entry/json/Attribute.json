@@ -4547,7 +4547,6 @@
     {
         "ATTRIBUTE_ID": "500_MATERIAL",
         "ATTRIBUTE_DESCRIPTION": "Material",
-        "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Aluminum",
