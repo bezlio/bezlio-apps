@@ -3141,7 +3141,7 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             },
@@ -3151,7 +3151,7 @@
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "400_CATEGORY",
-                        "ATTRIBUTE_VALUE": "PHENOLIC_UREA"
+                        "ATTRIBUTE_VALUE": "PHENOLIC/UREA"
                     }
                 ]
             }
