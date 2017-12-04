@@ -235,6 +235,7 @@ define(function () {
                         otherValue = nonOtherEditable.SELECTED_VALUE;
                         nonOtherEditable_bool = true;
                         console.log("Other value: " + otherValue);
+                        console.log(nonOtherEditable);
                     }
                 }
             }
