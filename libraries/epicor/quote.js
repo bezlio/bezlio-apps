@@ -234,6 +234,7 @@ define(function () {
                     if (nonOtherEditable.hasOwnProperty('SELECTED_VALUE')) {
                         otherValue = nonOtherEditable.SELECTED_VALUE;
                         nonOtherEditable_bool = true;
+                        console.log("Other value: " + otherValue);
                     }
                 }
             }
