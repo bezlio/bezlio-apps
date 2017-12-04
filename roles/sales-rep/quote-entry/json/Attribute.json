@@ -4253,7 +4253,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Anti-Back Off",
-                "ATTRIBUTE_VALUE": "ANTI_BACK_OFF"
+                "ATTRIBUTE_VALUE": "ANTI-BACK OFF"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Crimp",
@@ -4261,7 +4261,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Push On",
-                "ATTRIBUTE_VALUE": "PUSH_ON"
+                "ATTRIBUTE_VALUE": "PUSH ON"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Metal",
@@ -4275,7 +4275,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Fine Ribbed",
-                "ATTRIBUTE_VALUE": "FINE_RIBBED"
+                "ATTRIBUTE_VALUE": "FINE RIBBED"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Smooth",
@@ -4287,7 +4287,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Metal Collar",
-                "ATTRIBUTE_VALUE": "METAL_COLLAR"
+                "ATTRIBUTE_VALUE": "METAL COLLAR"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Metalized",
@@ -4332,7 +4332,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mark VI",
-                "ATTRIBUTE_VALUE": "MARK_VI"
+                "ATTRIBUTE_VALUE": "MARK VI"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Vela",
@@ -4348,11 +4348,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mini Trigger",
-                "ATTRIBUTE_VALUE": "MINI_TRIGGER"
+                "ATTRIBUTE_VALUE": "MINI TRIGGER"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "EuroMist HV",
-                "ATTRIBUTE_VALUE": "EUROMIST_HV"
+                "ATTRIBUTE_VALUE": "EUROMIST HV"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PAV",
@@ -4364,7 +4364,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mark IV",
-                "ATTRIBUTE_VALUE": "MARK_IV"
+                "ATTRIBUTE_VALUE": "MARK IV"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "VTS",
@@ -4372,7 +4372,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Industrial Remote",
-                "ATTRIBUTE_VALUE": "INDUSTRIAL_REMOTE"
+                "ATTRIBUTE_VALUE": "INDUSTRIAL REMOTE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "P922",
@@ -4456,7 +4456,7 @@
         "ATTRIBUTE_DESCRIPTION": "Output per Stroke",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Output per stroke",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
