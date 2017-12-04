@@ -329,6 +329,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 if (attrVal.hasOwnProperty('DEPENDENT_ATTRIBUTE')) {
                     attrVal.Display = false;
                     attrVal.DEPENDENT_ATTRIBUTE.map(depAttr => {
+                        console.log(attrVal);
                         console.log(curLine.Attributes);
                     });
                 } else {
