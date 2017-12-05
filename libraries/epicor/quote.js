@@ -353,8 +353,10 @@ define(function () {
                 if (attrVals_sub.hasOwnProperty('SUB_ATTRIBUTE')) {
                     attrVals_sub.SUB_ATTRIBUTE.map(subAttrs => {
                         subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
-                            console.log("Sub Attr: " + subAttrs);
-                            console.log("Sub Attr Val: " + subAttrVals);
+                            console.log("Sub Attr: ");
+                            console.log(subAttrs);
+                            console.log("Sub Attr Val: ");
+                            console.log(subAttrVals);
                             bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                 "QueryName": "InsertAttributes",
                                 "Parameters": [
