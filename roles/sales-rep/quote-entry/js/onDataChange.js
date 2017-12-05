@@ -119,7 +119,14 @@ define(function () {
                                 }
                             });
                             //sub attributes
-                            console.log(attrFnd);
+                            attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
+                                if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
+                                    console.log("Attr Fnd:");
+                                    console.log(attrFnd);
+                                    console.log("Attr Val:");
+                                    console.log(attrVal);
+                                }
+                            });
                             var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
                             if (subAttrFnd !== undefined) {
                                 if (subAttrFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
