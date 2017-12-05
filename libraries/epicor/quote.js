@@ -225,6 +225,7 @@ define(function () {
         }
 
         var nonOtherEditable_bool;
+        var otherValue;
         dtl.Attributes.map(attr => {
             nonOtherEditable = false;
             // var otherValue = (attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER') !== undefined) ? attr.ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE : '';
@@ -232,8 +233,6 @@ define(function () {
             // console.log(otherValue);
             // if (otherValue === '') {
             var nonOtherEditable = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
-            console.log("Sel Val: " + attr.SELECTED_VALUE);
-            console.log(attr);
             //console.log(nonOtherEditable);
             if (nonOtherEditable !== undefined) {
                 if (nonOtherEditable.hasOwnProperty('SELECTED_VALUE')) {
