@@ -352,6 +352,7 @@ define(function () {
             //sub attributes
             var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
             if (selSubAttr !== undefined) {
+                console.log(selSubAttr);
                 if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
                     var selSubAttrVal = selSubAttr.SUB_ATTRIBUTE[0];
                     bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
