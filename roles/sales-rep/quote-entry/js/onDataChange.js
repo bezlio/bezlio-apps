@@ -119,14 +119,15 @@ define(function () {
                                 }
                             });
                             //sub attributes
+                            console.log("Attr Fnd:");
+                            console.log(attrFnd);
                             var subAttrValList = bezl.data.Attributes.filter(subAttrVal => subAttrVal.Key5 === attrFnd.ATTRIBUTE_ID);
                             console.log(subAttrValList);
                             if (subAttrValList.Length > 0) {
                                 subAttrValList.map(subAttrVal => {
                                     console.log(subAttrVal);
                                 });
-                                console.log("Attr Fnd:");
-                                console.log(attrFnd);
+
                                 // attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
                                 //     if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
                                 //         console.log("Attr Fnd:");
