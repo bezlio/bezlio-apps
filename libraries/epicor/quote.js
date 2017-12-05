@@ -353,7 +353,7 @@ define(function () {
                 if (attrVals_sub.hasOwnProperty('SUB_ATTRIBUTE')) {
                     attrVals_sub.SUB_ATTRIBUTE.map(subAttrs => {
                         subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
-                            if (subAttrVals.SELECTED_VALUE !== undefined) {
+                            if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
                                 console.log("Sub Attr: ");
                                 console.log(subAttrs);
                                 console.log("Sub Attr Val: ");
