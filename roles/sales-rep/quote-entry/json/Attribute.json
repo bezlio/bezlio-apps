@@ -5144,8 +5144,8 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Celon Band:",
-                "ATTRIBUTE_VALUE": "OTHER",
+                "ATTRIBUTE_VALUE_LABEL": "Celon Band",
+                "ATTRIBUTE_VALUE": "CELON BAND",
                 "EDITABLE": true
             }
         ]
@@ -5156,7 +5156,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Diameter",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5168,7 +5168,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Length",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5208,7 +5208,7 @@
                 "ATTRIBUTE_VALUE": "YELLOW"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5229,7 +5229,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Double Perforation",
-                "ATTRIBUTE_VALUE": "DOUBLE_PERF"
+                "ATTRIBUTE_VALUE": "DOUBLE PERFORATION"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "None",
