@@ -367,9 +367,9 @@ define(function () {
                                         { Key: "PartID", Value: dtl.PartNum },
                                         { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
                                         { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                                        { Key: "AttributeValue", Value: subAttrVals.SELECTED_VALUE },
-                                        { Key: "OtherAttributeValue", Value: '' },
-                                        { Key: "AttributeDesc", Value: subAttrVals.ATTRIBUTE_DESCRIPTION },
+                                        { Key: "AttributeValue", Value: subAttrVals.ATTRIBUTE_VALUE },
+                                        { Key: "OtherAttributeValue", Value: subAttrVals.SELECTED_VALUE },
+                                        { Key: "AttributeDesc", Value: subAttrs.ATTRIBUTE_DESCRIPTION },
                                         { Key: "PartNum", Value: dtl.PartNum }
                                     ]
                                 }, 0);
