@@ -350,30 +350,53 @@ define(function () {
 
             //sub attributes
             console.log(attr);
-            var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
-            if (selSubAttr !== undefined) {
-                console.log(selSubAttr);
-                if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
-                    var selSubAttrVal = selSubAttr.SUB_ATTRIBUTE[0];
-                    bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                        "QueryName": "InsertAttributes",
-                        "Parameters": [
-                            { Key: "Company", Value: company },
-                            { Key: "QuoteNum", Value: quoteNum },
-                            { Key: "QuoteLine", Value: dtl.QuoteLine },
-                            { Key: "PartID", Value: dtl.PartNum },
-                            { Key: "AttributeID", Value: selSubAttrVal.ATTRIBUTE_ID },
-                            { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                            { Key: "AttributeValue", Value: selSubAttrVal.SELECTED_VALUE },
-                            { Key: "OtherAttributeValue", Value: '' },
-                            { Key: "AttributeDesc", Value: selSubAttrVal.ATTRIBUTE_DESCRIPTION },
-                            { Key: "PartNum", Value: dtl.PartNum }
-                        ]
-                    }, 0);
-
-                    attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
+            attr.ATTRIBUTE_VALUES.map(attrVals_sub => {
+                if (attrVals_sub.hasOwnProperty('SUB_ATTRIBUTE')) {
+                    attrVals_sub.map(subAttrs => {
+                        subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
+                            bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                "QueryName": "InsertAttributes",
+                                "Parameters": [
+                                    { Key: "Company", Value: company },
+                                    { Key: "QuoteNum", Value: quoteNum },
+                                    { Key: "QuoteLine", Value: dtl.QuoteLine },
+                                    { Key: "PartID", Value: dtl.PartNum },
+                                    { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
+                                    { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
+                                    { Key: "AttributeValue", Value: subAttrVals.SELECTED_VALUE },
+                                    { Key: "OtherAttributeValue", Value: '' },
+                                    { Key: "AttributeDesc", Value: sibAttrVals.ATTRIBUTE_DESCRIPTION },
+                                    { Key: "PartNum", Value: dtl.PartNum }
+                                ]
+                            }, 0);
+                        });
+                    });
                 }
-            }
+            });
+            // var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
+            // if (selSubAttr !== undefined) {
+            //     console.log(selSubAttr);
+            //     if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
+            //         var selSubAttrVal = selSubAttr.SUB_ATTRIBUTE[0];
+            //         bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+            //             "QueryName": "InsertAttributes",
+            //             "Parameters": [
+            //                 { Key: "Company", Value: company },
+            //                 { Key: "QuoteNum", Value: quoteNum },
+            //                 { Key: "QuoteLine", Value: dtl.QuoteLine },
+            //                 { Key: "PartID", Value: dtl.PartNum },
+            //                 { Key: "AttributeID", Value: selSubAttrVal.ATTRIBUTE_ID },
+            //                 { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
+            //                 { Key: "AttributeValue", Value: selSubAttrVal.SELECTED_VALUE },
+            //                 { Key: "OtherAttributeValue", Value: '' },
+            //                 { Key: "AttributeDesc", Value: selSubAttrVal.ATTRIBUTE_DESCRIPTION },
+            //                 { Key: "PartNum", Value: dtl.PartNum }
+            //             ]
+            //         }, 0);
+
+            //         attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
+            //     }
+            // }
         });
 
         if (dtl.ListItem === 1) { //set concatenated attribute values as description
