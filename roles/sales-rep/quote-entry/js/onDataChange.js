@@ -123,10 +123,8 @@ define(function () {
                             console.log(subAttrValList);
                             attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
                                 if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
-                                    // console.log("Attr Fnd:");
-                                    // console.log(attrFnd);
-                                    // console.log("Attr Val:");
-                                    // console.log(attrVal);
+                                    console.log("Attr Fnd:");
+                                    console.log(attrFnd);
                                 }
                             });
                             var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
