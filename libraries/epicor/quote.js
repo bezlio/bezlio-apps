@@ -219,7 +219,6 @@ define(function () {
 
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
-        console.log(dtl.Attributes);
 
         if (dtl.Attributes.length > 1) {
             if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
@@ -350,6 +349,7 @@ define(function () {
             }
 
             //sub attributes
+            console.log(attr);
             var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
             if (selSubAttr !== undefined) {
                 console.log(selSubAttr);
