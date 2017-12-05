@@ -220,6 +220,7 @@ define(function () {
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
+        console.log(dtl.Attributes);
         if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
             this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
