@@ -5626,12 +5626,12 @@
                 ]
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Display",
-                "ATTRIBUTE_VALUE": "INNER_DISPLAY"
+                "ATTRIBUTE_VALUE_LABEL": "Inner Display",
+                "ATTRIBUTE_VALUE": "INNER DISPLAY"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Partition Set",
-                "ATTRIBUTE_VALUE": "PARTITION_SET"
+                "ATTRIBUTE_VALUE": "PARTITION SET"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Slipsheet",
@@ -5653,7 +5653,7 @@
                 "ATTRIBUTE_VALUE": "WHITE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5664,8 +5664,8 @@
         "ATTRIBUTE_DESCRIPTION": "Printed (Yes or No)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Yes:",
-                "ATTRIBUTE_VALUE": "OTHER",
+                "ATTRIBUTE_VALUE_LABEL": "Yes",
+                "ATTRIBUTE_VALUE": "YES",
                 "EDITABLE": true
             },
             {
@@ -5681,7 +5681,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Dimensions L x W x H",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5694,15 +5694,15 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "26 ECT",
-                "ATTRIBUTE_VALUE": "26_ECT"
+                "ATTRIBUTE_VALUE": "26 ECT"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "32 ECT",
-                "ATTRIBUTE_VALUE": "32_ECT"
+                "ATTRIBUTE_VALUE": "32 ECT"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "44 ECT",
-                "ATTRIBUTE_VALUE": "44_ECT"
+                "ATTRIBUTE_VALUE": "44 ECT"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "175lb",
@@ -5717,7 +5717,7 @@
                 "ATTRIBUTE_VALUE": "CHIPBOARD"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5746,7 +5746,7 @@
                 "ATTRIBUTE_VALUE": "MICROFLUTE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5754,10 +5754,10 @@
     },
     {
         "ATTRIBUTE_ID": "800_PARTITION_SET_NUMBER_OF_CELLS",
-        "ATTRIBUTE_DESCRIPTION": "Partition Set",
+        "ATTRIBUTE_DESCRIPTION": "Partition Set (number of cells)",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Partition Set (number of cells)",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "WIDTH": 900,
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
@@ -5769,7 +5769,7 @@
         "ATTRIBUTE_DESCRIPTION": "Vendor Item",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Vendor Item",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5780,7 +5780,7 @@
         "ATTRIBUTE_DESCRIPTION": "Vendor",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Vendor",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5791,7 +5791,7 @@
         "ATTRIBUTE_DESCRIPTION": "Planner",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Planner",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5804,11 +5804,11 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "No Decoration",
-                "ATTRIBUTE_VALUE": "NO_DECORATION"
+                "ATTRIBUTE_VALUE": "NO DECORATION"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Silk Screening",
-                "ATTRIBUTE_VALUE": "SILK_SCREENING",
+                "ATTRIBUTE_VALUE": "SILK SCREENING",
                 "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "DECO_NUMBER_COLORS",
@@ -5939,7 +5939,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mold Labeling",
-                "ATTRIBUTE_VALUE": "MOLD_LABELING"
+                "ATTRIBUTE_VALUE": "MOLD LABELING"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -6050,7 +6050,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Description:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "HEIGHT": 200,
