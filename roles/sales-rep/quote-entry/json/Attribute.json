@@ -4969,22 +4969,23 @@
     {
         "ATTRIBUTE_ID": "510_TYPE",
         "ATTRIBUTE_DESCRIPTION": "Product Type",
+        "DRIVING_ATTRIBUTE": true,
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Cap - Deodorant",
-                "ATTRIBUTE_VALUE": "CAP_DEODORANT"
+                "ATTRIBUTE_VALUE": "CAP - DEODORANT"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Cap - Lip Balm",
-                "ATTRIBUTE_VALUE": "CAP_LIP_BALM"
+                "ATTRIBUTE_VALUE": "CAP - LIP BALM"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Caulk Tube",
-                "ATTRIBUTE_VALUE": "CAULK_TUBE"
+                "ATTRIBUTE_VALUE": "CAULK TUBE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Deodorant Stick",
-                "ATTRIBUTE_VALUE": "DEODORANT_STICK",
+                "ATTRIBUTE_VALUE": "DEODORANT STICK",
                 "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "510_DEODORANT_TYPE",
@@ -5008,15 +5009,15 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Lip Balm",
-                "ATTRIBUTE_VALUE": "LIP_BALM"
+                "ATTRIBUTE_VALUE": "LIP BALM"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Syringe Single",
-                "ATTRIBUTE_VALUE": "SYRINGE_SINGLE"
+                "ATTRIBUTE_VALUE": "SYRINGE SINGLE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Syringe Dual",
-                "ATTRIBUTE_VALUE": "SYRINGE_DUAL"
+                "ATTRIBUTE_VALUE": "SYRINGE DUAL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tubing",
@@ -5072,7 +5073,7 @@
                 "ATTRIBUTE_VALUE": "PP"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -5087,7 +5088,7 @@
             {
                 "ATTRIBUTE_VALUE_LABEL": "Inches",
                 "EDITABLE": true,
-                "ATTRIBUTE_VALUE": "Inch"
+                "ATTRIBUTE_VALUE": "Inches"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "ml",
@@ -5121,12 +5122,12 @@
                 "ATTRIBUTE_VALUE": "WHITE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Knurl Color",
+                "ATTRIBUTE_VALUE_LABEL": "Knurl",
                 "ATTRIBUTE_VALUE": "Knurl",
                 "EDITABLE": true,
                 "DEPENDENT_ATTRIBUTE": [
