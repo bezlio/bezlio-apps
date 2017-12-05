@@ -120,7 +120,7 @@ define(function () {
                             });
                             //sub attributes
                             var subAttrValList = bezl.data.Attributes.filter(subAttrVal => subAttrVal.Key5 === attrFnd.ATTRIBUTE_ID);
-                            console.log(aubAttrValList);
+                            console.log(subAttrValList);
                             attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
                                 if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
                                     // console.log("Attr Fnd:");
