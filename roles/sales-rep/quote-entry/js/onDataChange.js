@@ -123,8 +123,10 @@ define(function () {
                             console.log(subAttrValList);
                             if (subAttrValList.Length > 0) {
                                 subAttrValList.map(subAttrVal => {
-
+                                    console.log(subAttrVal);
                                 });
+                                console.log("Attr Fnd:");
+                                console.log(attrFnd);
                                 // attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
                                 //     if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
                                 //         console.log("Attr Fnd:");
