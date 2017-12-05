@@ -5111,7 +5111,6 @@
         "ATTRIBUTE_ID": "510_COLOR",
         "ATTRIBUTE_DESCRIPTION": "Color",
         "DISPLAY_IN_TITLE": true,
-        "SELECTION_MODE": "Multiple",
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Natural",
