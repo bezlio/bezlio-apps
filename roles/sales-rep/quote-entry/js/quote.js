@@ -322,8 +322,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
     function ShowAttributeValues(bezl, curLine, attributeID) {
         curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === attributeID).Display = !curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === attributeID).Display;
-        console.log(curLine.Attributes);
-        console.log(bezl.data.Attributes);
 
         //driving / dependent attribute functionality
         if (curLine.Attributes.find(atr => atr.ATTRIBUTE_ID === attributeID).Display) {
