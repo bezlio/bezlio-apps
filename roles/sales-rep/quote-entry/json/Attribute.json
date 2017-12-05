@@ -5302,11 +5302,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "In-mold",
-                "ATTRIBUTE_VALUE": "IN_MOLD"
+                "ATTRIBUTE_VALUE": "IN-MOLD"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Spot Label",
-                "ATTRIBUTE_VALUE": "SPOT_LABEL"
+                "ATTRIBUTE_VALUE": "SPOT LABEL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PS",
@@ -5314,7 +5314,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Shrink Band",
-                "ATTRIBUTE_VALUE": "SHRINK_BAND",
+                "ATTRIBUTE_VALUE": "SHRINK BAND",
                 "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "700_SHRINK_BAND_PERFORATIONS",
@@ -5335,7 +5335,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Shrink Label",
-                "ATTRIBUTE_VALUE": "SHRINK_LABEL"
+                "ATTRIBUTE_VALUE": "SHRINK LABEL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Sleeve",
@@ -5425,7 +5425,7 @@
                 "ATTRIBUTE_VALUE": "VINYL"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -5477,7 +5477,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Hot Stamp",
-                "ATTRIBUTE_VALUE": "HOT_STAMP",
+                "ATTRIBUTE_VALUE": "HOT STAMP",
                 "SUB_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "NUMBER_OF_COLORS",
@@ -5494,7 +5494,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Coating Type",
-                "ATTRIBUTE_VALUE": "OTHER",
+                "ATTRIBUTE_VALUE": "COATING TYPE",
                 "EDITABLE": true
             }
         ]
@@ -5504,7 +5504,7 @@
         "ATTRIBUTE_DESCRIPTION": "# of SKU's",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "SKU #",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5515,7 +5515,7 @@
         "ATTRIBUTE_DESCRIPTION": "Pieces Per Pallet",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Pieces Per Pallet",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5526,7 +5526,7 @@
         "ATTRIBUTE_DESCRIPTION": "Weight Per Carton",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Weight Per Carton",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5537,7 +5537,7 @@
         "ATTRIBUTE_DESCRIPTION": "Freight Class",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Freight Class",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5548,7 +5548,7 @@
         "ATTRIBUTE_DESCRIPTION": "Vendor Item",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Vendor Item",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5559,7 +5559,7 @@
         "ATTRIBUTE_DESCRIPTION": "Supplier",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Supplier",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5570,7 +5570,7 @@
         "ATTRIBUTE_DESCRIPTION": "Planner",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Planner",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -5581,7 +5581,7 @@
         "ATTRIBUTE_DESCRIPTION": "Lead Time",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Lead Time",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
