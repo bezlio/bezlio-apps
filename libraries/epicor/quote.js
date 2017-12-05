@@ -363,7 +363,7 @@ define(function () {
                                         { Key: "PartID", Value: dtl.PartNum },
                                         { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
                                         { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                                        { Key: "ParentValue", Value: val.SELECTED_VALUE },
+                                        { Key: "ParentValue", Value: attr.SELECTED_VALUE },
                                         { Key: "AttributeValue", Value: subAttrVals.ATTRIBUTE_VALUE },
                                         { Key: "OtherAttributeValue", Value: subAttrVals.SELECTED_VALUE },
                                         { Key: "AttributeDesc", Value: subAttrs.ATTRIBUTE_DESCRIPTION },
