@@ -363,10 +363,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                     .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
                     .ATTRIBUTE_VALUES.find(val => val.ATTRIBUTE_VALUE === 'OTHER').SELECTED_VALUE = attributeValue;
             } else {
-                console.log("AttrID: " + attributeID);
-                console.log("Sel Attr: " + selectedAttribute);
-                console.log("AttrVal: " + attributeValue);
-                console.log("ValID: " + valueID);
                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = valueID;
                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)
                     .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
