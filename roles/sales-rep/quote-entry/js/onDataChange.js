@@ -121,12 +121,18 @@ define(function () {
                             //sub attributes
                             var subAttrValList = bezl.data.Attributes.filter(subAttrVal => subAttrVal.Key5 === attrFnd.ATTRIBUTE_ID);
                             console.log(subAttrValList);
-                            attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
-                                if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
-                                    console.log("Attr Fnd:");
-                                    console.log(attrFnd);
-                                }
-                            });
+                            if (subAttrValList.Length > 0) {
+                                subAttrValList.map(subAttrVal => {
+
+                                });
+                                // attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
+                                //     if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
+                                //         console.log("Attr Fnd:");
+                                //         console.log(attrFnd);
+                                //     }
+                                // });
+                            }
+
                             var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
                             if (subAttrFnd !== undefined) {
                                 if (subAttrFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
