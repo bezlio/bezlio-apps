@@ -119,13 +119,13 @@ define(function () {
                                 }
                             });
                             //sub attributes
-                            console.log("Attr Fnd:");
-                            console.log(attrFnd);
+                            //console.log("Attr Fnd:");
+                            //console.log(attrFnd);
                             var subAttrValList = bezl.data.Attributes.filter(subAttrVal => subAttrVal.Key5 === attrFnd.ATTRIBUTE_ID);
-                            console.log(subAttrValList);
+                            //console.log(subAttrValList);
                             if (subAttrValList.Length > 0) {
                                 subAttrValList.forEach(subAttrVal => {
-                                    console.log(subAttrVal);
+                                    //console.log(subAttrVal);
                                 });
 
                                 // attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
