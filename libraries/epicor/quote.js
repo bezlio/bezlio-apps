@@ -321,13 +321,9 @@ define(function () {
 
                     //sub attributes
                     if (val.hasOwnProperty('SUB_ATTRIBUTE')) {
-                        console.log(val);
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    console.log("Sub Attr ID: " + subAttrs.ATTRIBUTE_ID);
-                                    console.log("Parent ID: " + attr.ATTRIBUTE_ID);
-                                    console.log(val);
                                     // bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                                     //     "QueryName": "InsertSubAttributes",
                                     //     "Parameters": [
@@ -370,7 +366,6 @@ define(function () {
 
                     //sub attributes
                     if (val.hasOwnProperty('SUB_ATTRIBUTE')) {
-                        console.log(val);
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
