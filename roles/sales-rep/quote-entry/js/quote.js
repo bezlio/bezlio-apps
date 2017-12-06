@@ -355,6 +355,11 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
     }
 
+    //sub attributes we need
+    // attribute id - 000_DECO
+    // attribute value - SILK_SCREENING
+    // sub attribute id - PASS_CONFIGURATION - set selected value
+    // attribute value - set other value
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue, valueID) {
         if (attributeID.indexOf("MEASURE") === -1) {
             if (valueID === "OTHER") {
