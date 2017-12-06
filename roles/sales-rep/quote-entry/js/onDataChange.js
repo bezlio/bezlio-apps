@@ -121,9 +121,9 @@ define(function () {
                             //sub attributes
                             var subAttrValList = bezl.data.Attributes.filter(subAttrVal => subAttrVal.Key5 === attrFnd.ATTRIBUTE_ID);
                             if (subAttrValList.length > 0) {
+                                //attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.)
                                 console.log("Attr Fnd:");
                                 console.log(attrFnd);
-                                console.log(subAttrValList);
                                 subAttrValList.forEach(subAttrVal => {
                                     console.log(subAttrVal);
                                 });
