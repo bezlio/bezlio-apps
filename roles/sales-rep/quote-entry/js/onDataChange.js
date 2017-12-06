@@ -127,8 +127,8 @@ define(function () {
                                 subAttrValList.forEach(subAttrVal => {
                                     // console.log(subAttrVal);
                                     var attrFnd_subAttr = attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.Character03);
-                                    var attrFndVal_subAttrVal = attrFnd_subAttr.SUB_ATTRIBUTE.ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr.ATTRIBUTE_VALUE_LABEL.toUpper() === subAttrVal.Character01)
-                                    console.log(attrFndVal_subAttrVal);
+                                    console.log(subAtrVal.Key4.substring(0, subAttrVal.Key4.indexOf('-')));
+                                    //var attrFndVal_subAttrVal = attrFnd_subAttr.SUB_ATTRIBUTE.find()
                                     //.SUB_ATTRIBUTE.ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr.ATTRIBUTE_VALUE_LABEL.toUpper() === subAttrVal.Character01)
                                     //.SELECTED_VALUE = subAttrVal.Character04;
                                 });
