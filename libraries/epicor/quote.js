@@ -321,6 +321,7 @@ define(function () {
 
                     //sub attributes
                     if (val.hasOwnProperty('SUB_ATTRIBUTE')) {
+                        console.log(val);
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
