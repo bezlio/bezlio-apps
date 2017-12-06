@@ -126,6 +126,9 @@ define(function () {
                                 console.log(attrFnd);
                                 subAttrValList.forEach(subAttrVal => {
                                     console.log(subAttrVal);
+                                    attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.Character03)
+                                        .SUB_ATTRIBUTE.ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr.ATTRIBUTE_VALUE_LABEL.toUpper() === subAttrVal.Character01)
+                                        .SELECTED_VALUE = subAttrVal.Character04;
                                 });
 
                                 // attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
