@@ -77,19 +77,19 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "OTHER",
+                                "ATTRIBUTE_VALUE": "MONTHLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Quarterly",
-                                "ATTRIBUTE_VALUE": "NULL1",
+                                "ATTRIBUTE_VALUE": "QUARTERLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Annually",
-                                "ATTRIBUTE_VALUE": "NULL2",
+                                "ATTRIBUTE_VALUE": "ANNUALLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             }
@@ -110,19 +110,19 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "OTHER",
+                                "ATTRIBUTE_VALUE": "MONTHLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Quarterly",
-                                "ATTRIBUTE_VALUE": "NULL1",
+                                "ATTRIBUTE_VALUE": "QUARTERLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Annually",
-                                "ATTRIBUTE_VALUE": "NULL2",
+                                "ATTRIBUTE_VALUE": "ANNUALLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             }
@@ -143,19 +143,19 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "OTHER",
+                                "ATTRIBUTE_VALUE": "MONTHLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Quarterly",
-                                "ATTRIBUTE_VALUE": "NULL1",
+                                "ATTRIBUTE_VALUE": "QUARTERLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Annually",
-                                "ATTRIBUTE_VALUE": "NULL2",
+                                "ATTRIBUTE_VALUE": "ANNUALLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             }
@@ -176,19 +176,19 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Monthly",
-                                "ATTRIBUTE_VALUE": "OTHER",
+                                "ATTRIBUTE_VALUE": "MONTHLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Quarterly",
-                                "ATTRIBUTE_VALUE": "OTHER",
+                                "ATTRIBUTE_VALUE": "QUARTERLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Annually",
-                                "ATTRIBUTE_VALUE": "NULL1",
+                                "ATTRIBUTE_VALUE": "ANNUALLY",
                                 "WIDTH": 300,
                                 "EDITABLE": true
                             }
@@ -269,7 +269,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -280,7 +280,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Pass Configuration",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Pass Configuration:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -293,15 +293,15 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Front & Back",
-                                "ATTRIBUTE_VALUE": "FRONT_BACK"
+                                "ATTRIBUTE_VALUE": "FRONT & BACK"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "One Side",
-                                "ATTRIBUTE_VALUE": "ONE_SIDE"
+                                "ATTRIBUTE_VALUE": "ONE SIDE"
                             },
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Combination:",
-                                "ATTRIBUTE_VALUE": "OTHER",
+                                "ATTRIBUTE_VALUE_LABEL": "Combination",
+                                "ATTRIBUTE_VALUE": "COMBINATION",
                                 "EDITABLE": true
                             }
                         ]
@@ -317,7 +317,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -328,7 +328,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -341,14 +341,14 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Front & Back",
-                                "ATTRIBUTE_VALUE": "FRONT_BACK"
+                                "ATTRIBUTE_VALUE": "FRONT & BACK"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "One Side",
-                                "ATTRIBUTE_VALUE": "ONE_SIDE"
+                                "ATTRIBUTE_VALUE": "ONE SIDE"
                             },
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Combination:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -365,7 +365,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -376,7 +376,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Label Specs",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Label Specs",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -414,7 +414,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -431,7 +431,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Colors",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -448,7 +448,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Color",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -459,7 +459,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Effects",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -469,7 +469,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mold Labeling",
-                "ATTRIBUTE_VALUE": "MOLD_LABELING"
+                "ATTRIBUTE_VALUE": "MOLD LABELING"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -525,7 +525,7 @@
         "ATTRIBUTE_DESCRIPTION": "Reply Due Date",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Reply Due Date:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
