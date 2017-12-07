@@ -121,24 +121,15 @@ define(function () {
                             //sub attributes
                             var subAttrValList = bezl.data.Attributes.filter(subAttrVal => subAttrVal.Key5 === attrFnd.ATTRIBUTE_ID);
                             if (subAttrValList.length > 0) {
-                                //attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.)
-                                // console.log("Attr Fnd:");
-                                // console.log(attrFnd);
                                 subAttrValList.forEach(subAttrVal => {
-                                    // console.log(subAttrVal);
-                                    //console.log(subAttrVal.Key4.substring(0, subAttrVal.Key4.indexOf('-')));
+                                    attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.Character03)
+                                        .SUB_ATTRIBUTE.find(subAttrID => subAttrID.ATTRIBUTE_ID === subAttrVal.Key4.substring(0, subAttrVal.Key4.indexOf('-')))
+                                        .ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr).SELECTED_VALUE = subAttrVal.Character01;
                                     attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.Character03)
                                         .SUB_ATTRIBUTE.find(subAttrID => subAttrID.ATTRIBUTE_ID === subAttrVal.Key4.substring(0, subAttrVal.Key4.indexOf('-')))
                                         .ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr.ATTRIBUTE_VALUE_LABEL.toUpperCase() === subAttrVal.Character01)
                                         .SELECTED_VALUE = subAttrVal.Character04;
                                 });
-
-                                // attrFnd.ATTRIBUTE_VALUES.map(attrValFnd => {
-                                //     if (attrValFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
-                                //         console.log("Attr Fnd:");
-                                //         console.log(attrFnd);
-                                //     }
-                                // });
                             }
 
                             var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
