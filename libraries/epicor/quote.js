@@ -266,8 +266,28 @@ define(function () {
                 }, 0);
 
                 //sub attribute for standard one select
-                if (attr.ATTRIBUTE_ID === "300_BASE_COAT") {
-                    console.log(attr);
+                if (attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).hasOwnProperty('SUB_ATTRIBUTE')) {
+                    var subAttr = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE)
+                        .SUB_ATTRIBUTE.map(subAttr => {
+                            if (subAttr.hasOwnProperty('SELECTED_VALUE')) {
+                                bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                    "QueryName": "InsertSubAttributes",
+                                    "Parameters": [
+                                        { Key: "Company", Value: company },
+                                        { Key: "QuoteNum", Value: quoteNum },
+                                        { Key: "QuoteLine", Value: dtl.QuoteLine },
+                                        { Key: "PartID", Value: dtl.PartNum },
+                                        { Key: "AttributeID", Value: subAttr.ATTRIBUTE_ID },
+                                        { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
+                                        { Key: "ParentValue", Value: attr.SELECTED_VALUE },
+                                        { Key: "AttributeValue", Value: subAttr.SELECTED_VALUE },
+                                        { Key: "OtherAttributeValue", Value: '' },
+                                        { Key: "AttributeDesc", Value: subAttr.ATTRIBUTE_DESCRIPTION },
+                                        { Key: "PartNum", Value: dtl.PartNum }
+                                    ]
+                                }, 0);
+                            }
+                        });
                 }
 
                 var labelValue = attr.ATTRIBUTE_VALUES.find(labelVal => labelVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).ATTRIBUTE_VALUE_LABEL;
