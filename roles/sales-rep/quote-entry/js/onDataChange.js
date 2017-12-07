@@ -124,7 +124,8 @@ define(function () {
                                 subAttrValList.forEach(subAttrVal => {
                                     attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.Character03)
                                         .SUB_ATTRIBUTE.find(subAttrID => subAttrID.ATTRIBUTE_ID === subAttrVal.Key4.substring(0, subAttrVal.Key4.indexOf('-')))
-                                        .ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr).SELECTED_VALUE = subAttrVal.Character01;
+                                        .SELECTED_VALUE = subAttrVal.Character01;
+
                                     attrFnd.ATTRIBUTE_VALUES.find(attrFndVal => attrFndVal.ATTRIBUTE_VALUE_LABEL === subAttrVal.Character03)
                                         .SUB_ATTRIBUTE.find(subAttrID => subAttrID.ATTRIBUTE_ID === subAttrVal.Key4.substring(0, subAttrVal.Key4.indexOf('-')))
                                         .ATTRIBUTE_VALUES.find(attrFndVal_subAttr => attrFndVal_subAttr.ATTRIBUTE_VALUE_LABEL.toUpperCase() === subAttrVal.Character01)
