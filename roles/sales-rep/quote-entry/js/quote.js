@@ -355,11 +355,13 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
     }
 
-    function ChangeSubAttribute(bezl, lineNum, attributeID, subAttributeID, valueID) {
+    function ChangeSubAttribute(bezl, lineNum, attributeID, selectedAttribute, subAttributeID, valueID) {
         console.log("Attr ID: " + attributeID);
+        console.log("Sel Attr: " + selectedAttribute);
         console.log("Sub Attr ID: " + subAttributeID);
         console.log("ValueID: " + valueID);
         console.log(bezl.data.QuoteDtls);
+        //bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
     }
 
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue, valueID) {
