@@ -392,7 +392,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     function ChangeTypedSubAttribute(bezl, lineNum, attributeID, selectedAttribute, subAttributeID, subAttributeValue, valueID) {
         console.log("AttrID: " + attributeID);
         console.log("Selec Attr: " + selectedAttribute);
-        console.log("Attr Val: " + attributeValue)
+        console.log("Sub Attr ID: " + subAttributeID);
+        console.log("Sub Attr Val: " + attributeValue)
         console.log("Val ID: " + valueID);
         console.log(bezl.data.QuoteDtls);
     }
