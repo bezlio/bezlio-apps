@@ -393,7 +393,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         console.log("AttrID: " + attributeID);
         console.log("Selec Attr: " + selectedAttribute);
         console.log("Sub Attr ID: " + subAttributeID);
-        console.log("Sub Attr Val: " + attributeValue)
+        console.log("Sub Attr Val: " + subAttributeValue)
         console.log("Val ID: " + valueID);
         console.log(bezl.data.QuoteDtls);
     }
