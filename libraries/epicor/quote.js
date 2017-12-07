@@ -266,6 +266,9 @@ define(function () {
                 }, 0);
 
                 //sub attribute for standard one select
+                if (attr.ATTRIBUTE_ID === "300_BASE_COAT") {
+                    console.log(attr);
+                }
 
                 var labelValue = attr.ATTRIBUTE_VALUES.find(labelVal => labelVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).ATTRIBUTE_VALUE_LABEL;
                 switch (attr.ATTRIBUTE_ID) {
