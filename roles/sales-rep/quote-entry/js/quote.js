@@ -390,12 +390,18 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     // sub attribute id - PASS_CONFIGURATION - set selected value
     // attribute value - set other value
     function ChangeTypedSubAttribute(bezl, lineNum, attributeID, selectedAttribute, subAttributeID, subAttributeValue, valueID) {
-        console.log("AttrID: " + attributeID);
-        console.log("Selec Attr: " + selectedAttribute);
-        console.log("Sub Attr ID: " + subAttributeID);
-        console.log("Sub Attr Val: " + subAttributeValue)
-        console.log("Val ID: " + valueID);
-        console.log(bezl.data.QuoteDtls);
+        if (valueID === "OTHER") {
+            console.log("AttrID: " + attributeID);
+            console.log("Selec Attr: " + selectedAttribute);
+            console.log("Sub Attr ID: " + subAttributeID);
+            console.log("Sub Attr Val: " + subAttributeValue)
+            console.log("Val ID: " + valueID);
+            console.log(bezl.data.QuoteDtls);
+            bezl.data.QuoteDtls.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
+                .SUB_ATTRIBUTE.find(subAttr => subAttr.ATTRIBUTE_ID === subAttributeID).SELECTED_VALUE = "OTHER";
+            bezl.data.QuoteDtls.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
+                .SUB_ATTRIBUTE.find(subAttr => subAttr.ATTRIBUTE_ID === subAttributeID).ATTRIBUTE_VALUES.find(subAttrVal => subAttrVal.ATTRIBUTE_VALUE === "OTHER").SELECTED_VALUE = subAttributeValue;
+        }
     }
 
     return {
