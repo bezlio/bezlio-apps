@@ -355,6 +355,10 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
     }
 
+    function ChangeSubAttribute(bezl, lineNum, attributeID, subAttributeID, valueID) {
+
+    }
+
     //sub attributes we need
     // attribute id - 000_DECO
     // attribute value - SILK_SCREENING
@@ -363,11 +367,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     function ChangeTypedAttribute(bezl, lineNum, attributeID, selectedAttribute, attributeValue, valueID) {
         if (attributeID.indexOf("MEASURE") === -1) {
             if (valueID === "OTHER") {
-                console.log("AttrID: " + attributeID);
-                console.log("Selec Attr: " + selectedAttribute);
-                console.log("Attr Val: " + attributeValue)
-                console.log("Val ID: " + valueID);
-                console.log(bezl.data.QuoteDtls);
                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = "OTHER";
                 bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum)
                     .Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
@@ -390,6 +389,14 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         }
     }
 
+    function ChangeTypedSubAttribute(bezl, lineNum, attributeID, selectedAttribute, subAttributeID, subAttributeValue, valueID) {
+        console.log("AttrID: " + attributeID);
+        console.log("Selec Attr: " + selectedAttribute);
+        console.log("Attr Val: " + attributeValue)
+        console.log("Val ID: " + valueID);
+        console.log(bezl.data.QuoteDtls);
+    }
+
     return {
         runQuery: RunQuery,
         loadQuote: LoadQuote,
@@ -405,6 +412,8 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         changePart: ChangePart,
         showAttributeValues: ShowAttributeValues,
         changeAttribute: ChangeAttribute,
-        changeTypedAttribute: ChangeTypedAttribute
+        changeSubAttribute: ChangeSubAttribute,
+        changeTypedAttribute: ChangeTypedAttribute,
+        changeTypedSubAttribute: ChangeTypedSubAttribute
     }
 });
