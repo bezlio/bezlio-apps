@@ -391,16 +391,25 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     // attribute value - set other value
     function ChangeTypedSubAttribute(bezl, lineNum, attributeID, selectedAttribute, subAttributeID, subAttributeValue, valueID) {
         if (valueID === "OTHER") {
-            console.log("AttrID: " + attributeID);
-            console.log("Selec Attr: " + selectedAttribute);
-            console.log("Sub Attr ID: " + subAttributeID);
-            console.log("Sub Attr Val: " + subAttributeValue)
-            console.log("Val ID: " + valueID);
-            console.log(bezl.data.QuoteDtls);
-            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
+            // console.log("AttrID: " + attributeID);
+            // console.log("Selec Attr: " + selectedAttribute);
+            // console.log("Sub Attr ID: " + subAttributeID);
+            // console.log("Sub Attr Val: " + subAttributeValue)
+            // console.log("Val ID: " + valueID);
+            // console.log(bezl.data.QuoteDtls);
+            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+                .ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
                 .SUB_ATTRIBUTE.find(subAttr => subAttr.ATTRIBUTE_ID === subAttributeID).SELECTED_VALUE = "OTHER";
-            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
+            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+                .ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
                 .SUB_ATTRIBUTE.find(subAttr => subAttr.ATTRIBUTE_ID === subAttributeID).ATTRIBUTE_VALUES.find(subAttrVal => subAttrVal.ATTRIBUTE_VALUE === "OTHER").SELECTED_VALUE = subAttributeValue;
+        } else {
+            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+                .ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
+                .SUB_ATTRIBUTE.find(subAttr => subAttr.ATTRIBUTE_ID === subAttributeID).SELECTED_VALUE = valueID;
+            bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID)
+                .ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE_LABEL === selectedAttribute)
+                .SUB_ATTRIBUTE.find(subAttr => subAttr.ATTRIBUTE_ID === subAttributeID).ATTRIBUTE_VALUES.find(subAttrVal => subAttrVal.ATTRIBUTE_VALUE === valueID).SELECTED_VALUE = subAttributeValue;
         }
     }
 

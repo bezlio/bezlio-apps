@@ -324,22 +324,22 @@ define(function () {
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    // bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-                                    //     "QueryName": "InsertSubAttributes",
-                                    //     "Parameters": [
-                                    //         { Key: "Company", Value: company },
-                                    //         { Key: "QuoteNum", Value: quoteNum },
-                                    //         { Key: "QuoteLine", Value: dtl.QuoteLine },
-                                    //         { Key: "PartID", Value: dtl.PartNum },
-                                    //         { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
-                                    //         { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-                                    //         { Key: "ParentValue", Value: attr.SELECTED_VALUE },
-                                    //         { Key: "AttributeValue", Value: subAttrVals.ATTRIBUTE_VALUE },
-                                    //         { Key: "OtherAttributeValue", Value: subAttrVals.SELECTED_VALUE },
-                                    //         { Key: "AttributeDesc", Value: subAttrs.ATTRIBUTE_DESCRIPTION },
-                                    //         { Key: "PartNum", Value: dtl.PartNum }
-                                    //     ]
-                                    // }, 0);
+                                    bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                        "QueryName": "InsertSubAttributes",
+                                        "Parameters": [
+                                            { Key: "Company", Value: company },
+                                            { Key: "QuoteNum", Value: quoteNum },
+                                            { Key: "QuoteLine", Value: dtl.QuoteLine },
+                                            { Key: "PartID", Value: dtl.PartNum },
+                                            { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
+                                            { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
+                                            { Key: "ParentValue", Value: val.ATTRIBUTE_VALUE_LABEL },
+                                            { Key: "AttributeValue", Value: subAttrVals.ATTRIBUTE_VALUE },
+                                            { Key: "OtherAttributeValue", Value: subAttrVals.SELECTED_VALUE },
+                                            { Key: "AttributeDesc", Value: subAttrs.ATTRIBUTE_DESCRIPTION },
+                                            { Key: "PartNum", Value: dtl.PartNum }
+                                        ]
+                                    }, 0);
                                 }
                             });
                         });
