@@ -248,6 +248,9 @@ define(function () {
 
             //standard one select property
             if (attr.hasOwnProperty("SELECTED_VALUE") && !attr.hasOwnProperty('SELECTION_MODE')) {
+                console.log("Attr: ");
+                console.log(attr);
+                console.log("Other Value:" + otherValue);
                 bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                     "QueryName": "InsertAttributes",
                     "Parameters": [
@@ -263,6 +266,8 @@ define(function () {
                         { Key: "PartNum", Value: dtl.PartNum }
                     ]
                 }, 0);
+
+                //sub attribute for standard one select
 
                 var labelValue = attr.ATTRIBUTE_VALUES.find(labelVal => labelVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE).ATTRIBUTE_VALUE_LABEL;
                 switch (attr.ATTRIBUTE_ID) {
