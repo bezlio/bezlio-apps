@@ -136,6 +136,9 @@ define(function () {
                             var subAttrFnd = attrFnd.ATTRIBUTE_VALUES.find(attrFnd_subAttr => attrFnd_subAttr.ATTRIBUTE_VALUE === attrFnd.SELECTED_VALUE);
                             if (subAttrFnd !== undefined) {
                                 if (subAttrFnd.hasOwnProperty('SUB_ATTRIBUTE')) {
+                                    console.log("Sub Attr Fnd:");
+                                    console.log(subAttrFnd);
+                                    console.log(bezl.data.Attributes);
                                     var subAttrVal = bezl.data.Attributes.find(subAttrFndVal => subAttrFndVal.Key5 === attrFnd.ATTRIBUTE_ID);
                                     subAttrFnd.SUB_ATTRIBUTE[0].SELECTED_VALUE = subAttrVal.Character01;
                                 }
