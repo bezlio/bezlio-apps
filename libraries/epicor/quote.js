@@ -229,6 +229,7 @@ define(function () {
         var nonOtherEditable_bool;
         var otherValue;
         dtl.Attributes.map(attr => {
+            otherValue = '';
             nonOtherEditable = false;
             var nonOtherEditable = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
             if (nonOtherEditable !== undefined) {
@@ -248,9 +249,6 @@ define(function () {
 
             //standard one select property
             if (attr.hasOwnProperty("SELECTED_VALUE") && !attr.hasOwnProperty('SELECTION_MODE')) {
-                console.log("Attr: ");
-                console.log(attr);
-                console.log("Other Value:" + otherValue);
                 bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
                     "QueryName": "InsertAttributes",
                     "Parameters": [
