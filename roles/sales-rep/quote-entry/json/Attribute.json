@@ -648,7 +648,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -659,7 +659,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Pass Configuration",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Pass Configuration:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -672,14 +672,14 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Front & Back",
-                                "ATTRIBUTE_VALUE": "FRONT_BACK"
+                                "ATTRIBUTE_VALUE": "FRONT & BACK"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "One Side",
-                                "ATTRIBUTE_VALUE": "ONE_SIDE"
+                                "ATTRIBUTE_VALUE": "ONE SIDE"
                             },
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Combination:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -696,7 +696,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -707,7 +707,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Passes",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Passes:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -720,14 +720,14 @@
                         "ATTRIBUTE_VALUES": [
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "Front & Back",
-                                "ATTRIBUTE_VALUE": "FRONT_BACK"
+                                "ATTRIBUTE_VALUE": "FRONT & BACK"
                             },
                             {
                                 "ATTRIBUTE_VALUE_LABEL": "One Side",
-                                "ATTRIBUTE_VALUE": "ONE_SIDE"
+                                "ATTRIBUTE_VALUE": "ONE SIDE"
                             },
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Combination:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -744,7 +744,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Number of Colors:",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -755,7 +755,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Label Specs",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Label Specs",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -793,7 +793,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Number of Colors",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Colors",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -810,7 +810,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Color",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -821,7 +821,7 @@
                         "ATTRIBUTE_DESCRIPTION": "Effects",
                         "ATTRIBUTE_VALUES": [
                             {
-                                "ATTRIBUTE_VALUE_LABEL": "Color",
+                                "ATTRIBUTE_VALUE_LABEL": "Other",
                                 "ATTRIBUTE_VALUE": "OTHER",
                                 "EDITABLE": true
                             }
@@ -896,7 +896,7 @@
                 "ImagePath": "/Assets/SHAPE/SQUARE.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -908,7 +908,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "HEIGHT": 300,
@@ -922,7 +922,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Pack Out:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "WIDTH": 900,
                 "HEIGHT": 300,
@@ -941,14 +941,14 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Cobalt Blue",
-                "ATTRIBUTE_VALUE": "COBALT_BLUE"
+                "ATTRIBUTE_VALUE": "COBALT BLUE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Flint",
                 "ATTRIBUTE_VALUE": "FLINT"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -961,11 +961,11 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Acid Etch",
-                "ATTRIBUTE_VALUE": "ACID_ETCH"
+                "ATTRIBUTE_VALUE": "ACID ETCH"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Safety Coated",
-                "ATTRIBUTE_VALUE": "SAFETY_COATED"
+                "ATTRIBUTE_VALUE": "SAFETY COATED"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -1129,7 +1129,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Belgian Beer",
-                "ATTRIBUTE_VALUE": "BELGIAN_BEER",
+                "ATTRIBUTE_VALUE": "BELGIAN BEER",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1139,7 +1139,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Belgian Share",
-                "ATTRIBUTE_VALUE": "BELGIAN_SHARE",
+                "ATTRIBUTE_VALUE": "BELGIAN SHARE",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1222,7 +1222,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Long Neck",
-                "ATTRIBUTE_VALUE": "LONG_NECK",
+                "ATTRIBUTE_VALUE": "LONG NECK",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1232,7 +1232,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Mini Liquor",
-                "ATTRIBUTE_VALUE": "MINI_LIQUOR",
+                "ATTRIBUTE_VALUE": "MINI LIQUOR",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1261,7 +1261,7 @@
                 ]
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "DEPENDENT_ATTRIBUTE": [
@@ -1336,7 +1336,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Antique Green",
-                "ATTRIBUTE_VALUE": "ANTIQUE_GREEN",
+                "ATTRIBUTE_VALUE": "ANTIQUE GREEN",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1350,7 +1350,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Champagne Green",
-                "ATTRIBUTE_VALUE": "CHAMPAGNE_GREEN",
+                "ATTRIBUTE_VALUE": "CHAMPAGNE GREEN",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1364,7 +1364,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Cobalt Blue",
-                "ATTRIBUTE_VALUE": "COBALT_BLUE",
+                "ATTRIBUTE_VALUE": "COBALT BLUE",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1378,7 +1378,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Dead Leaf Green",
-                "ATTRIBUTE_VALUE": "DEAD_LEAF_GREEN",
+                "ATTRIBUTE_VALUE": "DEAD LEAF GREEN",
                 "DEPENDENT_ATTRIBUTE": [
                     {
                         "ATTRIBUTE_ID": "110_CATEGORY",
@@ -1409,7 +1409,7 @@
                 ]
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "DEPENDENT_ATTRIBUTE": [
@@ -1436,7 +1436,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Acid Etch",
-                "ATTRIBUTE_VALUE": "ACID_ETCH"
+                "ATTRIBUTE_VALUE": "ACID ETCH"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Coated",
@@ -1465,7 +1465,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Bar Top",
-                "ATTRIBUTE_VALUE": "BAR_TOP"
+                "ATTRIBUTE_VALUE": "BAR TOP"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Crown",
@@ -1482,7 +1482,7 @@
                 "ATTRIBUTE_VALUE": "STELVIN"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -1517,7 +1517,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Pack Out:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "HEIGHT": 150,
@@ -1594,7 +1594,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PCR %",
-                "ATTRIBUTE_VALUE": "PCR_%",
+                "ATTRIBUTE_VALUE": "PCR %",
                 "EDITABLE": true
             },
             {
@@ -1618,11 +1618,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Multi-Layer",
-                "ATTRIBUTE_VALUE": "MULTILAYER",
+                "ATTRIBUTE_VALUE": "MULTI-LAYER",
                 "ImagePath": "/Assets/MATERIAL/PVC.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -1661,7 +1661,7 @@
                 "ImagePath": "/Assets/SHAPE/SQUARE.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -1990,7 +1990,7 @@
                 "ATTRIBUTE_VALUE": "WINDOW STRIPE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2022,7 +2022,7 @@
                 "ATTRIBUTE_VALUE": "WHITE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2042,8 +2042,8 @@
                 "ATTRIBUTE_VALUE": "FLAME"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Flourinate* Level",
-                "ATTRIBUTE_VALUE": "FLOURINATE",
+                "ATTRIBUTE_VALUE_LABEL": "Flourinate Level",
+                "ATTRIBUTE_VALUE": "FLOURINATE LEVEL",
                 "EDITABLE": true
             }
         ]
@@ -2096,7 +2096,7 @@
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
@@ -2132,7 +2132,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PCR %",
-                "ATTRIBUTE_VALUE": "PCR_%"
+                "ATTRIBUTE_VALUE": "PCR %"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "PET",
@@ -2159,7 +2159,7 @@
                 "ATTRIBUTE_VALUE": "SAN"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -2213,7 +2213,7 @@
                 "ImagePath": "/Assets/SHAPE/SQUARE.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2226,7 +2226,7 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Beveled Base",
-                "ATTRIBUTE_VALUE": "BEVELED_BASE"
+                "ATTRIBUTE_VALUE": "BEVELED BASE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Canister",
@@ -2246,11 +2246,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Single wall",
-                "ATTRIBUTE_VALUE": "SINGLE_WALL"
+                "ATTRIBUTE_VALUE": "SINGLE WALL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Straight Sided",
-                "ATTRIBUTE_VALUE": "STRAIGHT_SIDED"
+                "ATTRIBUTE_VALUE": "STRAIGHT SIDED"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Straightbase",
@@ -2262,11 +2262,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Wide Mouth",
-                "ATTRIBUTE_VALUE": "WIDE_MOUTH"
+                "ATTRIBUTE_VALUE": "WIDE MOUTH"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Window Stripe",
-                "ATTRIBUTE_VALUE": "WINDOW_STRIPE"
+                "ATTRIBUTE_VALUE": "WINDOW STRIPE"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -2301,7 +2301,7 @@
                 "ATTRIBUTE_VALUE": "WHITE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2318,7 +2318,7 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Flourinate Level",
-                "ATTRIBUTE_VALUE": "FLOURINATE_LEVEL",
+                "ATTRIBUTE_VALUE": "FLOURINATE LEVEL",
                 "EDITABLE": true
             },
             {
@@ -2357,7 +2357,7 @@
                 "ImagePath": "/Assets/UOM/OZ.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
@@ -2399,11 +2399,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pail without Bail",
-                "ATTRIBUTE_VALUE": "PAIL_WO_BAIL"
+                "ATTRIBUTE_VALUE": "PAIL WITHOUT BAIL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Pail with Bail",
-                "ATTRIBUTE_VALUE": "PAIL_W_BAIL"
+                "ATTRIBUTE_VALUE": "PAIL WITH BAIL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Payliner",
@@ -2411,11 +2411,11 @@
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tub without Bail",
-                "ATTRIBUTE_VALUE": "TUBE_WO_BAIL"
+                "ATTRIBUTE_VALUE": "TUB WITHOUT BAIL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Tub with Bail",
-                "ATTRIBUTE_VALUE": "TUB_W_BAIL"
+                "ATTRIBUTE_VALUE": "TUB WITH BAIL"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Winpak",
@@ -2455,7 +2455,7 @@
                 "ATTRIBUTE_VALUE": "UN"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/MATERIAL/OTHER.jpg"
@@ -2483,7 +2483,7 @@
                 "ImagePath": "/Assets/SHAPE/SQUARE.jpg"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2496,11 +2496,11 @@
         "ATTRIBUTE_VALUES": [
             {
                 "ATTRIBUTE_VALUE_LABEL": "Open Head",
-                "ATTRIBUTE_VALUE": "OPEN_HEAD"
+                "ATTRIBUTE_VALUE": "OPEN HEAD"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Closed Head",
-                "ATTRIBUTE_VALUE": "CLOSED_HEAD"
+                "ATTRIBUTE_VALUE": "CLOSED HEAD"
             },
             {
                 "ATTRIBUTE_VALUE_LABEL": "Other",
@@ -2514,7 +2514,7 @@
         "ATTRIBUTE_DESCRIPTION": "Neck Style",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Neck Style:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2546,7 +2546,7 @@
                 "ATTRIBUTE_VALUE": "WHITE"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other Color",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
@@ -2558,7 +2558,7 @@
         "DISPLAY_IN_TITLE": true,
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Yes",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             },
@@ -2607,7 +2607,7 @@
                 "ATTRIBUTE_VALUE": "QUART"
             },
             {
-                "ATTRIBUTE_VALUE_LABEL": "Other:",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true,
                 "ImagePath": "/Assets/UOM/OTHER.jpg"
@@ -2638,7 +2638,7 @@
         "ATTRIBUTE_DESCRIPTION": "Shoulder Design",
         "ATTRIBUTE_VALUES": [
             {
-                "ATTRIBUTE_VALUE_LABEL": "Shoulder Design",
+                "ATTRIBUTE_VALUE_LABEL": "Other",
                 "ATTRIBUTE_VALUE": "OTHER",
                 "EDITABLE": true
             }
