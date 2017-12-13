@@ -165,8 +165,6 @@ define(function () {
             }
         });
 
-        console.log(bezl.vars.ds);
-
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
                 "Connection": connection,
