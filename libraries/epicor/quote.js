@@ -144,7 +144,6 @@ define(function () {
             });
 
             if (dtl.Attributes !== undefined) {
-                console.log(dtl);
                 let cnt = 2;
                 dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
                     if (!isNaN(Number(quoteQty.ATTRIBUTE_VALUE))) {
@@ -163,6 +162,8 @@ define(function () {
                 });
             }
         });
+
+        console.log(bezl.vars.ds);
 
         bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
             {
