@@ -247,7 +247,6 @@ define(function () {
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
 
-
     // function DeleteFailedNote(bezl, note) {
     //     bezl.vars.pendingNotes.splice(bezl.vars.pendingNotes.indexOf(note), 1);
     //     localStorage.setItem('pendingNotes', JSON.stringify(bezl.vars.pendingNotes));
