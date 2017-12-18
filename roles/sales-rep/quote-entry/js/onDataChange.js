@@ -201,7 +201,7 @@ define(function () {
                 quoteLines: []
             };
 
-            require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+            require([bezl.vars.jsUrl + 'quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
                 functions.runQuery(bezl, 'Quotes');
             });
