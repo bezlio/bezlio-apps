@@ -1,5 +1,6 @@
 define(["./quote.js"], function (quote) {
     function OnStartup(bezl) {
+        console.log('test');
         quote.runQuery(bezl, 'FirstCustomer');
         quote.runQuery(bezl, 'Quotes');
         quote.runQuery(bezl, 'SalesReps');
