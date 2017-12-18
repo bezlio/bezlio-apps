@@ -192,9 +192,6 @@ define(function () {
     }
 
     function ClickCallLog(bezl, account) {
-        console.log("Account Name: " + account.Name);
-        console.log("Selected Cust ID: " + account.ID);
-
         bezl.vars.selectedCustomerName = account.Name;
         bezl.vars.selectedCustId = account.ID;
         bezl.vars.loadingCallLog = true;
