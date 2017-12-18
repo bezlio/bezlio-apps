@@ -206,7 +206,7 @@ define(function () {
         // query, detect the CRM platform (via what was specified on setConfig)
         // and route this request to the appropriate integration
         if (bezl.vars.Platform == "Epicor10" || bezl.vars.Platform == "Epicor905") {
-            console.log("url: " + bezl.vars.config.baseLibraryUrl);
+            console.log("js: " + bezl.vars.config.baseLibraryUrl);
             require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
                 functions.addNote(bezl
                     , bezl.vars.Platform
