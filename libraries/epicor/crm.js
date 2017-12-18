@@ -41,6 +41,8 @@ define(function () {
                     ]
             };
 
+        console.log('test');
+
         bezl.dataService.add(
             reference
             , 'brdb'
@@ -57,7 +59,6 @@ define(function () {
             , 0);
 
         bezl.vars.addingHistory = true;
-
     }
 
     /**
