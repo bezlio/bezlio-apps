@@ -2,7 +2,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     function RunQuery(bezl, queryName) {
         switch (queryName) {
             case "FirstCustomer":
-                console.log('test');
                 bezl.dataService.add('FirstCustomer', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetFirstCustomerByRep",
                     "Parameters": [
