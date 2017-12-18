@@ -42,7 +42,7 @@ define(function () {
             };
 
         bezl.dataService.add(
-            reference
+            'NewCRMCall'
             , 'brdb'
             , plugin
             , 'ExecuteBOMethod'
