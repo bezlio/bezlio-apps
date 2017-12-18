@@ -41,6 +41,8 @@ define(function () {
                     ]
             };
 
+        console.log('test');
+
         bezl.dataService.add(
             'NewCRMCall'
             , 'brdb'
