@@ -65,8 +65,7 @@ define(["./account.js"], function (account) {
 
         if (bezl.data.Epicor10) {
             bezl.vars.savingNote = false;
-            bezl.vars.loadingCallLog = true;
-            account.runQuery('CRMCalls');
+            account.runQuery(bezl, 'CRMCalls');
         }
 
         if (typeof (Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
