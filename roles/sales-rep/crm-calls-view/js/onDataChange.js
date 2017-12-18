@@ -1,6 +1,6 @@
 define(["./account.js"], function (account) {
- 
-    function OnDataChange (bezl) {
+
+    function OnDataChange(bezl) {
         if (bezl.data.CRMCalls && bezl.vars.loading) {
             bezl.vars.loading = false;
             bezl.vars.selectedAccount.CRMCalls = bezl.data.CRMCalls;
@@ -14,7 +14,7 @@ define(["./account.js"], function (account) {
         // Note: If user has clicked on the "more" button then auto updates
         // will no longer display because the auto updates are just a subset of
         // the full data
-        if (bezl.data.AllCRMCalls && !bezl.vars.loadedMore) { 
+        if (bezl.data.AllCRMCalls && !bezl.vars.loadedMore) {
             //bezl.vars.loadingAllCalls = false;
 
             // Set the currently selected accounts call data
@@ -48,17 +48,22 @@ define(["./account.js"], function (account) {
             bezl.dataService.remove('AddCRMCall');
         }
 
-        if(bezl.data.Accounts) {
+        if (bezl.data.Accounts) {
             bezl.vars.custList = bezl.data.Accounts;
-            if(!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
-                bezl.vars.custList.unshift({ID: "ALL_ACCOUNTS", Name: "All Accounts"});
+            if (!bezl.vars.custList.find(a => a.ID == "ALL_ACCOUNTS")) {
+                bezl.vars.custList.unshift({ ID: "ALL_ACCOUNTS", Name: "All Accounts" });
             }
             bezl.vars.loading = false;
             bezl.dataService.Accounts = null;
             bezl.dataService.remove('Accounts');
         }
+
+        if (bezl.data.NewCRMCall) {
+            bezl.vars.savingNote = false;
+            account.runQuery('CRMCalls');
+        }
     }
-  
+
     return {
         onDataChange: OnDataChange
     }
