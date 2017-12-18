@@ -67,6 +67,7 @@ define(["./account.js"], function (account) {
             console.log('inside epicor 10')
             bezl.vars.savingNote = false;
             account.runQuery(bezl, 'CRMCalls');
+            bezl.dataService.remove('Epicor10');
         }
 
         if (typeof (Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
