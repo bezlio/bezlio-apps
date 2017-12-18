@@ -243,6 +243,10 @@ define(function () {
             "show": true
         };
 
+        if (bezl.vars.selectedAccount.CRMCalls === undefined) {
+            bezl.vars.selectedAccount.CRMCalls = [];
+        }
+
         bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
 
         SortCalls(bezl);
