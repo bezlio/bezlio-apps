@@ -63,7 +63,7 @@ define(["./account.js"], function (account) {
             bezl.vars.loadingCallLog = false;
         }
 
-        if (bezl.data.NewCRMCall) {
+        if (bezl.data.Epicor10) {
             bezl.vars.savingNote = false;
             bezl.vars.loadingCallLog = true;
             account.runQuery('CRMCalls');

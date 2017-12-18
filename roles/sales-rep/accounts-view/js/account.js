@@ -209,6 +209,7 @@ define(function () {
             require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
                 functions.addNote(bezl
                     , bezl.vars.config.Platform
+                    , bezl.vars.config.Platform
                     , bezl.vars.selectedAccount.Company
                     , bezl.vars.selectedAccount.CustNum
                     , bezl.vars.shortSummary
