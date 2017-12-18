@@ -1,6 +1,6 @@
 define(["./account.js"], function (account) {
- 
-    function OnStartup (bezl) {        
+
+    function OnStartup(bezl) {
         bezl.vars.filterString = ""
 
         // Initiate the call to refresh the customer list
@@ -11,19 +11,14 @@ define(["./account.js"], function (account) {
 
         // Determine the current position of the user
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) { 
-              bezl.vars.currentLat = position.coords.latitude;
-              bezl.vars.currentLng = position.coords.longitude;
+            navigator.geolocation.getCurrentPosition(function (position) {
+                bezl.vars.currentLat = position.coords.latitude;
+                bezl.vars.currentLng = position.coords.longitude;
             });
         }
-
-        bezl.vars.pendingNotes = [];
-        if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
-            bezl.vars.pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
-        }
     }
-  
-  return {
-    onStartup: OnStartup
-  }
+
+    return {
+        onStartup: OnStartup
+    }
 });

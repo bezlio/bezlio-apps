@@ -246,7 +246,7 @@ define(function () {
 
         bezl.vars.selectedAccount.CRMCalls.push(newCallDict);
 
-        SortCalls(bezl);
+        //SortCalls(bezl);
 
         localStorage.setItem('selectedAccount', JSON.stringify(bezl.vars.selectedAccount));
     }
