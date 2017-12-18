@@ -32,7 +32,7 @@ define(function () {
                 bezl.vars.loadingCallLog = true;
                 // Pull in the call list for just the currently selected account
                 bezl.dataService.add('CRMCalls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
-                    "QueryName": "GetAccountCallHistory",
+                    "QueryName": "GetAccountsCallHistory",
                     "Parameters": [
                         { "Key": "ID", "Value": bezl.vars.selectedCustId }
                     ]
