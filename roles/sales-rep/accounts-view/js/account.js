@@ -208,7 +208,7 @@ define(function () {
         if (bezl.vars.config.Platform == "Epicor10" || bezl.vars.config.Platform == "Epicor905") {
             require([bezl.vars.config.baseLibraryUrl + 'epicor/crm.js'], function (functions) {
                 functions.addNote(bezl
-                    , bezl.vars.Platform
+                    , bezl.vars.config.Platform
                     , bezl.vars.selectedAccount.Company
                     , bezl.vars.selectedAccount.CustNum
                     , bezl.vars.shortSummary
