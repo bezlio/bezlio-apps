@@ -34,7 +34,7 @@ define(function () {
                 bezl.dataService.add('CRMCalls', 'brdb', 'sales-rep-queries', 'ExecuteQuery', {
                     "QueryName": "GetAccountsCallHistory",
                     "Parameters": [
-                        { "Key": "ID", "Value": bezl.vars.selectedCustId }
+                        { "Key": "EmailAddress", "Value": bezl.env.currentUser }
                     ]
                 }, 0);
                 break;
