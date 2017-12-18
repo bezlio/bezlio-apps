@@ -1,0 +1,289 @@
+
+{  
+   "roles": [
+        {  
+            "path":"roles/common",
+            "name":"Common",
+            "apps": [  
+                {  
+                    "path" :"crystal-reports-viewer",
+                    "name":"Crystal Reports Viewer",
+                    "icon":"fa-file-text-o",
+                    "class":"",
+                    "shortDescription":"Refresh and view Crystal Reports",
+                    "description": [
+                        "This app allows you to view Crystal Reports within Bezlio.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Report data is refreshed and current automatically.</li>",
+                        "<li>If report requires parameters, the user will be prompted for them.</li>",
+                        "<li>Rendered as a PDF so viewable on all devices including smart phones.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"company-directory",
+                    "name":"Company Directory",
+                    "icon":"fa-address-book",
+                    "class":"",
+                    "shortDescription":"Display a company directory",
+                    "description": [
+                        "This app reads company directory information from a data source and presents the results in a grid. This was generated using the standard advanced grid template with the addition of the following features: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Click to dial</li>",
+                        "<li>Click to email</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"geolocation",
+                    "name":"Geocoder",
+                    "icon":"fa-globe",
+                    "class":"",
+                    "shortDescription":"Geocode your customer's addresses",
+                    "description": [
+                        "This app allows you to geocode your customer's addresses.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Geocodes customer addresses.</li>",
+                        "<li>Stores coordinates for other apps to use.</li>",
+                        "<li>Easy to use.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
+        {  
+            "path":"roles/ceo",
+            "name":"CEO",
+            "apps": [  
+                {  
+                    "path" :"comparative-sales-breakdown",
+                    "name":"Comparative Sales Breakdown",
+                    "icon":"fa-heartbeat",
+                    "class":"",
+                    "shortDescription":"Display year-to-date and month-to-date sales",
+                    "description": [
+                        "This app allows you to view year-to-date and month-to-date sales summary values.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Quickly and easily view important sales metrics</li>",
+                        "<li>View year-to-date and month-to-date summary values</li>",
+                        "<li>Percent +/- over previous year and month</li>",
+                        "<li>Click on the summary value to view the details by product and by month</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"production-throughput",
+                    "name":"Production Throughput",
+                    "icon":"fa-cube",
+                    "class":"",
+                    "shortDescription":"Visual summary of shop floor performance",
+                    "description": [
+                        "This app presents a visual summary of the shop floor production throughput.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Group by site/location</li>",
+                        "<li>Group by task/work center</li>",
+                        "<li>Visual warnings provide feedback to help focus on underperforming areas</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path" :"inventory-valuation-by-age",
+                    "name":"Inventory Valuation by Age",
+                    "icon":"fa-cubes",
+                    "class":"",
+                    "shortDescription":"High level visualization of inventory value and age",
+                    "description": [
+                        "This app presents a powerful visual summary of the status of your inventory giving you a quick health check of inventory age and cost. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Each box represents a parcel of inventory and the number of days old it is</li>",
+                        "<li>The older the age the redder it gets</li>",
+                        "<li>The size of the box represents the value of that parcel of inventory</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
+        {
+            "path":"roles/production-team-leader",
+            "name":"Production Team Leader",
+            "apps": [  
+                {  
+                    "path":"main-view",
+                    "name":"Main View",
+                    "icon":"fa-users",
+                    "class":"",
+                    "shortDescription":"Monitor and perform labor transactions for all members of your team",
+                    "description": [
+                        "This app allows a user to monitor and direct the current activities of each of the employees on their team.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Clock in / clock out multiple employees at once.</li>",
+                        "<li>Assign multiple employees to a specific task, selected from a searchable list.</li>",
+                        "<li>Easily add employees to a team from employee master records.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        },
+        {  
+            "path":"roles/sales-rep",
+            "name":"Sales Rep",
+            "apps": [  
+                {  
+                    "path":"accounts-view",
+                    "name":"Accounts View",
+                    "icon":"fa-address-book",
+                    "class":"",
+                    "shortDescription":"Listing of all accounts assigned to a sales rep with drill-down for details",
+                    "description": [
+                        "This app is the primary interface the sales rep role will interact with to view / select accounts.  Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Accounts list limited to those assigned to the logged in user.</li>",
+                        "<li>Instant searching by account name or ID.</li>",
+                        "<li>Drill down to view address and contact info with click to dial, click to navigate, click to e-mail.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"attachments-view",
+                    "name":"Attachments View",
+                    "icon":"fa-paperclip",
+                    "class":"",
+                    "shortDescription":"File attachments for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and shows the file attachments associated with a given account. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>File attachments can be loaded from either a database or network location.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"crm-calls-view",
+                    "name":"CRM Calls View",
+                    "icon":"fa-phone",
+                    "class":"",
+                    "shortDescription":"CRM calls for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view and add CRM calls. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Call history listed in a descending chronological order that is fully searchable.</li>",
+                        "<li>Call logs can instantly be added for a given account to be stored in the backend system.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"customer-price-list",
+                    "name":"Customer Price List",
+                    "icon":"fa-usd",
+                    "class":"",
+                    "shortDescription":"Price list for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view the price list."
+                    ]
+                },
+                {  
+                    "path":"invoice-inquiry",
+                    "name":"Invoice Inquiry",
+                    "icon":"fa-question",
+                    "class":"",
+                    "shortDescription":"Invoice history for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view invoice history with drill-down. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Invoices can be searched by date range.</li>",
+                        "<li>Invoices can be instantly sorted by any column.</li>",
+                        "<li>Drill-down to view invoice line details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"map-view",
+                    "name":"Map View",
+                    "icon":"fa-map",
+                    "class":"",
+                    "shortDescription":"A CRM and mapping bezl for sales reps",
+                    "description": [
+                        "The sales rep role is currently comprised of a single Bezl that does the following: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Allow a sales rep to see all of their assigned customers both in a grid and map view with searching.</li>",
+                        "<li>Reorient the map center point to any address and the customer listing will be updated to reflect appropriate distances.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"order-inquiry",
+                    "name":"Order Inquiry",
+                    "icon":"fa-question",
+                    "class":"",
+                    "shortDescription":"Order history for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view order history with drill-down. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Orders can be searched by date range.</li>",
+                        "<li>Orders can be instantly sorted by any column.</li>",
+                        "<li>Drill-down to view order line details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"rma-inquiry",
+                    "name":"RMA Inquiry",
+                    "icon":"fa-question",
+                    "class":"",
+                    "shortDescription":"RMA history for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view RMA history with drill-down. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>RMAs can be searched by date range.</li>",
+                        "<li>RMSa can be instantly sorted by any column.</li>",
+                        "<li>Drill-down to view RMA line details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"tasks-view",
+                    "name":"Tasks View",
+                    "icon":"fa-check-square-o",
+                    "class":"",
+                    "shortDescription":"Tasks for the selected account",
+                    "description": [
+                        "This app works in conjunction with Sales Rep - Accounts View and allows the user to view and add account-specific tasks. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Tasks can be added and updated.</li>",
+                        "<li>Drill-down to view further task details.</li>",
+                        "</ul>"
+                    ]
+                },
+                {  
+                    "path":"trip-planner",
+                    "name":"Trip Planner",
+                    "icon":"fa-map-pin",
+                    "class":"",
+                    "shortDescription":"Plan an optimized route to visit accounts",
+                    "description": [
+                        "This app pulls your account list and allows you to plan an optimized trip using Google Maps. Key features include: <br />",
+                        "<br />",
+                        "<ul>",
+                        "<li>Route is optimized for selected accounts.</li>",
+                        "<li>GPS navigation integration with Google Maps.</li>",
+                        "</ul>"
+                    ]
+                }
+            ]
+        }
+    ]
+}
