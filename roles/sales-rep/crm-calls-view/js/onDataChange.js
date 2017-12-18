@@ -57,11 +57,6 @@ define(["./account.js"], function (account) {
             bezl.dataService.Accounts = null;
             bezl.dataService.remove('Accounts');
         }
-
-        if (bezl.data.NewCRMCall) {
-            bezl.vars.savingNote = false;
-            account.runQuery('CRMCalls');
-        }
     }
 
     return {

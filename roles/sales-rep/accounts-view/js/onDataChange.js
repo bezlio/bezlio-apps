@@ -1,13 +1,13 @@
 define(["./account.js"], function (account) {
- 
-    function OnDataChange (bezl) {
+
+    function OnDataChange(bezl) {
         if (bezl.data.Accounts && !bezl.vars.accountsProcessed) {
             bezl.vars.loading = false;
 
             // If there was a previously selected account in localStorage, grab a reference
             // so we can know whether to mark them as selected
             bezl.vars.selectedAccount = {};
-            if (typeof(Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
+            if (typeof (Storage) !== "undefined" && localStorage.getItem("selectedAccount")) {
                 bezl.vars.selectedAccount = JSON.parse(localStorage.getItem("selectedAccount"));
             }
 
@@ -27,10 +27,10 @@ define(["./account.js"], function (account) {
                 // Determine the distance from the current location, if applicable
                 if (bezl.data.Accounts[i].Geocode_Location) {
                     bezl.data.Accounts[i].Distance = CalcDistance(bezl.vars.currentLat
-                                                                , bezl.vars.currentLng
-                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
-                                                                , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
-                }             
+                        , bezl.vars.currentLng
+                        , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[0].split(':')[1])
+                        , parseFloat(bezl.data.Accounts[i].Geocode_Location.split(',')[1].split(':')[1]));
+                }
 
                 bezl.data.Accounts[i].Contacts = [];
 
@@ -60,15 +60,21 @@ define(["./account.js"], function (account) {
         }
 
         if (bezl.data.CRMCalls) {
-            bezl.vars.loadingCallLog = false; 
+            bezl.vars.loadingCallLog = false;
         }
 
-        if (typeof(Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
+        if (bezl.data.NewCRMCall) {
+            bezl.vars.savingNote = false;
+            bezl.vars.loadingCallLog = true;
+            account.runQuery('CRMCalls');
+        }
+
+        if (typeof (Storage) !== "undefined" && localStorage.getItem("pendingNotes")) {
             bezl.vars.pendingNotes = JSON.parse(localStorage.getItem("pendingNotes"));
             var now = Date.now();
 
             bezl.vars.pendingNotes.forEach(n => {
-                require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function(platform) {
+                require([bezl.vars.config.baseJsUrl + '/' + bezl.vars.config.Platform + '/platform.js'], function (platform) {
 
                     if (bezl.data[n.id]) {
                         platform.onAddNoteResponse(bezl, n);
@@ -89,19 +95,19 @@ define(["./account.js"], function (account) {
     }
 
     function CalcDistance(lat1, lon1, lat2, lon2, unit) {
-        var radlat1 = Math.PI * lat1/180
-        var radlat2 = Math.PI * lat2/180
-        var theta = lon1-lon2
-        var radtheta = Math.PI * theta/180
+        var radlat1 = Math.PI * lat1 / 180
+        var radlat2 = Math.PI * lat2 / 180
+        var theta = lon1 - lon2
+        var radtheta = Math.PI * theta / 180
         var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
         dist = Math.acos(dist)
-        dist = dist * 180/Math.PI
+        dist = dist * 180 / Math.PI
         dist = dist * 60 * 1.1515
-        if (unit=="K") { dist = dist * 1.609344 }
-        if (unit=="N") { dist = dist * 0.8684 }
+        if (unit == "K") { dist = dist * 1.609344 }
+        if (unit == "N") { dist = dist * 0.8684 }
         return Math.round(dist)
     }
-  
+
     return {
         onDataChange: OnDataChange
     }
