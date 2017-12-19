@@ -66,7 +66,6 @@ define(["./account.js"], function (account) {
         }
 
         if (bezl.data.Epicor10) {
-            console.log('inside epicor 10')
             bezl.dataService.remove('Epicor10');
             bezl.vars.savingNote = false;
             account.runQuery(bezl, 'CRMCalls');
