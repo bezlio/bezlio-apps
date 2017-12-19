@@ -53,7 +53,7 @@ define(["./account.js"], function (account) {
             for (var i = 0; i < bezl.data.AccountContacts.length; i++) {
                 for (var x = 0; x < bezl.data.Accounts.length; x++) {
                     if (bezl.data.AccountContacts[i].ID == bezl.data.Accounts[x].ID) {
-                        if (bezl.data.Accounts.Contacts.indexOf(bezl.data.AccountContacts[i]) === -1) {
+                        if (bezl.data.Accounts.Contacts.indexOf(bezl.data.AccountContacts[i]) < 0) {
                             bezl.data.Accounts[x].Contacts.push(bezl.data.AccountContacts[i]);
                         }
                     }
