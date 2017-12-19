@@ -154,7 +154,6 @@ define(function () {
                 });
             }
         }
-
     }
 
     // Only display accounts that have data matching the data string in the
