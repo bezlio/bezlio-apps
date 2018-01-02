@@ -309,6 +309,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
                 this.runQuery(bezl, "QuoteQty");
                 this.runQuery(bezl, "Attributes");
+
+                var $lineControls = $(".linectrl");
+                for (var i = 0; i < $lineControls.length; i++) { //disable buttons unrelated to current job
+                    $('#' + $lineControls[i].id).attr("disabled", true);
+                    console.log($lineControls[i].id);
+                }
             }
         } else {
             quote_lib.saveAttributes(bezl, bezl.vars.Connection, bezl.vars.Company, line.QuoteNum, line);
