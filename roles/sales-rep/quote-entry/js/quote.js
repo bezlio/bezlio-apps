@@ -314,7 +314,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 var lineControls = $(bezl.container.nativeElement).find(".linectrl");
                 for (var i = 0; i < lineControls.length; i++) { //disable buttons unrelated to current job
                     if (lineControls[i].id.indexOf(quoteLine) > -1 && lineControls[i].id.indexOf('config') > -1) {
-                        $('#' + lineControls[i].id).prop("value", "Save");
+                        $('#' + lineControls[i].id).html("Save");
                     } else {
                         $('#' + lineControls[i].id).attr("disabled", true);
                     }
