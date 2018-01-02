@@ -322,6 +322,13 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
             }
         } else {
             quote_lib.saveAttributes(bezl, bezl.vars.Connection, bezl.vars.Company, line.QuoteNum, line);
+            var lineControls = $(bezl.container.nativeElement).find(".linectrl");
+            for (var i = 0; i < lineControls.length; i++) { //disable buttons unrelated to current job
+                $('#' + lineControls[i].id).attr("disabled", false);
+                if (lineControls[i].id.indexOf('config') > -1) {
+                    $('#' + lineControls[i].id).html("Configure");
+                }
+            }
         }
     }
 
