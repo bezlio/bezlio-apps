@@ -311,9 +311,10 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 this.runQuery(bezl, "Attributes");
 
                 var $lineControls = $(".linectrl");
-                for (var i = 0; i < $lineControls.length; i++) { //disable buttons unrelated to current job
-                    $('#' + $lineControls[i].id).attr("disabled", true);
-                    console.log($lineControls[i].id);
+                var lineControls2 = $(bezl.container.nativeElement).find(".linectrl");
+                for (var i = 0; i < lineControls2.length; i++) { //disable buttons unrelated to current job
+                    $('#' + lineControls2[i].id).attr("disabled", true);
+                    console.log(lineControls2[i].id);
                 }
             }
         } else {
