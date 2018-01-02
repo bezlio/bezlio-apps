@@ -156,6 +156,12 @@ define(function () {
 
             bezl.vars.attrLoading = false;
             bezl.dataService.remove('Attributes');
+
+            var lineControls = $(bezl.container.nativeElement).find(".linectrl");
+            for (var i = 0; i < lineControls.length; i++) { //disable buttons unrelated to current job
+                $('#' + lineControls[i].id).attr("disabled", true);
+                console.log(lineControls[i].id);
+            }
         }
 
         if (bezl.data.QuoteAttrs) {
