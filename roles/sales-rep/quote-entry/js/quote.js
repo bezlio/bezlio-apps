@@ -368,7 +368,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function ChangeAttribute(bezl, lineNum, attributeID, attributeValue) {
-        //normal ngModelChange functionality
         bezl.data.QuoteDtls.find(dtl => dtl.QuoteLine === lineNum).Attributes.find(attr => attr.ATTRIBUTE_ID === attributeID).SELECTED_VALUE = attributeValue;
     }
 
