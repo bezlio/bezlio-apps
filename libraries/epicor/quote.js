@@ -143,23 +143,25 @@ define(function () {
 
             if (dtl.Attributes !== undefined) {
                 let cnt = 2;
-                dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
-                    if (!isNaN(Number(quoteQty.SELECTED_VALUE))) {
-                        if (quoteQty.SELECTED_VALUE > 0) {
-                            bezl.vars.ds.QuoteQty.push({
-                                QuoteNum: quoteNum,
-                                QuoteLine: dtl.QuoteLine,
-                                QtyNum: cnt,
-                                OurQuantity: Number(quoteQty.SELECTED_VALUE),
-                                SellingQuantity: Number(quoteQty.SELECTED_VALUE),
-                                PricePerCode: 'E',
-                                Company: company,
-                                RowMod: 'U'
-                            });
-                            cnt++;
+                if (dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY") !== undefined) {
+                    dtl.Attributes.find(att => att.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.map(quoteQty => {
+                        if (!isNaN(Number(quoteQty.SELECTED_VALUE))) {
+                            if (quoteQty.SELECTED_VALUE > 0) {
+                                bezl.vars.ds.QuoteQty.push({
+                                    QuoteNum: quoteNum,
+                                    QuoteLine: dtl.QuoteLine,
+                                    QtyNum: cnt,
+                                    OurQuantity: Number(quoteQty.SELECTED_VALUE),
+                                    SellingQuantity: Number(quoteQty.SELECTED_VALUE),
+                                    PricePerCode: 'E',
+                                    Company: company,
+                                    RowMod: 'U'
+                                });
+                                cnt++;
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
