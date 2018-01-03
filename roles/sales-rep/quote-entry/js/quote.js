@@ -310,7 +310,6 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 this.runQuery(bezl, "QuoteQty");
                 this.runQuery(bezl, "Attributes");
 
-
                 var lineControls = $(bezl.container.nativeElement).find(".linectrl");
                 for (var i = 0; i < lineControls.length; i++) { //disable buttons unrelated to current job
                     if (lineControls[i].id.indexOf(quoteLine) > -1 && lineControls[i].id.indexOf('config') > -1) {
