@@ -129,7 +129,6 @@ define(function () {
         custNum = quoteData.custNum;
 
         bezl.data.QuoteDtls.forEach(dtl => {
-            console.log(dtl);
             bezl.vars.ds.QuoteDtl.push({
                 QuoteNum: quoteNum,
                 QuoteLine: dtl.QuoteLine,
@@ -221,11 +220,12 @@ define(function () {
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
-        console.log(dtl);
         if (dtl.Attributes.length > 1) {
             if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
                 this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
             }
+        } else if (dtl.PartNum === "Miscellaneous Product Code") {
+            this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
 
         var nonOtherEditable_bool;
