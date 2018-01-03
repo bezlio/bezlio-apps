@@ -71,8 +71,6 @@ define(function () {
     }
 
     function UpdateCustomField(bezl, quoteData) {
-        //console.log(quoteData);
-
         //sales flag
         if (quoteData.sales !== undefined) {
             bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
@@ -223,6 +221,7 @@ define(function () {
     function SaveAttributes(bezl, connection, company, quoteNum, dtl) {
         var attributeConcat = dtl.PartNum + ": "; //line description for configured lines
 
+        console.log(dtl);
         if (dtl.Attributes.length > 1) {
             if (dtl.Attributes.find(attrID => attrID.ATTRIBUTE_ID === "000_QUANTITY").ATTRIBUTE_VALUES.length > 0) {
                 this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
