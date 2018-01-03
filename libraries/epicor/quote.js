@@ -100,13 +100,13 @@ define(function () {
         }
 
         // Notes to Pm
-        if (quoteData.QuoteComment !== undefined) {
+        if (quoteData.comments !== undefined) {
             bezl.dataService.add('updateQuoteDesc', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
                     { Key: "QuoteNum", Value: quoteData.quoteNum },
-                    { Key: "ColumnValue", Value: quoteData.QuoteComment },
+                    { Key: "ColumnValue", Value: quoteData.comments },
                     { Key: "ColumnName", Value: 'PMComments_c' }
                 ]
             }, 0);
