@@ -55,7 +55,7 @@ define(function () {
                 EntryDate: bezl.data.newQuote.QuoteHed[0].EntryDate,
                 SalesRepCode: bezl.data.FirstCustomer[0].SalesRepCode,
                 CustID: bezl.data.newQuote.QuoteHed[0].CustomerCustID,
-                QuoteComment: bezl.data.newQuote.QuoteHed[0].QuoteComment,
+                QuoteComment: bezl.data.newQuote.QuoteHed[0].PMComments_c,
                 QuoteClosed: bezl.data.newQuote.QuoteHed[0].QuoteClosed,
                 Company: bezl.data.newQuote.QuoteHed[0].Company,
                 CustNum: bezl.data.newQuote.QuoteHed[0].CustNum,
