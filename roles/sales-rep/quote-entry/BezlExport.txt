@@ -105,7 +105,7 @@
     " ",
     "<div class=\"checkbox checkbox-cstm checkbox-cstm-primary pull-right\" id=\"checkContainer\" *ngIf=\"!bezl.vars['loading']\">",
     "    <input type=\"checkbox\" [(ngModel)]=\"bezl.vars['showPendingQuotes']\" id=\"pendingQuotes\" (ngModelChange)=\"bezl.functions.pendingQuotesSwitch($event)\"> ",
-    "    <label for=\"pendingQuotes\" id=\"label\"> Show Pending Quotes?</label>",
+    "    <label for=\"pendingQuotes\" id=\"label\"> Only Show Pending Quotes?</label>",
     "</div>",
     "",
     " <label class=\"pull-right\" [hidden]=\"!bezl.vars['loading']\">Loading... <i class=\"fa fa-spinner fa-spin\" style=\"font-size:24px\"></i></label>",
@@ -1034,7 +1034,7 @@
     },
     {
       "method": "pendingQuotesSwitch",
-      "code": "if(bezl.vars['showPendingQuotes']) {\n  bezl.vars.displayedQuotes = bezl.data.Quotes;\n  \n} else {\n  \n}",
+      "code": "if(bezl.vars['showPendingQuotes']) {\n  bezl.vars.displayedQuotes = bezl.data.Quotes.filter(q => q.Decision_c == 'Pending');\n  \n} else {\n    bezl.vars.displayedQuotes = bezl.data.Quotes;\n}",
       "declares": [
         "$",
         "parm",
@@ -1043,7 +1043,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "if (bezl.vars['showPendingQuotes']) {\r\n    bezl.vars.displayedQuotes = bezl.data.Quotes;\r\n}\r\nelse {\r\n}\r\n"
+      "compiled": "if (bezl.vars['showPendingQuotes']) {\r\n    bezl.vars.displayedQuotes = bezl.data.Quotes.filter(function (q) { return q.Decision_c == 'Pending'; });\r\n}\r\nelse {\r\n    bezl.vars.displayedQuotes = bezl.data.Quotes;\r\n}\r\n"
     }
   ],
   "data": ""

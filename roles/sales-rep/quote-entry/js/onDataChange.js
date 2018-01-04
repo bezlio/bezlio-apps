@@ -6,7 +6,8 @@ define(function () {
         }
 
         if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
-            bezl.vars.displayedQuotes = bezl.data.Quotes;
+            // Request to only have pending quotes displayed at first
+            bezl.vars.displayedQuotes = bezl.data.Quotes.filter(q => q.Decision_c == 'Pending');
             bezl.vars.loading = false;
         }
 
