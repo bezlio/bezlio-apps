@@ -6,6 +6,7 @@ define(function () {
         }
 
         if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
+            bezl.vars.displayedQuotes = bezl.data.Quotes;
             bezl.vars.loading = false;
         }
 
