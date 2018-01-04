@@ -401,9 +401,15 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     }
 
     function DeleteAttribute(bezl, lineNum, attributeID) {
-        console.log(bezl);
-        console.log(lineNum);
-        console.log(attributeID);
+        bezl.dataService.add('DeleteAttribute', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+            "QueryName": "DeleteAttribute",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
+                { Key: "QuoteLine", Value: lineNum },
+                { Key: "AttributeID", Value: attributeID }
+            ]
+        }, 0);
     }
 
     return {
