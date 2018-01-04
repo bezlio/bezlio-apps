@@ -400,6 +400,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         }
     }
 
+    function DeleteAttribute(bezl, lineNum, attributeID) {
+        console.log(bezl);
+        console.log(lineNum);
+        console.log(attributeID);
+    }
+
     return {
         runQuery: RunQuery,
         loadQuote: LoadQuote,
@@ -417,6 +423,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         changeAttribute: ChangeAttribute,
         changeSubAttribute: ChangeSubAttribute,
         changeTypedAttribute: ChangeTypedAttribute,
-        changeTypedSubAttribute: ChangeTypedSubAttribute
+        changeTypedSubAttribute: ChangeTypedSubAttribute,
+        deleteAttribute: DeleteAttribute
     }
 });
