@@ -402,7 +402,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
     function DeleteAttribute(bezl, lineNum, attribute, attributeID) {
         //delete attribute in JSON
-        console.log(attribute);
+        delete attribute.SELECTED_VALUE;
 
         //delete attribute in SQL
         // bezl.dataService.add('DeleteAttribute', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
