@@ -424,72 +424,9 @@ define(function () {
                         default:
                             break;
                     }
-
-                    //attributeConcat += (val.hasOwnProperty('SELECTED_VALUE')) ? val.SELECTED_VALUE + ' ' : '';
-                    //console.log((val.hasOwnProperty('SELECTED_VALUE')) ? attr.ATTRIBUTE_ID + ' ' + val.SELECTED_VALUE + ' ' : '');
                 });
             }
-
-            // //sub attributes
-            // attr.ATTRIBUTE_VALUES.map(attrVals_sub => {
-            //     if (attrVals_sub.hasOwnProperty('SUB_ATTRIBUTE')) {
-            //         attrVals_sub.SUB_ATTRIBUTE.map(subAttrs => {
-            //             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
-            //                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-            //                     console.log("Sub Attr ID: " + subAttrs.ATTRIBUTE_ID);
-            //                     console.log("Parent ID: " + attr.ATTRIBUTE_ID);
-            //                     console.log(attr);
-            //                     // bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-            //                     //     "QueryName": "InsertSubAttributes",
-            //                     //     "Parameters": [
-            //                     //         { Key: "Company", Value: company },
-            //                     //         { Key: "QuoteNum", Value: quoteNum },
-            //                     //         { Key: "QuoteLine", Value: dtl.QuoteLine },
-            //                     //         { Key: "PartID", Value: dtl.PartNum },
-            //                     //         { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
-            //                     //         { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-            //                     //         { Key: "ParentValue", Value: attr.SELECTED_VALUE },
-            //                     //         { Key: "AttributeValue", Value: subAttrVals.ATTRIBUTE_VALUE },
-            //                     //         { Key: "OtherAttributeValue", Value: subAttrVals.SELECTED_VALUE },
-            //                     //         { Key: "AttributeDesc", Value: subAttrs.ATTRIBUTE_DESCRIPTION },
-            //                     //         { Key: "PartNum", Value: dtl.PartNum }
-            //                     //     ]
-            //                     // }, 0);
-            //                 }
-            //             });
-            //         });
-            //     }
-            // });
-            // var selSubAttr = attr.ATTRIBUTE_VALUES.find(attrVal_subAttr => attrVal_subAttr.ATTRIBUTE_VALUE === attr.SELECTED_VALUE);
-            // if (selSubAttr !== undefined) {
-            //     console.log(selSubAttr);
-            //     if (selSubAttr.hasOwnProperty('SUB_ATTRIBUTE')) {
-            //         var selSubAttrVal = selSubAttr.SUB_ATTRIBUTE[0];
-            //         bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-            //             "QueryName": "InsertAttributes",
-            //             "Parameters": [
-            //                 { Key: "Company", Value: company },
-            //                 { Key: "QuoteNum", Value: quoteNum },
-            //                 { Key: "QuoteLine", Value: dtl.QuoteLine },
-            //                 { Key: "PartID", Value: dtl.PartNum },
-            //                 { Key: "AttributeID", Value: selSubAttrVal.ATTRIBUTE_ID },
-            //                 { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
-            //                 { Key: "AttributeValue", Value: selSubAttrVal.SELECTED_VALUE },
-            //                 { Key: "OtherAttributeValue", Value: '' },
-            //                 { Key: "AttributeDesc", Value: selSubAttrVal.ATTRIBUTE_DESCRIPTION },
-            //                 { Key: "PartNum", Value: dtl.PartNum }
-            //             ]
-            //         }, 0);
-
-            //         attributeConcat += selSubAttr.SELECTED_VALUE + ' ';
-            //     }
-            // }
         });
-
-        if (dtl.ListItem === 1) { //set concatenated attribute values as description
-            //console.log('Attr: ' + attributeConcat);
-            //bezl.vars.ds.QuoteDtl.find(quoteDtl => quoteDtl.QuoteLine === dtl.QuoteLine).LineDesc = attributeConcat;
-        }
     }
 
     function DeleteQuote(bezl, connection, company, quoteData) {
@@ -520,6 +457,15 @@ define(function () {
                 "QuoteNum": quoteData.quoteNum,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
+
+        bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+            "QueryName": "DeleteAttributes",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
+                { Key: "QuoteLine", Value: '' }
+            ]
+        }, 0);
     }
 
     return {
