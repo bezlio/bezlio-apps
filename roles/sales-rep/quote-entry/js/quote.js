@@ -412,8 +412,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 });
             });
         });
-        console.log(attribute);
-
+        console.log(attributeID);
 
         //delete attribute in SQL
         // bezl.dataService.add('DeleteAttribute', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
