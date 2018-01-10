@@ -414,18 +414,17 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 });
             }
         });
-        console.log(attributeID);
 
         //delete attribute in SQL
-        // bezl.dataService.add('DeleteAttribute', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
-        //     "QueryName": "DeleteAttribute",
-        //     "Parameters": [
-        //         { Key: "Company", Value: bezl.vars.Company },
-        //         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
-        //         { Key: "QuoteLine", Value: lineNum },
-        //         { Key: "AttributeID", Value: attributeID }
-        //     ]
-        // }, 0);
+        bezl.dataService.add('DeleteAttribute', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+            "QueryName": "DeleteAttribute",
+            "Parameters": [
+                { Key: "Company", Value: bezl.vars.Company },
+                { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
+                { Key: "QuoteLine", Value: lineNum },
+                { Key: "AttributeID", Value: attributeID }
+            ]
+        }, 0);
     }
 
     return {
