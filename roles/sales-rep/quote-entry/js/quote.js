@@ -403,6 +403,9 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     function DeleteAttribute(bezl, lineNum, attribute, attributeID) {
         //delete attribute in JSON
         delete attribute.SELECTED_VALUE;
+        attribute.ATTRIBUTE_VALUES.map(attrVal => {
+            delete attrVal.SELECTED_VALUE;
+        });
         console.log(attribute);
 
 
