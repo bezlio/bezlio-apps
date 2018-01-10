@@ -405,6 +405,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         delete attribute.SELECTED_VALUE;
         attribute.ATTRIBUTE_VALUES.map(attrVal => {
             delete attrVal.SELECTED_VALUE;
+            attrVal.SUB_ATTRIBUTE.map(subAttr => {
+                delete subAttr.SELECTED_VALUE;
+                subAttr.ATTRIBUTE_VALUES.map(subAttrVal => {
+                    delete subAttrVal.SELECTED_VALUE;
+                });
+            });
         });
         console.log(attribute);
 
