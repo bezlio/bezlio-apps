@@ -6,6 +6,8 @@ define(function () {
         }
 
         if (bezl.data.Quotes && !bezl.vars.newQuote && bezl.data.FirstCustomer) {
+            // Request to only have pending quotes displayed at first
+            bezl.vars.displayedQuotes = bezl.data.Quotes.filter(q => q.Decision_c == 'Pending');
             bezl.vars.loading = false;
         }
 
@@ -55,7 +57,7 @@ define(function () {
                 EntryDate: bezl.data.newQuote.QuoteHed[0].EntryDate,
                 SalesRepCode: bezl.data.FirstCustomer[0].SalesRepCode,
                 CustID: bezl.data.newQuote.QuoteHed[0].CustomerCustID,
-                QuoteComment: bezl.data.newQuote.QuoteHed[0].QuoteComment,
+                QuoteComment: bezl.data.newQuote.QuoteHed[0].PMComments_c,
                 QuoteClosed: bezl.data.newQuote.QuoteHed[0].QuoteClosed,
                 Company: bezl.data.newQuote.QuoteHed[0].Company,
                 CustNum: bezl.data.newQuote.QuoteHed[0].CustNum,
@@ -201,7 +203,7 @@ define(function () {
                 quoteLines: []
             };
 
-            require(['https://rawgit.com/bezlio/bezlio-apps/Sales-Rep---Request-For-Quote-Entry-%2332/roles/sales-rep/quote-entry/js/quote.js'], function (functions) {
+            require([bezl.vars.jsUrl + 'quote.js'], function (functions) {
                 functions.returnToSummary(bezl);
                 functions.runQuery(bezl, 'Quotes');
             });

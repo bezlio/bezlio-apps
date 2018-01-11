@@ -3,20 +3,20 @@ define(function () {
      * Returns a ds of a new order for the selected customer
      * @param {Object[]} bezl - A reference to the calling Bezl
      */
-    function NewOrder(bezl) {
+    function NewOrder (bezl) {
 
-        bezl.dataService.add('newOrder', 'brdb', 'Epicor10', 'SalesOrder_NewOrderByCustomer',
-            {
-                "Connection": bezl.vars.connection,
-                "Company": bezl.vars.company,
-                "CustNum": bezl.vars.selectedCustomer.CustNum,
-            }, 0);
+        bezl.dataService.add('newOrder','brdb','Epicor10','SalesOrder_NewOrderByCustomer',
+        { "Connection": bezl.vars.connection, 
+            "Company": bezl.vars.company, 
+            "CustNum": bezl.vars.selectedCustomer.CustNum,
+        },0);
 
         bezl.vars.newOrder = true;
 
     }
 
     function SubmitOrder(bezl) {
+
         // Update our order head info
         bezl.vars.ds.OrderHed.forEach(oh => {
             oh.BTCustNum = oh.CustNum;
@@ -110,6 +110,7 @@ define(function () {
                 "Company": bezl.vars.company,
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
+
 
         bezl.vars.submitOrder = true;
 

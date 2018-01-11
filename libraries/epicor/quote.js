@@ -96,6 +96,19 @@ define(function () {
                 ]
             }, 0);
         }
+
+        // Notes to Pm
+        if (quoteData.comments !== undefined) {
+            bezl.dataService.add('updateQuoteDesc', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+                "QueryName": "erp.updateCustomField",
+                "Parameters": [
+                    { Key: "Company", Value: bezl.vars.Company },
+                    { Key: "QuoteNum", Value: quoteData.quoteNum },
+                    { Key: "ColumnValue", Value: quoteData.comments },
+                    { Key: "ColumnName", Value: 'PMComments_c' }
+                ]
+            }, 0);
+        }
     }
 
     function SaveQuote(bezl, connection, company, mktgEvnt, quoteData) {
@@ -118,6 +131,7 @@ define(function () {
             MktgCampaignID: quoteData.mktgCamp,
             MktgEvntSeq: quoteData.mktgEvnt,
             ProjectName_c: quoteData.quoteDesc,
+            PMComments_c: quoteData.comments,
             Sales_c: quoteData.sales,
             Company: company,
             RowMod: 'U'
