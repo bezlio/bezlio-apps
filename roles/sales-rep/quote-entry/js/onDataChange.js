@@ -9,6 +9,10 @@ define(function () {
             // Request to only have pending quotes displayed at first
             bezl.vars.displayedQuotes = bezl.data.Quotes.filter(q => q.Decision_c == 'Pending');
             bezl.vars.loading = false;
+
+            setTimeout(() => {
+                bezl.vars.disablePendingQuotes = false;
+            }, 1500);
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
