@@ -60,7 +60,7 @@ define(function () {
     function UpdateSales(bezl, quoteNum, salesVal) {
         bezl.vars.saving = true;
 
-        bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+        bezl.dataService.add('updateSales', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "UpdateSales",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
@@ -73,7 +73,7 @@ define(function () {
     function UpdateCustomField(bezl, quoteData) {
         //sales flag
         if (quoteData.sales !== undefined) {
-            bezl.dataService.add('updateSales', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateSales', 'brdb', bezl.vars.Context, 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
@@ -86,7 +86,7 @@ define(function () {
 
         //project_name
         if (quoteData.quoteDesc !== undefined) {
-            bezl.dataService.add('updateQuoteDesc', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateQuoteDesc', 'brdb', bezl.vars.Context, 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
@@ -99,7 +99,7 @@ define(function () {
 
         // Notes to Pm
         if (quoteData.comments !== undefined) {
-            bezl.dataService.add('updateQuoteDesc', 'brdb', 'sales-rep-queries', 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateQuoteDesc', 'brdb', bezl.vars.Context, 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
@@ -189,7 +189,7 @@ define(function () {
     }
 
     function DeleteLine(bezl, quoteLine) {
-        bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+        bezl.dataService.add('DeleteAttributes', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "DeleteAttributes",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
@@ -267,7 +267,7 @@ define(function () {
 
             //standard one select property
             if (attr.hasOwnProperty("SELECTED_VALUE") && !attr.hasOwnProperty('SELECTION_MODE')) {
-                bezl.dataService.add('QuoteAttrs', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                bezl.dataService.add('QuoteAttrs', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
                     "QueryName": "InsertAttributes",
                     "Parameters": [
                         { Key: "Company", Value: company },
@@ -288,7 +288,7 @@ define(function () {
                     var subAttr = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE)
                         .SUB_ATTRIBUTE.map(subAttr => {
                             if (subAttr.hasOwnProperty('SELECTED_VALUE')) {
-                                bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
                                     "QueryName": "InsertSubAttributes",
                                     "Parameters": [
                                         { Key: "Company", Value: company },
@@ -347,7 +347,7 @@ define(function () {
                 var attrValsE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                 attrValsE.map(val => {
                     let name = val.ATTRIBUTE_VALUE_LABEL.substring(0, 5).replace(" ", "");
-                    bezl.dataService.add('QuoteAttrs_' + name, 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                    bezl.dataService.add('QuoteAttrs_' + name, 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
                         "QueryName": "InsertAttributes",
                         "Parameters": [
                             { Key: "Company", Value: company },
@@ -368,7 +368,7 @@ define(function () {
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                    bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
                                         "QueryName": "InsertSubAttributes",
                                         "Parameters": [
                                             { Key: "Company", Value: company },
@@ -392,7 +392,7 @@ define(function () {
 
                 var attrValsNE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === true)));
                 attrValsNE.map(val => {
-                    bezl.dataService.add('QuoteMulti_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                    bezl.dataService.add('QuoteMulti_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
                         "QueryName": "InsertAttributes",
                         "Parameters": [
                             { Key: "Company", Value: company },
@@ -413,7 +413,7 @@ define(function () {
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    bezl.dataService.add('QuoteSub_', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+                                    bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
                                         "QueryName": "InsertSubAttributes",
                                         "Parameters": [
                                             { Key: "Company", Value: company },
@@ -472,7 +472,7 @@ define(function () {
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
 
-        bezl.dataService.add('DeleteAttributes', 'brdb', 'sales-rep-queries', 'ExecuteNonQuery', {
+        bezl.dataService.add('DeleteAttributes', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "DeleteAttributes",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },

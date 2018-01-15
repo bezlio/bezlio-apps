@@ -19,12 +19,10 @@ define(["./quote.js"], function (quote) {
 
         $.getJSON(bezl.vars.jsonUrl + "Part.json", function (data) {
             bezl.vars.parts = data;
-            // console.log(data);
         });
 
         $.getJSON(bezl.vars.jsonUrl + "Attribute.json", function (data) {
             bezl.vars.attributes = data;
-            // console.log(data);
         });
     }
 
