@@ -130,9 +130,9 @@ define(function () {
             CustomerCustID: quoteData.customerId,
             MktgCampaignID: quoteData.mktgCamp,
             MktgEvntSeq: quoteData.mktgEvnt,
-            // ProjectName_c: quoteData.quoteDesc,
-            // PMComments_c: quoteData.comments,
-            // Sales_c: quoteData.sales,
+            ProjectName_c: quoteData.quoteDesc,
+            PMComments_c: quoteData.comments,
+            Sales_c: quoteData.sales,
             Company: company,
             RowMod: 'U'
         });
