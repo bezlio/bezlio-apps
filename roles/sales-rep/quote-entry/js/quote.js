@@ -2,7 +2,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
     function RunQuery(bezl, queryName) {
         switch (queryName) {
             case "FirstCustomer":
-                bezl.dataService.add('FirstCustomer', 'brdb', 'f1be529f-a135-47a3-8143-ef7e0023787a', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('FirstCustomer', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetFirstCustomerByRep",
                     "Parameters": [
                         { "Key": "SalesRep", "Value": bezl.env.currentUser },
@@ -13,7 +13,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
             case "Quotes":
                 bezl.vars.loading = true;
 
-                bezl.dataService.add('Quotes', 'brdb', 'f1be529f-a135-47a3-8143-ef7e0023787a', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Quotes', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetQuotesByRep",
                     "Parameters": [
                         { Key: "SalesRep", Value: bezl.env.currentUser },
@@ -22,12 +22,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "SalesReps":
-                bezl.dataService.add('SalesReps', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('SalesReps', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetSalesReps"
                 }, 0);
                 break;
             case "Customers":
-                bezl.dataService.add('Customers', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Customers', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetCustomersByRep",
                     "Parameters": [
                         { Key: "SalesRep", Value: bezl.env.currentUser },
@@ -36,7 +36,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "Suspects":
-                bezl.dataService.add('Suspects', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Suspects', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetSuspects",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company }
@@ -44,7 +44,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "QuoteDtls":
-                bezl.dataService.add('QuoteDtls', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('QuoteDtls', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetQuoteDetails",
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum }
@@ -52,7 +52,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "QuoteQty":
-                bezl.dataService.add('QuoteQty', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('QuoteQty', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetQuoteQty",
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
@@ -61,12 +61,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "Parts":
-                bezl.dataService.add('Parts', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Parts', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetParts"
                 }, 0);
                 break;
             case "Attributes":
-                bezl.dataService.add('Attributes', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Attributes', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetQuoteAttributes",
                     "Parameters": [
                         { Key: "QuoteNum", Value: bezl.vars.quoteData.quoteNum },
@@ -76,7 +76,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "Territories":
-                bezl.dataService.add('Territories', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Territories', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetSalesTer",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company }
@@ -84,7 +84,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "Terms":
-                bezl.dataService.add('Terms', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Terms', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetTerms",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company }
@@ -92,12 +92,12 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
                 }, 0);
                 break;
             case "EpicorParts":
-                bezl.dataService.add('EpicorParts', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('EpicorParts', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetEpicorParts"
                 }, 0);
                 break;
             case "MktgCamp":
-                bezl.dataService.add('MktgCamp', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('MktgCamp', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetMktgCamp",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company }
@@ -106,7 +106,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
 
                 break;
             case "MktgEvnt":
-                bezl.dataService.add('MktgEvnt', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('MktgEvnt', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetMktgEvnt",
                     "Parameters": [
                         { Key: "Company", Value: bezl.vars.Company },
@@ -232,6 +232,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.dataService.add(
             'NewCustomer',
             'brdb',
+            bezl.vars.BezlConnection,
             'Epicor10',
             'ExecuteBOMethod',
             {
@@ -401,7 +402,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         });
 
         //delete attribute in SQL
-        bezl.dataService.add('DeleteAttribute', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+        bezl.dataService.add('DeleteAttribute', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "DeleteAttribute",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },

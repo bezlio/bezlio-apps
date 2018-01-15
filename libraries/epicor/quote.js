@@ -6,7 +6,7 @@ define(function () {
     */
 
     function NewQuote(bezl, connection, company, custID) {
-        bezl.dataService.add('newQuote', 'brdb', 'Epicor10', 'Quote_NewQuoteByCustomer',
+        bezl.dataService.add('newQuote', 'brdb', bezl.vars.BezlConnection, 'Epicor10', 'Quote_NewQuoteByCustomer',
             {
                 "Connection": connection,
                 "Company": company,
@@ -41,7 +41,7 @@ define(function () {
             RowMod: 'U'
         });
 
-        bezl.dataService.add('changeCustomer', 'brdb', 'Epicor10', 'Quote_ChangeCustomer',
+        bezl.dataService.add('changeCustomer', 'brdb', bezl.vars.BezlConnection, 'Epicor10', 'Quote_ChangeCustomer',
             {
                 "Connection": connection,
                 "Company": company,
@@ -60,7 +60,7 @@ define(function () {
     function UpdateSales(bezl, quoteNum, salesVal) {
         bezl.vars.saving = true;
 
-        bezl.dataService.add('updateSales', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+        bezl.dataService.add('updateSales', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "UpdateSales",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
@@ -73,7 +73,7 @@ define(function () {
     function UpdateCustomField(bezl, quoteData) {
         //sales flag
         if (quoteData.sales !== undefined) {
-            bezl.dataService.add('updateSales', 'brdb', bezl.vars.Context, 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateSales', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
@@ -86,7 +86,7 @@ define(function () {
 
         //project_name
         if (quoteData.quoteDesc !== undefined) {
-            bezl.dataService.add('updateQuoteDesc', 'brdb', bezl.vars.Context, 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateQuoteDesc', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
@@ -99,7 +99,7 @@ define(function () {
 
         // Notes to Pm
         if (quoteData.comments !== undefined) {
-            bezl.dataService.add('updateQuoteDesc', 'brdb', bezl.vars.Context, 'ExecuteStoredProcedure', {
+            bezl.dataService.add('updateQuoteDesc', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteStoredProcedure', {
                 "QueryName": "erp.updateCustomField",
                 "Parameters": [
                     { Key: "Company", Value: bezl.vars.Company },
@@ -179,7 +179,7 @@ define(function () {
             }
         });
 
-        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+        bezl.dataService.add('saveQuote', 'brdb', bezl.vars.BezlConnection, 'Epicor10', 'Quote_SaveQuote',
             {
                 "Connection": connection,
                 "Company": company,
@@ -189,7 +189,7 @@ define(function () {
     }
 
     function DeleteLine(bezl, quoteLine) {
-        bezl.dataService.add('DeleteAttributes', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+        bezl.dataService.add('DeleteAttributes', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "DeleteAttributes",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
@@ -224,7 +224,7 @@ define(function () {
 
         var index = bezl.data.QuoteDtls.indexOf(bezl.data.QuoteDtls.find(subDtl => subDtl.QuoteLine === quoteLine));
         bezl.data.QuoteDtls.splice(index, 1);
-        bezl.dataService.add('saveQuote', 'brdb', 'Epicor10', 'Quote_SaveQuote',
+        bezl.dataService.add('saveQuote', 'brdb', bezl.vars.BezlConnection, 'Epicor10', 'Quote_SaveQuote',
             {
                 "Connection": bezl.vars.Connection,
                 "Company": bezl.vars.Company,
@@ -267,7 +267,7 @@ define(function () {
 
             //standard one select property
             if (attr.hasOwnProperty("SELECTED_VALUE") && !attr.hasOwnProperty('SELECTION_MODE')) {
-                bezl.dataService.add('QuoteAttrs', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+                bezl.dataService.add('QuoteAttrs', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                     "QueryName": "InsertAttributes",
                     "Parameters": [
                         { Key: "Company", Value: company },
@@ -288,7 +288,7 @@ define(function () {
                     var subAttr = attr.ATTRIBUTE_VALUES.find(attrVal => attrVal.ATTRIBUTE_VALUE === attr.SELECTED_VALUE)
                         .SUB_ATTRIBUTE.map(subAttr => {
                             if (subAttr.hasOwnProperty('SELECTED_VALUE')) {
-                                bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+                                bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                                     "QueryName": "InsertSubAttributes",
                                     "Parameters": [
                                         { Key: "Company", Value: company },
@@ -347,7 +347,7 @@ define(function () {
                 var attrValsE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === false)));
                 attrValsE.map(val => {
                     let name = val.ATTRIBUTE_VALUE_LABEL.substring(0, 5).replace(" ", "");
-                    bezl.dataService.add('QuoteAttrs_' + name, 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+                    bezl.dataService.add('QuoteAttrs_' + name, 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                         "QueryName": "InsertAttributes",
                         "Parameters": [
                             { Key: "Company", Value: company },
@@ -368,7 +368,7 @@ define(function () {
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+                                    bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                                         "QueryName": "InsertSubAttributes",
                                         "Parameters": [
                                             { Key: "Company", Value: company },
@@ -392,7 +392,7 @@ define(function () {
 
                 var attrValsNE = JSON.parse(JSON.stringify(attr.ATTRIBUTE_VALUES.filter(val => val.hasOwnProperty('EDITABLE') === true)));
                 attrValsNE.map(val => {
-                    bezl.dataService.add('QuoteMulti_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+                    bezl.dataService.add('QuoteMulti_', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                         "QueryName": "InsertAttributes",
                         "Parameters": [
                             { Key: "Company", Value: company },
@@ -413,7 +413,7 @@ define(function () {
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+                                    bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                                         "QueryName": "InsertSubAttributes",
                                         "Parameters": [
                                             { Key: "Company", Value: company },
@@ -464,7 +464,7 @@ define(function () {
         // var index = bezl.data.Quotes.indexOf(bezl.data.Quotes.find(subHed => subHed.QuoteNum === quoteData.quoteNum));
         // bezl.data.Quotes.splice(index, 1);
 
-        bezl.dataService.add('deleteQuote', 'brdb', 'Epicor10', 'Quote_DeleteQuote',
+        bezl.dataService.add('deleteQuote', 'brdb', bezl.vars.BezlConnection, 'Epicor10', 'Quote_DeleteQuote',
             {
                 "Connection": connection,
                 "Company": company,
@@ -472,7 +472,7 @@ define(function () {
                 "ds": JSON.stringify(bezl.vars.ds)
             }, 0);
 
-        bezl.dataService.add('DeleteAttributes', 'brdb', bezl.vars.Context, 'ExecuteNonQuery', {
+        bezl.dataService.add('DeleteAttributes', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
             "QueryName": "DeleteAttributes",
             "Parameters": [
                 { Key: "Company", Value: bezl.vars.Company },
