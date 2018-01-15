@@ -13,7 +13,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
             case "Quotes":
                 bezl.vars.loading = true;
 
-                bezl.dataService.add('Quotes', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
+                bezl.dataService.add('Quotes', 'f1be529f-a135-47a3-8143-ef7e0023787a', 'brdb', bezl.vars.Context, 'ExecuteQuery', {
                     "QueryName": "GetQuotesByRep",
                     "Parameters": [
                         { Key: "SalesRep", Value: bezl.env.currentUser },
