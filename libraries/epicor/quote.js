@@ -244,6 +244,8 @@ define(function () {
             this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
 
+        console.log(dtl);
+
         var nonOtherEditable_bool;
         var otherValue;
         dtl.Attributes.map(attr => {
