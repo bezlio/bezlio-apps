@@ -244,8 +244,6 @@ define(function () {
             this.saveQuote(bezl, connection, company, bezl.vars.MktgEvntSeq, bezl.vars.quoteData);
         }
 
-        console.log(dtl);
-
         var nonOtherEditable_bool;
         var otherValue;
         dtl.Attributes.map(attr => {
@@ -269,6 +267,7 @@ define(function () {
 
             //standard one select property
             if (attr.hasOwnProperty("SELECTED_VALUE") && !attr.hasOwnProperty('SELECTION_MODE')) {
+                console.log(attr);
                 bezl.dataService.add('QuoteAttrs', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                     "QueryName": "InsertAttributes",
                     "Parameters": [
