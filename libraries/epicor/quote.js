@@ -267,7 +267,6 @@ define(function () {
 
             //standard one select property
             if (attr.hasOwnProperty("SELECTED_VALUE") && !attr.hasOwnProperty('SELECTION_MODE')) {
-                console.log(attr);
                 bezl.dataService.add('QuoteAttrs', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                     "QueryName": "InsertAttributes",
                     "Parameters": [
