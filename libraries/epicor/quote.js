@@ -417,7 +417,7 @@ define(function () {
                         val.SUB_ATTRIBUTE.map(subAttrs => {
                             subAttrs.ATTRIBUTE_VALUES.map(subAttrVals => {
                                 if (subAttrVals.hasOwnProperty('SELECTED_VALUE')) {
-                                    console.log(subAttrVal);
+                                    console.log(subAttrVals);
                                     bezl.dataService.add('QuoteSub_', 'brdb', bezl.vars.BezlConnection, bezl.vars.Context, 'ExecuteNonQuery', {
                                         "QueryName": "InsertSubAttributes",
                                         "Parameters": [
