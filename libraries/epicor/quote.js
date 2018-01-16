@@ -425,7 +425,7 @@ define(function () {
                                             { Key: "QuoteNum", Value: quoteNum },
                                             { Key: "QuoteLine", Value: dtl.QuoteLine },
                                             { Key: "PartID", Value: dtl.PartNum },
-                                            { Key: "AttributeID", Value: subAttrs.ATTRIBUTE_ID },
+                                            { Key: "AttributeID", Value: (val.ATTRIBUTE_VALUE_LABEL.indexOf('Quantity') > -1) ? subAttrs.ATTRIBUTE_ID + '~' + val.ATTRIBUTE_VALUE_LABEL : subattrs.ATTRIBUTE_DESCRIPTION },
                                             { Key: "ParentID", Value: attr.ATTRIBUTE_ID },
                                             { Key: "ParentValue", Value: val.ATTRIBUTE_VALUE_LABEL },
                                             { Key: "AttributeValue", Value: subAttrVals.ATTRIBUTE_VALUE },
