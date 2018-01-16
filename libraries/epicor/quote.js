@@ -276,7 +276,7 @@ define(function () {
                         { Key: "QuoteLine", Value: dtl.QuoteLine },
                         { Key: "PartID", Value: dtl.PartNum },
                         { Key: "AttributeID", Value: attr.ATTRIBUTE_ID },
-                        { Key: "ParentID", Value: '' },
+                        { Key: "ParentID", Value: attr.ATTRIBUTE_DESCRIPTION },
                         { Key: "AttributeValue", Value: (attr.SELECTED_VALUE === 'OTHER') ? 'OTHER' : attr.SELECTED_VALUE },
                         { Key: "OtherAttributeValue", Value: (otherValue !== undefined && (attr.SELECTED_VALUE === 'OTHER' || attr.ATTRIBUTE_ID.indexOf('MEASURE') > 0 || nonOtherEditable_bool)) ? otherValue : '' },
                         { Key: "AttributeDesc", Value: attr.ATTRIBUTE_DESCRIPTION },
