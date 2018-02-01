@@ -153,6 +153,7 @@ define(['../../../../libraries/epicor/quote.js'], function (quote_lib) {
         bezl.vars.editingQuote = false;
         bezl.vars.newQuote = false;
         bezl.vars.disablePendingQuotes = true;
+        bezl.vars.showPendingQuotes = true;
 
         bezl.vars.quoteData = {
             quoteDate: new Date(),
