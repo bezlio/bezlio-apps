@@ -12,7 +12,7 @@ define(function () {
 
             setTimeout(() => {
                 bezl.vars.disablePendingQuotes = false;
-            }, 3000);
+            }, 5000);
         }
 
         if (bezl.data.QuoteDtls && bezl.vars.editingQuote) {
