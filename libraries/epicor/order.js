@@ -15,7 +15,8 @@ define(function () {
 
     }
 
-    function SubmitOrder (bezl) {
+    function SubmitOrder(bezl) {
+
         // Update our order head info
         bezl.vars.ds.OrderHed.forEach(oh => {
             oh.BTCustNum = oh.CustNum;
@@ -44,7 +45,7 @@ define(function () {
                 oh.NeedByDate = bezl.vars.NeedBy;
             }
             if (bezl.vars.ShipBy) {
-                oh.RequestDate = bezl.vars.ShipBy; 
+                oh.RequestDate = bezl.vars.ShipBy;
             }
 
             if (bezl.vars.ShipVia) {
@@ -103,11 +104,13 @@ define(function () {
             })
         });
         // Now we will submit the order for processing
-        bezl.dataService.add('submitOrder','brdb','Epicor10','SalesOrder_SubmitNewOrder',
-                            { "Connection": bezl.vars.connection, 
-                            "Company": bezl.vars.company, 
-                            "ds": JSON.stringify(bezl.vars.ds)
-                            },0);
+        bezl.dataService.add('submitOrder', 'brdb', 'Epicor10', 'SalesOrder_SubmitNewOrder',
+            {
+                "Connection": bezl.vars.connection,
+                "Company": bezl.vars.company,
+                "ds": JSON.stringify(bezl.vars.ds)
+            }, 0);
+
 
         bezl.vars.submitOrder = true;
 
