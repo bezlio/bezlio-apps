@@ -66,8 +66,8 @@ define(function () {
                         bezl.vars.selectedPart = null;
 
                         // Select a part if its matching
-                        if (bezl.vars.parts.findIndex(p => p.PartNum == query) != -1) {
-                            bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == query);
+                        if (bezl.vars.parts.findIndex(p => p.PartNum == query.toUpperCase()) != -1) {
+                            bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == query.toUpperCase());
                         }
 
                     },
