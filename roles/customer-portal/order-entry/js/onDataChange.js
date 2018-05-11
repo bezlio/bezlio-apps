@@ -1,6 +1,6 @@
 define(function () {
- 
-    function OnDataChange (bezl) {
+
+    function OnDataChange(bezl) {
         if (bezl.data.Customers) {
             // Perform additional processing on the returned data
             bezl.vars.Customers = bezl.data.Customers;
@@ -24,14 +24,14 @@ define(function () {
 
         // If we got the account ship tos back, merge those in
         if (bezl.vars.Customers && bezl.data.CustomersShipTos) {
-           bezl.data.CustomersShipTos.forEach(st => {
-               var acct = bezl.vars.Customers.find(a => a.ID == st.ID);
-               if (acct != undefined) {
-                   acct.ShipTos.push(st);
-               }              
-           })
-           bezl.dataService.remove('CustomersShipTos');
-           bezl.vars.loadingShipTos = false;
+            bezl.data.CustomersShipTos.forEach(st => {
+                var acct = bezl.vars.Customers.find(a => a.ID == st.ID);
+                if (acct != undefined) {
+                    acct.ShipTos.push(st);
+                }
+            })
+            bezl.dataService.remove('CustomersShipTos');
+            bezl.vars.loadingShipTos = false;
         }
 
         if (bezl.data.GetGlobalParts) {
@@ -46,7 +46,7 @@ define(function () {
         if (bezl.data.GetPartDiscounts) {
             // We need to replace parts with customer parts if they are present because price list trumps web parts
             bezl.vars.partDiscounts = bezl.data.GetPartDiscounts;
-            
+
             $(bezl.container.nativeElement).find(".partList").typeahead('destroy');
             $(bezl.container.nativeElement).find(".partList").typeahead({
                 order: "asc",
@@ -54,20 +54,31 @@ define(function () {
                 hint: true,
                 display: ['PartNum', 'PartDescription'],
                 source: {
-                    data: function() { return bezl.vars.parts.sort(function(a, b) {
-                                    return a.PartNum - b.PartNum;
-                                });; }
+                    data: function () {
+                        return bezl.vars.parts.sort(function (a, b) {
+                            return a.PartNum - b.PartNum;
+                        });;
+                    }
                 },
                 callback: {
-                    onSearch: function(node, query) {
+                    onSearch: function (node, query) {
                         // First remove any selected parts
                         bezl.vars.selectedPart = null;
-                        
+
                         // Select a part if its matching
                         if (bezl.vars.parts.findIndex(p => p.PartNum == query) != -1) {
                             bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == query);
                         }
 
+                    },
+                    onClick: function (node, a, item, event) {
+                        // First remove any selected parts
+                        bezl.vars.selectedPart = null;
+
+                        // Select a part if its matching
+                        if (bezl.vars.parts.findIndex(p => p.PartNum == item.PartNum) != -1) {
+                            bezl.vars.selectedPart = bezl.vars.parts.find(p => p.PartNum == item.PartNum);
+                        }
                     }
                 }
             });
@@ -89,7 +100,7 @@ define(function () {
                 if (bezl.vars.submitOrder.BOUpdError.length > 0) {
                     bezl.vars.submitOrder.BOUpdError.forEach(err => {
                         bezl.notificationService.showCriticalError(err.TableName + ': ' + err.ErrorText);
-                    });          
+                    });
                 } else {
                     bezl.vars.submittedOrder = true;
                     bezl.notificationService.showSuccess('Order Submitted!');
@@ -108,7 +119,7 @@ define(function () {
             bezl.vars.loadingShipVias = false;
         }
     }
-  
+
     return {
         onDataChange: OnDataChange
     }
