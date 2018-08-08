@@ -6,7 +6,7 @@ define(["./edi850I.js"], function (edi850I) {
         bezl.vars.search = "";
         bezl.vars.sort = "";
         bezl.vars.sortCol = "";
-        bezl.vars.EDI_SL_DASH_HEADER_ID = 0;
+        bezl.vars.DASH_HEADER_ID = 0;
         bezl.vars.showViewDetails = false;
         bezl.vars.showViewFile = false;
         bezl.vars.loading = true;

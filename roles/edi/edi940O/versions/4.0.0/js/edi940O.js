@@ -157,7 +157,7 @@ define(function () {
 
                     for (var prop in obj){
                         switch (prop.toString()){
-                            case "EDI_SL_USER_ID":
+                            case "USER_ID":
                                 parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -241,7 +241,7 @@ define(function () {
                     "QueryName": "GetViewDetails",
                     "Connection": bezl.vars.config.sqlConnection,
                     "Parameters": [
-                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.DASH_HEADER_ID }
                     ] },0);
 
                 //Make buttons visible/invisible.
@@ -299,7 +299,7 @@ define(function () {
                     "QueryName": "GetViewFile",
                     "Connection": bezl.vars.config.sqlConnection,
                     "Parameters": [
-                        { "Key": "@HEADER_ID", "Value": bezl.vars.EDI_SL_DASH_HEADER_ID }
+                        { "Key": "@HEADER_ID", "Value": bezl.vars.DASH_HEADER_ID }
                     ] },0);
 
                 break;
@@ -325,11 +325,11 @@ define(function () {
                                 parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
-                            case "EDI_SL_FILE_ID":
-                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                            case "FILE_ID":
+                                parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
-                            case "EDI_SL_DASH_HEADER_ID":
+                            case "DASH_HEADER_ID":
                                 parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -393,11 +393,11 @@ define(function () {
                                 parameters[parameterCount] = { "Key": "@DOCUMENT_TYPE", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
-                            case "EDI_SL_FILE_ID":
-                                parameters[parameterCount] = { "Key": "@EDI_SL_FILE_ID", "Value": obj[prop] };
+                            case "FILE_ID":
+                                parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
-                            case "EDI_SL_DASH_HEADER_ID":
+                            case "DASH_HEADER_ID":
                                 parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -458,7 +458,7 @@ define(function () {
                                 parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
-                            case "EDI_SL_DASH_HEADER_ID":
+                            case "DASH_HEADER_ID":
                                 parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -481,7 +481,7 @@ define(function () {
 
                     for (var prop in obj){
                         switch (prop.toString()){
-                            case "EDI_SL_USER_ID":
+                            case "USER_ID":
                                 parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -514,7 +514,7 @@ define(function () {
                                 parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
-                            case "EDI_SL_DASH_HEADER_ID":
+                            case "DASH_HEADER_ID":
                                 parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -537,7 +537,7 @@ define(function () {
 
                     for (var prop in obj){
                         switch (prop.toString()){
-                            case "EDI_SL_USER_ID":
+                            case "USER_ID":
                                 parameters[parameterCount] = { "Key": "@USER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
@@ -583,11 +583,11 @@ define(function () {
                                     parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
                                     parameterCount = parameterCount + 1;
                                     break;
-                                case "EDI_SL_DASH_HEADER_ID":
+                                case "DASH_HEADER_ID":
                                     parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
                                     parameterCount = parameterCount + 1;
                                     break;
-                                case "EDI_SL_FILE_ID":
+                                case "FILE_ID":
                                     parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
                                     parameterCount = parameterCount + 1;
                                     break;
