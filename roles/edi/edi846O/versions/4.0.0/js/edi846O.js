@@ -591,8 +591,8 @@ define(function () {
                                     parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
                                     parameterCount = parameterCount + 1;
                                     break;
-                                case "CUSTOMER_PO_REF":
-                                    parameters[parameterCount] = { "Key": "@CUSTOMER_PO_REF", "Value": obj[prop] };
+                                case "PURCHASE_ORDER_NUMBER":
+                                    parameters[parameterCount] = { "Key": "@PURCHASE_ORDER_NUMBER", "Value": obj[prop] };
                                     parameterCount = parameterCount + 1;
                                     break;
                             }
