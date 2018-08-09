@@ -1,6 +1,7 @@
 ﻿{
   "id": "a29a5ddf-b278-4ab8-b968-2b18fcf0b08a",
   "name": "945",
+  "tag": null,
   "template": "custom",
   "owner": "gvanriper@saberlogic.com",
   "shares": [],
@@ -387,12 +388,12 @@
     "                        <!-- Main table button headers -->",
     "                        <div class=\"btn-group-maximize text-align-table\">",
     "                              <div class=\"col-md-2 btn-group no-padding\">",
-    "                                  <button type=\"button\" (click)=\"bezl.functions['sort']('CUSTOMER_ID')\" class=\"btn btn-default btn-group-justified\">",
+    "                                  <button type=\"button\" (click)=\"bezl.functions['sort']('ERP_CUSTOMER_ID')\" class=\"btn btn-default btn-group-justified\">",
     "                                      <span class=\"pull-left\">Customer ID</span>",
     "                                      <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" ",
-    "                                          *ngIf=\"bezl.vars.sortCol == 'CUSTOMER_ID' && bezl.vars.sort == 'asc'\"></i>",
+    "                                          *ngIf=\"bezl.vars.sortCol == 'ERP_CUSTOMER_ID' && bezl.vars.sort == 'asc'\"></i>",
     "                                      <i class=\"fa fa-sort-numeric-desc pull-right\" aria-hidden=\"true\" ",
-    "                                          *ngIf=\"bezl.vars.sortCol == 'CUSTOMER_ID' && bezl.vars.sort == 'desc'\"></i>",
+    "                                          *ngIf=\"bezl.vars.sortCol == 'ERP_CUSTOMER_ID' && bezl.vars.sort == 'desc'\"></i>",
     "                                  </button>",
     "                              </div>",
     "                                <div class=\"col-md-3 btn-group no-padding\">",
@@ -405,21 +406,21 @@
     "                                  </button>",
     "                                </div>",
     "                              <div class=\"col-md-1 btn-group no-padding\" role=\"group\">",
-    "                                  <button type=\"button\" (click)=\"bezl.functions['sort']('CUST_ORDER_ID')\" class=\"btn btn-default btn-group-justified\">",
+    "                                  <button type=\"button\" (click)=\"bezl.functions['sort']('CUSTOMER_ORDER_ID')\" class=\"btn btn-default btn-group-justified\">",
     "                                      <span class=\"pull-left\">Order ID</span>",
     "                                      <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" ",
-    "                                          *ngIf=\"bezl.vars.sortCol == 'CUST_ORDER_ID' && bezl.vars.sort == 'asc'\"></i>",
+    "                                          *ngIf=\"bezl.vars.sortCol == 'CUSTOMER_ORDER_ID' && bezl.vars.sort == 'asc'\"></i>",
     "                                      <i class=\"fa fa-sort-numeric-desc pull-right\" aria-hidden=\"true\" ",
-    "                                          *ngIf=\"bezl.vars.sortCol == 'CUST_ORDER_ID' && bezl.vars.sort == 'desc'\"></i>",
+    "                                          *ngIf=\"bezl.vars.sortCol == 'CUSTOMER_ORDER_ID' && bezl.vars.sort == 'desc'\"></i>",
     "                                  </button>",
     "                              </div>",
     "                              <div class=\"col-md-1 btn-group no-padding\" role=\"group\">",
-    "                                  <button type=\"button\" (click)=\"bezl.functions['sort']('CUSTOMER_PO_REF')\" class=\"btn btn-default btn-group-justified\">",
-    "                                      <span class=\"pull-left\">Customer PO Ref</span>",
+    "                                  <button type=\"button\" (click)=\"bezl.functions['sort']('PURCHASE_ORDER_NUMBER')\" class=\"btn btn-default btn-group-justified\">",
+    "                                      <span class=\"pull-left\">Purchase Order #</span>",
     "                                      <i class=\"fa fa-sort-numeric-asc pull-right\" aria-hidden=\"true\" ",
-    "                                          *ngIf=\"bezl.vars.sortCol == 'CUSTOMER_PO_REF' && bezl.vars.sort == 'asc'\"></i>",
+    "                                          *ngIf=\"bezl.vars.sortCol == 'PURCHASE_ORDER_NUMBER' && bezl.vars.sort == 'asc'\"></i>",
     "                                      <i class=\"fa fa-sort-numeric-desc pull-right\" aria-hidden=\"true\" ",
-    "                                          *ngIf=\"bezl.vars.sortCol == 'CUSTOMER_PO_REF' && bezl.vars.sort == 'desc'\"></i>",
+    "                                          *ngIf=\"bezl.vars.sortCol == 'PURCHASE_ORDER_NUMBER' && bezl.vars.sort == 'desc'\"></i>",
     "                                  </button>",
     "                              </div>",
     "                              <div class=\"col-md-1 btn-group no-padding\" role=\"group\">",
@@ -473,18 +474,18 @@
     "              </thead>",
     "              <tbody>",
     "                  <!-- Main table body values -->",
-    "                  <tr class=\"read\" *ngFor=\"let item of bezl.vars['main']\" (click)=\"bezl.functions['tableClick'](item.EDI_SL_DASH_HEADER_ID)\"  (dblclick)=\"bezl.functions['viewDetails'](item.EDI_SL_DASH_HEADER_ID)\">",
+    "                  <tr class=\"read\" *ngFor=\"let item of bezl.vars['main']\" (click)=\"bezl.functions['tableClick'](item.DASH_HEADER_ID)\"  (dblclick)=\"bezl.functions['viewDetails'](item.DASH_HEADER_ID)\">",
     "                      <td class=\"tableClick\">",
     "                          <div class=\"row\">  ",
     "                              <div class=\"btn-group-maximize text-align-table\" role=\"group\" aria-label=\"Justified button group\">         ",
     "                                  <div class=\"col-md-2 no-padding\">",
     "                                      <input class=\"pull-left\" type=\"checkbox\" id=\"APPROVE\" [(ngModel)]=\"item.APPROVE\">",
-    "                                      <div class=\"no-padding display-inline\">{{item.CUSTOMER_ID}}</div>",
+    "                                      <div class=\"no-padding display-inline\">{{item.ERP_CUSTOMER_ID}}</div>",
     "                                  </div>                      \t\t\t\t",
-    "                                  <div style=\"display: none;\">{{item.EDI_SL_DASH_HEADER_ID}}</div>",
+    "                                  <div style=\"display: none;\">{{item.DASH_HEADER_ID}}</div>",
     "                                  <div class=\"col-md-3 no-padding\">{{item.NAME}}</div>",
-    "                                  <div class=\"col-md-1 no-padding\">{{item.CUST_ORDER_ID}}</div>",
-    "                                  <div class=\"col-md-1 no-padding\">{{item.CUSTOMER_PO_REF}}</div>",
+    "                                  <div class=\"col-md-1 no-padding\">{{item.CUSTOMER_ORDER_ID}}</div>",
+    "                                  <div class=\"col-md-1 no-padding\">{{item.PURCHASE_ORDER_NUMBER}}</div>",
     "                                  <div style=\"display: none;\">{{item.EDI_STATUS}}</div>",
     "                                  <div class=\"col-md-1 no-padding\">{{item.DESIRED_SHIP_DATE}}</div>\t",
     "                                  <div class=\"col-md-1 no-padding\">{{item.ORDER_DATE}}</div>\t",
@@ -544,7 +545,7 @@
     "                          <form class=\"form-inline\" *ngIf=\"bezl.vars['viewdetails']\">",
     "                              <div class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].HEADER\">  ",
     "                                  <label for=\"txtOrderId\" class=\"label-widths\">Order ID:</label>",
-    "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtOrderId\" disabled value={{item.CUST_ORDER_ID}} placeholder=\"<AUTO>\">",
+    "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtOrderId\" disabled value={{item.CUSTOMER_ORDER_ID}} placeholder=\"<AUTO>\">",
     "                                  <label for=\"txtEntityId\" class=\"label-widths\">Entity ID:</label>",
     "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtEntityId\" disabled value={{item.ENTITY_ID}}>",
     "                                  <label for=\"txtShipToId\" class=\"label-widths\">Ship To ID:</label>",
@@ -557,7 +558,7 @@
     "                          <form class=\"form-inline\" *ngIf=\"bezl.vars['viewdetails']\">",
     "                              <div class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].HEADER\">  ",
     "                                  <label for=\"txtCustomerId\" class=\"label-widths\">Customer ID:</label>",
-    "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtCustomerId\" disabled value={{item.CUSTOMER_ID}}>",
+    "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtCustomerId\" disabled value={{item.ERP_CUSTOMER_ID}}>",
     "                                  <label for=\"txtFreightTerms\" class=\"label-widths\">Freight Terms:</label>",
     "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtFreightTerms\" disabled value={{item.FREIGHT_TERMS}}>",
     "                                  <label for=\"txtCurrencyId\" class=\"label-widths\">Currency ID:</label>",
@@ -568,7 +569,7 @@
     "                          <form class=\"form-inline\" *ngIf=\"bezl.vars['viewdetails']\">",
     "                              <div class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].HEADER\"> ",
     "                                  <label for=\"txtPoNumber\" class=\"label-widths\">PO Number:</label>",
-    "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtPoNumber\" disabled disabled value={{item.CUSTOMER_PO_REF}}>",
+    "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtPoNumber\" disabled disabled value={{item.PURCHASE_ORDER_NUMBER}}>",
     "                                  <label for=\"txtOrderDate\" class=\"label-widths\">Order Date:</label>",
     "                                  <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtOrderDate\" disabled value={{item.ORDER_DATE}}>",
     "                              </div>",
@@ -582,7 +583,7 @@
     "                                  </select>",
     "                                  <label for=\"cmbShipVia\" class=\"label-widths\">Ship Via:</label>",
     "                                  <select class=\"form-control dropdown-shipvia panel-body-font\" id=\"cmbShipVia\" value={{item.SHIP_VIA}}>",
-    "                                      <option class=\"panel-body-font\" *ngFor=\"let shipVia of bezl.vars['viewdetails'].SHIP_VIA\" [ngValue]=\"shipVia\">{{shipVia.CODE}}</option>",
+    "                                      <option class=\"panel-body-font\" *ngFor=\"let shipVia of bezl.vars['viewdetails'].SHIP_VIA\" [ngValue]=\"shipVia\">{{shipVia.SHIP_VIA_CODE}}</option>",
     "                                  </select>",
     "                                  <label for=\"txtFileName\" class=\"label-widths\">File Name:</label>",
     "                                  <input type=\"text\" class=\"form-control textbox-filename input-sm panel-body-font\" id=\"txtFileName\" disabled value={{item.EDI_FILE_NAME}}>",
@@ -653,7 +654,7 @@
     "                                              <div>",
     "                                                  <td class=\"col-sm-1\"><input type=\"checkbox\" id=\"IS_CHECKED\" [(ngModel)]=\"item.IS_CHECKED\"></td>",
     "                                              </div>",
-    "                                              <td style=\"display: none;\">{{item.EDI_SL_OVERRIDE_ID}}</td>",
+    "                                              <td style=\"display: none;\">{{item.OVERRIDE_ID}}</td>",
     "                                              <td class=\"col-sm-5 lineItem-columns\">{{item.OVERRIDE_CODE}}</td>",
     "                                              <td class=\"col-sm-6 lineItem-columns\">{{item.DESCRIPTION}}</td>",
     "                                          </tr>",
@@ -673,9 +674,9 @@
     "                              </thead>",
     "                              <tbody>",
     "                                  <tr class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].HOLD_HEADER\">  ",
-    "                                      <td style=\"display: none;\">{{item.EDI_SL_DASH_HOLD_REASON_ID}}</td>",
-    "                                      <td style=\"display: none;\">{{item.EDI_SL_DASH_HEADER_ID}}</td>",
-    "                                      <td style=\"display: none;\">{{item.EDI_SL_DASH_LINE_ID}}</td>",
+    "                                      <td style=\"display: none;\">{{item.DASH_HOLD_REASON_ID}}</td>",
+    "                                      <td style=\"display: none;\">{{item.DASH_HEADER_ID}}</td>",
+    "                                      <td style=\"display: none;\">{{item.DASH_LINE_ID}}</td>",
     "                                      <td class=\"col-md-1 lineItem-columns\">{{item.HOLD_REASON}}</td>",
     "                                  </tr>",
     "                              </tbody>",
@@ -719,19 +720,19 @@
     "                                  </thead>",
     "                                  <tbody>",
     "                                      <tr class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].ITEMS\">                                 ",
-    "                                          <td style=\"display: none;\">{{item.EDI_SL_DASH_LINE_ID}}</td>",
-    "                                          <td style=\"display: none;\">{{item.EDI_SL_DASH_HEADER_ID}}</td>",
+    "                                          <td style=\"display: none;\">{{item.DASH_LINE_ID}}</td>",
+    "                                          <td style=\"display: none;\">{{item.DASH_HEADER_ID}}</td>",
     "                                          <td style=\"display: none;\">{{item.EDI_ORDER_LINE_NO}}</td>",
-    "                                          <td class=\"lineItem-columns\">{{item.CUST_ORDER_LINE_NO}}</td>",
+    "                                          <td class=\"lineItem-columns\">{{item.CUSTOMER_ORDER_LINE_NO}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.PART_ID}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.PART_DESCRIPTION}}</td>",
-    "                                          <td class=\"lineItem-columns\">{{item.BUYER_PART_ID}}</td>",
+    "                                          <td class=\"lineItem-columns\">{{item.BUYER_PART_NUMBER}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.EDI_DESCRIPTION}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.DESIRED_SHIP_DATE}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.ORDER_QTY}}</td>",
-    "                                          <td class=\"lineItem-columns\">{{item.SELLING_UM}}</td>",
-    "                                          <td class=\"lineItem-columns\">{{item.SHIPPED_QTY}}</td>",
-    "                                          <td class=\"lineItem-columns\">{{item.SHIPPING_UM}}</td>",
+    "                                          <td class=\"lineItem-columns\">{{item.ORDER_QTY_UM}}</td>",
+    "                                          <td class=\"lineItem-columns\">{{item.SHIP_QTY}}</td>",
+    "                                          <td class=\"lineItem-columns\">{{item.SHIP_QTY_UM}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.PURCHASE_PRICE}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.EDI_PURCHASE_PRICE}}</td>",
     "                                          <td class=\"lineItem-columns\">{{item.CONSUMER_PKG_CODE}}</td>",
@@ -769,7 +770,6 @@
     "          <br><br>",
     "          <button (click)=\"bezl.functions['exitViewFile']()\" class=\"btn btn-sm btn-primary btn-delete pull-right\">Exit</button>     \t   \t",
     "          <br><br>",
-    "          <div class=\"panel-footer\"></div>",
     "      </footer>",
     "  </p-dialog>",
     "",
@@ -798,14 +798,14 @@
     "                  <thead>",
     "                      <tr>",
     "                          <th class=\"col-md-1\">Approved</th>\t",
-    "                          <th class=\"col-md-3\">Customer PO Ref</th>",
+    "                          <th class=\"col-md-3\">Purchase Order #</th>",
     "                          <th class=\"col-md-8\">Hold Reasons</th>",
     "                      </tr>",
     "                      </thead>",
     "                      <tbody *ngIf=\"bezl.vars['approve']\">",
     "                          <tr class=\"read\" *ngFor=\"let item of bezl.vars['approve']\">  ",
     "                              <td class=\"lineItem-columns fa col-md-1 text-align-table\" [ngClass]=\"{'row-approve-fail fa-times':item.APPROVE=='No', 'row-approve-ok fa-check':item.APPROVE=='Yes'}\"></td>",
-    "                              <td class=\"lineItem-columns col-md-3\">{{item.CUSTOMER_PO_REF}}</td>",
+    "                              <td class=\"lineItem-columns col-md-3\">{{item.PURCHASE_ORDER_NUMBER}}</td>",
     "                              <td class=\"lineItem-columns col-md-8\">{{item.HOLD_REASON}}</td>",
     "                          </tr>",
     "                      </tbody>",
@@ -918,13 +918,13 @@
     "\t\t\t\t</thead>",
     "\t\t\t\t<tbody>",
     "\t\t\t\t\t<!-- Main table body values -->",
-    "\t\t\t\t\t<tr class=\"read tableClick col-lg\" *ngFor=\"let item of bezl.vars['main']\" (click)=\"bezl.functions['tableClickMobile'](item.EDI_SL_DASH_HEADER_ID)\">      \t\t",
+    "\t\t\t\t\t<tr class=\"read tableClick col-lg\" *ngFor=\"let item of bezl.vars['main']\" (click)=\"bezl.functions['tableClickMobile'](item.DASH_HEADER_ID)\">      \t\t",
     "                      \t\t<td class=\"col-md-1 pull-left\"><input type=\"checkbox\" class=\"col-md-1 pull-left\" id=\"APPROVE\" name=\"checkApprove\" [(ngModel)]=\"item.APPROVE\"></td>                     \t\t",
-    "\t\t\t\t\t\t\t<td class=\"col-md-3\">{{item.CUSTOMER_ID}}</td>",
-    "                          \t<td style=\"display: none;\">{{item.EDI_SL_DASH_HEADER_ID}}</td>",
+    "\t\t\t\t\t\t\t<td class=\"col-md-3\">{{item.ERP_CUSTOMER_ID}}</td>",
+    "                          \t<td style=\"display: none;\">{{item.DASH_HEADER_ID}}</td>",
     "                          \t<td style=\"display: none;\">{{item.NAME}}</td>",
-    "                          \t<td style=\"display: none;\">{{item.CUST_ORDER_ID}}</td>",
-    "                          \t<td class=\"col-md-6\">{{item.CUSTOMER_PO_REF}}</td>",
+    "                          \t<td style=\"display: none;\">{{item.CUSTOMER_ORDER_ID}}</td>",
+    "                          \t<td class=\"col-md-6\">{{item.PURCHASE_ORDER_NUMBER}}</td>",
     "                          \t<td style=\"display: none;\">{{item.EDI_STATUS}}</td>",
     "                          \t<td style=\"display: none;\">{{item.DESIRED_SHIP_DATE}}</td>\t",
     "                          \t<td class=\"col-md-2\">{{item.ORDER_DATE}}</td>\t",
@@ -982,11 +982,11 @@
     "\t\t\t\t\t\t\t\t<form *ngIf=\"bezl.vars['viewdetails']\">",
     "\t\t\t\t\t\t\t\t\t<div class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].HEADER\">  ",
     "                                      <label for=\"txtOrderId\">Order ID:</label>",
-    "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtOrderId\" disabled value={{item.CUST_ORDER_ID}} placeholder=\"<AUTO>\">",
+    "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtOrderId\" disabled value={{item.CUSTOMER_ORDER_ID}} placeholder=\"<AUTO>\">",
     "                                      <label for=\"txtPoNumber\" class=\"label-widths\">PO Number:</label>",
-    "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtPoNumber\" disabled disabled value={{item.CUSTOMER_PO_REF}}>",
+    "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtPoNumber\" disabled disabled value={{item.PURCHASE_ORDER_NUMBER}}>",
     "                                      <label for=\"txtCustomerId\" class=\"label-widths\">Customer ID:</label>",
-    "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtCustomerId\" disabled value={{item.CUSTOMER_ID}}>",
+    "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtCustomerId\" disabled value={{item.ERP_CUSTOMER_ID}}>",
     "                                      <label for=\"txtEntityId\">Entity ID:</label>",
     "                                      <input type=\"text\" class=\"form-control input-sm panel-body-font\" id=\"txtEntityId\" disabled value={{item.ENTITY_ID}}>",
     "                                      <label for=\"txtShipToId\" class=\"label-widths\">Ship To ID:</label>",
@@ -1001,7 +1001,7 @@
     "                                      </select>",
     "                                      <label for=\"cmbShipVia\" class=\"label-widths\">Ship Via:</label>",
     "                                      <select class=\"form-control input-lg\" id=\"cmbShipVia\" value={{item.SHIP_VIA}}>",
-    "                                          <option *ngFor=\"let shipVia of bezl.vars['viewdetails'].SHIP_VIA\" [ngValue]=\"shipVia\">{{shipVia.CODE}}</option>",
+    "                                          <option *ngFor=\"let shipVia of bezl.vars['viewdetails'].SHIP_VIA\" [ngValue]=\"shipVia\">{{shipVia.SHIP_VIA_CODE}}</option>",
     "                                      </select>",
     "                                      <br>",
     "                                      <button class=\"btn btn-lg btn-primary-inline btn-btnViewFile \" (click)=\"bezl.functions['viewFile']()\" data-toggle=\"modal\" data-target=\"#ViewFileModal\">View File</button>",
@@ -1045,7 +1045,7 @@
     "\t\t\t\t\t\t\t\t\t\t\t\t<div>",
     "\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"col-sm-1\"><input type=\"checkbox\" id=\"IS_CHECKED\" [(ngModel)]=\"item.IS_CHECKED\"></td>",
     "\t\t\t\t\t\t\t\t\t\t\t\t</div>",
-    "\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_SL_OVERRIDE_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.OVERRIDE_ID}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"col-sm-11 lineItem-columns\">{{item.DESCRIPTION}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t</tr>",
     "\t\t\t\t\t\t\t\t\t\t</tbody>",
@@ -1063,9 +1063,9 @@
     "\t\t\t\t\t\t\t\t</thead>",
     "\t\t\t\t\t\t\t\t<tbody>",
     "\t\t\t\t\t\t\t\t\t<tr class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].HOLD_HEADER\">  ",
-    "\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_SL_DASH_HOLD_REASON_ID}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_SL_DASH_HEADER_ID}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_SL_DASH_LINE_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.DASH_HOLD_REASON_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.DASH_HEADER_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.DASH_LINE_ID}}</td>",
     "\t\t\t\t\t\t\t\t\t\t<td class=\"col-md-12 lineItem-columns\">{{item.HOLD_REASON}}</td>",
     "\t\t\t\t\t\t\t\t\t</tr>",
     "\t\t\t\t\t\t\t\t</tbody>",
@@ -1102,19 +1102,19 @@
     "\t\t\t\t\t\t\t\t\t</thead>",
     "\t\t\t\t\t\t\t\t\t<tbody>",
     "\t\t\t\t\t\t\t\t\t\t<tr class=\"read\" *ngFor=\"let item of bezl.vars['viewdetails'].ITEMS\">                                 ",
-    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_SL_DASH_LINE_ID}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_SL_DASH_HEADER_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.DASH_LINE_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.DASH_HEADER_ID}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_ORDER_LINE_NO}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.CUST_ORDER_LINE_NO}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.CUSTOMER_ORDER_LINE_NO}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.PART_ID}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.PART_DESCRIPTION}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.BUYER_PART_ID}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.BUYER_PART_NUMBER}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_DESCRIPTION}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.DESIRED_SHIP_DATE}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.ORDER_QTY}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.SELLING_UM}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.SHIPPED_QTY}}</td>",
-    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.SHIPPING_UM}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.ORDER_QTY_UM}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.SHIP_QTY}}</td>",
+    "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.SHIP_QTY_UM}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td class=\"lineItem-columns\">{{item.PURCHASE_PRICE}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.EDI_PURCHASE_PRICE}}</td>",
     "\t\t\t\t\t\t\t\t\t\t\t<td style=\"display: none;\">{{item.CONSUMER_PKG_CODE}}</td>",
@@ -1182,14 +1182,14 @@
     "\t\t\t\t\t<thead>",
     "\t\t\t\t\t\t<tr>",
     "\t\t\t\t\t\t\t<th class=\"col-md-1\">Approved</th>\t",
-    "\t\t\t\t\t\t\t<th class=\"col-md-3\">Customer PO Ref</th>",
+    "\t\t\t\t\t\t\t<th class=\"col-md-3\">Purchase Order #</th>",
     "\t\t\t\t\t\t\t<th class=\"col-md-8\">Hold Reasons</th>",
     "\t\t\t\t\t\t</tr>",
     "\t\t\t\t\t\t</thead>",
     "\t\t\t\t\t\t<tbody *ngIf=\"bezl.vars['approve']\">",
     "\t\t\t\t\t\t\t<tr class=\"read\" *ngFor=\"let item of bezl.vars['approve']\">  ",
     "\t\t\t\t\t\t\t\t<td class=\"lineItem-columns fa col-md-1 text-align-table\" [ngClass]=\"{'row-approve-fail fa-times':item.APPROVE=='No', 'row-approve-ok fa-check':item.APPROVE=='Yes'}\"></td>",
-    "\t\t\t\t\t\t\t\t<td class=\"lineItem-columns col-md-3\">{{item.CUSTOMER_PO_REF}}</td>",
+    "\t\t\t\t\t\t\t\t<td class=\"lineItem-columns col-md-3\">{{item.PURCHASE_ORDER_NUMBER}}</td>",
     "\t\t\t\t\t\t\t\t<td class=\"lineItem-columns col-md-8\">{{item.HOLD_REASON}}</td>",
     "\t\t\t\t\t\t\t</tr>",
     "\t\t\t\t\t\t</tbody>",
@@ -1252,7 +1252,7 @@
     },
     {
       "method": "refreshClick",
-      "code": "//reset search/filter variables.\n$('#txtFilter').val('');\n$('#txtSearch').val('');\nbezl.vars['filter'] = '';\nbezl.vars['search'] = '';\n\n//Call edi945I.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  functions.runQuery(bezl, 'GetDashHeaderData');\n});",
+      "code": "//reset search/filter variables.\n$('#txtFilter').val('');\n$('#txtSearch').val('');\nbezl.vars['filter'] = '';\nbezl.vars['search'] = '';\nbezl.vars['main'] = null;\n\n//Call edi945I.js.\nrequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  functions.runQuery(bezl, 'GetDashHeaderData');\n});",
       "declares": [
         "$",
         "parm",
@@ -1261,7 +1261,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //reset search/filter variables.\r\n$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\nbezl.vars['filter'] = '';\r\nbezl.vars['search'] = '';\r\n//Call edi945I.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n    functions.runQuery(bezl, 'GetDashHeaderData');\r\n});\r\n"
+      "compiled": "var FusionCharts; //reset search/filter variables.\r\n$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\nbezl.vars['filter'] = '';\r\nbezl.vars['search'] = '';\r\nbezl.vars['main'] = null;\r\n//Call edi945I.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n    functions.runQuery(bezl, 'GetDashHeaderData');\r\n});\r\n"
     },
     {
       "method": "selectAllClick",
@@ -1343,7 +1343,7 @@
     },
     {
       "method": "viewDetails",
-      "code": "//Check if a row is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){  \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetViewDetails');\n\t});\n  \n  \t//Show view details.\n\tbezl.vars['showViewDetails'] = true;\n} \nelse {\n  \t//Row not selected. Return.\n  \tbezl.notificationService.showWarning('You must select a record to view details.');\n\tbezl.vars['showViewDetails'] = false;\n}",
+      "code": "//Check if a row is selected.\nif (bezl.vars['DASH_HEADER_ID'] > 0){  \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetViewDetails');\n\t});\n  \n  \t//Show view details.\n\tbezl.vars['showViewDetails'] = true;\n} \nelse {\n  \t//Row not selected. Return.\n  \tbezl.notificationService.showWarning('You must select a record to view details.');\n\tbezl.vars['showViewDetails'] = false;\n}",
       "declares": [
         "$",
         "parm",
@@ -1352,11 +1352,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Check if a row is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetViewDetails');\r\n    });\r\n    //Show view details.\r\n    bezl.vars['showViewDetails'] = true;\r\n}\r\nelse {\r\n    //Row not selected. Return.\r\n    bezl.notificationService.showWarning('You must select a record to view details.');\r\n    bezl.vars['showViewDetails'] = false;\r\n}\r\n"
+      "compiled": "var FusionCharts; //Check if a row is selected.\r\nif (bezl.vars['DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetViewDetails');\r\n    });\r\n    //Show view details.\r\n    bezl.vars['showViewDetails'] = true;\r\n}\r\nelse {\r\n    //Row not selected. Return.\r\n    bezl.notificationService.showWarning('You must select a record to view details.');\r\n    bezl.vars['showViewDetails'] = false;\r\n}\r\n"
     },
     {
       "method": "tableClick",
-      "code": "//Highlight row/rows.\n$('#mainTable tr').click(function(){\n    $(\"#mainTable tr\").removeClass(\"highlight\");\n    $(this).addClass(\"highlight\");\n})\n\n//Set ID to selected row.\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\n",
+      "code": "//Highlight row/rows.\n$('#mainTable tr').click(function(){\n    $(\"#mainTable tr\").removeClass(\"highlight\");\n    $(this).addClass(\"highlight\");\n})\n\n//Set ID to selected row.\nbezl.vars['DASH_HEADER_ID'] = parm;\n",
       "declares": [
         "$",
         "parm",
@@ -1365,7 +1365,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Highlight row/rows.\r\n$('#mainTable tr').click(function () {\r\n    $(\"#mainTable tr\").removeClass(\"highlight\");\r\n    $(this).addClass(\"highlight\");\r\n});\r\n//Set ID to selected row.\r\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\r\n"
+      "compiled": "var FusionCharts; //Highlight row/rows.\r\n$('#mainTable tr').click(function () {\r\n    $(\"#mainTable tr\").removeClass(\"highlight\");\r\n    $(this).addClass(\"highlight\");\r\n});\r\n//Set ID to selected row.\r\nbezl.vars['DASH_HEADER_ID'] = parm;\r\n"
     },
     {
       "method": "exitViewDetails",
@@ -1382,7 +1382,7 @@
     },
     {
       "method": "viewFile",
-      "code": "//Check if row ID is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){  \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetViewFile');\n\t});\n  \n  \t//Show view file.\n  \tbezl.vars['showViewFile'] = true;\n}\n",
+      "code": "//Check if row ID is selected.\nif (bezl.vars['DASH_HEADER_ID'] > 0){  \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'GetViewFile');\n\t});\n  \n  \t//Show view file.\n  \tbezl.vars['showViewFile'] = true;\n}\n",
       "declares": [
         "$",
         "parm",
@@ -1391,7 +1391,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetViewFile');\r\n    });\r\n    //Show view file.\r\n    bezl.vars['showViewFile'] = true;\r\n}\r\n"
+      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'GetViewFile');\r\n    });\r\n    //Show view file.\r\n    bezl.vars['showViewFile'] = true;\r\n}\r\n"
     },
     {
       "method": "exitViewFile",
@@ -1408,7 +1408,7 @@
     },
     {
       "method": "revalidate",
-      "code": "//Check if row ID is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'Revalidate');\n\t});\n}",
+      "code": "//Check if row ID is selected.\nif (bezl.vars['DASH_HEADER_ID'] > 0){   \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'Revalidate');\n\t});\n}",
       "declares": [
         "$",
         "parm",
@@ -1417,11 +1417,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Revalidate');\r\n    });\r\n}\r\n"
+      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Revalidate');\r\n    });\r\n}\r\n"
     },
     {
       "method": "saveViewDetails",
-      "code": "//Check if row ID is selected.\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0){   \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'Save');\n\t});\n}\n\n//Hide view details screen.\nbezl.vars['showViewDetails'] = false;",
+      "code": "//Check if row ID is selected.\nif (bezl.vars['DASH_HEADER_ID'] > 0){   \n    //Call edi945I.js.\n  \trequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function(functions) {\n  \t\tfunctions.runQuery(bezl, 'Save');\n\t});\n}\n\n//Hide view details screen.\nbezl.vars['showViewDetails'] = false;",
       "declares": [
         "$",
         "parm",
@@ -1430,7 +1430,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['EDI_SL_DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Save');\r\n    });\r\n}\r\n//Hide view details screen.\r\nbezl.vars['showViewDetails'] = false;\r\n"
+      "compiled": "var FusionCharts; //Check if row ID is selected.\r\nif (bezl.vars['DASH_HEADER_ID'] > 0) {\r\n    //Call edi945I.js.\r\n    require([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n        functions.runQuery(bezl, 'Save');\r\n    });\r\n}\r\n//Hide view details screen.\r\nbezl.vars['showViewDetails'] = false;\r\n"
     },
     {
       "method": "deleteClick",
@@ -1499,7 +1499,7 @@
     },
     {
       "method": "setConfig",
-      "code": "// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: \t\tThe version number of this app. Setting this will use the javascript\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\n//          \t\twill use the \"development\" javascript files in the root directory.\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\n//          \t\tempty string and the correct path will be automatically determined.\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \n//\t\t\t\t\tand goes by the config SQL connection name.\n// siteId:\t\t\tThis is the site used if ERP is split per site. \n\nbezl.vars.config = {};\nbezl.vars.config.version = \"3.4.6\";\nbezl.vars.config.baseUrl = \"\";\nbezl.vars.config.sqlConnection = \"SQLConnection\";\nbezl.vars.siteId = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t   + \"/roles/edi/edi945I/\"\n  \t\t\t\t\t\t   + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t   + \"js/\"",
+      "code": "// *********************************************************************************\n// Configuration Variables\n// Only edit these if you know what you are doing.\n// version: \t\tThe version number of this app. Setting this will use the javascript\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\n//          \t\twill use the \"development\" javascript files in the root directory.\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\n//          \t\tempty string and the correct path will be automatically determined.\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \n//\t\t\t\t\tand goes by the config SQL connection name.\n// siteId:\t\t\tThis is the site used if ERP is split per site. \n\nbezl.vars.config = {};\nbezl.vars.config.version = \"4.0.0\";\nbezl.vars.config.baseUrl = \"\";\nbezl.vars.config.sqlConnection = \"SQLConnection\";\nbezl.vars.siteId = \"\";\n// *********************************************************************************\n\n// If the baseURL is not set above then we will determine a sane default based on the URL\nif (bezl.vars.config.baseUrl == \"\") {\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\n    } else {\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\n    }\n}\n\n// If version numbers exist above they will also be added to the javascript include URLs\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl\n  \t\t\t\t\t\t   + \"/roles/edi/edi945I/\"\n  \t\t\t\t\t\t   + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\")\n  \t\t\t\t\t\t   + \"js/\"",
       "declares": [
         "$",
         "parm",
@@ -1508,11 +1508,11 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; // *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: \t\tThe version number of this app. Setting this will use the javascript\r\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\r\n//          \t\twill use the \"development\" javascript files in the root directory.\r\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\r\n//          \t\tempty string and the correct path will be automatically determined.\r\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\r\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \r\n//\t\t\t\t\tand goes by the config SQL connection name.\r\n// siteId:\t\t\tThis is the site used if ERP is split per site. \r\nbezl.vars.config = {};\r\nbezl.vars.config.version = \"3.4.6\";\r\nbezl.vars.config.baseUrl = \"\";\r\nbezl.vars.config.sqlConnection = \"SQLConnection\";\r\nbezl.vars.siteId = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/edi/edi945I/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\n"
+      "compiled": "var FusionCharts; // *********************************************************************************\r\n// Configuration Variables\r\n// Only edit these if you know what you are doing.\r\n// version: \t\tThe version number of this app. Setting this will use the javascript\r\n//          \t\tinclude files in the corresponding \"versions\" subfolder. An empty string\r\n//          \t\twill use the \"development\" javascript files in the root directory.\r\n// baseUrl: \t\tThe base URL of the javascript include files. Generally this should be an\r\n//          \t\tempty string and the correct path will be automatically determined.\r\n//          \t\tHowever, for development you may wish to point this to a RawGit URL of\r\n//          \t\ta specific branch (e.g. https://rawgit.com/bezlio/bezlio-apps/my-branch).\r\n// sqlConnection: \tThis determines what SQL conneciton to point to. This is accessed by BRDB \r\n//\t\t\t\t\tand goes by the config SQL connection name.\r\n// siteId:\t\t\tThis is the site used if ERP is split per site. \r\nbezl.vars.config = {};\r\nbezl.vars.config.version = \"4.0.0\";\r\nbezl.vars.config.baseUrl = \"\";\r\nbezl.vars.config.sqlConnection = \"SQLConnection\";\r\nbezl.vars.siteId = \"\";\r\n// *********************************************************************************\r\n// If the baseURL is not set above then we will determine a sane default based on the URL\r\nif (bezl.vars.config.baseUrl == \"\") {\r\n    if (window.location.href.indexOf(\"portal-dev.bezl.io\") !== -1) {\r\n        bezl.vars.config.baseUrl = \"https://apps-dev.bezl.io\";\r\n    }\r\n    else {\r\n        bezl.vars.config.baseUrl = \"https://apps.bezl.io\";\r\n    }\r\n}\r\n// If version numbers exist above they will also be added to the javascript include URLs\r\nbezl.vars.config.baseJsUrl = bezl.vars.config.baseUrl + \"/roles/edi/edi945I/\" + (bezl.vars.config.version ? \"versions/\" + bezl.vars.config.version + \"/\" : \"\") + \"js/\";\r\n"
     },
     {
       "method": "tableClickMobile",
-      "code": "//Set ID to selected row.\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\n\n//timeout variable.\nvar touchtimeout = 0;\n\n//Highlight row/rows.\n$('#mainTableMobile tr').click(function(){\n      if(touchtimeout == 0) {\n        //set first click\n        touchtimeout = new Date().getTime();\n      } else {\n        //compare first click to this click and see if they occurred within double click threshold\n        if(((new Date().getTime()) - touchtimeout) < 800) {\n            //double click occurred\n            touchtimeout = 0;\n          \t\n          \t//call view details function.\n          \tbezl.functions['viewDetails'](bezl.vars['EDI_SL_DASH_HEADER_ID'])\n        } else {\n            //not a double click so set as a new first click\n            touchtimeout = new Date().getTime();\n        }\n    } \n  \n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\n    $(this).addClass(\"highlight\"); \n})",
+      "code": "//Set ID to selected row.\nbezl.vars['DASH_HEADER_ID'] = parm;\n\n//timeout variable.\nvar touchtimeout = 0;\n\n//Highlight row/rows.\n$('#mainTableMobile tr').click(function(){\n      if(touchtimeout == 0) {\n        //set first click\n        touchtimeout = new Date().getTime();\n      } else {\n        //compare first click to this click and see if they occurred within double click threshold\n        if(((new Date().getTime()) - touchtimeout) < 800) {\n            //double click occurred\n            touchtimeout = 0;\n          \t\n          \t//call view details function.\n          \tbezl.functions['viewDetails'](bezl.vars['DASH_HEADER_ID'])\n        } else {\n            //not a double click so set as a new first click\n            touchtimeout = new Date().getTime();\n        }\n    } \n  \n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\n    $(this).addClass(\"highlight\"); \n})",
       "declares": [
         "$",
         "parm",
@@ -1521,7 +1521,7 @@
         "require",
         "FusionCharts"
       ],
-      "compiled": "var FusionCharts; //Set ID to selected row.\r\nbezl.vars['EDI_SL_DASH_HEADER_ID'] = parm;\r\n//timeout variable.\r\nvar touchtimeout = 0;\r\n//Highlight row/rows.\r\n$('#mainTableMobile tr').click(function () {\r\n    if (touchtimeout == 0) {\r\n        //set first click\r\n        touchtimeout = new Date().getTime();\r\n    }\r\n    else {\r\n        //compare first click to this click and see if they occurred within double click threshold\r\n        if (((new Date().getTime()) - touchtimeout) < 800) {\r\n            //double click occurred\r\n            touchtimeout = 0;\r\n            //call view details function.\r\n            bezl.functions['viewDetails'](bezl.vars['EDI_SL_DASH_HEADER_ID']);\r\n        }\r\n        else {\r\n            //not a double click so set as a new first click\r\n            touchtimeout = new Date().getTime();\r\n        }\r\n    }\r\n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\r\n    $(this).addClass(\"highlight\");\r\n});\r\n"
+      "compiled": "var FusionCharts; //Set ID to selected row.\r\nbezl.vars['DASH_HEADER_ID'] = parm;\r\n//timeout variable.\r\nvar touchtimeout = 0;\r\n//Highlight row/rows.\r\n$('#mainTableMobile tr').click(function () {\r\n    if (touchtimeout == 0) {\r\n        //set first click\r\n        touchtimeout = new Date().getTime();\r\n    }\r\n    else {\r\n        //compare first click to this click and see if they occurred within double click threshold\r\n        if (((new Date().getTime()) - touchtimeout) < 800) {\r\n            //double click occurred\r\n            touchtimeout = 0;\r\n            //call view details function.\r\n            bezl.functions['viewDetails'](bezl.vars['DASH_HEADER_ID']);\r\n        }\r\n        else {\r\n            //not a double click so set as a new first click\r\n            touchtimeout = new Date().getTime();\r\n        }\r\n    }\r\n    $(\"#mainTableMobile tr\").removeClass(\"highlight\");\r\n    $(this).addClass(\"highlight\");\r\n});\r\n"
     },
     {
       "method": "radioButtonClickMobile",
@@ -1535,7 +1535,48 @@
         "FusionCharts"
       ],
       "compiled": "var FusionCharts; //Get filter by radio button selection.\r\nif ($('input[id=radioOnHoldMobile]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'H';\r\n}\r\nelse if ($('input[id=radioApprovedMobile]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'A';\r\n}\r\nelse if ($('input[id=radioDeletedMobile]:checked').length > 0) {\r\n    bezl.vars['filterEdiStatus'] = 'D';\r\n}\r\n//Call edi945I.js.\r\nrequire([bezl.vars.config.baseJsUrl + 'edi945I.js'], function (functions) {\r\n    functions.filterEdiStatus(bezl);\r\n});\r\n//reset search/filter variables.\r\n$('#txtFilter').val('');\r\n$('#txtSearch').val('');\r\n"
+    },
+    {
+      "method": "ngAfterViewInit",
+      "code": "",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": ""
+    },
+    {
+      "method": "onParentChange",
+      "code": "",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": ""
+    },
+    {
+      "method": "onChildChange",
+      "code": "",
+      "declares": [
+        "$",
+        "parm",
+        "bezl",
+        "dataResp",
+        "require",
+        "FusionCharts"
+      ],
+      "compiled": ""
     }
   ],
-  "data": ""
+  "components": [],
+  "data": "",
+  "styleCss": "/* .full-screen { width: 100%; } */"
 }
