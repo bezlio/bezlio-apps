@@ -481,66 +481,71 @@ define(function () {
 
                 break;
 
-            case "Approve":
-                var parameters = [], parameterCount = 0, approve = false;
+                case "Approve":
+                    var parameters = [], parameterCount = 0, approve = false, approvalGUID = '';
 
-                parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '945' };
-                parameterCount = parameterCount + 1;
-
-                parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": 'I' };
-                parameterCount = parameterCount + 1;
-
-                //Loop through header for header information.
-                for (var key in bezl.vars.main){
-                    var obj = bezl.vars.main[key];
-                        
-                    for (var prop in obj) {
-                        if (prop.toString() == "APPROVE"){
-                                approve = obj[prop];
-                        } 
-                    }
-                    
-                    if (approve == true){
+                    //Loop through header for header information.
+                    for (var key in bezl.vars.main){
+                        var obj = bezl.vars.main[key];
+                            
                         for (var prop in obj) {
-                            switch (prop.toString()){
-                                case "APPROVE":
-                                    parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
-                                    parameterCount = parameterCount + 1;
-                                    break;
-                                case "DASH_HEADER_ID":
-                                    parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
-                                    parameterCount = parameterCount + 1;
-                                    break;
-                                case "FILE_ID":
-                                    parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
-                                    parameterCount = parameterCount + 1;
-                                    break;
-                                case "PURCHASE_ORDER_NUMBER":
-                                    parameters[parameterCount] = { "Key": "@PURCHASE_ORDER_NUMBER", "Value": obj[prop] };
-                                    parameterCount = parameterCount + 1;
-                                    break;
-                            }
+                            if (prop.toString() == "APPROVE"){
+                                    approve = obj[prop];
+                            } 
                         }
+                        
+                        if (approve == true){
+                            parameters[parameterCount] = { "Key": "@DOC_TYPE", "Value": '945' };
+                            parameterCount = parameterCount + 1;
+            
+                            parameters[parameterCount] = { "Key": "@EDI_DIRECTION", "Value": 'I' };
+                            parameterCount = parameterCount + 1;
 
-                        // Pull in the header data for the logged in user
-                        bezl.dataService.add('approve','brdb','EDI','Approve', { 
-                            "QueryName": "Approve",
-                            "Connection": bezl.vars.config.sqlConnection,
-                            "Parameters": parameters },0);                    
-
-                        for (var key in parameters){
-                            var parameterobj = parameters[key];
-                                                          
-                            if (parameterobj.Key == "@APPROVE"){
-                                    parameterobj.Value = "Completed";
+                            for (var prop in obj) {
+                                switch (prop.toString()){
+                                    case "APPROVE":
+                                        parameters[parameterCount] = { "Key": "@APPROVE", "Value": obj[prop] };
+                                        parameterCount = parameterCount + 1;
+                                        break;
+                                    case "DASH_HEADER_ID":
+                                        parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                        parameterCount = parameterCount + 1;
+                                        break;
+                                    case "FILE_ID":
+                                        parameters[parameterCount] = { "Key": "@FILE_ID", "Value": obj[prop] };
+                                        parameterCount = parameterCount + 1;
+                                        break;
+                                    case "PURCHASE_ORDER_NUMBER":
+                                        parameters[parameterCount] = { "Key": "@PURCHASE_ORDER_NUMBER", "Value": obj[prop] };
+                                        parameterCount = parameterCount + 1;
+                                        break;
+                                }
                             }
-                        }
+                            
+                            //Make unique GUID for dataservice to return to Bezlio.
+                            approvalGUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                                return v.toString(16);
+                            })
 
-                        approve = false;
+                            bezl.vars.approvalData.push({
+                                id: approvalGUID
+                            })
+
+                            //Approve record with unique GUID for dataservice to return.
+                            bezl.dataService.add(approvalGUID,'brdb','EDI','Approve', { 
+                                "QueryName": "Approve",
+                                "Connection": bezl.vars.config.sqlConnection,
+                                "Parameters": parameters },0);                    
+                            
+                            //Reset variables.
+                            parameterCount = 0;
+                            parameters = [];
+                            approve = false;
+                        }
                     }
-                }
 
-                break;
+                    break;
         }
     }
     
