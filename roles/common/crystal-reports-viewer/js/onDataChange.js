@@ -12,9 +12,9 @@ define(["./report.js"], function (report) {
             bezl.data.Report = null;
 
             require.config({
-              paths: {'pdfjs-dist': 'https://npmcdn.com/pdfjs-dist'}
+              paths: {'pdfjs-dist': 'https://npmcdn.com/pdfjs-dist@2.3.200'}
             });
-            require(['pdfjs-dist/build/pdf'], function (PDFJS) {
+            require(['pdfjs-dist@2.3.200/build/pdf'], function (PDFJS) {
 
                 // Using DocumentInitParameters object to load binary data.
                 var loadingTask = PDFJS.getDocument({data: pdfData});
