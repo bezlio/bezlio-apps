@@ -24,3 +24,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Added
 - Certified 3.4.6.
 - Completed mobile functionality.
+
+## [4.0.8] - 2020-06-25
+### Added
+- Certified 4.0.8
+- Fixed approval, view file, and delete process.
