@@ -9,9 +9,12 @@ define(["./edi850I.js"], function (edi850I) {
         bezl.vars.DASH_HEADER_ID = 0;
         bezl.vars.showViewDetails = false;
         bezl.vars.showViewFile = false;
+        bezl.vars.showViewFileMobile = false;
         bezl.vars.loading = true;
         bezl.vars.showApproval = false;
+        bezl.vars.showApprovalMobile = false;
         bezl.vars.showDelete = false;
+        bezl.vars.showDeleteMobile = false;
         bezl.vars.approvalData = [];
         bezl.vars.approvalCompleted = false;
 
