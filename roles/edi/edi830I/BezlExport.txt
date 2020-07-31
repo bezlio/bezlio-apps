@@ -474,7 +474,7 @@
     "              </thead>",
     "              <tbody>",
     "                  <!-- Main table body values -->",
-    "                  <tr class=\"read\" *ngFor=\"let item of bezl.vars['datasub']\" (click)=\"bezl.functions['tableClick'](item.DASH_HEADER_ID)\"  (dblclick)=\"bezl.functions['viewDetails'](item.DASH_HEADER_ID)\">",
+    "                  <tr class=\"read\" *ngFor=\"let item of bezl.vars['main']\" (click)=\"bezl.functions['tableClick'](item.DASH_HEADER_ID)\"  (dblclick)=\"bezl.functions['viewDetails'](item.DASH_HEADER_ID)\">",
     "                      <td class=\"tableClick\">",
     "                          <div class=\"row\">  ",
     "                              <div class=\"btn-group-maximize text-align-table\" role=\"group\" aria-label=\"Justified button group\">         ",

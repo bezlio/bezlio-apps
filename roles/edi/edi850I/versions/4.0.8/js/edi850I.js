@@ -439,7 +439,7 @@ define(function () {
                                 parameterCount = parameterCount + 1;
                                 break;
                             case "DASH_HEADER_ID":
-                                parameters[parameterCount] = { "Key": "@HEADER_ID", "Value": obj[prop] };
+                                parameters[parameterCount] = { "Key": "@DASH_HEADER_ID", "Value": obj[prop] };
                                 parameterCount = parameterCount + 1;
                                 break;
                         }
